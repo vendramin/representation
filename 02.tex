@@ -1,0 +1,121 @@
+\chapter{}
+
+\topic{Group algebras}
+
+\index{Group algebra}
+Let $G$ be a finite group. The (complex) \textbf{group
+algebra} $\C[G]$ is the $\C$-vector space with
+basis $\{g:g\in G\}$ and multiplication
+\[
+\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
+=\sum_{g,h\in G}\lambda_g\mu_h(gh).
+\]
+
+Clearly, $\dim \C[G]=|G|$. Moreover, 
+$\C[G]$ is commutative if and only if $G$ is abelian. 
+
+\index{Augmentation ideal}
+If $G$ is non-trivial, 
+then $\C[G]$ contains proper non-trivial ideals. For example, 
+the \textbf{augmentation ideal} 
+\[
+I(G)=\left\{\sum_{g\in G}\lambda_gg\in \C[G]:\sum_{g\in G}\lambda_g=0\right\}
+\]
+is a non-zero proper ideal of $\C[G]$. 
+
+\begin{exercise}
+Let $C_n$ be the cyclic group of order $n$ (written multiplicatively).
+Prove that $\C[G]\simeq \C[X]/(X^n-1)$. 
+\end{exercise}
+
+\begin{exercise}
+    Let $G$ be a finite non-trivial group. Prove that
+    $\C[G]$ has zero divisors. 
+\end{exercise}
+
+\index{Module!semisimple}
+A module $M$ is said to be \textbf{semisimple} if...
+
+\begin{theorem}[Maschke]
+\index{Maschke's theorem}
+    Let $G$ be a finite
+    group and $M$ be a finite-dimensional $\C[G]$-module.
+    Then $M$ is semisimple. 
+\end{theorem}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{exercise}
+
+\end{exercise}
+
+There is a multiplicative version of Maschke's theorem. A group $G$ acts 
+by automorphisms on $A$ if there is a group homomorphism 
+$\lambda\colon G\to\Aut(A)$. In this case, a subgroup $B$ of $A$ is said to be 
+$G$-invariant if $\lambda(B)\subseteq B$. 
+
+\begin{theorem}
+\index{Maschke's theorem!multiplicative version}
+    Let $K$ be a finite group of order $m$. Assume that 
+    $K$ acts by automorphisms pn $V=U\times W$, where
+    $U$ and $W$ are subgroups of $V$ and $U$ is abelian and $K$-invariant. 
+    If the map $U\to U$, $u\mapsto u^m$, is bijective, 
+    then there exists a normal $K$-invariant subgroup $N$ of $V$ 
+    such that $V=U\times N$. 
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{corollary}
+    Let $p$ be a prime number and $K$ be a finite
+    group with order not divisible by $p$. Let $V$ be
+    a $p$-elementary abelian group. Assume that $K$ acts
+    by automorphism on $V$. If $U$ be a $K$-invariant subgroup of $V$, 
+    then there exists a $K$-invariant subgroup $N$ of $V$ 
+    such that $V=U\times N$. 
+\end{corollary}
+
+\begin{proof}
+
+\end{proof}
+
+If $G$ is a finite group, 
+then $\C[G]$ is semisimple. By Artin--Wedderburn's theorem, 
+\[
+\C[G]\simeq\prod_{i=1}^r M_{n_i}(\C),
+\]
+where $r$ is the number of isomorphism classes of simple modules of $\C[G]$. Moreover, 
+$|G|=\dim\C[G]=\sum_{i=1}^r n_i^2$. By convention, 
+we always assume that $n_1=1$. 
+This corresponds, of course, to the \textbf{trivial module}. 
+
+\begin{theorem}
+    Let $G$ be a finite group. The number of simple 
+    modules of $\C[G]$ coincides with the number of conjugacy classes of $G$. 
+\end{theorem}
+
+\begin{proof}
+
+\end{proof}
+
+\begin{exercise}
+    Let $G$ be a finite group of order $n$ with $k$ conjugacy classes.
+    Let $m=(G:[G,G])$. Prove that $m+3m\geq4k$. 
+\end{exercise}
+
+\begin{exercise}
+    Prove that $\C[C^4]\simeq\C^4$. 
+\end{exercise}
+
+For $n\geq1$ let $\Sym_n$ denote the symmetric group in $n$ letters. 
+
+\begin{example}
+    The group $\Sym_3$ has three conjugacy classes:
+    $\{\id\}$, $\{(12),(13),(23)\}$ and $\{(123),(132)\}$. 
+    Since $6=1^2+a^2+b^2$, it follows that 
+    $\C[G]\simeq\C\times\C\times M_2(\C)$. 
+\end{example}    

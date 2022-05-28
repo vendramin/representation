@@ -1,0 +1,115 @@
+\chapter{} 
+
+\topic{Representations}
+
+Unless we state differently, we will always work
+with finite groups. All our vector spaces will
+be complex vector spaces. 
+
+\begin{definition}
+    Let $G$ be a finite group. A \textbf{representation}
+    of $G$ is a group homomorphism $\rho\colon G\to\GL(V)$, where
+    $V$ is a finite-dimensional vector space. The \textbf{degree} (or dimension) 
+    of the representation is the integer $\deg\rho=\dim V$. 
+\end{definition}
+
+\index{Matrix representation}
+Let $G\to\GL(V)$ be a representation. 
+If we fix a basis of $V$, then we obtain
+a \textbf{matrix representation} of $G$, that is a 
+group homomorphism 
+\[
+\rho\colon G\to\GL(V)\simeq\GL_n(\C),
+\quad 
+g\mapsto\rho_g,
+\]
+where
+$n=\dim V$. 
+
+\begin{example}
+\end{example}
+
+\begin{example}
+\end{example}
+
+\begin{example}
+\end{example}
+
+\begin{example}
+\end{example}
+
+\begin{example}
+\end{example}
+
+\begin{example}
+\end{example}
+
+An important fact is that there exists a bijective
+correspondence 
+between 
+representations of a finite group $G$ 
+and 
+finite-dimensional modules over $\C[G]$. The correspondence
+is given as follows. If $\rho\colon G\to\GL(V)$ is a representation, 
+then $V$ is a $\C[G]$-module with
+\[
+\left(\sum_{g\in G}\lambda_gg\right)\cdot v=\sum_{g\in G}\lambda_g\rho_g(v).
+\]
+Conversely, if $V$ is a $\C[G]$-module, then
+$\rho\colon G\to\GL(V)$, $\rho_g\colon V\to V$, $v\mapsto g\cdot v$, 
+is a representation. 
+
+\begin{exercise}
+    Let $G$ be a finite group and 
+    $\rho\colon G\to\GL(V)$ be a representation. Prove that 
+    each $\rho_g$ is diagonalizable. 
+\end{exercise}
+
+The previous exercise uses properties of the minimal polynomial. We will 
+see a different proof later. 
+
+\begin{example}
+\end{example}
+
+\begin{definition}
+
+\end{definition}
+
+\begin{definition}
+
+\end{definition}
+
+Let $\rho\colon G\to\GL(V)$ be a representation. 
+If $W$ is a $G$-invariant subspace of $V$, 
+then the restriction $\rho|_W\colon G\to\GL(W)$
+is a representation. 
+
+\begin{definition}
+\index{Representation!irreducible}
+\index{Module!simple}
+    A representation $\rho\colon G\to\GL(V)$ is 
+    said to be \textbf{irreducible} if 
+    $\{0\}$ and $V$ are the only 
+    $G$-invariant subspaces of $V$. 
+\end{definition}
+
+Note that a representation $\rho\colon G\to\GL(V)$ is irreducible
+if and only if $V$ is simple. 
+
+\begin{example}
+    Degree-one representations are irreducible. 
+\end{example}
+
+\begin{example}
+
+\end{example}
+
+\begin{proposition}
+\end{proposition}
+
+\begin{proof}
+\end{proof}
+
+\begin{example}
+
+\end{example}

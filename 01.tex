@@ -2,20 +2,66 @@
 
 \topic{Artin--Wedderburn's theorem}
 
-We first review the statement of a fundamental result in the 
-representation theory of finite-dimensional algebras. 
-
-An elementary proof can be found in the
+We first review the basic definitions concerning
+finite-dimensional semisimple algebras. 
+Proofs can be found in the
 notes to the course \emph{Associative Algebras}, see
 lectures 1, 2 and 3. 
 
 Our base field will be the field $\C$ of complex numbers. 
 
-An \emph{algebra} $A$ is a...
+\index{Algebra}
+\index{Algebra!unitary}
+A (complex) \textbf{algebra} $A$ is a is a (complex) vector space  
+with an associative multiplication $A\times A\to A$ such that
+\[
+a(\lambda b+\mu c)=\lambda(ab)+\mu(ac),
+\quad
+(\lambda a+\mu b)c=\lambda(ac)+\mu (bc)
+\]
+for all $a,b,c\in A$. If $A$ contains 
+an element $1_A\in A$ such that $1_Aa=a1_A=a$ for all $a\in A$, then $A$ is 
+an unitary algebra. 
 
-An algebra $A$ is said to be \emph{semisimple} if...
+Our algebras will be finite-dimensional. 
+Clearly, $\C$ is an algebra. Other 
+examples of algebras are $\C[X]$ and $M_n(\C)$. 
 
-A module over $A$ is said to be \emph{simple}...
+\index{Module}
+\index{Submodule}
+A (left) \textbf{module} $M$ (over a unitary 
+algebra $A$) is an abelian group $M$
+together with a map $A\times M\to M$, $(a,m)\mapsto am$, such that
+$1_Am=m$ for all $m\in M$ and 
+$a(bm)=(ab)m$ and $a(m+m_1)=am+am_1$ for all $a,b\in A$ and $m,m_1\in M$. 
+A \textbf{submodule} $N$ of $M$ is a subgroup 
+$N$ such that $an\in N$ for all $a\in A$ and $n\in N$. 
+
+\begin{exercise}
+Let $A$ be a finite-dimensional algebra. If $M$ 
+is a module, then $M$ is a vector space with 
+$\lambda m=(\lambda 1_A)m$ for $\lambda\in\C$ and $m\in M$. Moreover, 
+$M$ is finitely generated if and only if $M$ is finite-dimensional. 
+\end{exercise}
+
+\index{Module!simple}
+\index{Module!semisimple}
+A module $M$ is said to be \textbf{simple} if $M\ne\{0\}$ and $\{0\}$ and $M$ 
+are the only submodules of $M$.	
+A finite-dimensional module $M$  
+is said to be \textbf{semisimple} if $M$ is a direct sum of 
+finitely many simple submodules. 
+Clearly, any finite direct sum of semisimples is semisimple. 
+
+\begin{exercise}
+    Let $M$ be a finite-dimensional module. Prove that $M$ is semisimple 
+    if and only if for every submodule $S$ of $M$ there 
+    is a submodule $T$ of $M$ such that $M=S\oplus T$.    
+\end{exercise}
+
+\index{Algebra!semisimple}
+A finite-dimensional algebra $A$ is said to be \textbf{semisimple} if
+if every finitely-generated $A$-module is semisimple. 
 
 \begin{theorem}[Artin--Wedderburn]
 Let $A$ be a complex finite-dimensional semisimple algebra, say with  
@@ -27,7 +73,25 @@ for some $n_1,\dots,n_k\in\Z_{>0}$.
 \end{theorem}
 
 We also basic some basic facts on the Jacobson radical
-of finite-dimensional algebras. 
+of finite-dimensional algebras. If $A$ is a finite-dimensional algebra, the \textbf{Jacobson radical} is defined as 
+\[
+J(A)=\bigcap\{M:M\text{ is a maximal left ideal of $A$}\}. 
+\]
+It turns out that $J(A)$ is an ideal of $A$. 
+
+An ideal $I$ of $A$ is said to be \textbf{nilpotent}
+if $I^m=\{0\}$ for some $m$, that is 
+$x_1\cdots x_m=0$ for all $x_1,\dots,x_m\in I$. 
+One proves that the Jacboson radical of $A$ 
+contains every nilpotent ideal of $A$. An important
+fact is that 
+\begin{align*}
+A\text{ is semisimple }
+&\Longleftrightarrow 
+J(A)=\{0\}\\
+&\Longleftrightarrow 
+A\text{ has no non-zero nilpotent ideals}.
+\end{align*}
 
 \topic{Kolchin's theorem}
 
@@ -66,8 +130,8 @@ Nilpotent algebras are trivially nil, whereas nil algebras may not be nilpotent,
 
 Note that a nil algebra cannot have one. 
 
-
 \begin{proposition}
+\label{pro:unit}
     Let $A$ be an algebra. There exists an algebra $B$ 
     with one $1_B$ and an ideal $I$ of $B$ 
     such that $B/I\simeq K$ and $I\simeq A$. 
@@ -83,6 +147,16 @@ Note that a nil algebra cannot have one.
     and $B/I\simeq\C$. 
 \end{proof}
 
+The ideals of $\prod_{i=1}^k M_{n_i}(\C)$ 
+are of the form $I_1\times\cdots\times I_k$, where
+each $I_j$ is a either zero or $M_{n_j}(\C)$. 
+
+\begin{exercise}
+\label{xca:unit}
+    Prove that the non-zero ideals of 
+    $\prod_{i=1}^k M_{n_i}(\C)$ are unitary algebras.  
+\end{exercise}
+
 \begin{proposition}
     Let $A$ be non-zero algebra (possibly without one). If $A$ 
     does not have non-zero nilpotent ideals, 
@@ -90,7 +164,20 @@ Note that a nil algebra cannot have one.
 \end{proposition}
 
 \begin{proof}
-
+    Let $B$ be a unitary algebra such that there exists
+    an ideal $I$ of $B$ with $B/I\simeq\C$ and $I\simeq A$ 
+    (see Proposition \ref{pro:unit}). Let $J$ be 
+    a nilpotent ideal of $B$. Since $J\cap I\subseteq I$ is a nilpotent
+    ideal of $A$, 
+    $J\cap I=\{0\}$. Thus 
+    \[
+    J\simeq J/(J\cap I)\simeq (I+J)/I
+    \]
+    is a nilpotent ideal of $B/I\simeq\C$. Thus $J=\{0\}$ 
+    and hence $B$ is semisimple. By Artin--Wedderburn, 
+    $B\simeq\prod_{i=1}^k M_{n_i}(\C)$. Since $A$ 
+    is an ideal of $A$, Exercise \ref{xca:unit} shows
+    that $A$ is a unitary algebra. 
 \end{proof}
 
 Now we prove another nice result of Wedderburn:
@@ -135,12 +222,34 @@ state and proof Wedderburn's theorem in the case of complex numbers
 to simplify a little bit the presentation. 
 
 \begin{proof}[Proof of Theorem \ref{thm:Wedderburn}]
+    We proceed by induction on $\dim A$. If $\dim A=1$ and 
+    there exists a nilpotent element $a\in A$ such that 
+    $\{a\}$ is a basis of $A$, then $A$ is nilpotent, 
+    as every element of $A$ is nilpotent, as it is 
+    of the form 
+    $\lambda a$ for some $\lambda\in\C$. 
     
+    Assume now that $\dim A>1$. Since $J(A)$ is nilpotent, $J(A)^n=\{0\}$ 
+    for some $n$. If $J(A)=A$, then the result trivially holds. If $J(A)\ne\{0\}$, 
+    $\dim A/J(A)<\dim A$ and hence 
+    $A/J(A)$ is nilpotent by 
+    the inductive hypothesis, 
+    say $(A/J(A))^m=\{0\}$. Let $\pi\colon A\to A/J(A)$ be the canonical map and 
+    $N=nm$. We claim that $A^N=\{0\}$. Let $a_1,\dots,a_N\in A$. Then
+    \[
+    \pi(a_1\cdots a_N)=\pi(a_1)\cdots\pi(a_N)=0,
+    \]
+    as $(A/J(A))^N=\{0\}$ since $N\geq m$. This means that 
+    $a_1\cdots a_N\in J(A)$. Since $N\geq n$, 
+    it follows that $a_1\cdots a_N=0$. Thus $J(A)=\{0\}$ 
+    and hence $A$ is semisimple. By Artin--Wedderburn, 
+    $A\simeq\prod_{i=1}^k M_{n_i}(\C)$, a contradiction to 
+    the previous lemma. 
 \end{proof}
 
 \begin{definition}
 \index{Flag!complete}
-    Let $V=\C^{n-1}$. A \textbf{complete flag} in $V$ 
+    Let $V=\C^{n}$ (column vectors). A \textbf{complete flag} in $V$ 
     is a sequence $(V_1,V_2,\dots,V_n)$ of vector spaces
     such that 
     \[
@@ -172,36 +281,36 @@ $\{v_1,\dots,v_n\}$ is a basis of $V$,
 satisfies $g\cdot e_i=v_i$ for all $i\in\{1,\dots,n\}$. 
 
 \label{Borel subgroup}
-Let $B$ be the stabilizer    
+Let $B_n(\C)$ be the stabilizer    
 \begin{align*}
 G_{(E_1,\dots,E_n)}
 &=\{g\in\GL_n(\C):T_g(e_i)=e_i\text{ for all $i$}\}
 =\{(b_{ij}):b_{ij}=0\text{ if $i>j$}\}
 \end{align*}
-of the standard flag. Then $B$ is 
+of the standard flag. Then $B_n(\C)$ is 
 known as the \textbf{Borel subgroup}. 
 
-Let $U$ be the subgroup of $\GL_n(\C)$ 
+Let $U_n(\C)$ be the subgroup of $\GL_n(\C)$ 
 of matrices $(u_{ij})$ such that 
 \[
 u_{ij}=\begin{cases}
 1&\text{if $i=j$},\\
 0&\text{if $i>j$}.\end{cases}
 \]
-Let $T$ be the subgroup of $\GL_n(\C)$ diagonal matrices. 
+Let $T_n(\C)$ be the subgroup of $\GL_n(\C)$ diagonal matrices. 
 
 \begin{proposition}
-    $B=U\rtimes T$. 
+    $B_n(\C)=U_n(\C)\rtimes T_n(\C)$. 
 \end{proposition}
 
 \begin{proof}
-    It is trivial that $U\cap T=\{I\}$, where $I$ is the 
-    $n\times n$ identity matrix. Clearly, $U$ is a subgroup of $B$.
+    It is trivial that $U_n(\C)\cap T_n(\C)=\{I\}$, where $I$ is the 
+    $n\times n$ identity matrix. Clearly, $U_n(\C)$ is a subgroup of $B_n(\C)$.
     To prove that 
-    $U$ is normal in $B$ note that $B$ is the kernel
+    $U_n(\C)$ is normal in $B_n(\C)$ note that $U_n(\C)$ is the kernel
     of the group homomorphism
     \[
-    f\colon B\to T,\quad
+    f\colon B_n(\C)\to T_n(\C),\quad
     (b_{ij})\mapsto\begin{pmatrix}
         b_{11}\\
         &b_{22}\\
@@ -209,11 +318,11 @@ Let $T$ be the subgroup of $\GL_n(\C)$ diagonal matrices.
         &&&b_{nn}
     \end{pmatrix}.
     \]
-    It remains to show that $B\subseteq UT$. Let $b\in B$. Then
-    $bf(b)^{-1}\in \ker f=U$ and therefore  
-    \[
-    b=(bf(b)^{-1})f(b)\in UT.\qedhere
-    \]
+    It remains to show that $B_n(\C)=U_n(\C)T_n(\C)$.
+    Let us prove that  $B_n(\C)\subseteq U_n(\C)T_n(\C)$, as the other inclusion is trivial. 
+    Let $b\in B_n(\C)$. Then
+    $bf(b)^{-1}\in \ker f=U_n(\C)$ and therefore  
+    $b=(bf(b)^{-1})f(b)\in U_n(\C)T_n(\C)$. 
 \end{proof}
 
 \begin{definition}
@@ -235,23 +344,113 @@ as its characteristic polynomial is $(X-1)^2$.
 Now an application of Wedderburn's theorem:
 
 \begin{proposition}
+\label{pro:unipotent}
     Let $G$ be an unipotent subgroup of $\GL_n(\C)$. 
     Then there exists a non-zero 
-    $v\in C^{n\times1}$ such that $gv=v$ for all $g\in G$. 
+    $v\in C^{n}$ such that $gv=v$ for all $g\in G$. 
 \end{proposition}
 
 \begin{proof}
-    
+    Let $V$ be the subspace of $\C^{n\times n}$ 
+    generated by $\{g-I:g\in G\}$. If $g\in G$, then 
+    $(g-I)^n=0$, as $g$ is unipotent. Thus
+    every element of $V$ is nilpotent. If $g,h\in G$, 
+    then 
+    \[
+    (g-I)(h-I)=(gh-I)-(g-I)-(h-I)\in V.
+    \]
+    This means that $V$ is closed under multiplication and
+    hence $V$ is an algebra generated (as a vector space)
+    by nilpotent elements. By Wedderburn's theorem, 
+    $V$ is nilpotent. Let $m$ be minimal 
+    such that 
+    \[
+    (g_1-I)\cdots (g_m-I)=0
+    \]
+    for all $g_1,\dots,g_m\in G$. The minimality of $m$ implies that  
+    there exist $h_1,\dots,h_{m-1}\in G$ such that 
+    \[
+    (h_1-I)\cdots (h_{m-1}-I)\ne 0.
+    \]
+    In particular, there exists a non-zero 
+    $w\in C^{n}$ such that 
+    $v=(h_1-I)\cdots (h_{m-1}-I)w\ne 0$. For every 
+    $g\in G$, 
+    \[
+    (g-I)v=(g-I)(h_1-I)\cdots (h_{m-1}-I)w=0
+    \]
+    and hence $gv=v$. 
 \end{proof}
 
 \begin{theorem}[Kolchin]
 \label{thm:Kolchin}
 \index{Kolchin's theorem}
 Every unipotent subgroup of $\GL_n(\C)$ is conjugate
-of some subgroup of $U$. 
+of some subgroup of $U_n(\C)$. 
 \end{theorem}
 
 \begin{proof}
     
 \end{proof}
 
+The ideas behind the theorem are somewhat connected to Sylow theory. 
+
+Let study explicitly  
+Sylow theorems for the group $\GL_n(p)$ of invertible matrices 
+with coefficients in the field $\F_p$ with $p$ elements. 
+
+Proposition \ref{pro:unipotent} has the following
+version:
+
+\begin{proposition}
+Let $P$ be a finite $p$-group acting on an $\F_p$-vector space 
+$V$ by automorphisms. Then there exists a non-zero $v\in V$ 
+such that $P\cdot v=v$. 
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+The analog of Kolchin's theorem is the following result:
+
+\begin{proposition}
+\label{pro:Kolchin}
+    Every $p$-subgroup of $\GL_n(p)$ is conjugate to a subgroup
+    of the unipotent subgroup $U_n(p)$. 
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+Proposition \ref{pro:Kolchin} is deeply 
+connected to Sylow's theorems.  
+
+\begin{proposition}
+    The normalizer of $U_n(p)$ in $\GL_n(p)$ is the
+    Borel subgroup $B_n(p)$ of upper triangular matrices. 
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+Now we have the following explicit Sylow theory for
+$\GL_n(p)$. The first two Sylow theorems 
+appear in the following result. 
+
+\begin{theorem}
+    The group $U_n(p)$ is a Sylow $p$-subgroup of $\GL_n(p)$. 
+\end{theorem}
+
+\begin{proof}
+    
+\end{proof}
+
+The third Sylow's theorem...
+
+\begin{theorem}
+    Let $n_p$ be the number of conjugates of $U_n(p)$ in $\GL_n(p)$. 
+    Then $n_p\equiv1\bmod p$. 
+\end{theorem}
