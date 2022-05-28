@@ -1,0 +1,257 @@
+\chapter{}
+
+\topic{Artin--Wedderburn's theorem}
+
+We first review the statement of a fundamental result in the 
+representation theory of finite-dimensional algebras. 
+
+An elementary proof can be found in the
+notes to the course \emph{Associative Algebras}, see
+lectures 1, 2 and 3. 
+
+Our base field will be the field $\C$ of complex numbers. 
+
+An \emph{algebra} $A$ is a...
+
+An algebra $A$ is said to be \emph{semisimple} if...
+
+A module over $A$ is said to be \emph{simple}...
+
+\begin{theorem}[Artin--Wedderburn]
+Let $A$ be a complex finite-dimensional semisimple algebra, say with  
+$k$ isomorphism classes of simple modules. Then 
+\[
+A\simeq M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)
+\]
+for some $n_1,\dots,n_k\in\Z_{>0}$.
+\end{theorem}
+
+We also basic some basic facts on the Jacobson radical
+of finite-dimensional algebras. 
+
+\topic{Kolchin's theorem}
+
+In this section it will be useful to consider 
+non-unitary algebras. 
+
+\begin{definition}
+\index{Nil!element}
+\index{Nilpotent!element}
+\index{Nil!algebra}
+    Let $A$ be an algebra (possibly without one). An element $a\in A$
+    is said to be \textbf{nilpotent} if 
+    $a^n=0$ for some $n\geq1$. The algebra $A$ is said to be
+    \textbf{nil} if every element $a\in A$ is nil. 
+\end{definition}
+
+Nilpotent elements are also called nil elements.  
+
+\begin{example}
+    Let $A=M_2(\R)$. Then $a=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ is nil. 
+\end{example}
+
+\begin{definition}
+    \index{Nilpotent!algebra}
+    An algebra $A$ is said to be \textbf{nilpotent} if there exists
+    $n\geq1$ such that every product 
+    $a_1a_2\cdots a_n$
+    of $n$ elements of $A$ is zero. 
+\end{definition}
+
+Nilpotent algebras are trivially nil, whereas nil algebras may not be nilpotent, as each element being nilpotent does not force products of distinct elements to vanish.
+
+\begin{exercise}
+    Give an example of a nil algebra that is not nilpotent. 
+\end{exercise}
+
+Note that a nil algebra cannot have one. 
+
+
+\begin{proposition}
+    Let $A$ be an algebra. There exists an algebra $B$ 
+    with one $1_B$ and an ideal $I$ of $B$ 
+    such that $B/I\simeq K$ and $I\simeq A$. 
+\end{proposition}
+
+\begin{proof}[Sketch of the proof]
+    Let $B=\C\times A$. The multiplication  
+    \[
+    (\lambda,u)(\mu,v)=(\lambda\mu,\lambda v+\mu u+uv)
+    \]
+    turns $B$ into an algebra with identity $(1,0)$. The subset
+    $I=\{(0,a):a\in A\}$ is an ideal of $B$. Then $I\simeq A$ 
+    and $B/I\simeq\C$. 
+\end{proof}
+
+\begin{proposition}
+    Let $A$ be non-zero algebra (possibly without one). If $A$ 
+    does not have non-zero nilpotent ideals, 
+    then $A$ is a unitary algebra. 
+\end{proposition}
+
+\begin{proof}
+
+\end{proof}
+
+Now we prove another nice result of Wedderburn:
+
+\begin{theorem}[Wedderburn]
+\label{thm:Wedderburn}
+\index{Wedderburn's theorem}
+    Let $A$ be a complex finite-dimensional 
+    algebra. If $A$ is generated (as a vector space) 
+    by nilpotent elements, then $A$ is nilpotent. 
+\end{theorem}
+
+We shall need a lemma.
+
+\begin{lemma}
+    The vector space $M_n(\C)$ does not have a basis of nilpotent matrices. 
+\end{lemma}
+
+\begin{proof}
+    If $\{A_1,\dots,A_{n^2}\}$ is a basis of 
+    $M_n(\C)$ consisting of nilpotent matrices, 
+    then there exist $\lambda_1,\dots,\lambda_{n^2}\in\C$ such that 
+    \begin{equation}
+        \label{eq:nilpotent}
+        E_{11}=\begin{pmatrix}
+        1&0&\cdots&0\\
+        0&0&\cdots&0\\
+        \vdots&\vdots&\ddots&\vdots\\
+        0&0&\cdots&0
+        \end{pmatrix}
+        =\sum_{i=1}^{n^2}\lambda_iA_i.
+    \end{equation}
+    Note $\trace(A_i)=0$ for all $i\in\{1,\dots,n\}$, as 
+    every $A_i$ is nilpotent. 
+    Apply trace to \eqref{eq:nilpotent} to 
+    obtain that $1=\trace(E_{11})=\sum\lambda_i\trace(A_i)=0$, a contradiction. 
+\end{proof}
+
+Now we prove Wedderburn's theorem. We note that
+the theorem can be extended to any algebraically closed field. We 
+state and proof Wedderburn's theorem in the case of complex numbers
+to simplify a little bit the presentation. 
+
+\begin{proof}[Proof of Theorem \ref{thm:Wedderburn}]
+    
+\end{proof}
+
+\begin{definition}
+\index{Flag!complete}
+    Let $V=\C^{n-1}$. A \textbf{complete flag} in $V$ 
+    is a sequence $(V_1,V_2,\dots,V_n)$ of vector spaces
+    such that 
+    \[
+    \{0\}\subsetneq V_1\subsetneq V_2\subsetneq\cdots\subsetneq V_n=V.
+    \]
+\end{definition}
+
+\index{Flag!standard}
+If $(V_1,\dots,V_n)$ is a complete flag, then $\dim V_i=i$ for all 
+$i\in\{1,\dots,n\}$. 
+Let $\{e_1,\dots,e_n\}$ be the standard basis of $\C^n$. 
+The \textbf{standard flag} is the sequence $(E_1,\dots,E_n)$, where
+$E_i=\langle e_1,\dots,e_i\rangle$ for all $i\in\{1,\dots,n\}$.  
+
+Note that $\GL_n(\C)$ acts on the set of complete flags of $V$ 
+by 
+\[
+g\cdot (V_1,\dots,V_n)=(T_g(V_1),\dots,T_g(V_n)),
+\]
+where $T_g\colon V\to V$, $x\mapsto gx$. 
+
+The action is \emph{transitive}, 
+which means that if $(V_1,\dots,V_n)$ 
+is a complete flag, then there exists 
+$g\in\GL_n(\C)$ such that $g\cdot (E_1,\dots,E_n)=(V_1,\dots,V_n)$. 
+In fact, 
+the matrix $g=(v_1|v_2|\cdots|v_n)$, where
+$\{v_1,\dots,v_n\}$ is a basis of $V$, 
+satisfies $g\cdot e_i=v_i$ for all $i\in\{1,\dots,n\}$. 
+
+\label{Borel subgroup}
+Let $B$ be the stabilizer    
+\begin{align*}
+G_{(E_1,\dots,E_n)}
+&=\{g\in\GL_n(\C):T_g(e_i)=e_i\text{ for all $i$}\}
+=\{(b_{ij}):b_{ij}=0\text{ if $i>j$}\}
+\end{align*}
+of the standard flag. Then $B$ is 
+known as the \textbf{Borel subgroup}. 
+
+Let $U$ be the subgroup of $\GL_n(\C)$ 
+of matrices $(u_{ij})$ such that 
+\[
+u_{ij}=\begin{cases}
+1&\text{if $i=j$},\\
+0&\text{if $i>j$}.\end{cases}
+\]
+Let $T$ be the subgroup of $\GL_n(\C)$ diagonal matrices. 
+
+\begin{proposition}
+    $B=U\rtimes T$. 
+\end{proposition}
+
+\begin{proof}
+    It is trivial that $U\cap T=\{I\}$, where $I$ is the 
+    $n\times n$ identity matrix. Clearly, $U$ is a subgroup of $B$.
+    To prove that 
+    $U$ is normal in $B$ note that $B$ is the kernel
+    of the group homomorphism
+    \[
+    f\colon B\to T,\quad
+    (b_{ij})\mapsto\begin{pmatrix}
+        b_{11}\\
+        &b_{22}\\
+        &&\ddots\\
+        &&&b_{nn}
+    \end{pmatrix}.
+    \]
+    It remains to show that $B\subseteq UT$. Let $b\in B$. Then
+    $bf(b)^{-1}\in \ker f=U$ and therefore  
+    \[
+    b=(bf(b)^{-1})f(b)\in UT.\qedhere
+    \]
+\end{proof}
+
+\begin{definition}
+\index{Unipotent elements}
+    A matrix $a\in\GL_n(\C)$ is said to be \textbf{unipotent} 
+    if its characteristic polynomial is of the form 
+    $(X-1)^n$. 
+\end{definition}
+
+The matrix $\begin{pmatrix}1&1\\0&1\end{pmatrix}$ is unipotent, 
+as its characteristic polynomial is $(X-1)^2$. 
+
+\begin{definition}
+\index{Unipotent group}
+    A subgroup $G$ of $\GL_n(\C)$ is said to be \textbf{unipotent} if
+    each $g\in G$ is unipotent. 
+\end{definition}
+
+Now an application of Wedderburn's theorem:
+
+\begin{proposition}
+    Let $G$ be an unipotent subgroup of $\GL_n(\C)$. 
+    Then there exists a non-zero 
+    $v\in C^{n\times1}$ such that $gv=v$ for all $g\in G$. 
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{theorem}[Kolchin]
+\label{thm:Kolchin}
+\index{Kolchin's theorem}
+Every unipotent subgroup of $\GL_n(\C)$ is conjugate
+of some subgroup of $U$. 
+\end{theorem}
+
+\begin{proof}
+    
+\end{proof}
+
