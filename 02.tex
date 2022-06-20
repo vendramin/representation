@@ -86,7 +86,29 @@ Hence $S$ admits a complement in $M$, that is $M=S\oplus\ker(p)$.
 \end{proof}
 
 \begin{exercise}
+Let $G=\langle g\rangle$ be the cyclic group 
+of order four and $\rho_g=\begin{pmatrix}
+0&-1\\
+1&0\end{pmatrix}$. 
+Let $M=\R^{2\times 1}$ as an $\C[G]$-module with 
+\[
+g\cdot\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}-v\\u\end{pmatrix}.
+\]
+Prove that $M$ is a semisimple $\C[G]$-module that is not simple.  
+\end{exercise}
 
+\begin{exercise}
+Let $G=\langle g\rangle$ be the cyclic group 
+of order four and $\rho_g=\begin{pmatrix}
+0&-1\\
+1&0\end{pmatrix}$. 
+Let $M=\R^{2\times 1}$ as an $\R[G]$-module with 
+\[
+g\cdot\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}-v\\u\end{pmatrix}.
+\]
+Prove that $M$ is a simple $\R[G]$-module. 
 \end{exercise}
 
 There is a multiplicative version of Maschke's theorem. A group $G$ acts 
@@ -105,7 +127,48 @@ $G$-invariant if $\lambda(B)\subseteq B$.
 \end{theorem}
 
 \begin{proof}
+Let $\theta\colon U\times W\to U$, $(u,w)\mapsto u$. Then $\theta$ is a group homomorphism such that 
+$\theta(u)=u$ for all $u\in U$. Since $U$ is $K$-invariant, 
+\[
+k^{-1}\cdot \theta(k\cdot v)\in U
+\]
+for all $k\in K$ and $v\in V$. 
+Since $K$ is finite and $U$ is abelian, 
+the map 
+\[
+\varphi\colon V\to U,\quad 
+v\mapsto \prod_{k\in K}k^{-1}\cdot \theta(k\cdot v), 
+\]
+is well-defined. 
+We claim that $\varphi$ is a group homomorphism. If $x,y\in V$, then 
+\begin{align*}
+    \varphi(xy) &= \prod_{k\in K}k^{-1}\cdot \theta(k\cdot (xy))\\
+    &= \prod_{k\in K}k^{-1}\cdot (\theta(k\cdot x)\theta(k\cdot y))\\
+    &= \prod_{k\in K}k^{-1}\cdot \theta(k\cdot x) \prod_{k\in K}k^{-1}\cdot \theta(k\cdot y)=\varphi(x)\varphi(y),
+\end{align*}
+since $U$ is abelian and $K$ acts by automorphisms on $V$. 
 
+We claim that $N=\ker\varphi$ is $K$-invariant. 
+We need to show that $\varphi(l\cdot x)=l\cdot\varphi(x)$ for all $l\in K$ and $x\in V$. 
+If $l\in K$ and $x\in V$, then 
+\begin{align*}
+l^{-1}\cdot\varphi(l\cdot x)&=l^{-1}\cdot\left(\prod_{k\in K}k^{-1}\cdot \theta(k\cdot (l\cdot x))\right)=\prod_{k\in K}(kl)^{-1}\cdot\theta( (kl)\cdot x)=\varphi(x),
+\end{align*}
+since $kl$ runs over all the elements of $K$ whenever $k$ runs over all the elements of $K$.
+In conclusion, $\ker\varphi$ is $K$-invariant. 
+
+It remains to show that $V$ is the direct product of $U$ and $N$. By assumption, $U$ is normal in $V$. 
+We first prove that $U\cap N=\{1\}$. If $u\in U$, then $k\cdot u\in U$ for all $k\in K$. This implies that 
+$k^{-1}\cdot\theta(k\cdot u)=k^{-1}\cdot (k\cdot u)=u$. Hence $\varphi(u)=u^m$. Since this map is bijective by assumption,  
+\[
+U\cap N=U\cap\ker\varphi=\{1\}.
+\]
+We now show that $V\subseteq UN$, as the other inclusion is trivial. Since $N=\ker\varphi$,  
+\[
+\varphi(V)\subseteq U=\varphi(U)=\varphi(U)\varphi(N)=\varphi(UN) 
+\]
+and hence $V\subseteq (UN)N=UN$. 
+Therefore $V$ is the direct product of $U$ and $N$, as $N$ is normal in $V$.
 \end{proof}
 
 \begin{corollary}
@@ -118,7 +181,10 @@ $G$-invariant if $\lambda(B)\subseteq B$.
 \end{corollary}
 
 \begin{proof}
-
+    Let $m=|K|$. Since $m$ and $|U|$ are coprime, the map 
+    $u\mapsto u^m$ is bijective in $U$. Since $V$ is a vector space over the field 
+    $\Z/p$, it follows that $V=U\times W$ for some subgroup $W$ of $V$. Now the claim follows
+    from the previous theorem. 
 \end{proof}
 
 If $G$ is a finite group, 
@@ -137,13 +203,32 @@ This corresponds, of course, to the \textbf{trivial module}.
 \end{theorem}
 
 \begin{proof}
-
+    By Artin--Wedderburn's theorem $\C[G]\simeq\prod_{i=1}^rM_{n_i}(\C)$. Thus 
+    \[
+		Z(\C[G])\simeq\prod_{i=1}^rZ(M_{n_i}(\C))\simeq\C^r.
+	\]
+	In particular, $\dim Z(\C[G])=r$. If $\alpha=\sum_{g\in
+	G}\lambda_gg\in Z(\C[G])$, then $h^{-1}\alpha h=\alpha$ for all $h\in
+	G$. Thus 
+	\[
+		\sum_{g\in G}\lambda_{hgh^{-1}}g=
+		\sum_{g\in g}\lambda_g h^{-1}gh=\sum_{g\in G}\lambda_gg
+	\]
+	and hence $\lambda_{g}=\lambda_{hgh^{-1}}$ for all $g,h\in G$. A basis for 
+	$Z(\C[G])$ is given by elements of the form 
+	\[
+		\sum_{g\in K}g,
+	\]
+	where $K$ is a conjugacy class of $G$. Therefore $\dim Z(\C[G])$ is equal to 
+	the number of conjugacy classes of $G$.
 \end{proof}
 
 \begin{exercise}
     Let $G$ be a finite group of order $n$ with $k$ conjugacy classes.
     Let $m=(G:[G,G])$. Prove that $m+3m\geq4k$. 
 \end{exercise}
+
+For $n\in\Z_{\geq2}$ we write $C_n$ to denote the (multiplicative) cyclic group of order $n$. 
 
 \begin{exercise}
     Prove that $\C[C^4]\simeq\C^4$. 
