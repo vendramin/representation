@@ -34,7 +34,9 @@ Prove that $\C[G]\simeq \C[X]/(X^n-1)$.
 \end{exercise}
 
 \index{Module!semisimple}
-A module $M$ is said to be \textbf{semisimple} if...
+Recall that a finite-dimensional module $M$ is semisimple 
+if and only if for every submodule $S$ of $M$ there 
+is a submodule $T$ of $M$ such that $M=S\oplus T$.    
 
 \begin{theorem}[Maschke]
 \index{Maschke's theorem}
@@ -44,7 +46,43 @@ A module $M$ is said to be \textbf{semisimple} if...
 \end{theorem}
 
 \begin{proof}
-    
+We need to show that every submodule $S$ of $M$ admits a complement. 
+Since $S$ is a subspace of $M$, there exists a subspace $T_0$ of $M$ 
+such that $M=S\oplus T_0$ (as vector spaces). We use 
+$T_0$ to construct a submodule $T$ of $M$ that complements $S$. Since $M=S\oplus T_0$, 
+every $m\in M$ can be written uniquely as $m=s+t_0$ for some $s\in S$ and $t_0\in T$. 
+Let 
+\[
+p_0\colon M\to S,\quad
+p_0(m)=s,
+\]
+where $m=s+t_0$ with $s\in S$ and $t_0\in T$. 
+If $s\in S$, then $p_0(s)=s$. In particular, $p_0^2=p_0$, as 
+$p_0(m)\in S$. 
+
+Note that, in general, $p_0$ is not a $K[G]$-modules homomorphism. 
+Let 
+\[
+p\colon M\to S,\quad
+p(m)=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot p_0(g\cdot m).
+\]
+
+We claim that $p$ is a homomorphism of $K[G]$-modules. For that purpose, we need to show that 
+$p(g\cdot m)=g\cdot p(m)$ for all $g\in G$ and $m\in M$. In fact, 
+\[
+p(g\cdot m)=\frac{1}{|G|}\sum_{h\in G}h^{-1}\cdot p_0(h\cdot (g\cdot m))
+=\frac{1}{|G|}\sum_{h\in G}(gh^{-1})\cdot p_0(h\cdot m)=g\cdot p(m).
+\]
+
+We now claim that $p(M)=S$. The inclusion $\subseteq$ is trivial to prove, as $S$ is a submodule of $M$ 
+and $p_0(M)\subseteq S$. Conversely, if $s\in S$, then $g\cdot s\in S$, as 
+$S$ is a submodule. Thus 
+$s=g^{-1}\cdot (g\cdot s)=g^{-1}\cdot p_0(g\cdot s)$ and hence 
+\[
+s=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot (g\cdot s)=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot (p_0(g\cdot s))=p(s).
+\]
+Since $p(m)\in S$ for all $m\in M$, it follows that $p^2(m)=p(m)$, so $p$ is a projector onto $S$. 
+Hence $S$ admits a complement in $M$, that is $M=S\oplus\ker(p)$.
 \end{proof}
 
 \begin{exercise}

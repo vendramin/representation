@@ -7,6 +7,7 @@ with finite groups. All our vector spaces will
 be complex vector spaces. 
 
 \begin{definition}
+\index{Representation}
     Let $G$ be a finite group. A \textbf{representation}
     of $G$ is a group homomorphism $\rho\colon G\to\GL(V)$, where
     $V$ is a finite-dimensional vector space. The \textbf{degree} (or dimension) 
@@ -27,21 +28,81 @@ where
 $n=\dim V$. 
 
 \begin{example}
+Since $\Sym_3=\langle (12),(123)\rangle$, the map $\rho\colon \Sym_3\to\GL_3(\C)$,
+\[
+(12)\mapsto\begin{pmatrix}
+0 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 1
+\end{pmatrix},\quad
+(123)\mapsto\begin{pmatrix}
+0 & 0 & 1\\
+1 & 0 & 0\\
+0 & 1 & 0
+\end{pmatrix}
+\] 
+is a representation of $\Sym_3$. 
 \end{example}
 
 \begin{example}
+Let $G=\langle g\rangle$ be cyclic of order six. 
+The map $\rho\colon G\to\GL_2(\C)$, 
+\[
+g\mapsto
+\begin{pmatrix}
+1&1\\
+-1&0
+\end{pmatrix}
+\] 
+is a representation of $G$. 
 \end{example}
 
 \begin{example}
+Let $G=\langle g\rangle$ be cyclic of order four. 
+The map $\rho\colon G\to\GL_2(\C)$, 
+\[
+g\mapsto
+\begin{pmatrix}
+0&-1\\
+1&0
+\end{pmatrix}
+\] 
+is a representation of $G$. 
 \end{example}
 
 \begin{example}
+  Let $G=\langle a,b:a^2=b^3=(ab)^3=1\rangle$. The map 
+  \[
+    a\mapsto\begin{pmatrix}
+    0 & 1 & -1\\
+    1 & 0 & -1\\
+    0 & 0 & -1
+    \end{pmatrix},
+    \quad
+    b\mapsto\begin{pmatrix}
+      0 & 0 & 1\\
+      1 & 0 & 0\\
+      0 & 1 & 0
+    \end{pmatrix},
+  \]
+  defines a representation $G\to\GL_3(\C)$. 
 \end{example}
 
 \begin{example}
+  Let $G$ be a finite group that acts on a finite set $X$. 
+  Let $V=\C X$ the complex vector space with basis $\{x:x\in
+  X\}$. The map 
+  \[
+	\rho\colon G\to\GL(V),\quad
+	\rho_g\left(\sum_{x\in X}\lambda_x x\right)
+	=\sum_{x\in X}\lambda_x\rho_g(x)
+	=\sum_{x\in X}\lambda_{g^{-1}\cdot x}x, 
+  \]
+  is a representation of degree $|X|$.
 \end{example}
 
 \begin{example}
+    The sign $\sgn\colon\Sym_n\to\GL_1(\C)=\C^{\times}$ is a representation of $\Sym_n$.
 \end{example}
 
 An important fact is that there exists a bijective
