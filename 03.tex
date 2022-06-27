@@ -165,6 +165,12 @@ and $W$ are isomorphic as $\C[G]$-modules.
     $\phi_m T=T\psi_m$ for all $m$.
 \end{example}
 
+\begin{exercise}
+    Let $\rho\colon G\to\GL(V)$ be a representation. Fix a basis 
+    of $V$ and consider the corresponding matrix representation $\phi$ 
+    of $\rho$. Prove that $\rho$ and $\phi$ are equivalent. 
+\end{exercise}
+
 \begin{definition}
     Let $\phi\colon G\to\GL(V)$ be a representation. A subspace 
     $W\subseteq V$ is said to be \textbf{$G$-invariant} if
@@ -192,6 +198,14 @@ if and only if $V$ is simple.
 \begin{example}
     Degree-one representations are irreducible. 
 \end{example}
+
+\begin{exercise}
+\label{xca:degree-one}
+    Let $G$ be a finite group. 
+    Prove that there exists a bijective correspondence between 
+    degree-one representations of $G$ and 
+    degree-one representations of $G/[G,G]$. 
+\end{exercise}
 
 In the following example we work over the real numbers. 
 
@@ -275,3 +289,111 @@ What happens in the previous example if we consider complex numbers?
   Exercise \ref{xca:deg2} shows that $\phi$ is  
   irreducible.
 \end{example}
+
+We now describe three important examples of representations. 
+
+\begin{example}[The trivial representation] 
+\index{Trivial representation}
+\index{Trivial module}
+    The map $\rho\colon G\to\C^{\times}$, $g\mapsto 1$, 
+    is a representation, that is $\C$ is a $\C[G]$-module with
+    $g\cdot \lambda=\lambda$ for all $g\in G$ 
+    and $\lambda\in\C^{\times}$.
+\end{example}
+
+\begin{example}
+    Let $\rho\colon G\to\GL(V)$ and 
+    $\psi\colon G\to\GL(W)$ be representations. The \textbf{direct sum} 
+    $\rho\oplus\psi\colon G\to\GL(V\oplus W)$, $g\mapsto (\rho_g,\psi_g)$, 
+    is a representation. This is equivalent to say that
+    the vector space $V\oplus W$ is a $\C[G]$-module with
+    \[
+    g\cdot (v,w)=(g\cdot v,g\cdot w),\quad
+    g\in G,\;v\in v,\;w\in W.
+    \]
+\end{example}
+
+\begin{example}
+    Let $V$ and $W$ be $\C[G]$-modules. The \textbf{tensor product}
+    $V\otimes W$
+    is a $\C[G]$-module 
+    with
+    \[
+    g\cdot v\otimes w=g\cdot v\otimes g\cdot w,
+    \quad
+    g\in G,\;v\in V,\;w\in W.
+    \]
+\end{example}
+
+How can you describe the tensor product of matrix representations?
+
+\begin{exercise}
+    Let $G$ be a finite group and
+    $V$ and $W$ be $\C[G]$-modules. Prove that
+    $\Hom_{\C}(V,W)$ is a $\C[G]$-module
+    with
+    \[
+    (g\cdot f)(v)=gf(g^{-1}v),\quad
+    f\in\Hom_{\C}(V,W),\;v\in V,\;g\in G.
+    \]
+    If, moreover, $V$ and $W$ are finite-dimensional, then
+    \[
+    V^{*}\otimes W\simeq\Hom_{\C}(V,W)
+    \]
+    as $\C[G]$-modules.
+\end{exercise}
+
+The previous exercise shows, in particular, 
+that the dual $V^*$ of a $\C[G]$-module $V$ 
+is a $\C[G]$-module with
+\[
+(g\cdot f)(v)=f(g^{-1}v),\quad
+f\in V^*,\;v\in V,\;g\in G.
+\]
+
+\begin{definition}
+    \index{Representation!completely reducible}
+    A representation $\rho\colon G\to\GL(V)$ is said to be 
+    \textbf{completely reducible}
+    if $\rho$ can be decomposed as
+    $\rho=\rho_1\oplus\cdots\oplus \rho_n$ for some irreducible
+    representations $\rho_1,\dots,\rho_n$ of $G$. 
+\end{definition}
+
+Note that if $\rho\colon G\to\GL(V)$ is completely reducible and 
+$\rho=\rho_1\oplus\cdots\oplus \rho_n$ for some irreducible representations 
+$\rho_i\colon G\to\GL(V_i)$, $i\in\{1,\dots,n\}$, then 
+each $V_i$ is an invariant subspace of $V$ and $V=V_1\oplus \cdots V_n$. 
+Moreover, in some basis of $V$ the matrix  
+$\rho_g$ can be written as 
+\[
+\rho_g=\begin{pmatrix}
+(\rho_1)_g &  \\
+& (\rho_2)_g  \\
+&&\ddots\\
+&&&(\rho_n)_g	
+\end{pmatrix}.
+\]
+
+\begin{definition}
+\index{Representation!decomposable}
+\index{Representation!indecomposable}
+A representation
+$\rho\colon G\to\GL(V)$ is \textbf{decomposable} if $V$ can be decomposed as $V=S\otimes T$
+where $S$ and $T$ are non-zero invariant subspaces of $V$. 
+\end{definition}
+
+A representation is 
+\textbf{indecomposable} if it is not decomposable. 
+
+\begin{exercise}
+\label{xca:equivalence}
+	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be equivalent representations.
+	Prove the following facts:
+	\begin{enumerate}
+		\item If $\rho$ is irreducible, then $\psi$ is irreducible.
+		\item If $\rho$ is decomposable, then $\psi$ is decomposable.
+		\item If $\rho$ is completely reducible, then $\psi$ is compeltely reducible. 
+	\end{enumerate}	
+\end{exercise}
+
