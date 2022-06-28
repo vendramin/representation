@@ -61,7 +61,27 @@ If two representations are equivalent, their characters are equal.
 	$f(g)=f(hgh^{-1})$ for all $g,h\in G$. 	
 \end{definition}
 
-Characters are class functions. 
+Characters are class functions. If $G$ is a finite group, 
+we write 
+\[
+\cf(G)=\{f\colon G\to\C:f\text{ is a class function}\}.
+\]
+One proves that $\cf(G)$ is a complex vector space. 
+
+\begin{exercise}
+    Let $G$ be a finite group. For a conjugacy class $K$ of $G$
+    let 
+    \[
+    \delta_K\colon G\to\C,
+    \quad
+    \delta_K(g)=\begin{cases}
+        1 & \text{if $g\in K$,}\\
+        0 & \text{otherwise}.
+        \end{cases}
+    \]
+    Prove that $\{\delta_K:K\text{ is a conjugacy class of $G$}\}$ is a basis of $\cf(G)$. 
+    In particular, $\dim\cf(G)$ is the number of conjugacy classes of $G$. 
+\end{exercise}
 
 \begin{proposition}
     If $\rho\colon G\to\GL(V)$ and
@@ -129,110 +149,248 @@ and $\lambda_1,\dots,\lambda_n\in\C$ be such that $\rho_gv_i=\lambda_iv_i$ for a
 =\overline{\lambda_j}\delta_{ij}
 \]
 and the claim follows. 
-%\begin{proposition}
-%	
-%\end{proposition}
-%
-%\begin{proof}
-%	Let $g\in G$ and $\{v_1,\dots,v_n\}$
-%	be a basis of eigenvectors of $\rho_g$. Let
-%	$\lambda_1,\dots,\lambda_n\in\C$ be such that $\rho_g(v_i)=\lambda_iv_i$ for all
-%	$i\in\{1,\dots,n\}$. Let $\{f_1,\dots,f_n\}$ be the dual basis of $\{v_1,\dots,v_n\}$.
-%	Since $\rho_g$ is invertible, each eigenvector of $\rho_g$ is non-zero. 
-%	Thus $\rho_g(v_i)=\lambda_iv_i$ implies that 
-%	$\rho_{g^{-1}}v_i=\lambda_i^{-1}v_i=\overline{\lambda_i}v_i$... 
-%%	Now 
-%%	\[
-%		(\rho_g f_i)(v_j)=f_i(g^{-1}v_j)=\overline{\lambda_j}f_i(v_j)=\overline{\lambda_j}\delta_{ij}.
-%	\]
-%	
-%	  
-%	
-%	 We claim
-%	that $\{f_1,\dots,f_n\}$ is a basis of eigenvectors...
-%	with $\overline{\lambda_1},\dots,\overline{\lambda_n}$. En efecto, si $gv_j=\lambda_jv_j$, entonces
-%	$g^{-1}v_j=\lambda_j^{-1}v_j=\overline{\lambda_j}v_j$ (observemos que como $\phi_g$ es inversible, los $\lambda_j$ son no nulos). Luego
-%	\[
-%		(gf_i)(v_j)=f_i(g^{-1}v_j)=\overline{\lambda_j}f_i(v_j)=\overline{\lambda_j}\delta_{ij}.
-%	\]
-%	En conclusión
-%	\[
-%		\chi_{V^*}(g)=\sum_{i=1}^n\overline{\lambda_i}=\overline{\chi_V(g)}.\qedhere
-%	\]	
-%\end{proof}
 
-\topic{Schur's orthogonality relations}
-
-Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations of a finite group
-$G$. Since $V$ and $W$ are vector spaces, the set 
+Let $G$ be a finite group. If $\chi,\psi\colon G\to\C$ are
+characters of $G$ and $\lambda\in\C$, we define 
 \[
-\Hom(V,W)=\{T\colon V\to W:\text{$T$ is linear}\}
+    (\chi+\psi)(g)=\chi(g)+\psi(g),
+    \quad
+    (\chi\psi)(g)=\chi(g)\psi(g),
+    \quad
+    (\lambda\chi)(g)=\lambda\chi(g).
 \]
-is a vector space with the usual point-wise operations. 
-The set $\Hom_G(V,W)$ of invariant maps
-is a subspace of $\Hom(V,W)$. 
+Note that these functions might not be characters!
 
-\begin{proposition}
-	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations
-	and $T\colon V\to W$ be a linear map. Then
-	\[
-	T^{\#}=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_g\in\Hom_G(V,W).
-	\]
-	Moreover, the map $\Hom(V,W)\to\Hom_G(V,W)$, $T\mapsto T^{\#}$, is linear and surjective.  
-\end{proposition}
-
-\begin{proof}
-  Let $h\in G$ and $v\in V$. Then 
-  \begin{align*}
-	T^{\#}\rho_h(v)
-	&=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_g\rho_h(v)
-	=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_{gh}(v)\\
-	&=\frac{1}{|G|}\sum_{x\in G}\psi_{hx^{-1}}T\rho_x(v)
-	=\frac{1}{|G|}\sum_{x\in G}\psi_h\psi_{x^{-1}}T\rho_x(v)
-	=\psi_hT^{\#}(v).
-      \end{align*}
-
-    It is a routine calculation to show that $T\mapsto T^{\#}$ is a linear map. The map
-    $T\mapsto T^{\#}$ is surjective since 
-    if $T\in\Hom_G(V,V)$, then  
-	\[
-	T^{\#}(v)=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}T\rho_g(v)
-	=\frac{1}{|G|}\sum_{g\in G}\psi_{g^{-1}}\psi_gT(v)
-	=T(v)
-      \]
-    holds for all $v\in V$, so $T^{\#}=T$.  
-\end{proof}
-
-If $\rho\colon G\to\GL(V)$ and $\psi\colon
-	G\to\GL(W)$ are non-equivalent irreducible representations and $T\colon
-	V\to W$ is a linear map, then $T^{\#}=0$, as 
-	$T^{\#}\in\Hom_{G}(V,W)=\{0\}$ by the previous proposition and Schur's lemma.
-
-\begin{theorem}[Ergodic theorem]
-\index{Ergodic theorem}
-  Let $\rho\colon G\to\GL(V)$ be an irreducible representation. 
-  If $T\colon V\to V$ is linear, then 
-  $T^{\#}=(\dim V)^{-1}\trace(T)\id$.
+\begin{theorem}
+    Let $G$ be a finite group. Then irreducible characters of $G$
+    are linearly independent. 
 \end{theorem}
 
 \begin{proof}
-  The previous proposition and Schur's lemma imply that
-  $T^{\#}=\lambda\id$ for some $\lambda\in\C$.
-  We now compute the trace of $T^{\#}$. On the one hand, 
-  \[
-	\trace(T^{\#})=\trace(\lambda\id)=(\dim V)\lambda.
-  \]
-  On the other hand.  
-  \[
-	\trace(T^{\#})
-	=\frac{1}{|G|}\sum_{g\in G}\trace(\rho_{g^{-1}}T\rho_g)
-	=\frac{1}{|G|}\sum_{g\in G}\trace(T)
-	=\trace(T),
-  \]
-  as $\trace(ABA^{-1})=\trace(B)$ for all $A$ and $B$. 
-  Hence 
-  \[
-  \trace(T^{\#})=(\dim V)^{-1}\trace(T)\id.\qedhere 
-  \]
+    Let $S_1,\dots,S_k$ be a complete set of representatives of 
+    irreducible classes of 
+    simple $\C[G]$-modules. Let 
+    $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. 
+    By Wedderburn's theorem, there is 
+    an algebra isomorphism 
+    $f\colon \C[G]\to M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)$, 
+    where $\dim S_j=n_j$ for all $j$. Moreover, 
+    \[
+    M_{n_j}(\C)\simeq \underbrace{S_j\oplus\cdots\oplus S_j}_{n_j-\text{times}}
+    \]
+    for all $j$. For each $j$ let $e_j=f^{-1}(I_j)$, where
+    $I_j$ is the identity matrix of $M_{n_j}(\C)$. We claim that 
+    \[
+        \chi_i(e_j)=\begin{cases}
+            \dim S_i & \text{if $i=j$,}\\
+            0 & \text{otherwise}.
+            \end{cases}
+    \]
+    In fact, $\chi_i(g)$ is the trace of the action of $g$ on $S_j$. Since 
+    $e_ie_j=0$ if $i\ne j$, it follows that 
+    $\chi_i(e_j)=0$ if $i\ne j$. Moreover, $e_j$ acts as the identity on $S_j$, thus
+    $\chi_j(e_j)=\dim S_j$. 
+    
+    Now if $\sum\lambda_i\chi_i=0$ for some $\lambda_1,\dots,\lambda_k\in\C$, then
+    \[
+    (\dim S_j)\lambda_j=\sum\lambda_i\chi_i(e_j)=0
+    \]
+    and hence $\lambda_j=0$, as $\dim S_j\ne 0$. 
 \end{proof}
 
+\begin{theorem}
+    Let $G$ be a finite group and $S_1,\dots,S_k$ be the simple
+    $\C[G]$-modules (up to isomorphism). If $V=\oplus_{i=1}^k a_jS_j$, then
+    $\chi_V=\sum a_i\chi_i$, where 
+    $\chi_i=\chi_{S_i}$ for all $i$. Moreover, if $U$ and $V$ 
+    are $\C[G]$-modules, 
+    \[
+    U\simeq V\Longleftrightarrow \chi_U=\chi_V.
+    \]
+\end{theorem}
+
+\begin{proof}
+    The first part is left as an exercise. 
+    
+    It is also an exercise to prove that $U\simeq V$ implies $\chi_U=\chi_V$. Let us prove
+    the converse. Assume that $\chi_U=\chi_V$. Since $\C[G]$ is semisimple, 
+    $U\simeq\oplus_{i=1}^k a_iS_i$ and 
+    $V\simeq\oplus_{i=1}^k b_iS_i$ for some integers 
+    $a_1,\dots,a_k\geq0$ and $b_1,\dots,b_k\geq0$. Since 
+    \[
+    0=\chi_U-\chi_V=\sum_{i=1}^k (a_i-b_i)\chi_i
+    \]
+    and the $\chi_i$ are linearly independent, it follows that
+    $a_i=b_i$ for all $i$. Hence $U\simeq V$. 
+\end{proof}
+
+\begin{exercise}
+    Let $G$ be a finite group and $U$ be a $\C[G]$-module.
+    Prove  $\chi_{U^*}=\overline{\chi_U}$. 
+\end{exercise}
+
+We will use the following exercise later:
+
+\begin{exercise}
+\label{xca:char_Hom}
+    Prove that if $G$ is a finite group and 
+    $U$ and $V$ are $\C[G]$-modules, then 
+    \[
+        \chi_{\Hom_G(U,V)}=\overline{\chi_U}\chi_V.
+    \] 
+\end{exercise}
+
+For a finite group $G$ we write $\Irr(G)$ to denote
+the complete set of isomorphism classes of characters of irreducible representations 
+of $G$. 
+
+\begin{exercise}
+    Let $G$ be a finite group. Prove that the set
+    $\Irr(G)$ is a basis
+    of $\cf(G)$. 
+\end{exercise}
+
+Let $G$ be a finite group and $U$ be a $\C[G]$-module. 
+Let 
+\[
+U^G=\{u\in U:g\cdot u=u\text{ for all $g\in G$}\}.
+\]
+Clearly $U^G$ is a subspace of $U$. The following lemma
+is important:
+
+\begin{lemma}
+    $\dim U^G=\frac{1}{|G|}\sum_{x\in G}\chi_U(x)$
+\end{lemma}
+
+\begin{proof}
+    Let $\rho$ be the representation associated with $U$ and 
+    let 
+    \[
+    \alpha=\frac{1}{|G|}\sum_{x\in G}\rho_x\colon U\to U.
+    \]
+    
+    We claim that $\alpha^2=\alpha$.
+    Let $g\in g$. Then 
+    \begin{gather*}
+    \rho_g(\alpha)=\frac{1}{|G|}\sum_{x\in G}\rho_g\rho_x
+    =\frac{1}{|G|}\sum_{x\in G}\rho_{gx}=\alpha.
+    \shortintertext{Thus}
+    \alpha(\alpha(u))=\frac{1}{|G|}\sum_{x\in G}\rho_x(\alpha(u))=\alpha(u)
+    \end{gather*}
+    for all $u\in U$. This means that $\alpha$ has eigenvalues 0 and 1.
+    
+    Let $V$ be the eigenspace of eigenvalue 1. 
+    We now claim that $V=U^G$. Let us first prove that 
+    $V\subseteq U^G$. For that purpose, let 
+    $v\in V$ and $g\in G$. Then
+    \begin{align*}
+    g\cdot v &=\rho_g(v)=\rho_g(\alpha(v))\\
+    &=\frac{1}{|G|}\sum_{x\in G}\rho_g\rho_x(v)
+    =\frac{1}{|G|}\sum_{y\in G}\rho_y(v)=\alpha(v)=v.
+    \end{align*}
+    Now we prove that $V\supseteq U^G$. Let $u\in U^G$, so
+    $\rho_g(u)=u$ for all $g\in G$. Then
+    \[
+    \alpha(u)=\frac{1}{|G|}\sum_{x\in G}\rho_x(u)
+    =\frac{1}{|G|}\sum_{x\in G}u=u.
+    \]
+    
+    Thus 
+    \[
+    \dim U^G=\dim V=\trace\alpha=
+    =\frac{1}{|G|}\sum_{x\in G}\trace\rho_x
+    =\frac{1}{|G|}\sum_{x\in G}\chi_U(x).\qedhere
+    \]
+\end{proof}
+
+One proves that 
+the operation 
+\[
+\langle\chi_U,\chi_V\rangle=\frac{1}{|G|}\sum_{g\in G}\chi_U(g)\overline{\chi_V(g)}
+\]
+defines an inner product. 
+
+\begin{theorem}
+    Let $G$ be a finite group and $U$ and $V$ be $\C[G]$-modules. 
+    Then 
+    \[
+    \langle\chi_U,\chi_V\rangle=\dim\Hom_G(U,V).
+    \]
+\end{theorem}
+
+\begin{proof}
+    We claim that 
+    \[
+    \Hom_G(U,V)=\Hom(U,V)^G.
+    \]
+    Let us first prove that
+    $\Hom_G(U,V)\subseteq\Hom(U,V)^G$. Let $f\in \Hom_G(U,V)$ and 
+    $g\in G$. Then
+    \[
+    (g\cdot f)(u)=g\cdot f(g^{-1}\cdot u)=g\cdot (g^{-1}\cdot f(u))=f(u)
+    \]
+    for all $u\in U$. Now we prove that $\Hom_G(U,V)\supseteq\Hom(U,V)^G$.
+    Let $f\in\Hom(U,V)^G$. Then $f\colon U\to U$ is a linear such that
+    $g\cdot f=f$ for all $g\in G$. Then
+    we compute 
+    \begin{align*}
+    (g\cdot f)(u)=f(u)&\implies 
+    g\cdot f(g^{-1}\cdot u)=f(u)\\
+    &\implies f(g^{-1}\cdot u)=g^{-1}\cdot f(u)\quad 
+    \text{for all $g\in G$ and $u\in U$}
+    \end{align*}
+    This means that one has 
+    \[
+    f(g\cdot u)=g\cdot f(u)
+    \]
+    for all $g\in G$ and $u\in U$. 
+    
+    Using Exercise \ref{xca:char_Hom}, 
+    \begin{align*}
+        \dim\Hom_G(U,V) &= \dim\Hom(U,V)^G\\
+        &=\frac{1}{|G|}\sum_{g\in G}\chi_{\Hom(U,V)}(g)\\
+        &=\frac{1}{|G|}\sum_{g\in G}\overline{\chi_U(g)}\chi_V(g)\\
+        &=\langle \chi_V,\chi_U\rangle.
+    \end{align*}
+    Since $\dim\Hom_G(U,V)\in\R$, one has  
+    $\langle\chi_U,\chi_V\rangle=\overline{\langle\chi_V,\chi_U\rangle}=\langle\chi_V,\chi_U\rangle$ and the claim follows. 
+\end{proof}
+
+Let $G$ be a finite group and $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. 
+Note that $k$ be the number of conjugacy classes of $G$. Let 
+$g_1,\dots,g_k$ be representatives of conjugacy classes of $G$. 
+The \textbf{matrix of characters} of $G$ 
+is $X=(X_{ij})$, where 
+\[
+X_{ij}=\chi_i(g_j)
+\]
+for $i,j\in\{1,\dots,k\}$. 
+
+\begin{example}
+    Let $G=\Sym_3$. The group $G$ has three conjugacy classes, so
+    $|\Irr(G)|=3$. Let $g_1=\id$, $g_2=(12)$ and $g_3=(123)$. We 
+    know that $6=n_1^2+n_2^2+n_3^2$. We know two degree-one
+    (irreducible) representations of $G$, the trivial one and
+    the sign. This implies that $n_1=n_2=1$ and 
+    $n_3=2$. 
+    The matrix of characters is then
+    \begin{center}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& $1$ & $(12)$ & $(123)$ \tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+			$\chi_{3}$ & $2$ & ? & ? \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{example}
+
+\begin{theorem}[Schur]
+\index{Schur's theorem}
+\end{theorem}
+
+\begin{proof}
+    
+\end{proof}
