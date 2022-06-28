@@ -313,6 +313,23 @@ We now describe three important examples of representations.
     \]
 \end{example}
 
+Let $V$ be a vector space with basis $\{v_1,\dots,v_k\}$ and 
+$W$ be a vector space with basis $\{w_1,\dots,w_l\}$. A 
+\textbf{tensor product} of $V$ and $W$ is a vector space $X$ with 
+together with a bilinear map 
+\[
+V\times W\to X,
+\quad
+(v,w)\mapsto v\otimes w,
+\]
+such that $\{v_i\otimes w_j:1\leq i\leq k,\,1\leq j\leq l\}$ is a  
+basis of $X$. The tensor product of $V$ and $W$ is unique up to isomorphism 
+and it is denoted by $V\otimes W$. Note that
+\[
+\dim(V\otimes W)=(\dim V)(\dim W).
+\]
+
+
 \begin{example}
     Let $V$ and $W$ be $\C[G]$-modules. The \textbf{tensor product}
     $V\otimes W$
@@ -325,20 +342,30 @@ We now describe three important examples of representations.
     \]
 \end{example}
 
-How can you describe the tensor product of matrix representations?
+Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations. 
+The \textbf{tensor product} of $\rho$ and $\psi$ is the representation of $G$ given by 
+\begin{gather*}
+	\rho\otimes\psi\colon G\to\GL(V\otimes W),
+	\quad 
+	g\mapsto (\rho\otimes\psi)_g,
+	\shortintertext{where}
+	(\rho\otimes\psi)_g(v\otimes w)=\rho_g(v)\otimes \psi_g(w)
+\end{gather*}
+for $v\in V$ and $w\in W$. 
 
 \begin{exercise}
     Let $G$ be a finite group and
     $V$ and $W$ be $\C[G]$-modules. Prove that
-    $\Hom_{\C}(V,W)$ is a $\C[G]$-module
+    the set $\Hom(V,W)$ of complex linear maps $V\to W$ 
+     is a $\C[G]$-module
     with
     \[
     (g\cdot f)(v)=gf(g^{-1}v),\quad
-    f\in\Hom_{\C}(V,W),\;v\in V,\;g\in G.
+    f\in\Hom(V,W),\;v\in V,\;g\in G.
     \]
     If, moreover, $V$ and $W$ are finite-dimensional, then
     \[
-    V^{*}\otimes W\simeq\Hom_{\C}(V,W)
+    V^{*}\otimes W\simeq\Hom(V,W)
     \]
     as $\C[G]$-modules.
 \end{exercise}
