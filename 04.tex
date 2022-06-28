@@ -1,6 +1,6 @@
 \chapter{}
 
-\section{Characters}
+\topic{Characters}
 
 Fix a finite group $G$ and consider
 (matrix) representations of $G$. We use linear algebra to study 
@@ -367,6 +367,7 @@ X_{ij}=\chi_i(g_j)
 for $i,j\in\{1,\dots,k\}$. 
 
 \begin{example}
+\label{exa:S3}
     Let $G=\Sym_3$. The group $G$ has three conjugacy classes, so
     $|\Irr(G)|=3$. Let $g_1=\id$, $g_2=(12)$ and $g_3=(123)$. We 
     know that $6=n_1^2+n_2^2+n_3^2$. We know two degree-one
@@ -387,10 +388,59 @@ for $i,j\in\{1,\dots,k\}$.
 	\end{center}
 \end{example}
 
+We now discuss a very useful application of Schur's lemma. 
+Let $G$ be a finite group and $S$ be a simple $\C[G]$-module.
+We claim that $\Hom_G(S,S)\simeq\C$. In fact, let 
+$f\in\Hom_G(S,S)$ and $\lambda\in\C$ be an eigenvector of $f$. The such that 
+$f-\lambda\id\colon S\to S$ is not invertible. By Schur's lemma, 
+$f-\lambda\id=0$ and hence $f=\lambda\id$. 
+
 \begin{theorem}[Schur]
 \index{Schur's theorem}
+    Let $G$ be a finite group and $\chi,\psi\in\Irr(G)$. Then
+    \[
+    \langle\chi,\psi\rangle=\begin{cases}
+    1 & \text{if $\chi=\psi$,}\\
+    0 & \text{otherwise.}
+    \end{cases}
+    \]
 \end{theorem}
 
 \begin{proof}
-    
+    Let $S_1,\dots,S_k$ be the simples of $\C[G]$. Then 
+    \[
+    \langle\chi_i,\chi_j\rangle=\dim\Hom_G(S_i,S_j)
+    =\begin{cases}
+    1 & \text{if $S_i\simeq S_j$},\\
+    0 & \text{otherwise.}
+    \end{cases}
+    \]
+    But we know that $S_i\simeq S_j$ if and only if 
+    $\chi$
 \end{proof}
+
+With the theorem one can construct the character table of $\Sym_3$.
+For example, this can be done using that $\langle\chi_3,\chi_3\rangle=1$ 
+and that $\langle\chi_1,\chi_3\rangle=0$. 
+As an exercise, check that the character table of $\Sym_3$ 
+is given by
+    \begin{center}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& $1$ & $(12)$ & $(123)$ \tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+			$\chi_{3}$ & $2$ & 0 & -1 \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	
+\begin{exercise}
+    Let $G$ be a finite group. 
+    Prove that $\Irr(G)$ is an orthonormal basis of $\cf(G)$. 
+\end{exercise}
+
+The previous exercise has some consequences. Let $G$ be a finite group
+and assume that $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. If 
+$\alpha=\sum a_i\chi_i$, then $\alpha=\sum\langle\alpha,\chi_i\rangle\chi_i$.  
