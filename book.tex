@@ -1,6 +1,6 @@
-%\RequirePackage{amsmath} 
+\RequirePackage{amsmath} 
 
-\documentclass[a4paper,11pt]{memo-l}
+\documentclass[graybox,envcountsect]{svmono}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -9,7 +9,6 @@
 \usepackage[notref,notcite]{showkeys}
 \usepackage{float}
 \usepackage{amssymb}
-\usepackage{amsthm}
 \usepackage{amstext}
 \usepackage{mathtools}
 \usepackage{anyfontsize}
@@ -17,12 +16,14 @@
 \usepackage{centernot}
 \usepackage{listings}
 \usepackage{multicol}
-%\usepackage{mathptmx}
-%\usepackage{newtxtext,newtxmath}
+\usepackage{mathptmx}
+\usepackage{newtxtext,newtxmath}
 %\usepackage{txfonts}
 \usepackage{datetime}
 \usepackage{stmaryrd}
 \usepackage{tikz-cd}
+\usepackage{fancyhdr}
+
 
 \usepackage{helvet}
 \usepackage{courier}
@@ -35,55 +36,140 @@
 %\usepackage{tikz-cd}
 \usepackage{colortbl}
 \usepackage{chngcntr}
-\usepackage{textcomp}
+
+
+
+
+
+% Table of contents for lectures and topics
+\makeatletter
+\newcommand\listtopicsname{List of topics}
+\newcommand\listoftopics{
+    \chapter*{\listtopicsname}\@starttoc{top}}
+\makeatother
+
+\makeatletter
+\newcommand\listlecturesname{Contents}
+\newcommand\listoflectures{
+    \chapter*{\listlecturesname}\@starttoc{lec}}
+\makeatother
+
+\newcommand{\lecture}[1]{
+    \chapter{#1}
+    \addcontentsline{lec}{chapter}{Lecture \thechapter}
+}
+
+\newcommand{\topic}[1]{
+    \section{#1}
+    \addcontentsline{top}{chapter}{\S\thesection\quad #1}
+}
+
+
+%\usepackage[small,bf]{caption}
+
+\usepackage{tikz}
+\usetikzlibrary{braids}
 	
-%\usepackage[bottom]{footmisc}
+\usepackage[bottom]{footmisc}
 
 % for QED
 \let\proof\relax\let\endproof\relax
-%\let\openbox\relax
-%\usepackage{amstheorem}
+\let\openbox\relax
+\usepackage{amsthm}
 
 \overfullrule=1mm
 
+%%% for Spanish
+% \def\abstractname{Resumen}%
+% \def\ackname{Agradecimientos}%
+% \def\andname{y}%
+% \def\bibname{Referencias}%
+% \def\lastandname{, y}%
+% \def\appendixname{Apéndice}%
+\def\chaptername{Lecture}%
+% \def\claimname{Afirmación}%
+% \def\conjecturename{Conjetura}%
+% \def\contentsname{Contenidos}%
+% \def\corollaryname{Corolario}%
+% \def\definitionname{Definici\'on}%
+% \def\emailname{e-mail}%
+% \def\examplename{Ejemplo}%
+\def\examplesname{Examples}%
+% \def\exercisename{Ejercicio}%
+\def\figurename{Figure}%
+% \def\forewordname{Foreword}%
+% \def\keywordname{{\bf Palabras clave:}}%
+% \def\indexname{Índice}%
+% \def\lemmaname{Lema}%
+% \def\listfigurename{Figuras}%
+% \def\listtablename{Tablas}%
+% \def\notename{Nota}%
+% \def\partname{Parte}%
+% \def\prefacename{Prefacio}%
+\def\problemname{Open problem}%
+% \def\proofname{Demostración}%
+% \def\propertyname{Propiedad}%
+% \def\propositionname{Proposici\'on}%
+% \def\questionname{Pregunta}%
+% \def\refname{Referencias}%
+% \def\remarkname{Observación}%
+% \def\seename{see}%
+% \def\solutionname{Solución}%
+% \def\tablename{Tabla}%
+% \def\theoremname{Teorema}
+\def\notationname{Notation}
+\def\stepsname{Algorithm}
+% \def\conventionname{Convención}
 
-\makeatletter
-\numberwithin{equation}{chapter}
-\numberwithin{figure}{chapter}
-\numberwithin{table}{chapter}
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem*{theorem*}{Theorem}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{notation}[theorem]{Notation}
+% change numbers 
+\let\remark\relax
+\let\theorem\relax
+\let\lemma\relax
+\let\definition\relax
+\let\proposition\relax
+\let\corollary\relax
+\let\exercise\relax
+\let\example\relax
+\let\conjecture\relax
 
-\theoremstyle{definition} % change of style
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{problem}[theorem]{Problem}
-\newtheorem{question}[theorem]{Question}
-\newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{convention}[theorem]{Convention}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{exercise}[theorem]{Exercise}
+% Numerar con sección y no resetear al cambiar de capítulo
+\counterwithout{section}{chapter}
+\counterwithout{theorem}{chapter}
+\spnewtheorem{theorem}{\theoremname}[section]{\bfseries}{\itshape}
 
-\newcommand{\topic}{\section}
+\renewcommand\thetheorem{\thesection.\arabic{theorem}}
+\spnewtheorem{lemma}[theorem]{\lemmaname}{\bfseries}{\itshape}
+\spnewtheorem{definition}[theorem]{\definitionname}{\bfseries}{\upshape}
+\spnewtheorem{proposition}[theorem]{\propositionname}{\bfseries}{\itshape}
+\spnewtheorem{corollary}[theorem]{\corollaryname}{\bfseries}{\itshape}
+\spnewtheorem{exercise}[theorem]{\exercisename}{\bfseries}{\upshape}
+\spnewtheorem{example}[theorem]{\examplename}{\bfseries}{\upshape}
+\spnewtheorem{examples}[theorem]{\examplesname}{\bfseries}{\upshape}
+\spnewtheorem{remark}[theorem]{\remarkname}{}{\upshape}
+\spnewtheorem{conjecture}[theorem]{\conjecturename}{\bfseries}{\upshape}
+\spnewtheorem{notation}[theorem]{\notationname}{\bfseries}{\upshape}
+\spnewtheorem{steps}[theorem]{\stepsname}{\bfseries}{\upshape}
+\spnewtheorem{convention}[theorem]{\conventionname}{\bfseries}{\upshape}
+\spnewtheorem{openproblem}[theorem]{\problemname}{\bfseries}{\upshape}
+
+
+% Numerar con sección y no resetear al cambiar de capítulo
+\counterwithout{section}{chapter}
 
 % No sections in TOC
 \setcounter{secnumdepth}{1}
 \setcounter{tocdepth}{0}
 
-% \usepackage{titlesec}
-% \titleformat{\section}
-%   {\secsize\secstyle}{\S\thesection.}{1em}{}
+ \usepackage{titlesec}
+ \titleformat{\section}
+   {\secsize\secstyle}{\S\thesection.}{1em}{}
 
 % para enumerar
 \renewcommand{\labelenumi}{\textbf{\arabic{enumi})}}
 
 \makeindex             
 
-\newcommand{\I}{\operatorname{I}}
+\renewcommand{\I}{\operatorname{I}}
 \newcommand{\II}{\operatorname{II}}
 
 \newcommand{\GAP}{\textsf{GAP}}
@@ -100,7 +186,7 @@
 \newcommand{\A}{\mathbb{A}}
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\T}{\mathbb{T}}
-\newcommand{\D}{\mathbb{D}}
+\renewcommand{\D}{\mathbb{D}}
 \newcommand{\B}{\mathbb{B}}
 \newcommand{\Fun}{\operatorname{Fun}}
 \newcommand{\mpl}{\operatorname{mpl}}
@@ -144,6 +230,7 @@
 \newcommand{\Aut}{\operatorname{Aut}}
 \newcommand{\End}{\operatorname{End}}
 \newcommand{\Irr}{\operatorname{Irr}}
+\newcommand{\Char}{\operatorname{Char}}
 \newcommand{\Alt}{\mathbb{A}}
 \newcommand{\Sym}{\mathbb{S}}
 \newcommand{\lcm}{\mathrm{mcm}}
@@ -191,7 +278,7 @@
 
 
 % numero como secciones
-%\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesection}{\arabic{section}}
 %\renewcommand{\thesubsection}{\Alph{section}}
 
 % To remove Springer from the title page
@@ -204,8 +291,27 @@
   \let\@evenfoot\@oddfoot
 }
 
-\begin{document}
+% Heading 
+\def\ps@headings{%
+  \let\@mkboth\markboth
+  \def\@oddfoot{\reset@font\small\hfil\thepage\hfil}%
+  \let\@evenfoot\@oddfoot
+  \def\@evenhead{\runheadsize\runheadstyle\hfil\leftmark}%
+  \def\@oddhead{\runheadsize\runheadstyle\rightmark\hfil}%
+  \def\chaptermark##1{%
+    \markboth{%
+      {\if@chapnum Lecture \thechapter\thechapterend\fi ##1}%
+    }{%
+      {\if@chapnum Lecture \thechapter\thechapterend\fi ##1}}%
+    }%
+    \def\sectionmark##1{\markright{{\ifnum\c@secnumdepth>\z@
+     \S\thesection\seccounterend\hskip\betweenumberspace\fi ##1}}}
+}
+\makeatother
+\pagestyle{headings}
 
+\begin{document}
+ 
 \lstset{language=GAP,
   showstringspaces=false,
   xleftmargin=0.0cm,
@@ -215,8 +321,10 @@
   framerule=0pt,
 }
 
+
 \author{Leandro Vendramin}
 \title{Representation theory of finite groups}
+\subtitle{Notes}
 \maketitle
 
 \frontmatter
@@ -225,7 +333,7 @@
 \include{preface}
 
 \tableofcontents
-%\listoftopics
+\listoftopics
 
 \mainmatter
 
@@ -246,12 +354,11 @@
 
 \backmatter
 
-%\include{topics}
-%\addcontentsline{lec}{chapter}{Topics for a final project}
+\include{topics}
+\addcontentsline{lec}{chapter}{Topics for a final project}
 
-%\include{solutions}
-%\addcontentsline{lec}{chapter}{Some solutions}
-
+\include{solutions}
+\addcontentsline{lec}{chapter}{Some solutions}
 
 \bibliographystyle{abbrv}
 \bibliography{refs}
