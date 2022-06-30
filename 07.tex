@@ -123,6 +123,55 @@ small cases, for example Mathieu simple group $M_{11}$.
 \topic{Commutators}
 \label{commutators}
 
+Let $G$ be a finite group with conjugacy classes $C_1,\dots,C_s$. For
+$i\in\{1,\dots,s\}$ and $\chi\in\Irr(G)$ let  
+\[
+\omega_{\chi}(C_i)=\frac{|C_i|\chi(C_i)}{\chi(1)}\in\A.
+\]
+In the proof of Theorem \ref{thm:A}, Equality \eqref{eq:omega}, 
+we obtained
+that 
+\begin{equation}
+\label{eq:again_omega}
+\omega_\chi(C_i)\omega_\chi(C_j)=\sum_{k=1}^ka_{ijk}\omega_{\chi}(C_k),
+\end{equation}
+where $a_{ijk}$ is the number of solutions 
+of $xy=z$ with $x\in C_i$, $y\in c_j$ and $z\in C_k$. 
+
+\begin{theorem}[Burnside]
+    \index{Burnside's theorem}
+    Let $G$ be a finite group with conjugacy classes $C_1,\dots,C_s$. 
+    Then
+    \[
+    a_{ijk}
+    =\frac{|C_i||C_j|}{|G|}
+    \sum_{\chi\in\Irr(G)}\frac{\chi(C_i)\chi(C_j)\overline{\chi(C_k)}}{\chi(1)}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    By \eqref{eq:again_omega}, 
+    \[
+    \frac{|C_i||C_j|}{\chi(1)}\chi(C_i)\chi(C_j)
+    =\sum_{k=1}^sa_{ijk}|C_k|\chi(C_k).
+    \]
+    Multiply by $\overline{\chi(C_l)}$ and sum over all
+    $\chi\in\Irr(G)$ to obtain 
+    \begin{align*}
+    |C_i||C_j|\sum_{\chi\in\Irr(G)}\frac{\overline{\chi(C_l)}}{\chi(1)}\chi(C_i)\chi(C_j)
+    &=\sum_{\chi\in\Irr(G)}\sum_{k=1}^sa_{ijk}|C_k|\chi(C_k)\overline{\chi(C_l)}\\
+    &=\sum_{k=1}^sa_{ijk}|C_k|\sum_{\chi\in\Irr(G)}\chi(C_k)\overline{\chi(C_l)}\\
+    &=a_{ijk}|G|,
+    \end{align*}
+    because 
+    \[
+    \sum_{\chi\in\Irr(G)}\chi(C_k)\overline{\chi(C_l)}=\begin{cases}
+        \frac{|G|}{|C_l|} & \text{if $k=l$},\\
+        0 & \text{otherwise}.
+        \end{cases}\qedhere
+    \]
+\end{proof}
+
 \topic{Ore's conjecture}
 \label{Ore}
 
