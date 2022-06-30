@@ -1,0 +1,202 @@
+\chapter{}
+
+\topic{McKay's conjecture}
+
+Let $G$ be a finite group and let $p$ be a prime number dividing
+$|G|$. Write $\Syl_p(G)$ to denote the (non-empty) set of Sylow 
+$p$-subgroups of $G$. Recall that 
+the \emph{normalizer} of $P$ is the subgroup
+\[
+N_G(P)=\{g\in G:gPg^{-1}=P\}.
+\]
+
+The following conjecture was made by McKay for the prime $p=2$ and simple groups 
+and later generalized by Alperin in~\cite{MR0404417} and independently
+by Isaacs en~\cite{MR332945}. 
+
+\begin{conjecture}[McKay]
+\index{McKay's conjecture}
+Let $p$ be a prime. If  
+$G$ is a finite group and $P\in\Syl_p(G)$, then 
+\[
+|\{\chi\in\Irr(G):p\nmid \chi(1)\}|
+=|\{\psi\in\Irr(N_G(P))|:p\nmid\psi(1)\}|.
+\]
+\end{conjecture}
+
+McKay's conjecture is still open and is an important problem in representation theory. 
+The conjecture was proved for several classes of groups. Isaacs 
+proved the conjecture for solvable groups, see for example~\cite{MR332945,MR3791517}. 
+Malle and Sp\"ath prove the conjecture for $p=2$. 
+
+\begin{theorem}[Malle--Sp\"ath]
+\index{Teorema!de Malle--Sp\"ath}
+If $G$ is finite and $P\in\Syl_2(G)$,
+then 
+\[
+|\{\chi\in\Irr(G):2\nmid \chi(1)\}|
+=|\{\psi\in\Irr(N_G(P))|:2\nmid\psi(1)\}|.
+\]
+\end{theorem}
+
+The proof appears in~\cite{MR3549625} and uses the classification of 
+finite simple groups. It uses a deep result of 
+Isaacs, Malle and Navarro~\cite{MR2336079}. 
+
+We cannot prove Malle--Sp\"ath theorem here. However, 
+we can use the computer to prove some particular cases
+with the following cuntion: 
+
+\begin{lstlisting}
+gap> McKay := function(G, p)
+> local N, n, m;
+> N := Normalizer(G, SylowSubgroup(G, p));
+> n := Number(Irr(G), x->Degree(x) mod p <> 0);
+> m := Number(Irr(N), x->Degree(x) mod p <> 0);
+> if n = m then
+> return true;
+> else
+> return false;
+> fi;
+> end;
+function( G, p ) ... end
+\end{lstlisting}
+
+As a concrete example, let us 
+verify McKay's conjecture for the Mathieu simple group 
+$M_{11}$ of order 7920. 
+
+\begin{lstlisting}
+gap> M11 := MathieuGroup(11);;
+gap> PrimeDivisors(Order(M11));
+[ 2, 3, 5, 11 ]
+gap> McKay(M11,2);
+true
+gap> McKay(M11,3);
+true
+gap> McKay(M11,5);
+true
+gap> McKay(M11,11);
+true
+\end{lstlisting}
+
+The following conjecture refines McKay's conjecture. It was
+formulated by Isaacs and Navarro:
+
+\begin{conjecture}[Isaacs--Navarro]
+\index{Isaacs--Navarro's conjecture}
+Let $p$ be a prime and $k\in\Z$. 
+If $G$ is a finite group and $P\in\Syl_p(G)$,
+then
+\begin{align*}
+|\{\chi\in\Irr(G):&p\nmid \chi(1)\text{ y }\chi(1)\equiv\pm k\bmod p\}|\\
+&=|\{\psi\in\Irr(N_G(P))|:p\nmid\psi(1)\text{ y }\psi(1)\equiv\pm k\bmod p\}|.
+\end{align*}
+\end{conjecture}
+
+Isaacs--Navarro's conjecture is still open. However, 
+it is known to be true for solvable groups, 
+sporadic simple groups and 
+symmetric groups, see~\cite{MR1935849}. 
+
+\begin{lstlisting}
+gap> IsaacsNavarro := function(G, k, p)
+> local mG, mN, N;
+> N := Normalizer(G, SylowSubgroup(G, p));
+> mG := Number(Filtered(Irr(G), x->Degree(x)\
+> mod p <> 0), x->Degree(x) mod p in [-k,k] mod p);
+> mN := Number(Filtered(Irr(N), x->Degree(x)\
+> mod p <> 0), x->Degree(x) mod p in [-k,k] mod p);
+> if mG = mN then
+> return mG;
+> else
+> return false;
+> fi;
+> end;
+function( G, k, p ) ... end
+\end{lstlisting}
+
+It is an exercise to verify Isaacs--Navarro's conjecture in some
+small cases, for example Mathieu simple group $M_{11}$. 
+
+\topic{Commutators}
+
+\topic{Ore's conjecture}
+
+In 1951 Ore and independently Ito
+proved that every element of any alternating simple group is a commutator. 
+Ore also mentioned that ``it is possible that a similar theorem holds for any simple group of finite order, but it seems that at present we do not have the necessary methods to investigate the question". 
+
+\begin{conjecture}[Ore]
+\index{Ore's conjecture}
+    Let $G$ be a finite simple non-abelian group. 
+    Then every element of $G$ is a commutator. 
+\end{conjecture}
+
+Ore's conjecture was proved in 2010:
+
+\begin{theorem}[Liebeck--O'Brien--Shalev--Tiep]
+\index{Liebeck--O'Brien--Shalev--Tiep's theorem}
+    Every element of a non-abelian finite simple group is a commutator.     
+\end{theorem}
+
+The proof appears in~\cite{MR2654085}. It needs about 70 pages and
+uses the classification of finite simple groups (CFSG) and character theory.
+See \cite{MR3289286} for more information on Ore's conjecture and its proof 
+a~\cite{MR3289286}. 
+
+Despite the fact that the proof of Ore's conjecture is too complicated for 
+this course, we can use the computer to 
+prove the conjecture in some particular cases:
+
+\begin{proposition}
+    Ore's conjecture is true 
+    for sporadic simple groups.
+\end{proposition}
+
+\begin{proof}
+    Let $G$ be a finite simple group. 
+    We now that $g\in G$ is a commutator if and only if 
+    $\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne 0$. Let us write
+    a computer script to check whether every element in a group 
+    is a commutator. Our
+    function needs the character table of a group and returns 
+    \lstinline{true} if every element of the group is a commutator and
+    \lstinline{false} otherwise. 
+\begin{lstlisting}
+gap> Ore := function(char) 
+> local s,f,k;
+> for k in [1..NrConjugacyClasses(char)] do
+> s := 0;
+> for f in Irr(char) do
+> s := s+f[k]/Degree(f);  
+> od;
+> if s<=0 then
+> return false;
+> fi;
+> od;
+> return true;
+> end;
+function( char ) ... end
+\end{lstlisting}
+Now we check Ore's conjecture for Mathieu simple groups
+and for the Monster group: 
+\begin{lstlisting}
+gap> Ore(CharacterTable("M11"));
+true
+gap> Ore(CharacterTable("M12"));
+true
+gap> Ore(CharacterTable("M22"));
+true
+gap> Ore(CharacterTable("M23"));
+true
+gap> Ore(CharacterTable("M24"));
+true
+gap> Ore(CharacterTable("M"));
+true
+\end{lstlisting}
+It is an exercise to check the conjecture for the other finite sporadic 
+simple groups $McL$, $Ru$, $Ly$, $Suz$, $He$, $HN$, $Th$, $Fi_{22}$, $Fi_{23}$, $Fi_{24}'$, $B$, $M$ 
+\end{proof}
+
+See \cite{MR3821142} for other applications of character theory. 
