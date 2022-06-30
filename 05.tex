@@ -1,0 +1,377 @@
+\chapter{}
+
+\topic{Schur's othogonality relations}
+
+We now prove Schur's second orthogonality relation. 
+
+\begin{theorem}[Schur]
+\index{Schur's theorem}
+    Let $G$ be a finite group and $g,h\in G$. 
+    Then
+    \[
+    \sum_{\chi\in\Irr(G)}\chi(g)\overline{\chi(h)}
+    =\begin{cases}
+    |G_G(g)| & \text{if $g$ and $h$ are conjugate},\\
+    0 & \text{otherwise}.
+    \end{cases}
+    \]
+\end{theorem}
+
+\begin{proof}
+    Let $g_1,\dots,g_r$ be the representative of conjugacy classes of $G$. 
+    Assume that $\Irr(G)=\{\chi_1,\dots,\chi_r\}$. For each $k\in\{1,\dots,r\}$ 
+    let $c_k=(G:G_C(g_k))$ denote the size of the conjugacy class of $g_k$. Then
+    \[
+    \langle\chi_i,\chi_j\rangle
+    =\frac{1}{|G|}\sum_{g\in G}\chi_i(g)\overline{\chi_j(g)}
+    =\frac{1}{|G|}\sum_{k=1}^rc_k\chi_i(g_k)\overline{\chi_j(g_k)}.
+    \]
+    We write this as $I=\frac{1}{|G|}XDX^*$, where $I$ denotes the identity matrix, 
+    $X_{ij}=\chi_i(g_j)$, 
+    $X^*=\overline{X}^T$ and 
+    \[
+    D=\begin{pmatrix}
+    c_1\\
+    &c_2\\
+    &&\ddots\\
+    &&&c_k
+    \end{pmatrix}.
+    \]
+    Since, in matrices, $AB=I$ implies $BA=I$, it follows that
+    $I=\frac{1}{|G|}X^*XD$. Thus, using that $|G|=c_k|C_G(g_k)|$ 
+    holds for all $k$, 
+    \[
+    |G|D^{-1}=X^*X=\sum_{k=1}^r\overline{\chi_k(g_i)}\chi_k(g_j)
+    =\begin{cases}
+    |C_G(g_j)| & \text{if $i=j$},\\
+    0 & \text{otherwise}.
+    \end{cases}\qedhere
+    \]
+\end{proof}
+
+\begin{theorem}[Solomon]
+\index{Solomon's theorem}
+    Let $G$ be a finite group and $\Irr(G)=\{\chi_1,\dots,\chi_r\}$. 
+    If $g_1,\dots,g_r$ are the representatives of conjugacy classes
+    of $G$ and $i\in\{1,\dots,r\}$, then 
+    \[
+    \sum_{j=1}^r\chi_i(g_j)\in\Z_{\geq0}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Let $V=\C[G]$ be the vector space with basis $\{e_g:g\in G\}$. 
+    The action of $G$ on $G$ by conjugation induces a group homomorphism 
+    $\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$, where
+    $\rho_g(e_h)=e_{ghg^{-1}}$. The matrix of $\rho_g$ 
+    in the basis $\{e_g:g\in G\}$ is
+    \[
+    (\rho_g)_{ij}=\begin{cases}
+        1 & \text{if $g_ig=gg_j$},\\
+        0 & \text{otherwise}.
+        \end{cases}
+    \]
+    Then
+    \[
+    \chi_{\rho}(g)=\trace\rho_g=\sum_{k=1}^{|G|}(\rho_g)_{kk}
+    =|\{k:g_kg=gg_k\}|=|C_G(g)|.
+    \]
+    Write $\chi=\sum_{i=1}^rm_i\chi_i$ for $m_1,\dots,m_r\geq0$. 
+    For each $j$ let $c_j=(G:C_G(g_j))$. Then
+    \begin{align*}
+    m_i=\langle\chi_{\rho},\chi_i\rangle
+    &=\frac{1}{|G|}\sum_{g\in G}\chi_{\rho}(g)\overline{\chi_i(g)}\\
+    &=\frac{1}{|G|}\sum_{j=1}^r c_j|C_G(g_j)|\overline{\chi_i(g_j)}
+    =\sum_{j=1}^r\overline{\chi_i(g_j)}.\qedhere
+    \end{align*}
+\end{proof}
+
+\topic{Algebraic numbers and characters}
+
+\begin{definition}
+    Let $\alpha\in\C$. We say that $\alpha$ is \textbf{algebraic}
+    if $f(\alpha)=0$ for some monic polynomial $f\in\Z[X]$. 
+\end{definition}
+
+Let $\A$ be the set of algebraic numbers.
+
+\begin{proposition}
+    $\Q\cap\A=\Z$. 
+\end{proposition}
+
+\begin{proof}
+    Let $m/n\in\Q$ with $\gcd(m,n)=1$ and $n>0$. If 
+    $f(m/n)=0$ for some $f=X^k+a_{k-1}X^{k-1}+\cdots+a_1X+a_0\in\Z[X]$ 
+    of degree $k\geq1$, then
+    \[
+    0=n^kf(m/n)=m^k+a_{k-1}m^{k-1}n+\cdots+a_1mn^{k-1}+a_0n^k.
+    \]
+    This implies that 
+    \[
+        m^k=-n\left(a_{k-1}m^{k-1}+\cdots+a_1mn^{k-2}+a_0n^{k-1}\right)
+    \]
+    and hence $n$ divides $m^k$. Thus $n\in\{-1,1\}$ and 
+    therefore $m/n\in\Z$.
+\end{proof}
+
+\begin{proposition}
+    Let $x\in\C$. Then $x\in\A$ if and only if $x$ is an eigenvalue of
+    an integer matrix.
+\end{proposition}
+
+\begin{proof}
+    Let us prove the non-trivial implication. Let 
+    \[
+    f=X^n+a_{n-1}X^{n-1}+\cdots+a_0\in\Z[X]
+    \]
+    be such that $f(x)=0$. Then $x$ is an eigenvalue
+    of the companion matrix of $f$, that is the matrix
+    \[
+    C(f)=
+    \begin{pmatrix}
+    0&0&\cdots &0&-a_{0}\\
+    1&0&\cdots &0&-a_{1}\\
+    0&1&\cdots &0&-a_{2}\\
+    \vdots &\vdots &\ddots &\vdots &\vdots \\
+    0&0&\cdots &1&-a_{{n-1}}
+    \end{pmatrix}
+    \in\Z^{n\times n}.\qedhere 
+    \]
+\end{proof}
+
+\begin{theorem}
+\label{thm:Asubring}
+    $\A$ is a subring of $\C$. 
+\end{theorem}
+
+\begin{proof}
+    Let $\alpha,\beta\in\A$. By the previous proposition, 
+    $\alpha$ is an eigenvalue 
+    of an integer matrix $A\in\Z^{n\times n}$, say
+    $Av=\alpha v$, 
+    $\beta$ is an eigenvalue of an integer matrix 
+    $B\in\Z^{m\times m}$, say $Bw=\beta w$. Then
+    \[
+    (A\otimes I_{m\times m}+I_{n\times n}\otimes B)(v+w)
+    =(\alpha+\beta)(v+w), 
+    \]
+    where $I_{k\times k}$ denotes the $(k\times k)$ identity 
+    matrix, and
+    \[
+    (A\otimes B)(v\otimes w)=(\alpha\beta)v\otimes w.
+    \]
+    This implies that 
+    $\alpha+\beta\in\A$ and $\alpha\beta\in\A$, again 
+    by the previous proposition. 
+\end{proof}
+
+\begin{theorem}
+\label{thm:A}
+    Let $G$ be a finite group. If $\chi\in\Char(G)$ and
+    $g\in G$, then $\chi(g)\in\A$. 
+\end{theorem}
+
+\begin{proof}
+    Let $\varphi$ be a representation of $G$ such that 
+    $\chi_\rho=\chi$. Since $\varphi_g$ is diagonalizable with
+    eigenvalues $\lambda_1,\dots,\lambda_k\in\A$ (because
+    $G$ is finite and the $\lambda_j$ are roots of one), 
+    \[
+    \chi(g)=\trace\varphi_g=\sum_{i=1}^k\lambda_i\in\A. \qedhere
+    \]
+\end{proof}
+
+\begin{theorem}
+    Let $G$ be a finite group, $\chi\in\Irr(G)$ and $g\in G$. 
+    If $K$ is the conjugacy class of $g$ in $G$, then
+    \[
+    \frac{\chi(g)}{\chi(1)}|K|\in\A. 
+    \]
+\end{theorem}
+
+To prove the theorem we need a lemma. 
+
+\begin{lemma}
+    Let $x\in\C$. Then $x\in\A$ if and only if 
+    there exist $z_1,\dots,z_k\in\C$ not all zero such that 
+    $xz_i=\sum_{j=1}^ka_{ij}z_j$ for some $a_{ij}\in\Z$ and 
+    all $i\in\{1,\dots,k\}$. 
+\end{lemma}
+
+\begin{proof}
+    Let us first prove $\implies$. Let $f=X^k+a_{k-1}X^{k-1}+\cdots+a_1X+a_0\in\Z[X]$
+    be such that $f(x)=0$. For $i\in\{1,\dots,k\}$ let 
+    $z_i=x^{i-1}$. Then 
+    $xz_i=x^i=z_{i+1}$ for all $i\in\{1,\dots,k-1\}$. Moreover, 
+    $xz_k=x^k=-a_0-a_1x-\cdots-a_{k-1}x^{k-1}$.
+    
+    We now prove $\impliedby$. Let $A=(a_{ij})\in\Z^{k\times k}$ and 
+    $Z$ be the column vector 
+    $Z=\begin{pmatrix}z_1\\\vdots\\z_k\end{pmatrix}$. Note that $Z$ is non-zero. 
+    Moreover, $AZ=xZ$, as 
+    \[
+    (AZ)_i=\sum_{j=1}^ka_{ij}z_j=xz_i=(xZ)_i
+    \]
+    for all $i$. Thus $x$ is an eigenvalue of $A\in\Z^{k\times k}$ and
+    hence $x\in\A$. 
+\end{proof}
+
+We now prove the theorem. We will use the following notation: if $\chi$ is a character
+of a group $G$ 
+and $C$ is a conjugacy class of $G$, then 
+$\chi(g)=\chi(xgx^{-1})$ for all $x\in G$. We write 
+$\chi(C)$ to denote the value $\chi(g)$ for any $g\in C$. 
+
+\begin{proof}[Proof of Theorem \ref{thm:A}]
+    Let $\varphi$ be a representation of $G$ with character $\chi$. 
+    Let $C_1,\dots,C_r$ be the conjugacy classes of $G$ 
+    and for every $i\in\{1,\dots,r\}$ let 
+    \[
+    T_i=\sum_{x\in C_i}\varphi_x. 
+    \]
+    
+    \begin{claim}
+        $T_i=\left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)$. 
+    \end{claim}
+    
+    We proceed in several steps. First we prove that 
+    $T_i=\lambda\id$ for some $\lambda\in\C$. 
+    We prove that $T_i$ is a morphism of representations:
+    \[
+    \varphi_gT_i\varphi_g^{-1}=\sum_{x\in C_i}\varphi_g\varphi_x\varphi_g^{-1}
+    =\sum_{x\in C_i}\varphi_{gxg^{-1}}=\sum_{y\in C_i}\varphi_y=T_i.
+    \]
+    Now Schur's lemma implies that $T_i=\lambda\id$ for some
+    $\lambda\in\C$. 
+    
+    We now prove that 
+    \[
+    \lambda=\frac{|C_i|\chi(C_i)}{\chi(1)}.
+    \]
+    To prove
+    this we compute $\lambda$:
+    \[
+    \lambda\chi(1)=\trace(\lambda\id)
+    =\trace T_i
+    =\sum_{x\in C_i}\trace\varphi_x
+    =\sum_{x\in C_i}\chi(x)
+    =|C_i|\chi(C_i).
+    \]
+    From this the claim follows. 
+    
+    Now we claim that 
+    \[
+    T_iT_j=\sum_{k=1}^r a_{ijk}T_k
+    \]
+    for some $a_{ijk}\in\Z_{\geq0}$. In fact, 
+    \begin{align*}
+        T_iT_j &= \sum_{x\in C_i}\sum_{y\in C_j}\varphi_x\varphi_y
+        =\sum_{x\in C_i}\sum_{y\in C_j}\varphi_{xy}
+        =\sum_{g\in G}a_{ijg}\varphi_g,
+    \end{align*}
+    where $a_{ijg}$ is the number of elements $g\in G$ 
+    that can be written 
+    as $g=xy$ for $x\in C_i$ and $y\in C_j$. 
+    
+    \begin{claim}
+        The $a_{ijg}$ depend only on the conjugacy class of $g$.
+    \end{claim}
+    
+    Let $X_g=\{(x,y)\in C_i\times C_j:g=xy\}$. If $h=kgk^{-1}$, the map
+    \[
+    X_g\to X_h,\quad (x,y)\mapsto (kxk^{-1},kyk^{-1}),
+    \]
+    is well-defined. It is bijective with inverse
+    \[
+    X_h\to X_g,\quad
+    (a,b)\mapsto (k^{-1}ak,k^{-1}bk).
+    \]
+    Hence $|X_g|=|X_h|$. 
+    
+    Now 
+    \begin{align*}
+        T_iT_j &= 
+        =\sum_{g\in G}a_{ijg}\varphi_g
+        =\sum_{k=1}^r\sum_{g\in C_k}a_{ijg}\varphi_g
+        =\sum_{k=1}^ra_{ijg}\sum_{g\in C_k}\varphi_g
+        =\sum_{k=1}^ra_{ijk}T_k.
+    \end{align*}
+    Therefore 
+    \[
+    \left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)
+    \left(\frac{|C_j|}{\chi(1)}\chi(C_j)\right)
+    =\sum_{k=1}^r a_{ijk}\left(\frac{|C_k|}{\chi(1)}\chi(C_k)\right).
+    \]
+    By the previous lemma, $x=\frac{|C_j|}{\chi(1)}\chi(C_j)\in\A$.
+\end{proof}
+
+\topic{Frobenius' theorem}
+
+\begin{theorem}[Frobenius]
+\index{Frobenius' theorem}
+Let $G$ be a finite group and $\chi\in\Irr(G)$. Then $\chi(1)$ divides~$|G|$. 
+\end{theorem}
+
+\begin{proof}
+    Let $\varphi$ be an irreducible representation with character $\chi$. 
+    Since $\langle\chi,\chi\rangle=1$, 
+    \[
+    \frac{|G|}{\chi(1)}=\frac{|G|}{\chi(1)}\langle\chi,\chi\rangle
+    =\sum_{g\in G}\frac{\chi(g)}{\chi(1)}\overline{\chi(g)}.
+    \]
+    Let $C_1,\dots,C_r$ be the conjugacy classes of $G$. 
+    Then 
+    \[
+        \frac{|G|}{\chi(1)}
+        =\sum_{i=1}^r\sum_{g\in C_i}\frac{\chi(g)}{\chi(1)}\overline{\chi(g)}
+        =\sum_{i=1}^r\left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)\overline{\chi(C_i)}\in\A\cap\Q=\Z,
+    \]
+    as $\overline{\chi(C_i)}\in\A$. This implies that $\chi(1)$ divides $|G|$. 
+\end{proof}
+
+The character table gives information of the structure of the group. For example,
+with the previous result one can eaily prove that
+groups of order $p^2$ (where $p$ is a prime number) are abelian. 
+
+\begin{exercise}
+    Let $p$ and $q$ be prime numbers such that $p<q$.
+    If $q\not\equiv1\bmod p$, then a group of order $pq$ is abelian. 
+\end{exercise}
+
+Another application:
+
+\begin{theorem}
+    Let $G$ be a finite simple group. 
+    Then $\chi(1)\ne2$ for all $\chi\in\Irr(G)$. 
+\end{theorem}
+
+\begin{proof}
+    Let $\chi\in\Irr(G)$ be such that $\chi(1)=2$. Let $\rho\colon G\to\GL_2(\C)$
+    be an irreducible representation of $G$ with character $\chi$. Since 
+    $G$ is simple, $\ker\rho=\{1\}$. Since $\chi(1)=2$, 
+    $G$ is non-abelian and hence $[G,G]=G$. Since 
+    $G$ has $(G:[G,G])=1$ degree-one characters, it follows that
+    $G$ has only one degree-one character, the trivial one. The composition
+    \[
+    \begin{tikzcd}
+    	G & {\GL_2(\C)} & {\C^{\times}}
+    	\arrow["{\rho }", hook, from=1-1, to=1-2]
+    	\arrow["{\det }", from=1-2, to=1-3]
+    \end{tikzcd}
+    \]
+    is a degree-one representation, which means that $\det\rho_g=1$ for all $g\in G$. 
+    By Frobenius's theorem, $|G|$ is even (because 
+    $2=\chi(1)$ divides $|G|$). Let $x\in G$ be such that $|x|=2$ (Cauchy's theorem). 
+    Then $|\rho_x|=2$, as $\rho$ is injective. Sicne $\rho_x$ is diagonalizable, 
+    there exists $C\in\GL_2(\C)$ such that
+    \[
+    C\rho_xC^{-1}=\begin{pmatrix}
+    \lambda&0\\
+    0&\mu
+    \end{pmatrix}
+    \]
+    for some $\lambda,\mu\in\{-1,1\}$. Since $1=\det\rho_x=\lambda\mu$ and
+    $\rho$ is non-trivial, $\lambda=\mu=-1$. In particular, $C\rho_xC^{-1}$ is central
+    and hence $\rho_x$ is central. Since $\rho$ is injective, $x$ is central 
+    and thus $Z(G)\ne\{1\}$, a contradiction. 
+\end{proof}

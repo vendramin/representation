@@ -1,0 +1,93 @@
+\chapter{}
+
+\begin{theorem}[Schur]
+\index{Schur's theorem}
+\label{thm:Schur_chi(1)}
+    Let $G$ be a finite group and $\chi\in\Irr(G)$. 
+    Then $\chi(1)$ divides $(G:Z(G))$. 
+\end{theorem}
+
+We need a lemma. 
+
+\begin{lemma}
+    Let $G$ and $G_1$ be finite groups. If $\rho$ is an irreducible
+    representation of $G$ and $\rho_1$ is an irreducible representation
+    of $G_1$, then 
+    $\rho\otimes\rho_1$ is an irreducible representatoin of $G\times G_1$. 
+\end{lemma}
+
+\begin{proof}
+    Write $\chi=\chi_{\rho}$ and $\chi_1=\chi_{\rho_1}$. Since
+    $\chi$ is irreducible, $\langle\chi,\chi\rangle=1$. Similarly, 
+    $\langle\chi_1,\chi_1\rangle=1$. Now
+    $\rho\otimes\rho_1$ is irreducible, as 
+    \begin{align*}
+    \langle\chi\chi_1,\chi\chi_1\rangle
+    &=\frac{1}{|G\times G_1|}\sum_{(g,g_1)\in G\times G_1}(\chi\chi_1)(g,g_1)\overline{(\chi\chi_1)(g,g_1)}\\
+    &=\frac{1}{|G||G_1}\sum_{g\in G}\sum_{g_1\in G}\chi(g)\chi_1(g_1)\overline{\chi(g)}\overline{\chi_1(g_1)}\\
+    &=\frac{1}{|G||G_1}\sum_{g\in G}\overline{\chi(g)}\sum_{g_1\in G}\chi(g)\chi_1(g_1)\overline{\chi_1(g_1)}\\
+    &=\langle\chi,\chi\rangle\langle\chi_1,\chi_1\rangle=1.\qedhere 
+    \end{align*}
+\end{proof}
+
+\begin{exercise}
+    Let $G$ and $G_1$ be finite groups. 
+    Prove that irreducible characters of $G\times G_1$ 
+    are of the form $\chi\otimes\chi_1$ for  
+    $\chi\in\Irr(G)$ and $\chi_1\in\Irr(G_1)$. 
+\end{exercise}
+
+We now prove Schur's theorem. The proof goes back to Tate, it uses the 
+\emph{tensor power trick}. 
+
+\begin{proof}[Proof of Theorem \ref{thm:Schur_chi(1)}]
+    Let $\rho\colon G\to\GL(V)$ be an irreducible representation 
+    with character $\chi$. Let $z\in Z(G)$. Then $\rho_z$ commutes
+    with $\rho_g$ for all $g\in G$. By Schur's lemma, 
+    $\rho_z(v)=\lambda(z)v$ for all $v\in V$. Note that
+    $\lambda\colon Z(G)\to\C^{\times}$, $z\mapsto\lambda(z)$, 
+    is a well-defined group homomorphism, as 
+    \[
+    \lambda(z_1z_2)v=\rho_{z_1z_2}(v)=\rho_{z_1}\rho_{z_2}(v)
+    =\lambda(z_2)\rho_{z_1}(v)=\lambda(z_1)\lambda(z_2)v
+    \]
+    for all $v\in V$ and $z_1,z_2\in Z(G)$. 
+    
+    Let $n\in\Z_{\geq1}$. Write $G^n=G\times\cdots\times G$ ($n$-times). Let
+    \[
+    \sigma\colon G^n\to\GL(V^{\otimes n}),\quad
+    (g_1,\dots,g_n)\mapsto \rho_{g_1}\otimes\cdots\otimes\rho_{g_n}.
+    \]
+    The character of $\sigma$ is $\chi^n$. Moreover, by the previous lemma, 
+    $\sigma$ is
+    irreducible. We compute:
+    \begin{align*}   
+    \sigma(z_1,\dots,z_n)(v_1\otimes\cdots\otimes v_n)&=z_1v_1\otimes\cdots\otimes z_nv_n\\
+    &=\lambda(z_1)\cdots\lambda(z_n)v_1\otimes\cdots\otimes v_n\\
+    &=\lambda(z_1\cdots z_n)v_1\otimes\cdots\otimes v_n.
+    \end{align*}
+    Let 
+    \[
+    H=\{(z_1,\dots,z_n)\in Z(G)^n:z_1\cdots z_n=1\}\subseteq G^n.
+    \]  
+    The subgroup $H$ acts trivially on $V^{\otimes n}$, so there exists
+    a representation 
+    \[
+    \tau\colon G^n/H\to\GL(V^{\otimes n}).
+    \]
+    Since $\sigma$ is irreducible, so is $\tau$. 
+    By Frobenius' theorem, $\chi(1)$ divides $|G|$ 
+    and $\chi(1)^n$ divides $|G^n/H|=\frac{|G|^n}{|Z(G)|^{n-1}}$. 
+    Write 
+    $|G|=\chi(1)s$ and $|G|(G:Z(G))^{n-1}=\chi(1)^nr$ for some $r,s\in\Z$. Let $a$ and $b$ be such that 
+    $\gcd(a,b)=1$ and 
+    $\frac{a}{b}=\frac{(G:Z(G))}{\chi(1)}$. Then
+    \[
+    s\left(\frac{a}{b}\right)^{n-1}=s\frac{(G:Z(G))^{n-1}}{\chi(1)^{n-1}}
+    =\frac{|G|}{\chi(1)}\frac{(G:Z(G))^{n-1}}{\chi(1)^{n-1}}=r\in\Z.
+    \]
+    Thus $b^{n-1}$ divides $s$ and hence $b=1$ (because $n$ is arbitrary).  
+\end{proof}
+
+\topic{Examples of character tables}
+
