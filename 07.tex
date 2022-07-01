@@ -172,6 +172,111 @@ of $xy=z$ with $x\in C_i$, $y\in c_j$ and $z\in C_k$.
     \]
 \end{proof}
 
+\begin{theorem}[Burnside]
+    Let $G$ be a finite group and $g,x\in G$. Then
+    $g$ and $[x,y]$ are conjugate for some $y\in G$ if and only if
+    \[
+    \sum_{\chi\in\Irr(G)}\frac{|\chi(x)|^2\chi(g)}{\chi(1)}>0.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Let $C_1,\dots,C_s$ be the conjugacy classes of $G$. Assume that
+    $x\in C_i$ and $g\in C_k$ for some $i$ and $k$. Then
+    $C_i^{-1}=\{z^{-1}:z\in C_i\}=C_j$ for some $j$. By Burnside's theorem,
+    \[
+    a_{ijk}
+    =\frac{|C_i|^2}{|G|}\sum_{\chi\in\Irr(G)}\frac{|\chi(C_i)|^2\overline{\chi(C_k)}}{\chi(1)}
+    \]
+    We first prove $\impliedby$. Since $a_{ijk}>0$, 
+    there exist $u\in C_i$ and $v\in C_j$ such that 
+    $g=uv$ (since $zgz^{-1}=u_1v_1$ for some $u_1\in C_i$ and
+    $v_1\in C_j$, it follows that 
+    $g=(z^{-1}u_1z)(z^{-1}v_1z)$, so take $u=z^{-1}u_1z\in C_i$ and 
+    $v=z^{-1}v_1z\in C_j$). If $x$ and $u$ are conjugate, say 
+    $u=zxz^{-1}$ for some $z$, then $x^{-1}$ and 
+    $v$ are conjugate, as 
+    \[
+    zxz^{-1}=u\implies zx^{-1}z^{-1}=u^{-1}\in C_i^{-1}=C_j.
+    \]
+    Let $z_2\in G$ be such that $z_2x^{-1}z_2=v$. 
+    If $y=z^{-1}z_2$, then $g$ and $[x,y]$ are conjugate, as 
+    \[
+    g=uv=(zxz^{-1})(z_2x^{-1}z_2^{-1})=(zxyx^{-1}y^{-1})yz_2^{-1}
+    =z[x,y]z^{-1}.
+    \]
+    
+    We now prove $\implies$. Let $y\in G$ be such that $g$ and
+    $[x,y]$ are conjugate, say $g=z[x,y]z^{-1}$ for some $z\in G$. Let
+    $v=yxy^{-1}$. Then 
+    $g$ and $xv^{-1}=xyx^{-1}y^{-1}=[x,y]$ are conjugate. In particular, 
+    since $g\in C_iC_j$, $a_{ijk}>0$. 
+\end{proof}    
+
+\begin{exercise}
+    Let $G$ be a finite group, $g\in G$ and $\chi\in\Irr(G)$. 
+    Prove that 
+    \begin{align*}
+        &\sum_{h\in G}\chi([g,h])=\frac{|G|}{\chi(1)}|\chi(g)|^2.
+    \shortintertext{Prove also that }
+        &\chi(g)\chi(h)=\frac{\chi(1)}{|G|}\sum_{z\in G}\chi(zgz^{-1}h)
+    \end{align*}
+    holds for all $h\in G$. 
+\end{exercise}
+
+We now prove a theorem of Frobenius that 
+uses character tables to recognize commutators. For that purpose, 
+let 
+\[
+\tau(g)=|\{(x,y)\in G\times G:[x,y]=g\}|.
+\]
+
+\begin{theorem}[Frobenius]
+    \index{Frobenius' theorem}
+    Let $G$ be a finite group. Then
+    \[
+    \tau(g)=|G|\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}.
+    \]
+\end{theorem}
+
+\begin{proof}
+    Let $\chi\in\Irr(G)$. Since $\chi$ is irreducible, 
+    \[
+    1=\langle\chi,\chi\rangle
+    =\frac{1}{|G|}\sum_{z\in G}\chi(z)\overline{\chi(z)}
+    =\frac{1}{|G|}\sum_{C}|C|\chi(C)\overline{\chi(C)},
+    \]
+    where the last sum is taken over all conjugacy classes of $G$. 
+    Let $g\in G$ and $C$ be the conjugacy class of $g$. The equation
+    $xu^{-1}=g$ with $x\in C$ and $u\in C^{-1}$ has 
+    \[
+        \frac{|C||C|^{-1}}{|G|}\sum_{\chi\in\Irr(G)}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
+    \]
+    solutions. If $(x,u)$ is a solution of $xu^{-1}=g$, then
+    there are $|C_G(x)|$ elements $y$ such that $yxy^{-1}=u$. ($yxy^{-1}=u=y_1xy_1^{-1}$ implies that $y_1^{-1}y\in C_G(x)$ which implies $yC_G(x)=y_1C_G(x)$.) Now 
+    $[x,y]=(xyx^{-1})y^{-1}=g$ has 
+    \[
+    |C|\sum_{\chi\in\Irr(G)}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
+    \]
+    solutions. Now we sum over all conjugacy classes of $G$:
+    \begin{align*}
+        \sum_{C}\sum_{\chi}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
+        &=\sum_{\chi}\frac{\chi(g^{-1})}{\chi(1)}\left(\sum_C|C|\chi(C)\chi(C^{-1})\right)\\
+        &=|G|\sum_{\chi}\frac{\chi(g^{-1})}{\chi(1)}.
+    \end{align*}
+    From this the formula follows. 
+\end{proof}
+
+Application:
+
+\begin{corollary}
+    Let $G$ be a finite group and $g\in G$. Then $g$ 
+    is a commutator if and only if 
+    \[
+    \sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne0.
+    \]
+\end{corollary}
+
 \topic{Ore's conjecture}
 \label{Ore}
 
