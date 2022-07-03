@@ -39,8 +39,6 @@ find characters.
     $\chi(g)=|\Fix(g)|-1$. 
 \end{example}
 
-Now a combinatorial application:
-
 \begin{example}
     In how many ways can we color (in black and white) the vertices of a square? 
     We will count colorings up to symmetric. This means that, for example, 
@@ -193,6 +191,8 @@ orbits.
     are given by the dihedral group $\D_4$ of eight elements.
 \end{exercise}
 
+\topic{Commuting probability}
+
 For a finite group $G$ let $\cp(G)$ be the probability 
 that two random elements of $G$ commute. 
 As an application of Cauchy--Frobenius--Burnside's theorem we
@@ -330,143 +330,147 @@ There is a probabilistic version of Thompson's theorem:
 
 The proof uses the CFSG and appears in~\cite{MR1770615}.
 
+\topic{Jordan's theorem and applications}
 
-
-Nos basaremos en~\cite{MR1997347} y veremos otras aplicaciones del teorema de Cauchy--Frobenius--Burnside. 
+We now follow~\cite{MR1997347} to present other applications. 
 
 \begin{theorem}[Jordan]
-\index{Teorema!de Jordan}
-Sea $G$ un grupo finito no trivial. Si $G$ actúa transitivamente en un conjunto finito $X$ y $|X|>1$, entonces
-existe $g\in G$ sin puntos fijos. 
+\index{Jordan's theorem}
+    Let $G$ be a non-trivial finite group. If $G$ acts transitively 
+    on a finite set $X$ and $|X|>1$, then there exists 
+    $g\in G$ with no fixed points.
 \end{theorem}
 
 \begin{proof}
-El teorema de Cauchy--Frobenius--Burnside implica que
-\[
-1=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|=\frac{1}{|G|}\left(|X|+\sum_{g\ne 1}|\Fix(g)|\right).
-\]
-Si todo $g\in G\setminus\{1\}$ contiene al menos un punto fijo, entonces
-\[
-1=\frac{1}{|G|}\left(|X|+\sum_{g\ne 1}|\Fix(g)|\right)\geq \frac{1}{|G|}(|X|+|G|-1)=1+\frac{|X|-1}{|G|}
-\]
-y luego $|X|\leq1$, una contradicción. 
+    Cauchy--Frobenius--Burnside's theorem implies that
+    \[
+    1=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|=\frac{1}{|G|}\left(|X|+\sum_{g\ne 1}|\Fix(g)|\right).
+    \]
+    If every $g\in G\setminus\{1\}$ contains at least one fixed-point, then
+    \[
+    1=\frac{1}{|G|}\left(|X|+\sum_{g\ne 1}|\Fix(g)|\right)\geq \frac{1}{|G|}(|X|+|G|-1)=1+\frac{|X|-1}{|G|}
+    \]
+    and thus $|X|\leq1$, a contradiction. 
 \end{proof}
 
 \begin{corollary}
-Sea $G$ un grupo finito y $H$ un subgrupo propio de $G$. Entonces $G\ne\cup_{g\in G}gHg^{-1}$.
+    Let $G$ be a finite group and $H$ be a proper subgroup of $G$. 
+    Then $G\ne\cup_{g\in G}gHg^{-1}$.
 \end{corollary}
 
 \begin{proof}
-El grupo $G$ actúa transitivamente en $X=G/H$ por multiplicación a izquierda. 
-El estabilizador de $xH$ es 
-\[
-G_{xH}=\{g\in G:gxH=xH\}=xHx^{-1}.
-\]
-Como $H\ne G$, entonces $|X|=|G/H|>1$. El teorema de Jordan implica entonces que existe $g\in G$ sin puntos fijos, es decir
-que existe $g\in G$ tal que $g\not\in\cup_{x\in G}xHx^{-1}$. 
+    The group $G$ acts transitively by left multiplication on $X=G/H$. The stabilizer
+    of $xH$ is 
+    \[
+    G_{xH}=\{g\in G:gxH=xH\}=xHx^{-1}.
+    \]
+    Since $H\ne G$, it follows thast $|X|=|G/H|>1$. Jordan's theorem now implies
+    that there exists $g\in G$ with no fixed-points, that is 
+    there is an element $g\in G$ such that $g\not\in\cup_{x\in G}xHx^{-1}$. 
 \end{proof}
 
-Sea $G$ un grupo finito. Diremos que dos clases de conjugación $C$ y $D$ \textbf{conmutan} si existen 
-$c\in C$ y $d\in D$ tales que $[c,d]=1$. 
-Observemos que $C$ y $D$ conmutan si y sólo si para todo $c\in C$ existe $d\in D$ tal que $[c,d]=1$. 
+Let $G$ be a finite group. We say that the conjugacy classes $C$ and $D$ 
+\textbf{commute} if there exist 
+$c\in C$ and $d\in D$ such that $[c,d]=1$. 
+Note that $C$ and $D$ commute si y sólo for all $c\in C$ there exists $d\in D$ 
+such that $[c,d]=1$. 
 
 \begin{corollary}[Wildon]
-\index{Teorema!de Wildon}
-    Sea $G$ un grupo finito y sea $C$ una clase de conjugación de $G$. Entonces
-    $|C|=1$ si y sólo si $C$ conmuta con cualquier clase de conjugación de $G$. 
+\index{Wildon's theorem}
+    Let $G$ be a finite group and $C$ be a conjugacy classes of $G$. 
+    Then $|C|=1$ if and only if $C$ commute 
+    with every conjugacy class of $G$.
 \end{corollary}
     
 \begin{proof}
-    Si $C=\{c\}$, entonces $c\in Z(G)$ y luego $C$ conmuta con cualquier clase de conjugación de $G$. Recíprocamente, supongamos que 
-    $C$ conmuta con cualquier clase de conjugación de $G$. Si $c\in C$ y $H=C_G(c)$, entonces $H\cap D\ne\emptyset$ para toda
-    clase de conjugación $D$. Afirmamos que entonces $G=\cup_{g\in G}gHg^{-1}$. En efecto, sea $x\in G$. Entonces $x\in D$ 
-    para alguna clase de conjugación $D$. 
-    Sea 
-    $h\in H\cap D$. Existe $y\in G$ tal que $h=yxy^{-1}$, es decir $x=y^{-1}hy\in \cup_{g\in G}gHg^{-1}$. Por el teorema de Jordan, 
-    $H=G$. Luego $c$ es central, es decir $C=\{c\}$. 
+    We prove $\impliedby$. 
+    Assume that $C$ commute with every conjugacy class of $G$. 
+    Let $c\in C$ and $H=C_G(c)$. Then $H\cap D\ne\emptyset$ for every conjugacy class
+    $D$. We claim that $G=\cup_{g\in G}gHg^{-1}$. In fact, let $x\in G$. Then
+    $x\in D$ 
+    for some conjugacy class $D$. 
+    Let 
+    $h\in H\cap D$. There exists $y\in G$ such that $h=yxy^{-1}$, that is
+    $x=y^{-1}hy\in \cup_{g\in G}gHg^{-1}$. By Jordan's theorem,  
+    $H=G$. Thus $c$ is central and hence $C=\{c\}$. 
+    
+    We now prove $\implies$. If $C=\{c\}$, then $c\in Z(G)$ and $C$ commute with every 
+    conjugacy class of~$G$. 
 \end{proof}
 
-La clasificación de grupos simples finitos permite demostrar un teorema
-similar al teorema de Jordan~\cite{MR636194}. 
+With the CFSG one proves a result similar to that of Jordan. 
 
 \begin{theorem}[Fein--Kantor--Schacher]
-\index{Teorema!de Fein--Kantor--Schacher}
-Sea $G$ un grupo finito no trivial. Si $G$ actúa transitivamente en un conjunto finito $X$ y $|X|>1$, entonces
-existe un primo $p$ y un elemento $g\in G$ sin puntos fijos cuyo orden es una potencia de $p$. 
-%existe $g\in G$ de orden una potencia de $p$ sin puntos fijos. 
+    \index{Fein--Kantor--Schacher's theorem}
+    Let $G$ be a non-trivial finite group. If $G$ acts transitively
+    on a finite set $X$ and $|X|>1$, then
+    there exist a prime number $p$ and an element $g\in G$ with no fixed-points
+    with order a power of $p$.
 \end{theorem}
 
-No veremos la demostración en este curso. 
+The proof appears in~\cite{MR636194}. 
 
-\index{Desarreglos}
-Supongamos que $G$ es un grupo finito que actúa fiel y transitivamente en un conjunto $X$,
-digamos $G\leq\Sym_n$, donde $X=\{1,2,\dots,n\}$. Sea 
-$G_0$ el conjunto de $g\in G$ sin puntos fijos, es decir $g(x)\ne x$ para todo $x\in X$. 
-Tales permutaciones se conocen como \textbf{desarreglos}. 
-Sea $c_0=|G_0|/|G|$. 
+\topic{Derangements: Cameron--Cohen's theorem}
+
+\index{Derangements}
+Let $G$ be a finite group that acts faithfully and transitively 
+on a finite set $X$, say 
+$G\leq\Sym_n$, where $X=\{1,2,\dots,n\}$. Let 
+$G_0$ the set of elements $g\in G$ with no fixed-ponts, 
+that is $g(x)\ne x$ for all $x\in X$. 
+Such permutations are known as \textbf{derangements}. 
+Let $c_0=|G_0|/|G|$. 
 
 \begin{theorem}[Cameron--Cohen]
-\index{Teorema!de Cameron--Cohen}
-Si $G$ es un subgrupo de $\Sym_n$ que actúa transitivamente en $\{1,\dots,n\}$, entonces $c_0\geq\frac{1}{n}$.
+    \index{Cameron--Cohen's theorem}
+    If $G$ is a subgroup of $\Sym_n$ that acts transitively on 
+    $\{1,\dots,n\}$, then $c_0\geq\frac{1}{n}$.
 \end{theorem}
 
 \begin{proof}
-Sea $X=\{1,\dots,n\}$. El rango de $G$ es, por definición, la cantidad de orbitales de $G$ en $X$. Luego 
-el rango de $G$ es $\geq2$, pues $X\times X$ puede descomponerse como 
-$X\times X=\Delta\cup\left((X\times X)\setminus\Delta\right)$. 
-Sean $\chi(g)=|\Fix(g)|$ y $G_0=\{g\in G:\chi(g)=0\}$. Si $g\not\in G_0$, entonces $1\leq\chi(g)\leq n$. Como 
-$(\chi(g)-1)(\chi(g)-n)\leq 0$,
-se tiene que 
-\[
-\frac{1}{|G|}\sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)\leq 0.
-\]
-Por un lado, 
-\begin{align*}
-\frac{1}{|G|}\sum_{g\in G}(\chi(g)&-1)(\chi(g)-n)\\
-&=\frac{1}{|G|}\left\{\sum_{g\in G_0}+\sum_{g\in G\setminus G_0}\right\}(\chi(g)-1)(\chi(g)-n)\\
-&\leq n\frac{|G_0|}{|G|}=nc_0.
-\end{align*}
-Por otro lado, como el rango de $G$ es $\geq2$, tenemos 
-\begin{equation}
-    \label{eq:CameronCohen}
-    2-\frac{n+1}{|G|}\sum_{g\in G}\chi(g)+n\leq 
-    \frac{1}{|G|}\sum_{g\in G}(\chi(g)-1)(\chi(g)-n)\leq nc_0.
-\end{equation}
-Por hipotesis, $G$ es transitivo en $X$. El teorema de Cauchy--Frobenius--Burnside implica entonces que 
-$\sum_{g\in G}\chi(g)=|G|$. Se sigue que $2-(n+1)+n\leq nc_0$ y luego $1/n\leq c_0$. 
-% Si $c_0=1/n$, entonces $G$ tiene rango dos (pues si el rango de $G$ es $>2$ entonces la fórmula~\eqref{eq:CameronCohen}
-% implica que $1/n<c_0$). Además, por un lado, 
-% \begin{align*}
-% \frac{1}{|G|}\sum_{g\in G}(\chi(g)-1)(\chi(g)-n)&=\frac{1}{|G|}\sum_{g\in G}\chi(g)^2-\frac{n+1}{|G|}\sum_{g\in G}\chi(g)+n\\
-% &=2-(n+1)+n=1.    
-% \end{align*}
-% Por otro lado, como $c_0=|G_0|/|G|=1/n$, 
-% \begin{align*}
-% \frac{1}{|G|}\sum_{g\in G}(\chi(g)-1)(\chi(g)-n)
-% &=\frac{1}{|G|}\sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)\\
-% &=\frac{1}{|G|}\sum_{g\in G_0}(\chi(g)-1)(\chi(g)-n)\\
-% &=\frac{1}{|G|}\sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)+1.
-% \end{align*}
-% Luego $\frac{1}{|G|}\sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)=0$ y entonces $(\chi(g)-1)(\chi(g)-n)$ para todo $g\in G\setminus G_0$.
+    Let $X=\{1,\dots,n\}$. By definition, the rank of $G$ isthe number
+    of orbitals of $G$ on $X$. It follows that the rank is $\geq2$, as
+    $X\times X$ decomposes as 
+    \[
+    X\times X=\Delta\cup\left((X\times X)\setminus\Delta\right)
+    \]
+    Let $\chi(g)=|\Fix(g)|$ and $G_0=\{g\in G:\chi(g)=0\}$. If $g\not\in G_0$, then $1\leq\chi(g)\leq n$. Since  
+    $(\chi(g)-1)(\chi(g)-n)\leq 0$,
+    \[
+    \frac{1}{|G|}\sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)\leq 0.
+    \]
+    On the one hand, 
+    \begin{align*}
+    \frac{1}{|G|}\sum_{g\in G}(\chi(g)&-1)(\chi(g)-n)\\
+    &=\frac{1}{|G|}\left\{\sum_{g\in G_0}+\sum_{g\in G\setminus G_0}\right\}(\chi(g)-1)(\chi(g)-n)\\
+    &\leq n\frac{|G_0|}{|G|}=nc_0.
+    \end{align*}
+    On the other hand, since the rank of $G$ is $\geq2$, 
+    \begin{equation}
+        \label{eq:CameronCohen}
+        2-\frac{n+1}{|G|}\sum_{g\in G}\chi(g)+n\leq 
+        \frac{1}{|G|}\sum_{g\in G}(\chi(g)-1)(\chi(g)-n)\leq nc_0.
+    \end{equation}
+    Since $G$ is transitive on $X$, Cauchy--Frobenius--Burnside's theorem implies that
+    $\sum_{g\in G}\chi(g)=|G|$. Thus $2-(n+1)+n\leq nc_0$ and hence
+    $1/n\leq c_0$. 
 \end{proof}
 
-El teorema de Cameron--Cohen tiene una segunda parte: 
-Si $n$ no es potencia de un primo, entonces $c_0>1/n$. 
-Daremos la demostración en el capítulo~\ref{Frobenius}, donde 
-estudiaremos grupos de Frobenius.  
+Cameron--Cohen's theorem contains another claim: If
+$n$ is not the power of a prime number, then 
+$c_0>1/n$. The proof uses Frobenius' theorem. 
 
-La cota del teorema de Cameron--Cohen puede mejorarse si se utiliza la 
-clasificación de grupos simples finitos~\cite{MR1484879}.  
+With the CFSG the bound in Cameron--Cohen's theorem can be improved:
 
 \begin{theorem}[Guralnick--Wan]
-\index{Teorema!de Guralnick--Wan}
-Sea $G$ un grupo finito transitivo de grado $n\geq2$. Si $n$ no es potencia de un 
-número primo 
-y además $G\ne\Sym_n$ para $n\in\{2,4,5\}$, entonces $c_0\geq 2/n$.
+    \index{Guralnick--Wan's theorem}
+    Let $G$ be a finite transitive group of degree $n\geq2$. If $n$ 
+    is not a power of a prime number and 
+    $G\ne\Sym_n$ for $n\in\{2,4,5\}$, then $c_0\geq 2/n$.
 \end{theorem}
 
-La demostración utiliza la clasificación de grupos finitos 2-transitivos, que depende del 
-la clasificación de grupos simples finitos.
+The proof appears in~\cite{MR1484879} and uses
+the classification of finite 2-transitive groups, which depends on the CFSG. 
 
 
 
