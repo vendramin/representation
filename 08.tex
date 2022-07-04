@@ -1,6 +1,6 @@
 \chapter{}
 
-Cauchy--Frobenius--Burnside's theorem is useful to
+Cauchy--Frobenius--Burnside theorem is useful to
 find characters. 
 
 \begin{proposition}
@@ -11,7 +11,7 @@ find characters.
 \begin{proof}
     In particular, $G$ is transitive on $X$. 
     Since the trivial character $\chi_1$ is irreducible, $\langle\chi_1,\chi_1\rangle=1$. 
-    By Cauchy--Frobenius--Burnside's, the rank of $G$ on $X$ is  
+    By Cauchy--Frobenius--Burnside, the rank of $G$ on $X$ is  
     \begin{gather*}
         2=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|^2=\langle \chi,\chi\rangle.
    \end{gather*}
@@ -121,7 +121,7 @@ Another orbit of $X$ is
 \end{tikzpicture}
 \]
 
-Cauchy--Frobenius--Burnside's theorem states that
+Cauchy--Frobenius--Burnside theorem states that
 there are  
 \[
 \frac{1}{|G|}\sum_{x\in G}|\Fix(x)|
@@ -195,14 +195,14 @@ orbits.
 
 For a finite group $G$ let $\cp(G)$ be the probability 
 that two random elements of $G$ commute. 
-As an application of Cauchy--Frobenius--Burnside's theorem we
+As an application of Cauchy--Frobenius--Burnside theorem we
 prove that 
 $\cp(G)=k/|G|$, where $k$ is the number of conjugacy classes
 of $G$.
 
 \begin{theorem}
 \index{Theorem!5/8}
-\index{Erd\"os--Turan's theorem}
+\index{Erd\"os--Turan theorem}
     If $G$ is a non-abelian finite group, then $\cp(G)\leq5/8$.
 \end{theorem}
 
@@ -212,7 +212,7 @@ of $G$.
     \cp(G)=\frac{|C|}{|G|^2}=\frac{k}{|G|}.
     \]
     In fact, let $G$ act on $G$ by conjugation. 
-    By Cauchy--Frobenius--Burnside's theorem, 
+    By Cauchy--Frobenius--Burnside theorem, 
     \[
     k=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|=\frac{1}{|G|}\sum_{g\in G}|C_G(g)|=\frac{|C|}{|G|},
     \]
@@ -266,7 +266,7 @@ If $G$ is a finite group, then
 
 \begin{proof}
     Let $k$ be the number of conjugacy classes of $G$.
-    By Cauchy--Schwarz's inequality, 
+    By Cauchy--Schwarz inequality, 
     \begin{align*}
         \left(\sum_{\chi\in\Irr(G)}\chi(1)\right)^2
         &\leq\left(\sum_{\chi\in\Irr(G)}\chi(1)^2\right)\left(\sum_{\chi\in\Irr(G)}1\right)^2
@@ -291,7 +291,7 @@ appeared in 1973.
 The alternating group $\Alt_5$ is important in this setting:
 
 \begin{theorem}[Guralnick--Robinson]
-    \index{Guralnick--Robinson's theorem}
+    \index{Guralnick--Robinson theorem}
     If $G$ is a finite non-solvable group such that $\cp(G)>3/40$, then
     $G\simeq\Alt_5\times T$ for some abelian group 
     $T$ and $\cp(G)=1/12$. 
@@ -316,7 +316,7 @@ proof independent of the CFSG appears in~\cite{MR1346207}.
 There is a probabilistic version of Thompson's theorem:
 
 \begin{theorem}[Guralnick--Wilson]
-    \index{Guralnick--Wilson's theorem}
+    \index{Guralnick--Wilson theorem}
     Let $G$ be a finite group.
     \begin{enumerate}
         \item If the probability that two random elements of $G$ 
@@ -342,7 +342,7 @@ We now follow~\cite{MR1997347} to present other applications.
 \end{theorem}
 
 \begin{proof}
-    Cauchy--Frobenius--Burnside's theorem implies that
+    Cauchy--Frobenius--Burnside theorem implies that
     \[
     1=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|=\frac{1}{|G|}\left(|X|+\sum_{g\ne 1}|\Fix(g)|\right).
     \]
@@ -401,7 +401,7 @@ such that $[c,d]=1$.
 With the CFSG one proves a result similar to that of Jordan. 
 
 \begin{theorem}[Fein--Kantor--Schacher]
-    \index{Fein--Kantor--Schacher's theorem}
+    \index{Fein--Kantor--Schacher theorem}
     Let $G$ be a non-trivial finite group. If $G$ acts transitively
     on a finite set $X$ and $|X|>1$, then
     there exist a prime number $p$ and an element $g\in G$ with no fixed-points
@@ -410,7 +410,7 @@ With the CFSG one proves a result similar to that of Jordan.
 
 The proof appears in~\cite{MR636194}. 
 
-\topic{Derangements: Cameron--Cohen's theorem}
+\topic{Derangements: Cameron--Cohen theorem}
 
 \index{Derangements}
 Let $G$ be a finite group that acts faithfully and transitively 
@@ -422,7 +422,7 @@ Such permutations are known as \textbf{derangements}.
 Let $c_0=|G_0|/|G|$. 
 
 \begin{theorem}[Cameron--Cohen]
-    \index{Cameron--Cohen's theorem}
+    \index{Cameron--Cohen theorem}
     If $G$ is a subgroup of $\Sym_n$ that acts transitively on 
     $\{1,\dots,n\}$, then $c_0\geq\frac{1}{n}$.
 \end{theorem}
@@ -451,19 +451,19 @@ Let $c_0=|G_0|/|G|$.
         2-\frac{n+1}{|G|}\sum_{g\in G}\chi(g)+n\leq 
         \frac{1}{|G|}\sum_{g\in G}(\chi(g)-1)(\chi(g)-n)\leq nc_0.
     \end{equation}
-    Since $G$ is transitive on $X$, Cauchy--Frobenius--Burnside's theorem implies that
+    Since $G$ is transitive on $X$, Cauchy--Frobenius--Burnside theorem implies that
     $\sum_{g\in G}\chi(g)=|G|$. Thus $2-(n+1)+n\leq nc_0$ and hence
     $1/n\leq c_0$. 
 \end{proof}
 
-Cameron--Cohen's theorem contains another claim: If
+Cameron--Cohen theorem contains another claim: If
 $n$ is not the power of a prime number, then 
 $c_0>1/n$. The proof uses Frobenius' theorem. 
 
-With the CFSG the bound in Cameron--Cohen's theorem can be improved:
+With the CFSG the bound in Cameron--Cohen theorem can be improved:
 
 \begin{theorem}[Guralnick--Wan]
-    \index{Guralnick--Wan's theorem}
+    \index{Guralnick--Wan theorem}
     Let $G$ be a finite transitive group of degree $n\geq2$. If $n$ 
     is not a power of a prime number and 
     $G\ne\Sym_n$ for $n\in\{2,4,5\}$, then $c_0\geq 2/n$.

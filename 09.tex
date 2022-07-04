@@ -1,6 +1,225 @@
 \chapter{}
 
-\topic{Brauer–Fowler's theorem}
+\topic{Brauer–Fowler theorem}
+
+\index{Parte!simétrica}
+\index{Parte!antisimétrica}
+Sea $\rho\colon G\to\GL(V)$ 
+una representación
+con caracter $\chi$. Vimos que el $\C[G]$-módulo $V\otimes V$ tiene caracter $\chi^2$. Sea 
+$v_1,\dots,v_n$ una base de $V$ y sea 
+\[
+T\colon V\to V,\quad
+v_i\otimes v_j\mapsto v_j\otimes v_i.
+\]
+Dejamos como ejercicio verificar que $T(v\otimes w)=w\otimes v$ para todo 
+$v,w\in V$. Luego la transformación lineal 
+$T$ no depende de la base elegida. Observemos que
+además $T$ es morfismo de $\C[G]$-módulos, pues
+\[
+T(g\cdot (v\otimes w))=T((g\cdot v)\otimes (g\cdot w))=(g\cdot w)\otimes (g\cdot v)=g\cdot T(w\otimes v)
+\]
+para todo $g\in G$ y $v,w\in V$. 
+En particular, la \textbf{parte simétrica} 
+\begin{gather*}
+S(V\otimes V)=\{x\in V\otimes V:T(x)=x\}
+\shortintertext{la \textbf{parte antisimétrica}}
+A(V\otimes V)=\{x\in V\otimes V:T(x)=-x\}
+\end{gather*}
+de $V\otimes V$ son ambas 
+$\C[G]$-submódulos de $V\otimes V$. Estos nombres están motivados por la siguiente observación 
+\[
+V\otimes V=S(V\otimes V)\oplus A(V\otimes V).
+\]
+En efecto, 
+$S(V\otimes V)\cap A(V\otimes V)=\{0\}$ pues 
+si $x\in S(V\otimes V)\cap A(V\otimes V)$, entonces $x=T(x)$ y $x=-T(x)$ y luego $x=0$. Además 
+$V\otimes V=S(V\otimes V)+ A(V\otimes V)$ pues todo $x\in V\otimes V$ puede escribirse como 
+\[
+x=\frac12(x+T(x))+\frac12(x-T(x))
+\]
+con $\frac12(x+T(x))\in S(V\otimes V)$ y $\frac12(x-T(x))\in A(V\otimes V)$. 
+
+Veamos que el conjunto $\{v_i\otimes v_j+v_j\otimes v_i:1\leq i,j\leq n\}$ es
+base de $S(V\otimes V)$ 
+y que el conjunto 
+\[
+\{v_i\otimes v_j-v_j\otimes v_i:1\leq i<j\leq n\}
+\]
+es base de $A(V\otimes V)$. Como ambos conjuntos son linealmente independientes, 
+entonces 
+$\dim S(V\otimes V)\geq n(n+1)/2$ y también 
+$\dim A(V\otimes V)\geq n(n-1)/2$. Como además 
+\[
+n^2=\dim (V\otimes V)=\dim S(V\otimes V)+\dim A(V\otimes V),
+\]
+se concluye que $\dim S(V\otimes V)=n(n+1)/2$ y que $\dim A(V\otimes V)=n(n-1)/2$. 
+
+\begin{proposition}
+    Sea $G$ un grupo finito y  
+    sea $V$ un $\C[G]$-módulo de dimensión finita con caracter $\chi$. Si el módulo $S(V\otimes V)$ 
+    tiene caracter $\chi_S$ y el módulo $A(V\otimes V)$ tiene caracter $\chi_A$, entonces 
+    \begin{align*}
+        &\chi_S(g)=\frac12(\chi^2(g)+\chi(g^2)),\\
+        &\chi_A(g)=\frac12(\chi^2(g)-\chi(g^2)).
+    \end{align*}
+\end{proposition}
+
+\begin{proof}
+    Sea $g\in G$. Sea $\rho\colon G\to\GL(V)$ la representación asociada al módulo $V$, es decir $\rho(g)(v)=\rho_g(v)=g\cdot v$. 
+    Sabemos que $\rho_g$ es diagonalizable. Sea $\{e_1,\dots,e_n\}$ una base de autovectores de $\rho_g$, digamos
+    $g\cdot e_i=\lambda_ie_i$ con $\lambda_i\in\C$ para $i\in\{1,\dots,n\}$. En particular, $\chi(g)=\sum_{i=1}^n\lambda_i$. 
+    
+    Como $\{e_i\otimes e_j-e_j\otimes e_i:1\leq i<j\leq n\}$ es base de $A(V\otimes V)$ y además 
+    \[
+    g\cdot (e_i\otimes e_j-e_j\otimes e_i)=\lambda_i\lambda_j(e_i\otimes e_j-e_j\otimes e_i),
+    \]
+    tenemos $\chi_A(g)=\sum_{1\leq i<j\leq n}\lambda_i\lambda_j$. Por otro lado, como $g^2\cdot e_i=\lambda_i^2e_i$ para todo $i$,
+    $\chi(g^2)=\sum_{i=1}^n\lambda_i^2$. Luego
+    \[
+    \chi^2(g)=\chi(g)^2=\sum_{i=1}^n\sum_{j=1}^n\lambda_i\lambda_j=2\sum_{1\leq i<j\leq n}\lambda_i\lambda_j+\sum_{i=1}^n\lambda_i^2=2\chi_A(g)+\chi(g^2).
+    \]
+    Como además $V\otimes V=S(V\otimes V)\oplus A(V\otimes V)$, se tiene 
+    $\chi^2(g)=\chi_S(g)+\chi_A(g)$, es decir 
+    $\chi_S(g)=\frac12(\chi^2(g)+\chi(g^2))$.
+\end{proof}
+
+\index{Involución}
+Una \textbf{involución} en un grupo es un elemento $x\ne 1$ tal que $x^2=1$. 
+Es posible la cantidad de involuciones 
+con la tabla de caracteres:
+
+\begin{proposition}
+Si $G$ es un grupo finito con $t$ involuciones, entonces 
+\[
+1+t=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1).
+\]
+\end{proposition}
+
+\begin{proof}
+Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, donde $\chi_1$ es el caracter trivial de $G$. 
+Para $x\in G$ sea 
+\[
+\theta(x)=|\{y\in G:y^2=x\}|.
+\]
+Como $\theta$ es una función de clases
+$\theta$ puede escribirse como combinación lineal de los $\chi_j$, digamos
+\[
+\theta=\sum_{\chi\in\Irr(G)}\langle\theta,\chi\rangle\chi.
+\]
+Calculamos
+\begin{align*}
+    \langle\chi_S-\chi_A,\chi_1\rangle 
+    &=\frac{1}{|G|}\sum_{g\in G}\chi(g^2)\\
+    &=\frac{1}{|G|}\sum_{x\in G}\sum_{\substack{g\in G\\g^2=x}}\chi(g^2)
+    =\frac{1}{|G|}\sum_{x\in G}\theta(x)\chi(x)=\langle\theta,\chi\rangle.
+\end{align*}
+Luego $\theta(x)=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi$ y el resultado se obtiene
+al evaluar esta expresión en $x=1$. 
+\end{proof}
+
+\index{Desigualdad!de Cauchy--Schwartz}
+Necesitamos un lema:
+% Recordemos la desigualdad de Cauchy--Schwartz. Si $x_1,\dots,x_n\in\R$, entonces
+% $\sum x_i^2\geq\frac{1}{n}(\sum x_i)^2$. 
+
+\begin{lemma}
+Sea $G$ un grupo finito con $k$ clases de conjugación. 
+Si $t$ es la cantidad de involuciones de $G$, entonces 
+$t^2\leq (k-1)(|G|-1)$. 
+\end{lemma}
+
+\begin{proof}
+Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, donde $\chi_1$ es el 
+carácter trivial de $G$. 
+Si $\chi\in\Irr(G)$, entonces
+\[
+\langle\chi^2,\chi_1\rangle=\frac{1}{|G|}\sum_{g\in G}\chi(g)\chi(g)=\langle\chi,\overline{\chi}\rangle=\begin{cases}
+1 & \text{si $\chi=\overline{\chi}$},\\
+0 & \text{en otro caso}.
+\end{cases}
+\]
+Como $\chi^2=\chi_S+\chi_A$, si $\langle\chi^2,\chi_1\rangle=1$, entonces el caracter trivial 
+o bien es $\chi_1$ es parte de $\chi_S$ o bien es parte de $\chi_A$, pero no de ambos. Esto implica que
+\[
+\langle\chi_S-\chi_A,\chi_1\rangle\in\{-1,1,0\}.
+\]
+Vamos a demostrar ahora que 
+$t\leq\sum_{i=2}^k\chi_i(1)$. En efecto, 
+como $|\langle\chi_S-\chi_A,\chi_1\rangle|\leq 1$, 
+entonces 
+\begin{align*}
+1+t=\theta(1)
+&=\left|\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1)\right|\\
+&\leq\sum_{\chi\in\Irr(G)}|\langle\chi_S-\chi_A,\chi_1\rangle|\chi(1)
+\leq\sum_{\chi\in\Irr(G)}\chi(1),
+\end{align*}
+de donde se obtiene inmediatamente que $t\leq\sum_{i=2}^k\chi_i(1)$. 
+Si utilizamos ahora 
+la desigualdad de Cauchy--Schwartz, 
+\[
+t^2\leq\left(\sum_{i=2}^k\chi_i(1)\right)^2
+\leq(k-1)\sum_{i=2}^k\chi(1)^2=(k-1)(|G|-1).\qedhere
+\]
+\end{proof}
+
+Ahora sí estamos en condiciones de dar la primera demostración del teorema de
+Brauer--Fowler. 
+
+\begin{theorem}[Brauer--Fowler]
+\index{Teorema!de Brauer--Fowler}
+Sea $G$ un grupo finito y simple y sea $x$ una involución. Si $|C_G(x)|=n$, entonces $|G|\leq (n^2)!$	
+\end{theorem}
+
+\begin{proof}
+Supongamos primero que existe un subgrupo propio $H$ de $G$ tal que
+$(G:H)\leq n^2$. En ese caso, hacemos actuar a $G$ en $G/H$ por multiplicación a izquierda 
+y tenemos un morfismo de grupos $\rho\colon G\to\Sym_{n^2}$. Como $G$ es un grupo simple, 
+$\ker\rho=\{1\}$ o bien $\ker\rho=G$. Si $\ker\rho=G$, entonces $\rho(g)(yH)=yH$ para todo
+$g\in G$ e $y\in G$, lo que implica que $g\in H$, una contradicción. Luego $\rho$ es inyectiva
+y entonces $G$ es isomorfo a un subgrupo de $\Sym_{n^2}$. En particular, $|G|$ divide a $(n^2)!$
+
+Sea $m=(|G|-1)/t$. 
+Como $|C_G(x)|=n$, el grupo $G$ tiene al menos $|G|/n$ involuciones (pues la clase de conjugación
+de $x$ tiene tamaño $|G|/n$ y todos sus elementos son involuciones), es decir $t\geq |G|/n$. Luego
+$m=(|G|-1)/t<n$. Basta demostrar entonces que $G$ contiene un subgrupo de índice $\leq m^2$. 
+
+Sean $C_1,\dots,C_k$ las clases de conjugación de $G$, donde $C_1=\{1\}$. 
+Como $G$ es simple, $|C_i|>1$ 
+para todo $i\in\{2,\dots,k\}$. Notar que 
+\[
+|G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}\Longleftrightarrow t^2\leq(k-1)(|G|-1),
+\]
+que vale gracias al lema anterior. 
+Si $|C_i|>m$ para todo $i\in\{2,\dots,k\}$, entonces, como
+\[
+|G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}=(k-1)m^2,
+\]
+tendríamos 
+\[
+|G|-1=\sum_{i=2}^k|C_i|>(k-1)m^2,
+\]
+una contradicción. Luego existe una clase de conjugación $C$ de $G$ tal que $|C|\leq m^2$. Si $g\in C$, entonces
+$C_G(g)$ es un subgrupo de $G$ de índice $|C|\leq m^2$.
+\end{proof}
+
+La cota del teorema de Brauer--Fowler no es importante, ya que
+para considerar una forma posible de atacar la clasificación de grupos simples 
+solamente es necesario saber que existen  
+finitos grupos simples finitos con un cierto centralizador de involusiones.
+
+\begin{corollary}
+    Sea $n\in\N$. Existe (a lo sumo) una cantidad finita de grupos simples 
+    finitos con una involución con centralizador de orden $n$. 
+\end{corollary}
+
+Veamos un ejemplo sencillo que da una idea de cómo es que pueden clasificarse grupos simples
+una vez que se tiene fija la estructura del centralizador de una involución. 
+
+\begin{exercise}
+Si $G$ es un grupo simple finito y $x$ es una involución con centralizador de orden dos, entonces 
+$G\simeq\Z/2$. 
+\end{exercise}
 
 \topic{Induction and restriction}
 
@@ -8,4 +227,377 @@
 
 \topic{Some theorems of Burnside}
 
+For $n\geq1$ let $\{e_1,\dots,e_n\}$ be the standard basis of $\C^n$.  
+The \textbf{natural representation} of $\Sym_n$ is 
+$\rho\colon\Sym_n\to\GL(n,\C)$, $\sigma\mapsto\rho_{\sigma}$, 
+where $\rho_\sigma(e_j)=e_{\sigma(j)}$ for all $j\in\{1,\dots,n\}$. 
+The matrix of $\rho_\sigma$ in the standard basis is  
+\begin{equation}
+    \label{eq:Sn_natural}
+    (\rho_\sigma)_{ij}=\begin{cases}
+      1 & \text{if $i=\sigma(j)$},\\
+      0 & \text{otherwise}.
+    \end{cases}
+\end{equation}
+
+\begin{lemma}
+	\label{lem:permutaciones}
+	For $n\geq1$ let $\rho\colon\Sym_n\to\GL(n,\C)$ be the natural 
+	representation of the symmetric group. 
+	If $A\in\C^{n\times n}$ and $\sigma\in\Sym_n$, then
+	\[
+		A_{ij}=(\rho_{\sigma}A)_{\sigma(i)j}=(A\rho_{\sigma})_{i\sigma^{-1}(j)}
+	\]
+    for all $i,j\in\{1,\dots,n\}$.
+\end{lemma}
+
+\begin{proof}
+	With~\eqref{eq:Sn_natural} we compute:
+	\[
+		(A\rho_{\sigma})_{ij}=\sum_{k=1}^n A_{ik}(\rho_{\sigma})_{kj}=A_{i\sigma(j)},
+		\quad
+		(\rho_\sigma A)_{ij}=\sum_{k=1}^n (\rho_\sigma)_{ik}A_{kj}=A_{\sigma^{-1}(i)j}.\qedhere
+	\]
+\end{proof}
+
+\begin{definition}
+  \index{Real!character}
+  Let $G$ be a finite group. A character $\chi$ of $G$ is said to be
+  \textbf{real} if
+  $\chi=\overline{\chi}$, that is $\chi(g)\in\R$ for all $g\in G$. 
+\end{definition}
+
+\begin{exercise}
+	\label{xca:chi_irreducible}
+	Let $G$ be a finite group. If $\chi\in\Irr(G)$, then 
+	$\overline{\chi}$ is irreducible.
+\end{exercise}
+
+\begin{definition}
+  \index{Real!conjugacy class}
+  Let $G$ be a group. A conjugacy class $C$ of $G$ is said to be
+  \textbf{real} if for every $g\in C$ one has $g^{-1}\in C$. 
+\end{definition}
+
+We use the following notation: if $G$ is a group and $C=\{xgx^{-1}:x\in G\}$ is a conjugacy class of  
+$G$, then $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$.  
+
+\begin{theorem}[Burnside]
+    \index{Burnside's!theorem}
+    Let $G$ be a finite group. The number of real conjugacy classes is equal 
+    to the number of real irreducible characters. 
+\end{theorem}
+
+\begin{proof}
+  Let $C_1,\dots,C_r$ be the conjugacy classes of $G$ and  
+  let $\chi_1,\dots,\chi_r$ be the irreducible characters of $G$. 
+  Let $\alpha,\beta\in\Sym_r$ be such that $\overline{\chi_i}=\chi_{\alpha(i)}$ and 
+  $C_i^{-1}=C_{\beta(i)}$ for all $i\in\{1,\dots,r\}$. Note that $\chi_i$
+  is real if and only if $\alpha(i)=i$ and that $C_i$ is real if and only if 
+  $\beta(i)=i$. The number $n$ of fixed points of $\alpha$ is equal to the number
+  of irreducible characters of $G$ and the number $m$ of fixed points of $\beta$ is equal
+  to the number of real classes. 
+  Let $\rho\colon\Sym_r\to\GL(r,\C)$ be the natural representation of $\Sym_r$. Then
+  $\chi_\rho(\alpha)=n$ and $\chi_\rho(\beta)=m$. We claim that 
+  $\trace\rho_\alpha=\trace\rho_\beta$. 
+  Let $X\in\GL(r,\C)$ be the character matrix of $G$. 
+  By Lemma~\ref{lem:permutaciones}, 
+  \[
+	\rho_\alpha X=\overline{X}=X\rho_\beta.
+  \]
+  Since $X$ is invertible, $\rho_{\alpha}=X\rho_{\beta}X^{-1}$. Thus 
+  \[
+    n=\chi_{\rho}(\alpha)=\trace\rho_{\alpha}=\trace\rho_{\beta}=\chi_{\rho}(\beta)=m.\qedhere
+  \]
+\end{proof}
+
+\begin{corollary}
+  \label{corollary:|G|impar}
+  Let $G$ be a finite group. Then $|G|$ is odd if and only if
+  the only real $\chi\in\Irr(G)$ is the trivial character. 
+\end{corollary}
+
+\begin{proof}
+    We first prove $\impliedby$. If $|G|$ is even, there exists 
+    $g\in G$ of order two (Cauchy's theorem). The conjugacy class of $g$ 
+    is real. 
+
+    We now prove $\implies$. Assume that $G$ has a non-trivial 
+    real conjugacy class $C$. Let $g\in C$. We claim that 
+    $G$ has an element of even order. Let $h\in G$ be such that
+    $hgh^{-1}=g^{-1}$. Then $h^2\in C_G(g)$, as $h^2gh^{-2}=g$. 
+    If $h\in\langle h^2\rangle\subseteq C_G(g)$, then $g$ has 
+    even order, as $g^{-1}=g$. If $h\not\in\langle h^2\rangle$, then 
+    $h^2$ does not generate $\langle h\rangle$. Hence $h$ has odd order, 
+    as $|h|\ne|h^2|=|h|/(|h|:2)$.  
+\end{proof}
+
+\begin{theorem}[Burnside]
+  \index{Burnside's!theorem}
+  \label{thm:Burnside_mod16}
+  Let $G$ be a finite group of odd order 
+  with $r$ conjugacy classes. Then
+  $r\equiv|G|\bmod{16}$.
+\end{theorem}
+
+\begin{proof}
+  Since $|G|$ is odd, every non-trivial $\chi\in\Irr(G)$ is not real by
+  the previous corollary. The irreducible characters 
+  of $G$ are then 
+  \[
+    \chi_1,\chi_2,\overline{\chi_2},\dots,\chi_k,\overline{\chi_k},
+    \quad
+    r=1+2k,
+  \]
+  where $\chi_1$ denotes the trivial character. 
+  For every $j\in\{2,\dots,k\}$ let $d_j=\chi_j(1)$. 
+  Since each $d_j$ divides 
+  $|G|$ by Frobenius' theorem and  $|G|$ is odd, 
+  every $d_j$ is an odd number, 
+  say $d_j=1+2m_j$. Thus  
+  \begin{align*}
+    |G|&=1+\sum_{j=2}^k 2d_j^2=1+\sum_{j=2}^k2(2m_j+1)^2\\
+    &=1+\sum_{j=2}^k2(4m_j^2+4m_j+1)
+    =1+2k+8\sum_{j=2}^km_j(m_j+1).
+  \end{align*}
+  Hence $|G|\equiv r\bmod{16}$, 
+  as $r=1+2k$ and every $m_j(m_j+1)$ is even. 
+\end{proof}
+
+\begin{exercise}
+    Prove that every group of order 15 is abelian. 
+\end{exercise}
+
 \topic{Solvable groups and Burnside's theorem}
+
+\index{Derived series}
+For a group $G$ let 
+$G^{(0)}=G$ and 
+$G^{(i+1)}=[G^{(i)},G^{(i)}]$ for $i\geq0$.
+The \textbf{derived series} of $G$ is the sequence
+\[
+G=G^{(0)}\supseteq G^{(1)}\supseteq G^{(2)}\supseteq\cdots
+\]
+Each $G^{(i)}$ is a characteristic subgroup of $G$. We say that 
+$G$ is \textbf{solvable} if $G^{(n)}=\{1\}$ for some $n$.  
+
+\begin{example}
+	Abelian groups are solvable. 
+\end{example}
+
+\begin{example}
+	The group $\SL_2(3)$ is solvable, as the derived series is 
+	\[
+	\SL_2(3)\supseteq Q_8\supseteq C_4\supseteq C_2\supseteq \{1\}.
+	\]
+	Here is the what the computer says:
+\begin{lstlisting}
+gap> IsSolvable(SL(2,3));
+true
+gap> List(DerivedSeries(SL(2,3)),StructureDescription);
+[ "SL(2,3)", "Q8", "C2", "1" ]
+\end{lstlisting}
+\end{example}
+
+\begin{example}
+	Non-abelian simple groups cannot be solvable. 
+\end{example}
+
+\begin{exercise}
+	\label{xca:solvable}
+	Let $G$ be a group. Prove the following statements:
+	\begin{enumerate}
+		\item A subgroup $H$ of $G$ is solvable.
+		\item Let $K$ be a normal subgroup of $G$. 
+		    Then $G$ is solvable if and only if $K$ and $G/K$ are solvable.
+	\end{enumerate}
+\end{exercise}
+
+\begin{example}
+	For $n\geq5$ the group $\Alt_n$ is not solvable. It follows that 
+	$\Sym_n$ is not solvable for $n\geq5$. 
+\end{example}
+
+\begin{exercise}
+\label{xca:pgroups_solvable}
+	Let $p$ be a prime number. Prove that 
+	finite $p$-groups are solvable.
+\end{exercise}
+
+\begin{theorem}[Burnside]
+	\index{Burnside's theorem}
+	\label{thm:Burnside_auxiliar}
+	Let $G$ be a finite group. If $\phi\colon G\to\GL(n,\C)$ is a representation
+	with character $\chi$ and $C$ is a conjugacy class of $G$ such that 
+	$\gcd(|C|,n)=1$, then for every $g\in C$ either 
+	$\chi(g)=0$ or $\phi_g$ is a scalar matrix. 
+\end{theorem}
+
+We need a lemma.
+
+\begin{lemma}
+	\label{lem:4Burnside}
+	Let $\epsilon_1,\dots,\epsilon_n$ be roots of one such that 
+	$(\epsilon_1+\cdots+\epsilon_n)/n\in\A$. Then either 
+	$\epsilon_1=\cdots=\epsilon_n$ or 
+	$\epsilon_1+\cdots+\epsilon_n=0$.
+\end{lemma}
+
+\begin{proof}
+	Let $\alpha=(\epsilon_1+\cdots+\epsilon_n)/n$.
+	Si los $\epsilon_j$ no son todos iguales, entonces $N(\alpha)<1$. Además 
+	$N(\beta)<1$ para todo conjugado algebraico $\beta$ de $\alpha$. Como el
+	producto de los conjugados algebraicos de $\alpha$ es un entero de módulo
+	$<1$, se conluye que es cero.
+\end{proof}
+
+Now we prove the theorem.
+
+\begin{proof}[Proof of Theorem \ref{thm:Burnside_auxiliar}]
+	Sean $\epsilon_1,\dots,\epsilon_n$ los autovalores de $\phi_g$. Como
+	$(|C|:n)=1$, existen $a,b\in\Z$ tales que $a|C|+bn=1$.  Como
+	$|C|\chi(g)/n\in\A$, al multiplicar por $\chi(g)/n$ obtenemos 
+	\[
+		a|C|\frac{\chi(g)}{n}+b\chi(g)=\frac{\chi(g)}{n}=\frac{1}{n}(\epsilon_1+\cdots+\epsilon_n)\in\A.
+	\]
+	El lema anterior nos dice que entonces hay dos posbilidades:
+	$\epsilon_1=\cdots=\epsilon_n$ o bien $\epsilon_1+\cdots+\epsilon_n=0$. En
+	el primer caso, como $\phi_g$ es diagonalizable, $\phi_g$ es una matriz
+	escalar. El segundo caso dice exactamente que $\chi(g)=0$.
+\end{proof}
+
+\begin{theorem}[Burnside]
+	\index{Teorema!de Burnside}
+  Sea $p$ un número primo. Si $G$ es un grupo finito y $C$ es una clase de
+  conjugación de $G$ con $p^k>1$ elementos, entonces $G$ no es simple.
+\end{theorem}
+
+\begin{proof}
+	Sea $g\in C\setminus\{1\}$. Por la ortogonalidad de las columnas, 
+	\begin{equation}
+	\label{eq:Burnside}
+	\begin{aligned}
+		0&=\sum_{\chi\in\Irr(G)}\chi(1)\chi(g)\\
+		&=\sum_{p\mid\chi(1)}\chi(1)\chi(g)+\sum_{p\nmid\chi(1)}\chi(1)\chi(g)+1,
+	\end{aligned}
+	\end{equation}
+	donde el uno corresponde a la representación trivial de $G$. 
+	
+	Vamos a mirar esta ecuación módulo $p$. Más precisamente, si $\chi(g)=0$ para todo $\chi\in\Irr(G)$
+	tal que $\chi\ne\chi_1$ y $p\nmid\chi(1)$, entonces
+	podemos escribir
+	\[
+	-\frac{1}{p}=\sum\frac{\chi(1)}{p}\chi(g)\in\A\cap\Q=\Z,
+	\]
+	donde la suma se toma sobre todos los irreducibles no triviales de $G$ de grado divisible por $p$, 
+	una contradicción. Luego existe una representación no
+	trivial irreducible $\phi$ con carácter $\chi$ tal que $p$ no divide a
+	$\chi(1)$ y además $\chi(g)\ne0$. Por el teorema anterior, $\phi_g$ es una
+	matriz escalar. Si $\phi$ es fiel, entonces $g$ es un elemento central no
+	trivial, una contradicción pues $|C|>1$. En caso contrario, $G$ no es simple pues
+	$\ker\phi$ es un subgrupo propio no trivial de $G$.
+%	Si $p$ divide a $\deg\phi$, entonces
+%	$\frac1p(\deg\phi)\chi_\phi(g)\in\A$ y luego
+%	\[
+%		\alpha=\sum_{p\mid\deg\phi}\frac1p(\deg\phi)\chi_\phi(g)\in\A.
+%	\]
+%	La fórmula~\eqref{eq:Burnside} queda entonces 
+%	\[
+%		0=1+p\alpha+\sum_{p\nmid\deg\phi}(\deg\phi)\chi_{\phi}(g).
+%	\]
+\end{proof}
+
+\begin{theorem}[Burnside]
+  \index{Teorema!de Burnside}
+  Sean $p,q$ primos. Si $G$ tiene orden $p^aq^b$ entonces $G$ es resoluble.
+\end{theorem}
+
+\begin{proof}
+	Supongamos que el teorema no es cierto y sea $G$ un grupo de orden $p^aq^b$
+	minimal con la propiedad de no ser resoluble. La minimalidad de $|G|$
+	implica que $G$ es simple. Por el teorema anterior, $G$ no tiene clases de
+	conjugación de tamaño $p^k$ ni clases de tamaño $q^l$ con $k,l\geq1$. El
+	tamaño de toda clase de conjugación de $G$ es entonces igual a uno o es
+	divisible por $pq$. Pero entonces la ecuación de clases, 
+	\[
+		|G|=1+\sum_{C:|C|>1}|C|,
+	\]
+	donde la suma se hace sobre todas las clases de conjugación que tienen más
+	de un elemento, da una contradicción.
+\end{proof}
+
+Concluimos el capítulo con los enunciados de algunas 
+generalizaciones del teorema de Burnside. 
+
+\begin{theorem}[Kegel--Wielandt]
+\index{Teorema!de Kegel--Wielandt}
+Si $G$ es un grupo finito y existen subgrupos nilpotentes $A$ y $B$ de $G$ tales
+que $G=AB$, entonces $G$ es resoluble. 
+\end{theorem}
+
+La demostración del teorema de Kegel--Wielandt puede consultarse en el segundo 
+capítulo del libro~\cite{MR1211633}, más precisamente en el teorema 2.4.3. 
+
+\begin{theorem}[Feit--Thompson]
+\index{Teorema!de Feit--Thompson}
+Todo grupo finito de orden impar es resoluble. 
+\end{theorem}
+
+La demostración del teorema de Feit--Thompson es extremadamente difícil y ocupa un volumen completo del 
+\emph{Pacific Journal of Mathematics}~\cite{MR166261}. 
+En~\cite{MR3111271} se anunció haber verificado formalmente 
+demostración del teorema de Feit--Thompson con el 
+sistema de ayuda para la demostración de teoremas Coq. 
+
+\medskip
+\index{Conjetura!de Feit--Thompson}
+En los sesenta se sabía que la demostración del teorema de Feit--Thomson iba a poder simplificarse 
+si la conjetura de Feit--Thompson es verdadera:
+
+\begin{quote}
+No existen primos distintos $p$ y $q$ tales que
+$\frac {p^{q}-1}{p-1}$ divide a $\frac{q^{p} - 1}{q - 1}$. 
+\end{quote}
+
+Ya no es necesaria esa conjetura para simplificar la demostración, 
+y la conjetura de Feit--Thompson permanece abierta. 
+En~\cite{MR297686} 
+Stephens demostró que la versión fuerte de la conjetura no es cierta, ya que 
+los enteros $\frac {p^{q}-1}{p-1}$ y $\frac{q^{p} - 1}{q - 1}$ 
+podrían tener factores en común. De hecho, si $p=17$ y $q=3313$, 
+entonces 
+\[
+\gcd\left(\frac {p^{q}-1}{p-1},\frac{q^{p} - 1}{q - 1}\right)=112643.
+\]
+Hoy podemos reproducir los cálculos de 
+Stephens con casi cualquier computadora de escritorio:
+\begin{lstlisting}
+gap> Gcd((17^3313-1)/16,(3313^17-1)/3312);
+112643
+\end{lstlisting}
+
+Otra dirección en la que puede generalizarse el teorema de Burnside 
+es con el uso de las funciones de palabra. 
+Una \emph{función de palabra} de un grupo $G$ es una función 
+\[
+G^k\to G,\quad 
+(x_1,\dots,x_k)\mapsto w(x_1,\dots,x_k)
+\]
+para alguna 
+palabra $w(x_1,\dots,x_k)$ en el grupo libre $F_k$ de rango $k$. 
+Algunas palabras son sobreyecticas en 
+todo grupo o en cierta familia de grupos. Por ejemplo, 
+la conjetura de Ore es la sobreyectividad de la función 
+$(x,y)\mapsto [x,y]=xyx^{-1}y^{-1}$ en todo grupo finito simple no abeliano.
+
+\begin{theorem}[Guralnick--Liebeck--O'Brien--Shalev--Tiep]
+Sean $p$ y $q$ dos primos, $a,b\geq0$ y $N=p^aq^b$. La función $(x,y)\mapsto x^Ny^N$ es 
+sobreyectiva en todo grupo simple.
+\end{theorem}
+
+El teorema fue demostrado en~\cite{MR3827208}. 
+
+Veamos por qué implica el teorema de Burnside. Supongamos que $G$ es un grupo de orden $N=p^aq^b$ y que $G$ no es resoluble. 
+Si fijamos una serie de composición de $G$, tenemos un factor $S$ no abeliano de orden que divide a $N$. Como entonces
+$S$ es simple y no abeliano y $s^N=1$, se concluye que la función $(x,y)\mapsto x^Ny^N$ tiene imagen trivial en $S$, una contradicción al teorema. 
+
