@@ -94,3 +94,198 @@ trick.
 
 \topic{Examples of character tables}
 
+Let $G$ be a finite group and $\chi_1,\dots,\chi_r$ be the irreducible characters of $G$. Without loss of generality
+we may assume that $\chi_1$ is the trivial character, i.e. $\chi_1(g)=1$ for all $g\in G$. 
+Recall that $r$ is the number of conjugacy classes of $G$. Each $\chi_j$ is constant on conjugacy classes. 
+The \textbf{character table} of 
+$G$ is given by 
+\begin{center}
+\begin{tabular}{|c|cccc|}
+\hline 
+ & $1$ & $k_{2}$ & $\cdots$ & $k_{r}$\tabularnewline
+ & $1$ & $g_{2}$ & $\cdots$ & $g_{r}$\tabularnewline
+\hline 
+$\chi_{1}$ & $1$ & $1$ & $\cdots$ & $1$\tabularnewline
+$\chi_{2}$ & $n_{2}$ & $\chi_{2}(g_{2})$ & $\cdots$ & $\chi_{2}(g_{r})$\tabularnewline
+$\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$\tabularnewline
+$\chi_{r}$ & $n_{r}$ & $\chi_{r}(g_{2})$ & $\cdots$ & $\chi_{r}(g_{r})$\tabularnewline
+\hline
+\end{tabular}
+\end{center}
+where the $n_j$ are the degrees of the irreducible representations of $G$ and each $k_j$ is 
+the size of the conjugacy class of the element $g_j$. By convention, the character table
+contains not only the values of the irreducible characters of the group. 
+
+\begin{example}
+	Sea $G=\langle g:g^4=1\rangle$ 
+	be the cyclic group of order four. The character table of $G$ is given by
+	\begin{center}
+		\begin{tabular}{|c|cccc|}
+			\hline 
+			& 1 & 1 & 1 & 1\tabularnewline
+			& $1$ & $g$ & $g^2$ & $g^{3}$\tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $\lambda$ & $\lambda^2$ & $\lambda^{3}$\tabularnewline
+			$\chi_{3}$ & $1$ & $\lambda^2$ & $\lambda^4$ & $\lambda^{2}$\tabularnewline
+			$\chi_{4}$ & $1$ & $\lambda^{3}$ & $\lambda^{2}$ & $\lambda$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+ Let us see how to see this calculation in the computer:
+\begin{lstlisting}
+gap> C4 := CyclicGroup(4);;                       
+gap> T := CharacterTable(C4);;
+gap> Display(T);
+CT1
+
+     2  2  2  2  2
+
+      1a 4a 2a 4b
+
+X.1     1  1  1  1
+X.2     1 -1  1 -1
+X.3     1  A -1 -A
+X.4     1 -A -1  A
+
+A = E(4)
+  = Sqrt(-1) = i
+\end{lstlisting}
+Some remarks: 
+ \begin{enumerate}
+     \item The symbol \lstinline{E(4)} denotes a primitive fourth root of 1.
+     \item The function \lstinline{CharacterTable} computes some more information, not only the character table of the group. 
+     The function computes other stuff: 
+ \end{enumerate}
+\begin{lstlisting}
+gap> OrdersClassRepresentatives(T);
+[ 1, 4, 2, 4 ]
+gap> SizesCentralizers(T);
+[ 4, 4, 4, 4 ]
+gap> SizesConjugacyClasses(T);
+[ 1, 1, 1, 1 ]
+\end{lstlisting}
+\end{example}
+
+\begin{example}
+	The character table of the group $C_2\times C_2=\{1,a,b,ab\}$ is 
+	\begin{center}
+		\begin{tabular}{|c|rrrr|}
+			\hline 
+			& 1 & 1 & 1 & 1\tabularnewline
+			& $1$ & $a$ & $b$ & $ab$\tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $1$ & $-1$ & $-1$\tabularnewline
+			$\chi_{3}$ & $1$ & $-1$ & $1$ & $-1$\tabularnewline
+			$\chi_{4}$ & $1$ & $-1$ & $-1$ & $1$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	Let us do this by computer:
+\begin{lstlisting}
+gap> Display(CharacterTable(AbelianGroup([2,2])));
+CT2
+
+     2  2  2  2  2
+
+      1a 2a 2b 2c
+
+X.1     1  1  1  1
+X.2     1 -1  1 -1
+X.3     1  1 -1 -1
+X.4     1 -1 -1  1
+\end{lstlisting}
+\end{example}
+
+\begin{exercise}
+    Let $A$ and $B$ be abelian groups. 
+    We write $\Irr(A)=\{\rho_1,\dots,\rho_r\}$ and 
+    $\Irr(B)=\{\phi_1,\dots,\phi_s\}$. Prove
+    that the maps 
+    \[
+    \varphi_{ij}\colon A\times B\to\C^\times,\quad
+    (a,b)\mapsto\rho_i(a)\phi_j(b),
+    \]
+    where $i\in\{1,\dots,r\}$ and $j\in\{1,\dots,s\}$, are the irreducible representations of $A\times B$. 
+\end{exercise}
+
+\begin{example}
+	The character table of $\Sym_3$ is given by 
+	\begin{center}
+		\begin{tabular}{|c|rrr|}
+			\hline
+			& $1$ & $3$ & $2$\tabularnewline
+			& $1$ & $(12)$ & $(123)$ \tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+			$\chi_{3}$ & $2$ & $0$ & $-1$ \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	Let us recall one possible way to compute this table. 
+	Degree-one irreducibles were easy to compute. 
+	To compute the third row of the table one possible approach is to use
+	the irreducible representation  
+	\[
+	(12)\mapsto \begin{pmatrix}-1&1\\0&1\end{pmatrix},
+	\quad
+	(123)\mapsto \begin{pmatrix}0&-1\\1&-1\end{pmatrix}.
+	\]
+    Then	
+    \begin{align*}
+		&\chi_3\left( (12) \right)=\trace\begin{pmatrix}-1&1\\0&1\end{pmatrix}=0,\\
+		&\chi_3\left( (123) \right)=\chi_3\left( (12)(23)\right)=\trace\begin{pmatrix}0&-1\\1&-1\end{pmatrix}=-1.
+	\end{align*}
+
+	We should remark that the irreducible representation 
+	mentioned is not really needed to
+	compute the third row of the character table. 
+\begin{lstlisting}
+gap> S3 := SymmetricGroup(3);;
+gap> T := CharacterTable(S3);;
+gap> Display(T);
+CT3
+
+     2  1  1  .
+     3  1  .  1
+
+      1a 2a 3a
+    2P 1a 1a 3a
+    3P 1a 2a 1a
+
+X.1     1 -1  1
+X.2     2  . -1
+X.3     1  1  1
+\end{lstlisting}
+As we did before, some extra information was computed:
+\begin{lstlisting}
+gap> SizesConjugacyClasses(T);
+[ 1, 3, 2 ]
+gap> SizesCentralizers(T);
+[ 6, 2, 3 ]
+gap> SizesConjugacyClasses(T);
+[ 1, 3, 2 ]
+gap> OrdersClassRepresentatives(T);
+[ 1, 2, 3 ]
+\end{lstlisting}
+\end{example}
+
+\begin{exercise}
+    Compute the character table of $\Sym_4$. 
+\end{exercise}
+
+\begin{exercise}
+    Compute the character table of $\Alt_4$. 
+\end{exercise}
+
+\begin{exercise}
+    Compute the character table of the quaternion group $Q_8$.
+\end{exercise}
+
+\begin{exercise}
+    Compute the character table of the 
+    dihedral group of eight elements. 
+\end{exercise}
+
