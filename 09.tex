@@ -2,58 +2,64 @@
 
 \topic{Brauer–Fowler theorem}
 
-\index{Parte!simétrica}
-\index{Parte!antisimétrica}
-Sea $\rho\colon G\to\GL(V)$ 
-una representación
-con caracter $\chi$. Vimos que el $\C[G]$-módulo $V\otimes V$ tiene caracter $\chi^2$. Sea 
-$v_1,\dots,v_n$ una base de $V$ y sea 
+\index{Symmetric}
+\index{Antisymmetric}
+Let $\rho\colon G\to\GL(V)$ 
+be a representation with character $\chi$. The $\C[G]$-module $V\otimes V$ 
+has character $\chi^2$. Let 
+$\{v_1,\dots,v_n\}$ be a basis of $V$ and 
 \[
 T\colon V\to V,\quad
 v_i\otimes v_j\mapsto v_j\otimes v_i.
 \]
-Dejamos como ejercicio verificar que $T(v\otimes w)=w\otimes v$ para todo 
-$v,w\in V$. Luego la transformación lineal 
-$T$ no depende de la base elegida. Observemos que
-además $T$ es morfismo de $\C[G]$-módulos, pues
+It is an exercise to check that $T(v\otimes w)=w\otimes v$ for all 
+$v,w\in V$. It follows that  
+$T$ does not depend on the chosen basis. Note that
+$T$ is a homomorphism of $\C[G]$-modules, as
 \[
 T(g\cdot (v\otimes w))=T((g\cdot v)\otimes (g\cdot w))=(g\cdot w)\otimes (g\cdot v)=g\cdot T(w\otimes v)
 \]
-para todo $g\in G$ y $v,w\in V$. 
-En particular, la \textbf{parte simétrica} 
+for all $g\in G$ y $v,w\in V$. 
+In particular, the \textbf{symmetric part} 
 \begin{gather*}
 S(V\otimes V)=\{x\in V\otimes V:T(x)=x\}
-\shortintertext{la \textbf{parte antisimétrica}}
+\shortintertext{and the \textbf{antisymmetric part}}
 A(V\otimes V)=\{x\in V\otimes V:T(x)=-x\}
 \end{gather*}
-de $V\otimes V$ son ambas 
-$\C[G]$-submódulos de $V\otimes V$. Estos nombres están motivados por la siguiente observación 
+of $V\otimes V$ are both  
+$\C[G]$-submodules of $V\otimes V$. 
+The terminology is motivated by the following fact:
 \[
 V\otimes V=S(V\otimes V)\oplus A(V\otimes V).
 \]
-En efecto, 
-$S(V\otimes V)\cap A(V\otimes V)=\{0\}$ pues 
-si $x\in S(V\otimes V)\cap A(V\otimes V)$, entonces $x=T(x)$ y $x=-T(x)$ y luego $x=0$. Además 
-$V\otimes V=S(V\otimes V)+ A(V\otimes V)$ pues todo $x\in V\otimes V$ puede escribirse como 
+In fact, 
+$S(V\otimes V)\cap A(V\otimes V)=\{0\}$, as   
+$x\in S(V\otimes V)\cap A(V\otimes V)$ implies
+$x=T(x)$ and $x=-T(x)$. Hence $x=0$. Moreover, 
+$V\otimes V=S(V\otimes V)+ A(V\otimes V)$, as every $x\in V\otimes V$ can be written 
+as 
 \[
 x=\frac12(x+T(x))+\frac12(x-T(x))
 \]
-con $\frac12(x+T(x))\in S(V\otimes V)$ y $\frac12(x-T(x))\in A(V\otimes V)$. 
+with $\frac12(x+T(x))\in S(V\otimes V)$ and $\frac12(x-T(x))\in A(V\otimes V)$. 
 
-Veamos que el conjunto $\{v_i\otimes v_j+v_j\otimes v_i:1\leq i,j\leq n\}$ es
-base de $S(V\otimes V)$ 
-y que el conjunto 
+We claim that $\{v_i\otimes v_j+v_j\otimes v_i:1\leq i,j\leq n\}$ is
+a basis of $S(V\otimes V)$ 
+and that  
 \[
 \{v_i\otimes v_j-v_j\otimes v_i:1\leq i<j\leq n\}
 \]
-es base de $A(V\otimes V)$. Como ambos conjuntos son linealmente independientes, 
-entonces 
-$\dim S(V\otimes V)\geq n(n+1)/2$ y también 
-$\dim A(V\otimes V)\geq n(n-1)/2$. Como además 
+is a basis of $A(V\otimes V)$. Since both sets are linearly independent, 
+\[
+\dim S(V\otimes V)\geq n(n+1)/2\text{ and }
+\dim A(V\otimes V)\geq n(n-1)/2.
+\]
+Moreover, 
 \[
 n^2=\dim (V\otimes V)=\dim S(V\otimes V)+\dim A(V\otimes V),
 \]
-se concluye que $\dim S(V\otimes V)=n(n+1)/2$ y que $\dim A(V\otimes V)=n(n-1)/2$. 
+so it follows that
+$\dim S(V\otimes V)=n(n+1)/2$ and $\dim A(V\otimes V)=n(n-1)/2$. 
 
 \begin{proposition}
     Sea $G$ un grupo finito y  
@@ -203,22 +209,19 @@ una contradicción. Luego existe una clase de conjugación $C$ de $G$ tal que $|
 $C_G(g)$ es un subgrupo de $G$ de índice $|C|\leq m^2$.
 \end{proof}
 
-La cota del teorema de Brauer--Fowler no es importante, ya que
-para considerar una forma posible de atacar la clasificación de grupos simples 
-solamente es necesario saber que existen  
-finitos grupos simples finitos con un cierto centralizador de involusiones.
+The bound of Brauer--Fowler's is not important.
 
 \begin{corollary}
-    Sea $n\in\N$. Existe (a lo sumo) una cantidad finita de grupos simples 
-    finitos con una involución con centralizador de orden $n$. 
+    Let $n\geq 1$ be an integer. There are at most finitely many 
+    finite simple groups with an involution with a centralizer of order $n$.
 \end{corollary}
 
-Veamos un ejemplo sencillo que da una idea de cómo es que pueden clasificarse grupos simples
-una vez que se tiene fija la estructura del centralizador de una involución. 
+As an exercise, a simple applications: 
 
 \begin{exercise}
-Si $G$ es un grupo simple finito y $x$ es una involución con centralizador de orden dos, entonces 
-$G\simeq\Z/2$. 
+    If $G$ is a finite simple group and $x$ is an involution with
+    centralizer of order two, then  
+    $G\simeq\Z/2$. 
 \end{exercise}
 
 \topic{Induction and restriction}
@@ -427,7 +430,7 @@ gap> List(DerivedSeries(SL(2,3)),StructureDescription);
 \begin{theorem}[Burnside]
 	\index{Burnside's theorem}
 	\label{thm:Burnside_auxiliar}
-	Let $G$ be a finite group. If $\phi\colon G\to\GL(n,\C)$ is a representation
+	Let $G$ be a finite group. If $\phi\colon G\to\GL_n(\C)$ is a representation
 	with character $\chi$ and $C$ is a conjugacy class of $G$ such that 
 	$\gcd(|C|,n)=1$, then for every $g\in C$ either 
 	$\chi(g)=0$ or $\phi_g$ is a scalar matrix. 
@@ -454,26 +457,27 @@ We need a lemma.
 Now we prove the theorem.
 
 \begin{proof}[Proof of Theorem \ref{thm:Burnside_auxiliar}]
-	Sean $\epsilon_1,\dots,\epsilon_n$ los autovalores de $\phi_g$. Como
-	$(|C|:n)=1$, existen $a,b\in\Z$ tales que $a|C|+bn=1$.  Como
-	$|C|\chi(g)/n\in\A$, al multiplicar por $\chi(g)/n$ obtenemos 
+	Let $\epsilon_1,\dots,\epsilon_n$ be the eigenvalues of $\phi_g$. By assumption, 
+	$\gcd(|C|,n)=1$, there exist $a,b\in\Z$ such that $a|C|+bn=1$. Since 
+	$|C|\chi(g)/n\in\A$, after multiplying by $\chi(g)/n$ we obtain that  
 	\[
 		a|C|\frac{\chi(g)}{n}+b\chi(g)=\frac{\chi(g)}{n}=\frac{1}{n}(\epsilon_1+\cdots+\epsilon_n)\in\A.
 	\]
-	El lema anterior nos dice que entonces hay dos posbilidades:
-	$\epsilon_1=\cdots=\epsilon_n$ o bien $\epsilon_1+\cdots+\epsilon_n=0$. En
-	el primer caso, como $\phi_g$ es diagonalizable, $\phi_g$ es una matriz
-	escalar. El segundo caso dice exactamente que $\chi(g)=0$.
+	The previous lemma implies that there are two cases to consider: 
+	either $\epsilon_1=\cdots=\epsilon_n$ or $\epsilon_1+\cdots+\epsilon_n=0$. In the first
+	case, since $\phi_g$ is diagonalizable, $\phi_g$ is a scalar matrix. 
+	In the second case, $\chi(g)=0$.
 \end{proof}
 
 \begin{theorem}[Burnside]
-	\index{Teorema!de Burnside}
-  Sea $p$ un número primo. Si $G$ es un grupo finito y $C$ es una clase de
-  conjugación de $G$ con $p^k>1$ elementos, entonces $G$ no es simple.
+	\index{Burnside's theorem}
+	Let $p$ be a prime number. If $G$ is a finite group and 
+	$C$ is a conjugacy class of $G$ with $p^k>1$ elements, then $G$ 
+	is not simple.
 \end{theorem}
 
 \begin{proof}
-	Sea $g\in C\setminus\{1\}$. Por la ortogonalidad de las columnas, 
+	Let $g\in C\setminus\{1\}$. Column orthogonality implies that 
 	\begin{equation}
 	\label{eq:Burnside}
 	\begin{aligned}
@@ -481,73 +485,70 @@ Now we prove the theorem.
 		&=\sum_{p\mid\chi(1)}\chi(1)\chi(g)+\sum_{p\nmid\chi(1)}\chi(1)\chi(g)+1,
 	\end{aligned}
 	\end{equation}
-	donde el uno corresponde a la representación trivial de $G$. 
+	where the one corresponds to the trivial representation of
+	$G$.
 	
-	Vamos a mirar esta ecuación módulo $p$. Más precisamente, si $\chi(g)=0$ para todo $\chi\in\Irr(G)$
-	tal que $\chi\ne\chi_1$ y $p\nmid\chi(1)$, entonces
-	podemos escribir
+	Look this equation modulo $p$. If $\chi(g)=0$ for all
+	$\chi\in\Irr(G)$
+	such that $\chi\ne\chi_1$ and $p\nmid\chi(1)$, then
 	\[
 	-\frac{1}{p}=\sum\frac{\chi(1)}{p}\chi(g)\in\A\cap\Q=\Z,
 	\]
-	donde la suma se toma sobre todos los irreducibles no triviales de $G$ de grado divisible por $p$, 
-	una contradicción. Luego existe una representación no
-	trivial irreducible $\phi$ con carácter $\chi$ tal que $p$ no divide a
-	$\chi(1)$ y además $\chi(g)\ne0$. Por el teorema anterior, $\phi_g$ es una
-	matriz escalar. Si $\phi$ es fiel, entonces $g$ es un elemento central no
-	trivial, una contradicción pues $|C|>1$. En caso contrario, $G$ no es simple pues
-	$\ker\phi$ es un subgrupo propio no trivial de $G$.
-%	Si $p$ divide a $\deg\phi$, entonces
-%	$\frac1p(\deg\phi)\chi_\phi(g)\in\A$ y luego
-%	\[
-%		\alpha=\sum_{p\mid\deg\phi}\frac1p(\deg\phi)\chi_\phi(g)\in\A.
-%	\]
-%	La fórmula~\eqref{eq:Burnside} queda entonces 
-%	\[
-%		0=1+p\alpha+\sum_{p\nmid\deg\phi}(\deg\phi)\chi_{\phi}(g).
-%	\]
+	where the sum is taken over all non-trivial irreducibles
+	of $G$ of degree divisible by $p$, a contradiction. Hence 
+	there exists an irreducible non-trivial representation 
+	$\phi$ with character $\chi$ such that $p$ does not divide
+	$\chi(1)$ and $\chi(g)\ne0$. By the previous theorem, 
+	$\phi_g$ is a scalar matrix. If $\phi$ is faithful, then 
+	$g$ is a non-trivial central element, a contradiction since 
+    $|C|>1$. If $\phi$ is not faithful, then 
+    $G$ is not simple (because 
+	$\ker\phi$ is a non-trivial proper normal subgroup of $G$). 
 \end{proof}
 
 \begin{theorem}[Burnside]
-  \index{Teorema!de Burnside}
-  Sean $p,q$ primos. Si $G$ tiene orden $p^aq^b$ entonces $G$ es resoluble.
+  \index{Burnside's theorem}
+  Let $p$ and $q$ be prime numbers. If $G$ has order $p^aq^b$, then $G$ is solvable.
 \end{theorem}
 
 \begin{proof}
-	Supongamos que el teorema no es cierto y sea $G$ un grupo de orden $p^aq^b$
-	minimal con la propiedad de no ser resoluble. La minimalidad de $|G|$
-	implica que $G$ es simple. Por el teorema anterior, $G$ no tiene clases de
-	conjugación de tamaño $p^k$ ni clases de tamaño $q^l$ con $k,l\geq1$. El
-	tamaño de toda clase de conjugación de $G$ es entonces igual a uno o es
-	divisible por $pq$. Pero entonces la ecuación de clases, 
+	Let us assume that the theorem is not true. Let $G$ be a group
+	of minimal order $p^aq^b$
+	that is not solvable. Since $|G|$ is minimal, $G$ is simple. By the previous theorem, 
+	$G$ has no conjugacy classes of size $p^k$ nor 
+	conjugacy classes of size $q^l$ with $k,l\geq1$. The size
+	of every conjugacy class of $G$ is one or divisible by $pq$. 
+	By the class
+	equation, 
 	\[
 		|G|=1+\sum_{C:|C|>1}|C|,
 	\]
-	donde la suma se hace sobre todas las clases de conjugación que tienen más
-	de un elemento, da una contradicción.
+	where the sum is taken over all conjugacy classes 
+	with more than one element, a contradiction.
 \end{proof}
 
-Concluimos el capítulo con los enunciados de algunas 
-generalizaciones del teorema de Burnside. 
+Some generalizations of Burnside's theorem. 
 
 \begin{theorem}[Kegel--Wielandt]
-\index{Teorema!de Kegel--Wielandt}
-Si $G$ es un grupo finito y existen subgrupos nilpotentes $A$ y $B$ de $G$ tales
-que $G=AB$, entonces $G$ es resoluble. 
+    \index{Kegel--Wielandt's theorem}
+    If $G$ is a finite group and there are nilpotent subgroups 
+    $A$ and $B$ of $G$ such that 
+    $G=AB$, then $G$ is solvable.
 \end{theorem}
 
-La demostración del teorema de Kegel--Wielandt puede consultarse en el segundo 
-capítulo del libro~\cite{MR1211633}, más precisamente en el teorema 2.4.3. 
+See~\cite[Theorem 2.4.3]{MR1211633} for the proof.
 
 \begin{theorem}[Feit--Thompson]
-\index{Teorema!de Feit--Thompson}
-Todo grupo finito de orden impar es resoluble. 
+    \index{Feit--Thompson's theorem}
+    Groups of odd order are solvable. 
 \end{theorem}
 
-La demostración del teorema de Feit--Thompson es extremadamente difícil y ocupa un volumen completo del 
+The proof of Feit--Thompson theorem is extremely hard. 
+It occupies a full volume of the 
 \emph{Pacific Journal of Mathematics}~\cite{MR166261}. 
-En~\cite{MR3111271} se anunció haber verificado formalmente 
-demostración del teorema de Feit--Thompson con el 
-sistema de ayuda para la demostración de teoremas Coq. 
+A formal verification of the proof 
+(based on the computer software Coq) 
+was announced in~\cite{MR3111271}.  
 
 \medskip
 \index{Conjetura!de Feit--Thompson}
@@ -576,28 +577,29 @@ gap> Gcd((17^3313-1)/16,(3313^17-1)/3312);
 112643
 \end{lstlisting}
 
-Otra dirección en la que puede generalizarse el teorema de Burnside 
-es con el uso de las funciones de palabra. 
-Una \emph{función de palabra} de un grupo $G$ es una función 
+Another generalization is based on \emph{word maps}. A word map
+of a group $G$ is a map 
 \[
 G^k\to G,\quad 
 (x_1,\dots,x_k)\mapsto w(x_1,\dots,x_k)
 \]
-para alguna 
-palabra $w(x_1,\dots,x_k)$ en el grupo libre $F_k$ de rango $k$. 
-Algunas palabras son sobreyecticas en 
-todo grupo o en cierta familia de grupos. Por ejemplo, 
-la conjetura de Ore es la sobreyectividad de la función 
-$(x,y)\mapsto [x,y]=xyx^{-1}y^{-1}$ en todo grupo finito simple no abeliano.
+for some word $w(x_1,\dots,x_k)$ of the free group $F_k$ of rank $k$. 
+Some word maps are surjective in certain families of groups. For example, 
+Ore's conjecture is precisely the surjectivity of the word map
+$(x,y)\mapsto [x,y]=xyx^{-1}y^{-1}$ in every finite non-abelian simple 
+group. 
 
 \begin{theorem}[Guralnick--Liebeck--O'Brien--Shalev--Tiep]
-Sean $p$ y $q$ dos primos, $a,b\geq0$ y $N=p^aq^b$. La función $(x,y)\mapsto x^Ny^N$ es 
-sobreyectiva en todo grupo simple.
+    Let $a,b\geq0$, $p$ and $q$ be prime numbers and $N=p^aq^b$. The map 
+    $(x,y)\mapsto x^Ny^N$ is surjective in every finite simple group. 
 \end{theorem}
 
-El teorema fue demostrado en~\cite{MR3827208}. 
+The proof appears in~\cite{MR3827208}. 
 
-Veamos por qué implica el teorema de Burnside. Supongamos que $G$ es un grupo de orden $N=p^aq^b$ y que $G$ no es resoluble. 
-Si fijamos una serie de composición de $G$, tenemos un factor $S$ no abeliano de orden que divide a $N$. Como entonces
-$S$ es simple y no abeliano y $s^N=1$, se concluye que la función $(x,y)\mapsto x^Ny^N$ tiene imagen trivial en $S$, una contradicción al teorema. 
-
+The theorem implies Burnside's theorem. Let $G$ be a group of order
+$N=p^aq^b$. Assume that $G$ is not solvable. 
+Fix a composition series of $G$. There is a non-abelian factor $S$ 
+of order that divides $N$. Since 
+$S$ is simple non-abelian and $s^N=1$, it follows that the word map
+$(x,y)\mapsto x^Ny^N$ has trivial image in $S$, a contradiction 
+to the theorem. 
