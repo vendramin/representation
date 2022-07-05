@@ -1,0 +1,588 @@
+\chapter{}
+
+\topic{Lie algebras}
+
+\begin{definition}
+    \index{Lie algebra}
+    Let $K$ be a field. 
+    A \textbf{Lie algebra} (over $K$) is a $K$-vector space
+    $L$ together with a bilinear map 
+    $L\times L\to L$, $(x,y)\mapsto [x,y]$,
+    such that
+    \begin{align}
+        \label{eq:[xx]=0}&[x,x]=0\quad\text{for all $x\in L$},\\ 
+        \label{eq:Jacobi}&[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0\quad\text{for all $x,y,z\in L$}.
+    \end{align}
+\end{definition}
+
+\index{Jacobi identity}
+Equality \eqref{eq:Jacobi} is known as the \textbf{Jacobi identity}. 
+
+\begin{exercise}
+    Prove that \eqref{eq:[xx]=0} implies $[x,y]=-[y,x]$ for all
+    $x,y\in L$. 
+\end{exercise}
+
+\index{Abelian Lie algebra}
+A Lie algebra $L$ is said to be \textbf{abelian} if $[x,y]=0$ for 
+all $x,y\in L$. 
+
+\begin{exercise}
+    If $L$ and $L_1$ are Lie algebras, then 
+    $L\oplus L_1$ is a Lie algebra with
+    $[(x,x_1),(y,y_1)]=([x,y),(x_1,y_1)]$ for $x,y\in L$ and
+    $x_1,y_1\in L_1$. 
+\end{exercise}
+
+\begin{exercise}
+    Prove that $\R^3$ with the usual vector product 
+    \[
+    [(x_1,x_2,x_3),(y_1,y_2,y_3)]=(x_2y_3-x_3y_2,x_3y_1-x_1y_3,x_1y_2-x_2y_1)
+    \]
+    is a (real) Lie algebra.     
+\end{exercise}
+
+We will main work with finite-dimensional complex Lie algebras.
+
+\begin{example}[general linear Lie algebra]
+\index{General linear Lie algebra}
+    Let $V$ be a finite-dimensional vector space and 
+    $\gl(V)$ be the set of linear maps $V\to V$. Then 
+    $\gl(V)$ with $[x,y]=xy-yx$ is a Lie algebra. 
+\end{example}
+
+A matrix version of the previous example: We write $\gl(n,\C)$ 
+to denote the vector space of all $n\times n$ complex 
+matrices with Lie bracket $[x,y]=xy-yx$. The vector space
+$\gl(n,\C)$ has a basis $\{e_{ij}:1\leq i,j\leq n\}$, where
+\[
+(e_{ij})_{kl}=\begin{cases} 
+    1 & \text{if $(i,j)=(k,l)$},\\
+    0 & \text{otherwise}.
+    \end{cases}
+\]
+
+\begin{exercise}
+    Compute $[e_{ij},e_{ik}]$.
+\end{exercise}
+
+\begin{example}[special linear Lie algebra]
+\index{Special linear Lie algebra}
+    Let $\sl(n,\C)$ be the subspace of $\gl(n,\C)$ consisting
+    of all matrices with trace zero. 
+\end{example}
+
+\begin{exercise}
+    Find a basis of $\sl(n,\C)$. 
+\end{exercise}
+
+We discuss a particular important case,
+\[
+\sl(2,\C)=\left\{\begin{pmatrix}
+    a & b\\
+    c & -a
+    \end{pmatrix}:a,b,c\in\C\right\}
+\]
+Note that 
+$e=\begin{pmatrix}
+        0&1\\
+        0&0\end{pmatrix}$, $h=\begin{pmatrix}
+        1&0\\
+        0&-1\end{pmatrix}$ and $f=\begin{pmatrix}0&0\\1&0\end{pmatrix}$ 
+        is an ordered basis for $\sl(2,\C)$. In this basis,
+\[
+[h,e]=2e,\quad
+[h.f]=-2f,\quad
+[e,f]=h.
+\]
+
+%\begin{example}
+%    Let $\bl(n,\C)$ be the subspace of all upper triangular matrices
+%    in $\gl(n,\C)$. Then $\bl(n,\C)$ is a Lie algebra. 
+%\end{example}
+
+\begin{definition}
+    \index{Lie!subalgebra}
+    A Lie \textbf{subalgebra} of $L$ is a vector space $L_1$ of $L$ 
+    such that $[x,y]\in L_1$ for all $x,y\in L_1$. 
+\end{definition}
+
+Of course, $\sl(n,\C)$ is a subalgebra of $\gl(n,\C)$. 
+
+\begin{definition}
+\index{Ideal!of a Lie algebra}
+    An \textbf{ideal} of a Lie algebra $L$ is a subspace $I$ of $L$ 
+    such that $[x,y]\in I$ for all $x\in L$ and $y\in I$. 
+\end{definition}
+
+Trivial examples of ideals of a Lie algebra $L$ are
+$\{0\}$ and $L$.
+
+\begin{example}
+\index{Center!of a Lie algebra}
+    Let $L$ be a Lie algebra. Then 
+    the \textbf{center} 
+    \[
+    Z(L)=\{x\in L:[x,y]=0\text{ for all $y\in L$}\}.
+    \]
+    is an ideal of $L$. 
+\end{example}
+
+\begin{example}
+\index{Derived algebra!of a Lie algebra}
+    Let $L$ be a Lie algebra. 
+    The \textbf{derived algebra} $[L,L]$
+    consists of all linear combinations of commutators $[x,y]$ 
+    is an ideal of $L$. 
+\end{example}
+
+\begin{exercise}
+    Compute $Z(\sl(n,\C))$. 
+\end{exercise}
+
+\begin{exercise}
+    Prove that $\sl(2,\C)$ has no non-trivial ideals. 
+\end{exercise}
+
+One easily checks that $\sl(n,\C)$ is an ideal of $\gl(n,\C)$. In fact, 
+an ideal is always a subalgebra. The converse is not true. 
+Can you find an example?
+
+\begin{definition}
+\index{Homomorphism!of Lie algebras}
+    Let $L$ and $L_1$ be Lie algebras. A map $f\colon L\to L_1$ is a 
+    \textbf{Lie algebra homomorphism} if $f([x,y])=[f(x),f(y)]$ for all
+    $x,y\in L$. 
+\end{definition}
+
+As usual, an isomorphism between Lie algebras will be
+a bijective homomorphism of Lie algebras. 
+
+\begin{example}
+    Let $L$ and $L_1$ be Lie algebras. The canonical injections
+    $L\to L\oplus L_1$ and $L_1\to L_\oplus L_1$ and
+    the canonical surjections $L\oplus L_1\to L$ and 
+    $L\oplus L_1\to L_1$ are Lie algebras homomorphisms.  
+\end{example}
+
+\begin{example}
+    Let $L$ be a Lie algebra. The \textbf{opposite Lie algebra} 
+    $L^{\op}$ is the vector space $L$ with 
+    $[x,y]^{\op}=-[x,y]$. Then $L\to L^{\op}$, $x\mapsto -x$, 
+    is an isomorphism of Lie algebras.
+\end{example}
+
+\begin{exercise}
+    Let $f\colon L\to L_1$ be a Lie algebra homomorphism. Prove
+    that the \textbf{kernel} of $f$, 
+    $\ker f=\{x\in L:f(x)=0\}$ is an ideal
+    of $L$, and that the \textbf{image} of $f$ 
+    is a subalgebra of $L_1$. 
+\end{exercise}
+
+\begin{example}
+\index{Adjoint homomorphism}
+    Let $L$ be a Lie algebra. 
+    The \textbf{adjoint homomorphism} is the map 
+    \[
+    \ad\colon L\to\gl(L),\quad
+    (\ad x)(y)=[x,y].
+    \]
+\end{example}
+
+Let $L$ be a Lie algebra and $I$ be an ideal of $L$. Then 
+the quotient vector space $L/I$ is a Lie algebra
+with $[x+I,y+I]=[x,y]+I$. The canonical map 
+$L\to L/I$, $x\mapsto x+I$, 
+is a surjective Lie algebra homomorphism. 
+
+\begin{exercise}
+    Let $f\colon L\to L_1$ be a Lie algebra homomorphism.
+    Prove that $f/\ker f\simeq f(L)$. 
+\end{exercise}
+
+\begin{definition}
+\index{Simple Lie algebra}
+    A Lie algebra $L$ is said to be \textbf{simple} if 
+    $[L,L]\ne\{0\}$ and $\{0\}$ and $L$ are the only ideals of $L$. 
+\end{definition}
+
+If $L$ is a simple Lie algebra, then $Z(L)=\{0\}$ and $L=[L,L]$. 
+
+\begin{exercise}
+    Prove that every simple Lie algebra is isomorphic to 
+    a linear Lie algebra. 
+\end{exercise}
+
+\topic{Representations of Lie algebras}
+
+\begin{definition}
+\index{Representation!of a Lie algebra}
+    A \textbf{representation} of a Lie algebra $L$ 
+    is a Lie homomorphism $\rho\colon L\to\gl(V)$, where $V$ is a vector space. 
+\end{definition}
+
+If $L\to\gl(V)$ is a representation of a Lie algebra $L$, 
+fixing a basis for $V$ 
+we obtain a \textbf{matrix representation}
+$L\to\gl(n,\C)$. 
+
+\begin{example}
+    Let $L$ be a Lie algebra. 
+    The map $\ad\colon L\to\gl(L)$, $x\mapsto (\ad x)$, is a lie 
+    homomorphism. 
+\end{example}
+
+\begin{definition}
+Let $L$ be a Lie algebra. 
+A (left) Lie $L$-module is a vector space $V$ 
+together with a map $L\times V\to V$, $(x,v)\mapsto xv$, 
+such that $(x,v)\mapsto xv$ is bilinear 
+and 
+\[
+    [x,y]v=x(yv)-y(xv)
+\]
+for all $x,y\in L$ and $v\in V$. 
+\end{definition}
+
+As it happens in the case of groups, Lie modules are
+in bijective correspondence with representations. 
+
+\begin{example}
+    Let $L$ be a subalgebra of $\gl(V)$. Then 
+    $L$ is an $L$-module. 
+\end{example}
+
+\begin{definition}
+    Let $L$ be a Lie algebra and $V$ be a Lie $L$-module. 
+    A \textbf{submodule} of $V$ is a subspace $W$ 
+    such that $xw\in W$ for all $x\in L$ and $w\in W$. 
+\end{definition}
+
+\begin{example}
+We know that $L$ is an $L$-module 
+with the adjoint representation. The submodules of $L$ are
+the ideals of $L$. 
+\end{example}
+
+If $W$ is a submodule of $V$, then $V/W$ 
+with $x(v+W)=xv+W$ is a module. 
+
+\begin{definition}
+    Let $L$ be a Lie algebra. An $L$-module $V$ 
+    is said to be \textbf{simple} (or irreducible) 
+    if $V\ne \{0\}$ and it has no submodules other than $\{0\}$ and $V$. 
+\end{definition}
+
+One-dimensional modules are simple. In particular, 
+the trivial module is always simple. 
+
+\begin{example}
+    Let $L$ be a simple Lie algebra (e.g. $\sl(2,\C)$). Then 
+    the adjoint representation is irreducible, that is $L$ is a simple $L$-module.  
+\end{example}
+
+\begin{definition}
+    Let $L$ be a Lie algebra and $V$ be an $L$-module. We say 
+    that $V$ is \textbf{indecomposable} if 
+    there are no non-zero submodules $U$ and $W$ such that
+    $V=U\oplus W$.
+\end{definition}
+
+Clearly, irreducible modules are indecomposable. 
+The converse is not true.
+
+\begin{definition}
+    Let $L$ be a Lie algebra and $V$ be an $L$-module. We say that
+    $V$ is \textbf{completely reducible} if $V=S_1\oplus\cdots\oplus S_k$
+    for simple modules $S_1,\dots,S_k$. 
+\end{definition}
+
+\begin{exercise}
+    Let $\mathfrak{b}(n,\C)$ be the set of $n\times n$ 
+    upper triangular 
+    matrices in $\gl(n,\C)$. Prove that $V=\C^n$ is indecomposable,  
+    not irreducible. 
+\end{exercise}
+
+\begin{definition}
+    Let $L$ be a Lie algebra and $f\colon V\to W$ be a map. 
+    We say that $f$ is an $L$-module \textbf{homomorphism} if
+    $f(xv)=xf(v)$ for all $x\in L$ and $v\in V$. 
+\end{definition}
+
+As usual, an isomorphism is a bijective module homomorphism. 
+
+\begin{exercise}
+    State and prove the isomorphism theorems for modules
+    over Lie algebras. 
+\end{exercise}
+
+\begin{exercise}[Schur lemma]
+    Let $L$ be a Lie algebra.
+    \begin{enumerate}
+        \item Let $S$ and $T$ be simple $L$-modules.
+            Prove that a non-zero homomorphism $f\colon S\to T$ 
+            is an isomorphism.
+        \item Let $S$ be a finite-dimensional simple $L$-module. 
+            Prove that if $f\colon S\to S$ is a homomorphism, then
+                $f=\lambda\id$ for some $\lambda\in\C$. 
+    \end{enumerate} 
+\end{exercise}
+
+As an example, if $V$ is a simple module, then $z$
+acts by scalar multiplication on $V$, that is
+$zv=\lambda v$ for some $\lambda\in\C$. 
+
+\topic{Representations of $\sl(2,\C)$}
+
+Consider the polynomial ring $\C[X,Y]$ in two commuting variables
+$X$ and $Y$. Let $V_d$ be the subspace of homogeneous polynomials
+of degree $d$. Then 
+\[
+\dim V_d=\begin{cases}
+    1 & \text{if $d=0$},\\
+    d+1 & \text{otherwise},
+    \end{cases}
+\]
+as a basis of $V_d$ is given 
+by $\{X^d,X^{d-1}Y,X^{d-2}Y^2,\dots,XY^{d-1},Y^d\}$. 
+
+\begin{exercise}
+    Prove that $\varphi\colon\sl(2,\C)\to\gl(V_d)$, 
+    \begin{align}
+        \varphi(e)=X\frac{\partial}{\partial Y},
+        &&
+        \varphi(f)=Y\frac{\partial}{\partial X},
+        &&
+        \varphi(h)=X\frac{\partial}{\partial X}-Y\frac{\partial}{\partial Y},
+    \end{align}
+    is a representation of $\sl(2,\C)$. 
+    This means that 
+    \begin{gather*}
+    \varphi(e)(X^aY^b)=bX^{a+1}Y^{b-1},
+    \quad
+    \varphi(f)(X^aY^b)=aX^{a-1}Y^{b+1},
+    \shortintertext{and that}
+    \varphi(h)(X^aY^b)=(a-b)X^aY^b.
+    \end{gather*}
+\end{exercise}
+
+In the basis $\{X^d,X^{d-1}Y,X^{d-2}Y^2,\dots,XY^{d-1},Y^d\}$, 
+\begin{align*}
+\varphi(e)=\left(\begin{smallmatrix}
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 2 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & d\\
+0 & 0 & 0 & \cdots & 0
+\end{smallmatrix}\right),
+&& 
+\varphi(f)=\left(\begin{smallmatrix}
+0 & 0 & \cdots & 0 & 0\\
+d & 0 & \cdots & 0 & 0\\
+0 & d-1 & \cdots & 0 & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots\\
+0 & 0 & \cdots & 1 & 0
+\end{smallmatrix}\right),
+&&
+\varphi(h)=\left(\begin{smallmatrix}
+d & 0 & \cdots & 0 & 0\\
+0 & d-2 & \cdots & 0 & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots\\
+0 & 0 & \cdots & -d+2 & 0\\
+0 & 0 & \cdots & 0 & -d
+\end{smallmatrix}\right).
+\end{align*}
+
+\begin{exercise}
+    Prove that $V_d$ is generated (as an $\sl(2,\C)$-module) by
+    $X^aY^b$ for some $a$ and $b$ such that $a+b=d$. 
+\end{exercise}
+
+The following exercise is important:
+
+\begin{exercise}
+    Prove that each $V_d$ is a simple $\sl(2,\C)$-module.
+\end{exercise}
+
+Now we prove one of the main results of this section. 
+
+\begin{theorem}
+\label{thm:irreducibles_sl2}
+    Let $V$ be a finite-dimensional 
+    simple $\sl(2,\C)$-module. Then $V\simeq V_d$ for some $d$. 
+\end{theorem}
+
+We use the notation $e^2v=e(ev)$.
+
+We need some lemmas. 
+
+\begin{lemma}
+    Let $V$ be an $\sl(2,\C)$-module and $v\in V$ be 
+    an eigenvector of $h$ with eigenvalue $\lambda$. 
+    \begin{enumerate}
+        \item Either $ev=0$ or $ev$ is an eigenvector of $h$ with
+            eigenvalue $\lambda+2$.
+        \item Either $fv=0$ or $fv$ is an eigenvector of $h$ with
+            eigenvalue $\lambda-2$.
+    \end{enumerate} 
+\end{lemma}
+
+\begin{proof}
+    We only prove 1): $h(ev)=e(hv)+[h,e]v=e(\lambda v)+2ev=(\lambda+2)ev$.
+\end{proof}
+
+\begin{lemma}
+    Let $V$ be a finite-dimensional $\sl(2,\C)$-module.
+    There exists an eigenvector 
+    $w\in V$ of $h$ such that $ew=0$. 
+\end{lemma}
+
+\begin{proof}
+    The linear map $h\colon V\to V$ has at least one eigenvector 
+    $v$ with eigenvalue $\lambda$. If the elements 
+    $v,ev,e^2v,\dots$ are non-zero, they are linearly independent, as they 
+    form a sequence of eigenvectors of $h$ with different eigenvalues.  
+    As $\dim V<\infty$, it follows that there exists $k$ 
+    such that $e^kv\ne 0$ and $e^{k+1}v=0$. Let $w=e^kv\ne 0$. 
+    Then
+    $hw=(\lambda+2k)w$ and $ew=0$. 
+\end{proof}
+
+Now we prove the theorem.
+
+\begin{proof}[Proof of Theorem \ref{thm:irreducibles_sl2}]
+    By the previous lemma, there exists an eigenvector $w$ 
+    of $h$ of eigenvalue $\lambda$ such that $ew=0$. Since $V$ is finite-dimensional, 
+    after considering
+    the sequence $w,fw,f^2w\dots$ we find that there
+    exists $d\geq0$ such that 
+    $f^dw\ne 0$ and $f^{d+1}w=0$. 
+    
+    \begin{claim}
+        $\{w,fw,\dots,f^dw\}$ is a basis of a submodule of $V$.
+    \end{claim}
+    
+    The elements are linearly independent, as they are eigenvectors of $h$ with 
+    different eigenvalues. The subspace $W=\langle w,fw,\dots,f^dw\rangle$ 
+    is invariant under $h$ and $f$. Let us prove that $W$ is invariant 
+    under $e$, that is $eW\subseteq W$. We need to prove that
+    $e(f^kw)\in W$ for all $k$. We proceed by induction on $k$. 
+    The case $k=0$ is trivial. 
+    If the claim holds for some $k$, then $ef^kw\in W$ by 
+    the inductive hypothesis. Thus 
+    \[
+    e(f^{k+1}w)=ef(f^{k}w)=(fe+h)f^{k}w\in W,
+    \]
+    as $hf^kw\in W$. 
+    
+    \begin{claim}
+        $\lambda=d$. 
+    \end{claim}
+    
+    The matrix of $h$ with respect to $\{w,fw,\dots,f^dw\}$ 
+    is diagonal with trace 
+    \[
+    \lambda+(\lambda-2)+\cdots+(\lambda-2d)=(d+1)(\lambda-d).
+    \]
+    Since $[e,f]=h$ has trace zero, it follows that $\lambda=d$. 
+    
+    \begin{claim}
+        $V\simeq V_d$.
+    \end{claim}
+    
+    The vector spaces are isomorphic, as $V$ has basis $\{w,fw,\dots,f^dw\}$ and 
+    $V_d$ has basis $\{X^d,fX^d,\dots,f^dX^d\}$, where
+    $f^kX^d\in\C X^{d-k}Y^k$. The eigenvalues of $h$ on $f^kw$ 
+    are the same as the eigenvalues of $h$ on $f^kX^d$. Let 
+    \[
+    \varphi\colon V\to V_d,\quad
+    f^kw\mapsto f^kX^d.
+    \]
+    This bijective linear map commutes with the action of $h$ and $f$. 
+    It also satisfies $\varphi(ew)=...$
+    and 
+    \[
+    \varphi(hf^kw)=...
+    \varphi(ef^kw)=...
+    \]
+\end{proof}
+
+We now summarize our results in terms of \textbf{highest weight vectors}
+and \textbf{highest weights}.
+
+\begin{corollary}
+    Let $V$ be a finite-dimensional $\sl(2,\C)$-module and $w\in V$ 
+    (a highest vector of $V$)
+    be an eigenvector of $h$ 
+    such that $ew=0$. Then $hw=dw$ for some
+    non-negative integer $d$ (a highest weight). 
+    Moreover, the submodule
+    of $V$ generated by $w$ is isomorphic to $V_d$. 
+\end{corollary}
+
+\begin{proof}
+    
+\end{proof}
+
+The following result is a particular
+case of Weyl's theorem in the context of $\sl(2,\C)$-modules. 
+
+\begin{theorem}
+    Any finite-dimensional $\sl(2,\C)$-module is absolutely reducible. 
+\end{theorem}
+
+\begin{proof}
+    Let $V$ be a finite-dimensional $\sl(2,\C)$-module. 
+    We proceed in several steps.
+    
+    \begin{claim}
+        The elmenet $Z=\frac12h^2+h+2fe$ commutes with every $X\in\sl(2,\C)$. 
+    \end{claim}
+    
+    We first compute
+    \begin{equation}
+        \begin{aligned}
+            \label{eq:Casimir}
+            ZX-XZ &= \frac12h^2X-\frac12Xh^2+[h,X]+2feX-2Xfe\\
+            &=\frac12h[e,X]-\frac12[X,h]h+[h,X]+2f[e,X]-2[X,f]e.
+        \end{aligned}
+    \end{equation}
+    Now one checks that 
+    Equation \eqref{eq:Casimir} is zero if $X\in\{h,e,f\}$ and
+    the claim follows. 
+    %See \cite[Theorem V.4.6]{MR1321145} or \cite[Theorem 1.67]{MR1920389}. 
+    
+    \begin{claim}
+        If $\dim V=n+1$, then $Z$ acts as the scalar 
+        $\frac12n^2+n$, which is not zero unless $V$ is the trivial module. 
+    \end{claim}
+    
+    By Schur's lemma, $Z$ acts by a scalar. Since $V$ is a simple
+    $\sl(2,\C)$-module of dimension $n+1$, $V\simeq V_{n+1}$. In particular, 
+    $hv_0=nv_0$ and $ev_0=0$. 
+    
+    \begin{claim}
+        Let $U\subseteq V$ be a submodule of codimension one. Then 
+        there exists a submodule $W$ of $V$ such that $V=U\oplus W$ 
+        and $\dim W=1$. 
+    \end{claim}
+    
+    We split the proof of the claim into several steps. 
+    
+    First we assume that
+    $\dim U=1$. The quotient module $V/U$ is one-dimensional and hence simple. 
+    Thus $\sl(2,\C)V\subseteq U$ and $\sl(2,\C)U=\{0\}$. Hence 
+    \[
+    [X,Y]V\subseteq XYV-YXV\subseteq XU+YU=\{0\}.
+    \]
+    Since $\sl(2,\C)=[\sl(2,\C),\sl(2,\C)]$, we conclude that
+    $\sl(2,\C)V=\{0\}$. Thus any complement of $U$ will serve as $W$. 
+    
+    \medskip
+    We now finish the proof of the theorem. 
+\end{proof}
+
+\topic{Enveloping algebras}
+
