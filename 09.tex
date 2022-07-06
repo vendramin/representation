@@ -232,7 +232,7 @@ As an exercise, a simple applications:
 
 For $n\geq1$ let $\{e_1,\dots,e_n\}$ be the standard basis of $\C^n$.  
 The \textbf{natural representation} of $\Sym_n$ is 
-$\rho\colon\Sym_n\to\GL(n,\C)$, $\sigma\mapsto\rho_{\sigma}$, 
+$\rho\colon\Sym_n\to\GL_n(C)$, $\sigma\mapsto\rho_{\sigma}$, 
 where $\rho_\sigma(e_j)=e_{\sigma(j)}$ for all $j\in\{1,\dots,n\}$. 
 The matrix of $\rho_\sigma$ in the standard basis is  
 \begin{equation}
@@ -245,7 +245,7 @@ The matrix of $\rho_\sigma$ in the standard basis is
 
 \begin{lemma}
 	\label{lem:permutaciones}
-	For $n\geq1$ let $\rho\colon\Sym_n\to\GL(n,\C)$ be the natural 
+	For $n\geq1$ let $\rho\colon\Sym_n\to\GL_n(C)$ be the natural 
 	representation of the symmetric group. 
 	If $A\in\C^{n\times n}$ and $\sigma\in\Sym_n$, then
 	\[
@@ -448,10 +448,10 @@ We need a lemma.
 
 \begin{proof}
 	Let $\alpha=(\epsilon_1+\cdots+\epsilon_n)/n$.
-	Si los $\epsilon_j$ no son todos iguales, entonces $N(\alpha)<1$. Además 
-	$N(\beta)<1$ para todo conjugado algebraico $\beta$ de $\alpha$. Como el
-	producto de los conjugados algebraicos de $\alpha$ es un entero de módulo
-	$<1$, se conluye que es cero.
+	If the $\epsilon_j$s are not all equal, then $N(\alpha)<1$. Moreover, 
+	$N(\beta)<1$ for every algebraic conjugate $\beta$ of $\alpha$. Since the product 
+	of the algebraic conjugates of $\alpha$ is an integer of absolute value 
+	$<1$, it follows that it is zero. 
 \end{proof}
 
 Now we prove the theorem.
@@ -538,46 +538,9 @@ Some generalizations of Burnside's theorem.
 
 See~\cite[Theorem 2.4.3]{MR1211633} for the proof.
 
-\begin{theorem}[Feit--Thompson]
-    \index{Feit--Thompson's theorem}
-    Groups of odd order are solvable. 
-\end{theorem}
 
-The proof of Feit--Thompson theorem is extremely hard. 
-It occupies a full volume of the 
-\emph{Pacific Journal of Mathematics}~\cite{MR166261}. 
-A formal verification of the proof 
-(based on the computer software Coq) 
-was announced in~\cite{MR3111271}.  
-
-\medskip
-\index{Conjetura!de Feit--Thompson}
-En los sesenta se sabía que la demostración del teorema de Feit--Thomson iba a poder simplificarse 
-si la conjetura de Feit--Thompson es verdadera:
-
-\begin{quote}
-    No existen primos distintos $p$ y $q$ tales que
-    $\frac {p^{q}-1}{p-1}$ divide a $\frac{q^{p} - 1}{q - 1}$. 
-\end{quote}
-
-Ya no es necesaria esa conjetura para simplificar la demostración, 
-y la conjetura de Feit--Thompson permanece abierta. 
-En~\cite{MR297686} 
-Stephens demostró que la versión fuerte de la conjetura no es cierta, ya que 
-los enteros $\frac {p^{q}-1}{p-1}$ y $\frac{q^{p} - 1}{q - 1}$ 
-podrían tener factores en común. De hecho, si $p=17$ y $q=3313$, 
-entonces 
-\[
-\gcd\left(\frac {p^{q}-1}{p-1},\frac{q^{p} - 1}{q - 1}\right)=112643.
-\]
-Hoy podemos reproducir los cálculos de 
-Stephens con casi cualquier computadora de escritorio:
-\begin{lstlisting}
-gap> Gcd((17^3313-1)/16,(3313^17-1)/3312);
-112643
-\end{lstlisting}
-
-Another generalization is based on \emph{word maps}. A word map
+Another generalization of Burnside's theorem
+is based on \emph{word maps}. A word map
 of a group $G$ is a map 
 \[
 G^k\to G,\quad 
@@ -603,3 +566,52 @@ of order that divides $N$. Since
 $S$ is simple non-abelian and $s^N=1$, it follows that the word map
 $(x,y)\mapsto x^Ny^N$ has trivial image in $S$, a contradiction 
 to the theorem. 
+
+\topic{Feit--Thompson theorem}
+
+\begin{theorem}[Feit--Thompson]
+    \index{Feit--Thompson's theorem}
+    Groups of odd order are solvable. 
+\end{theorem}
+
+The proof of Feit--Thompson theorem is extremely hard. 
+It occupies a full volume of the 
+\emph{Pacific Journal of Mathematics}~\cite{MR166261}. 
+A formal verification of the proof 
+(based on the computer software Coq) 
+was announced in~\cite{MR3111271}.  
+
+Back in the day it was believed that if a certain divisibility 
+conjecture is true, 
+the proof of Feit--Thompson 
+could be simplified. 
+
+\begin{conjecture}[Feit--Thompson]
+\index{Feit--Thompson conjecture}
+    There are no prime numbers $p$ and $q$ such that
+    $\frac {p^{q}-1}{p-1}$ divides $\frac{q^{p} - 1}{q - 1}$. 
+\end{conjecture}
+
+The conjecture remains open. However, now we know that 
+proving the conjecture will not simplify further
+the proof of Feit--Thompson theorem. 
+
+In 2012 Le proved that the conjecture is true for $q=3$, see 
+\cite{MR2900154}. 
+
+
+In~\cite{MR297686} 
+Stephens proved that a certain stronger version of the conjecture 
+does not hold, as the integers 
+$\frac {p^{q}-1}{p-1}$ and $\frac{q^{p} - 1}{q - 1}$ 
+could have common factors. In fact, if $p=17$ and $q=3313$, 
+then 
+\[
+\gcd\left(\frac {p^{q}-1}{p-1},\frac{q^{p} - 1}{q - 1}\right)=112643.
+\]
+Nowadays we can check this easily in almost every desktop computer:
+\begin{lstlisting}
+gap> Gcd((17^3313-1)/16,(3313^17-1)/3312);
+112643
+\end{lstlisting}
+No other counterexamples have been found to Stephen’s stronger version of the conjecture.
