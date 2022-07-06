@@ -1,0 +1,247 @@
+\chapter{}
+
+\topic{Solvable groups and Burnside's theorem}
+
+\index{Derived series}
+For a group $G$ let 
+$G^{(0)}=G$ and 
+$G^{(i+1)}=[G^{(i)},G^{(i)}]$ for $i\geq0$.
+The \textbf{derived series} of $G$ is the sequence
+\[
+G=G^{(0)}\supseteq G^{(1)}\supseteq G^{(2)}\supseteq\cdots
+\]
+Each $G^{(i)}$ is a characteristic subgroup of $G$. We say that 
+$G$ is \textbf{solvable} if $G^{(n)}=\{1\}$ for some $n$.  
+
+\begin{example}
+	Abelian groups are solvable. 
+\end{example}
+
+\begin{example}
+	The group $\SL_2(3)$ is solvable, as the derived series is 
+	\[
+	\SL_2(3)\supseteq Q_8\supseteq C_4\supseteq C_2\supseteq \{1\}.
+	\]
+	Here is the what the computer says:
+\begin{lstlisting}
+gap> IsSolvable(SL(2,3));
+true
+gap> List(DerivedSeries(SL(2,3)),StructureDescription);
+[ "SL(2,3)", "Q8", "C2", "1" ]
+\end{lstlisting}
+\end{example}
+
+\begin{example}
+	Non-abelian simple groups cannot be solvable. 
+\end{example}
+
+\begin{exercise}
+	\label{xca:solvable}
+	Let $G$ be a group. Prove the following statements:
+	\begin{enumerate}
+		\item A subgroup $H$ of $G$ is solvable.
+		\item Let $K$ be a normal subgroup of $G$. 
+		    Then $G$ is solvable if and only if $K$ and $G/K$ are solvable.
+	\end{enumerate}
+\end{exercise}
+
+\begin{example}
+	For $n\geq5$ the group $\Alt_n$ is not solvable. It follows that 
+	$\Sym_n$ is not solvable for $n\geq5$. 
+\end{example}
+
+\begin{exercise}
+\label{xca:pgroups_solvable}
+	Let $p$ be a prime number. Prove that 
+	finite $p$-groups are solvable.
+\end{exercise}
+
+\begin{theorem}[Burnside]
+	\index{Burnside's theorem}
+	\label{thm:Burnside_auxiliar}
+	Let $G$ be a finite group. If $\phi\colon G\to\GL_n(\C)$ is a representation
+	with character $\chi$ and $C$ is a conjugacy class of $G$ such that 
+	$\gcd(|C|,n)=1$, then for every $g\in C$ either 
+	$\chi(g)=0$ or $\phi_g$ is a scalar matrix. 
+\end{theorem}
+
+We need a lemma.
+
+\begin{lemma}
+	\label{lem:4Burnside}
+	Let $\epsilon_1,\dots,\epsilon_n$ be roots of one such that 
+	$(\epsilon_1+\cdots+\epsilon_n)/n\in\A$. Then either 
+	$\epsilon_1=\cdots=\epsilon_n$ or 
+	$\epsilon_1+\cdots+\epsilon_n=0$.
+\end{lemma}
+
+\begin{proof}
+	Let $\alpha=(\epsilon_1+\cdots+\epsilon_n)/n$.
+	If the $\epsilon_j$s are not all equal, then $N(\alpha)<1$. Moreover, 
+	$N(\beta)<1$ for every algebraic conjugate $\beta$ of $\alpha$. Since the product 
+	of the algebraic conjugates of $\alpha$ is an integer of absolute value 
+	$<1$, it follows that it is zero. 
+\end{proof}
+
+Now we prove the theorem.
+
+\begin{proof}[Proof of Theorem \ref{thm:Burnside_auxiliar}]
+	Let $\epsilon_1,\dots,\epsilon_n$ be the eigenvalues of $\phi_g$. By assumption, 
+	$\gcd(|C|,n)=1$, there exist $a,b\in\Z$ such that $a|C|+bn=1$. Since 
+	$|C|\chi(g)/n\in\A$, after multiplying by $\chi(g)/n$ we obtain that  
+	\[
+		a|C|\frac{\chi(g)}{n}+b\chi(g)=\frac{\chi(g)}{n}=\frac{1}{n}(\epsilon_1+\cdots+\epsilon_n)\in\A.
+	\]
+	The previous lemma implies that there are two cases to consider: 
+	either $\epsilon_1=\cdots=\epsilon_n$ or $\epsilon_1+\cdots+\epsilon_n=0$. In the first
+	case, since $\phi_g$ is diagonalizable, $\phi_g$ is a scalar matrix. 
+	In the second case, $\chi(g)=0$.
+\end{proof}
+
+\begin{theorem}[Burnside]
+	\index{Burnside's theorem}
+	Let $p$ be a prime number. If $G$ is a finite group and 
+	$C$ is a conjugacy class of $G$ with $p^k>1$ elements, then $G$ 
+	is not simple.
+\end{theorem}
+
+\begin{proof}
+	Let $g\in C\setminus\{1\}$. Column orthogonality implies that 
+	\begin{equation}
+	\label{eq:Burnside}
+	\begin{aligned}
+		0&=\sum_{\chi\in\Irr(G)}\chi(1)\chi(g)\\
+		&=\sum_{p\mid\chi(1)}\chi(1)\chi(g)+\sum_{p\nmid\chi(1)}\chi(1)\chi(g)+1,
+	\end{aligned}
+	\end{equation}
+	where the one corresponds to the trivial representation of
+	$G$.
+	
+	Look this equation modulo $p$. If $\chi(g)=0$ for all
+	$\chi\in\Irr(G)$
+	such that $\chi\ne\chi_1$ and $p\nmid\chi(1)$, then
+	\[
+	-\frac{1}{p}=\sum\frac{\chi(1)}{p}\chi(g)\in\A\cap\Q=\Z,
+	\]
+	where the sum is taken over all non-trivial irreducibles
+	of $G$ of degree divisible by $p$, a contradiction. Hence 
+	there exists an irreducible non-trivial representation 
+	$\phi$ with character $\chi$ such that $p$ does not divide
+	$\chi(1)$ and $\chi(g)\ne0$. By the previous theorem, 
+	$\phi_g$ is a scalar matrix. If $\phi$ is faithful, then 
+	$g$ is a non-trivial central element, a contradiction since 
+    $|C|>1$. If $\phi$ is not faithful, then 
+    $G$ is not simple (because 
+	$\ker\phi$ is a non-trivial proper normal subgroup of $G$). 
+\end{proof}
+
+\begin{theorem}[Burnside]
+  \index{Burnside's theorem}
+  Let $p$ and $q$ be prime numbers. If $G$ has order $p^aq^b$, then $G$ is solvable.
+\end{theorem}
+
+\begin{proof}
+	Let us assume that the theorem is not true. Let $G$ be a group
+	of minimal order $p^aq^b$
+	that is not solvable. Since $|G|$ is minimal, $G$ is simple. By the previous theorem, 
+	$G$ has no conjugacy classes of size $p^k$ nor 
+	conjugacy classes of size $q^l$ with $k,l\geq1$. The size
+	of every conjugacy class of $G$ is one or divisible by $pq$. 
+	By the class
+	equation, 
+	\[
+		|G|=1+\sum_{C:|C|>1}|C|,
+	\]
+	where the sum is taken over all conjugacy classes 
+	with more than one element, a contradiction.
+\end{proof}
+
+Some generalizations of Burnside's theorem. 
+
+\begin{theorem}[Kegel--Wielandt]
+    \index{Kegel--Wielandt's theorem}
+    \label{thm:KegelWielandt}
+    If $G$ is a finite group and there are nilpotent subgroups 
+    $A$ and $B$ of $G$ such that 
+    $G=AB$, then $G$ is solvable.
+\end{theorem}
+
+See~\cite[Theorem 2.4.3]{MR1211633} for the proof.
+
+
+Another generalization of Burnside's theorem
+is based on \emph{word maps}. A word map
+of a group $G$ is a map 
+\[
+G^k\to G,\quad 
+(x_1,\dots,x_k)\mapsto w(x_1,\dots,x_k)
+\]
+for some word $w(x_1,\dots,x_k)$ of the free group $F_k$ of rank $k$. 
+Some word maps are surjective in certain families of groups. For example, 
+Ore's conjecture is precisely the surjectivity of the word map
+$(x,y)\mapsto [x,y]=xyx^{-1}y^{-1}$ in every finite non-abelian simple 
+group. 
+
+\begin{theorem}[Guralnick--Liebeck--O'Brien--Shalev--Tiep]
+    Let $a,b\geq0$, $p$ and $q$ be prime numbers and $N=p^aq^b$. The map 
+    $(x,y)\mapsto x^Ny^N$ is surjective in every finite simple group. 
+\end{theorem}
+
+The proof appears in~\cite{MR3827208}. 
+
+The theorem implies Burnside's theorem. Let $G$ be a group of order
+$N=p^aq^b$. Assume that $G$ is not solvable. 
+Fix a composition series of $G$. There is a non-abelian factor $S$ 
+of order that divides $N$. Since 
+$S$ is simple non-abelian and $s^N=1$, it follows that the word map
+$(x,y)\mapsto x^Ny^N$ has trivial image in $S$, a contradiction 
+to the theorem. 
+
+\topic{Feit--Thompson theorem}
+
+\begin{theorem}[Feit--Thompson]
+    \index{Feit--Thompson theorem}
+    Groups of odd order are solvable. 
+\end{theorem}
+
+The proof of Feit--Thompson theorem is extremely hard. 
+It occupies a full volume of the 
+\emph{Pacific Journal of Mathematics}~\cite{MR166261}. 
+A formal verification of the proof 
+(based on the computer software Coq) 
+was announced in~\cite{MR3111271}.  
+
+Back in the day it was believed that if a certain divisibility 
+conjecture is true, 
+the proof of Feit--Thompson 
+could be simplified. 
+
+\begin{conjecture}[Feit--Thompson]
+\index{Feit--Thompson conjecture}
+    There are no prime numbers $p$ and $q$ such that
+    $\frac {p^{q}-1}{p-1}$ divides $\frac{q^{p} - 1}{q - 1}$. 
+\end{conjecture}
+
+The conjecture remains open. However, now we know that 
+proving the conjecture will not simplify further
+the proof of Feit--Thompson theorem. 
+
+In 2012 Le proved that the conjecture is true for $q=3$, see 
+\cite{MR2900154}. 
+
+
+In~\cite{MR297686} 
+Stephens proved that a certain stronger version of the conjecture 
+does not hold, as the integers 
+$\frac {p^{q}-1}{p-1}$ and $\frac{q^{p} - 1}{q - 1}$ 
+could have common factors. In fact, if $p=17$ and $q=3313$, 
+then 
+\[
+\gcd\left(\frac {p^{q}-1}{p-1},\frac{q^{p} - 1}{q - 1}\right)=112643.
+\]
+Nowadays we can check this easily in almost every desktop computer:
+\begin{lstlisting}
+gap> Gcd((17^3313-1)/16,(3313^17-1)/3312);
+112643
+\end{lstlisting}
+No other counterexamples have been found to Stephen’s stronger version of the conjecture.
