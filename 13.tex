@@ -49,24 +49,24 @@ is a scalar $\lambda$ such that $V_{\lambda}\ne\{0\}$.
     \]
 \end{proof}
 
-The previous lemma allows us to describe the actions of 
-$e$, $f$ and $h$ on $V$ with a very nice picture:
-\[
-\begin{tikzcd}
-	{\{0\}} & {V_{-\lambda}} & {V_{-\lambda+2}} & \cdots & {V_{\lambda-2}} & {V_{\lambda}} & {\{0\}}
-	\arrow["f"', curve={height=12pt}, from=1-1, to=1-2]
-	\arrow["f"', curve={height=12pt}, from=1-2, to=1-3]
-	\arrow["f"', curve={height=12pt}, from=1-3, to=1-4]
-	\arrow["f"', curve={height=12pt}, from=1-4, to=1-5]
-	\arrow["f"', curve={height=12pt}, from=1-5, to=1-6]
-	\arrow["e", curve={height=-12pt}, from=1-6, to=1-7]
-	\arrow["e", curve={height=-12pt}, from=1-2, to=1-3]
-	\arrow["e", curve={height=-12pt}, from=1-3, to=1-4]
-	\arrow["e", curve={height=-12pt}, from=1-4, to=1-5]
-	\arrow["e", curve={height=-12pt}, from=1-5, to=1-6]
-	%\draw (3) to [out=330,in=300,looseness=8] (3);
-\end{tikzcd}
-\]
+%The previous lemma allows us to describe the actions of 
+%$e$, $f$ and $h$ on $V$ with a very nice picture:
+%\[
+%\begin{tikzcd}
+%	{\{0\}} & {V_{-\lambda}} & {V_{-\lambda+2}} & \cdots & {V_{\lambda-2}} & {V_{\lambda}} & {\{0\}}
+%	\arrow["f"', curve={height=12pt}, from=1-1, to=1-2]
+%	\arrow["f"', curve={height=12pt}, from=1-2, to=1-3]
+%	\arrow["f"', curve={height=12pt}, from=1-3, to=1-4]
+%	\arrow["f"', curve={height=12pt}, from=1-4, to=1-5]
+%	\arrow["f"', curve={height=12pt}, from=1-5, to=1-6]
+%	\arrow["e", curve={height=-12pt}, from=1-6, to=1-7]
+%	\arrow["e", curve={height=-12pt}, from=1-2, to=1-3]
+%	\arrow["e", curve={height=-12pt}, from=1-3, to=1-4]
+%	\arrow["e", curve={height=-12pt}, from=1-4, to=1-5]
+%	\arrow["e", curve={height=-12pt}, from=1-5, to=1-6]
+%	%\draw (3) to [out=330,in=300,looseness=8] (3);
+%\end{tikzcd}
+%\]
 
 \begin{lemma}
 \label{lem:maximal_weight}
@@ -383,6 +383,7 @@ denotes the canonical map.
 \begin{theorem}[Poincar\'e--Birkhoff--Witt]
     \index{Poincar\'e--Birkhoff--Witt theorem}
     \index{PBW theorem}
+    \label{thm:PBW}
     Let $L$ be a finite-dimensional Lie algebra and 
     $\{x_1,\dots,x_n\}$ be an ordered basis of $L$. Then 
     \[
