@@ -215,45 +215,51 @@ We present Eckmann's proof of Hurwitz' theorem. The proof uses character theory.
 \end{lemma}
 
 \begin{proof}
-	Primero demostramos las dos primeras afirmaciones. 
-	Observemos que $\epsilon\in Z(G)$ pues $\epsilon=x_i^2$ para todo
-	$i\in\{1,\dots,n-1\}$. Como $n-1>2$, $[x_1,x_2]=\epsilon$ y luego
-	$\epsilon\in [G,G]$. Además $G/\langle\epsilon\rangle$ es abeliano y luego
-	$[G,G]=\langle \epsilon\rangle$. Como $G/[G,G]$ es elemental abeliano de
-	orden $2^{n-1}$, se sigue que $|G|=2^n$. 
+    Let us prove 1) and 2). Note that $\epsilon\in Z(G)$, as
+    $\epsilon=x_i^2$ for all 
+	$i\in\{1,\dots,n-1\}$. Since $n-1>2$, $[x_1,x_2]=\epsilon$. Hence 
+	$\epsilon\in [G,G]$. Moreover, $G/\langle\epsilon\rangle$ is abelian. Thus 
+	$[G,G]=\langle \epsilon\rangle$. Since $G/[G,G]$ is elementary 
+	abelian of order 
+	$2^{n-1}$, it follows that 
+	$|G|=2^n$. 
 
-	Demostremos ahora la tercera afirmación. Sea $g\in G\setminus Z(G)$ y sea
-	$x\in G$ tal que $[x,g]\ne 1$. Entonces $[x,g]=\epsilon$ y luego
+	We now prove 3). Let $g\in G\setminus Z(G)$ and 
+	$x\in G$ be such that $[x,g]\ne 1$. Then $[x,g]=\epsilon$ and 
 	$xgx^{-1}=\epsilon g$. 
 
-	Demostremos la cuarta afirmación. Sea $g\in G$ y escribamos
+	To prove 4) let $g\in G$. Write
 	\[
 		g=\epsilon^{a_0}x_1^{a_1}\cdots x_{n-1}^{a_{n-1}},
 	\]
-	donde $a_j\in\{0,1\}$ para todo $j\in\{1,\dots,n-1\}$. Si $g\in Z(G)$ entonces $gx_i=x_ig$ para todo $i\in\{1,\dots,n-1\}$. Luego
-	$g\in Z(G)$ si y sólo si 
+	where $a_j\in\{0,1\}$ for all $j\in\{1,\dots,n-1\}$. 
+	If $g\in Z(G)$, then $gx_i=x_ig$ for all $i\in\{1,\dots,n-1\}$. Hence 
+	$g\in Z(G)$ if and only if 
 	\[
 		\epsilon^{a_0}x_1^{a_1}\cdots x_{n-1}^{a_{n-1}}=x_i(\epsilon^{a_0}x_1^{a_1}\cdots x_{n-1}^{a_{n-1}})x_i^{-1}.
 	\]
-	Como $x_ix_j^{a_j}x_i=\epsilon^{a_j}x_j^{a_j}$ si $i\ne j$ y $\epsilon\in Z(G)$, el elemento $g$ es central si y sólo si 
+	Since $x_ix_j^{a_j}x_i=\epsilon^{a_j}x_j^{a_j}$ 
+	whenever $i\ne j$ y $\epsilon\in Z(G)$, the elmeent $g$ is 
+	central if and only if 
 	\[
 		\sum_{\substack{j=1\\j\ne i}}^{n-1}a_j\equiv 0\bmod 2
 	\]
-	para todo $i\in\{1,\dots,n-1\}$. En particular, 
+	for all $i\in\{1,\dots,n-1\}$. In particular, 
 	\[
 	\sum_{j\ne i}a_j\equiv \sum_{j\ne k}a_j
 	\]
-	para todo $k\ne i$, y en consecuencia $a_i\equiv a_k\bmod 2$ para todo
-	$i,k\in\{1,\dots,n-1\}$. Luego $a_1=\cdots=a_{n-1}$ y entonces 
+	for all $k\ne i$. Therefore $a_i\equiv a_k\bmod 2$ for all 
+	$i,k\in\{1,\dots,n-1\}$. Thus $a_1=\cdots=a_{n-1}$ and  
 	$Z(G)=\{1,x_1\cdots x_{n-1},\epsilon,\epsilon x_1\cdots
 	x_{n-1}\}$. 
 	
-	La última afirmación es entonces consecuencia de la ecuación de clases. Como
-	\[
-		2^n=|G|=|Z(G)|+\sum_{i=1}^N2=4+2N,
+    To prove 5) we use the class equation:
+    \[
+		2^n=|G|=|Z(G)|+\sum_{i=1}^N2=4+2N. 
 	\]
-	se concluye que $G$ tiene $N+4=2^{n-1}+2$ clases de conjugación.
+	It follows that $G$ has $N+4=2^{n-1}+2$ conjugacy classes.
 	
+	Finally we prove 6). 
 	Since $G$ 
 	has exactly $2^{n-1}$ degree-one representations (because 
 	$|G/[G,G]|=2^{n-1}$) and 
@@ -444,7 +450,7 @@ We present Eckmann's proof of Hurwitz' theorem. The proof uses character theory.
 	In fact, 
 	if $W=\langle w\rangle$ is $G$-invariant subspace of $\C^n$, 
 	then $\psi=\rho|_W\colon G\to\GL(W)\simeq\C^\times$ 
-	is a representation. 
+	is a representation. In particular, 
 	\[
 	-w=-Iw=\psi_{\epsilon}(w)=\psi_{[x_i,x_j]}(w)
 	=\psi_{x_i}\psi_{x_j}\psi_{{x_i}}^{-1}\psi_{{x_j}}^{-1}(w)=w, 
