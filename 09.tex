@@ -23,7 +23,7 @@ for all $g\in G$ y $v,w\in V$.
 In particular, the \textbf{symmetric part} 
 \begin{gather*}
 S(V\otimes V)=\{x\in V\otimes V:T(x)=x\}
-\shortintertext{and the \textbf{antisymmetric part}}
+\shortintertext{and the \textbf{antisymmetric} part}
 A(V\otimes V)=\{x\in V\otimes V:T(x)=-x\}
 \end{gather*}
 of $V\otimes V$ are both  
@@ -62,154 +62,175 @@ so it follows that
 $\dim S(V\otimes V)=n(n+1)/2$ and $\dim A(V\otimes V)=n(n-1)/2$. 
 
 \begin{proposition}
-    Sea $G$ un grupo finito y  
-    sea $V$ un $\C[G]$-módulo de dimensión finita con caracter $\chi$. Si el módulo $S(V\otimes V)$ 
-    tiene caracter $\chi_S$ y el módulo $A(V\otimes V)$ tiene caracter $\chi_A$, entonces 
+    Let $G$ be a finite group and
+    $V$ be a finite-dimensional 
+    $\C[G]$-module with character $\chi$. If $S(V\otimes V)$ 
+    has character $\chi_S$ and $A(V\otimes V)$ has character
+    $\chi_A$, then 
     \begin{align*}
-        &\chi_S(g)=\frac12(\chi^2(g)+\chi(g^2)),\\
-        &\chi_A(g)=\frac12(\chi^2(g)-\chi(g^2)).
+        &\chi_S(g)=\frac12(\chi^2(g)+\chi(g^2)) && \text{and} &&
+        \chi_A(g)=\frac12(\chi^2(g)-\chi(g^2)).
     \end{align*}
 \end{proposition}
 
 \begin{proof}
-    Sea $g\in G$. Sea $\rho\colon G\to\GL(V)$ la representación asociada al módulo $V$, es decir $\rho(g)(v)=\rho_g(v)=g\cdot v$. 
-    Sabemos que $\rho_g$ es diagonalizable. Sea $\{e_1,\dots,e_n\}$ una base de autovectores de $\rho_g$, digamos
-    $g\cdot e_i=\lambda_ie_i$ con $\lambda_i\in\C$ para $i\in\{1,\dots,n\}$. En particular, $\chi(g)=\sum_{i=1}^n\lambda_i$. 
+    Let $g\in G$ and $\rho\colon G\to\GL(V)$ be the representation
+    associated with $V$, that is $\rho(g)(v)=\rho_g(v)=g\cdot v$. 
+    Since $\rho_g$ is diagonalizable, let $\{e_1,\dots,e_n\}$ 
+    be a basis of eigenvectors of $\rho_g$, say
+    $g\cdot e_i=\lambda_ie_i$ with $\lambda_i\in\C$ for all $i\in\{1,\dots,n\}$. In particular, $\chi(g)=\sum_{i=1}^n\lambda_i$. 
     
-    Como $\{e_i\otimes e_j-e_j\otimes e_i:1\leq i<j\leq n\}$ es base de $A(V\otimes V)$ y además 
+    Since $\{e_i\otimes e_j-e_j\otimes e_i:1\leq i<j\leq n\}$ is basis of
+    $A(V\otimes V)$ and 
     \[
     g\cdot (e_i\otimes e_j-e_j\otimes e_i)=\lambda_i\lambda_j(e_i\otimes e_j-e_j\otimes e_i),
     \]
-    tenemos $\chi_A(g)=\sum_{1\leq i<j\leq n}\lambda_i\lambda_j$. Por otro lado, como $g^2\cdot e_i=\lambda_i^2e_i$ para todo $i$,
-    $\chi(g^2)=\sum_{i=1}^n\lambda_i^2$. Luego
+    it follows that
+    $\chi_A(g)=\sum_{1\leq i<j\leq n}\lambda_i\lambda_j$. On the other hand,
+    $g^2\cdot e_i=\lambda_i^2e_i$ for all $i$,
+    $\chi(g^2)=\sum_{i=1}^n\lambda_i^2$. Thus 
     \[
     \chi^2(g)=\chi(g)^2=\sum_{i=1}^n\sum_{j=1}^n\lambda_i\lambda_j=2\sum_{1\leq i<j\leq n}\lambda_i\lambda_j+\sum_{i=1}^n\lambda_i^2=2\chi_A(g)+\chi(g^2).
     \]
-    Como además $V\otimes V=S(V\otimes V)\oplus A(V\otimes V)$, se tiene 
-    $\chi^2(g)=\chi_S(g)+\chi_A(g)$, es decir 
+    Since $V\otimes V=S(V\otimes V)\oplus A(V\otimes V)$, it follows that  
+    $\chi^2(g)=\chi_S(g)+\chi_A(g)$, that is 
     $\chi_S(g)=\frac12(\chi^2(g)+\chi(g^2))$.
 \end{proof}
 
-\index{Involución}
-Una \textbf{involución} en un grupo es un elemento $x\ne 1$ tal que $x^2=1$. 
-Es posible la cantidad de involuciones 
-con la tabla de caracteres:
+\index{Involution}
+An \textbf{involution} of a group is an element $x\ne 1$ such that $x^2=1$. 
+It is possible to use the character table to count the number
+of involutions.
 
 \begin{proposition}
-Si $G$ es un grupo finito con $t$ involuciones, entonces 
-\[
-1+t=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1).
-\]
+    If $G$ is a finite group with $t$ involutions, then
+    \[
+        1+t=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1).
+    \]
 \end{proposition}
 
 \begin{proof}
-Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, donde $\chi_1$ es el caracter trivial de $G$. 
-Para $x\in G$ sea 
-\[
-\theta(x)=|\{y\in G:y^2=x\}|.
-\]
-Como $\theta$ es una función de clases
-$\theta$ puede escribirse como combinación lineal de los $\chi_j$, digamos
-\[
-\theta=\sum_{\chi\in\Irr(G)}\langle\theta,\chi\rangle\chi.
-\]
-Calculamos
-\begin{align*}
-    \langle\chi_S-\chi_A,\chi_1\rangle 
-    &=\frac{1}{|G|}\sum_{g\in G}\chi(g^2)\\
-    &=\frac{1}{|G|}\sum_{x\in G}\sum_{\substack{g\in G\\g^2=x}}\chi(g^2)
-    =\frac{1}{|G|}\sum_{x\in G}\theta(x)\chi(x)=\langle\theta,\chi\rangle.
-\end{align*}
-Luego $\theta(x)=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi$ y el resultado se obtiene
-al evaluar esta expresión en $x=1$. 
+    Assume that $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, where $\chi_1$ is 
+    the trivial character of $G$. 
+    For $x\in G$ let 
+    \[
+    \theta(x)=|\{y\in G:y^2=x\}|.
+    \]
+    Since $\theta$ is a class function, 
+    $\theta$ is a linear combination of the $\chi_j$'s, say 
+    \[
+    \theta=\sum_{\chi\in\Irr(G)}\langle\theta,\chi\rangle\chi.
+    \]
+    We compute: 
+    \begin{align*}
+        \langle\chi_S-\chi_A,\chi_1\rangle 
+        &=\frac{1}{|G|}\sum_{g\in G}\chi(g^2)\\
+        &=\frac{1}{|G|}\sum_{x\in G}\sum_{\substack{g\in G\\g^2=x}}\chi(g^2)
+        =\frac{1}{|G|}\sum_{x\in G}\theta(x)\chi(x)=\langle\theta,\chi\rangle.
+    \end{align*}
+    Thus $\theta(x)=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi$. Now
+    the claim follows after evaluating this expression in 
+    $x=1$. 
 \end{proof}
 
-\index{Desigualdad!de Cauchy--Schwartz}
-Necesitamos un lema:
-% Recordemos la desigualdad de Cauchy--Schwartz. Si $x_1,\dots,x_n\in\R$, entonces
-% $\sum x_i^2\geq\frac{1}{n}(\sum x_i)^2$. 
+\index{Cauchy--Schwartz inequality}
+Before proving the Brauer-Fowler theorem we
+need a lemma. We will use the Cauchy--Schwartz inequality: 
+\[
+x_1,\dots,x_n\in\R\implies
+\sum x_i^2\geq\frac{1}{n}(\sum x_i)^2.
+\]
 
 \begin{lemma}
-Sea $G$ un grupo finito con $k$ clases de conjugación. 
-Si $t$ es la cantidad de involuciones de $G$, entonces 
-$t^2\leq (k-1)(|G|-1)$. 
+    Let $G$ be a finite group with $k$ conjugacy classes. 
+    If $t$ is the number of involutions of $G$, then
+    $t^2\leq (k-1)(|G|-1)$. 
 \end{lemma}
 
 \begin{proof}
-Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, donde $\chi_1$ es el 
-carácter trivial de $G$. 
-Si $\chi\in\Irr(G)$, entonces
-\[
-\langle\chi^2,\chi_1\rangle=\frac{1}{|G|}\sum_{g\in G}\chi(g)\chi(g)=\langle\chi,\overline{\chi}\rangle=\begin{cases}
-1 & \text{si $\chi=\overline{\chi}$},\\
-0 & \text{en otro caso}.
-\end{cases}
-\]
-Como $\chi^2=\chi_S+\chi_A$, si $\langle\chi^2,\chi_1\rangle=1$, entonces el caracter trivial 
-o bien es $\chi_1$ es parte de $\chi_S$ o bien es parte de $\chi_A$, pero no de ambos. Esto implica que
-\[
-\langle\chi_S-\chi_A,\chi_1\rangle\in\{-1,1,0\}.
-\]
-Vamos a demostrar ahora que 
-$t\leq\sum_{i=2}^k\chi_i(1)$. En efecto, 
-como $|\langle\chi_S-\chi_A,\chi_1\rangle|\leq 1$, 
-entonces 
-\begin{align*}
-1+t=\theta(1)
-&=\left|\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1)\right|\\
-&\leq\sum_{\chi\in\Irr(G)}|\langle\chi_S-\chi_A,\chi_1\rangle|\chi(1)
-\leq\sum_{\chi\in\Irr(G)}\chi(1),
-\end{align*}
-de donde se obtiene inmediatamente que $t\leq\sum_{i=2}^k\chi_i(1)$. 
-Si utilizamos ahora 
-la desigualdad de Cauchy--Schwartz, 
-\[
-t^2\leq\left(\sum_{i=2}^k\chi_i(1)\right)^2
-\leq(k-1)\sum_{i=2}^k\chi(1)^2=(k-1)(|G|-1).\qedhere
-\]
+    Assume that $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, where $\chi_1$ is the
+    trivial character of $G$. 
+    If $\chi\in\Irr(G)$, then 
+    \[
+        \langle\chi^2,\chi_1\rangle=\frac{1}{|G|}\sum_{g\in G}\chi(g)\chi(g)=\langle\chi,\overline{\chi}\rangle=\begin{cases}
+        1 & \text{if $\chi=\overline{\chi}$},\\
+        0 & \text{otherwise}.
+        \end{cases}
+    \]
+    Since $\chi^2=\chi_S+\chi_A$, if $\langle\chi^2,\chi_1\rangle=1$, then
+    the trivial character either is part of $\chi_S$ or $\chi_A$, but not both. 
+    Thus
+    \[
+    \langle\chi_S-\chi_A,\chi_1\rangle\in\{-1,1,0\}.
+    \]
+    
+    We claim that 
+    $t\leq\sum_{i=2}^k\chi_i(1)$. In fact, since 
+    $|\langle\chi_S-\chi_A,\chi_1\rangle|\leq 1$, 
+    \begin{align*}
+        1+t=\theta(1)
+        &=\left|\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1)\right|\\
+        &\leq\sum_{\chi\in\Irr(G)}|\langle\chi_S-\chi_A,\chi_1\rangle|\chi(1)
+        \leq\sum_{\chi\in\Irr(G)}\chi(1).
+    \end{align*}
+    It follows that $t\leq\sum_{i=2}^k\chi_i(1)$. 
+    By the Cauchy--Schwartz inequality, 
+    \[
+        t^2\leq\left(\sum_{i=2}^k\chi_i(1)\right)^2
+        \leq(k-1)\sum_{i=2}^k\chi(1)^2=(k-1)(|G|-1).\qedhere
+    \]
 \end{proof}
 
-Ahora sí estamos en condiciones de dar la primera demostración del teorema de
-Brauer--Fowler. 
+Now we prove the Brauer--Fowler theorem. 
 
 \begin{theorem}[Brauer--Fowler]
-\index{Teorema!de Brauer--Fowler}
-Sea $G$ un grupo finito y simple y sea $x$ una involución. Si $|C_G(x)|=n$, entonces $|G|\leq (n^2)!$	
+    \index{Brauer--Fowler theorem}
+    Let $G$ be a finite simple group and $x$ be an involution of $G$. If $|C_G(x)|=n$, then $|G|\leq (n^2)!$	
 \end{theorem}
 
 \begin{proof}
-Supongamos primero que existe un subgrupo propio $H$ de $G$ tal que
-$(G:H)\leq n^2$. En ese caso, hacemos actuar a $G$ en $G/H$ por multiplicación a izquierda 
-y tenemos un morfismo de grupos $\rho\colon G\to\Sym_{n^2}$. Como $G$ es un grupo simple, 
-$\ker\rho=\{1\}$ o bien $\ker\rho=G$. Si $\ker\rho=G$, entonces $\rho(g)(yH)=yH$ para todo
-$g\in G$ e $y\in G$, lo que implica que $g\in H$, una contradicción. Luego $\rho$ es inyectiva
-y entonces $G$ es isomorfo a un subgrupo de $\Sym_{n^2}$. En particular, $|G|$ divide a $(n^2)!$
+    We first assume the existence of a proper subgroup $H$ of $G$ 
+    such that 
+    \[
+    (G:H)\leq n^2.
+    \]
+    The group $G$ acts on $G/H$ 
+    by left multiplication, so there is a group homomorpihsm 
+    $\rho\colon G\to\Sym_{n^2}$. Since $G$ is simple, either 
+    $\ker\rho=\{1\}$ or $\ker\rho=G$. If $\ker\rho=G$, then
+    $\rho(g)(yH)=yH$ for all $g\in G$ and $y\in G$. 
+    Hence $g\in H$, a contradiction. Therefore $\rho$ is injective
+    and hence $G$ is isomorphic to a subgroup of $\Sym_{n^2}$. 
+    In particular, $|G|$ divides $(n^2)!$. 
 
-Sea $m=(|G|-1)/t$. 
-Como $|C_G(x)|=n$, el grupo $G$ tiene al menos $|G|/n$ involuciones (pues la clase de conjugación
-de $x$ tiene tamaño $|G|/n$ y todos sus elementos son involuciones), es decir $t\geq |G|/n$. Luego
-$m=(|G|-1)/t<n$. Basta demostrar entonces que $G$ contiene un subgrupo de índice $\leq m^2$. 
+    Let $m=(|G|-1)/t$. 
+    Since $|C_G(x)|=n$, the group $G$ has at least $|G|/n$ involutions (because
+    the conjugacy class of $x$ has size $|G|/n$ and all its elements are involutions), 
+    that is $t\geq |G|/n$. Hence 
+    $m=(|G|-1)/t<n$. It is enough then to show that
+    $G$ contains a subgroup of index $\leq m^2$. 
 
-Sean $C_1,\dots,C_k$ las clases de conjugación de $G$, donde $C_1=\{1\}$. 
-Como $G$ es simple, $|C_i|>1$ 
-para todo $i\in\{2,\dots,k\}$. Notar que 
-\[
-|G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}\Longleftrightarrow t^2\leq(k-1)(|G|-1),
-\]
-que vale gracias al lema anterior. 
-Si $|C_i|>m$ para todo $i\in\{2,\dots,k\}$, entonces, como
-\[
-|G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}=(k-1)m^2,
-\]
-tendríamos 
-\[
-|G|-1=\sum_{i=2}^k|C_i|>(k-1)m^2,
-\]
-una contradicción. Luego existe una clase de conjugación $C$ de $G$ tal que $|C|\leq m^2$. Si $g\in C$, entonces
-$C_G(g)$ es un subgrupo de $G$ de índice $|C|\leq m^2$.
+    Let $C_1,\dots,C_k$ be the conjugacy classes of $G$, where $C_1=\{1\}$. 
+    Since $G$ is simple, $|C_i|>1$ 
+    for all $i\in\{2,\dots,k\}$. By the previous lemma, 
+    \[
+    |G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}\Longleftrightarrow t^2\leq(k-1)(|G|-1).
+    \]
+    If $|C_i|>m$ for all $i\in\{2,\dots,k\}$, then, since 
+    \[
+    |G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}=(k-1)m^2,
+    \]
+    it follows that  
+    \[
+    |G|-1=\sum_{i=2}^k|C_i|>(k-1)m^2,
+    \]
+    a contradiction. Thus there exists a conjugacy class
+    $C$ of $G$ such that $|C|\leq m^2$. If $g\in C$, then
+    $C_G(g)$ is a subgroup of $G$ of index $|C|\leq m^2$.
 \end{proof}
 
-The bound of Brauer--Fowler's is not important.
+The bound of the Brauer--Fowler theorem is not important.
+What matters is the following consequence:
 
 \begin{corollary}
     Let $n\geq 1$ be an integer. There are at most finitely many 
@@ -503,26 +524,31 @@ we can use the character table to detect simple groups.
 	is a simple group that has precisely this character table!  
 \end{example}
 
-
+\topic{Restriction of modules}
 
 \begin{definition}
-\index{Restricción}
-Si $U$ es un $K[G]$-módulo y $H$ es un subgrupo de $G$, podemos pensar a $U$ como $K[H]$-módulo al restringir la acción
-al subgrupo $H$. Este módulo será denotado por $\Res_H^GU$ y se conoce como la \textbf{restricción} de $U$ a $H$.
+    \index{Restriction}
+    Let $G$ be a finite group. 
+    If $U$ is a $\C[G]$-module and $H$ is a subgroup of $G$, 
+    then $U$ is a $\C[H]$-module by restricting to the action of $H$.  
+    This module will be denoted by $\Res_H^GU$. It will be called
+    the \textbf{restriction} of $U$ to $H$.
 \end{definition}
 
-La restricción de un módulo irreducible puede no ser irreducible. 
+The restriction of a simple module may not be a simple module. 
 
 \begin{example}
-    Sea $G=\D_4=\langle r,s:r^4=s^2=1,\,srs=r^{-1}\rangle$ el grupo diedral de ocho elementos. Sea
-    $V$ un espacio vectorial con base $\{v_1,v_2\}$. Entonces $V$ es un $\C[\D_4]$-módulo con 
+    Let $G=\D_4=\langle r,s:r^4=s^2=1,\,srs=r^{-1}\rangle$ be the dihedral
+    group of eight elements and 
+    $V$ be a vector space with basis $\{v_1,v_2\}$. Then 
+    $V$ is a $\C[\D_4]$-module with 
     \[
     r\cdot v_1=v_2,\quad
     r\cdot v_2=-v_1,\quad
     s\cdot v_1=v_1,\quad
     s\cdot v_2=-v_2.
     \]
-    El caracter de $V$ es 
+    The character of $V$ is 
     \[
     \chi(g)=\begin{cases}
     2 & \text{si $g=1$},\\
@@ -530,85 +556,101 @@ La restricción de un módulo irreducible puede no ser irreducible.
     0 & \text{en otro caso}.
     \end{cases}
     \]
-    Observemos que $\chi$ es irreducible, pues $\langle\chi,\rangle\chi=1$.
-    Sea 
-    $H=\langle r^2,s\rangle=\{1,r^2,s,r^2s\}$. Entonces $\Res_H^GV$ es $V$ como $\C[H]$-módulo con
+    Note that $\chi$ is irreducible, as $\langle\chi,\rangle\chi=1$.
+    Let 
+    $H=\langle r^2,s\rangle=\{1,r^2,s,r^2s\}$. Then $\Res_H^GV$ is $V$ as
+    a vector space with the structure of 
+    $\C[H]$-module given by 
     \[
     r^2\cdot v_1=-v_1,\quad
     r^2\cdot v_2=-v_1,\quad
     s\cdot v_1=-v_1,\quad
     s\cdot v_2=-v_2.
     \]
-    El caracter de $\Res_H^GV$ es
+    The character of $\Res_H^GV$ is
     \[
     \chi_H(h)=\chi|_H(h)
     =\begin{cases}
-    2 & \text{si $h=1$},\\
-    -2 & \text{si $h=r^2$},\\
-    0 & \text{en otro caso}.
+    2 & \text{if $h=1$},\\
+    -2 & \text{if $h=r^2$},\\
+    0 & \text{otherwise}.
     \end{cases}
     \]
-    El carater $\chi_H$ no es irreducible ya que $\langle\chi_H,\chi_H\rangle=0$. 
+    The character $\chi_H$ is not irreducible, as 
+    $\langle\chi_H,\chi_H\rangle=0$. 
 \end{example}
 
-\index{Parte irreducible!de un caracter}
-Sea $H$ un subgrupo de $G$ y supogamos que $\Irr(H)=\{\phi_1,\dots,\phi_l\}$.
-Si $\chi\in\Char(G)$, entonces
+Let $G$ be a finite group and 
+$H$ be a subgroup of $G$. Write 
+$\Irr(H)=\{\phi_1,\dots,\phi_l\}$.
+If $\chi\in\Char(G)$, then
 \[
 \chi|_H=\sum_{i=1}^ld_i\phi_i
 \]
-para ciertos enteros $d_1,\dots,d_l\geq 0$. 
-Cada $\phi_i$ tal que $d_i=\langle\chi|_H,\phi_i\rangle\ne 0$ 
-es una \textbf{parte irreducible} del caracter $\chi|_H$ y esos
-$\phi_i$ son las \textbf{partes irreducibles que constituyen} al caracter $\chi|_H$. 
+for integers $d_1,\dots,d_l\geq 0$. 
+Each $\phi_i$ with $d_i=\langle\chi|_H,\phi_i\rangle\ne 0$ 
+is an \textbf{irreducible component} of $\chi|_H$ and these 
+$\phi_i$'s are the \textbf{irreducible components} of 
+$\chi|_H$. 
 
 \begin{proposition}
-    Si $H$ es un subgrupo de $G$ y $\phi\in\Char(H)$, 
-    entonces $\chi\in\Irr(G)$ tal que $\langle\chi|_H,\phi\rangle_H\ne 0$.
+    Let $G$ be a finite group. 
+    If $H$ is a subgroup of $G$ and $\phi\in\Char(H)$, 
+    then $\chi\in\Irr(G)$ is such that $\langle\chi|_H,\phi\rangle_H\ne 0$.
 \end{proposition}
 
 \begin{proof}
-    Supongamos que $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. 
-    Sabemos que si $L$ es la representación regular de $G$, entonces
+    Assume that $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. 
+    If $L$ is the regular representation of $G$, then 
     \[
     \chi_L(g)=\begin{cases}
-    |G| & \text{si $g=1$},\\
-    0 & \text{en otro caso}.
+    |G| & \text{if $g=1$},\\
+    0 & \text{otherwise}.
     \end{cases}
     \]
-    Si escribimos $\chi_L=\sum_{i=1}^k\chi_i(1)\chi_i$, entonces, como
+    Write $\chi_L=\sum_{i=1}^k\chi_i(1)\chi_i$. Since 
     \[
     0\ne \frac{|G|}{|H|}\phi(1)=\langle \chi_L|_H,\phi\rangle_H=\sum_{i=1}^k\chi_i(1)\langle\chi_i|_H,\phi\rangle_H,
     \]
-    existe algún $i\in\{1,\dots,k\}$ 
-    tal que $\langle\chi_i|_H,\phi\rangle_H\ne 0$. 
+    there exists $i\in\{1,\dots,k\}$ 
+    such that $\langle\chi_i|_H,\phi\rangle_H\ne 0$. 
 \end{proof}
 
 \begin{proposition}
-    Sean $H$ un subgrupo de $G$ y $\chi\in\Irr(G)$. Si $\Irr(H)=\{\phi_1,\dots,\phi_l\}$, entonces
+    Let $G$ be a group, $\chi\in\Irr(G)$ and $H$ be a subgroup of $G$. 
+    If $\Irr(H)=\{\phi_1,\dots,\phi_l\}$, then 
     \[
     \chi|_H=\sum_{i=1}^ld_i\phi_i,
     \]
-    donde $\sum_{i=1}^l d_i^2\leq (G:H)$. Más aún, $\sum_{i=1}^l d_i^2=(G:H)$ 
-    si y sólo si $\chi(g)=0$ para todo $g\in G\setminus H$. 
+    where $\sum_{i=1}^l d_i^2\leq (G:H)$. Moreover, 
+    \[
+    \sum_{i=1}^l d_i^2=(G:H) 
+    \Longleftrightarrow
+    \chi(g)=0\text{ para todo $g\in G\setminus H$.}
+    \]
 \end{proposition}
 
 \begin{proof}
-Como 
-\[
-\sum_{i=1}^ld_i^2=\langle\chi|_H,\chi|_H\rangle_H=\frac{1}{|H|}\sum_{h\in H}\chi(h)\overline{\chi(h)}.
-\]
-Además, como $\chi$ es irreducible, 
-\begin{align*}
-1=\langle\chi,\chi\rangle_G&=\frac{1}{|G|}\sum_{g\in G}\chi(g)\overline{\chi(g)}\\
-&=\frac{1}{|G|}\sum_{h\in H}\chi(h)\overline{\chi(h)}
-+\frac{1}{|G|}\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}\\
-&=\frac{|H|}{|G|}\sum_{i=1}^l d_i^2+\frac{1}{|G|}\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}.
-\end{align*}
-Como $\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}\geq0$, se concluye que $\sum_{i=1}^ld_i^2\leq(G:H)$. Además
-vale la igualdad si y sólo si $\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}=0$, 
-es decir si sólo si $\chi(g)=0$ para todo $g\in G\setminus H$.
+    Since  
+    \[
+    \sum_{i=1}^ld_i^2=\langle\chi|_H,\chi|_H\rangle_H=\frac{1}{|H|}\sum_{h\in H}\chi(h)\overline{\chi(h)}.
+    \]
+    Since $\chi$ is irreducible, 
+    \begin{align*}
+        1=\langle\chi,\chi\rangle_G&=\frac{1}{|G|}\sum_{g\in G}\chi(g)\overline{\chi(g)}\\
+        &=\frac{1}{|G|}\sum_{h\in H}\chi(h)\overline{\chi(h)}
+        +\frac{1}{|G|}\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}\\
+        &=\frac{|H|}{|G|}\sum_{i=1}^l d_i^2+\frac{1}{|G|}\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}.
+    \end{align*}
+    Since $\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}\geq0$, it follows that
+    $\sum_{i=1}^ld_i^2\leq(G:H)$. Moreover, 
+    the equality holds if and only if $\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}=0$, 
+    that is, if and only if $\chi(g)=0$ for all $g\in G\setminus H$.
 \end{proof}
+
+\topic{Induction}
+
+
 
 \index{Bimódulo}
 Discutiremos ahora la inducción de módulos. Para eso, repasaremos algunas nociones básicas sobre
@@ -792,6 +834,88 @@ la suma sobre $t\in T$ de los $t\otimes V$ es directa.
 
 \topic{Frobenius's reciprocity}
 
+We now present a very quick version of Frobenius'
+reciprocity theorem. We first 
+define restriction of class functions. 
+
+\begin{definition}
+    Let $G$ be a finite group and $f\colon G\to\C$ be
+    a map. For a subgroup $H$ of $G$, the \textbf{restriction}
+    of $f$ to $H$ is the map 
+    $=\Res_H^G=f|_H\colon H\to\C$, $h\mapsto f(h)$. 
+\end{definition}
+
+\begin{exercise}
+\label{xca:restriction}
+    Let $G$ be a finite group. Prove that
+    the map $\Res_H^G\colon\cf(G)\to\cf(H)$, $f\mapsto\Res_H^G(f)$, 
+    is a well-defined linear map. 
+\end{exercise}
+
+We now define induction. Let $G$ be a finite group
+and $H$ be a subgroup of $G$. If $f\colon G\to\C$ is a map, 
+then 
+\[
+\dot{f}(x)=\begin{cases}
+    f(x) & \text{if $x\in H$},\\
+    0 & \text{otherwise}.
+    \end{cases}
+\]
+It is an exercise to prove that
+the map $f\mapsto\dot{f}$ is linear. 
+
+\begin{definition}
+    Let $G$ be a finite group and $f\colon G\to\C$ be
+    a map. For a subgroup $H$ of $G$, the \textbf{induction}
+    of $f$ to $H$ is the map 
+    \begin{align*}
+      g\mapsto\Ind_H^Gf(g)=\frac{1}{|H|}\sum_{x\in G}\dot{f}(x^{-1}gx).
+    \end{align*}
+\end{definition}
+
+\begin{exercise}
+\label{xca:induction}
+    Let $G$ be a finite group. Prove that
+    the map $\Ind_H^G\colon\cf(H)\to\cf(G)$, $f\mapsto\Ind_H^G(f)$, 
+    is a well-defined linear map. 
+\end{exercise}
+
+\begin{theorem}[Frobenius' reciprocity theorem]
+\index{Frobenius' reciprocity theorem}
+    Let $G$ be a finite group and $H$ be a subgroup of $G$. 
+    If $a\in\cf(H)$ and $b\in\cf(G)$, then
+    \[
+    \langle\Ind_H^Ga,b\rangle=\langle a,\Res_H^Gb\rangle.
+    \]
+\end{theorem}
+
+\begin{proof}
+    It follows from a direct calculation:
+    \begin{equation}
+    \label{eq:reciprocity}
+    \begin{aligned}
+        \langle\Ind_H^Ga,b\rangle 
+        &= \frac{1}{|G|}\sum_{x\in G}\Ind_H^Ga(x)\overline{b(x)}
+        = \frac{1}{|G|}\frac{1}{|H|}\sum_{x,y\in G}\dot{f}(y^{-1}xy)\overline{b(x)}.
+    \end{aligned}
+    \end{equation}
+    Since 
+    \[
+    \dot{a}(y^{-1}xy)\ne 0\Longleftrightarrow
+    y^{-1}xy\in H\Longleftrightarrow x\in yHy^{-1},
+    \]
+    setting $h=y^{-1}xy$ 
+    we can write \eqref{eq:reciprocity} as 
+    \begin{align*}
+        \langle\Ind_H^Ga,b\rangle
+        &=\frac{1}{|G|}\frac{1}{|H|}\sum_{x\in G}\sum_{h\in H}a(h)\overline{b(xhx^{-1})}\\
+        &=\frac{1}{|G|}\frac{1}{|H|}\sum_{x\in G}\sum_{h\in H}a(h)\overline{b(h)}\\
+        &=\frac{1}{|G|}\sum_{x\in G}\langle a,\Res_H^Gb\rangle.
+    \end{align*}
+    From this the claim follows. 
+\end{proof}
+
+
 \begin{theorem}[Reciprocidad de Frobenius]
 \index{Teorema!de reciprocidad de Frobenius}
 Sea $G$ un grupo finito y $H$ un subgrupo de $G$. 
@@ -965,13 +1089,13 @@ para todo $g\in G$.
 \topic{Frobenius' groups}
 \label{Frobenius}
 
-Recordemos que si $p$ es un número primo, entonces
-las unidades $(\Z/p)^{\times}$ 
-de $\Z/p$ forman un grupo con la multiplicación. Más aún, 
+If $p$ is a prime number, then
+the units $(\Z/p)^{\times}$ 
+of $\Z/p$ form a multiplicative group. Moreover, 
 $(\Z/p)^{\times}$ 
-es un grupo ciclico de orden $p-1$. 
+is cyclic of order $p-1$. 
 
-Sean $p$ y $q$ números primos tales que $q$ divide a $p-1$ y sea
+Let $p$ and $q$ be prime numbers such that $q$ divides $p-1$. Let 
 \[
 G=\left\{\begin{pmatrix}
 x & y\\
@@ -979,8 +1103,9 @@ x & y\\
 \end{pmatrix}
 :x\in(\Z/p)^\times,\,y\in\Z/p\right\}.
 \]
-Es sencillo verificar que $G$ es un grupo con la multiplicación usual de matrices y que
-$|G|=p(p-1)$. Sea $z\in\Z$ un elemento de orden $q$ módulo $p$ y sean  
+Then $G$ is a group with the usual matrix multiplication
+and $|G|=p(p-1)$. Let $z\in\Z$ be an element of order $q$ modulo $p$ 
+and let 
 \[
 a=\begin{pmatrix}
 1&1\\
@@ -994,8 +1119,7 @@ z&1\\
 \quad
 H=\langle a,b\rangle.
 \]
-Un cálculo directo muestra
-que 
+A direct calculation shows that 
 \begin{equation}
 \label{eq:pq}
 a^p=b^q=\begin{pmatrix}
@@ -1009,53 +1133,56 @@ bab^{-1}=\begin{pmatrix}
 \end{pmatrix}
 =a^z.
 \end{equation}
-Todo elemento de $H$ es de la forma $a^ib^j$ para $i\in\{0,\dots,p-1\}$ y $j\in\{0,\dots,q-1\}$. 
-Luego $|H|=pq$ y además las relaciones~\eqref{eq:pq} nos permiten 
-calcular completamente la tabla de multiplicación de $G$. 
+Every element of $H$ is of the form $a^ib^j$ for $i\in\{0,\dots,p-1\}$ and  $j\in\{0,\dots,q-1\}$. 
+Thus $|H|=pq$. Using~\eqref{eq:pq} we can compute 
+the multiplication table of $G$. 
 
 \begin{exercise}
-Sean $p$ y $q$ dos primos tales que $q\mid p-1$. Sean $u,v\in\Z$ de orden $q$ módulo $p$. 
-Demuestre que
-\[
-\langle a,b:a^p=b^q=1,bab=a^u\rangle
-\simeq \langle a,b:a^p=b^q=1,bab=a^v\rangle.
-\]
+    Let $p$ and $q$ be prime numbers such that $q$ divides $p-1$. Let
+    $u,v\in\Z$ be elements of order $q$ modulo $p$. 
+    Prove that 
+    \[
+    \langle a,b:a^p=b^q=1,bab=a^u\rangle
+    \simeq \langle a,b:a^p=b^q=1,bab=a^v\rangle.
+    \]
 \end{exercise}
 
-El grupo  
+The group   
 \[
 F_{p,q}=\langle a,b:a^p=b^q=1,bab=a^u\rangle,
 \]
-donde $u\in\Z$ tiene orden $q$ módulo $p$, 
-es un caso particular de 
-\emph{grupo de Frobenius}. 
+where $u\in\Z$ has order $q$ modulo $p$, 
+is a particular case of a  
+\emph{Frobenius group}. 
 
 \begin{proposition}
-    Sean $p$ y $q$ números primos tales que $p>q$ y 
-    sea $G$ un grupo de orden $pq$. Entonces $G$ es abeliano o bien 
-    $q\mid p-1$ y 
+    Let $p$ and $q$ be prime numbers such that $p>q$. Let  
+    $G$ be a group of order $pq$. Then either $G$ is abelian or
+    $q$ divides $p-1$ and 
     $G\simeq F_{p,q}$.
 \end{proposition}
 
 \begin{proof}
-    Supongamos que $G$ es no abeliano. Los teoremas de Sylow implican que 
-    $q$ divide a $p-1$ y que además 
-    existe un único $p$-subgrupo de Sylow $P$ de $G$. Sean $a,b\in G$ tales que
-    $P=\langle a\rangle\simeq\Z/p$ y $G/P=\langle bP\rangle\simeq\Z/q$. Por el teorema
-    de Lagrange, $G=\langle a,b\rangle$. Calculemos el orden de $b^q$. Como 
-    $G$ no es cíclico (pues es no abeliano) y $b^q\in P$, se concluye que $|b^q|=q$. 
-    Como $P$ es normal en $G$, 
-    $bab^{-1}\in P$ y entonces $bab^{-1}=a^z$ para algún $z\in\Z$. Luego $b^qab^{-q}=a^{z^q}$, lo que
-    implica que $z^q\equiv1\bmod p$. El orden de $u$ en $(\Z/p)^{\times}$ divide entonces al primo $q$ y 
-    luego es igual a $q$, pues de lo contrario, $u=1$ y entonces $bab^{-1}=a$, lo que implicaría que $G$ es abeliano.
-    En conclusion, $G\simeq F_{p,q}$. 
+    Assume that $G$ is not abelian. By Sylow's theorems, 
+    $q$ divides $p-1$ and there exists 
+    a unique Sylow $p$-subgroup $P$ of $G$. Let $a,b\in G$ be such that 
+    $P=\langle a\rangle\simeq\Z/p$ and $G/P=\langle bP\rangle\simeq\Z/q$. By Lagrange's theorem, 
+    $G=\langle a,b\rangle$. We compute the order of $b^q$. Since 
+    $G$ is not cyclic (because it is not abelian) and $b^q\in P$, 
+    we conclude that $|b^q|=q$. 
+    Since $P$ is normal in $G$, 
+    $bab^{-1}\in P$ and hence $bab^{-1}=a^z$ for some $z\in\Z$. Therefore
+    $b^qab^{-q}=a^{z^q}$. This implies that 
+    $z^q\equiv1\bmod p$. The order of $u$ in $(\Z/p)^{\times}$ divides 
+    $q$ and hence it is equal to $q$ (otherwise, $u=1$ and thus $bab^{-1}=a$, which implies
+    that $G$ is abelian). In conclusion, 
+    $G\simeq F_{p,q}$. 
 \end{proof}
 
-La proposición anterior nos permite demostrar, por ejemplo, 
-que todo grupo de orden 15 es abeliano
-y que, salvo isomorfismos, $\Z/20$ y 
-$F_{5,4}$ son los 
-únicos grupos de orden 20.
+With the proposition we prove, for example, that 
+every group of order 15 is abelian. We can also prove
+that up to isomorphism $\Z/20$ and  
+$F_{5,4}$ are the only groups of order 20. 
 
 \begin{definition}
   \index{Frobenius!complemento de}
@@ -1069,9 +1196,8 @@ $F_{5,4}$ son los
 \end{definition}
 
 \begin{theorem}[Frobenius]
-  \label{theorem:Frobenius}
-  \index{Frobenius!Teorema de}
-  \index{Teorema!de Frobenius}
+  \label{thm:Frobenius}
+  \index{Frobenius'!Theorem}
   Sea $G$ un grupo de Frobenius con complemento $H$. Entonces
   \[
 	N=\left( G\setminus\bigcup_{x\in G}xHx^{-1}\right)\cup\{1\}
@@ -1161,7 +1287,7 @@ $F_{5,4}$ son los
   \[
   \chi-\chi(1)1_H=\alpha=(\alpha^G)_H=(\phi-\chi(1)1_G)_H=\phi_H-\chi(1)1_H,
   \]
-  se tiene que $\phi(1)=\phi_H(1)=\chi(1)\in\N$. Luego $\phi\in\Irr(G)$. 
+  se tiene que $\phi(1)=\phi_H(1)=\chi(1)\in\Z_{\geq1}$. Luego $\phi\in\Irr(G)$. 
 
   \medskip
   Observemos que hemos demostrado que si $\chi\in\Irr(H)$ es tal que $\chi\ne 1_H$, entonces
@@ -1205,7 +1331,7 @@ $F_{5,4}$ son los
 No se conoce una demostración del teorema de Frobenius que no use teoría de caracteres. 
 
 \begin{definition}
-  \index{Frobenius!núcleo de}
+  \index{Frobenius!kernel}
   Sea $G$ un grupo de Frobenius. El subgrupo normal
   $N$ construido en el teorema de Frobenius se llama \textbf{núcleo de
   Frobenius}.
@@ -1233,14 +1359,13 @@ No se conoce una demostración del teorema de Frobenius que no use teoría de ca
   y luego $G=NH$.
 \end{proof}
 
-\begin{corollary}[Teorema de Frobenius, versión combinatoria]
-  \label{corollary:Frobenius_combinatorio}
-  \index{Frobenius!Teorema de}
-  \index{Teorema!de Frobenius}
-  Sea $X$ un conjunto finito y sea $G$ un grupo que actúa transitivamente en
-  $X$. Supongamos que todo $g\in G\setminus\{1\}$ fija a lo sumo un punto de
-  $X$. El conjunto $N$ formado por la identidad y las permutaciones que mueven
-  todos los puntos de $X$ es un subgrupo de $G$.
+\begin{corollary}[Combinatorial Frobenius' theorem]
+    \label{cor:Frobenius_combinatorio}
+    \index{Frobenius'!theorem}
+    Sea $X$ un conjunto finito y sea $G$ un grupo que actúa transitivamente en
+    $X$. Supongamos que todo $g\in G\setminus\{1\}$ fija a lo sumo un punto de
+     $X$. El conjunto $N$ formado por la identidad y las permutaciones que mueven
+     todos los puntos de $X$ es un subgrupo de $G$.
 \end{corollary}
 
 \begin{proof}
@@ -1272,8 +1397,8 @@ No se conoce una demostración del teorema de Frobenius que no use teoría de ca
 \end{example}
 
 \begin{exercise}
-  Demuestre que el teorema~\ref{theorem:Frobenius} puede deducirse del
-  corolario~\ref{corollary:Frobenius_combinatorio}.
+    Prove that Theorem~\ref{thm:Frobenius} can be obtained from
+    Corollary~\ref{cor:Frobenius_combinatorio}.
 \end{exercise}
 
 
@@ -1282,13 +1407,15 @@ No se conoce una demostración del teorema de Frobenius que no use teoría de ca
 % 7.1 para ejemplo H(q)
 % 10.5.6 (Thompson) N es nilpotente, se usa 10.5.4 
 
-En su tesis doctoral Thompson demostró el siguiente resultado, que había sido conjeturado por Frobenius:
+In his doctoral thesis Thompson proved the following result, conjectured
+by Frobenius. 
 
 \begin{theorem}[Thompson]
-Sea $G$ un grupo de Frobenius. Si $N$ es el núcleo de Frobenius, entonces $N$ es nilpotente. 
+\index{Thompson's theorem}
+    Let $G$ be a Frobenius group. If $N$ is the Frobenius kernel, then $N$ 
+    is nilpotent.
 \end{theorem}
 
-La demostración puede consultarse en el capítulo 6 
-de~\cite{MR2426855}, más precisamente en el teorema 6.24. 
+See~\cite[Theorem 6.24]{MR2426855} for the proof.
 
 
