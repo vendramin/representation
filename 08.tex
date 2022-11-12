@@ -193,33 +193,39 @@ orbits.
 
 \topic{Commuting probability}
 
+\index{Group commutativity}
 For a finite group $G$ let $\cp(G)$ be the probability 
-that two random elements of $G$ commute. 
+that two random elements of $G$ commute. This number
+is also known as the \textbf{commutativity} of $G$. 
 As an application of Cauchy--Frobenius--Burnside theorem we
 prove that 
 $\cp(G)=k/|G|$, where $k$ is the number of conjugacy classes
-of $G$.
-
-\begin{theorem}
-\index{Theorem!5/8}
-%\index{Erd\"os--Turan theorem}
-    If $G$ is a non-abelian finite group, then $\cp(G)\leq5/8$.
-\end{theorem}
-
-\begin{proof}
-    Let $C=\{(x,y)\in G\times G:xy=yx\}$. We claim that  
+of $G$. In fact, let 
+\[
+C=\{(x,y)\in G\times G:xy=yx\}.
+\]
+We claim that  
     \[
     \cp(G)=\frac{|C|}{|G|^2}=\frac{k}{|G|}.
     \]
-    In fact, let $G$ act on $G$ by conjugation. 
+
+Let $G$ act on $G$ by conjugation. 
     By Cauchy--Frobenius--Burnside theorem, 
     \[
     k=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|=\frac{1}{|G|}\sum_{g\in G}|C_G(g)|=\frac{|C|}{|G|},
     \]
     as $\Fix(g)=\{x\in G:gxg^{-1}=x\}=C_G(g)$ and $\sum_{g\in G}|C_G(g)|=|C|$. 
 
-    We now claim that $k/|G|\leq 5/8$ if $G$ is non-abelian.
-    
+
+\begin{theorem}
+\index{Theorem!5/8}
+\label{thm:5/8}
+    If $G$ is a non-abelian finite group, then $\cp(G)\leq5/8$.
+\end{theorem}
+
+\begin{proof}
+%
+%    We now claim that $k/|G|\leq 5/8$ if $G$ is non-abelian.
     Let $y_1,\dots,y_m$ the representatives of conjugacy classes of $G$ 
     of size $\geq2$. By the class equation, 
     \[
@@ -237,8 +243,11 @@ of $G$.
     that is $k/|G|\leq 5/8$. 
 \end{proof}
 
-\begin{exercise}
-    Prove that $\cp(Q_8)=5/8$. 
+\begin{exercise}\
+\begin{enumerate}
+    \item Prove that $\cp(Q_8)=5/8$. 
+    \item Prove that $\cp(\Alt_5)=1/12$. 
+\end{enumerate}
 \end{exercise}
 
 \begin{exercise}
@@ -275,18 +284,131 @@ If $G$ is a finite group, then
     From this the claim follows.
 \end{proof}
 
+Using basic facts about irreducible characters, 
+we obtain a generalization of Theorem \ref{thm:5/8}. 
+
+\begin{theorem}
+\label{thm:[GG]}
+    Let $G$ be a finite group with $\cp(G)>1/4$. Then
+    \[
+    |[G,G]|\leq 3/(4\cp(G)-1).
+    \]
+\end{theorem}
+
+\begin{proof}
+    For $n\in\Z_{>0}$, let $\rho_n$ be the number
+    of irreducible characters of degree $n$. Then 
+    $k(G)=\sum_{i\geq1}\rho_i$ and $|G|=\sum_{i\geq1}i^2\rho_i$. 
+    It follows that 
+    \begin{align*}
+    |G|-\rho_1 &=\sum_{i\geq 2}i^2\rho_i\geq 4\sum_{i\geq2}\rho_i
+    =4(k(G)-\rho_1)=4(|G|\cp(G)-\rho_1).
+    \end{align*}
+    Since $\rho_1=(G:[G,G])$, 
+    \[
+    \cp(G)\leq \frac14+\frac34\frac{\rho_1}{|G|}=\frac14+\frac3{4|[G,G]|}.\qedhere
+    \]
+\end{proof}
+
+\begin{exercise}
+    \label{xca:5/8}
+    Use Theorem \ref{thm:[GG]} to prove Theorem \ref{thm:5/8}.
+\end{exercise}
+
+Theorem \ref{thm:[GG]} 
+can also be used to
+prove similar statements. 
+
+\begin{exercise}
+    \label{xca:cp_NS}
+    Let $G$ be a finite group. Prove the following statements:
+    \begin{enumerate}
+        \item If $\cp(G)>1/2$, then $G$ is nilpotent.
+        \item If $\cp(G)>21/80$, then $G$ is solvable. 
+    \end{enumerate}
+\end{exercise}
+
+In the following exercise we will discuss the notion 
+of isoclinic groups. We first need
+a preliminary result:
+
+\begin{exercise}
+\index{Commutator map}
+\label{xca:commutator}
+    Let $G$ be a group. Prove that the commutator map
+    \[
+    c_G\colon G/Z(G)\times G/Z(G)\to [G,G],
+    \quad
+    c_G(xZ(G),yZ(G))=[x,y],
+    \]
+    is well-defined. 
+\end{exercise}
+
+The idea is that two groups are said to be isoclinic 
+if their commutator functions are somewhat equal. 
+
+\begin{exercise}
+\index{Isoclinism}
+\label{xca:isoclinism}
+    \label{xca:isoclinism}
+    Let $G$ and $H$ be groups. 
+    A pair $(\sigma,\tau)$ of maps is an \textbf{isoclinism}
+    between $G$ and $H$ if 
+    $\sigma\colon G/Z(G)\to H/Z(H)$ and  
+    $\tau\colon [G,G]\to [H,H]$ are group isomorphisms and 
+    the diagram
+    \begin{equation}
+    \label{eq:isoclinism}
+    \begin{tikzcd}
+	{G/Z(G)\times G/Z(G)} & {H/Z(H)\times H/Z(H)} \\
+	{[G,G]} & {[H,H]}
+	\arrow["{\sigma\times\tau }", from=1-1, to=1-2]
+	\arrow["{c_H}", from=1-2, to=2-2]
+	\arrow["{c_G}"', from=1-1, to=2-1]
+	\arrow["\tau"', from=2-1, to=2-2]
+    \end{tikzcd}
+    \end{equation} 
+    commutes. We write $G\sim H$ when there exists 
+    an isoclinism between $G$ and $H$. 
+    
+    Prove the following statements:
+    \begin{enumerate}
+        \item If $G\simeq H$, then $G\sim H$.
+        \item If $G\sim H$, then $\cp(G)=\cp(H)$. 
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\label{xca:isoclinism_simple}
+    Let $S$ be a non-abelian simple group and
+    $G$ be a group such that $G\sim S$. Prove that 
+    $G\simeq S\times A$ for some abelian group $A$.
+\end{exercise}
+
+\begin{exercise}
+\label{xca:isoclinism_factorization}
+    Let $H$ be a subgroup of $G$. If $G=HZ(G)$, then $G\sim H$. 
+    Conversely, if $G\sim H$ and $H$ is finite, then 
+    $G=HZ(G)$. 
+\end{exercise}
+
+\begin{exercise}
+    
+\end{exercise}
+
+The following theorem appeared in 1970, as a problem in the 
+volume 13 of the \emph{Canadian Math. Bulletin}. The solution
+appeared in 1973. The proof we present here  
+was found by Iv\'an Sadosfchi Costa. 
+
 \begin{theorem}[Dixon]
     \index{Dixon's theorem}
     If $G$ is a finite simple group, then $\cp(G)\leq1/12$.
 \end{theorem}
 
-The theorem appeared in 1970, as a problem in the 
-volume 13 of the \emph{Canadian Math. Bulletin}. The solution
-appeared in 1973. 
-
-\begin{exercise}
-    Prove that $\cp(\Alt_5)=1/12$. 
-\end{exercise}
+\begin{proof}
+    
+\end{proof}
 
 The alternating group $\Alt_5$ is important in this setting:
 
