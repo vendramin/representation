@@ -219,8 +219,8 @@ We shall need a lemma.
 
 Now we prove Wedderburn's theorem. Note that
 the theorem can be extended to any algebraically closed field. We 
-state and proof Wedderburn's theorem in the case of complex numbers
-to simplify a little the presentation. 
+state and prove Wedderburn's theorem in the case of complex numbers
+to simplify the presentation. 
 
 \begin{proof}[Proof of Theorem \ref{thm:Wedderburn}]
     We proceed by induction on $\dim A$. If $\dim A=1$ and 
@@ -234,7 +234,7 @@ to simplify a little the presentation.
     for some $n$. 
     
     If $J(A)=A$, the result trivially holds. 
-    
+
     If $J(A)\ne\{0\}$, 
     $\dim A/J(A)<\dim A$ and hence 
     $A/J(A)$ is nilpotent by 
@@ -258,7 +258,7 @@ to simplify a little the presentation.
     a_1a_2\cdots a_N=x_1x_2\cdots x_n\in J(A)^n=\{0\}. 
     \]
     Thus $A$ is nilpotent. 
-    
+
     If $J(A)=\{0\}$, then 
     $A$ is semisimple. By Artin--Wedderburn, 
     $A\simeq\prod_{i=1}^k M_{n_i}(\C)$, a contradiction to 
@@ -365,7 +365,7 @@ Now an application of Wedderburn's theorem:
 \label{pro:unipotent}
     Let $G$ be a unipotent subgroup of $\GL_n(\C)$. 
     Then there exists a non-zero 
-    $v\in C^{n}$ such that $gv=v$ for all $g\in G$. 
+    $v\in\C^{n}$ such that $gv=v$ for all $g\in G$. 
 \end{proposition}
 
 \begin{proof}
@@ -415,9 +415,11 @@ to some subgroup of $U_n(\C)$.
     \begin{gather*}
         G\subseteq G_{g\cdot (E_1,\dots,E_n)}
         =g G_{(E_1,\dots,E_n)}g^{-1}=gB_n(\C)g^{-1}.
-    \shortintertext{Since $G$ is unipotent,}
-        G=G\cap (gB_n(\C)g^{-1})\subseteq gU_n(\C)g^{-1}.
     \end{gather*}
+    Since $G$ is unipotent, it follows that 
+    \[
+    G\subseteq gB_n(\C)g^{-1}\subseteq gU_n(\C)g^{-1}.
+    \]
     
     We claim that $G\subseteq G_{(V_1,\dots,V_n)}$ for
     some complete flag $(V_1,\dots,V_n)$. We proceed by induction on $n$. If $n=1$, the result is trivial. Assume the result holds for 
