@@ -33,6 +33,42 @@ Prove that $\C[G]\simeq \C[X]/(X^n-1)$.
     $\C[G]$ has zero divisors. 
 \end{exercise}
 
+\begin{exercise}
+    Let $G$ be a finite group. The set
+    \[
+    \Fun(G,\C)=\{\alpha\colon G\to\C\}
+    \]
+    is a complex vector space with 
+    the operations 
+    \[
+    (\alpha+\beta)(x)=\alpha(x)+\beta(x),
+    \quad
+    (\lambda\alpha)(x)=\lambda\alpha(x),
+    \]
+    for all $\alpha,\beta\in\Fun(G,\C)$, $x\in G$ 
+    and $\lambda\in\C$. It is an algebra
+    with the \textbf{convolution product} 
+    \[
+    (\alpha*\beta)(x)=\sum_{y\in G}\alpha(xy^{-1})\beta(y).
+    \]
+    Let 
+    \[
+    \delta_x(y)=\begin{cases}
+            1 & \text{if $x=y$},\\
+            0 & \text{otherwise}.
+        \end{cases}
+    \]
+    Prove the following statements:
+    \begin{enumerate}
+        \item 
+        The set $\{\delta_x:x\in G\}$ is a basis
+        of $\Fun(G,\C)$. 
+        \item The map $G\to\Fun(G,\C)$, $g\mapsto\delta_g$, 
+            extends linearly to an algebra isomorphism. 
+    \end{enumerate}
+\end{exercise}
+
+
 \index{Module!semisimple}
 Recall that a finite-dimensional module $M$ is semisimple 
 if and only if for every submodule $S$ of $M$ there 
@@ -95,7 +131,7 @@ Let $M=\R^{2\times 1}$ as an $\C[G]$-module with
 g\cdot\begin{pmatrix}u\\v\end{pmatrix}
 =\begin{pmatrix}-v\\u\end{pmatrix}.
 \]
-Prove that $M$ is a semisimple $\C[G]$-module that is not simple.  
+Prove that $M$ is a semisimple non-simple $\C[G]$-module.
 \end{exercise}
 
 \begin{exercise}
@@ -111,6 +147,65 @@ g\cdot\begin{pmatrix}u\\v\end{pmatrix}
 Prove that $M$ is a simple $\R[G]$-module. 
 \end{exercise}
 
+If $G$ is a finite group, 
+then $\C[G]$ is semisimple. By Artin--Wedderburn theorem, 
+\[
+\C[G]\simeq\prod_{i=1}^r M_{n_i}(\C),
+\]
+where $r$ is the number of isomorphism classes of simple modules of $\C[G]$. Moreover, 
+$|G|=\dim\C[G]=\sum_{i=1}^r n_i^2$. By convention, 
+we always assume that $n_1=1$. 
+This corresponds, of course, to the \textbf{trivial module}. 
+
+\begin{theorem}
+    Let $G$ be a finite group. The number of simple 
+    modules of $\C[G]$ coincides with the number of conjugacy classes of $G$. 
+\end{theorem}
+
+\begin{proof}
+    By Artin--Wedderburn theorem $\C[G]\simeq\prod_{i=1}^rM_{n_i}(\C)$. Thus 
+    \[
+		Z(\C[G])\simeq\prod_{i=1}^rZ(M_{n_i}(\C))\simeq\C^r.
+	\]
+	In particular, $\dim Z(\C[G])=r$. If $\alpha=\sum_{g\in
+	G}\lambda_gg\in Z(\C[G])$, then $h^{-1}\alpha h=\alpha$ for all $h\in
+	G$. Thus 
+	\[
+		\sum_{g\in G}\lambda_{hgh^{-1}}g=
+		\sum_{g\in g}\lambda_g h^{-1}gh=\sum_{g\in G}\lambda_gg
+	\]
+	and hence $\lambda_{g}=\lambda_{hgh^{-1}}$ for all $g,h\in G$. A basis for 
+	$Z(\C[G])$ is given by elements of the form 
+	\[
+		\sum_{g\in K}g,
+	\]
+	where $K$ is a conjugacy class of $G$. Therefore $\dim Z(\C[G])$ equals 
+	the number of conjugacy classes of $G$.
+\end{proof}
+
+\begin{exercise}
+    Let $G$ be a finite group of order $n$ with $k$ conjugacy classes.
+    Let $m=(G:[G,G])$. Prove that $n+3m\geq4k$. 
+\end{exercise}
+
+For $n\in\Z_{\geq2}$, we write $C_n$ to denote the (multiplicative) cyclic group of order $n$. 
+
+\begin{exercise}
+    Prove that $\C[C_4]\simeq\C^4$. 
+\end{exercise}
+
+For $n\geq1$, let $\Sym_n$ denote the symmetric group in $n$ letters. 
+
+\begin{example}
+    The group $\Sym_3$ has three conjugacy classes:
+    $\{\id\}$, $\{(12),(13),(23)\}$ and $\{(123),(132)\}$. 
+    Since $6=1^2+a^2+b^2$, it follows that 
+    $\C[G]\simeq\C\times\C\times M_2(\C)$. 
+\end{example}    
+
+\subsection{Some comments}
+
+
 There is a multiplicative version of Maschke's theorem. A group $G$ acts 
 by automorphisms on $A$ if there is a group homomorphism 
 $\lambda\colon G\to\Aut(A)$. In this case, a subgroup $B$ of $A$ is said to be 
@@ -119,7 +214,7 @@ $G$-invariant if $\lambda(B)\subseteq B$.
 \begin{theorem}
 \index{Maschke's theorem!multiplicative version}
     Let $K$ be a finite group of order $m$. Assume that 
-    $K$ acts by automorphisms pn $V=U\times W$, where
+    $K$ acts by automorphisms on $V=U\times W$, where
     $U$ and $W$ are subgroups of $V$ and $U$ is abelian and $K$-invariant. 
     If the map $U\to U$, $u\mapsto u^m$, is bijective, 
     then there exists a normal $K$-invariant subgroup $N$ of $V$ 
@@ -186,59 +281,3 @@ Therefore $V$ is the direct product of $U$ and $N$, as $N$ is normal in $V$.
     $\Z/p$, it follows that $V=U\times W$ for some subgroup $W$ of $V$. Now the claim follows
     from the previous theorem. 
 \end{proof}
-
-If $G$ is a finite group, 
-then $\C[G]$ is semisimple. By Artin--Wedderburn theorem, 
-\[
-\C[G]\simeq\prod_{i=1}^r M_{n_i}(\C),
-\]
-where $r$ is the number of isomorphism classes of simple modules of $\C[G]$. Moreover, 
-$|G|=\dim\C[G]=\sum_{i=1}^r n_i^2$. By convention, 
-we always assume that $n_1=1$. 
-This corresponds, of course, to the \textbf{trivial module}. 
-
-\begin{theorem}
-    Let $G$ be a finite group. The number of simple 
-    modules of $\C[G]$ coincides with the number of conjugacy classes of $G$. 
-\end{theorem}
-
-\begin{proof}
-    By Artin--Wedderburn theorem $\C[G]\simeq\prod_{i=1}^rM_{n_i}(\C)$. Thus 
-    \[
-		Z(\C[G])\simeq\prod_{i=1}^rZ(M_{n_i}(\C))\simeq\C^r.
-	\]
-	In particular, $\dim Z(\C[G])=r$. If $\alpha=\sum_{g\in
-	G}\lambda_gg\in Z(\C[G])$, then $h^{-1}\alpha h=\alpha$ for all $h\in
-	G$. Thus 
-	\[
-		\sum_{g\in G}\lambda_{hgh^{-1}}g=
-		\sum_{g\in g}\lambda_g h^{-1}gh=\sum_{g\in G}\lambda_gg
-	\]
-	and hence $\lambda_{g}=\lambda_{hgh^{-1}}$ for all $g,h\in G$. A basis for 
-	$Z(\C[G])$ is given by elements of the form 
-	\[
-		\sum_{g\in K}g,
-	\]
-	where $K$ is a conjugacy class of $G$. Therefore $\dim Z(\C[G])$ is equal to 
-	the number of conjugacy classes of $G$.
-\end{proof}
-
-\begin{exercise}
-    Let $G$ be a finite group of order $n$ with $k$ conjugacy classes.
-    Let $m=(G:[G,G])$. Prove that $m+3m\geq4k$. 
-\end{exercise}
-
-For $n\in\Z_{\geq2}$ we write $C_n$ to denote the (multiplicative) cyclic group of order $n$. 
-
-\begin{exercise}
-    Prove that $\C[C_4]\simeq\C^4$. 
-\end{exercise}
-
-For $n\geq1$ let $\Sym_n$ denote the symmetric group in $n$ letters. 
-
-\begin{example}
-    The group $\Sym_3$ has three conjugacy classes:
-    $\{\id\}$, $\{(12),(13),(23)\}$ and $\{(123),(132)\}$. 
-    Since $6=1^2+a^2+b^2$, it follows that 
-    $\C[G]\simeq\C\times\C\times M_2(\C)$. 
-\end{example}    
