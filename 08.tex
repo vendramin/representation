@@ -398,8 +398,8 @@ if their commutator functions are somewhat equal.
 
 The following theorem appeared in 1970, as a problem in the 
 volume 13 of the \emph{Canadian Math. Bulletin}. The solution
-appeared in 1973. The proof we present here  
-was found by Iv\'an Sadosfchi Costa. 
+appeared in 1973. 
+Iv\'an Sadosfchi Costa found the proof we present here. 
 
 \begin{theorem}[Dixon]
     \index{Dixon's theorem}
@@ -407,7 +407,47 @@ was found by Iv\'an Sadosfchi Costa.
 \end{theorem}
 
 \begin{proof}
-    
+We first assume that the commuting probability of $G$ is $>1/12$. Since
+$G$ is a non-abelian simple group, the identity is the only central element. 
+Let us assume first that there is a conjugacy class of $G$ of size $m$, where
+$m$ is such that $1<m\leq 12$. Then $G$ is a transitive subgroup of $\Sym_m$.
+For these groups the problem is easy: we show that there are no non-abelian simple groups
+that act transitively on sets of size $m\in\{2,\dots,12\}$ with commuting
+probability $>1/12$. To do this, we list these transitive groups and their commuting
+probabilities and verify that all commuting probabilities are $\leq
+1/12$:
+\begin{lstlisting}
+gap> l := AllTransitiveGroups(NrMovedPoints, [2..12], \\
+> IsAbelian, false, IsSimple, true);;
+[ A5, L(6) = PSL(2,5) = A_5(6), A6, 
+  L(7) = L(3,2), A7, L(8)=PSL(2,7), A8, 
+  L(9)=PSL(2,8), A9, A_5(10), L(10)=PSL(2,9), 
+  A10, L(11)=PSL(2,11)(11), M(11), A11, A_5(12), 
+  L(2,11), M_11(12), M(12), A12 ]
+gap> List(l, CommutingProbability);           
+[ 1/12, 1/12, 7/360, 1/28, 1/280, 1/28, 1/1440, 
+  1/56, 1/10080, 1/12, 7/360, 1/75600, 2/165, 
+  1/792, 31/19958400, 1/12, 2/165, 1/792, 1/6336, 
+  43/239500800 ]
+gap> ForAny(l, x->CommutingProbability(x)>1/12);
+false
+\end{lstlisting}
+
+Now assume that all non-trivial conjugacy class of $G$ have at least 13 elements. 
+Then the class equation implies that
+\begin{align*}
+	|G|&\geq \frac{13}{12}|G|-12,
+\end{align*}
+and therefore $|G|\leq 144$. Thus one needs to check what happens with groups
+of order $\leq 144$. 
+But we know that the only non-abelian simple group of size
+$\leq 144$ is the alternating simple group $\Alt_5$.
+\begin{lstlisting}
+gap> AllGroups(Size, [2..144], \\
+> IsAbelian, false, \\
+> IsSimple, true);
+[ Alt( [ 1 .. 5 ] ) ]
+\end{lstlisting}    
 \end{proof}
 
 The alternating group $\Alt_5$ is important in this setting:
