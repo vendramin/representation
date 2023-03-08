@@ -1,6 +1,6 @@
 \chapter{}
 
-\topic{Schur's othogonality relations}
+\topic{Schur's orthogonality relations}
 
 We start with a very important exercise. It is known as Schur's lemma. 
 
@@ -15,7 +15,7 @@ We start with a very important exercise. It is known as Schur's lemma.
 We now discuss a very useful application of Schur's lemma. 
 Let $G$ be a finite group and $S$ be a simple $\C[G]$-module.
 We claim that $\Hom_G(S,S)\simeq\C$. In fact, let 
-$f\in\Hom_G(S,S)$ and $\lambda\in\C$ be an eigenvector of $f$. The such that 
+$f\in\Hom_G(S,S)$ and $\lambda\in\C$ be an eigenvalue of $f$. Then 
 $f-\lambda\id\colon S\to S$ is not invertible. By Schur's lemma, 
 $f-\lambda\id=0$ and hence $f=\lambda\id$. 
 
@@ -126,7 +126,7 @@ We now prove Schur's second orthogonality relation.
     \[
     \sum_{\chi\in\Irr(G)}\chi(g)\overline{\chi(h)}
     =\begin{cases}
-    |G_G(g)| & \text{if $g$ and $h$ are conjugate},\\
+    |C_G(g)| & \text{if $g$ and $h$ are conjugate},\\
     0 & \text{otherwise}.
     \end{cases}
     \]
@@ -135,7 +135,7 @@ We now prove Schur's second orthogonality relation.
 \begin{proof}
     Let $g_1,\dots,g_r$ be the representative of conjugacy classes of $G$. 
     Assume that $\Irr(G)=\{\chi_1,\dots,\chi_r\}$. For each $k\in\{1,\dots,r\}$ 
-    let $c_k=(G:G_C(g_k))$ denote the size of the conjugacy class of $g_k$. Then
+    let $c_k=(G:C_G(g_k))$ denote the size of the conjugacy class of $g_k$. Then
     \[
     \langle\chi_i,\chi_j\rangle
     =\frac{1}{|G|}\sum_{g\in G}\chi_i(g)\overline{\chi_j(g)}
@@ -291,7 +291,7 @@ Let $\A$ be the set of algebraic numbers.
 
 \begin{proof}
     Let $\varphi$ be a representation of $G$ such that 
-    $\chi_\rho=\chi$. Since $\varphi_g$ is diagonalizable with
+    $\chi_\varphi=\chi$. Since $\varphi_g$ is diagonalizable with
     eigenvalues $\lambda_1,\dots,\lambda_k\in\A$ (because
     $G$ is finite and the $\lambda_j$ are roots of one), 
     \[
@@ -408,7 +408,7 @@ $\chi(C)$ to denote the value $\chi(g)$ for any $g\in C$.
     
     Now 
     \begin{align*}
-        T_iT_j &= 
+        T_iT_j & 
         =\sum_{g\in G}a_{ijg}\varphi_g
         =\sum_{k=1}^r\sum_{g\in C_k}a_{ijg}\varphi_g
         =\sum_{k=1}^ra_{ijg}\sum_{g\in C_k}\varphi_g
