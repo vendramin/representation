@@ -2,7 +2,7 @@
 
 \topic{Schur's orthogonality relations}
 
-We start with a very important exercise. It is known as Schur's lemma. 
+We start with a crucial exercise. It is known as Schur's lemma. 
 
 \begin{exercise}
 \label{xca:Schur}
@@ -12,9 +12,9 @@ We start with a very important exercise. It is known as Schur's lemma.
     a non-zero module homomorphism $U\to V$ is an isomorphism. 
 \end{exercise}
 
-We now discuss a very useful application of Schur's lemma. 
+We now discuss a handy application of Schur's lemma. 
 Let $G$ be a finite group and $S$ be a simple $\C[G]$-module.
-We claim that $\Hom_G(S,S)\simeq\C$. In fact, let 
+We claim that $\Hom_G(S,S)\simeq\C$. Let 
 $f\in\Hom_G(S,S)$ and $\lambda\in\C$ be an eigenvalue of $f$. Then 
 $f-\lambda\id\colon S\to S$ is not invertible. By Schur's lemma, 
 $f-\lambda\id=0$ and hence $f=\lambda\id$. 
@@ -31,7 +31,8 @@ $f-\lambda\id=0$ and hence $f=\lambda\id$.
 \end{theorem}
 
 \begin{proof}
-    Let $S_1,\dots,S_k$ be the simples of $\C[G]$. Then 
+    Let $S_1,\dots,S_k$ be the simples of $\C[G]$. For each $j$, let
+    $\chi_j$ be the irreducible character of $S_j$. Then 
     \[
     \langle\chi_i,\chi_j\rangle=\dim\Hom_G(S_i,S_j)
     =\begin{cases}
@@ -39,11 +40,10 @@ $f-\lambda\id=0$ and hence $f=\lambda\id$.
     0 & \text{otherwise.}
     \end{cases}
     \]
-    But we know that $S_i\simeq S_j$ if and only if 
-    $\chi$...
+    But we know that $S_i\simeq S_j$ if and only if $\chi_i=\chi_j$. 
 \end{proof}
 
-With the theorem one can construct the character table of $\Sym_3$.
+With the theorem, one can construct the character table of $\Sym_3$.
 For example, this can be done using that $\langle\chi_3,\chi_3\rangle=1$ 
 and that $\langle\chi_1,\chi_3\rangle=0$. 
 As an exercise, check that the character table of $\Sym_3$ 
@@ -156,7 +156,7 @@ We now prove Schur's second orthogonality relation.
     $I=\frac{1}{|G|}X^*XD$. Thus, using that $|G|=c_k|C_G(g_k)|$ 
     holds for all $k$, 
     \[
-    |G|D^{-1}=X^*X=\sum_{k=1}^r\overline{\chi_k(g_i)}\chi_k(g_j)
+    (|G|D^{-1})_{ij}=(X^*X)_{ij}=\sum_{k=1}^r\overline{\chi_k(g_i)}\chi_k(g_j)
     =\begin{cases}
     |C_G(g_j)| & \text{if $i=j$},\\
     0 & \text{otherwise}.
@@ -175,11 +175,12 @@ We now prove Schur's second orthogonality relation.
 \end{theorem}
 
 \begin{proof}
-    Let $V=\C[G]$ be the vector space with basis $\{e_g:g\in G\}$. 
+    Assume that $G=\{g_1,g_2,\dots,g_r,g_{r+1},\dots,g^n\}$. 
+    Let $V=\C[G]$ be the vector space with basis $\{g\in G\}$. 
     The action of $G$ on $G$ by conjugation induces a group homomorphism 
     $\rho\colon G\to\GL(V)$, $g\mapsto\rho_g$, where
-    $\rho_g(e_h)=e_{ghg^{-1}}$. The matrix of $\rho_g$ 
-    in the basis $\{e_g:g\in G\}$ is
+    $\rho_g(h)=ghg^{-1}$. The matrix of $\rho_g$ 
+    in the basis $\{g:g\in G\}$ is
     \[
     (\rho_g)_{ij}=\begin{cases}
         1 & \text{if $g_ig=gg_j$},\\
@@ -307,7 +308,7 @@ Let $\A$ be the set of algebraic numbers.
     \]
 \end{theorem}
 
-To prove the theorem we need a lemma. 
+To prove the theorem, we need a lemma. 
 
 \begin{lemma}
     Let $x\in\C$. Then $x\in\A$ if and only if 
@@ -352,7 +353,7 @@ $\chi(C)$ to denote the value $\chi(g)$ for any $g\in C$.
         $T_i=\left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)\id$. 
     \end{claim}
     
-    We proceed in several steps. First we prove that 
+    We proceed in several steps. First, we prove that 
     $T_i=\lambda\id$ for some $\lambda\in\C$. 
     We prove that $T_i$ is a morphism of representations:
     \[
@@ -375,7 +376,7 @@ $\chi(C)$ to denote the value $\chi(g)$ for any $g\in C$.
     =\sum_{x\in C_i}\chi(x)
     =|C_i|\chi(C_i).
     \]
-    From this the claim follows. 
+    Then the claim follows. 
     
     Now we claim that 
     \[
@@ -451,8 +452,8 @@ $\chi(C)$ to denote the value $\chi(g)$ for any $g\in C$.
     as $\overline{\chi(C_i)}\in\A$. This implies that $\chi(1)$ divides $|G|$. 
 \end{proof}
 
-The character table gives information of the structure of the group. For example,
-with the previous result one can easily prove that
+The character table gives information on the structure of the group. For example,
+with the previous result, one can easily prove that
 groups of order $p^2$ (where $p$ is a prime number) are abelian. 
 
 \begin{exercise}
