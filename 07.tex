@@ -26,9 +26,9 @@ $G$ is a finite group and $P\in\Syl_p(G)$, then
 \]
 \end{conjecture}
 
-McKay's conjecture is still open and is an important problem in representation theory. 
+McKay's conjecture is still open and is a critical problem in representation theory. 
 The conjecture was proved for several classes of groups. Isaacs 
-proved the conjecture for solvable groups, see for example~\cite{MR332945,MR3791517}. 
+proved the conjecture for solvable groups; see~\cite{MR332945,MR3791517}. 
 Malle and Sp\"ath prove the conjecture for $p=2$. 
 
 \begin{theorem}[Malle--Sp\"ath]
@@ -47,7 +47,7 @@ Isaacs, Malle and Navarro~\cite{MR2336079}.
 
 We cannot prove Malle--Sp\"ath theorem here. However, 
 we can use the computer to prove some particular cases
-with the following cuntion: 
+with the following function: 
 
 \begin{lstlisting}
 gap> McKay := function(G, p)
@@ -55,11 +55,7 @@ gap> McKay := function(G, p)
 > N := Normalizer(G, SylowSubgroup(G, p));
 > n := Number(Irr(G), x->Degree(x) mod p <> 0);
 > m := Number(Irr(N), x->Degree(x) mod p <> 0);
-> if n = m then
-> return true;
-> else
-> return false;
-> fi;
+> return n = m;
 > end;
 function( G, p ) ... end
 \end{lstlisting}
@@ -104,23 +100,19 @@ symmetric groups, see~\cite{MR1935849}.
 
 \begin{lstlisting}
 gap> IsaacsNavarro := function(G, k, p)
-> local mG, mN, N;
+> local m, n, N;
 > N := Normalizer(G, SylowSubgroup(G, p));
-> mG := Number(Filtered(Irr(G), x->Degree(x)\
+> m := Number(Filtered(Irr(G), x->Degree(x)\
 > mod p <> 0), x->Degree(x) mod p in [-k,k] mod p);
-> mN := Number(Filtered(Irr(N), x->Degree(x)\
+> n := Number(Filtered(Irr(N), x->Degree(x)\
 > mod p <> 0), x->Degree(x) mod p in [-k,k] mod p);
-> if mG = mN then
-> return mG;
-> else
-> return false;
-> fi;
+> return n=m;
 > end;
 function( G, k, p ) ... end
 \end{lstlisting}
 
 It is an exercise to verify Isaacs--Navarro conjecture in some
-small cases, for example Mathieu simple group $M_{11}$. 
+small cases, for example, Mathieu simple group $M_{11}$. 
 
 \topic{Commutators}
 \label{commutators}
@@ -175,6 +167,7 @@ of $xy=z$ with $x\in C_i$, $y\in c_j$ and $z\in C_k$.
 \end{proof}
 
 \begin{theorem}[Burnside]
+\index{Burnside's theorem}
     Let $G$ be a finite group and $g,x\in G$. Then
     $g$ and $[x,y]$ are conjugate for some $y\in G$ if and only if
     \[
@@ -439,7 +432,7 @@ See \cite{MR3821142} for other applications of character theory.
     \]
 \end{proof}
 
-It is possible to give a very short proof of the theorem. For example, 
+It is possible to give an alternative short proof of the theorem. For example, 
 for transitive actions (i.e. $m=1$), we proceed as follows:
 \[
 \sum_{g\in G}|\Fix(g)|=\sum_{g\in G}\sum_{\substack{x\in X\\g\cdot x=x}}1
