@@ -1,5 +1,205 @@
 \chapter{}
 
+\begin{theorem}
+    Let $G$ be a finite group, $\chi\in\Irr(G)$ and $g\in G$. 
+    If $K$ is the conjugacy class of $g$ in $G$, then
+    \[
+    \frac{\chi(g)}{\chi(1)}|K|\in\A. 
+    \]
+\end{theorem}
+
+To prove the theorem, we need a lemma. 
+
+\begin{lemma}
+    Let $x\in\C$. Then $x\in\A$ if and only if 
+    there exist $z_1,\dots,z_k\in\C$ not all zero such that 
+    $xz_i=\sum_{j=1}^ka_{ij}z_j$ for some $a_{ij}\in\Z$ and 
+    all $i\in\{1,\dots,k\}$. 
+\end{lemma}
+
+\begin{proof}
+    Let us first prove $\implies$. Let $f=X^k+a_{k-1}X^{k-1}+\cdots+a_1X+a_0\in\Z[X]$
+    be such that $f(x)=0$. For $i\in\{1,\dots,k\}$ let 
+    $z_i=x^{i-1}$. Then 
+    $xz_i=x^i=z_{i+1}$ for all $i\in\{1,\dots,k-1\}$. Moreover, 
+    $xz_k=x^k=-a_0-a_1x-\cdots-a_{k-1}x^{k-1}$.
+    
+    We now prove $\impliedby$. Let $A=(a_{ij})\in\Z^{k\times k}$ and 
+    $Z$ be the column vector 
+    $Z=\begin{pmatrix}z_1\\\vdots\\z_k\end{pmatrix}$. Note that $Z$ is non-zero. 
+    Moreover, $AZ=xZ$, as 
+    \[
+    (AZ)_i=\sum_{j=1}^ka_{ij}z_j=xz_i=(xZ)_i
+    \]
+    for all $i$. Thus $x$ is an eigenvalue of $A\in\Z^{k\times k}$ and
+    hence $x\in\A$. 
+\end{proof}
+
+We now prove the theorem. We will use the following notation: if $\chi$ is a character
+of a group $G$ 
+and $C$ is a conjugacy class of $G$, then 
+$\chi(g)=\chi(xgx^{-1})$ for all $x\in G$. We write 
+$\chi(C)$ to denote the value $\chi(g)$ for any $g\in C$. 
+
+\begin{proof}[Proof of Theorem \ref{thm:A}]
+    Let $\varphi$ be a representation of $G$ with character $\chi$. 
+    Let $C_1,\dots,C_r$ be the conjugacy classes of $G$ 
+    and for every $i\in\{1,\dots,r\}$ let 
+    \[
+    T_i=\sum_{x\in C_i}\varphi_x. 
+    \]
+    
+    \begin{claim}
+        $T_i=\left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)\id$. 
+    \end{claim}
+    
+    We proceed in several steps. First, we prove that 
+    $T_i=\lambda\id$ for some $\lambda\in\C$. 
+    We prove that $T_i$ is a morphism of representations:
+    \[
+    \varphi_gT_i\varphi_g^{-1}=\sum_{x\in C_i}\varphi_g\varphi_x\varphi_g^{-1}
+    =\sum_{x\in C_i}\varphi_{gxg^{-1}}=\sum_{y\in C_i}\varphi_y=T_i.
+    \]
+    Now Schur's lemma implies that $T_i=\lambda\id$ for some
+    $\lambda\in\C$. 
+    
+    We now prove that 
+    \[
+    \lambda=\frac{|C_i|\chi(C_i)}{\chi(1)}.
+    \]
+    To prove
+    this we compute $\lambda$:
+    \[
+    \lambda\chi(1)=\trace(\lambda\id)
+    =\trace T_i
+    =\sum_{x\in C_i}\trace\varphi_x
+    =\sum_{x\in C_i}\chi(x)
+    =|C_i|\chi(C_i).
+    \]
+    Then the claim follows. 
+    
+    Now we claim that 
+    \[
+    T_iT_j=\sum_{k=1}^r a_{ijk}T_k
+    \]
+    for some $a_{ijk}\in\Z_{\geq0}$. In fact, 
+    \begin{align*}
+        T_iT_j &= \sum_{x\in C_i}\sum_{y\in C_j}\varphi_x\varphi_y
+        =\sum_{x\in C_i}\sum_{y\in C_j}\varphi_{xy}
+        =\sum_{g\in G}a_{ijg}\varphi_g,
+    \end{align*}
+    where $a_{ijg}$ is the number of elements $g\in G$ 
+    that can be written 
+    as $g=xy$ for $x\in C_i$ and $y\in C_j$. 
+    
+    \begin{claim}
+        The $a_{ijg}$ depend only on the conjugacy class of $g$.
+    \end{claim}
+    
+    Let $X_g=\{(x,y)\in C_i\times C_j:g=xy\}$. If $h=kgk^{-1}$, the map
+    \[
+    X_g\to X_h,\quad (x,y)\mapsto (kxk^{-1},kyk^{-1}),
+    \]
+    is well-defined. It is bijective with inverse
+    \[
+    X_h\to X_g,\quad
+    (a,b)\mapsto (k^{-1}ak,k^{-1}bk).
+    \]
+    Hence $|X_g|=|X_h|$. 
+    
+    Now 
+    \begin{align*}
+        T_iT_j & 
+        =\sum_{g\in G}a_{ijg}\varphi_g
+        =\sum_{k=1}^r\sum_{g\in C_k}a_{ijg}\varphi_g
+        =\sum_{k=1}^ra_{ijg}\sum_{g\in C_k}\varphi_g
+        =\sum_{k=1}^ra_{ijk}T_k.
+    \end{align*}
+    Therefore 
+    \begin{equation}
+        \label{eq:omega}
+    \left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)
+    \left(\frac{|C_j|}{\chi(1)}\chi(C_j)\right)
+    =\sum_{k=1}^r a_{ijk}\left(\frac{|C_k|}{\chi(1)}\chi(C_k)\right).
+    \end{equation}
+    By the previous lemma, $x=\frac{|C_j|}{\chi(1)}\chi(C_j)\in\A$.
+\end{proof}
+
+\topic{Frobenius' theorem}
+\label{degree}
+
+\begin{theorem}[Frobenius]
+\index{Frobenius' theorem}
+\label{thm:Frobenius_chi(1)}
+    Let $G$ be a finite group and $\chi\in\Irr(G)$. 
+    Then $\chi(1)$ divides~$|G|$. 
+\end{theorem}
+
+\begin{proof}
+    Let $\varphi$ be an irreducible representation with character $\chi$. 
+    Since $\langle\chi,\chi\rangle=1$, 
+    \[
+    \frac{|G|}{\chi(1)}=\frac{|G|}{\chi(1)}\langle\chi,\chi\rangle
+    =\sum_{g\in G}\frac{\chi(g)}{\chi(1)}\overline{\chi(g)}.
+    \]
+    Let $C_1,\dots,C_r$ be the conjugacy classes of $G$. 
+    Then 
+    \[
+        \frac{|G|}{\chi(1)}
+        =\sum_{i=1}^r\sum_{g\in C_i}\frac{\chi(g)}{\chi(1)}\overline{\chi(g)}
+        =\sum_{i=1}^r\left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)\overline{\chi(C_i)}\in\A\cap\Q=\Z,
+    \]
+    as $\overline{\chi(C_i)}\in\A$. This implies that $\chi(1)$ divides $|G|$. 
+\end{proof}
+
+The character table gives information on the structure of the group. For example,
+with the previous result, one can easily prove that
+groups of order $p^2$ (where $p$ is a prime number) are abelian. 
+
+\begin{exercise}
+    Let $p$ and $q$ be prime numbers such that $p<q$.
+    If $q\not\equiv1\bmod p$, then a group of order $pq$ is abelian. 
+\end{exercise}
+
+Another application:
+
+\begin{theorem}
+    Let $G$ be a finite simple group. 
+    Then $\chi(1)\ne2$ for all $\chi\in\Irr(G)$. 
+\end{theorem}
+
+\begin{proof}
+    Let $\chi\in\Irr(G)$ be such that $\chi(1)=2$. Let $\rho\colon G\to\GL_2(\C)$
+    be an irreducible representation of $G$ with character $\chi$. Since 
+    $G$ is simple, $\ker\rho=\{1\}$. Since $\chi(1)=2$, 
+    $G$ is non-abelian and hence $[G,G]=G$. Since 
+    $G$ has $(G:[G,G])=1$ degree-one characters, it follows that
+    $G$ has only one degree-one character, the trivial one. The composition
+    \[
+    \begin{tikzcd}
+    	G & {\GL_2(\C)} & {\C^{\times}}
+    	\arrow["{\rho }", hook, from=1-1, to=1-2]
+    	\arrow["{\det }", from=1-2, to=1-3]
+    \end{tikzcd}
+    \]
+    is a degree-one representation, which means that $\det\rho_g=1$ for all $g\in G$. 
+    By Frobenius' theorem, $|G|$ is even (because 
+    $2=\chi(1)$ divides $|G|$). Let $x\in G$ be such that $|x|=2$ (Cauchy's theorem). 
+    Then $|\rho_x|=2$, as $\rho$ is injective. Since $\rho_x$ is diagonalizable, 
+    there exists $C\in\GL_2(\C)$ such that
+    \[
+    C\rho_xC^{-1}=\begin{pmatrix}
+    \lambda&0\\
+    0&\mu
+    \end{pmatrix}
+    \]
+    for some $\lambda,\mu\in\{-1,1\}$. Since $1=\det\rho_x=\lambda\mu$ and
+    $\rho$ is non-trivial, $\lambda=\mu=-1$. In particular, $C\rho_xC^{-1}$ is central
+    and hence $\rho_x$ is central. Since $\rho$ is injective, $x$ is central 
+    and thus $Z(G)\ne\{1\}$, a contradiction. 
+\end{proof}
+
+
 \begin{theorem}[Schur]
 \index{Schur's theorem}
 \label{thm:Schur_chi(1)}
@@ -152,9 +352,6 @@ contains not only the values of the irreducible characters of the group.
 %  = Sqrt(-1) = i
 %\end{lstlisting}
 \begin{lstlisting}
-julia> G = cyclic_group(4)
-<pc group of size 4 with 2 generators>
-
 julia> G = cyclic_group(4);
 
 julia> T = character_table(G)
@@ -169,6 +366,23 @@ X_2  1  z_4 -1 -z_4
 X_3  1   -1  1   -1
 X_4  1 -z_4 -1  z_4    
 \end{lstlisting}
+%\begin{lstlisting}
+%julia> G = cyclic_group(4);
+%
+%julia> Oscar.with_unicode() do
+%       show(character_table(G))
+%       end;
+%<pc group of size 4 with 2 generators>
+%
+% 2  2   2  2   2
+%                
+%   1a  4a 2a  4b
+%                
+%χ₁  1   1  1   1
+%χ₂  1  ζ₄ -1 -ζ₄
+%χ₃  1  -1  1  -1
+%χ₄  1 -ζ₄ -1  ζ₄  
+%\end{lstlisting}
 Some remarks: 
  \begin{enumerate}
      \item The symbol \lstinline{z_4} denotes a primitive fourth root of 1.
@@ -182,12 +396,20 @@ julia> orders_class_representatives(T)
  4
  2
  4
- 
-julia> GAP.Globals.SizesCentralizers(T.GAPTable)
-GAP: [ 4, 4, 4, 4 ]
 
-julia> GAP.Globals.SizesConjugacyClasses(T.GAPTable)
-GAP: [ 1, 1, 1, 1 ]    
+julia> class_lengths(T)
+4-element Vector{fmpz}:
+ 1
+ 1
+ 1
+ 1
+
+julia> orders_centralizers(T)
+4-element Vector{fmpz}:
+ 4
+ 4
+ 4
+ 4
 \end{lstlisting}
 %\begin{lstlisting}
 %gap> OrdersClassRepresentatives(T);
@@ -229,12 +451,10 @@ GAP: [ 1, 1, 1, 1 ]
 %X.4     1 -1 -1  1
 %\end{lstlisting}
 \begin{lstlisting}
-julia> A = direct_product(cyclic_group(2), cyclic_group(2));
+julia> A = abelian_group(PcGroup, [2,2]);
 
-julia> T = character_table(A)
-DirectProduct of 
- <pc group of size 2 with 1 generator>
- <pc group of size 2 with 1 generator>
+julia> character_table(A)
+<pc group of size 4 with 2 generators>
 
   2  2  2  2  2
                
@@ -243,7 +463,7 @@ DirectProduct of
 X_1  1  1  1  1
 X_2  1 -1  1 -1
 X_3  1  1 -1 -1
-X_4  1 -1 -1  1    
+X_4  1 -1 -1  1
 \end{lstlisting}
 \end{example}
 
@@ -275,7 +495,7 @@ X_4  1 -1 -1  1
 	\end{center}
 	Let us recall one possible way to compute this table. 
 	Degree-one irreducibles were easy to compute. 
-	To compute the third row of the table one possible approach is to use
+	To compute the third row of the table, one possible approach is to use
 	the irreducible representation  
 	\[
 	(12)\mapsto \begin{pmatrix}-1&1\\0&1\end{pmatrix},
@@ -323,7 +543,7 @@ Sym( [ 1 .. 3 ] )
             
 X_1  1 -1  1
 X_2  2  . -1
-X_3  1  1  1    
+X_3  1  1  1
 \end{lstlisting}
 As we did before, some extra information was computed:
 \begin{lstlisting}
@@ -333,12 +553,22 @@ julia> orders_class_representatives(T)
  2
  3
 
-julia> GAP.Globals.SizesConjugacyClasses(T.GAPTable)
-GAP: [ 1, 3, 2 ]
+julia> class_lengths(T)
+3-element Vector{fmpz}:
+ 1
+ 3
+ 2
 
-julia> GAP.Globals.SizesCentralizers(T.GAPTable)
-GAP: [ 6, 2, 3 ]    
+julia> orders_centralizers(T)
+3-element Vector{fmpz}:
+ 6
+ 2
+ 3
 \end{lstlisting}
+%julia> GAP.Globals.SizesConjugacyClasses(T.GAPTable)
+%GAP: [ 1, 3, 2 ]
+%julia> GAP.Globals.SizesCentralizers(T.GAPTable)
+%GAP: [ 6, 2, 3 ]    
 %\begin{lstlisting}
 %gap> SizesConjugacyClasses(T);
 %[ 1, 3, 2 ]
