@@ -715,46 +715,47 @@ that up to isomorphism $\Z/20$ and
 $F_{5,4}$ are the only groups of order 20. 
 
 \begin{definition}
-  \index{Frobenius!complemento de}
-  \index{Frobenius!núcleo de}
-  \index{Frobenius!grupo de}
-  Diremos que un grupo $G$ es un 
-  \textbf{grupo de Frobenius} si $G$ 
-  tiene un subgrupo propio no trivial $H$ tal que $H\cap
-  xHx^{-1}=\{1\}$ para todo $x\in G\setminus H$. En este caso, el
-  subgrupo $H$ se llama \textbf{complemento de Frobenius}.
+  \index{Frobenius!complement}
+  \index{Frobenius!kernel}
+  \index{Frobenius!group}
+  We say that a finite group $G$ is a 
+  \textbf{Frobenius group} if $G$ 
+  has a non-trivial proper subgroup $H$ such that $H\cap
+  xHx^{-1}=\{1\}$ for all $x\in G\setminus H$. In this case, the subgroup 
+  $H$ is called a \textbf{Frobenius complement}.
 \end{definition}
 
 \begin{theorem}[Frobenius]
   \label{thm:Frobenius}
   \index{Frobenius'!Theorem}
-  Sea $G$ un grupo de Frobenius con complemento $H$. Entonces
+  Let $G$ be a Frobenius group with complement $H$. Then
   \[
 	N=\left( G\setminus\bigcup_{x\in G}xHx^{-1}\right)\cup\{1\}
   \]
-  es un subgrupo normal de $G$.
+  is a normal subgroup of $G$.
 \end{theorem}
 
 \begin{proof}
-  Para cada $\chi\in\Irr(H)$, $\chi\ne1_H$ definimos
-  $\alpha=\chi-\chi(1)1_H\in\cf(H)$, donde $1_H$ denota el caracter trivial de $H$. 
+  For each $\chi\in\Irr(H)$, $\chi\ne1_H$, let 
+  $\alpha=\chi-\chi(1)1_H\in\cf(H)$, where $1_H$ denotes the trivial character of $H$. 
 
-  Demostremos que $(\alpha^G)_H=\alpha$.
-  Primero, $\alpha^G(1)=\alpha(1)=0$. Si $h\in H\setminus\{1\}$, entonces, gracias al corolario~\ref{cor:induccion}, 
+  We claim that $(\alpha^G)_H=\alpha$.
+  First, $\alpha^G(1)=\alpha(1)=0$. If $h\in H\setminus\{1\}$, then, by Corollary~\ref{cor:induccion}, 
   \[
     \alpha^G(h)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}hx\in H}}\alpha(x^{-1}hx)
     =\frac{1}{|H|}\sum_{x\in H}\alpha(h)=\alpha(h),
   \]
-  pues si $x\not\in H$, entonces, como $x^{-1}hx\in H$, se tiene que $h\in H\cap xHx^{-1}=\{1\}$.
+  since, if $x\not\in H$, then $x^{-1}hx\in H$ implies that 
+  $h\in H\cap xHx^{-1}=\{1\}$.
 
-  Por la reciprocidad de Frobenius, 
+  By Frobenius' reciprocity, 
   \begin{equation}
     \label{eq:<a,a>=1+chi2}
     \langle\alpha^G,\alpha^G\rangle
     =\langle\alpha,(\alpha^G)_H\rangle=\langle\alpha,\alpha\rangle
     =1+\chi(1)^2.
   \end{equation}
-  Nuevamente por la reciprocidad de Frobenius, 
+  Again, by Frobenius' reciprocity, 
   \[
   \langle\alpha^G,1_G\rangle
   =\langle\alpha,(1_G)_H\rangle
@@ -762,41 +763,42 @@ $F_{5,4}$ are the only groups of order 20.
   =\langle\chi-\chi(1)1_H,1_H\rangle
   =-\chi(1),
   \]
-  donde $1_G$ denota al caracter trivial de $G$. Si escribimos
+  where $1_G$ is the trivial character of $G$. If we write 
   \[
   \alpha^G=\sum_{\eta\in\Irr(G)}\langle\alpha^G,\eta\rangle\eta
-  =\langle\alpha^G,1_G\rangle1_G+\underbrace{\sum_{\substack{1_G\ne\eta\\\eta\in\Irr(G)}}\langle\alpha^G,\eta\rangle\eta}_{\phi}
+  =\langle\alpha^G,1_G\rangle1_G+\underbrace{\sum_{\substack{1_G\ne\eta\\\eta\in\Irr(G)}}\langle\alpha^G,\eta\rangle\eta}_{\phi},
   \]
-  entonces $\alpha^G=-\chi(1)1_G+\phi$, donde $\phi$ es una 
-  combinación lineal entera de caracteres irreducibles no triviales de $G$. 
-  Calculamos además
+  then $\alpha^G=-\chi(1)1_G+\phi$, where $\phi$ is a linear combination 
+  (with integer coefficients) of non-trivial 
+  irreducible characters of $G$. We compute 
   \[
   1+\chi(1)^2=\langle\alpha^G,\alpha^G\rangle
   =\langle\phi-\chi(1)1_G,\phi-\chi(1)1_G\rangle
   =\langle\phi,\phi\rangle+\chi(1)^2
   \]
-  y luego $\langle\phi,\phi\rangle=1$. 
+  and hence $\langle\phi,\phi\rangle=1$. 
   
   \begin{claim}
-  Si $\eta\in\Irr(G)$ es tal que $\eta\ne 1_G$, entonces $\langle\alpha^G,\eta\rangle\in\Z$. 
+  If $\eta\in\Irr(G)$ is such that $\eta\ne 1_G$, then 
+  $\langle\alpha^G,\eta\rangle\in\Z$. 
   \end{claim}
   
-  En efecto, por la reciprocidad de Frobenius, $\langle\alpha^G,\eta\rangle=\langle\alpha,\eta_H\rangle$. 
-  Si descomponemos a $\eta_H$ en irreducibles de $H$, digamos
+  By Frobenius' reciprocity, $\langle\alpha^G,\eta\rangle=\langle\alpha,\eta_H\rangle$. 
+  If we decompose $\eta_H$ into irreducibles of $H$, say 
   \[
   \eta_H=m_11_H+m_2\chi+m_3\theta_3+\cdots+m_t\theta_t
   \]
-  para ciertos $m_1,m_2,\dots,m_t\geq0$, 
-  entonces, como
+  for some $m_1,m_2,\dots,m_t\geq0$, 
+  then, since 
   \begin{align*}
   \langle\alpha,1_H\rangle=\langle\chi-\chi(1)1_H,1_H\rangle=-\chi(1),
   &&\langle\alpha,\chi\rangle=\langle\chi-\chi(1)1_H,\chi\rangle=1,
   \end{align*}
-  y además 
+  and 
   \[
   \langle\alpha,\theta_j\rangle=\langle\chi-\chi(1)1_H,\theta_j\rangle=0
   \]
-  para todo $j\in\{3,\dots,t\}$, se concluye que
+  for all $j\in\{3,\dots,t\}$, we conclude that 
   \[
   \langle\alpha^G,\eta\rangle=-m_1\chi(1)+m_2\in\Z.
   \]
@@ -805,88 +807,92 @@ $F_{5,4}$ are the only groups of order 20.
   $\phi\in\Irr(G)$.
   \end{claim}
   
-  Como $\langle\alpha^G,\eta\rangle\in\Z$ para todo $\eta\in\Irr(G)$ tal que $\eta\ne 1_G$ y además 
+  Since $\langle\alpha^G,\eta\rangle\in\Z$ for all $\eta\in\Irr(G)$ such that 
+  $\eta\ne 1_G$ and 
   \[
   1=\langle\phi,\phi\rangle
   =\sum_{\substack{\eta,\theta\in\Irr(G)\\\eta,\theta\ne1_G}}\langle\alpha^G,\eta\rangle\langle\alpha^G,\theta\rangle\langle\eta,\theta\rangle
   =\sum_{\substack{\eta\ne 1_G\\\eta\in\Irr(G)}}\langle\alpha^G,\eta\rangle^2,
   \]
-  entonces existe un único $\eta\in\Irr(G)$ tal que 
-  $\langle\alpha^G,\eta\rangle^2=1$ y el resto de los productos es cero, es decir 
-  $\alpha^G=\pm\eta$ para un cierto $\eta\in\Irr(G)$. Como además 
+  there is a unique $\eta\in\Irr(G)$ such that 
+  $\langle\alpha^G,\eta\rangle^2=1$ and all the other products are zero, 
+  that is 
+  $\alpha^G=\pm\eta$ for some $\eta\in\Irr(G)$. Since 
   \[
   \chi-\chi(1)1_H=\alpha=(\alpha^G)_H=(\phi-\chi(1)1_G)_H=\phi_H-\chi(1)1_H,
   \]
-  se tiene que $\phi(1)=\phi_H(1)=\chi(1)\in\Z_{\geq1}$. Luego $\phi\in\Irr(G)$. 
+  it follows that $\phi(1)=\phi_H(1)=\chi(1)\in\Z_{\geq1}$. Thus $\phi\in\Irr(G)$. 
 
   \medskip
-  Observemos que hemos demostrado que si $\chi\in\Irr(H)$ es tal que $\chi\ne 1_H$, entonces
-  existe $\phi_\chi\in\Irr(G)$ tal que $(\phi_\chi)_H=\chi$. 
+  We have proved that if $\chi\in\Irr(H)$ is such that $\chi\ne 1_H$, then 
+  there exists $\phi_\chi\in\Irr(G)$ such that $(\phi_\chi)_H=\chi$. 
   
   \medskip
-  Vamos a demostrar que $N$ es igual a
+  We prove that $N$ is equal to 
   \[
 	M=\bigcap_{\substack{\chi\in\Irr(H)\\\chi\ne1_H}}\ker\phi_{\chi}.
   \]
 
-  Demostremos primero que $N\subseteq M$. 
-  Sea $n\in N\setminus\{1\}$ y sea $\chi\in\Irr(H)\setminus\{1_H\}$. Como $n$ no pertenece
-  a ningún conjugado de $H$, 
+  We first prove that $N\subseteq M$. 
+  Let $n\in N\setminus\{1\}$ and $\chi\in\Irr(H)\setminus\{1_H\}$. Since $n$ 
+  does not belong to a conjugate of 
+  $H$, 
   \[
-	\alpha^G(n)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}nx\in H}}\chi(x^{-1}nx)=0
+	\alpha^G(n)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}nx\in H}}\chi(x^{-1}nx)=0, 
   \]
-  pues como $n\in N$ el conjunto $\{x\in G:x^{-1}nx\in H\}$ es vacío. Como entonces 
+  as $n\in N$ implies that the set $\{x\in G:x^{-1}nx\in H\}$ is empty. Since 
   \[
   0=\alpha^G(n)
   =\phi_{\chi}(n)-\chi(1)=\phi_{\chi}(n)-\phi_{\chi}(1),
   \]
-  se concluye que $n\in\ker\phi_{\chi}$. 
+  we conclude that $n\in\ker\phi_{\chi}$. 
   
-  Demostremos ahora que $M\subseteq N$. 
-  Sea $h\in M\cap H$ y sea $\chi\in\Irr(H)\setminus\{1_H\}$. Entonces
+  We now prove that $M\subseteq N$. 
+  Let $h\in M\cap H$ and $\chi\in\Irr(H)\setminus\{1_H\}$. Then 
   \[
     \phi_{\chi}(h)-\chi(1)=\alpha^G(h)=\alpha(h)=\chi(h)-\chi(1),
   \]
-  y luego $h\in\ker\chi$ pues 
+  and $h\in\ker\chi$, as
   \[
     \chi(h)=\phi_{\chi}(h)=\phi_{\chi}(1)=\chi(1).
   \]
-  Por lo tanto $h\in\cap_{\chi}\ker\chi=\{1\}$, que que vimos en la fórmula~\eqref{eq:kernels} que
-  la intersección de los núcleos de los irreducibles es trivial. Demostremos ahora que $M\cap
-  xHx^{-1}=\{1\}$ para todo $x\in G$. Sean $x\in G$ y $m\in M\cap xHx^{-1}$. Como
-  $m=xhx^{-1}$ para algún $h\in H$, $x^{-1}mx\in H\cap M=\{1\}$.  Esto implica que
+  Therefore $h\in\cap_{\chi}\ker\chi=\{1\}$. By~\eqref{eq:kernels}, the kernels
+  of irreducible characters have trivial intersection. 
+  We now prove that $M\cap
+  xHx^{-1}=\{1\}$ for all $x\in G$. Let $x\in G$ y $m\in M\cap xHx^{-1}$. Since 
+  $m=xhx^{-1}$ for some $h\in H$, $x^{-1}mx\in H\cap M=\{1\}$.  This imples that 
   $m=1$.
 \end{proof}
 
-No se conoce una demostración del teorema de Frobenius que no use teoría de caracteres. 
+At the moment, there is no proof of Frobenius' theorem independent of character theory. 
 
 \begin{definition}
   \index{Frobenius!kernel}
-  Sea $G$ un grupo de Frobenius. El subgrupo normal
-  $N$ construido en el teorema de Frobenius se llama \textbf{núcleo de
-  Frobenius}.
+  Let $G$ be a Frobenius group. The normal subgroup 
+  $N$ of Frobenius' theorem is called the \textbf{Frobenius kernel}. 
 \end{definition}
 
 \begin{corollary}
-  Sea $G$ un grupo de Frobenius con complemento $H$. 
-  Entonces existe un subgrupo normal $N$ de $G$ tal que
-  $G=HN$, $H\cap N=\{1\}$.
+  Let $G$ be a Frobenius group with complement $H$. 
+  Then there exists a normal subgroup $N$ of $G$ 
+  such that 
+  $G=HN$ and $H\cap N=\{1\}$.
 \end{corollary}
 
 \begin{proof}
-  La existencia del subgrupo normal $N$ está garantizada por el
-  teorema de Frobenius. Demostremos que $H\subseteq N_H(H)$. Si $h\in
-  H\setminus\{1\}$ y $g\in G$ son tales que $ghg^{-1}\in H$, entonces $h\in
-  g^{-1}Hg\cap H$ y luego $g\in H$. Como entonces $H=N_G(H)$, el subgrupo $H$
-  tiene $(G:H)$ conjugados y luego $|G|=|H||N|$ pues 
+  Frobenius' theorem yields the subgroup $N$. 
+  Let us prove that $H\subseteq N_H(H)$. If $h\in
+  H\setminus\{1\}$ and $g\in G$ are such that $ghg^{-1}\in H$, then $h\in
+  g^{-1}Hg\cap H$ and hence $g\in H$. Since $H=N_G(H)$, the subgroup $H$
+  has $(G:H)$ conjugates. Thus $|G|=|H||N|$, as 
   \[
     |N|=|G|-(G:H)(|H|-1)=(G:H).
   \]
-  Como $N\cap H=\{1\}$, entonces 
+  Since $N\cap H=\{1\}$, 
   \[
   |HN|=|N||H|/|H\cap N|=|N||H|=|G|
   \]
-  y luego $G=NH$.
+  and therefore $G=NH$.
 \end{proof}
 
 \begin{corollary}[Combinatorial Frobenius' theorem]
