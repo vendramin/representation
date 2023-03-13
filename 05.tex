@@ -224,8 +224,8 @@ We need a lemma.
     \begin{align*}
     \langle\chi\chi_1,\chi\chi_1\rangle
     &=\frac{1}{|G\times G_1|}\sum_{(g,g_1)\in G\times G_1}(\chi\chi_1)(g,g_1)\overline{(\chi\chi_1)(g,g_1)}\\
-    &=\frac{1}{|G||G_1}\sum_{g\in G}\sum_{g_1\in G}\chi(g)\chi_1(g_1)\overline{\chi(g)}\overline{\chi_1(g_1)}\\
-    &=\frac{1}{|G||G_1}\sum_{g\in G}\overline{\chi(g)}\sum_{g_1\in G}\chi(g)\chi_1(g_1)\overline{\chi_1(g_1)}\\
+    &=\frac{1}{|G||G_1|}\sum_{g\in G}\sum_{g_1\in G}\chi(g)\chi_1(g_1)\overline{\chi(g)}\overline{\chi_1(g_1)}\\
+    &=\frac{1}{|G||G_1|}\sum_{g\in G}\chi(g)\overline{\chi(g)}\sum_{g_1\in G}\chi_1(g_1)\overline{\chi_1(g_1)}\\
     &=\langle\chi,\chi\rangle\langle\chi_1,\chi_1\rangle=1.\qedhere 
     \end{align*}
 \end{proof}
@@ -314,10 +314,10 @@ $\chi_{r}$ & $n_{r}$ & $\chi_{r}(g_{2})$ & $\cdots$ & $\chi_{r}(g_{r})$\tabularn
 \end{center}
 where the $n_j$ are the degrees of the irreducible representations of $G$ and each $k_j$ is 
 the size of the conjugacy class of the element $g_j$. By convention, the character table
-contains not only the values of the irreducible characters of the group. 
+contains only the values of the irreducible characters of the group. 
 
 \begin{example}
-	Sea $G=\langle g:g^4=1\rangle$ 
+	Let $G=\langle g:g^4=1\rangle$ 
 	be the cyclic group of order four. The character table of $G$ is given by
 	\begin{center}
 		\begin{tabular}{|c|cccc|}
