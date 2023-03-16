@@ -1,15 +1,21 @@
 \chapter{}
 
+We will use the following notation: if $\chi$ is a character
+of a group $G$ 
+and $C$ is a conjugacy class of $G$, then 
+$\chi(g)=\chi(xgx^{-1})$ for all $x\in G$. We write 
+$\chi(C)$ to denote the value $\chi(g)$ for any $g\in C$. 
+
 \begin{theorem}
 \label{thm:B}
-    Let $G$ be a finite group, $\chi\in\Irr(G)$ and $g\in G$. 
-    If $K$ is the conjugacy class of $g$ in $G$, then
+    Let $G$ be a finite group, $\chi\in\Irr(G)$ 
+    and $K$ be a conjugacy class of $G$. Then 
     \[
-    \frac{\chi(g)}{\chi(1)}|K|\in\A. 
+    \frac{\chi(K)}{\chi(1)}|K|\in\A. 
     \]
 \end{theorem}
 
-To prove the theorem, we need a lemma. 
+We need a lemma. 
 
 \begin{lemma}
     Let $x\in\C$. Then $x\in\A$ if and only if 
@@ -36,11 +42,8 @@ To prove the theorem, we need a lemma.
     hence $x\in\A$. 
 \end{proof}
 
-We now prove the theorem. We will use the following notation: if $\chi$ is a character
-of a group $G$ 
-and $C$ is a conjugacy class of $G$, then 
-$\chi(g)=\chi(xgx^{-1})$ for all $x\in G$. We write 
-$\chi(C)$ to denote the value $\chi(g)$ for any $g\in C$. 
+The previous lemma could be used to give an alternative proof of the fact 
+that the algebraic integers form a ring. 
 
 \begin{proof}[Proof of Theorem \ref{thm:B}]
     Let $\varphi$ be a representation of $G$ with character $\chi$. 
@@ -93,7 +96,7 @@ $\chi(C)$ to denote the value $\chi(g)$ for any $g\in C$.
     such that $g=xy$. 
     
     \begin{claim}
-        The $a_{ijg}$ depend only on the conjugacy class of $g$.
+        The elements $a_{ijg}$ depend only on the conjugacy class of $g$. 
     \end{claim}
     
     Let $X_g=\{(x,y)\in C_i\times C_j:g=xy\}$. If $h=kgk^{-1}$, the map
@@ -106,13 +109,15 @@ $\chi(C)$ to denote the value $\chi(g)$ for any $g\in C$.
     (a,b)\mapsto (k^{-1}ak,k^{-1}bk).
     \]
     Hence $|X_g|=|X_h|$. 
-    
-    Now 
+
+    Let $a_{ijk}$ be the number of elements 
+    $(x,y)\in C_i\times C_j$ such that $xy\in C_k$. 
+    Then 
     \begin{align*}
         T_iT_j & 
         =\sum_{g\in G}a_{ijg}\varphi_g
         =\sum_{k=1}^r\sum_{g\in C_k}a_{ijg}\varphi_g
-        =\sum_{k=1}^ra_{ijg}\sum_{g\in C_k}\varphi_g
+        =\sum_{k=1}^ra_{ijk}\sum_{g\in C_k}\varphi_g
         =\sum_{k=1}^ra_{ijk}T_k.
     \end{align*}
     Therefore 
@@ -237,7 +242,7 @@ We need a lemma.
     $\chi\in\Irr(G)$ and $\chi_1\in\Irr(G_1)$. 
 \end{exercise}
 
-We now prove Schur's theorem. The proof goes back to Tate, it uses the 
+We now prove Schur's theorem. The proof goes back to Tate; it uses the 
 \emph{tensor power trick}. See
 Tao's blog  
 \url{https://terrytao.wordpress.com} for other applications of this powerful
@@ -261,9 +266,10 @@ trick.
     \sigma\colon G^n\to\GL(V^{\otimes n}),\quad
     (g_1,\dots,g_n)\mapsto \rho_{g_1}\otimes\cdots\otimes\rho_{g_n}.
     \]
-    The character of $\sigma$ is $\chi^n$. Moreover, by the previous lemma, 
+    Then $\sigma$ is a representation. 
+    The character of $\sigma$ is $\chi^n$. By the previous lemma, 
     $\sigma$ is
-    irreducible. We compute:
+    irreducible. For $z_1,\dots,z_n\in Z(G)$, we compute
     \begin{align*}   
     \sigma(z_1,\dots,z_n)(v_1\otimes\cdots\otimes v_n)&=z_1v_1\otimes\cdots\otimes z_nv_n\\
     &=\lambda(z_1)\cdots\lambda(z_n)v_1\otimes\cdots\otimes v_n\\
@@ -278,11 +284,16 @@ trick.
     \[
     \tau\colon G^n/H\to\GL(V^{\otimes n}).
     \]
+    of degree $\chi(1)^n$. 
     Since $\sigma$ is irreducible, so is $\tau$. 
     By Frobenius' theorem, $\chi(1)$ divides $|G|$ 
     and $\chi(1)^n$ divides $|G^n/H|=\frac{|G|^n}{|Z(G)|^{n-1}}$. 
     Write 
-    $|G|=\chi(1)s$ and $|G|(G:Z(G))^{n-1}=\chi(1)^nr$ for some $r,s\in\Z$. Let $a$ and $b$ be such that 
+    \[
+    |G|=\chi(1)s\quad\text{ and }\quad 
+    |G|(G:Z(G))^{n-1}=\chi(1)^nr
+    \]
+    for some $r,s\in\Z$. Let $a$ and $b$ be such that 
     $\gcd(a,b)=1$ and 
     $\frac{a}{b}=\frac{(G:Z(G))}{\chi(1)}$. Then
     \[
@@ -332,7 +343,7 @@ contains only the values of the irreducible characters of the group.
 			\hline
 		\end{tabular}
 	\end{center}
- Let us see how to see this calculation in the computer:
+ Let us see how to see this calculation on the computer:
 \begin{lstlisting}
 gap> C4 := CyclicGroup(4);;                       
 gap> T := CharacterTable(C4);;
