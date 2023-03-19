@@ -13,7 +13,7 @@ N_G(P)=\{g\in G:gPg^{-1}=P\}.
 
 The following conjecture was made by McKay for the prime $p=2$ and simple groups 
 and later generalized by Alperin in~\cite{MR0404417} and independently
-by Isaacs en~\cite{MR332945}. 
+by Isaacs in~\cite{MR332945}. 
 
 \begin{conjecture}[McKay]
 \index{McKay's conjecture}
@@ -21,8 +21,8 @@ by Isaacs en~\cite{MR332945}.
 Let $p$ be a prime. If  
 $G$ is a finite group and $P\in\Syl_p(G)$, then 
 \[
-|\{\chi\in\Irr(G):p\nmid \chi(1)\}|
-=|\{\psi\in\Irr(N_G(P))|:p\nmid\psi(1)\}|.
+|\{\chi\in\Irr(G): p\nmid \chi(1)\}|
+=|\{\psi\in\Irr(N_G(P)): p\nmid\psi(1)\}|.
 \]
 \end{conjecture}
 
@@ -36,8 +36,8 @@ Malle and Sp\"ath prove the conjecture for $p=2$.
 If $G$ is finite and $P\in\Syl_2(G)$,
 then 
 \[
-|\{\chi\in\Irr(G):2\nmid \chi(1)\}|
-=|\{\psi\in\Irr(N_G(P))|:2\nmid\psi(1)\}|.
+|\{\chi\in\Irr(G): 2\nmid \chi(1)\}|
+=|\{\psi\in\Irr(N_G(P)): 2\nmid\psi(1)\}|.
 \]
 \end{theorem}
 
@@ -88,8 +88,8 @@ Let $p$ be a prime and $k\in\Z$.
 If $G$ is a finite group and $P\in\Syl_p(G)$,
 then
 \begin{align*}
-|\{\chi\in\Irr(G):&p\nmid \chi(1)\text{ y }\chi(1)\equiv\pm k\bmod p\}|\\
-&=|\{\psi\in\Irr(N_G(P))|:p\nmid\psi(1)\text{ y }\psi(1)\equiv\pm k\bmod p\}|.
+|\{\chi\in\Irr(G):&p\nmid \chi(1)\text{ and }\chi(1)\equiv\pm k\bmod p\}|\\
+&=|\{\psi\in\Irr(N_G(P)):p\nmid\psi(1)\text{ and }\psi(1)\equiv\pm k\bmod p\}|.
 \end{align*}
 \end{conjecture}
 
@@ -122,12 +122,12 @@ $i\in\{1,\dots,s\}$ and $\chi\in\Irr(G)$ let
 \[
 \omega_{\chi}(C_i)=\frac{|C_i|\chi(C_i)}{\chi(1)}\in\A.
 \]
-In the proof of Theorem \ref{thm:A}, Equality \eqref{eq:omega}, 
+In the proof of Theorem \ref{thm:B}, Equality \eqref{eq:omega}, 
 we obtained
 that 
 \begin{equation}
 \label{eq:again_omega}
-\omega_\chi(C_i)\omega_\chi(C_j)=\sum_{k=1}^ka_{ijk}\omega_{\chi}(C_k),
+\omega_\chi(C_i)\omega_\chi(C_j)=\sum_{k=1}^sa_{ijk}\omega_{\chi}(C_k),
 \end{equation}
 where $a_{ijk}$ is the number of solutions 
 of $xy=z$ with $x\in C_i$, $y\in c_j$ and $z\in C_k$. 
@@ -181,7 +181,7 @@ of $xy=z$ with $x\in C_i$, $y\in c_j$ and $z\in C_k$.
     $C_i^{-1}=\{z^{-1}:z\in C_i\}=C_j$ for some $j$. By Burnside's theorem,
     \[
     a_{ijk}
-    =\frac{|C_i|^2}{|G|}\sum_{\chi\in\Irr(G)}\frac{|\chi(C_i)|^2\overline{\chi(C_k)}}{\chi(1)}
+    =\frac{|C_i|^2}{|G|}\sum_{\chi\in\Irr(G)}\frac{|\chi(C_i)|^2\overline{\chi(C_k)}}{\chi(1)}.
     \]
     We first prove $\impliedby$. Since $a_{ijk}>0$, 
     there exist $u\in C_i$ and $v\in C_j$ such that 
@@ -194,7 +194,7 @@ of $xy=z$ with $x\in C_i$, $y\in c_j$ and $z\in C_k$.
     \[
     zxz^{-1}=u\implies zx^{-1}z^{-1}=u^{-1}\in C_i^{-1}=C_j.
     \]
-    Let $z_2\in G$ be such that $z_2x^{-1}z_2=v$. 
+    Let $z_2\in G$ be such that $z_2x^{-1}z_2^{-1}=v$. 
     If $y=z^{-1}z_2$, then $g$ and $[x,y]$ are conjugate, as 
     \[
     g=uv=(zxz^{-1})(z_2x^{-1}z_2^{-1})=(zxyx^{-1}y^{-1})yz_2^{-1}
@@ -245,22 +245,22 @@ let
     Let $g\in G$ and $C$ be the conjugacy class of $g$. The equation
     $xu^{-1}=g$ with $x\in C$ and $u\in C^{-1}$ has 
     \[
-        \frac{|C||C|^{-1}}{|G|}\sum_{\chi\in\Irr(G)}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
+        \frac{|C||C^{-1}|}{|G|}\sum_{\chi\in\Irr(G)}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
     \]
     solutions. If $(x,u)$ is a solution of $xu^{-1}=g$, then
     there are $|C_G(x)|$ elements $y$ such that $yxy^{-1}=u$. ($yxy^{-1}=u=y_1xy_1^{-1}$ implies that $y_1^{-1}y\in C_G(x)$ which implies $yC_G(x)=y_1C_G(x)$.) Now 
-    $[x,y]=(xyx^{-1})y^{-1}=g$ has 
+    $[x,y]=x(yx^{-1}y^{-1})=g$ has 
     \[
     |C|\sum_{\chi}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
     \]
     solutions, where the sum is taken over all irreducible characters of $G$. 
     Now we sum over all conjugacy classes of $G$:
     \begin{align*}
-        \sum_{C}\sum_{\chi}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
+        \sum_{C}\sum_{\chi}|C|\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
         &=\sum_{\chi}\frac{\chi(g^{-1})}{\chi(1)}\left(\sum_C|C|\chi(C)\chi(C^{-1})\right)\\
         &=|G|\sum_{\chi}\frac{\chi(g^{-1})}{\chi(1)}.
     \end{align*}
-    From this the formula follows. 
+    From this, the formula follows. 
 \end{proof}
 
 Application:
@@ -276,7 +276,7 @@ Application:
 \topic{Ore's conjecture}
 \label{Ore}
 
-In 1951 Ore and independently Ito
+In 1951 Ore and independently It\^o
 proved that every element of any alternating simple group is a commutator. 
 Ore also mentioned that ``it is possible that a similar theorem holds for any simple group of finite order, but it seems that at present we do not have the necessary methods to investigate the question". 
 
@@ -296,8 +296,7 @@ Ore's conjecture was proved in 2010:
 
 The proof appears in~\cite{MR2654085}. It needs about 70 pages and
 uses the classification of finite simple groups (CFSG) and character theory.
-See \cite{MR3289286} for more information on Ore's conjecture and its proof 
-a~\cite{MR3289286}. 
+See \cite{MR3289286} for more information on Ore's conjecture and its proof. 
 
 Despite the fact that the proof of Ore's conjecture is too complicated for 
 this course, we can use the computer to 
@@ -310,7 +309,7 @@ prove the conjecture in some particular cases:
 
 \begin{proof}
     Let $G$ be a finite simple group. 
-    We now that $g\in G$ is a commutator if and only if 
+    We know that $g\in G$ is a commutator if and only if 
     $\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne 0$. Let us write
     a computer script to check whether every element in a group 
     is a commutator. Our
@@ -374,7 +373,7 @@ See \cite{MR3821142} for other applications of character theory.
     \[
     (\rho_g)_{ij}=\begin{cases}
         1 & \text{if $g\cdot x_j=x_i$},\\
-        0 & \text{otherwie}.
+        0 & \text{otherwise}.
         \end{cases}
     \]
     In particular, $(\rho_g)_{ii}=1$ if $x_i\in\Fix(g)$ and 
@@ -410,7 +409,7 @@ See \cite{MR3821142} for other applications of character theory.
         \end{cases}
     \]
     We now prove that $V^G=\langle v_1,\dots,v_m\rangle$. Let $v\in V^G$.
-    Then $v=\sum_{x\in X}\lambda_x$ for some coefficients $\lambda_x\in\C$.
+    Then $v=\sum_{x\in X}\lambda_xx$ for some coefficients $\lambda_x\in\C$.
     If $g\in G$, then $g\cdot v=v$. Since 
     \[
     \sum_{x\in X}\lambda_xx=v=g\cdot v
@@ -478,7 +477,7 @@ of $G$ on $X$ is the number of orbitals.
 \end{proof}
 
 \begin{definition}
-    Let $G$ acts on a finite set $X$. 
+    Let $G$ act on a finite set $X$. 
     We say that $G$ is \textbf{2-transitive} on $X$ 
     if given $x,y\in X$ with $x\ne y$ and 
     $x_1,y_1\in X$ with $x_1\ne y_1$ there exists 
