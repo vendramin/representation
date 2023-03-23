@@ -130,7 +130,7 @@ that
 \omega_\chi(C_i)\omega_\chi(C_j)=\sum_{k=1}^sa_{ijk}\omega_{\chi}(C_k),
 \end{equation}
 where $a_{ijk}$ is the number of solutions 
-of $xy=z$ with $x\in C_i$, $y\in c_j$ and $z\in C_k$. 
+of $xy=z$ with $x\in C_i$, $y\in C_j$ and $z\in C_k$. 
 
 \begin{theorem}[Burnside]
     \index{Burnside's theorem}
@@ -155,7 +155,7 @@ of $xy=z$ with $x\in C_i$, $y\in c_j$ and $z\in C_k$.
     |C_i||C_j|\sum_{\chi\in\Irr(G)}\frac{\overline{\chi(C_l)}}{\chi(1)}\chi(C_i)\chi(C_j)
     &=\sum_{\chi\in\Irr(G)}\sum_{k=1}^sa_{ijk}|C_k|\chi(C_k)\overline{\chi(C_l)}\\
     &=\sum_{k=1}^sa_{ijk}|C_k|\sum_{\chi\in\Irr(G)}\chi(C_k)\overline{\chi(C_l)}\\
-    &=a_{ijk}|G|,
+    &=a_{ijl}|G|,
     \end{align*}
     because 
     \[
@@ -377,7 +377,7 @@ See \cite{MR3821142} for other applications of character theory.
         \end{cases}
     \]
     In particular, $(\rho_g)_{ii}=1$ if $x_i\in\Fix(g)$ and 
-    $(\rho_g)_{ij}=0$ if $i\ne j$. Thus
+    $(\rho_g)_{ii}=0$ if $x_i \notin \Fix(g)$. Thus
     \[
     \chi_\rho(g)=\trace\rho_g=\sum_{i=1}^n(\rho_g)_{ii}=|\Fix(g)|.
     \]
@@ -390,7 +390,7 @@ See \cite{MR3821142} for other applications of character theory.
     \end{gather*}
     where $\chi_1$ is the trivial character of $G$. 
     
-    We can assume that, after a possible renumeration,
+    We can assume that, after a possible re-enumeration,
     $x_1,\dots,x_m$ are the representatives of the orbits 
     of $G$ on $X$. For $i\in\{1,\dots,m\}$, let
     $v_i=\sum_{x\in G\cdot x_i}x$.
