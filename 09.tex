@@ -1,6 +1,6 @@
 \chapter{}
 
-\topic{Brauer–Fowler theorem}
+\topic{Brauer--Fowler theorem}
 
 \index{Symmetric}
 \index{Antisymmetric}
@@ -237,13 +237,65 @@ What matters is the following consequence:
     finite simple groups with an involution with a centralizer of order $n$.
 \end{corollary}
 
-As an exercise, a simple applications: 
+As an exercise, a simple application: 
 
 \begin{exercise}
     If $G$ is a finite simple group and $x$ is an involution with
     centralizer of order two, then  
     $G\simeq\Z/2$. 
 \end{exercise}
+
+\subsection{A comment: An elementary proof of Brauer--Fowler theorem}
+
+We need to find a subgroup of index $\leq 2n^2$. 
+Let $X$ be the conjugacy class of $x$. For $g\in G$ let
+\[
+J(g)=\{z\in X:zgz^{-1}=g^{-1}\}.
+\]
+We claim that $|J(g)|\leq|C_G(g)|$. The map $J(g)\to C_G(g)$, $z\mapsto gz$, 
+is well-defined,~as 
+\[
+(gz)g(gz)^{-1}=g(xgx^{-1})g^{-1}=g^{-1}\in C_G(g).
+\]
+It is injective, as $gz=gz_1$ implies $z=z_1$.
+
+Let $\{(g,z)\in G\times X:zgz^{-1}=g^{-1}\}$.  
+Since $X\times X\to J$, $(y,z)\mapsto (yz,z)$, 
+is well-defined (since $z(yz)z^{-1}=zy=(yz)^{-1}$) and
+it is trivially injective, 
+\[
+|X|^2\leq |J|=\sum_{(g,z)\in J}1\leq\sum_{g\in G}|J(g)|
+=\sum_{g\in G}|C_G(g)|=k|G|,
+\]
+where $k$ is the number of conjugacy classes of $G$, 
+as $(g,z)\in J$ if and only if $z\in J(g)$. Thus $|G|\leq kn^2$, as
+\[
+\left(\frac{|G|}{|C_G(x)|}\right)^2=|X|^2=\frac{|G|}{n^2}\leq k|G|.
+\]
+
+\begin{claim}
+    There exists a conjugacy class with $\leq 2n^2$ elements.
+\end{claim}
+
+Assume that the claim is not true. Let
+$C_1,\dots,C_k$ be the conjugacy classes of $G$, where 
+$C_1=\{1\}$ and $|C_i|>2n^2$ for all $i\in\{2,\dots,k\}$. Then
+\[
+|G|=1+\sum_{i=2}^k|C_i|>1+\sum_{i=2}^kn^2=1+(k-1)2n^2\geq |G|,
+\]
+a contradiction. 
+
+\begin{claim}
+    There exists a subgroup $H$ of $G$ such that
+    $(G:H)\leq 2n^2$.
+\end{claim}
+
+Let $C$ be a conjugacy class of $G$ such that 
+$|C|\leq 2n^2$. Let $g\in C$.  
+Then $H=C_G(g)$ is a subgroup of $G$ such that
+$(G:H)\leq 2n^2$. 
+This finishes the proof of the Brauer--Fowler theorem. 
+
 
 \topic{The correspondence theorem}
 
