@@ -27,7 +27,7 @@ find characters.
 
 \begin{example}
     Let $p$ be a prime number and let $q=p^{m}$. Let $V$ 
-    be the vector space of dimension $m$ 
+    be the vector space of dimension $2$ 
     over the finite field of $q$ elements. 
     The group $G=\GL_2(q)$ acts 2-transitively on the set $X$ of
     one-dimensional subspaces of $V$. In fact, 
@@ -94,7 +94,7 @@ group of order four. Let $X$ be
 the set of colorings of the square. Then 
 $|X|=16$. 
 
-Let $G$ act on $X$ by anti-clockwise rotations  
+Let $g$ act on $X$ by anti-clockwise rotations  
 of 90\textdegree. All the colorings of~\eqref{eq:orbita} belong to the same orbit. 
 Another orbit of $X$ is
 \[
@@ -298,11 +298,12 @@ we obtain a generalization of Theorem \ref{thm:5/8}.
 \begin{proof}
     For $n\in\Z_{>0}$, let $\rho_n$ be the number
     of irreducible characters of degree $n$. Then 
-    $k(G)=\sum_{i\geq1}\rho_i$ and $|G|=\sum_{i\geq1}i^2\rho_i$. 
+    the number of conjugacy classes of $G$ is $k=\sum_{i\geq1}\rho_i$
+    and $|G|=\sum_{i\geq1}i^2\rho_i$. 
     It follows that 
     \begin{align*}
     |G|-\rho_1 &=\sum_{i\geq 2}i^2\rho_i\geq 4\sum_{i\geq2}\rho_i
-    =4(k(G)-\rho_1)=4(|G|\cp(G)-\rho_1).
+    =4(k-\rho_1)=4(|G|\cp(G)-\rho_1).
     \end{align*}
     Since $\rho_1=(G:[G,G])$, 
     \[
@@ -329,7 +330,7 @@ prove similar statements.
     \end{enumerate}
 \end{exercise}
 
-In the following exercise we will discuss the notion 
+In the following exercise, we will discuss the notion 
 of isoclinic groups. We first need
 a preliminary result:
 
@@ -363,7 +364,7 @@ if their commutator functions are somewhat equal.
     \begin{tikzcd}
 	{G/Z(G)\times G/Z(G)} & {H/Z(H)\times H/Z(H)} \\
 	{[G,G]} & {[H,H]}
-	\arrow["{\sigma\times\tau }", from=1-1, to=1-2]
+	\arrow["{\sigma\times\sigma }", from=1-1, to=1-2]
 	\arrow["{c_H}", from=1-2, to=2-2]
 	\arrow["{c_G}"', from=1-1, to=2-1]
 	\arrow["\tau"', from=2-1, to=2-2]
@@ -393,18 +394,16 @@ if their commutator functions are somewhat equal.
     $G=HZ(G)$. 
 \end{exercise}
 
-\begin{exercise}
-    
-\end{exercise}
 
-The following theorem appeared in 1970, as a problem in the 
+
+The following theorem appeared in 1970, as a problem in 
 volume 13 of the \emph{Canadian Math. Bulletin}. The solution
 appeared in 1973. 
 Iv\'an Sadosfchi Costa found the proof we present here. 
 
 \begin{theorem}[Dixon]
     \index{Dixon's theorem}
-    If $G$ is a finite simple group, then $\cp(G)\leq1/12$.
+    If $G$ is a finite non-abelian simple group, then $\cp(G)\leq1/12$.
 \end{theorem}
 
 \begin{proof}
@@ -434,7 +433,7 @@ gap> ForAny(l, x->CommutingProbability(x)>1/12);
 false
 \end{lstlisting}
 
-Now assume that all non-trivial conjugacy class of $G$ have at least 13 elements. 
+Now assume that all non-trivial conjugacy classes of $G$ have at least 13 elements. 
 Then the class equation implies that
 \begin{align*}
 	|G|&\geq \frac{13}{12}|G|-12,
@@ -527,7 +526,7 @@ We now follow~\cite{MR1997347} to present other applications.
     \[
     G_{xH}=\{g\in G:gxH=xH\}=xHx^{-1}.
     \]
-    Since $H\ne G$, it follows thast $|X|=|G/H|>1$. Jordan's theorem now implies
+    Since $H\ne G$, it follows that $|X|=|G/H|>1$. Jordan's theorem now implies
     that there exists $g\in G$ with no fixed-points, that is 
     there is an element $g\in G$ such that $g\not\in\cup_{x\in G}xHx^{-1}$. 
 \end{proof}
@@ -535,19 +534,19 @@ We now follow~\cite{MR1997347} to present other applications.
 Let $G$ be a finite group. We say that the conjugacy classes $C$ and $D$ 
 \textbf{commute} if there exist 
 $c\in C$ and $d\in D$ such that $[c,d]=1$. 
-Note that $C$ and $D$ commute si y sólo for all $c\in C$ there exists $d\in D$ 
+Note that $C$ and $D$ commute if and only if for all $c\in C$ there exists $d\in D$ 
 such that $[c,d]=1$. 
 
 \begin{corollary}[Wildon]
 \index{Wildon's theorem}
-    Let $G$ be a finite group and $C$ be a conjugacy classes of $G$. 
-    Then $|C|=1$ if and only if $C$ commute 
+    Let $G$ be a finite group and $C$ be a conjugacy class of $G$. 
+    Then $|C|=1$ if and only if $C$ commutes 
     with every conjugacy class of $G$.
 \end{corollary}
     
 \begin{proof}
     We prove $\impliedby$. 
-    Assume that $C$ commute with every conjugacy class of $G$. 
+    Assume that $C$ commutes with every conjugacy class of $G$. 
     Let $c\in C$ and $H=C_G(c)$. Then $H\cap D\ne\emptyset$ for every conjugacy class
     $D$. We claim that $G=\cup_{g\in G}gHg^{-1}$. In fact, let $x\in G$. Then
     $x\in D$ 
@@ -579,7 +578,7 @@ The proof appears in~\cite{MR636194}.
 Let $G$ be a finite group that acts faithfully and transitively 
 on a finite set $X$, say 
 $G\leq\Sym_n$, where $X=\{1,2,\dots,n\}$. Let 
-$G_0$ the set of elements $g\in G$ with no fixed-ponts, 
+$G_0$ be the set of elements $g\in G$ with no fixed-points, 
 that is $g(x)\ne x$ for all $x\in X$. 
 Such permutations are known as \textbf{derangements}. 
 Let $c_0=|G_0|/|G|$. 
@@ -591,7 +590,7 @@ Let $c_0=|G_0|/|G|$.
 \end{theorem}
 
 \begin{proof}
-    Let $X=\{1,\dots,n\}$. By definition, the rank of $G$ isthe number
+    Let $X=\{1,\dots,n\}$. By definition, the rank of $G$ is the number
     of orbitals of $G$ on $X$. It follows that the rank is $\geq2$, as
     $X\times X$ decomposes as 
     \[
