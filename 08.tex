@@ -5,7 +5,7 @@ find characters.
 
 \begin{proposition}
     Let $G$ be 2-transitive on $X$ with character $\chi(g)=|\Fix(g)|$.
-    Then $\chi-\chi_1$ is irreducible. 
+    Then $\chi-\chi_1$ is an irreducible character. 
 \end{proposition}
 
 \begin{proof}
@@ -16,6 +16,10 @@ find characters.
         2=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|^2=\langle \chi,\chi\rangle.
    \end{gather*}
    Thus $\langle \chi-\chi_1,\chi-\chi_1\rangle=\langle\chi,\chi\rangle-1-1+1=1$.
+   Since $\chi$ is a character, $\chi-\chi_1$
+   is an integer linear combination of the irreducible characters of $G$.
+   Hence there exists an irreducible character $\chi_i$ of $G$ such that $\chi-\chi_1=\pm\chi_i$.
+   But $(\chi-\chi_1)(1)=|X|-1\geq 0$ and so $\chi-\chi_1=\chi_i$.
 \end{proof}
 
 \begin{example}
