@@ -16,6 +16,10 @@ find characters.
         2=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|^2=\langle \chi,\chi\rangle.
    \end{gather*}
    Thus $\langle \chi-\chi_1,\chi-\chi_1\rangle=\langle\chi,\chi\rangle-1-1+1=1$.
+   Since $\chi$ is a character, $\chi-\chi_1$
+   is an integer linear combination of the irreducible characters of $G$.
+   Hence there exists an irreducible character $\chi_i$ of $G$ such that $\chi-\chi_1=\pm\chi_i$.
+   But $(\chi-\chi_1)(1)=|X|-1\geq 0$ and so $\chi-\chi_1=\chi_i$.
 \end{proof}
 
 \begin{example}
@@ -283,7 +287,7 @@ If $G$ is a finite group, then
     By Cauchy--Schwarz inequality, 
     \begin{align*}
         \left(\sum_{\chi\in\Irr(G)}\chi(1)\right)^2
-        &\leq\left(\sum_{\chi\in\Irr(G)}\chi(1)^2\right)\left(\sum_{\chi\in\Irr(G)}1\right)^2
+        &\leq\left(\sum_{\chi\in\Irr(G)}\chi(1)^2\right)\left(\sum_{\chi\in\Irr(G)}1\right)
         =\left(\sum_{\chi\in\Irr(G)}\chi(1)^2\right)k=|G|k.
     \end{align*}
     From this, the claim follows.
