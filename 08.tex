@@ -5,7 +5,7 @@ find characters.
 
 \begin{proposition}
     Let $G$ be 2-transitive on $X$ with character $\chi(g)=|\Fix(g)|$.
-    Then $\chi-\chi_1$ is irreducible. 
+    Then $\chi-\chi_1$ is an irreducible character. 
 \end{proposition}
 
 \begin{proof}
@@ -341,7 +341,7 @@ a preliminary result:
 
 \begin{exercise}
 \index{Commutator map}
-\label{xca:commutator}
+\label{xca:commutator_map}
     Let $G$ be a group. Prove that the commutator map
     \[
     c_G\colon G/Z(G)\times G/Z(G)\to [G,G],
@@ -357,7 +357,6 @@ if their commutator functions are somewhat equal.
 \begin{exercise}
 \index{Isoclinism}
 \label{xca:isoclinism}
-    \label{xca:isoclinism}
     Let $G$ and $H$ be groups. 
     A pair $(\sigma,\tau)$ of maps is an \textbf{isoclinism}
     between $G$ and $H$ if 
@@ -399,24 +398,28 @@ if their commutator functions are somewhat equal.
     $G=HZ(G)$. 
 \end{exercise}
 
-
-
-The following theorem appeared in 1970, as a problem in 
+The following theorem appeared in 1970 as a problem in 
 volume 13 of the \emph{Canadian Math. Bulletin}. The solution
 appeared in 1973. 
 Iv\'an Sadosfchi Costa found the proof we present here. 
 
 \begin{theorem}[Dixon]
     \index{Dixon's theorem}
-    If $G$ is a finite non-abelian simple group, then $\cp(G)\leq1/12$.
+    The commuting probability of every finite 
+    non-abelian simple group is at most $1/12$. 
+   %If $G$ is a finite non-abelian simple group, then $\cp(G)\leq1/12$.
 \end{theorem}
 
 \begin{proof}
-We first assume that the commuting probability of $G$ is $>1/12$. Since
-$G$ is a non-abelian simple group, the identity is the only central element. 
+Let $G$ be a finite non-abelian simple group. We claim that 
+$\cp(G)\leq1/12$. 
+
+We first assume that $\cp(G)>1/12$. Since
+$G$ is a non-abelian simple group, 
+the identity of $G$ is the only central element of $G$. 
 Let us assume first that there is a conjugacy class of $G$ of size $m$, where
 $m$ is such that $1<m\leq 12$. Then $G$ is a transitive subgroup of $\Sym_m$.
-For these groups the problem is easy: we show that there are no non-abelian simple groups
+For these groups, the problem is easy: we show that there are no non-abelian simple groups
 that act transitively on sets of size $m\in\{2,\dots,12\}$ with commuting
 probability $>1/12$. To do this, we list these transitive groups and their commuting
 probabilities and verify that all commuting probabilities are $\leq
@@ -453,6 +456,7 @@ gap> AllGroups(Size, [2..144], \\
 > IsSimple, true);
 [ Alt( [ 1 .. 5 ] ) ]
 \end{lstlisting}    
+This completes the proof. 
 \end{proof}
 
 The alternating group $\Alt_5$ is important in this setting:
