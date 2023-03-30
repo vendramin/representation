@@ -950,38 +950,46 @@ At the moment, there is no proof of Frobenius' theorem independent of character 
 \begin{corollary}[Combinatorial Frobenius' theorem]
     \label{cor:Frobenius_combinatorio}
     \index{Frobenius'!theorem}
-    Sea $X$ un conjunto finito y sea $G$ un grupo que actúa transitivamente en
-    $X$. Supongamos que todo $g\in G\setminus\{1\}$ fija a lo sumo un punto de
-     $X$. El conjunto $N$ formado por la identidad y las permutaciones que mueven
-     todos los puntos de $X$ es un subgrupo de $G$.
+    Let $G$ be a group acting transitively on a finite set $X$. 
+    Assume that each $g\in G\setminus\{1\}$ fixes 
+    at most one element of 
+     $X$. The set $N$ formed by the identity and 
+     the permutations that move every element of $X$
+     is a subgroup of $G$.
 \end{corollary}
 
 \begin{proof}
-  Sea $x\in X$ y sea $H=G_x$. Veamos que si $g\in G\setminus H$ entonces $H\cap
-  gHg^{-1}=1$. Si $h\in H\cap gHg^{-1}$ entonces $h\cdot x=x$ y $g^{-1}hg\cdot
-  x=x$. Como $g\cdot x\ne x$, entonces $h$ fija dos puntos de $X$. Esto implica
-  que $h=1$ (pues todo elemento no trivial fija a lo sumo un punto de $X$). 
+  Let $x\in X$ and $H=G_x$. We claim that 
+  if $g\in G\setminus H$, then $H\cap
+  gHg^{-1}=1$. If $h\in H\cap gHg^{-1}$, then
+  $h\cdot x=x$ and $g^{-1}hg\cdot
+  x=x$. Since $g\cdot x\ne x$, $h$ fixes two elements of
+  $X$. Thus 
+  $h=1$, as every non-trivial element fixes at most one element of $X$). 
 
-  Por el teorema~\ref{thm:Frobenius}, el conjunto
+  By Theorem~\ref{thm:Frobenius}, 
   \[
     N=\left(G\setminus\bigcup_{g\in G}gHg^{-1}\right)\cup\{1\}
   \]
-  es un subgrupo de $G$. Veamos cómo son los elementos de $N$: Si
-  $h\in\cup_{g\in G}gHg^{-1}$ entonces existe $g\in G$ tal que $g^{-1}hg\in H$,
-  es decir $(g^{-1}hg)\cdot x=x$ o quivalentemente $h\in G_{g\cdot x}$. Luego,
-  a excepción de la identidad, los elementos de $N$ son los elementos de $G$
-  que mueven algún punto de $X$.
+  is a subgroup of $G$. Let us compute the elements of $N$. If 
+  $h\in\cup_{g\in G}gHg^{-1}$, then there exists  $g\in G$ such that $g^{-1}hg\in H$,
+  that is $(g^{-1}hg)\cdot x=x$; equivalently, 
+  $h\in G_{g\cdot x}$. Therefore, the 
+  non-identity elements of $N$ are the elements of $G$
+  moving one element of $X$.
 \end{proof}
 
 \begin{example}
-  Sea $F$ un cuerpo finito y sea $G$ el grupo de funciones $f\colon G\to G$ de
-  la forma $f(x)=ax+b$, $a,b\in F$ con $a\ne0$. El grupo $G$ actúa en $F$ y toda
-  $f\ne\id$ fija a lo sumo un punto de $F$ pues 
+  Let $F$ be a finite field and $G$ be the group of maps 
+  $f\colon G\to G$ of the form 
+  $f(x)=ax+b$, $a,b\in F$ with $a\ne0$. The group $G$ acts on 
+  $F$ and every 
+  $f\ne\id$ fixes at most one element of $F$, as 
   \[
 	x=f(x)=ax+b\implies x=1-(b/a).
   \]
-  En este caso, $N=\{f:f(x)=x+b\,,b\in F\}$ que es
-  un subgrupo de $G$.
+  In this case, $N=\{f:f(x)=x+b\,,b\in F\}$ 
+  is a subgroup of $G$.
 \end{example}
 
 \begin{exercise}
