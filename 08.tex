@@ -224,7 +224,7 @@ Let $G$ act on $G$ by conjugation.
     as $\Fix(g)=\{x\in G:gxg^{-1}=x\}=C_G(g)$ and $\sum_{g\in G}|C_G(g)|=|C|$. 
 Alternatively, using Theorem \ref{thm:Frobenius_tau(g)} for $g = 1$ we get
 \[
-    \cp(G) = \frac{\tau(1)}{|G|^2} = \frac{1}{|G|}\sum_{\chi \in \Irr(G)} 1 = \frac{|C|}{|G|}.
+    \cp(G) = \frac{\tau(1)}{|G|^2} = \frac{1}{|G|}\sum_{\chi \in \Irr(G)} 1 = \frac{k}{|G|}.
 \]
 \begin{theorem}
 \index{Theorem!5/8}
@@ -417,10 +417,10 @@ Iv\'an Sadosfchi Costa found the proof we present here.
 \begin{proof}
 Let $G$ be a finite non-abelian simple group. We claim that 
 $\cp(G)\leq1/12$. 
-
-We first assume that $\cp(G)>1/12$. Since
+We assume that $\cp(G)>1/12$. Since
 $G$ is a non-abelian simple group, 
 the identity of $G$ is the only central element of $G$. 
+
 Let us assume first that there is a conjugacy class of $G$ of size $m$, where
 $m$ is such that $1<m\leq 12$. Then $G$ is a transitive subgroup of $\Sym_m$.
 For these groups, the problem is easy: we show that there are no non-abelian simple groups
@@ -445,17 +445,21 @@ gap> ForAny(l, x->CommutingProbability(x)>1/12);
 false
 \end{lstlisting}
 
-Now assume that all non-trivial conjugacy classes of $G$ have at least 13 elements. 
+Now assume that all non-trivial conjugacy classes of $G$ have at least 13 elements. Let $k$ be the number of conjugacy classes of $G$. 
 Then the class equation implies that
 \begin{align*}
-	|G|&\geq \frac{13}{12}|G|-12,
+	|G|&\geq 1+(k-1)13=13k-12.
 \end{align*}
-and therefore $|G|\leq 144$. Thus one needs to check what happens with groups
-of order $\leq 144$. 
+Since $\cp(G)=k/|G|>1/12$, $k>|G|/12$. Thus 
+\[
+|G|>\frac{13}{12}|G|-12
+\]
+and therefore $|G|<144$. Thus one needs to check what happens with groups
+of order $<144$. 
 But we know that the only non-abelian simple group of size
-$\leq 144$ is the alternating simple group $\Alt_5$.
+$<144$ is the alternating simple group $\Alt_5$.
 \begin{lstlisting}
-gap> AllGroups(Size, [2..144], \\
+gap> AllGroups(Size, [2..143], \\
 > IsAbelian, false, \\
 > IsSimple, true);
 [ Alt( [ 1 .. 5 ] ) ]
