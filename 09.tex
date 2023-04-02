@@ -17,7 +17,7 @@ $v,w\in V$. It follows that
 $T$ does not depend on the chosen basis. Note that
 $T$ is a homomorphism of $\C[G]$-modules, as
 \[
-T(g\cdot (v\otimes w))=T((g\cdot v)\otimes (g\cdot w))=(g\cdot w)\otimes (g\cdot v)=g\cdot T(w\otimes v)
+T(g\cdot (v\otimes w))=T((g\cdot v)\otimes (g\cdot w))=(g\cdot w)\otimes (g\cdot v)=g\cdot T(v\otimes w)
 \]
 for all $g\in G$ y $v,w\in V$. 
 In particular, the \textbf{symmetric part} 
@@ -43,7 +43,7 @@ x=\frac12(x+T(x))+\frac12(x-T(x))
 \]
 with $\frac12(x+T(x))\in S(V\otimes V)$ and $\frac12(x-T(x))\in A(V\otimes V)$. 
 
-We claim that $\{v_i\otimes v_j+v_j\otimes v_i:1\leq i,j\leq n\}$ is
+We claim that $\{v_i\otimes v_j+v_j\otimes v_i:1\leq i\leq j\leq n\}$ is
 a basis of $S(V\otimes V)$ 
 and that  
 \[
@@ -121,7 +121,7 @@ of involutions.
     \[
     \theta=\sum_{\chi\in\Irr(G)}\langle\theta,\chi\rangle\chi.
     \]
-    We compute: 
+    For every $\chi\in\Irr(G)$ we compute: 
     \begin{align*}
         \langle\chi_S-\chi_A,\chi_1\rangle 
         &=\frac{1}{|G|}\sum_{g\in G}\chi(g^2)\\
@@ -133,7 +133,7 @@ of involutions.
     $x=1$. 
 \end{proof}
 
-\index{Cauchy--Schwartz inequality}
+\index{Cauchy--Schwarz inequality}
 Before proving the Brauer-Fowler theorem we
 need a lemma. We will use the Cauchy--Schwartz inequality: 
 \[
@@ -174,7 +174,7 @@ x_1,\dots,x_n\in\R\implies
         \leq\sum_{\chi\in\Irr(G)}\chi(1).
     \end{align*}
     It follows that $t\leq\sum_{i=2}^k\chi_i(1)$. 
-    By the Cauchy--Schwartz inequality, 
+    By the Cauchy--Schwarz inequality, 
     \[
         t^2\leq\left(\sum_{i=2}^k\chi_i(1)\right)^2
         \leq(k-1)\sum_{i=2}^k\chi(1)^2=(k-1)(|G|-1).\qedhere
@@ -195,7 +195,7 @@ Now we prove the Brauer--Fowler theorem.
     (G:H)\leq n^2.
     \]
     The group $G$ acts on $G/H$ 
-    by left multiplication, so there is a group homomorpihsm 
+    by left multiplication, so there is a group homomorphism 
     $\rho\colon G\to\Sym_{n^2}$. Since $G$ is simple, either 
     $\ker\rho=\{1\}$ or $\ker\rho=G$. If $\ker\rho=G$, then
     $\rho(g)(yH)=yH$ for all $g\in G$ and $y\in G$. 
@@ -216,7 +216,7 @@ Now we prove the Brauer--Fowler theorem.
     \[
     |G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}\Longleftrightarrow t^2\leq(k-1)(|G|-1).
     \]
-    If $|C_i|>m$ for all $i\in\{2,\dots,k\}$, then, since 
+    If $|C_i|>m^2$ for all $i\in\{2,\dots,k\}$, then, since 
     \[
     |G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}=(k-1)m^2,
     \]
@@ -255,11 +255,11 @@ J(g)=\{z\in X:zgz^{-1}=g^{-1}\}.
 We claim that $|J(g)|\leq|C_G(g)|$. The map $J(g)\to C_G(g)$, $z\mapsto gz$, 
 is well-defined,~as 
 \[
-(gz)g(gz)^{-1}=g(xgx^{-1})g^{-1}=g^{-1}\in C_G(g).
+(gz)g(gz)^{-1}=g(zgz^{-1})g^{-1}=g^{-1}\in C_G(g).
 \]
 It is injective, as $gz=gz_1$ implies $z=z_1$.
 
-Let $\{(g,z)\in G\times X:zgz^{-1}=g^{-1}\}$.  
+Let $J=\{(g,z)\in G\times X:zgz^{-1}=g^{-1}\}$.  
 Since $X\times X\to J$, $(y,z)\mapsto (yz,z)$, 
 is well-defined (since $z(yz)z^{-1}=zy=(yz)^{-1}$) and
 it is trivially injective, 
@@ -270,11 +270,11 @@ it is trivially injective,
 where $k$ is the number of conjugacy classes of $G$, 
 as $(g,z)\in J$ if and only if $z\in J(g)$. Thus $|G|\leq kn^2$, as
 \[
-\left(\frac{|G|}{|C_G(x)|}\right)^2=|X|^2=\frac{|G|}{n^2}\leq k|G|.
+\left(\frac{|G|}{|C_G(x)|}\right)^2=|X|^2=\frac{|G|^2}{n^2}\leq k|G|.
 \]
 
 \begin{claim}
-    There exists a conjugacy class with $\leq 2n^2$ elements.
+    There exists a non-trivial conjugacy class with $\leq 2n^2$ elements.
 \end{claim}
 
 Assume that the claim is not true. Let
@@ -309,7 +309,7 @@ $\rho=\widetilde{\rho}\pi\colon G\to \GL(V)$, $\rho(g)=\widetilde{\rho}(gN)$,
 is a representation of $G$. 
 Thus
 \[
-\chi(g)=\trace{\rho_g}=\trace(\widetilde{\chi}(gN))=\widetilde{\chi}(gN).
+\chi(g)=\trace{\rho_g}=\trace(\widetilde{\rho}_{gN})=\widetilde{\chi}(gN).
 \]
 In particular, $\chi(1)=\widetilde{\chi}(1)$. The character $\chi$ 
 is the \textbf{lifting} to $G$ of the character 
@@ -359,7 +359,7 @@ then
 \]
 and thus $N\subseteq\ker\chi$. 
 
-If $\chi\in\Char(G)$ is such that $N\subseteq\ker\chi$, let $\rho\colon G\to\GL(V)$ be a representationn
+If $\chi\in\Char(G)$ is such that $N\subseteq\ker\chi$, let $\rho\colon G\to\GL(V)$ be a representation
 with character $\chi$. 
 Let $\widetilde{\rho}\colon G/N\to\GL(V)$, $gN\mapsto \rho(g)$. We claim that $\widetilde{\rho}$
 is well-defined: 
@@ -376,7 +376,7 @@ $\widetilde{\chi}(gN)=\chi(g)$.
 We now prove that $\chi$ is irreducible if and only if 
 $\widetilde{\chi}$ is irreducible. If $U$ is a subspace of $V$, then 
 \begin{align*}
-\text{$U$ is invariant}
+\text{$U$ is $G$-invariant}
 %&\Longleftrightarrow g\cdot U\subseteq U\text{ for all $g\in G$}\\
 &\Longleftrightarrow \rho(g)(U)\subseteq U\text{ for all $g\in U$}\\
 &\Longleftrightarrow \widetilde{\rho}(gN)(U)\subseteq U\text{ for all $g\in U$}.
@@ -397,7 +397,7 @@ $\widetilde{\chi}$ is irreducible. If $U$ is a subspace of $V$, then
 		\begin{tabular}{|c|rrr|}
 			\hline
 			%& $1$ & $3$ & $2$\tabularnewline
-			& $1$ & $(12)N$ & $(123)N$ \tabularnewline
+			& $N$ & $(12)N$ & $(123)N$ \tabularnewline
 			\hline 
 			$\widetilde{\chi}_{1}$ & $1$ & $1$ & $1$\tabularnewline
 			$\widetilde{\chi}_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
@@ -429,7 +429,7 @@ $\widetilde{\chi}$ is irreducible. If $U$ is a subspace of $V$, then
 \end{example}
 
 The character table of a group can be used to find the lattice 
-of normal subgroups. In particular, the character table detect simple groups. 
+of normal subgroups. In particular, the character table detects simple groups. 
 
 \begin{lemma}
     Let $G$ be a finite group and 
@@ -641,7 +641,7 @@ the map $f\mapsto\dot{f}$ is linear.
     \begin{aligned}
         \langle\Ind_H^Ga,b\rangle 
         &= \frac{1}{|G|}\sum_{x\in G}\Ind_H^Ga(x)\overline{b(x)}
-        = \frac{1}{|G|}\frac{1}{|H|}\sum_{x,y\in G}\dot{f}(y^{-1}xy)\overline{b(x)}.
+        = \frac{1}{|G|}\frac{1}{|H|}\sum_{x,y\in G}\dot{a}(y^{-1}xy)\overline{b(x)}.
     \end{aligned}
     \end{equation}
     Since 
@@ -751,12 +751,12 @@ is a particular case of a
     $P=\langle a\rangle\simeq\Z/p$ and $G/P=\langle bP\rangle\simeq\Z/q$. By Lagrange's theorem, 
     $G=\langle a,b\rangle$. We compute the order of $b^q$. Since 
     $G$ is not cyclic (because it is not abelian) and $b^q\in P$, 
-    we conclude that $|b^q|=q$. 
+    we conclude that $|b^q|=1$. 
     Since $P$ is normal in $G$, 
     $bab^{-1}\in P$ and hence $bab^{-1}=a^z$ for some $z\in\Z$. Therefore
     $b^qab^{-q}=a^{z^q}$. This implies that 
-    $z^q\equiv1\bmod p$. The order of $u$ in $(\Z/p)^{\times}$ divides 
-    $q$ and hence it is equal to $q$ (otherwise, $u=1$ and thus $bab^{-1}=a$, which implies
+    $z^q\equiv1\bmod p$. The order of $z$ in $(\Z/p)^{\times}$ divides 
+    $q$ and hence it is equal to $q$ (otherwise, $z=1$ and thus $bab^{-1}=a$, which implies
     that $G$ is abelian). In conclusion, 
     $G\simeq F_{p,q}$. 
 \end{proof}
@@ -911,8 +911,8 @@ $F_{5,4}$ are the only groups of order 20.
   Therefore $h\in\cap_{\chi}\ker\chi=\{1\}$. By~\eqref{eq:kernels}, the kernels
   of irreducible characters have trivial intersection. 
   We now prove that $M\cap
-  xHx^{-1}=\{1\}$ for all $x\in G$. Let $x\in G$ y $m\in M\cap xHx^{-1}$. Since 
-  $m=xhx^{-1}$ for some $h\in H$, $x^{-1}mx\in H\cap M=\{1\}$.  This imples that 
+  xHx^{-1}=\{1\}$ for all $x\in G$. Let $x\in G$ and $m\in M\cap xHx^{-1}$. Since 
+  $m=xhx^{-1}$ for some $h\in H$, $x^{-1}mx\in H\cap M=\{1\}$.  This implies that 
   $m=1$.
 \end{proof}
 
@@ -933,7 +933,7 @@ At the moment, there is no proof of Frobenius' theorem independent of character 
 
 \begin{proof}
   Frobenius' theorem yields the subgroup $N$. 
-  Let us prove that $H\subseteq N_H(H)$. If $h\in
+  Let us prove that $H\supseteq N_G(H)$. If $h\in
   H\setminus\{1\}$ and $g\in G$ are such that $ghg^{-1}\in H$, then $h\in
   g^{-1}Hg\cap H$ and hence $g\in H$. Since $H=N_G(H)$, the subgroup $H$
   has $(G:H)$ conjugates. Thus $|G|=|H||N|$, as 
@@ -976,12 +976,12 @@ At the moment, there is no proof of Frobenius' theorem independent of character 
   that is $(g^{-1}hg)\cdot x=x$; equivalently, 
   $h\in G_{g\cdot x}$. Therefore, the 
   non-identity elements of $N$ are the elements of $G$
-  moving one element of $X$.
+  moving every element of $X$.
 \end{proof}
 
 \begin{example}
   Let $F$ be a finite field and $G$ be the group of maps 
-  $f\colon G\to G$ of the form 
+  $f\colon F\to F$ of the form 
   $f(x)=ax+b$, $a,b\in F$ with $a\ne0$. The group $G$ acts on 
   $F$ and every 
   $f\ne\id$ fixes at most one element of $F$, as 
