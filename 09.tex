@@ -135,7 +135,7 @@ of involutions.
 
 \index{Cauchy--Schwarz inequality}
 Before proving the Brauer-Fowler theorem we
-need a lemma. We will use the Cauchy--Schwartz inequality: 
+need a lemma. We will use the Cauchy--Schwarz inequality: 
 \[
 x_1,\dots,x_n\in\R\implies
 \sum x_i^2\geq\frac{1}{n}(\sum x_i)^2.
@@ -265,7 +265,7 @@ is well-defined (since $z(yz)z^{-1}=zy=(yz)^{-1}$) and
 it is trivially injective, 
 \[
 |X|^2\leq |J|=\sum_{(g,z)\in J}1\leq\sum_{g\in G}|J(g)|
-=\sum_{g\in G}|C_G(g)|=k|G|,
+\leq\sum_{g\in G}|C_G(g)|=k|G|,
 \]
 where $k$ is the number of conjugacy classes of $G$, 
 as $(g,z)\in J$ if and only if $z\in J(g)$. Thus $|G|\leq kn^2$, as
@@ -281,7 +281,7 @@ Assume that the claim is not true. Let
 $C_1,\dots,C_k$ be the conjugacy classes of $G$, where 
 $C_1=\{1\}$ and $|C_i|>2n^2$ for all $i\in\{2,\dots,k\}$. Then
 \[
-|G|=1+\sum_{i=2}^k|C_i|>1+\sum_{i=2}^kn^2=1+(k-1)2n^2\geq |G|,
+|G|=1+\sum_{i=2}^k|C_i|>1+\sum_{i=2}^k2n^2=1+(k-1)2n^2\geq |G|,
 \]
 a contradiction. 
 
@@ -364,7 +364,7 @@ with character $\chi$.
 Let $\widetilde{\rho}\colon G/N\to\GL(V)$, $gN\mapsto \rho(g)$. We claim that $\widetilde{\rho}$
 is well-defined: 
 \[
-gN=hN\Longleftrightarrow h^{-1}g\in N\Longleftrightarrow\rho(h^{-1}g)=\id\Longleftrightarrow \rho(h)=\rho(g).
+gN=hN\Longleftrightarrow h^{-1}g\in N\Longrightarrow\rho(h^{-1}g)=\id\Longleftrightarrow \rho(h)=\rho(g).
 \]
 Moreover, $\widetilde{\rho}$ is a representation, as 
 \[
@@ -646,7 +646,7 @@ the map $f\mapsto\dot{f}$ is linear.
     \end{equation}
     Since 
     \[
-    \dot{a}(y^{-1}xy)\ne 0\Longleftrightarrow
+    \dot{a}(y^{-1}xy)\ne 0\Longrightarrow
     y^{-1}xy\in H\Longleftrightarrow x\in yHy^{-1},
     \]
     setting $h=y^{-1}xy$ 
@@ -686,7 +686,7 @@ x & y\\
 :x\in(\Z/p)^\times,\,y\in\Z/p\right\}.
 \]
 Then $G$ is a group with the usual matrix multiplication
-and $|G|=p(p-1)$. Let $z\in\Z$ be an element of order $q$ modulo $p$ 
+and $|G|=p(p-1)$. Let $z\in\Z$ be an element of multiplicative order $q$ modulo $p$ 
 and let 
 \[
 a=\begin{pmatrix}
@@ -986,7 +986,7 @@ At the moment, there is no proof of Frobenius' theorem independent of character 
   $F$ and every 
   $f\ne\id$ fixes at most one element of $F$, as 
   \[
-	x=f(x)=ax+b\implies x=1-(b/a).
+	x=f(x)=ax+b\implies a\ne 1\text{ and } x=b/(1-a).
   \]
   In this case, $N=\{f:f(x)=x+b\,,b\in F\}$ 
   is a subgroup of $G$.
