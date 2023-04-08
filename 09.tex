@@ -189,6 +189,8 @@ Now we prove the Brauer--Fowler theorem.
 \end{theorem}
 
 \begin{proof}
+    If $G$ is abelian the claim is trivial. Let $G$ be a finite non-abelian simple group.
+    
     We first assume the existence of a proper subgroup $H$ of $G$ 
     such that 
     \[
@@ -199,11 +201,11 @@ Now we prove the Brauer--Fowler theorem.
     $\rho\colon G\to\Sym_{n^2}$. Since $G$ is simple, either 
     $\ker\rho=\{1\}$ or $\ker\rho=G$. If $\ker\rho=G$, then
     $\rho(g)(yH)=yH$ for all $g\in G$ and $y\in G$. 
-    Hence $g\in H$, a contradiction. Therefore $\rho$ is injective
+    Hence $H=G$, a contradiction. Therefore $\rho$ is injective
     and hence $G$ is isomorphic to a subgroup of $\Sym_{n^2}$. 
     In particular, $|G|$ divides $(n^2)!$. 
 
-    Let $m=(|G|-1)/t$. 
+    Let $m=(|G|-1)/t$, where $t$ is the number of involutions of $G$. 
     Since $|C_G(x)|=n$, the group $G$ has at least $|G|/n$ involutions (because
     the conjugacy class of $x$ has size $|G|/n$ and all its elements are involutions), 
     that is $t\geq |G|/n$. Hence 
@@ -211,22 +213,18 @@ Now we prove the Brauer--Fowler theorem.
     $G$ contains a subgroup of index $\leq m^2$. 
 
     Let $C_1,\dots,C_k$ be the conjugacy classes of $G$, where $C_1=\{1\}$. 
-    Since $G$ is simple, $|C_i|>1$ 
+    Since $G$ is simple and non-abelian, $|C_i|>1$ 
     for all $i\in\{2,\dots,k\}$. By the previous lemma, 
     \[
-    |G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}\Longleftrightarrow t^2\leq(k-1)(|G|-1).
+    t^2\leq(k-1)(|G|-1)\implies |G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}=(k-1)m^2.
     \]
-    If $|C_i|>m^2$ for all $i\in\{2,\dots,k\}$, then, since 
-    \[
-    |G|-1\leq\frac{(k-1)(|G|-1)^2}{t^2}=(k-1)m^2,
-    \]
-    it follows that  
+    If $|C_i|>m^2$ for all $i\in\{2,\dots,k\}$, then
     \[
     |G|-1=\sum_{i=2}^k|C_i|>(k-1)m^2,
     \]
-    a contradiction. Thus there exists a conjugacy class
+    a contradiction. Thus there exists a non-trivial conjugacy class
     $C$ of $G$ such that $|C|\leq m^2$. If $g\in C$, then
-    $C_G(g)$ is a subgroup of $G$ of index $|C|\leq m^2$.
+    $C_G(g)$ is a proper subgroup of $G$ of index $|C|\leq m^2$.
 \end{proof}
 
 The bound of the Brauer--Fowler theorem is not important.
