@@ -791,10 +791,10 @@ $F_{5,4}$ are the only groups of order 20.
   For each $\chi\in\Irr(H)$, $\chi\ne1_H$, let 
   $\alpha=\chi-\chi(1)1_H\in\cf(H)$, where $1_H$ denotes the trivial character of $H$. 
 
-  We claim that $(\alpha^G)_H=\alpha$.
-  First, $\alpha^G(1)=\alpha(1)=0$. If $h\in H\setminus\{1\}$, then, by Corollary~\ref{cor:induccion}, 
+  We claim that $\Res_H^G\Ind_H^G\alpha=\alpha$.
+  First, $\Ind_H^G\alpha(1)=\alpha(1)=0$. If $h\in H\setminus\{1\}$, then, by Corollary~\ref{cor:induccion}, 
   \[
-    \alpha^G(h)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}hx\in H}}\alpha(x^{-1}hx)
+    \Ind_H^G\alpha(h)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}hx\in H}}\alpha(x^{-1}hx)
     =\frac{1}{|H|}\sum_{x\in H}\alpha(h)=\alpha(h),
   \]
   since, if $x\not\in H$, then $x^{-1}hx\in H$ implies that 
@@ -803,28 +803,27 @@ $F_{5,4}$ are the only groups of order 20.
   By Frobenius' reciprocity, 
   \begin{equation}
     \label{eq:<a,a>=1+chi2}
-    \langle\alpha^G,\alpha^G\rangle
-    =\langle\alpha,(\alpha^G)_H\rangle=\langle\alpha,\alpha\rangle
+    \langle\Ind_H^G\alpha,\Ind_H^G\alpha\rangle
+    =\langle\alpha,\Res_H^G\Ind_H^G\alpha\rangle=\langle\alpha,\alpha\rangle
     =1+\chi(1)^2.
   \end{equation}
   Again, by Frobenius' reciprocity, 
   \[
-  \langle\alpha^G,1_G\rangle
-  =\langle\alpha,(1_G)_H\rangle
+  \langle\Ind_H^G\alpha,1_G\rangle
+  =\langle\alpha,\Res_H^G1_G\rangle
   =\langle\alpha,1_H\rangle
   =\langle\chi-\chi(1)1_H,1_H\rangle
   =-\chi(1),
   \]
   where $1_G$ is the trivial character of $G$. If we write 
   \[
-  \alpha^G=\sum_{\eta\in\Irr(G)}\langle\alpha^G,\eta\rangle\eta
-  =\langle\alpha^G,1_G\rangle1_G+\underbrace{\sum_{\substack{1_G\ne\eta\\\eta\in\Irr(G)}}\langle\alpha^G,\eta\rangle\eta}_{\phi},
+  \Ind_H^G\alpha=\sum_{\eta\in\Irr(G)}\langle\Ind_H^G\alpha,\eta\rangle\eta
+  =\langle\Ind_H^G\alpha,1_G\rangle1_G+\underbrace{\sum_{\substack{1_G\ne\eta\\\eta\in\Irr(G)}}\langle\Ind_H^G\alpha,\eta\rangle\eta}_{\phi},
   \]
-  then $\alpha^G=-\chi(1)1_G+\phi$, where $\phi$ is a linear combination 
-  (with integer coefficients) of non-trivial 
+  then $\Ind_H^G\alpha=-\chi(1)1_G+\phi$, where $\phi$ is a linear combination of non-trivial 
   irreducible characters of $G$. We compute 
   \[
-  1+\chi(1)^2=\langle\alpha^G,\alpha^G\rangle
+  1+\chi(1)^2=\langle\Ind_H^G\alpha,\Ind_H^G\alpha\rangle
   =\langle\phi-\chi(1)1_G,\phi-\chi(1)1_G\rangle
   =\langle\phi,\phi\rangle+\chi(1)^2
   \]
@@ -832,13 +831,13 @@ $F_{5,4}$ are the only groups of order 20.
   
   \begin{claim}
   If $\eta\in\Irr(G)$ is such that $\eta\ne 1_G$, then 
-  $\langle\alpha^G,\eta\rangle\in\Z$. 
+  $\langle\Ind_H^G\alpha,\eta\rangle\in\Z$. 
   \end{claim}
   
-  By Frobenius' reciprocity, $\langle\alpha^G,\eta\rangle=\langle\alpha,\eta_H\rangle$. 
-  If we decompose $\eta_H$ into irreducibles of $H$, say 
+  By Frobenius' reciprocity, $\langle\Ind_H^G\alpha,\eta\rangle=\langle\alpha,\Res_H^G\eta\rangle$. 
+  If we decompose $\Res_H^G\eta$ into irreducibles of $H$, say 
   \[
-  \eta_H=m_11_H+m_2\chi+m_3\theta_3+\cdots+m_t\theta_t
+  \Res_H^G\eta=m_11_H+m_2\chi+m_3\theta_3+\cdots+m_t\theta_t
   \]
   for some $m_1,m_2,\dots,m_t\geq0$, 
   then, since 
@@ -852,32 +851,32 @@ $F_{5,4}$ are the only groups of order 20.
   \]
   for all $j\in\{3,\dots,t\}$, we conclude that 
   \[
-  \langle\alpha^G,\eta\rangle=-m_1\chi(1)+m_2\in\Z.
+  \langle\Ind_H^G\alpha,\eta\rangle=-m_1\chi(1)+m_2\in\Z.
   \]
   
   \begin{claim}
   $\phi\in\Irr(G)$.
   \end{claim}
   
-  Since $\langle\alpha^G,\eta\rangle\in\Z$ for all $\eta\in\Irr(G)$ such that 
+  Since $\langle\Ind_H^G\alpha,\eta\rangle\in\Z$ for all $\eta\in\Irr(G)$ such that 
   $\eta\ne 1_G$ and 
   \[
   1=\langle\phi,\phi\rangle
-  =\sum_{\substack{\eta,\theta\in\Irr(G)\\\eta,\theta\ne1_G}}\langle\alpha^G,\eta\rangle\langle\alpha^G,\theta\rangle\langle\eta,\theta\rangle
-  =\sum_{\substack{\eta\ne 1_G\\\eta\in\Irr(G)}}\langle\alpha^G,\eta\rangle^2,
+  =\sum_{\substack{\eta,\theta\in\Irr(G)\\\eta,\theta\ne1_G}}\langle\Ind_H^G\alpha,\eta\rangle\langle\Ind_H^G\alpha,\theta\rangle\langle\eta,\theta\rangle
+  =\sum_{\substack{\eta\ne 1_G\\\eta\in\Irr(G)}}\langle\Ind_H^G\alpha,\eta\rangle^2,
   \]
   there is a unique $\eta\in\Irr(G)$ such that 
-  $\langle\alpha^G,\eta\rangle^2=1$ and all the other products are zero, 
+  $\langle\Ind_H^G\alpha,\eta\rangle^2=1$ and all the other products are zero, 
   that is 
-  $\alpha^G=\pm\eta$ for some $\eta\in\Irr(G)$. Since 
+  $\Ind_H^G\alpha=\pm\eta$ for some $\eta\in\Irr(G)$. Since 
   \[
-  \chi-\chi(1)1_H=\alpha=(\alpha^G)_H=(\phi-\chi(1)1_G)_H=\phi_H-\chi(1)1_H,
+  \chi-\chi(1)1_H=\alpha=\Res_H^G\Ind_H^G\alpha=\Res_H^G(\phi-\chi(1)1_G)=\Res_H^G\phi-\chi(1)1_H,
   \]
-  it follows that $\phi(1)=\phi_H(1)=\chi(1)\in\Z_{\geq1}$. Thus $\phi\in\Irr(G)$. 
+  it follows that $\phi(1)=\Res_H^G\phi(1)=\chi(1)\in\Z_{\geq1}$. Thus $\phi\in\Irr(G)$. 
 
   \medskip
   We have proved that if $\chi\in\Irr(H)$ is such that $\chi\ne 1_H$, then 
-  there exists $\phi_\chi\in\Irr(G)$ such that $(\phi_\chi)_H=\chi$. 
+  there exists $\phi_\chi\in\Irr(G)$ such that $\Res_H^G(\phi_\chi)=\chi$. 
   
   \medskip
   We prove that $N$ is equal to 
@@ -890,11 +889,11 @@ $F_{5,4}$ are the only groups of order 20.
   does not belong to a conjugate of 
   $H$, 
   \[
-	\alpha^G(n)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}nx\in H}}\chi(x^{-1}nx)=0, 
+	\Ind_H^G\alpha(n)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}nx\in H}}\chi(x^{-1}nx)=0, 
   \]
   as $n\in N$ implies that the set $\{x\in G:x^{-1}nx\in H\}$ is empty. Since 
   \[
-  0=\alpha^G(n)
+  0=\Ind_H^G\alpha(n)
   =\phi_{\chi}(n)-\chi(1)=\phi_{\chi}(n)-\phi_{\chi}(1),
   \]
   we conclude that $n\in\ker\phi_{\chi}$. 
@@ -902,13 +901,13 @@ $F_{5,4}$ are the only groups of order 20.
   We now prove that $M\subseteq N$. 
   Let $h\in M\cap H$ and $\chi\in\Irr(H)\setminus\{1_H\}$. Then 
   \[
-    \phi_{\chi}(h)-\chi(1)=\alpha^G(h)=\alpha(h)=\chi(h)-\chi(1),
+    \phi_{\chi}(h)-\chi(1)=\Ind_H^G\alpha(h)=\alpha(h)=\chi(h)-\chi(1),
   \]
   and $h\in\ker\chi$, as
   \[
     \chi(h)=\phi_{\chi}(h)=\phi_{\chi}(1)=\chi(1).
   \]
-  Therefore $h\in\cap_{\chi}\ker\chi=\{1\}$. By~\eqref{eq:kernels}, the kernels
+  Therefore $h\in\cap_{\chi\in\Irr(H)}\ker\chi=\{1\}$. By~\eqref{eq:kernels}, the kernels
   of irreducible characters have trivial intersection. 
   We now prove that $M\cap
   xHx^{-1}=\{1\}$ for all $x\in G$. Let $x\in G$ and $m\in M\cap xHx^{-1}$. Since 
