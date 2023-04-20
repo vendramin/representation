@@ -212,7 +212,14 @@ Another application:
     Then $\chi(1)$ divides $(G:Z(G))$. 
 \end{theorem}
 
-We need a lemma. 
+Let $G$ and $G_1$ be groups. If $V$ is a $\C[G]$-module and 
+$V_1$ is a $\C[G_1]$-module, then 
+$V\otimes V_1$ is a $\C[G\times G_1]$-module 
+with 
+\[
+(g,g_1)\cdot v\times v_1=(g\cdot v)\otimes (g_1\cdot v_1)
+\]
+for $(g,g_1)\in G\times G_1$, $v\in V$ and $v_1\in V_1$. 
 
 \begin{lemma}
     Let $G$ and $G_1$ be finite groups. If $\rho$ is an irreducible
@@ -242,6 +249,7 @@ We need a lemma.
     $\chi\in\Irr(G)$ and $\chi_1\in\Irr(G_1)$. 
 \end{exercise}
 
+\index{Tensor power trick}
 We now prove Schur's theorem. The proof goes back to Tate; it uses the 
 \emph{tensor power trick}. See
 Tao's blog  
