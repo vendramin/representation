@@ -71,6 +71,21 @@
     \end{align*}
 \end{sol}
 
+
+\begin{sol}{xca:least_p}
+Let $g_1,\dots,g_m$ be the representatives of non-trivial conjugacy classes. Then $C_G(g_i)$ is non-tivial for all $i$. Since $p$ is the smallest prime dividing the order of $G$, it follows that
+$(G:C_G(g_i))\geq p$. Now use the class equation to get
+\[
+|G|\geq |Z(G)|+pm,
+\]
+which is equivalent to $m\leq \frac1p (|G|-|Z(G)|)$. Since $G$ is non-abelian, $G/Z(G)$ is not cyclic. Thus $(G:Z(G))\geq p^2$. Now 
+\[
+\frac{k(G)}{|G|}=\frac{|Z(G)|+m}{|G|}\leq \frac{(p-1)|Z(G)|+|G|}{p|G|}\leq \frac{p^2+p-1}{p^3}.
+\]
+This bound is reached if and only if $(G:Z(G))=p^2$.  
+\end{sol}
+
+
 \begin{sol}{xca:5/8}
     If $\cp(G)>5/8$, then $|[G,G]|<2$. Thus $[G,G]$ is the trivial group
     and hence $G$ is abelian. 
