@@ -81,8 +81,8 @@ $\widetilde{\chi}$ is irreducible. If $U$ is a subspace of $V$, then
 \begin{align*}
 \text{$U$ is $G$-invariant}
 %&\Longleftrightarrow g\cdot U\subseteq U\text{ for all $g\in G$}\\
-&\Longleftrightarrow \rho(g)(U)\subseteq U\text{ for all $g\in U$}\\
-&\Longleftrightarrow \widetilde{\rho}(gN)(U)\subseteq U\text{ for all $g\in U$}.
+&\Longleftrightarrow \rho(g)(U)\subseteq U\text{ for all $g\in G$}\\
+&\Longleftrightarrow \widetilde{\rho}(gN)(U)\subseteq U\text{ for all $g\in G$}.
 \shortintertext{Thus}
 \chi\text{ is irreducible }&\Longleftrightarrow
 \rho\text{ is irreducible }\\
@@ -227,7 +227,7 @@ we can use the character table to detect simple groups.
     there exists $g\in G\setminus\{1\}$ such that
     $\chi_i(g)=\chi_i(1)$. 
     
-    Assume now that there exists a non-trivial character $\chi$ 
+    Assume now that there exists a non-trivial irreducible character $\chi$ 
     such that $\chi(g)=\chi(1)$ for some $g\in G\setminus\{1\}$. In particular, $g\in\ker\chi$ 
     and hence $\ker\chi\ne\{1\}$. Since $\chi$ is non-trivial, $\ker\chi\ne G$. 
     Thus $\ker\chi$ is a proper non-trivial normal subgroup of $G$.
@@ -403,7 +403,7 @@ $F_{5,4}$ are the only groups of order 20.
   $\alpha=\chi-\chi(1)1_H\in\cf(H)$, where $1_H$ denotes the trivial character of $H$. 
 
   We claim that $\Res_H^G\Ind_H^G\alpha=\alpha$.
-  First, $\Ind_H^G\alpha(1)=\alpha(1)=0$. If $h\in H\setminus\{1\}$, then, by Corollary~\ref{cor:induccion}, 
+  First, $\Ind_H^G\alpha(1)=\alpha(1)=0$. If $h\in H\setminus\{1\}$, then 
   \[
     \Ind_H^G\alpha(h)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}hx\in H}}\alpha(x^{-1}hx)
     =\frac{1}{|H|}\sum_{x\in H}\alpha(h)=\alpha(h),
@@ -479,7 +479,7 @@ $F_{5,4}$ are the only groups of order 20.
   there is a unique $\eta\in\Irr(G)$ such that 
   $\langle\Ind_H^G\alpha,\eta\rangle^2=1$ and all the other products are zero, 
   that is 
-  $\Ind_H^G\alpha=\pm\eta$ for some $\eta\in\Irr(G)$. Since 
+  $\phi=\pm\eta$ for some $\eta\in\Irr(G)$. Since 
   \[
   \chi-\chi(1)1_H=\alpha=\Res_H^G\Ind_H^G\alpha=\Res_H^G(\phi-\chi(1)1_G)=\Res_H^G\phi-\chi(1)1_H,
   \]
@@ -546,7 +546,8 @@ At the moment, there is no proof of Frobenius' theorem independent of character 
   Let us prove that $H\supseteq N_G(H)$. If $h\in
   H\setminus\{1\}$ and $g\in G$ are such that $ghg^{-1}\in H$, then $h\in
   g^{-1}Hg\cap H$ and hence $g\in H$. Since $H=N_G(H)$, the subgroup $H$
-  has $(G:H)$ conjugates. Thus $|G|=|H||N|$, as 
+  has $(G:H)$ conjugates. Thus $|G|=|H||N|$,
+  where $N=\left( G\setminus\bigcup_{x\in G}xHx^{-1}\right)\cup\{1\}$, as 
   \[
     |N|=|G|-(G:H)(|H|-1)=(G:H).
   \]
@@ -697,7 +698,7 @@ $G$, then $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$.
   $C_i^{-1}=C_{\beta(i)}$ for all $i\in\{1,\dots,r\}$. Note that $\chi_i$
   is real if and only if $\alpha(i)=i$ and that $C_i$ is real if and only if 
   $\beta(i)=i$. The number $n$ of fixed points of $\alpha$ is equal to the number
-  of irreducible characters of $G$ and the number $m$ of fixed points of $\beta$ is equal
+  of real irreducible characters of $G$ and the number $m$ of fixed points of $\beta$ is equal
   to the number of real classes. 
   Let $\rho\colon\Sym_r\to\GL(r,\C)$ be the natural representation of $\Sym_r$. Then
   $\chi_\rho(\alpha)=n$ and $\chi_\rho(\beta)=m$. We claim that 
@@ -731,7 +732,7 @@ $G$, then $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$.
     If $h\in\langle h^2\rangle\subseteq C_G(g)$, then $g$ has 
     even order, as $g^{-1}=g$. If $h\not\in\langle h^2\rangle$, then 
     $h^2$ does not generate $\langle h\rangle$. Hence $h$ has odd order, 
-    as $|h|\ne|h^2|=|h|/(|h|:2)$.  
+    as $|h|\ne|h^2|=|h|/\gcd(|h|:2)$.  
 \end{proof}
 
 \begin{theorem}[Burnside]
@@ -749,7 +750,7 @@ $G$, then $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$.
   \[
     \chi_1,\chi_2,\overline{\chi_2},\dots,\chi_k,\overline{\chi_k},
     \quad
-    r=1+2k,
+    r=1+2(k-1),
   \]
   where $\chi_1$ denotes the trivial character. 
   For every $j\in\{2,\dots,k\}$ let $d_j=\chi_j(1)$. 
@@ -760,7 +761,7 @@ $G$, then $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$.
   \begin{align*}
     |G|&=1+\sum_{j=2}^k 2d_j^2=1+\sum_{j=2}^k2(2m_j+1)^2\\
     &=1+\sum_{j=2}^k2(4m_j^2+4m_j+1)
-    =1+2k+8\sum_{j=2}^km_j(m_j+1).
+    =1+2(k-1)+8\sum_{j=2}^km_j(m_j+1).
   \end{align*}
   Hence $|G|\equiv r\bmod{16}$, 
   as $r=1+2k$ and every $m_j(m_j+1)$ is even. 
