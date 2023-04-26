@@ -1,397 +1,772 @@
 \chapter{}
 
-\topic{Brauer--Fowler theorem}
+\topic{The correspondence theorem}
 
-\index{Symmetric}
-\index{Antisymmetric}
-Let $\rho\colon G\to\GL(V)$ 
-be a representation with character $\chi$. The $\C[G]$-module $V\otimes V$ 
-has character $\chi^2$. Let 
-$\{v_1,\dots,v_n\}$ be a basis of $V$ and 
+Let $N$ be a normal subgroup of $G$ 
+and $\pi\colon G\to G/N$, $g\mapsto gN$, be the canonical map. 
+If $\widetilde{\rho}\colon G/N\to\GL(V)$ 
+is a representation of $G/N$ with 
+character
+$\widetilde{\chi}$, the composition 
+$\rho=\widetilde{\rho}\pi\colon G\to \GL(V)$, $\rho(g)=\widetilde{\rho}(gN)$, 
+is a representation of $G$. 
+Thus
 \[
-T\colon V\otimes V\to V\otimes V,\quad
-v_i\otimes v_j\mapsto v_j\otimes v_i.
+\chi(g)=\trace{\rho_g}=\trace(\widetilde{\rho}_{gN})=\widetilde{\chi}(gN).
 \]
-It is an exercise to check that 
-\[
-T(v\otimes w)=w\otimes v
-\]
-for all 
-$v,w\in V$. It follows that  
-$T$ does not depend on the chosen basis. Note that
-$T$ is a homomorphism of $\C[G]$-modules, as
-\[
-T(g\cdot (v\otimes w))=T((g\cdot v)\otimes (g\cdot w))=(g\cdot w)\otimes (g\cdot v)=g\cdot T(v\otimes w)
-\]
-for all $g\in G$ y $v,w\in V$. 
-In particular, the \textbf{symmetric part} 
-\begin{gather*}
-S(V\otimes V)=\{x\in V\otimes V:T(x)=x\}
-\shortintertext{and the \textbf{antisymmetric} part}
-A(V\otimes V)=\{x\in V\otimes V:T(x)=-x\}
-\end{gather*}
-of $V\otimes V$ are both  
-$\C[G]$-submodules of $V\otimes V$. 
-The terminology is motivated by the following fact:
-\[
-V\otimes V=S(V\otimes V)\oplus A(V\otimes V).
-\]
-In fact, 
-$S(V\otimes V)\cap A(V\otimes V)=\{0\}$, as   
-$x\in S(V\otimes V)\cap A(V\otimes V)$ implies
-$x=T(x)$ and $x=-T(x)$. Hence $x=0$. Moreover, 
-$V\otimes V=S(V\otimes V)+ A(V\otimes V)$, as every $x\in V\otimes V$ can be written 
-as 
-\[
-x=\frac12(x+T(x))+\frac12(x-T(x))
-\]
-with $\frac12(x+T(x))\in S(V\otimes V)$ and $\frac12(x-T(x))\in A(V\otimes V)$. 
-
-We claim that $\{v_i\otimes v_j+v_j\otimes v_i:1\leq i\leq j\leq n\}$ is
-a basis of $S(V\otimes V)$ 
-and that  
-\[
-\{v_i\otimes v_j-v_j\otimes v_i:1\leq i<j\leq n\}
-\]
-is a basis of $A(V\otimes V)$. Since both sets are linearly independent, 
-\[
-\dim S(V\otimes V)\geq n(n+1)/2\text{ and }
-\dim A(V\otimes V)\geq n(n-1)/2.
-\]
-Moreover, 
-\[
-n^2=\dim (V\otimes V)=\dim S(V\otimes V)+\dim A(V\otimes V),
-\]
-so it follows that
-$\dim S(V\otimes V)=n(n+1)/2$ and $\dim A(V\otimes V)=n(n-1)/2$. 
+In particular, $\chi(1)=\widetilde{\chi}(1)$. The character $\chi$ 
+is the \textbf{lifting} to $G$ of the character 
+$\widetilde{\chi}$ of $G/N$. 
 
 \begin{proposition}
-    Let $G$ be a finite group and
-    $V$ be a finite-dimensional 
-    $\C[G]$-module with character $\chi$. If $S(V\otimes V)$ 
-    has character $\chi_S$ and $A(V\otimes V)$ has character
-    $\chi_A$, then 
-    \begin{align*}
-        &\chi_S(g)=\frac12(\chi^2(g)+\chi(g^2)) && \text{and} &&
-        \chi_A(g)=\frac12(\chi^2(g)-\chi(g^2)).
-    \end{align*}
+If $\chi\in\Irr(G)$, then 
+\[
+\ker\chi=\{g\in G:\chi(g)=\chi(1)\}
+\]
+is a normal subgroup of $G$. 
 \end{proposition}
 
 \begin{proof}
-    Let $g\in G$ and $\rho\colon G\to\GL(V)$ be the representation
-    associated with $V$, that is $\rho(g)(v)=\rho_g(v)=g\cdot v$. 
-    Since $\rho_g$ is diagonalizable, let $\{e_1,\dots,e_n\}$ 
-    be a basis of eigenvectors of $\rho_g$, say
-    $g\cdot e_i=\lambda_ie_i$ with $\lambda_i\in\C$ for all $i\in\{1,\dots,n\}$. In particular, $\chi(g)=\sum_{i=1}^n\lambda_i$. 
-    
-    Since $\{e_i\otimes e_j-e_j\otimes e_i:1\leq i<j\leq n\}$ is a basis of
-    $A(V\otimes V)$ and 
-    \[
-    g\cdot (e_i\otimes e_j-e_j\otimes e_i)=\lambda_i\lambda_j(e_i\otimes e_j-e_j\otimes e_i),
-    \]
-    it follows that
-    $\chi_A(g)=\sum_{1\leq i<j\leq n}\lambda_i\lambda_j$. On the other hand,
-    $g^2\cdot e_i=\lambda_i^2e_i$ for all $i$,
-    $\chi(g^2)=\sum_{i=1}^n\lambda_i^2$. Thus 
-    \[
-    \chi^2(g)=\chi(g)^2=\sum_{i=1}^n\sum_{j=1}^n\lambda_i\lambda_j=2\sum_{1\leq i<j\leq n}\lambda_i\lambda_j+\sum_{i=1}^n\lambda_i^2=2\chi_A(g)+\chi(g^2).
-    \]
-    Since $V\otimes V=S(V\otimes V)\oplus A(V\otimes V)$, it follows that  
-    $\chi^2(g)=\chi_S(g)+\chi_A(g)$, that is 
-    $\chi_S(g)=\frac12(\chi^2(g)+\chi(g^2))$.
+Let $\rho\colon G\to\GL_n(\C)$ be a representation with character $\chi$. Then 
+$\ker\rho\subseteq\ker\chi$, as $\rho_g=\id$ implies 
+$\chi(g)=\trace(\rho_g)=n=\chi(1)$. We claim that  
+$\ker\chi\subseteq\ker\rho$. If $g\in G$ is such that $\chi(g)=\chi(1)$, since 
+$\rho_g$ is diagonalizable, there exist eigenvalues $\lambda_1,\dots,\lambda_n\in\C$ such that
+\[
+n=\chi(1)=\chi(g)=\sum_{i=1}^n\lambda_i.
+\]
+Since each $\lambda_i$ is a root of one,  
+$\lambda_1=\cdots=\lambda_n=1$. Hence $\rho_g=\id$. 
 \end{proof}
 
-\index{Involution}
-An \textbf{involution} of a group is an element $x\ne 1$ such that $x^2=1$. 
-It is possible to use the character table to count the number
-of involutions.
+\index{Kernel!of a character}
+If $\chi$ is an irreducible character, the subgroup $\ker\chi$ 
+is the \textbf{kernel} of $\chi$. 
 
-\begin{proposition}
-    If $G$ is a finite group with $t$ involutions, then
-    \[
-        1+t=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1),
-    \]
-    where $\chi_1$ is 
-    the trivial character of $G$.
-\end{proposition}
+\begin{theorem}[Correspondence theorem]
+\index{Correspondence theorem!for characters}
+Let $N$ be a normal subgroup of a finite group $G$. There exists
+a bijective correspondence 
+\[
+\Char(G/N) \longleftrightarrow \{\chi\in\Char(G): 
+N\subseteq\ker\chi\}
+\]
+that maps irreducible characters to irreducible characters.
+\end{theorem}
 
 \begin{proof}
-    Assume that $\Irr(G)=\{\chi_1,\dots,\chi_k\}$.  
-    For $x\in G$ let 
-    \[
-    \theta(x)=|\{y\in G:y^2=x\}|.
-    \]
-    Since $\theta$ is a class function, 
-    $\theta$ is a linear combination of the $\chi_j$'s, say 
-    \[
-    \theta=\sum_{\chi\in\Irr(G)}\langle\theta,\chi\rangle\chi.
-    \]
-    For every $\chi\in\Irr(G)$ we compute: 
-    \begin{align*}
-        \langle\chi_S-\chi_A,\chi_1\rangle 
-        &=\frac{1}{|G|}\sum_{g\in G}\chi(g^2)\\
-        &=\frac{1}{|G|}\sum_{x\in G}\sum_{\substack{g\in G\\g^2=x}}\chi(g^2)
-        =\frac{1}{|G|}\sum_{x\in G}\theta(x)\chi(x)=\langle\theta,\chi\rangle.
-    \end{align*}
-    Thus $\theta=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi$. Now
-    the claim follows after evaluating this expression in 
-    $x=1$. 
+If $\widetilde{\chi}\in\Char(G/N)$, let $\chi$ be the lifting of $\widetilde{\chi}$ to $G$. If $n\in N$, 
+then
+\[
+\chi(n)=\widetilde{\chi}(nN)=\widetilde{\chi}(N)=\chi(1)
+\]
+and thus $N\subseteq\ker\chi$. 
+
+If $\chi\in\Char(G)$ is such that $N\subseteq\ker\chi$, let $\rho\colon G\to\GL(V)$ be a representation
+with character $\chi$. 
+Let $\widetilde{\rho}\colon G/N\to\GL(V)$, $gN\mapsto \rho(g)$. We claim that $\widetilde{\rho}$
+is well-defined: 
+\[
+gN=hN\Longleftrightarrow h^{-1}g\in N\Longrightarrow\rho(h^{-1}g)=\id\Longleftrightarrow \rho(h)=\rho(g).
+\]
+Moreover, $\widetilde{\rho}$ is a representation, as 
+\[
+\widetilde{\rho}((gN)(hN))=\widetilde{\rho}(ghN)=\rho(gh)=\rho(g)\rho(h)=\widetilde{\rho}(gN)\widetilde{\rho}(hN).
+\]
+If $\widetilde{\chi}$ is the character of $\widetilde{\rho}$, then 
+$\widetilde{\chi}(gN)=\chi(g)$.
+
+We now prove that $\chi$ is irreducible if and only if 
+$\widetilde{\chi}$ is irreducible. If $U$ is a subspace of $V$, then 
+\begin{align*}
+\text{$U$ is $G$-invariant}
+%&\Longleftrightarrow g\cdot U\subseteq U\text{ for all $g\in G$}\\
+&\Longleftrightarrow \rho(g)(U)\subseteq U\text{ for all $g\in U$}\\
+&\Longleftrightarrow \widetilde{\rho}(gN)(U)\subseteq U\text{ for all $g\in U$}.
+\shortintertext{Thus}
+\chi\text{ is irreducible }&\Longleftrightarrow
+\rho\text{ is irreducible }\\
+&\Longleftrightarrow\widetilde{\rho}\text{ is irreducible }\Longleftrightarrow
+\widetilde{\chi}\text{ is irreducible }\qedhere.
+\end{align*}
 \end{proof}
 
-\index{Cauchy--Schwarz inequality}
-Before proving the Brauer-Fowler theorem, we
-need a lemma. We will use the Cauchy--Schwarz inequality: 
-\[
-x_1,\dots,x_n\in\R\implies
-\sum x_i^2\geq\frac{1}{n}(\sum x_i)^2.
-\]
+\begin{example}
+    Let $G=\Sym_4$ and $N=\{\id,(12)(34),(13)(24),(14)(23)\}$. We know that $N$ is normal in $G$ 
+    and that $G/N=\langle a,b\rangle\simeq\Sym_3$, where 
+    $a=(123)N$ and $b=(12)N$. 
+    The character table of $G/N$ is 
+    \begin{center}
+		\begin{tabular}{|c|rrr|}
+			\hline
+			%& $1$ & $3$ & $2$\tabularnewline
+			& $N$ & $(12)N$ & $(123)N$ \tabularnewline
+			\hline 
+			$\widetilde{\chi}_{1}$ & $1$ & $1$ & $1$\tabularnewline
+			$\widetilde{\chi}_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+			$\widetilde{\chi}_{3}$ & $2$ & $0$ & $-1$ \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+    For each $i\in\{1,2,3\}$ we compute the lifting $\chi_i$ to $G$ of the character  
+    $\widetilde{\chi}_i$ of $G/N$. 
+    Since $(12)(34)\in N$ and $(13)(1234)=(12)(34)\in N$, 
+    \begin{align*}
+        \chi( (12)(34) )=\widetilde{\chi}(N),\quad
+        \chi( (1234) )=\widetilde{\chi}((13)N)=\widetilde{\chi}((12)N).
+    \end{align*}
+    Since the characters $\widetilde{\chi_i}$ are irreducibles, 
+    the liftings $\chi_i$ are also irreducibles. With this process
+    we obtain the following irreducible characters of $G$:
+    	\begin{center}
+		\begin{tabular}{|c|rrrrr|}
+			\hline
+			& $1$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ \tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$ & 1 & 1\tabularnewline
+			$\chi_{2}$ & $1$ & $-1$ & $1$ & 1 & -1 \tabularnewline
+			$\chi_{3}$ & $2$ & $0$ & $-1$ & 2 & 0\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{example}
+
+The character table of a group can be used to find the lattice 
+of normal subgroups. In particular, the character table detects simple groups. 
 
 \begin{lemma}
-    Let $G$ be a finite group with $k$ conjugacy classes. 
-    If $t$ is the number of involutions of $G$, then
-    $t^2\leq (k-1)(|G|-1)$. 
+    Let $G$ be a finite group and 
+    let $g,h\in G$. Then $g$ and $h$ 
+    are conjugate if and only if 
+    $\chi(g)=\chi(h)$ for all
+    $\chi\in\Char(G)$. 
 \end{lemma}
 
 \begin{proof}
-    Assume that $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, where $\chi_1$ is the
-    trivial character of $G$. 
-    If $\chi\in\Irr(G)$, then 
+    If $g$ and $h$ are conjugate, then $\chi(g)=\chi(h)$, as characters are class functions
+    of $G$.
+    Conversely, if $\chi(g)=\chi(h)$ for all $\chi\in\Char(G)$, then 
+    $f(g)=f(h)$ for all class function $f$ of $G$, 
+    as characters $G$ generate the space of class functions of $G$. In particular, 
+    $\delta(g)=\delta(h)$, where
     \[
-        \langle\chi^2,\chi_1\rangle=\frac{1}{|G|}\sum_{g\in G}\chi(g)\chi(g)=\langle\chi,\overline{\chi}\rangle=\begin{cases}
-        1 & \text{if $\chi=\overline{\chi}$},\\
-        0 & \text{otherwise}.
-        \end{cases}
-    \]
-    Since $\chi^2=\chi_S+\chi_A$, if $\langle\chi^2,\chi_1\rangle=1$, then
-    the trivial character either is part of $\chi_S$ or $\chi_A$, but not both. 
-    Thus
-    \[
-    \langle\chi_S-\chi_A,\chi_1\rangle\in\{-1,1,0\}.
-    \]
-    
-    We claim that 
-    $t\leq\sum_{i=2}^k\chi_i(1)$. In fact, since 
-    $|\langle\chi_S-\chi_A,\chi_1\rangle|\leq 1$, 
-    \begin{align*}
-        1+t=\theta(1)
-        &=\left|\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1)\right|\\
-        &\leq\sum_{\chi\in\Irr(G)}|\langle\chi_S-\chi_A,\chi_1\rangle|\chi(1)
-        \leq\sum_{\chi\in\Irr(G)}\chi(1).
-    \end{align*}
-    It follows that $t\leq\sum_{i=2}^k\chi_i(1)$. 
-    By the Cauchy--Schwarz inequality, 
-    \[
-        t^2\leq\left(\sum_{i=2}^k\chi_i(1)\right)^2
-        \leq(k-1)\sum_{i=2}^k\chi(1)^2=(k-1)(|G|-1).\qedhere
-    \]
-\end{proof}
-
-Now we prove the Brauer--Fowler theorem. 
-
-\begin{theorem}[Brauer--Fowler]
-    \index{Brauer--Fowler theorem}
-    Let $G$ be a finite simple group and $x$ be an involution of $G$. If $|C_G(x)|=n$, then $|G|\leq (n^2)!$	
-\end{theorem}
-
-\begin{proof}
-    If $G$ is abelian, the claim is trivial. Let $G$ be a finite non-abelian simple group.
-    We first assume the existence of a proper subgroup $H$ of $G$ 
-    such that 
-    \[
-    (G:H)\leq n^2.
-    \]
-    The group $G$ acts on $G/H$ 
-    by left multiplication, so there is a group homomorphism 
-    $\rho\colon G\to\Sym_{n^2}$. Since $G$ is simple, either 
-    $\ker\rho=\{1\}$ or $\ker\rho=G$. If $\ker\rho=G$, then
-    $\rho(g)(yH)=yH$ for all $g\in G$ and $y\in G$. 
-    Hence $H=G$, a contradiction. Therefore $\rho$ is injective
-    and hence $G$ is isomorphic to a subgroup of $\Sym_{n^2}$. 
-    In particular, $|G|$ divides $(n^2)!$. 
-
-    Let $m=(|G|-1)/t$, where $t$ is the number of involutions of $G$. 
-    Since $|C_G(x)|=n$, the group $G$ has at least $|G|/n$ involutions (because
-    the conjugacy class of $x$ has size $|G|/n$ and all its elements are involutions), 
-    that is $t\geq |G|/n$. Hence 
-    \[
-    m=(|G|-1)/t<n.
-    \]
-    It is enough to show that
-    $G$ contains a subgroup of index $\leq m^2$. 
-
-    Let $C_1,\dots,C_k$ be the conjugacy classes of $G$, where $C_1=\{1\}$. 
-    Since $G$ is simple and non-abelian, $|C_i|>1$ 
-    for all $i\in\{2,\dots,k\}$. By the previous lemma, 
-    \[
-    t^2\leq(k-1)(|G|-1)\implies |G|-1=\frac{mt^2}{t}\leq\frac{(k-1)(|G|-1)^2}{t^2}=(k-1)m^2.
-    \]
-    If $|C_i|>m^2$ for all $i\in\{2,\dots,k\}$, then
-    \[
-    |G|-1=\sum_{i=2}^k|C_i|>(k-1)m^2,
-    \]
-    a contradiction. Thus there exists a non-trivial conjugacy class
-    $C$ of $G$ such that $|C|\leq m^2$. If $g\in C$, then
-    $C_G(g)$ is a proper subgroup of $G$ of index $|C|\leq m^2$.
-\end{proof}
-
-The bound of the Brauer--Fowler theorem is not essential.
-What matters is the following consequence:
-
-\begin{corollary}
-    Let $n\geq 1$ be an integer. There are at most finitely many 
-    finite simple groups with an involution with a centralizer of order $n$.
-\end{corollary}
-
-As an exercise, a simple application: 
-
-\begin{exercise}
-    If $G$ is a finite simple group and $x$ is an involution with
-    centralizer of order two, then  
-    $G\simeq\Z/2$. 
-\end{exercise}
-
-\subsection{A comment: An elementary proof of Brauer--Fowler theorem}
-
-We need to find a subgroup of index $\leq 2n^2$. 
-Let $X$ be the conjugacy class of $x$. For $g\in G$ let
-\[
-J(g)=\{z\in X:zgz^{-1}=g^{-1}\}.
-\]
-We claim that $|J(g)|\leq|C_G(g)|$. The map $J(g)\to C_G(g)$, $z\mapsto gz$, 
-is well-defined,~as 
-\[
-(gz)g(gz)^{-1}=g(zgz^{-1})g^{-1}=g^{-1}\in C_G(g).
-\]
-It is injective, as $gz=gz_1$ implies $z=z_1$.
-
-Let $J=\{(g,z)\in G\times X:zgz^{-1}=g^{-1}\}$.  
-Since $X\times X\to J$, $(y,z)\mapsto (yz,z)$, 
-is well-defined (since $z(yz)z^{-1}=zy=(yz)^{-1}$) and
-it is trivially injective, 
-\[
-|X|^2\leq |J|=\sum_{(g,z)\in J}1\leq\sum_{g\in G}|J(g)|
-\leq\sum_{g\in G}|C_G(g)|=k|G|,
-\]
-where $k$ is the number of conjugacy classes of $G$, 
-as $(g,z)\in J$ if and only if $z\in J(g)$. Thus $|G|\leq kn^2$, as
-\[
-\left(\frac{|G|}{|C_G(x)|}\right)^2=|X|^2=\frac{|G|^2}{n^2}\leq k|G|.
-\]
-
-\begin{claim}
-    There exists a non-trivial conjugacy class with $\leq 2n^2$ elements.
-\end{claim}
-
-Assume that the claim is not true. Let
-$C_1,\dots,C_k$ be the conjugacy classes of $G$, where 
-$C_1=\{1\}$ and $|C_i|>2n^2$ for all $i\in\{2,\dots,k\}$. Then
-\[
-|G|=1+\sum_{i=2}^k|C_i|>1+\sum_{i=2}^k2n^2=1+(k-1)2n^2\geq |G|,
-\]
-a contradiction. 
-
-\begin{claim}
-    There exists a subgroup $H$ of $G$ such that
-    $(G:H)\leq 2n^2$.
-\end{claim}
-
-Let $C$ be a conjugacy class of $G$ such that 
-$|C|\leq 2n^2$. Let $g\in C$.  
-Then $H=C_G(g)$ is a subgroup of $G$ such that
-$(G:H)\leq 2n^2$. 
-This finishes the proof of the Brauer--Fowler theorem. 
-
-
-
-\topic{Frobenius's reciprocity}
-
-We now present a very quick version of Frobenius'
-reciprocity theorem. We first 
-define the restriction of class functions. 
-
-\begin{definition}
-    Let $G$ be a finite group and $f\colon G\to\C$ be
-    a map. For a subgroup $H$ of $G$, the \textbf{restriction}
-    of $f$ to $H$ is the map 
-    $=\Res_H^G=f|_H\colon H\to\C$, $h\mapsto f(h)$. 
-\end{definition}
-
-\begin{exercise}
-\label{xca:restriction}
-    Let $G$ be a finite group. Prove that
-    the map $\Res_H^G\colon\cf(G)\to\cf(H)$, $f\mapsto\Res_H^G(f)$, 
-    is a well-defined linear map. 
-\end{exercise}
-
-We now define induction. Let $G$ be a finite group
-and $H$ be a subgroup of $G$. If $f\colon H\to\C$ is a map, 
-then 
-\[
-\dot{f}(x)=\begin{cases}
-    f(x) & \text{if $x\in H$},\\
+    \delta(x)=\begin{cases}
+    1 & \text{if $x$ and $g$ are conjugate},\\
     0 & \text{otherwise}.
     \end{cases}
-\]
-It is an exercise to prove that
-the map $f\mapsto\dot{f}$ is linear. 
+    \]
+    This implies that $g$ and $h$ are conjugate.
+\end{proof}
 
-\begin{definition}
-    Let $G$ be a finite group and $H$ be a subgroup of $G$. Let
-    $f\colon H\to\C$ be
-    a map. The \textbf{induction}
-    of $f$ to $G$ is the map 
-    \begin{align*}
-      g\mapsto\Ind_H^Gf(g)=\frac{1}{|H|}\sum_{x\in G}\dot{f}(x^{-1}gx).
-    \end{align*}
-\end{definition}
+As a consequence, we get that 
+\begin{equation}
+\label{eq:kernels}
+\bigcap_{\chi\in\Irr(G)}\ker\chi=\{1\}.
+\end{equation}
+Indeed, if $g\in\ker\chi$ for all $\chi\in\Irr(G)$, then $g=1$ since 
+the lemma implies that $g$ and $1$ are conjugate
+because 
+$\chi(g)=\chi(1)$ for all $\chi\in\Irr(G)$.
+
+\begin{proposition}
+\label{pro:normal}
+    Let $G$ be a finite group. 
+    If $N$ is a normal subgroup of $G$, 
+    then there exist characters
+    $\chi_1,\dots,\chi_k\in\Irr(G)$ 
+    such that
+    \[
+    N=\bigcap_{i=1}^k\ker\chi_i.
+    \]
+\end{proposition}
+
+\begin{proof}
+    Apply the previous remark to the group $G/N$ to obtain that 
+    \[
+    \bigcap_{\widetilde{\chi}\in\Irr(G/N)}\ker\widetilde{\chi}=\{N\}.
+    \]
+    Assume that $\Irr(G/N)=\{\widetilde{\chi}_1,\dots,\widetilde{\chi}_k\}$. 
+    We lift the irreducible characters of $G/N$ to $G$ 
+    to obtain (some) irreducible characters $\chi_1,\dots,\chi_k$ 
+    of $G$ such that 
+    $N\subseteq\ker\chi_1\cap\cdots\cap\ker\chi_k$. 
+    If $g\in\ker\chi_i$ for all $i\in\{1,\dots,k\}$, then 
+    \[
+    \widetilde{\chi}_i(N)=\chi_i(1)=\chi_i(g)=\widetilde{\chi}_i(gN)
+    \]
+    for all $i\in\{1,\dots,k\}$. This implies that
+    \[
+    gN\in\bigcap_{i=1}^k\ker\widetilde{\chi}_i=\{N\},
+    \]
+    that is $g\in N$. 
+\end{proof}
+
+\index{Group!simple}
+Recall that a non-trivial group is \textbf{simple} if it contains no non-trivial normal 
+proper subgroups. Examples of simple groups are cyclic groups of prime order
+and the alternating groups $\Alt_n$ for $n\geq5$. 
+As a corollary of Proposition \ref{pro:normal}, 
+we can use the character table to detect simple groups.
+
+\begin{proposition}
+    Let $G$ be a finite group. Then $G$ is not simple if and only if 
+    there exists a non-trivial irreducible character $\chi$ such that
+    $\chi(g)=\chi(1)$ 
+    for some $g\in G\setminus\{1\}$. 
+\end{proposition}
+
+\begin{proof}
+    If $G$ is not simple, there exists a normal subgroup $N$ of $G$ such that
+    $N\ne G$ and $N\ne\{1\}$. 
+    By Proposition \ref{pro:normal}, there exist characters 
+    $\chi_1,\dots,\chi_k\in\Irr(G)$
+    such that 
+    $N=\ker\chi_1\cap\cdots\cap\ker\chi_k$.
+    In particular, there exists a non-trivial character
+    $\chi_i$ such that $\ker\chi_i\ne\{1\}$. Thus 
+    there exists $g\in G\setminus\{1\}$ such that
+    $\chi_i(g)=\chi_i(1)$. 
+    
+    Assume now that there exists a non-trivial character $\chi$ 
+    such that $\chi(g)=\chi(1)$ for some $g\in G\setminus\{1\}$. In particular, $g\in\ker\chi$ 
+    and hence $\ker\chi\ne\{1\}$. Since $\chi$ is non-trivial, $\ker\chi\ne G$. 
+    Thus $\ker\chi$ is a proper non-trivial normal subgroup of $G$.
+\end{proof}
+
+\begin{example}
+\index{Mathieu's group $M_9$}
+    If there exists a group $G$ with
+    a character table 
+    of the form
+    \begin{center}
+		\begin{tabular}{|c|rrrrrr|}
+			\hline
+			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+			$\chi_{2}$ & 1 & 1 & 1 & -1 & 1 & -1 \tabularnewline
+			$\chi_{3}$ & 1 & 1 & 1 & 1 & -1 & -1\tabularnewline
+		    $\chi_{4}$ & 1 & 1 & 1 & -1 & -1 & 1\tabularnewline
+			$\chi_{5}$ & 2 & -2 & 2 & 0 & 0 & 0\tabularnewline
+			$\chi_{6}$ & 8 & 0 & -1 & 0 & 0 & 0\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+	then $G$ cannot be simple. Note that such a group $G$ would have order $\sum_{i=1}^6\chi_i(1)^2=72$. 
+	Mathieu's group $M_{9}$ has precisely this character table! 
+\end{example}
+
+\begin{example}
+    Let $\alpha=\frac{1}{2}(-1+\sqrt{7}i)$. 
+    If there exists a group $G$ with a character table
+    of the form
+    \begin{center}
+		\begin{tabular}{|c|rrrrrr|}
+			\hline
+			$\chi_{1}$ & 1 & 1 & 1 & 1 & 1 & 1\tabularnewline
+			$\chi_{2}$ & 7 & -1 & -1 & 1 & 0 & 0 \tabularnewline
+			$\chi_{3}$ & 8 & 0 & 0 & -1 & 1 & 1\tabularnewline
+		    $\chi_{4}$ & 3 & -1 & 1 & 0 & $\alpha$ & $\overline{\alpha}$ \tabularnewline
+			$\chi_{5}$ & 3 & -1 & 1 & 0 & $\overline{\alpha}$ & $\alpha$\tabularnewline
+			$\chi_{6}$ & 6 & 2 & 0 & 0 & 0 & 0\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}    
+	then $G$ is simple. Note that such a group $G$ would have order 
+	$\sum_{i=1}^6\chi_i(1)^2=168$. 
+	The group  
+	\[
+	\PSL_2(7)=\SL_2(7)/Z(\SL_2(7))
+	\]
+	is a simple group that has precisely this character table!  
+\end{example}
+
+\topic{Frobenius' groups}
+\label{Frobenius}
+
+If $p$ is a prime number, then
+the units $(\Z/p)^{\times}$ 
+of $\Z/p$ form a multiplicative group. Moreover, 
+$(\Z/p)^{\times}$ 
+is cyclic of order $p-1$. 
+
+Let $p$ and $q$ be prime numbers such that $q$ divides $p-1$. Let 
+\[
+G=\left\{\begin{pmatrix}
+x & y\\
+0 & 1
+\end{pmatrix}
+:x\in(\Z/p)^\times,\,y\in\Z/p\right\}.
+\]
+Then $G$ is a group with the usual matrix multiplication
+and $|G|=p(p-1)$. Let $z\in\Z$ be an element of multiplicative order $q$ modulo $p$ 
+and let 
+\[
+a=\begin{pmatrix}
+1&1\\
+0&1
+\end{pmatrix},
+\quad
+b=\begin{pmatrix}
+z&1\\
+0&1
+\end{pmatrix},
+\quad
+H=\langle a,b\rangle.
+\]
+A direct calculation shows that 
+\begin{equation}
+\label{eq:pq}
+a^p=b^q=\begin{pmatrix}
+1&0\\
+0&1
+\end{pmatrix},
+\quad
+bab^{-1}=\begin{pmatrix}
+1&z\\
+0&1
+\end{pmatrix}
+=a^z.
+\end{equation}
+Every element of $H$ is of the form $a^ib^j$ for $i\in\{0,\dots,p-1\}$ and  $j\in\{0,\dots,q-1\}$. 
+Thus $|H|=pq$. Using~\eqref{eq:pq} we can compute 
+the multiplication table of $G$. 
 
 \begin{exercise}
-\label{xca:induction}
-    Let $G$ be a finite group. Prove that
-    the map $\Ind_H^G\colon\cf(H)\to\cf(G)$, $f\mapsto\Ind_H^G(f)$, 
-    is a well-defined linear map. 
+    Let $p$ and $q$ be prime numbers such that $q$ divides $p-1$. Let
+    $u,v\in\Z$ be elements of order $q$ modulo $p$. 
+    Prove that 
+    \[
+    \langle a,b:a^p=b^q=1,bab=a^u\rangle
+    \simeq \langle a,b:a^p=b^q=1,bab=a^v\rangle.
+    \]
 \end{exercise}
 
-\begin{theorem}[Frobenius' reciprocity theorem]
-\index{Frobenius' reciprocity theorem}
-    Let $G$ be a finite group and $H$ be a subgroup of $G$. 
-    If $a\in\cf(H)$ and $b\in\cf(G)$, then
-    \[
-    \langle\Ind_H^Ga,b\rangle=\langle a,\Res_H^Gb\rangle.
-    \]
+The group   
+\[
+F_{p,q}=\langle a,b:a^p=b^q=1,bab=a^u\rangle,
+\]
+where $u\in\Z$ has order $q$ modulo $p$, 
+is a particular case of a  
+\emph{Frobenius group}. 
+
+\begin{proposition}
+    Let $p$ and $q$ be prime numbers such that $p>q$. Let  
+    $G$ be a group of order $pq$. Then either $G$ is abelian or
+    $q$ divides $p-1$ and 
+    $G\simeq F_{p,q}$.
+\end{proposition}
+
+\begin{proof}
+    Assume that $G$ is not abelian. By Sylow's theorems, 
+    $q$ divides $p-1$ and there exists 
+    a unique Sylow $p$-subgroup $P$ of $G$. Let $a,b\in G$ be such that 
+    $P=\langle a\rangle\simeq\Z/p$ and $G/P=\langle bP\rangle\simeq\Z/q$. By Lagrange's theorem, 
+    $G=\langle a,b\rangle$. We compute the order of $b^q$. Since 
+    $G$ is not cyclic (because it is not abelian) and $b^q\in P$, 
+    we conclude that $|b^q|=1$. 
+    Since $P$ is normal in $G$, 
+    $bab^{-1}\in P$ and hence $bab^{-1}=a^z$ for some $z\in\Z$. Therefore
+    $b^qab^{-q}=a^{z^q}$. This implies that 
+    $z^q\equiv1\bmod p$. The order of $z$ in $(\Z/p)^{\times}$ divides 
+    $q$ and hence it is equal to $q$ (otherwise, $z=1$ and thus $bab^{-1}=a$, which implies
+    that $G$ is abelian). In conclusion, 
+    $G\simeq F_{p,q}$. 
+\end{proof}
+
+With the proposition we prove, for example, that 
+every group of order 15 is abelian. We can also prove
+that up to isomorphism $\Z/20$ and  
+$F_{5,4}$ are the only groups of order 20. 
+
+\begin{definition}
+  \index{Frobenius!complement}
+  \index{Frobenius!kernel}
+  \index{Frobenius!group}
+  We say that a finite group $G$ is a 
+  \textbf{Frobenius group} if $G$ 
+  has a non-trivial proper subgroup $H$ such that $H\cap
+  xHx^{-1}=\{1\}$ for all $x\in G\setminus H$. In this case, the subgroup 
+  $H$ is called a \textbf{Frobenius complement}.
+\end{definition}
+
+\begin{theorem}[Frobenius]
+  \label{thm:Frobenius}
+  \index{Frobenius'!theorem}
+  Let $G$ be a Frobenius group with complement $H$. Then
+  \[
+	N=\left( G\setminus\bigcup_{x\in G}xHx^{-1}\right)\cup\{1\}
+  \]
+  is a normal subgroup of $G$.
 \end{theorem}
 
 \begin{proof}
-    It follows from a direct calculation:
-    \begin{equation}
-    \label{eq:reciprocity}
-    \begin{aligned}
-        \langle\Ind_H^Ga,b\rangle 
-        &= \frac{1}{|G|}\sum_{x\in G}\Ind_H^Ga(x)\overline{b(x)}
-        = \frac{1}{|G|}\frac{1}{|H|}\sum_{x,y\in G}\dot{a}(y^{-1}xy)\overline{b(x)}.
-    \end{aligned}
-    \end{equation}
-    Since 
-    \[
-    \dot{a}(y^{-1}xy)\ne 0\Longrightarrow
-    y^{-1}xy\in H\Longleftrightarrow x\in yHy^{-1},
-    \]
-    setting $h=y^{-1}xy$ 
-    we can write \eqref{eq:reciprocity} as 
-    \begin{align*}
-        \langle\Ind_H^Ga,b\rangle
-        &=\frac{1}{|G|}\frac{1}{|H|}\sum_{x\in G}\sum_{h\in H}a(h)\overline{b(xhx^{-1})}\\
-        &=\frac{1}{|G|}\frac{1}{|H|}\sum_{x\in G}\sum_{h\in H}a(h)\overline{b(h)}\\
-        &=\frac{1}{|G|}\sum_{x\in G}\langle a,\Res_H^Gb\rangle.
-    \end{align*}
-    From this the claim follows. 
+  For each $\chi\in\Irr(H)$, $\chi\ne1_H$, let 
+  $\alpha=\chi-\chi(1)1_H\in\cf(H)$, where $1_H$ denotes the trivial character of $H$. 
+
+  We claim that $\Res_H^G\Ind_H^G\alpha=\alpha$.
+  First, $\Ind_H^G\alpha(1)=\alpha(1)=0$. If $h\in H\setminus\{1\}$, then, by Corollary~\ref{cor:induccion}, 
+  \[
+    \Ind_H^G\alpha(h)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}hx\in H}}\alpha(x^{-1}hx)
+    =\frac{1}{|H|}\sum_{x\in H}\alpha(h)=\alpha(h),
+  \]
+  since, if $x\not\in H$, then $x^{-1}hx\in H$ implies that 
+  $h\in H\cap xHx^{-1}=\{1\}$.
+
+  By Frobenius' reciprocity, 
+  \begin{equation}
+    \label{eq:<a,a>=1+chi2}
+    \langle\Ind_H^G\alpha,\Ind_H^G\alpha\rangle
+    =\langle\alpha,\Res_H^G\Ind_H^G\alpha\rangle=\langle\alpha,\alpha\rangle
+    =1+\chi(1)^2.
+  \end{equation}
+  Again, by Frobenius' reciprocity, 
+  \[
+  \langle\Ind_H^G\alpha,1_G\rangle
+  =\langle\alpha,\Res_H^G1_G\rangle
+  =\langle\alpha,1_H\rangle
+  =\langle\chi-\chi(1)1_H,1_H\rangle
+  =-\chi(1),
+  \]
+  where $1_G$ is the trivial character of $G$. If we write 
+  \[
+  \Ind_H^G\alpha=\sum_{\eta\in\Irr(G)}\langle\Ind_H^G\alpha,\eta\rangle\eta
+  =\langle\Ind_H^G\alpha,1_G\rangle1_G+\underbrace{\sum_{\substack{1_G\ne\eta\\\eta\in\Irr(G)}}\langle\Ind_H^G\alpha,\eta\rangle\eta}_{\phi},
+  \]
+  then $\Ind_H^G\alpha=-\chi(1)1_G+\phi$, where $\phi$ is a linear combination of non-trivial 
+  irreducible characters of $G$. We compute 
+  \[
+  1+\chi(1)^2=\langle\Ind_H^G\alpha,\Ind_H^G\alpha\rangle
+  =\langle\phi-\chi(1)1_G,\phi-\chi(1)1_G\rangle
+  =\langle\phi,\phi\rangle+\chi(1)^2
+  \]
+  and hence $\langle\phi,\phi\rangle=1$. 
+  
+  \begin{claim}
+  If $\eta\in\Irr(G)$ is such that $\eta\ne 1_G$, then 
+  $\langle\Ind_H^G\alpha,\eta\rangle\in\Z$. 
+  \end{claim}
+  
+  By Frobenius' reciprocity, $\langle\Ind_H^G\alpha,\eta\rangle=\langle\alpha,\Res_H^G\eta\rangle$. 
+  If we decompose $\Res_H^G\eta$ into irreducibles of $H$, say 
+  \[
+  \Res_H^G\eta=m_11_H+m_2\chi+m_3\theta_3+\cdots+m_t\theta_t
+  \]
+  for some $m_1,m_2,\dots,m_t\geq0$, 
+  then, since 
+  \begin{align*}
+  \langle\alpha,1_H\rangle=\langle\chi-\chi(1)1_H,1_H\rangle=-\chi(1),
+  &&\langle\alpha,\chi\rangle=\langle\chi-\chi(1)1_H,\chi\rangle=1,
+  \end{align*}
+  and 
+  \[
+  \langle\alpha,\theta_j\rangle=\langle\chi-\chi(1)1_H,\theta_j\rangle=0
+  \]
+  for all $j\in\{3,\dots,t\}$, we conclude that 
+  \[
+  \langle\Ind_H^G\alpha,\eta\rangle=-m_1\chi(1)+m_2\in\Z.
+  \]
+  
+  \begin{claim}
+  $\phi\in\Irr(G)$.
+  \end{claim}
+  
+  Since $\langle\Ind_H^G\alpha,\eta\rangle\in\Z$ for all $\eta\in\Irr(G)$ such that 
+  $\eta\ne 1_G$ and 
+  \[
+  1=\langle\phi,\phi\rangle
+  =\sum_{\substack{\eta,\theta\in\Irr(G)\\\eta,\theta\ne1_G}}\langle\Ind_H^G\alpha,\eta\rangle\langle\Ind_H^G\alpha,\theta\rangle\langle\eta,\theta\rangle
+  =\sum_{\substack{\eta\ne 1_G\\\eta\in\Irr(G)}}\langle\Ind_H^G\alpha,\eta\rangle^2,
+  \]
+  there is a unique $\eta\in\Irr(G)$ such that 
+  $\langle\Ind_H^G\alpha,\eta\rangle^2=1$ and all the other products are zero, 
+  that is 
+  $\Ind_H^G\alpha=\pm\eta$ for some $\eta\in\Irr(G)$. Since 
+  \[
+  \chi-\chi(1)1_H=\alpha=\Res_H^G\Ind_H^G\alpha=\Res_H^G(\phi-\chi(1)1_G)=\Res_H^G\phi-\chi(1)1_H,
+  \]
+  it follows that $\phi(1)=\Res_H^G\phi(1)=\chi(1)\in\Z_{\geq1}$. Thus $\phi\in\Irr(G)$. 
+
+  \medskip
+  We have proved that if $\chi\in\Irr(H)$ is such that $\chi\ne 1_H$, then 
+  there exists $\phi_\chi\in\Irr(G)$ such that $\Res_H^G(\phi_\chi)=\chi$. 
+  
+  \medskip
+  We prove that $N$ is equal to 
+  \[
+	M=\bigcap_{\substack{\chi\in\Irr(H)\\\chi\ne1_H}}\ker\phi_{\chi}.
+  \]
+
+  We first prove that $N\subseteq M$. 
+  Let $n\in N\setminus\{1\}$ and $\chi\in\Irr(H)\setminus\{1_H\}$. Since $n$ 
+  does not belong to a conjugate of 
+  $H$, 
+  \[
+	\Ind_H^G\alpha(n)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}nx\in H}}\chi(x^{-1}nx)=0, 
+  \]
+  as $n\in N$ implies that the set $\{x\in G:x^{-1}nx\in H\}$ is empty. Since 
+  \[
+  0=\Ind_H^G\alpha(n)
+  =\phi_{\chi}(n)-\chi(1)=\phi_{\chi}(n)-\phi_{\chi}(1),
+  \]
+  we conclude that $n\in\ker\phi_{\chi}$. 
+  
+  We now prove that $M\subseteq N$. 
+  Let $h\in M\cap H$ and $\chi\in\Irr(H)\setminus\{1_H\}$. Then 
+  \[
+    \phi_{\chi}(h)-\chi(1)=\Ind_H^G\alpha(h)=\alpha(h)=\chi(h)-\chi(1),
+  \]
+  and $h\in\ker\chi$, as
+  \[
+    \chi(h)=\phi_{\chi}(h)=\phi_{\chi}(1)=\chi(1).
+  \]
+  Therefore $h\in\cap_{\chi\in\Irr(H)}\ker\chi=\{1\}$. By~\eqref{eq:kernels}, the kernels
+  of irreducible characters have trivial intersection. 
+  We now prove that $M\cap
+  xHx^{-1}=\{1\}$ for all $x\in G$. Let $x\in G$ and $m\in M\cap xHx^{-1}$. Since 
+  $m=xhx^{-1}$ for some $h\in H$, $x^{-1}mx\in H\cap M=\{1\}$.  This implies that 
+  $m=1$.
 \end{proof}
 
-% 8.1.4 de Steinberg
-% Seccion 8.2 define la inducción de representaciones
-% 8.2.1 Induce la trivial del trivial a todo el grupo o obtiene la regular
-% 8.2.2 Induce la representación por permutaciones
-% Define la matriz y mira el dihedral de orden 2n (yo tengo un caso particular)
-% Hace el ejemplo de Q8
-% En el teorema 8.2.5 prueba la inducción da una representación
+At the moment, there is no proof of Frobenius' theorem independent of character theory. 
+
+\begin{definition}
+  \index{Frobenius!kernel}
+  Let $G$ be a Frobenius group. The normal subgroup 
+  $N$ of Frobenius' theorem is called the \textbf{Frobenius kernel}. 
+\end{definition}
+
+\begin{corollary}
+  Let $G$ be a Frobenius group with complement $H$. 
+  Then there exists a normal subgroup $N$ of $G$ 
+  such that 
+  $G=HN$ and $H\cap N=\{1\}$.
+\end{corollary}
+
+\begin{proof}
+  Frobenius' theorem yields the subgroup $N$. 
+  Let us prove that $H\supseteq N_G(H)$. If $h\in
+  H\setminus\{1\}$ and $g\in G$ are such that $ghg^{-1}\in H$, then $h\in
+  g^{-1}Hg\cap H$ and hence $g\in H$. Since $H=N_G(H)$, the subgroup $H$
+  has $(G:H)$ conjugates. Thus $|G|=|H||N|$, as 
+  \[
+    |N|=|G|-(G:H)(|H|-1)=(G:H).
+  \]
+  Since $N\cap H=\{1\}$, 
+  \[
+  |HN|=|N||H|/|H\cap N|=|N||H|=|G|
+  \]
+  and therefore $G=NH$.
+\end{proof}
+
+\begin{corollary}[Combinatorial Frobenius' theorem]
+    \label{cor:Frobenius_combinatorio}
+    \index{Frobenius'!theorem}
+    Let $G$ be a group acting transitively on a finite set $X$. 
+    Assume that each $g\in G\setminus\{1\}$ fixes 
+    at most one element of 
+     $X$. The set $N$ formed by the identity and 
+     the permutations that move every element of $X$
+     is a subgroup of $G$.
+\end{corollary}
+
+\begin{proof}
+  Let $x\in X$ and $H=G_x$. We claim that 
+  if $g\in G\setminus H$, then $H\cap
+  gHg^{-1}=1$. If $h\in H\cap gHg^{-1}$, then
+  $h\cdot x=x$ and $g^{-1}hg\cdot
+  x=x$. Since $g\cdot x\ne x$, $h$ fixes two elements of
+  $X$. Thus 
+  $h=1$, as every non-trivial element fixes at most one element of $X$). 
+
+  By Theorem~\ref{thm:Frobenius}, 
+  \[
+    N=\left(G\setminus\bigcup_{g\in G}gHg^{-1}\right)\cup\{1\}
+  \]
+  is a subgroup of $G$. Let us compute the elements of $N$. If 
+  $h\in\cup_{g\in G}gHg^{-1}$, then there exists  $g\in G$ such that $g^{-1}hg\in H$,
+  that is $(g^{-1}hg)\cdot x=x$; equivalently, 
+  $h\in G_{g\cdot x}$. Therefore, the 
+  non-identity elements of $N$ are the elements of $G$
+  moving every element of $X$.
+\end{proof}
+
+\begin{example}
+  Let $F$ be a finite field and $G$ be the group of maps 
+  $f\colon F\to F$ of the form 
+  $f(x)=ax+b$, $a,b\in F$ with $a\ne0$. The group $G$ acts on 
+  $F$ and every 
+  $f\ne\id$ fixes at most one element of $F$, as 
+  \[
+	x=f(x)=ax+b\implies a\ne 1\text{ and } x=b/(1-a).
+  \]
+  In this case, $N=\{f:f(x)=x+b\,,b\in F\}$ 
+  is a subgroup of $G$.
+\end{example}
+
+\begin{exercise}
+    Prove that Theorem~\ref{thm:Frobenius} can be obtained from
+    Corollary~\ref{cor:Frobenius_combinatorio}.
+\end{exercise}
+
+
+% Wielandt 8.5.4
+% 8.5.6 para ver algo de grupos de permutaciones
+% 7.1 para ejemplo H(q)
+% 10.5.6 (Thompson) N es nilpotente, se usa 10.5.4 
+
+In his doctoral thesis Thompson proved the following result, conjectured
+by Frobenius. 
+
+\begin{theorem}[Thompson]
+\index{Thompson's theorem}
+    Let $G$ be a Frobenius group. If $N$ is the Frobenius kernel, then $N$ 
+    is nilpotent.
+\end{theorem}
+
+See~\cite[Theorem 6.24]{MR2426855} for the proof.
+
+
+
+
+\topic{Some theorems of Burnside}
+
+For $n\geq1$ let $\{e_1,\dots,e_n\}$ be the standard basis of $\C^n$.  
+The \textbf{natural representation} of $\Sym_n$ is 
+$\rho\colon\Sym_n\to\GL_n(C)$, $\sigma\mapsto\rho_{\sigma}$, 
+where $\rho_\sigma(e_j)=e_{\sigma(j)}$ for all $j\in\{1,\dots,n\}$. 
+The matrix of $\rho_\sigma$ in the standard basis is  
+\begin{equation}
+    \label{eq:Sn_natural}
+    (\rho_\sigma)_{ij}=\begin{cases}
+      1 & \text{if $i=\sigma(j)$},\\
+      0 & \text{otherwise}.
+    \end{cases}
+\end{equation}
+
+\begin{lemma}
+	\label{lem:permutaciones}
+	For $n\geq1$ let $\rho\colon\Sym_n\to\GL_n(C)$ be the natural 
+	representation of the symmetric group. 
+	If $A\in\C^{n\times n}$ and $\sigma\in\Sym_n$, then
+	\[
+		A_{ij}=(\rho_{\sigma}A)_{\sigma(i)j}=(A\rho_{\sigma})_{i\sigma^{-1}(j)}
+	\]
+    for all $i,j\in\{1,\dots,n\}$.
+\end{lemma}
+
+\begin{proof}
+	With~\eqref{eq:Sn_natural} we compute:
+	\[
+		(A\rho_{\sigma})_{ij}=\sum_{k=1}^n A_{ik}(\rho_{\sigma})_{kj}=A_{i\sigma(j)},
+		\quad
+		(\rho_\sigma A)_{ij}=\sum_{k=1}^n (\rho_\sigma)_{ik}A_{kj}=A_{\sigma^{-1}(i)j}.\qedhere
+	\]
+\end{proof}
+
+\begin{definition}
+  \index{Real!character}
+  Let $G$ be a finite group. A character $\chi$ of $G$ is said to be
+  \textbf{real} if
+  $\chi=\overline{\chi}$, that is $\chi(g)\in\R$ for all $g\in G$. 
+\end{definition}
+
+\begin{exercise}
+	\label{xca:chi_irreducible}
+	Let $G$ be a finite group. If $\chi\in\Irr(G)$, then 
+	$\overline{\chi}$ is irreducible.
+\end{exercise}
+
+\begin{definition}
+  \index{Real!conjugacy class}
+  Let $G$ be a group. A conjugacy class $C$ of $G$ is said to be
+  \textbf{real} if for every $g\in C$ one has $g^{-1}\in C$. 
+\end{definition}
+
+We use the following notation: if $G$ is a group and $C=\{xgx^{-1}:x\in G\}$ is a conjugacy class of  
+$G$, then $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$.  
+
+\begin{theorem}[Burnside]
+    \index{Burnside's!theorem}
+    Let $G$ be a finite group. The number of real conjugacy classes is equal 
+    to the number of real irreducible characters. 
+\end{theorem}
+
+\begin{proof}
+  Let $C_1,\dots,C_r$ be the conjugacy classes of $G$ and  
+  let $\chi_1,\dots,\chi_r$ be the irreducible characters of $G$. 
+  Let $\alpha,\beta\in\Sym_r$ be such that $\overline{\chi_i}=\chi_{\alpha(i)}$ and 
+  $C_i^{-1}=C_{\beta(i)}$ for all $i\in\{1,\dots,r\}$. Note that $\chi_i$
+  is real if and only if $\alpha(i)=i$ and that $C_i$ is real if and only if 
+  $\beta(i)=i$. The number $n$ of fixed points of $\alpha$ is equal to the number
+  of irreducible characters of $G$ and the number $m$ of fixed points of $\beta$ is equal
+  to the number of real classes. 
+  Let $\rho\colon\Sym_r\to\GL(r,\C)$ be the natural representation of $\Sym_r$. Then
+  $\chi_\rho(\alpha)=n$ and $\chi_\rho(\beta)=m$. We claim that 
+  $\trace\rho_\alpha=\trace\rho_\beta$. 
+  Let $X\in\GL(r,\C)$ be the character matrix of $G$. 
+  By Lemma~\ref{lem:permutaciones}, 
+  \[
+	\rho_\alpha X=\overline{X}=X\rho_\beta.
+  \]
+  Since $X$ is invertible, $\rho_{\alpha}=X\rho_{\beta}X^{-1}$. Thus 
+  \[
+    n=\chi_{\rho}(\alpha)=\trace\rho_{\alpha}=\trace\rho_{\beta}=\chi_{\rho}(\beta)=m.\qedhere
+  \]
+\end{proof}
+
+\begin{corollary}
+  \label{corollary:|G|impar}
+  Let $G$ be a finite group. Then $|G|$ is odd if and only if
+  the only real $\chi\in\Irr(G)$ is the trivial character. 
+\end{corollary}
+
+\begin{proof}
+    We first prove $\impliedby$. If $|G|$ is even, there exists 
+    $g\in G$ of order two (Cauchy's theorem). The conjugacy class of $g$ 
+    is real. 
+
+    We now prove $\implies$. Assume that $G$ has a non-trivial 
+    real conjugacy class $C$. Let $g\in C$. We claim that 
+    $G$ has an element of even order. Let $h\in G$ be such that
+    $hgh^{-1}=g^{-1}$. Then $h^2\in C_G(g)$, as $h^2gh^{-2}=g$. 
+    If $h\in\langle h^2\rangle\subseteq C_G(g)$, then $g$ has 
+    even order, as $g^{-1}=g$. If $h\not\in\langle h^2\rangle$, then 
+    $h^2$ does not generate $\langle h\rangle$. Hence $h$ has odd order, 
+    as $|h|\ne|h^2|=|h|/(|h|:2)$.  
+\end{proof}
+
+\begin{theorem}[Burnside]
+  \index{Burnside's!theorem}
+  \label{thm:Burnside_mod16}
+  Let $G$ be a finite group of odd order 
+  with $r$ conjugacy classes. Then
+  $r\equiv|G|\bmod{16}$.
+\end{theorem}
+
+\begin{proof}
+  Since $|G|$ is odd, every non-trivial $\chi\in\Irr(G)$ is not real by
+  the previous corollary. The irreducible characters 
+  of $G$ are then 
+  \[
+    \chi_1,\chi_2,\overline{\chi_2},\dots,\chi_k,\overline{\chi_k},
+    \quad
+    r=1+2k,
+  \]
+  where $\chi_1$ denotes the trivial character. 
+  For every $j\in\{2,\dots,k\}$ let $d_j=\chi_j(1)$. 
+  Since each $d_j$ divides 
+  $|G|$ by Frobenius' theorem and  $|G|$ is odd, 
+  every $d_j$ is an odd number, 
+  say $d_j=1+2m_j$. Thus  
+  \begin{align*}
+    |G|&=1+\sum_{j=2}^k 2d_j^2=1+\sum_{j=2}^k2(2m_j+1)^2\\
+    &=1+\sum_{j=2}^k2(4m_j^2+4m_j+1)
+    =1+2k+8\sum_{j=2}^km_j(m_j+1).
+  \end{align*}
+  Hence $|G|\equiv r\bmod{16}$, 
+  as $r=1+2k$ and every $m_j(m_j+1)$ is even. 
+\end{proof}
+
+\begin{exercise}
+    Prove that every group of order 15 is abelian. 
+\end{exercise}
 

@@ -1,620 +1,315 @@
 \chapter{}
 
-\topic{Solvable groups and Burnside's theorem}
+\topic{Lie algebras}
 
-\index{Derived series}
-For a group $G$ let 
-$G^{(0)}=G$ and 
-$G^{(i+1)}=[G^{(i)},G^{(i)}]$ for $i\geq0$.
-The \textbf{derived series} of $G$ is the sequence
-\[
-G=G^{(0)}\supseteq G^{(1)}\supseteq G^{(2)}\supseteq\cdots
-\]
-Each $G^{(i)}$ is a characteristic subgroup of $G$. We say that 
-$G$ is \textbf{solvable} if $G^{(n)}=\{1\}$ for some $n$.  
+\begin{definition}
+    \index{Lie algebra}
+    Let $K$ be a field. 
+    A \textbf{Lie algebra} (over $K$) is a $K$-vector space
+    $L$ together with a bilinear map 
+    $L\times L\to L$, $(x,y)\mapsto [x,y]$,
+    such that
+    \begin{align}
+        \label{eq:[xx]=0}&[x,x]=0\quad\text{for all $x\in L$},\\ 
+        \label{eq:Jacobi}&[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0\quad\text{for all $x,y,z\in L$}.
+    \end{align}
+\end{definition}
 
-\begin{example}
-	Abelian groups are solvable. 
-\end{example}
-
-\begin{example}
-	The group $\SL_2(3)$ is solvable, as the derived series is 
-	\[
-	\SL_2(3)\supseteq Q_8\supseteq C_4\supseteq C_2\supseteq \{1\}.
-	\]
-	Here is the what the computer says:
-\begin{lstlisting}
-gap> IsSolvable(SL(2,3));
-true
-gap> List(DerivedSeries(SL(2,3)),StructureDescription);
-[ "SL(2,3)", "Q8", "C2", "1" ]
-\end{lstlisting}
-\end{example}
-
-\begin{example}
-	Non-abelian simple groups cannot be solvable. 
-\end{example}
+\index{Jacobi identity}
+Equality \eqref{eq:Jacobi} is known as the \textbf{Jacobi identity}. 
 
 \begin{exercise}
-	\label{xca:solvable}
-	Let $G$ be a group. Prove the following statements:
-	\begin{enumerate}
-		\item A subgroup $H$ of $G$ is solvable.
-		\item Let $K$ be a normal subgroup of $G$. 
-		    Then $G$ is solvable if and only if $K$ and $G/K$ are solvable.
-	\end{enumerate}
+    Prove that \eqref{eq:[xx]=0} implies $[x,y]=-[y,x]$ for all
+    $x,y\in L$. 
 \end{exercise}
 
-\begin{example}
-	For $n\geq5$ the group $\Alt_n$ is not solvable. It follows that 
-	$\Sym_n$ is not solvable for $n\geq5$. 
-\end{example}
+\index{Abelian Lie algebra}
+A Lie algebra $L$ is said to be \textbf{abelian} if $[x,y]=0$ for 
+all $x,y\in L$. 
 
 \begin{exercise}
-\label{xca:pgroups_solvable}
-	Let $p$ be a prime number. Prove that 
-	finite $p$-groups are solvable.
+    If $L$ and $L_1$ are Lie algebras, then 
+    $L\oplus L_1$ is a Lie algebra with
+    $[(x,x_1),(y,y_1)]=([x,y),(x_1,y_1)]$ for $x,y\in L$ and
+    $x_1,y_1\in L_1$. 
 \end{exercise}
 
-\begin{theorem}[Burnside]
-	\index{Burnside's theorem}
-	\label{thm:Burnside_auxiliar}
-	Let $G$ be a finite group. If $\phi\colon G\to\GL_n(\C)$ is a representation
-	with character $\chi$ and $C$ is a conjugacy class of $G$ such that 
-	$\gcd(|C|,n)=1$, then for every $g\in C$ either 
-	$\chi(g)=0$ or $\phi_g$ is a scalar matrix. 
-\end{theorem}
-
-We need a lemma.
-
-\begin{lemma}
-	\label{lem:4Burnside}
-	Let $\epsilon_1,\dots,\epsilon_n$ be roots of one such that 
-	$(\epsilon_1+\cdots+\epsilon_n)/n\in\A$. Then either 
-	$\epsilon_1=\cdots=\epsilon_n$ or 
-	$\epsilon_1+\cdots+\epsilon_n=0$.
-\end{lemma}
-
-\begin{proof}
-	Let $\alpha=(\epsilon_1+\cdots+\epsilon_n)/n$.
-	If the $\epsilon_j$s are not all equal, then $N(\alpha)<1$. Moreover, 
-	$N(\beta)<1$ for every algebraic conjugate $\beta$ of $\alpha$. Since the product 
-	of the algebraic conjugates of $\alpha$ is an integer of absolute value 
-	$<1$, it follows that it is zero. 
-\end{proof}
-
-Now we prove the theorem.
-
-\begin{proof}[Proof of Theorem \ref{thm:Burnside_auxiliar}]
-	Let $\epsilon_1,\dots,\epsilon_n$ be the eigenvalues of $\phi_g$. By assumption, 
-	$\gcd(|C|,n)=1$, there exist $a,b\in\Z$ such that $a|C|+bn=1$. Since 
-	$|C|\chi(g)/n\in\A$, after multiplying by $\chi(g)/n$ we obtain that  
-	\[
-		a|C|\frac{\chi(g)}{n}+b\chi(g)=\frac{\chi(g)}{n}=\frac{1}{n}(\epsilon_1+\cdots+\epsilon_n)\in\A.
-	\]
-	The previous lemma implies that there are two cases to consider: 
-	either $\epsilon_1=\cdots=\epsilon_n$ or $\epsilon_1+\cdots+\epsilon_n=0$. In the first
-	case, since $\phi_g$ is diagonalizable, $\phi_g$ is a scalar matrix. 
-	In the second case, $\chi(g)=0$.
-\end{proof}
-
-\begin{theorem}[Burnside]
-	\index{Burnside's theorem}
-	Let $p$ be a prime number. If $G$ is a finite group and 
-	$C$ is a conjugacy class of $G$ with $p^k>1$ elements, then $G$ 
-	is not simple.
-\end{theorem}
-
-\begin{proof}
-	Let $g\in C\setminus\{1\}$. Column orthogonality implies that 
-	\begin{equation}
-	\label{eq:Burnside}
-	\begin{aligned}
-		0&=\sum_{\chi\in\Irr(G)}\chi(1)\chi(g)\\
-		&=\sum_{p\mid\chi(1)}\chi(1)\chi(g)+\sum_{p\nmid\chi(1)}\chi(1)\chi(g)+1,
-	\end{aligned}
-	\end{equation}
-	where the one corresponds to the trivial representation of
-	$G$.
-	
-	Look this equation modulo $p$. If $\chi(g)=0$ for all
-	$\chi\in\Irr(G)$
-	such that $\chi\ne\chi_1$ and $p\nmid\chi(1)$, then
-	\[
-	-\frac{1}{p}=\sum\frac{\chi(1)}{p}\chi(g)\in\A\cap\Q=\Z,
-	\]
-	where the sum is taken over all non-trivial irreducibles
-	of $G$ of degree divisible by $p$, a contradiction. Hence 
-	there exists an irreducible non-trivial representation 
-	$\phi$ with character $\chi$ such that $p$ does not divide
-	$\chi(1)$ and $\chi(g)\ne0$. By the previous theorem, 
-	$\phi_g$ is a scalar matrix. If $\phi$ is faithful, then 
-	$g$ is a non-trivial central element, a contradiction since 
-    $|C|>1$. If $\phi$ is not faithful, then 
-    $G$ is not simple (because 
-	$\ker\phi$ is a non-trivial proper normal subgroup of $G$). 
-\end{proof}
-
-\begin{theorem}[Burnside]
-  \index{Burnside's theorem}
-  Let $p$ and $q$ be prime numbers. If $G$ has order $p^aq^b$, then $G$ is solvable.
-\end{theorem}
-
-\begin{proof}
-	Let us assume that the theorem is not true. Let $G$ be a group
-	of minimal order $p^aq^b$
-	that is not solvable. Since $|G|$ is minimal, $G$ is simple. By the previous theorem, 
-	$G$ has no conjugacy classes of size $p^k$ nor 
-	conjugacy classes of size $q^l$ with $k,l\geq1$. The size
-	of every conjugacy class of $G$ is one or divisible by $pq$. 
-	By the class
-	equation, 
-	\[
-		|G|=1+\sum_{C:|C|>1}|C|,
-	\]
-	where the sum is taken over all conjugacy classes 
-	with more than one element, a contradiction.
-\end{proof}
-
-Some generalizations of Burnside's theorem. 
-
-\begin{theorem}[Kegel--Wielandt]
-    \index{Kegel--Wielandt's theorem}
-    \label{thm:KegelWielandt}
-    If $G$ is a finite group and there are nilpotent subgroups 
-    $A$ and $B$ of $G$ such that 
-    $G=AB$, then $G$ is solvable.
-\end{theorem}
-
-See~\cite[Theorem 2.4.3]{MR1211633} for the proof.
-
-
-Another generalization of Burnside's theorem
-is based on \emph{word maps}. A word map
-of a group $G$ is a map 
-\[
-G^k\to G,\quad 
-(x_1,\dots,x_k)\mapsto w(x_1,\dots,x_k)
-\]
-for some word $w(x_1,\dots,x_k)$ of the free group $F_k$ of rank $k$. 
-Some word maps are surjective in certain families of groups. For example, 
-Ore's conjecture is precisely the surjectivity of the word map
-$(x,y)\mapsto [x,y]=xyx^{-1}y^{-1}$ in every finite non-abelian simple 
-group. 
-
-\begin{theorem}[Guralnick--Liebeck--O'Brien--Shalev--Tiep]
-    Let $a,b\geq0$, $p$ and $q$ be prime numbers and $N=p^aq^b$. The map 
-    $(x,y)\mapsto x^Ny^N$ is surjective in every finite simple group. 
-\end{theorem}
-
-The proof appears in~\cite{MR3827208}. 
-
-The theorem implies Burnside's theorem. Let $G$ be a group of order
-$N=p^aq^b$. Assume that $G$ is not solvable. 
-Fix a composition series of $G$. There is a non-abelian factor $S$ 
-of order that divides $N$. Since 
-$S$ is simple non-abelian and $s^N=1$, it follows that the word map
-$(x,y)\mapsto x^Ny^N$ has trivial image in $S$, a contradiction 
-to the theorem. 
-
-\topic{Feit--Thompson theorem}
-
-\begin{theorem}[Feit--Thompson]
-    \index{Feit--Thompson theorem}
-    Groups of odd order are solvable. 
-\end{theorem}
-
-The proof of Feit--Thompson theorem is extremely hard. 
-It occupies a full volume of the 
-\emph{Pacific Journal of Mathematics}~\cite{MR166261}. 
-A formal verification of the proof 
-(based on the computer software Coq) 
-was announced in~\cite{MR3111271}.  
-
-Back in the day it was believed that if a certain divisibility 
-conjecture is true, 
-the proof of Feit--Thompson theorem 
-could be simplified. 
-
-\begin{conjecture}[Feit--Thompson]
-\index{Feit--Thompson conjecture}
-    There are no prime numbers $p$ and $q$ such that
-    $\frac {p^{q}-1}{p-1}$ divides $\frac{q^{p} - 1}{q - 1}$. 
-\end{conjecture}
-
-The conjecture remains open. However, now we know that 
-proving the conjecture will not simplify further
-the proof of Feit--Thompson theorem. 
-
-In 2012 Le proved that the conjecture is true for $q=3$, see 
-\cite{MR2900154}. 
-
-
-In~\cite{MR297686} 
-Stephens proved that a certain stronger version of the conjecture 
-does not hold, as the integers 
-$\frac {p^{q}-1}{p-1}$ and $\frac{q^{p} - 1}{q - 1}$ 
-could have common factors. In fact, if $p=17$ and $q=3313$, 
-then 
-\[
-\gcd\left(\frac {p^{q}-1}{p-1},\frac{q^{p} - 1}{q - 1}\right)=112643.
-\]
-Nowadays we can check this easily in almost every desktop computer:
-\begin{lstlisting}
-gap> Gcd((17^3313-1)/16,(3313^17-1)/3312);
-112643
-\end{lstlisting}
-No other counterexamples have been found to Stephen’s stronger version of the conjecture.
-
-\section{Hurwitz' theorem}
-
-\subsection*{Hurwitz's theorem}
-\label{Hurwitz}
-
-\index{Fibonacci identity}
-\index{Euler identity}
-\index{Hamilton identity}
-We know that $x^2y^2=(xy)^2$ holds for all $x,y\in\C$. Fibonnaci
-found the identity
-\[
-	(x_1^2+x_2^2)(y_1^2+y_2^2)=(x_1y_1-x_2y_2)^2+(x_1y_2-x_2y_1)^2.
-\]
-Euler and Hamilton, independently, found 
-a similar identity:
-\[
-	(x_1^2+x_2^2+x_3^2+x_4^2)(y_1^2+y_2^2+y_3^2+y_4^2)=z_1^2+z_2^2+z_3^2+z_4^2,
-\]
-where
-\begin{equation}
-\label{eq:Hamilton}
-\begin{aligned}
-	 z_1&=x_1y_1-x_2y_2-x_3y_3-x_4y_4,\\
-	 z_2&=x_1y_2+x_2y_1-x_3y_3-x_4y_4,\\
-	 z_3&=x_1y_3+x_3y_1-x_2y_4+x_4y_2,\\ 
-	 z_4&=-x_1y_4+x_4y_1x_2y_3-x_3y_2.
-\end{aligned}
-\end{equation}
-Cayley found a similar identity for sums of eight squares. 
-Are there other identities of this type? Hurwitz' proved that this is not the case. 
-We present Eckmann's proof of Hurwitz' theorem. The proof uses character theory.
-
-\begin{lemma}
-\label{lem:grupo}
-	Let $n>2$ be an even number. If 
-	there exists a group $G$ with generators
-	$\epsilon,x_1,\dots,x_{n-1}$ and relations 
-	\[
-		x_1^2=\cdots=x_{n-1}^2=\epsilon\ne1,\quad
-		\epsilon^2=1,\quad
-		[x_i,x_j]=\epsilon\quad\text{if}\quad i\ne j,
-	\]
-	then the following statements hold:
-	\begin{enumerate}
-		\item $|G|=2^n$.
-		\item $[G,G]=\{1,\epsilon\}$. In particular, $G$ 
-		    has exactly $2^{n-1}$ degree-one representations. 
-		\item If $g\not\in Z(G)$, then the conjugacy class of $g$ is $\{g,\epsilon g\}$.
-		\item $Z(G)=\{1,\epsilon,x_1\cdots x_{n-1},\epsilon x_1\cdots x_{n-1}\}$. 
-		\item $G$ has $2^{n-1}+2$ conjugacy classes.
-		\item $G$ has two irreducible representations of degree $2^{\frac{n-2}{2}}>1$. 
-	\end{enumerate}
-\end{lemma}
-
-\begin{proof}
-    Let us prove 1) and 2). Note that $\epsilon\in Z(G)$, as
-    $\epsilon=x_i^2$ for all 
-	$i\in\{1,\dots,n-1\}$. Since $n-1>2$, $[x_1,x_2]=\epsilon$. Hence 
-	$\epsilon\in [G,G]$. Moreover, $G/\langle\epsilon\rangle$ is abelian. Thus 
-	$[G,G]=\langle \epsilon\rangle$. Since $G/[G,G]$ is elementary 
-	abelian of order 
-	$2^{n-1}$, it follows that 
-	$|G|=2^n$. 
-
-	We now prove 3). Let $g\in G\setminus Z(G)$ and 
-	$x\in G$ be such that $[x,g]\ne 1$. Then $[x,g]=\epsilon$ and 
-	$xgx^{-1}=\epsilon g$. 
-
-	To prove 4) let $g\in G$. Write
-	\[
-		g=\epsilon^{a_0}x_1^{a_1}\cdots x_{n-1}^{a_{n-1}},
-	\]
-	where $a_j\in\{0,1\}$ for all $j\in\{1,\dots,n-1\}$. 
-	If $g\in Z(G)$, then $gx_i=x_ig$ for all $i\in\{1,\dots,n-1\}$. Hence 
-	$g\in Z(G)$ if and only if 
-	\[
-		\epsilon^{a_0}x_1^{a_1}\cdots x_{n-1}^{a_{n-1}}=x_i(\epsilon^{a_0}x_1^{a_1}\cdots x_{n-1}^{a_{n-1}})x_i^{-1}.
-	\]
-	Since $x_ix_j^{a_j}x_i=\epsilon^{a_j}x_j^{a_j}$ 
-	whenever $i\ne j$ y $\epsilon\in Z(G)$, the elmeent $g$ is 
-	central if and only if 
-	\[
-		\sum_{\substack{j=1\\j\ne i}}^{n-1}a_j\equiv 0\bmod 2
-	\]
-	for all $i\in\{1,\dots,n-1\}$. In particular, 
-	\[
-	\sum_{j\ne i}a_j\equiv \sum_{j\ne k}a_j
-	\]
-	for all $k\ne i$. Therefore $a_i\equiv a_k\bmod 2$ for all 
-	$i,k\in\{1,\dots,n-1\}$. Thus $a_1=\cdots=a_{n-1}$ and  
-	$Z(G)=\{1,x_1\cdots x_{n-1},\epsilon,\epsilon x_1\cdots
-	x_{n-1}\}$. 
-	
-    To prove 5) we use the class equation:
+\begin{exercise}
+    Prove that $\R^3$ with the usual vector product 
     \[
-		2^n=|G|=|Z(G)|+\sum_{i=1}^N2=4+2N. 
-	\]
-	It follows that $G$ has $N+4=2^{n-1}+2$ conjugacy classes.
-	
-	Finally we prove 6). 
-	Since $G$ 
-	has exactly $2^{n-1}$ degree-one representations (because 
-	$|G/[G,G]|=2^{n-1}$) and 
-	has $2^{n-1}+2$ conjugacy classes, 
-	it follows from 
-	\[
-		2^n=|G|=\underbrace{1+\cdots+1}_{2^{n-1}}+f_1^2+f_2^2=2^{n-1}+f_1^2+f_2^2,
-	\]
-	that $G$ has two irreducible representations
-	of degrees $f_1=f_2=2^{\frac{n-2}{2}}>1$. 
-\end{proof}
+    [(x_1,x_2,x_3),(y_1,y_2,y_3)]=(x_2y_3-x_3y_2,x_3y_1-x_1y_3,x_1y_2-x_2y_1)
+    \]
+    is a (real) Lie algebra.     
+\end{exercise}
 
-\begin{example}
-	The formulas~\eqref{eq:Hamilton} give a representation for the
-	group $G$ of the previous lemma. Write each $z_i$ as 
-	$z_i=\sum_{k=1}^4a_{1k}(x_1,\dots,x_4)y_k$. Let $A$ be a matrix
-	such that 
-	$A_{ij}=a_{ij}(x_1,\dots,x_4)$, that is 
-	\[
-		A=\begin{pmatrix}
-			x_1 & -x_2 & -x_3 & -x_4\\
-			x_2 & x_1 & -x_4 & x_3\\
-			x_3 & x_4 & x_1 & -x_2\\
-			x_4 & -x_3 & x_2 & x_1
-		\end{pmatrix}
-	\]
-	The matrix $A$ can be written as $A=A_1x_1+A_2x_2+A_3x_3+A_4x_4$, where
-	\begin{align*}
-		&A_1=\begin{pmatrix}
-		1\\
-		&1\\
-		&&1\\
-		&&&1\\
-		\end{pmatrix},
-		&&
-		A_2=\begin{pmatrix}
-			& -1\\
-			1 \\
-			&&&-1\\
-			&&1
-		\end{pmatrix},
-		&&
-		A_3=\begin{pmatrix}
-			&& -1 \\
-			&&&1 & \\
-			1\\
-			&-1
-		  \end{pmatrix},
-		  &&
-		  A_4=\begin{pmatrix}
-			&&&-1\\
-			&&-1\\
-			&1\\
-			1
-		\end{pmatrix}.
-	\end{align*}
-	For $i\in\{1,\dots,4\}$ let $B_i=A_iA_4^T$. Then
-	$B_i=-B_i^T$ and  $B_i^2=-I$ 
-	for all $i\in\{1,2,3\}$. Moreover, $B_iB_j=-B_jB_i$ for all $i,j\in\{1,2,3\}$ and
-	$i\ne j$.  
-	The group generated by $\{B_1,B_2,B_3\}$ has $2^3$ element, all of them
-	of the form
-	\[
-		\pm B_1^{k_1}B_2^{k_2}B_3^{k_3}
-	\]
-	for $k_j\in\{0,1\}$. 
-    The map 
-	$G\to\langle B_1,B_2,B_3\rangle$,
-	\[
-		x_1\mapsto B_1,\quad
-		x_2\mapsto B_2,\quad
-		x_3\mapsto B_3 
-	\]
-	extends to a group isomomorphism. 
+We will main work with finite-dimensional complex Lie algebras.
+
+\begin{example}[general linear Lie algebra]
+\index{General linear Lie algebra}
+    Let $V$ be a finite-dimensional vector space and 
+    $\gl(V)$ be the set of linear maps $V\to V$. Then 
+    $\gl(V)$ with $[x,y]=xy-yx$ is a Lie algebra. 
 \end{example}
 
-\begin{theorem}[Hurwitz]
-	\index{Hurwitz' theorem}
-	If there is an identity of the form 
-	\begin{equation}
-		\label{eq:Hurwitz}
-		(x_1^2+\cdots+x_n^2)(y_1^2+\cdots+y_n^2)=z_1^2+\cdots+z_n^2,
-	\end{equation}
-	where the $x_j$'s and the $y_j$'s are real (or complex) numbers and
-	each $z_k$ is a bilinear function in the $x_j$'s and the $y_j$'s, then 
-	$n\in\{1,2,4,8\}$.
-\end{theorem}
-
-\begin{proof}
-    We work over complex numbers. 
-	Without loss of generality we may assume that $n>2$.  For 
-	$i\in\{1,\dots,n\}$ let  
-	\[
-		z_i=\sum_{k=1}^n a_{ik}(x_1,\dots,x_n)y_k,
-	\]
-	where the $a_{ik}$'s are linear functions. Then 
-	\[
-		z_i^2=\sum_{k,l=1}^na_{ik}(x_1,\dots,x_n)a_{il}(x_1,\dots,x_n)y_ky_l
-	\]
-	for all $i\in\{1,\dots,n\}$. Using these expressions for each $z_i$
-	in~\eqref{eq:Hurwitz} and comparing coefficients, 
-	\begin{equation}
-		\label{eq:delta}
-		\sum_{i=1}^n a_{ik}(x_1,\dots,x_n)a_{il}(x_1,\dots,x_n)=\delta_{k,l}(x_1^2+\cdots+x_n^2),
-	\end{equation}
-	where $\delta_{k,l}$ is the usual Kronecker's map. Let 
-	$A$ be the $n\times n$ matrix given by 
-	\[
-	A_{ij}=a_{ij}(x_1,\dots,x_n).
-	\]
-	Then 
-	\begin{equation}
-		\label{eq:AAT}
-		AA^T=(x_1^2+\cdots+x_n^2)I,
-	\end{equation}
-	where $I$ denotes the $n\times n$ identity matrix, 
-	as 
-	\[
-		(AA^T)_{kl}=\sum_{i=1}^na_{ki}(x_1,\dots,x_n)a_{li}(x_1,\dots,x_n)=\delta_{kl}(x_1^2+\cdots+x_n^2)
-	\]
-	by~\eqref{eq:delta}. Since each $a_{ki}(x_1,\dots,x_n)$ is a linear function, 
-	there exist $\alpha_{ij1},\dots,a_{ijn}\in\C$ such that 
-	\[
-		a_{ij}(x_1,\dots,x_n)=\alpha_{ij1}x_1+\cdots+\alpha_{ijn}x_n.
-	\]
-	Write 
-	\[
-		A=A_1x_1+\cdots+A_nx_n,
-	\]
-	where each $A_k$ is the matrix $(A_k)_{ij}=\alpha_{ijk}$. 
-	The formula~\eqref{eq:AAT} becomes
-	\[
-		\sum_{i=1}^n\sum_{j=1}^nA_iA_j^Tx_ix_j=(x_1^2+\cdots+x_n^2)I.
-	\]
-	Thus 
-	\begin{equation}
-		\label{eq:condiciones}
-		A_iA_j^T+A_jA_i^T=0\quad i\ne j,\quad
-		A_iA_i^T=I.
-	\end{equation}
-	We need $n$ complex square matrices of size $n\times n$
-	satisfying~\eqref{eq:condiciones}. For $i\in\{1,\dots,n\}$ let  
-	$B_i=A_n^TA_i$. Then~\eqref{eq:condiciones} turn into  
-	\[
-		B_iB_j^T+B_jB_i^T=0\quad i\ne j,\quad
-		B_iB_i^T=I,\quad
-		B_n=I.
-	\]
-	Set $j=n$ in the first family of equations to obtain $B_i=-B_i^T$ for all 
-	$i\in\{1,\dots,n-1\}$. It follows that 
-	\begin{equation}
-	\label{eq:representation}
-	\begin{aligned}
-	    &B_i^2=-I && \text{for all $i\in\{1,\dots,n-1\}$},\\
-	    &[B_i,B_j]=-I && \text{for all $i,j\in\{1,\dots,n-1\}$.}
-	\end{aligned}
-	\end{equation}
-    
-    \begin{claim}
-        $n$ is even. 
-    \end{claim}
-    
-	Computing the determinant of 
-	$B_iB_j=-B_jB_i$ we obtain that 
-	\[
-	1=\det(B_iB_j)=(-1)^n\det(B_jB_i)=(-1)^n.
-	\]
-	Hence $n$ is even. 
-
-	\begin{claim}
-	    The group 
-	    $G$ of the lemma admits a faithful
-	    representation $\rho\colon G\to\GL_n(\C)$. 
-	\end{claim}
-	
-	By \eqref{eq:representation}, there is a well-defined 
-	injective group homomorphism $\rho$ such that 
-	$x_i\mapsto B_i$ for all $i\in\{1,\dots,n-1\}$ and 
-	$\epsilon\mapsto -I$. 
-	
-	\begin{claim}
-	    $2^{\frac{n-2}{2}}$ divides $n$.
-	\end{claim}
-	
-	Since $\epsilon\in[G,G]$ by Lemma \ref{lem:grupo}, 
-	every one-dimensional representation satisfies $\epsilon\mapsto 1$.
-	This implies that $\rho$ cannot have degree-one sub representations. 
-	In fact, 
-	if $W=\langle w\rangle$ is $G$-invariant subspace of $\C^n$, 
-	then $\psi=\rho|_W\colon G\to\GL(W)\simeq\C^\times$ 
-	is a representation. In particular, 
-	\[
-	-w=-Iw=\psi_{\epsilon}(w)=\psi_{[x_i,x_j]}(w)
-	=\psi_{x_i}\psi_{x_j}\psi_{{x_i}}^{-1}\psi_{{x_j}}^{-1}(w)=w, 
-	\]
-	a contradiction. 
-	
-	This means that the $\C[G]$-module $\C^n$ 
-	decomposes as $\C^n\simeq aS\oplus bT$,
-	where $a$ and $b$ are integers and 
-	$S$ and $T$ are simple $\C[G]$-modules of dimension
-	$2^{\frac{n-2}{2}}$. In particular, 
-	\[
-	n=\dim V=\dim(aS\oplus bT)=(a+b)2^{\frac{n-2}{2}}.
-	\]
-	
-	To finish the proof of the theorem write $n=2^ab$ 
-	for $a\geq1$ and $b$ an odd integer. 
-	Since $\frac{n-2}{2}$ divides $n$, 
-	\[
-	2^{\frac{n}{2}-1}=2^{\frac{n-2}{2}}\leq n=2^ab. 
-	\]
-	Thus $\frac{n}{2}-1\leq a$ and hence $2^a\leq n\leq 2(a+1)$. 
-	It follows that $n\in\{4,8\}$.  
-\end{proof}
-
-We now present an application, see
-\cite{MR1534187} for more information. 
-
-\begin{theorem}
-	Let $V$ be a real vector space (with an inner product) 
-	such that $\dim
-	V=n\geq3$. If there exists a bilinear function 
-	$V\times V\to\R$, $(v,w)\mapsto v\times
-	w$, such that $v\times w$ is orthogonal both 
-	to $v$ and $w$ and 
-	\[
-		\|v\times w\|^2=\|v\|^2\|w\|^2-\langle v,w\rangle^2,
-	\]
-	where $\|v\|^2=\langle v,v\rangle$, then $n\in\{3,7\}$. 
-\end{theorem}
-
-\begin{proof}
-	Let $W=V\oplus\R$ with the inner product  
-	\[
-		\langle (v_1,r_1),(v_2,r_2)\rangle = \langle v_1,v_2\rangle+r_1r_2.
-	\]
-	Note that
-	\begin{align*}
-		\langle v_1\times &v_2+r_1v_2+r_2v_1,v_1\times v_2+r_1v_2+r_2v_1\rangle\\
-		&=\|v_1\times v_2\|^2+r_1^2\|v_2\|^2+2r_1r_2\langle v_1,v_2\rangle+r_2^2\|v_1\|^2.
-	\end{align*}
-	Thus  
-	\begin{align*}
-		(\|v_1\|^2+r_1^2)&(\|v_2\|^2+r_2)\\
-		&= \|v_1\|^2\|v_2\|^2+r_2^2\|v_1\|^2+r_1^2\|v_2\|^2+r_1^2r_2^2\\
-		&=\|v_1\times v_2+r_1v_1+r_2v_2\|^2-2r_1r_2\langle v_1,v_2\rangle+\langle v_1,v_2\rangle^2+r_1^2r_2^2\\
-		&=\|v_1\times v_2+r_1v_1+r_2v_2\|^2+(\langle v_1,v_2\rangle-r_1r_2)^2\\
-		&=z_1^2+\cdots+z_{n+1}^2,
-	\end{align*}
-	where the $z_k$'s are bilinear functions in $(v_1,r_1)$ and $(v_2,r_2)$. 
-	By Hurwitz' theorem, 
-	$n+1\in\{4,8\}$. Hence $n\in\{3,7\}$.
-\end{proof}
-
-In the theorem, if $\dim V=3$, we obtain the usual cross product. 
-If $\dim V=7$, let 
+A matrix version of the previous example: We write $\gl(n,\C)$ 
+to denote the vector space of all $n\times n$ complex 
+matrices with Lie bracket $[x,y]=xy-yx$. The vector space
+$\gl(n,\C)$ has a basis $\{e_{ij}:1\leq i,j\leq n\}$, where
 \[
-	W=\{(v,k,w):v,w\in V,k\in\R\}
+(e_{ij})_{kl}=\begin{cases} 
+    1 & \text{if $(i,j)=(k,l)$},\\
+    0 & \text{otherwise}.
+    \end{cases}
 \]
-with the inner product 
+
+\begin{exercise}
+    Compute $[e_{ij},e_{ik}]$.
+\end{exercise}
+
+\begin{example}[special linear Lie algebra]
+\index{Special linear Lie algebra}
+    Let $\sl(n,\C)$ be the subspace of $\gl(n,\C)$ consisting
+    of all matrices with trace zero. 
+\end{example}
+
+\begin{exercise}
+    Find a basis of $\sl(n,\C)$. 
+\end{exercise}
+
+%\begin{example}
+%    Let $\bl(n,\C)$ be the subspace of all upper triangular matrices
+%    in $\gl(n,\C)$. Then $\bl(n,\C)$ is a Lie algebra. 
+%\end{example}
+
+\begin{definition}
+    \index{Lie!subalgebra}
+    A Lie \textbf{subalgebra} of $L$ is a vector space $L_1$ of $L$ 
+    such that $[x,y]\in L_1$ for all $x,y\in L_1$. 
+\end{definition}
+
+Of course, $\sl(n,\C)$ is a subalgebra of $\gl(n,\C)$. 
+
+\begin{definition}
+\index{Ideal!of a Lie algebra}
+    An \textbf{ideal} of a Lie algebra $L$ is a subspace $I$ of $L$ 
+    such that $[x,y]\in I$ for all $x\in L$ and $y\in I$. 
+\end{definition}
+
+Trivial examples of ideals of a Lie algebra $L$ are
+$\{0\}$ and $L$.
+
+\begin{example}
+\index{Center!of a Lie algebra}
+    Let $L$ be a Lie algebra. Then 
+    the \textbf{center} 
+    \[
+    Z(L)=\{x\in L:[x,y]=0\text{ for all $y\in L$}\}.
+    \]
+    is an ideal of $L$. 
+\end{example}
+
+\begin{example}
+\index{Derived algebra!of a Lie algebra}
+    Let $L$ be a Lie algebra. 
+    The \textbf{derived algebra} $[L,L]$
+    consists of all linear combinations of commutators $[x,y]$ 
+    is an ideal of $L$. 
+\end{example}
+
+\begin{exercise}
+    Compute $Z(\sl(n,\C))$. 
+\end{exercise}
+
+\begin{exercise}
+    Prove that $\sl(2,\C)$ has no non-trivial ideals. 
+\end{exercise}
+
+One easily checks that $\sl(n,\C)$ is an ideal of $\gl(n,\C)$. In fact, 
+an ideal is always a subalgebra. The converse is not true. 
+Can you find an example?
+
+\begin{definition}
+\index{Homomorphism!of Lie algebras}
+    Let $L$ and $L_1$ be Lie algebras. A map $f\colon L\to L_1$ is a 
+    \textbf{Lie algebra homomorphism} if $f([x,y])=[f(x),f(y)]$ for all
+    $x,y\in L$. 
+\end{definition}
+
+As usual, an isomorphism between Lie algebras will be
+a bijective homomorphism of Lie algebras. 
+
+\begin{example}
+    Let $L$ and $L_1$ be Lie algebras. The canonical injections
+    $L\to L\oplus L_1$ and $L_1\to L_\oplus L_1$ and
+    the canonical surjections $L\oplus L_1\to L$ and 
+    $L\oplus L_1\to L_1$ are Lie algebras homomorphisms.  
+\end{example}
+
+\begin{example}
+    Let $L$ be a Lie algebra. The \textbf{opposite Lie algebra} 
+    $L^{\op}$ is the vector space $L$ with 
+    $[x,y]^{\op}=-[x,y]$. Then $L\to L^{\op}$, $x\mapsto -x$, 
+    is an isomorphism of Lie algebras.
+\end{example}
+
+\begin{exercise}
+    Let $f\colon L\to L_1$ be a Lie algebra homomorphism. Prove
+    that the \textbf{kernel} of $f$, 
+    $\ker f=\{x\in L:f(x)=0\}$ is an ideal
+    of $L$, and that the \textbf{image} of $f$ 
+    is a subalgebra of $L_1$. 
+\end{exercise}
+
+\begin{example}
+\index{Adjoint homomorphism}
+    Let $L$ be a Lie algebra. 
+    The \textbf{adjoint homomorphism} is the map 
+    \[
+    \ad\colon L\to\gl(L),\quad
+    (\ad x)(y)=[x,y].
+    \]
+\end{example}
+
+Let $L$ be a Lie algebra and $I$ be an ideal of $L$. Then 
+the quotient vector space $L/I$ is a Lie algebra
+with $[x+I,y+I]=[x,y]+I$. The canonical map 
+$L\to L/I$, $x\mapsto x+I$, 
+is a surjective Lie algebra homomorphism. 
+
+\begin{exercise}
+    Let $f\colon L\to L_1$ be a Lie algebra homomorphism.
+    Prove that $f/\ker f\simeq f(L)$. 
+\end{exercise}
+
+\begin{definition}
+\index{Simple Lie algebra}
+    A Lie algebra $L$ is said to be \textbf{simple} if 
+    $[L,L]\ne\{0\}$ and $\{0\}$ and $L$ are the only ideals of $L$. 
+\end{definition}
+
+If $L$ is a simple Lie algebra, then $Z(L)=\{0\}$ and $L=[L,L]$. 
+
+\begin{exercise}
+    Prove that every simple Lie algebra is isomorphic to 
+    a linear Lie algebra. 
+\end{exercise}
+
+\topic{Representations of Lie algebras}
+
+\begin{definition}
+\index{Representation!of a Lie algebra}
+    A \textbf{representation} of a Lie algebra $L$ 
+    is a Lie homomorphism $\rho\colon L\to\gl(V)$, where $V$ is a vector space. 
+\end{definition}
+
+If $L\to\gl(V)$ is a representation of a Lie algebra $L$, 
+fixing a basis for $V$ 
+we obtain a \textbf{matrix representation}
+$L\to\gl(n,\C)$. 
+
+\begin{example}
+    Let $L$ be a Lie algebra. 
+    The map $\ad\colon L\to\gl(L)$, $x\mapsto (\ad x)$, is a lie 
+    homomorphism. 
+\end{example}
+
+\begin{definition}
+Let $L$ be a Lie algebra. 
+A (left) Lie $L$-module is a vector space $V$ 
+together with a map $L\times V\to V$, $(x,v)\mapsto xv$, 
+such that $(x,v)\mapsto xv$ is bilinear 
+and 
 \[
-	\langle (v_1,k_1,w_1),(v_2,k_2,w_2)\rangle = \langle v_1,v_2\rangle+k_1k_2+\langle w_1,w_2\rangle.
+    [x,y]v=x(yv)-y(xv)
 \]
-It is an exercise to show that 
-\begin{multline*}
-	(v_1,k_1,w_1)\times (v_2,k_2,w_2)\\
-	=(k_1w_2-k_2w_1+v_1\times v_2-w_1\times w_2,
-	\\-\langle v_1,w_2\rangle+\langle v_2,w_1\rangle, 
-	k_2v_1-k_1v_2-v_1\times w_2-w_1\times v_2)
-\end{multline*}
-satisfies the properties of the theorem. 
+for all $x,y\in L$ and $v\in V$. 
+\end{definition}
+
+As it happens in the case of groups, Lie modules are
+in bijective correspondence with representations. 
+
+\begin{example}
+    Let $L$ be a subalgebra of $\gl(V)$. Then 
+    $L$ is an $L$-module. 
+\end{example}
+
+\begin{definition}
+    Let $L$ be a Lie algebra and $V$ be a Lie $L$-module. 
+    A \textbf{submodule} of $V$ is a subspace $W$ 
+    such that $xw\in W$ for all $x\in L$ and $w\in W$. 
+\end{definition}
+
+\begin{example}
+We know that $L$ is an $L$-module 
+with the adjoint representation. The submodules of $L$ are
+the ideals of $L$. 
+\end{example}
+
+If $W$ is a submodule of $V$, then $V/W$ 
+with $x(v+W)=xv+W$ is a module. 
+
+\begin{definition}
+    Let $L$ be a Lie algebra. An $L$-module $V$ 
+    is said to be \textbf{simple} (or irreducible) 
+    if $V\ne \{0\}$ and it has no submodules other than $\{0\}$ and $V$. 
+\end{definition}
+
+One-dimensional modules are simple. In particular, 
+the trivial module is always simple. 
+
+\begin{example}
+    Let $L$ be a simple Lie algebra (e.g. $\sl(2,\C)$). Then 
+    the adjoint representation is irreducible, that is $L$ is a simple $L$-module.  
+\end{example}
+
+\begin{definition}
+    Let $L$ be a Lie algebra and $V$ be an $L$-module. We say 
+    that $V$ is \textbf{indecomposable} if 
+    there are no non-zero submodules $U$ and $W$ such that
+    $V=U\oplus W$.
+\end{definition}
+
+Clearly, irreducible modules are indecomposable. 
+The converse is not true.
+
+\begin{definition}
+    Let $L$ be a Lie algebra and $V$ be an $L$-module. We say that
+    $V$ is \textbf{completely reducible} if $V=S_1\oplus\cdots\oplus S_k$
+    for simple modules $S_1,\dots,S_k$. 
+\end{definition}
+
+\begin{exercise}
+    Let $\mathfrak{b}(n,\C)$ be the set of $n\times n$ 
+    upper triangular 
+    matrices in $\gl(n,\C)$. Prove that $V=\C^n$ is indecomposable,  
+    not irreducible. 
+\end{exercise}
+
+\begin{definition}
+    Let $L$ be a Lie algebra and $f\colon V\to W$ be a map. 
+    We say that $f$ is an $L$-module \textbf{homomorphism} if
+    $f(xv)=xf(v)$ for all $x\in L$ and $v\in V$. 
+\end{definition}
+
+As usual, an isomorphism is a bijective module homomorphism. 
+
+\begin{exercise}
+    State and prove the isomorphism theorems for modules
+    over Lie algebras. 
+\end{exercise}
+
+\begin{exercise}[Schur lemma]
+    Let $L$ be a Lie algebra.
+    \begin{enumerate}
+        \item Let $S$ and $T$ be simple $L$-modules.
+            Prove that a non-zero homomorphism $f\colon S\to T$ 
+            is an isomorphism.
+        \item Let $S$ be a finite-dimensional simple $L$-module. 
+            Prove that if $f\colon S\to S$ is a homomorphism, then
+                $f=\lambda\id$ for some $\lambda\in\C$. 
+    \end{enumerate} 
+\end{exercise}
+
+As an example, if $V$ is a simple module, then $z$
+acts by scalar multiplication on $V$, that is
+$zv=\lambda v$ for some $\lambda\in\C$. 
