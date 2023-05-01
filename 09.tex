@@ -19,7 +19,7 @@ is the \textbf{lifting} to $G$ of the character
 $\widetilde{\chi}$ of $G/N$. 
 
 \begin{proposition}
-If $\chi\in\Irr(G)$, then 
+If $\chi\in\Char(G)$, then 
 \[
 \ker\chi=\{g\in G:\chi(g)=\chi(1)\}
 \]
@@ -40,7 +40,7 @@ $\lambda_1=\cdots=\lambda_n=1$. Hence $\rho_g=\id$.
 \end{proof}
 
 \index{Kernel!of a character}
-If $\chi$ is an irreducible character, the subgroup $\ker\chi$ 
+If $\chi$ is a character, the subgroup $\ker\chi$ 
 is the \textbf{kernel} of $\chi$. 
 
 \begin{theorem}[Correspondence theorem]
@@ -189,7 +189,9 @@ $\chi(g)=\chi(1)$ for all $\chi\in\Irr(G)$.
     We lift the irreducible characters of $G/N$ to $G$ 
     to obtain (some) irreducible characters $\chi_1,\dots,\chi_k$ 
     of $G$ such that 
-    $N\subseteq\ker\chi_1\cap\cdots\cap\ker\chi_k$. 
+    \[
+    N\subseteq\ker\chi_1\cap\cdots\cap\ker\chi_k.
+    \]
     If $g\in\ker\chi_i$ for all $i\in\{1,\dots,k\}$, then 
     \[
     \widetilde{\chi}_i(N)=\chi_i(1)=\chi_i(g)=\widetilde{\chi}_i(gN)
@@ -288,7 +290,7 @@ of $\Z/p$ form a multiplicative group. Moreover,
 $(\Z/p)^{\times}$ 
 is cyclic of order $p-1$. 
 
-Let $p$ and $q$ be prime numbers such that $q$ divides $p-1$. Let 
+Let 
 \[
 G=\left\{\begin{pmatrix}
 x & y\\
@@ -297,8 +299,10 @@ x & y\\
 :x\in(\Z/p)^\times,\,y\in\Z/p\right\}.
 \]
 Then $G$ is a group with the usual matrix multiplication
-and $|G|=p(p-1)$. Let $z\in\Z$ be an element of multiplicative order $q$ modulo $p$ 
-and let 
+and $|G|=p(p-1)$. 
+Let $p$ and $q$ be prime numbers such that $q$ divides $p-1$, 
+$z\in\Z$ be an element of multiplicative order $q$ modulo $p$ 
+and 
 \[
 a=\begin{pmatrix}
 1&1\\
@@ -372,7 +376,7 @@ is a particular case of a
     $G\simeq F_{p,q}$. 
 \end{proof}
 
-With the proposition we prove, for example, that 
+With the proposition, we prove, for example, that 
 every group of order 15 is abelian. We can also prove
 that up to isomorphism $\Z/20$ and  
 $F_{5,4}$ are the only groups of order 20. 
@@ -526,7 +530,8 @@ $F_{5,4}$ are the only groups of order 20.
   $m=1$.
 \end{proof}
 
-At the moment, there is no proof of Frobenius' theorem independent of character theory. 
+At the moment, there is no proof of Frobenius' theorem essentially 
+independent of character theory. 
 
 \begin{definition}
   \index{Frobenius!kernel}
@@ -557,6 +562,8 @@ At the moment, there is no proof of Frobenius' theorem independent of character 
   \]
   and therefore $G=NH$.
 \end{proof}
+
+\subsection*{Some comments}
 
 \begin{corollary}[Combinatorial Frobenius' theorem]
     \label{cor:Frobenius_combinatorio}
@@ -627,147 +634,4 @@ See~\cite[Theorem 6.24]{MR2426855} for the proof.
 
 
 
-
-\topic{Some theorems of Burnside}
-
-For $n\geq1$ let $\{e_1,\dots,e_n\}$ be the standard basis of $\C^n$.  
-The \textbf{natural representation} of $\Sym_n$ is 
-$\rho\colon\Sym_n\to\GL_n(C)$, $\sigma\mapsto\rho_{\sigma}$, 
-where $\rho_\sigma(e_j)=e_{\sigma(j)}$ for all $j\in\{1,\dots,n\}$. 
-The matrix of $\rho_\sigma$ in the standard basis is  
-\begin{equation}
-    \label{eq:Sn_natural}
-    (\rho_\sigma)_{ij}=\begin{cases}
-      1 & \text{if $i=\sigma(j)$},\\
-      0 & \text{otherwise}.
-    \end{cases}
-\end{equation}
-
-\begin{lemma}
-	\label{lem:permutaciones}
-	For $n\geq1$ let $\rho\colon\Sym_n\to\GL_n(C)$ be the natural 
-	representation of the symmetric group. 
-	If $A\in\C^{n\times n}$ and $\sigma\in\Sym_n$, then
-	\[
-		A_{ij}=(\rho_{\sigma}A)_{\sigma(i)j}=(A\rho_{\sigma})_{i\sigma^{-1}(j)}
-	\]
-    for all $i,j\in\{1,\dots,n\}$.
-\end{lemma}
-
-\begin{proof}
-	With~\eqref{eq:Sn_natural} we compute:
-	\[
-		(A\rho_{\sigma})_{ij}=\sum_{k=1}^n A_{ik}(\rho_{\sigma})_{kj}=A_{i\sigma(j)},
-		\quad
-		(\rho_\sigma A)_{ij}=\sum_{k=1}^n (\rho_\sigma)_{ik}A_{kj}=A_{\sigma^{-1}(i)j}.\qedhere
-	\]
-\end{proof}
-
-\begin{definition}
-  \index{Real!character}
-  Let $G$ be a finite group. A character $\chi$ of $G$ is said to be
-  \textbf{real} if
-  $\chi=\overline{\chi}$, that is $\chi(g)\in\R$ for all $g\in G$. 
-\end{definition}
-
-\begin{exercise}
-	\label{xca:chi_irreducible}
-	Let $G$ be a finite group. If $\chi\in\Irr(G)$, then 
-	$\overline{\chi}$ is irreducible.
-\end{exercise}
-
-\begin{definition}
-  \index{Real!conjugacy class}
-  Let $G$ be a group. A conjugacy class $C$ of $G$ is said to be
-  \textbf{real} if for every $g\in C$ one has $g^{-1}\in C$. 
-\end{definition}
-
-We use the following notation: if $G$ is a group and $C=\{xgx^{-1}:x\in G\}$ is a conjugacy class of  
-$G$, then $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$.  
-
-\begin{theorem}[Burnside]
-    \index{Burnside's!theorem}
-    Let $G$ be a finite group. The number of real conjugacy classes is equal 
-    to the number of real irreducible characters. 
-\end{theorem}
-
-\begin{proof}
-  Let $C_1,\dots,C_r$ be the conjugacy classes of $G$ and  
-  let $\chi_1,\dots,\chi_r$ be the irreducible characters of $G$. 
-  Let $\alpha,\beta\in\Sym_r$ be such that $\overline{\chi_i}=\chi_{\alpha(i)}$ and 
-  $C_i^{-1}=C_{\beta(i)}$ for all $i\in\{1,\dots,r\}$. Note that $\chi_i$
-  is real if and only if $\alpha(i)=i$ and that $C_i$ is real if and only if 
-  $\beta(i)=i$. The number $n$ of fixed points of $\alpha$ is equal to the number
-  of real irreducible characters of $G$ and the number $m$ of fixed points of $\beta$ is equal
-  to the number of real classes. 
-  Let $\rho\colon\Sym_r\to\GL(r,\C)$ be the natural representation of $\Sym_r$. Then
-  $\chi_\rho(\alpha)=n$ and $\chi_\rho(\beta)=m$. We claim that 
-  $\trace\rho_\alpha=\trace\rho_\beta$. 
-  Let $X\in\GL(r,\C)$ be the character matrix of $G$. 
-  By Lemma~\ref{lem:permutaciones}, 
-  \[
-	\rho_\alpha X=\overline{X}=X\rho_\beta.
-  \]
-  Since $X$ is invertible, $\rho_{\alpha}=X\rho_{\beta}X^{-1}$. Thus 
-  \[
-    n=\chi_{\rho}(\alpha)=\trace\rho_{\alpha}=\trace\rho_{\beta}=\chi_{\rho}(\beta)=m.\qedhere
-  \]
-\end{proof}
-
-\begin{corollary}
-  \label{corollary:|G|impar}
-  Let $G$ be a finite group. Then $|G|$ is odd if and only if
-  the only real $\chi\in\Irr(G)$ is the trivial character. 
-\end{corollary}
-
-\begin{proof}
-    We first prove $\impliedby$. If $|G|$ is even, there exists 
-    $g\in G$ of order two (Cauchy's theorem). The conjugacy class of $g$ 
-    is real. 
-
-    We now prove $\implies$. Assume that $G$ has a non-trivial 
-    real conjugacy class $C$. Let $g\in C$. We claim that 
-    $G$ has an element of even order. Let $h\in G$ be such that
-    $hgh^{-1}=g^{-1}$. Then $h^2\in C_G(g)$, as $h^2gh^{-2}=g$. 
-    If $h\in\langle h^2\rangle\subseteq C_G(g)$, then $g$ has 
-    even order, as $g^{-1}=g$. If $h\not\in\langle h^2\rangle$, then 
-    $h^2$ does not generate $\langle h\rangle$. Hence $h$ has odd order, 
-    as $|h|\ne|h^2|=|h|/\gcd(|h|:2)$.  
-\end{proof}
-
-\begin{theorem}[Burnside]
-  \index{Burnside's!theorem}
-  \label{thm:Burnside_mod16}
-  Let $G$ be a finite group of odd order 
-  with $r$ conjugacy classes. Then
-  $r\equiv|G|\bmod{16}$.
-\end{theorem}
-
-\begin{proof}
-  Since $|G|$ is odd, every non-trivial $\chi\in\Irr(G)$ is not real by
-  the previous corollary. The irreducible characters 
-  of $G$ are then 
-  \[
-    \chi_1,\chi_2,\overline{\chi_2},\dots,\chi_k,\overline{\chi_k},
-    \quad
-    r=1+2(k-1),
-  \]
-  where $\chi_1$ denotes the trivial character. 
-  For every $j\in\{2,\dots,k\}$ let $d_j=\chi_j(1)$. 
-  Since each $d_j$ divides 
-  $|G|$ by Frobenius' theorem and  $|G|$ is odd, 
-  every $d_j$ is an odd number, 
-  say $d_j=1+2m_j$. Thus  
-  \begin{align*}
-    |G|&=1+\sum_{j=2}^k 2d_j^2=1+\sum_{j=2}^k2(2m_j+1)^2\\
-    &=1+\sum_{j=2}^k2(4m_j^2+4m_j+1)
-    =1+2(k-1)+8\sum_{j=2}^km_j(m_j+1).
-  \end{align*}
-  Hence $|G|\equiv r\bmod{16}$, 
-  as $r=1+2k$ and every $m_j(m_j+1)$ is even. 
-\end{proof}
-
-\begin{exercise}
-    Prove that every group of order 15 is abelian. 
-\end{exercise}
 
