@@ -339,14 +339,14 @@ the multiplication table of $G$.
     $u,v\in\Z$ be elements of order $q$ modulo $p$. 
     Prove that 
     \[
-    \langle a,b:a^p=b^q=1,bab=a^u\rangle
-    \simeq \langle a,b:a^p=b^q=1,bab=a^v\rangle.
+    \langle a,b:a^p=b^q=1,bab^{-1}=a^u\rangle
+    \simeq \langle a,b:a^p=b^q=1,bab^{-1}=a^v\rangle.
     \]
 \end{exercise}
 
 The group   
 \[
-F_{p,q}=\langle a,b:a^p=b^q=1,bab=a^u\rangle,
+F_{p,q}=\langle a,b:a^p=b^q=1,bab^{-1}=a^u\rangle,
 \]
 where $u\in\Z$ has order $q$ modulo $p$, 
 is a particular case of a  
@@ -573,7 +573,7 @@ independent of character theory.
     at most one element of 
      $X$. The set $N$ formed by the identity and 
      the permutations that move every element of $X$
-     is a subgroup of $G$.
+     is a normal subgroup of $G$.
 \end{corollary}
 
 \begin{proof}
@@ -583,7 +583,7 @@ independent of character theory.
   $h\cdot x=x$ and $g^{-1}hg\cdot
   x=x$. Since $g\cdot x\ne x$, $h$ fixes two elements of
   $X$. Thus 
-  $h=1$, as every non-trivial element fixes at most one element of $X$). 
+  $h=1$, as every non-trivial element fixes at most one element of $X$. 
 
   By Theorem~\ref{thm:Frobenius}, 
   \[
