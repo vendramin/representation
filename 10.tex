@@ -72,11 +72,12 @@ $G$, then $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$.
   $\beta(i)=i$. The number $n$ of fixed points of $\alpha$ is equal to the number
   of real irreducible characters of $G$, and the number $m$ of fixed points of $\beta$ is equal
   to the number of real classes. 
-  Let $\rho\colon\Sym_r\to\GL_r(\C)$ be the natural representation of $\Sym_r$. Then
-  $\chi_\rho(\alpha)=n$ and $\chi_\rho(\beta)=m$. We claim that 
+  Let $\rho\colon\Sym_r\to\GL_r(\C)$ be the natural representation of $\Sym_r$, with character $\chi_\rho$.
+  Then $\chi_\rho(\alpha)=n$ and $\chi_\rho(\beta)=m$. We claim that 
   $\trace\rho_\alpha=\trace\rho_\beta$. 
   Let $X\in\GL(r,\C)$ be the character matrix of $G$. 
-  By Lemma~\ref{lem:permutaciones}, 
+  By Lemma~\ref{lem:permutaciones} 
+  and the fact that $\overline{\chi(g)}=\chi(g^{-1})$ for all $g\in G$, 
   \[
 	\rho_\alpha X=\overline{X}=X\rho_\beta.
   \]
@@ -103,8 +104,8 @@ $G$, then $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$.
     $hgh^{-1}=g^{-1}$. Then $h^2\in C_G(g)$, as $h^2gh^{-2}=g$. 
     If $h\in\langle h^2\rangle\subseteq C_G(g)$, then $g$ has 
     even order, as $g^{-1}=g$. If $h\not\in\langle h^2\rangle$, then 
-    $h^2$ does not generate $\langle h\rangle$. Hence $h$ has odd order, 
-    as $|h|\ne|h^2|=|h|/\gcd(|h|:2)$.  
+    $h^2$ does not generate $\langle h\rangle$. Hence $h$ has even order, 
+    as $|h|\ne|h^2|=|h|/\gcd(|h|,2)$, so $\gcd(|h|,2)\ne 1$.  
 \end{proof}
 
 \begin{theorem}[Burnside]
@@ -184,7 +185,7 @@ gap> List(DerivedSeries(SL(2,3)),StructureDescription);
 	\label{xca:solvable}
 	Let $G$ be a group. Prove the following statements:
 	\begin{enumerate}
-		\item A subgroup $H$ of $G$ is solvable.
+		\item A subgroup $H$ of $G$ is solvable, when $G$ is solvable.
 		\item Let $K$ be a normal subgroup of $G$. 
 		    Then $G$ is solvable if and only if $K$ and $G/K$ are solvable.
 	\end{enumerate}
@@ -222,8 +223,8 @@ We need a lemma.
 
 \begin{proof}
 	Let $\alpha=(\epsilon_1+\cdots+\epsilon_n)/n$.
-	If the $\epsilon_j$s are not all equal, then $N(\alpha)<1$. Moreover, 
-	$N(\beta)<1$ for every algebraic conjugate $\beta$ of $\alpha$. Since the product 
+	If the $\epsilon_j$s are not all equal, then $\|\alpha\|<1$. Moreover, 
+	$\|\beta\|<1$ for every algebraic conjugate $\beta$ of $\alpha$. Since the product 
 	of the algebraic conjugates of $\alpha$ is an integer of absolute value 
 	$<1$, it follows that it is zero. 
 \end{proof}
@@ -256,13 +257,13 @@ Now we prove the theorem.
 	\label{eq:Burnside}
 	\begin{aligned}
 		0&=\sum_{\chi\in\Irr(G)}\chi(1)\chi(g)\\
-		&=\sum_{p\mid\chi(1)}\chi(1)\chi(g)+\sum_{p\nmid\chi(1)}\chi(1)\chi(g)+1,
+		&=\sum_{p\mid\chi(1)}\chi(1)\chi(g)+\sum_{p\nmid\chi(1):\chi\ne\chi_1}\chi(1)\chi(g)+1,
 	\end{aligned}
 	\end{equation}
 	where the one corresponds to the trivial representation of
 	$G$.
 	
-	Look this equation modulo $p$. If $\chi(g)=0$ for all
+	Look at this equation modulo $p$. If $\chi(g)=0$ for all
 	$\chi\in\Irr(G)$
 	such that $\chi\ne\chi_1$ and $p\nmid\chi(1)$, then
 	\[
@@ -286,16 +287,22 @@ Now we prove the theorem.
 \end{theorem}
 
 \begin{proof}
+	If $G$ is abelian, then it is solvable.
+	Suppose now $G$ is non-abelian.
 	Let us assume that the theorem is not true. Let $G$ be a group
 	of minimal order $p^aq^b$
-	that is not solvable. Since $|G|$ is minimal, $G$ is simple. By the previous theorem, 
+	that is not solvable. Since $|G|$ is minimal, $G$ is a non-abelian simple group.
+	By the previous theorem, 
 	$G$ has no conjugacy classes of size $p^k$ nor 
 	conjugacy classes of size $q^l$ with $k,l\geq1$. The size
 	of every conjugacy class of $G$ is one or divisible by $pq$. 
+	Note that, since $G$ is a non-abelian simple group,
+	the center of $G$ is trivial.
+	Thus there is only one conjugacy class of size one.
 	By the class
-	equation, 
+	equation,
 	\[
-		|G|=1+\sum_{C:|C|>1}|C|,
+		|G|=1+\sum_{C:|C|>1}|C|\equiv 1 \bmod pq,
 	\]
 	where the sum is taken over all conjugacy classes 
 	with more than one element, a contradiction.
