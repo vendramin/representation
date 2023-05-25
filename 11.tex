@@ -250,7 +250,7 @@ Nowadays we can check this easily in almost every desktop computer:
 gap> Gcd((17^3313-1)/16,(3313^17-1)/3312);
 112643
 \end{lstlisting}
-No other counterexamples have been found to Stephen’s stronger version of the conjecture.
+No other counterexamples have been found of Stephen’s stronger version of the conjecture.
 
 \topic{Hurwitz' theorem (optional)}
 \label{Hurwitz}
@@ -258,12 +258,12 @@ No other counterexamples have been found to Stephen’s stronger version of the 
 \index{Fibonacci identity}
 \index{Euler identity}
 \index{Hamilton identity}
-We know that $x^2y^2=(xy)^2$ holds for all $x,y\in\C$. Fibonnaci
+We know that $x^2y^2=(xy)^2$ holds for all $x,y\in\C$. Fibonacci
 found the identity
 \[
 	(x_1^2+x_2^2)(y_1^2+y_2^2)=(x_1y_1-x_2y_2)^2+(x_1y_2-x_2y_1)^2.
 \]
-Euler and Hamilton, independently, found 
+Euler and Hamilton independently found 
 a similar identity:
 \[
 	(x_1^2+x_2^2+x_3^2+x_4^2)(y_1^2+y_2^2+y_3^2+y_4^2)=z_1^2+z_2^2+z_3^2+z_4^2,
@@ -280,7 +280,7 @@ where
 \end{equation}
 Cayley found a similar identity for sums of eight squares. 
 Are there other identities of this type? Hurwitz' proved that this is not the case. 
-We present Eckmann's proof of Hurwitz' theorem. The proof uses character theory.
+We present Eckmann's proof of Hurwitz's theorem. The proof uses character theory.
 
 \begin{lemma}
 \label{lem:grupo}
@@ -440,7 +440,7 @@ We present Eckmann's proof of Hurwitz' theorem. The proof uses character theory.
 
 \begin{proof}
     We work over complex numbers. 
-	Without loss of generality we may assume that $n>2$.  For 
+	Without loss of generality, we may assume that $n>2$.  For 
 	$i\in\{1,\dots,n\}$ let  
 	\[
 		z_i=\sum_{k=1}^n a_{ik}(x_1,\dots,x_n)y_k,
@@ -556,7 +556,7 @@ We present Eckmann's proof of Hurwitz' theorem. The proof uses character theory.
 	n=\dim V=\dim(aS\oplus bT)=(a+b)2^{\frac{n-2}{2}}.
 	\]
 	
-	To finish the proof of the theorem write $n=2^ab$ 
+	To finish the proof of the theorem, write $n=2^ab$ 
 	for $a\geq1$ and $b$ an odd integer. 
 	Since $\frac{n-2}{2}$ divides $n$, 
 	\[
@@ -601,7 +601,7 @@ We now present an application, see
 		&=z_1^2+\cdots+z_{n+1}^2,
 	\end{align*}
 	where the $z_k$'s are bilinear functions in $(v_1,r_1)$ and $(v_2,r_2)$. 
-	By Hurwitz' theorem, 
+	By Hurwitz's theorem, 
 	$n+1\in\{4,8\}$. Hence $n\in\{3,7\}$.
 \end{proof}
 
@@ -629,7 +629,7 @@ satisfies the properties of the theorem.
 \begin{definition}
     \index{Lie algebra}
     Let $K$ be a field. 
-    A \textbf{Lie algebra} (over $K$) is a $K$-vector space
+    A (complex) \textbf{Lie algebra} is a complex vector space
     $L$ together with a bilinear map 
     $L\times L\to L$, $(x,y)\mapsto [x,y]$,
     such that
@@ -666,7 +666,7 @@ all $x,y\in L$.
     is a (real) Lie algebra.     
 \end{exercise}
 
-We will main work with finite-dimensional complex Lie algebras.
+We will mainly work with finite-dimensional complex Lie algebras.
 
 \begin{example}[general linear Lie algebra]
 \index{General linear Lie algebra}
@@ -896,11 +896,6 @@ the trivial module is always simple.
 Clearly, irreducible modules are indecomposable. 
 The converse is not true.
 
-\begin{definition}
-    Let $L$ be a Lie algebra and $V$ be an $L$-module. We say that
-    $V$ is \textbf{completely reducible} if $V=S_1\oplus\cdots\oplus S_k$
-    for simple modules $S_1,\dots,S_k$. 
-\end{definition}
 
 \begin{exercise}
     Let $\mathfrak{b}(n,\C)$ be the set of $n\times n$ 
@@ -910,6 +905,7 @@ The converse is not true.
 \end{exercise}
 
 \begin{definition}
+\index{Homomorphism!of modules over Lie algebras}
     Let $L$ be a Lie algebra and $f\colon V\to W$ be a map. 
     We say that $f$ is an $L$-module \textbf{homomorphism} if
     $f(xv)=xf(v)$ for all $x\in L$ and $v\in V$. 
@@ -922,7 +918,8 @@ As usual, an isomorphism is a bijective module homomorphism.
     over Lie algebras. 
 \end{exercise}
 
-\begin{exercise}[Schur lemma]
+\begin{exercise}[Schur's lemma]
+\index{Schur's lemma for Lie algebras}
     Let $L$ be a Lie algebra.
     \begin{enumerate}
         \item Let $S$ and $T$ be simple $L$-modules.
