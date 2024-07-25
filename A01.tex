@@ -1,0 +1,310 @@
+\section{Lie algebras}
+
+\begin{definition}
+    \index{Lie algebra}
+    Let $K$ be a field. 
+    A (complex) \emph{Lie algebra} is a complex vector space
+    $L$ together with a bilinear map 
+    $L\times L\to L$, $(x,y)\mapsto [x,y]$,
+    such that
+    \begin{align}
+        \label{eq:[xx]=0}&[x,x]=0\quad\text{for all $x\in L$},\\ 
+        \label{eq:Jacobi}&[x,[y,z]]+[y,[z,x]]+[z,[x,y]]=0\quad\text{for all $x,y,z\in L$}.
+    \end{align}
+\end{definition}
+
+\index{Jacobi identity}
+Equality \eqref{eq:Jacobi} is known as the \emph{Jacobi identity}. 
+
+\begin{exercise}
+    Prove that \eqref{eq:[xx]=0} implies $[x,y]=-[y,x]$ for all
+    $x,y\in L$. 
+\end{exercise}
+
+\index{Abelian Lie algebra}
+A Lie algebra $L$ is said to be \emph{abelian} if $[x,y]=0$ for 
+all $x,y\in L$. 
+
+\begin{exercise}
+    If $L$ and $L_1$ are Lie algebras, then 
+    $L\oplus L_1$ is a Lie algebra with
+    $[(x,x_1),(y,y_1)]=([x,y),(x_1,y_1)]$ for $x,y\in L$ and
+    $x_1,y_1\in L_1$. 
+\end{exercise}
+
+\begin{exercise}
+    Prove that $\R^3$ with the usual vector product 
+    \[
+    [(x_1,x_2,x_3),(y_1,y_2,y_3)]=(x_2y_3-x_3y_2,x_3y_1-x_1y_3,x_1y_2-x_2y_1)
+    \]
+    is a (real) Lie algebra.     
+\end{exercise}
+
+We will mainly work with finite-dimensional complex Lie algebras.
+
+\begin{example}[general linear Lie algebra]
+\index{General linear Lie algebra}
+    Let $V$ be a finite-dimensional vector space and 
+    $\gl(V)$ be the set of linear maps $V\to V$. Then 
+    $\gl(V)$ with $[x,y]=xy-yx$ is a Lie algebra. 
+\end{example}
+
+A matrix version of the previous example: We write $\gl(n,\C)$ 
+to denote the vector space of all $n\times n$ complex 
+matrices with Lie bracket $[x,y]=xy-yx$. The vector space
+$\gl(n,\C)$ has a basis $\{e_{ij}:1\leq i,j\leq n\}$, where
+\[
+(e_{ij})_{kl}=\begin{cases} 
+    1 & \text{if $(i,j)=(k,l)$},\\
+    0 & \text{otherwise}.
+    \end{cases}
+\]
+
+\begin{exercise}
+    Compute $[e_{ij},e_{ik}]$.
+\end{exercise}
+
+\begin{example}[special linear Lie algebra]
+\index{Special linear Lie algebra}
+    Let $\sl(n,\C)$ be the subspace of $\gl(n,\C)$ consisting
+    of all matrices with trace zero. 
+\end{example}
+
+\begin{exercise}
+    Find a basis of $\sl(n,\C)$. 
+\end{exercise}
+
+%\begin{example}
+%    Let $\bl(n,\C)$ be the subspace of all upper triangular matrices
+%    in $\gl(n,\C)$. Then $\bl(n,\C)$ is a Lie algebra. 
+%\end{example}
+
+\begin{definition}
+    \index{Lie!subalgebra}
+    A Lie \emph{subalgebra} of $L$ is a vector space $L_1$ of $L$ 
+    such that $[x,y]\in L_1$ for all $x,y\in L_1$. 
+\end{definition}
+
+Of course, $\sl(n,\C)$ is a subalgebra of $\gl(n,\C)$. 
+
+\begin{definition}
+\index{Ideal!of a Lie algebra}
+    An \emph{ideal} of a Lie algebra $L$ is a subspace $I$ of $L$ 
+    such that $[x,y]\in I$ for all $x\in L$ and $y\in I$. 
+\end{definition}
+
+Trivial examples of ideals of a Lie algebra $L$ are
+$\{0\}$ and $L$.
+
+\begin{example}
+\index{Center!of a Lie algebra}
+    Let $L$ be a Lie algebra. Then 
+    the \emph{center} 
+    \[
+    Z(L)=\{x\in L:[x,y]=0\text{ for all $y\in L$}\}.
+    \]
+    is an ideal of $L$. 
+\end{example}
+
+\begin{example}
+\index{Derived algebra!of a Lie algebra}
+    Let $L$ be a Lie algebra. 
+    The \emph{derived algebra} $[L,L]$
+    consists of all linear combinations of commutators $[x,y]$ 
+    is an ideal of $L$. 
+\end{example}
+
+\begin{exercise}
+    Compute $Z(\sl(n,\C))$. 
+\end{exercise}
+
+\begin{exercise}
+    Prove that $\sl(2,\C)$ has no non-trivial ideals. 
+\end{exercise}
+
+One easily checks that $\sl(n,\C)$ is an ideal of $\gl(n,\C)$. In fact, 
+an ideal is always a subalgebra. The converse is not true. 
+Can you find an example?
+
+\begin{definition}
+\index{Homomorphism!of Lie algebras}
+    Let $L$ and $L_1$ be Lie algebras. A map $f\colon L\to L_1$ is a 
+    \emph{Lie algebra homomorphism} if $f([x,y])=[f(x),f(y)]$ for all
+    $x,y\in L$. 
+\end{definition}
+
+As usual, an isomorphism between Lie algebras will be
+a bijective homomorphism of Lie algebras. 
+
+\begin{example}
+    Let $L$ and $L_1$ be Lie algebras. The canonical injections
+    $L\to L\oplus L_1$ and $L_1\to L_\oplus L_1$ and
+    the canonical surjections $L\oplus L_1\to L$ and 
+    $L\oplus L_1\to L_1$ are Lie algebras homomorphisms.  
+\end{example}
+
+\begin{example}
+    Let $L$ be a Lie algebra. The \emph{opposite Lie algebra} 
+    $L^{\op}$ is the vector space $L$ with 
+    $[x,y]^{\op}=-[x,y]$. Then $L\to L^{\op}$, $x\mapsto -x$, 
+    is an isomorphism of Lie algebras.
+\end{example}
+
+\begin{exercise}
+    Let $f\colon L\to L_1$ be a Lie algebra homomorphism. Prove
+    that the \emph{kernel} of $f$, 
+    $\ker f=\{x\in L:f(x)=0\}$ is an ideal
+    of $L$, and that the \emph{image} of $f$ 
+    is a subalgebra of $L_1$. 
+\end{exercise}
+
+\begin{example}
+\index{Adjoint homomorphism}
+    Let $L$ be a Lie algebra. 
+    The \emph{adjoint homomorphism} is the map 
+    \[
+    \ad\colon L\to\gl(L),\quad
+    (\ad x)(y)=[x,y].
+    \]
+\end{example}
+
+Let $L$ be a Lie algebra and $I$ be an ideal of $L$. Then 
+the quotient vector space $L/I$ is a Lie algebra
+with $[x+I,y+I]=[x,y]+I$. The canonical map 
+$L\to L/I$, $x\mapsto x+I$, 
+is a surjective Lie algebra homomorphism. 
+
+\begin{exercise}
+    Let $f\colon L\to L_1$ be a Lie algebra homomorphism.
+    Prove that $f/\ker f\simeq f(L)$. 
+\end{exercise}
+
+\begin{definition}
+\index{Simple Lie algebra}
+    A Lie algebra $L$ is said to be \emph{simple} if 
+    $[L,L]\ne\{0\}$ and $\{0\}$ and $L$ are the only ideals of $L$. 
+\end{definition}
+
+If $L$ is a simple Lie algebra, then $Z(L)=\{0\}$ and $L=[L,L]$. 
+
+\begin{exercise}
+    Prove that every simple Lie algebra is isomorphic to 
+    a linear Lie algebra. 
+\end{exercise}
+
+\subsection{Representations of Lie algebras}
+
+\begin{definition}
+\index{Representation!of a Lie algebra}
+    A \emph{representation} of a Lie algebra $L$ 
+    is a Lie homomorphism $\rho\colon L\to\gl(V)$, where $V$ is a vector space. 
+\end{definition}
+
+If $L\to\gl(V)$ is a representation of a Lie algebra $L$, 
+fixing a basis for $V$ 
+we obtain a \emph{matrix representation}
+$L\to\gl(n,\C)$. 
+
+\begin{example}
+    Let $L$ be a Lie algebra. 
+    The map $\ad\colon L\to\gl(L)$, $x\mapsto (\ad x)$, is a lie 
+    homomorphism. 
+\end{example}
+
+\begin{definition}
+Let $L$ be a Lie algebra. 
+A (left) Lie $L$-module is a vector space $V$ 
+together with a map $L\times V\to V$, $(x,v)\mapsto xv$, 
+such that $(x,v)\mapsto xv$ is bilinear 
+and 
+\[
+    [x,y]v=x(yv)-y(xv)
+\]
+for all $x,y\in L$ and $v\in V$. 
+\end{definition}
+
+As it happens in the case of groups, Lie modules are
+in bijective correspondence with representations. 
+
+\begin{example}
+    Let $L$ be a subalgebra of $\gl(V)$. Then 
+    $L$ is an $L$-module. 
+\end{example}
+
+\begin{definition}
+    Let $L$ be a Lie algebra and $V$ be a Lie $L$-module. 
+    A \emph{submodule} of $V$ is a subspace $W$ 
+    such that $xw\in W$ for all $x\in L$ and $w\in W$. 
+\end{definition}
+
+\begin{example}
+We know that $L$ is an $L$-module 
+with the adjoint representation. The submodules of $L$ are
+the ideals of $L$. 
+\end{example}
+
+If $W$ is a submodule of $V$, then $V/W$ 
+with $x(v+W)=xv+W$ is a module. 
+
+\begin{definition}
+    Let $L$ be a Lie algebra. An $L$-module $V$ 
+    is said to be \emph{simple} (or irreducible) 
+    if $V\ne \{0\}$ and it has no submodules other than $\{0\}$ and $V$. 
+\end{definition}
+
+One-dimensional modules are simple. In particular, 
+the trivial module is always simple. 
+
+\begin{example}
+    Let $L$ be a simple Lie algebra (e.g. $\sl(2,\C)$). Then 
+    the adjoint representation is irreducible, that is $L$ is a simple $L$-module.  
+\end{example}
+
+\begin{definition}
+    Let $L$ be a Lie algebra and $V$ be an $L$-module. We say 
+    that $V$ is \emph{indecomposable} if 
+    there are no non-zero submodules $U$ and $W$ such that
+    $V=U\oplus W$.
+\end{definition}
+
+Clearly, irreducible modules are indecomposable. 
+The converse is not true.
+
+
+\begin{exercise}
+    Let $\mathfrak{b}(n,\C)$ be the set of $n\times n$ 
+    upper triangular 
+    matrices in $\gl(n,\C)$. Prove that $V=\C^n$ is indecomposable,  
+    not irreducible. 
+\end{exercise}
+
+\begin{definition}
+\index{Homomorphism!of modules over Lie algebras}
+    Let $L$ be a Lie algebra and $f\colon V\to W$ be a map. 
+    We say that $f$ is an $L$-module \emph{homomorphism} if
+    $f(xv)=xf(v)$ for all $x\in L$ and $v\in V$. 
+\end{definition}
+
+As usual, an isomorphism is a bijective module homomorphism. 
+
+\begin{exercise}
+    State and prove the isomorphism theorems for modules
+    over Lie algebras. 
+\end{exercise}
+
+\begin{exercise}[Schur's lemma]
+\index{Schur's lemma for Lie algebras}
+    Let $L$ be a Lie algebra.
+    \begin{enumerate}
+        \item Let $S$ and $T$ be simple $L$-modules.
+            Prove that a non-zero homomorphism $f\colon S\to T$ 
+            is an isomorphism.
+        \item Let $S$ be a finite-dimensional simple $L$-module. 
+            Prove that if $f\colon S\to S$ is a homomorphism, then
+                $f=\lambda\id$ for some $\lambda\in\C$. 
+    \end{enumerate} 
+\end{exercise}
+
+As an example, if $V$ is a simple module, then $z$
+acts by scalar multiplication on $V$, that is
+$zv=\lambda v$ for some $\lambda\in\C$. 

@@ -1,9 +1,9 @@
-\chapter{}
+\section{}
 
-\topic{Group algebras}
+\subsection{Group algebras}
 
 \index{Group algebra}
-Let $G$ be a finite group. The (complex) \textbf{group
+Let $G$ be a finite group. The (complex) \emph{group
 algebra} $\C[G]$ is the $\C$-vector space with
 basis $\{g:g\in G\}$ and multiplication
 \[
@@ -17,7 +17,7 @@ $\C[G]$ is commutative if and only if $G$ is abelian.
 \index{Augmentation ideal}
 If $G$ is non-trivial, 
 then $\C[G]$ contains proper non-trivial ideals. For example, 
-the \textbf{augmentation ideal} 
+the \emph{augmentation ideal} 
 \[
 I(G)=\left\{\sum_{g\in G}\lambda_gg\in \C[G]:\sum_{g\in G}\lambda_g=0\right\}
 \]
@@ -47,7 +47,7 @@ Prove that $\C[G]\simeq \C[X]/(X^n-1)$.
     \]
     for all $\alpha,\beta\in\Fun(G,\C)$, $x\in G$ 
     and $\lambda\in\C$. It is an algebra
-    with the \textbf{convolution product} 
+    with the \emph{convolution product} 
     \[
     (\alpha*\beta)(x)=\sum_{y\in G}\alpha(xy^{-1})\beta(y).
     \]
@@ -155,7 +155,7 @@ then $\C[G]$ is semisimple. By Artin--Wedderburn theorem,
 where $r$ is the number of isomorphism classes of simple modules of $\C[G]$. Moreover, 
 $|G|=\dim\C[G]=\sum_{i=1}^r n_i^2$. By convention, 
 we always assume that $n_1=1$. 
-This corresponds, of course, to the \textbf{trivial module}. 
+This corresponds, of course, to the \emph{trivial module}. 
 
 \begin{theorem}
     Let $G$ be a finite group. The number of simple 
@@ -304,7 +304,7 @@ Therefore $V$ is the direct product of $U$ and $N$, as $N$ is normal in $V$.
 \end{proof}
 
 
-\topic{Representations}
+\subsection{Representations}
 
 Unless we state differently, we will always work
 with finite groups. All our vector spaces will
@@ -312,16 +312,16 @@ be complex vector spaces.
 
 \begin{definition}
 \index{Representation}
-    Let $G$ be a finite group. A \textbf{representation}
+    Let $G$ be a finite group. A \emph{representation}
     of $G$ is a group homomorphism $\rho\colon G\to\GL(V)$, where
-    $V$ is a finite-dimensional vector space. The \textbf{degree} (or dimension) 
+    $V$ is a finite-dimensional vector space. The \emph{degree} (or dimension) 
     of the representation is the integer $\deg\rho=\dim V$. 
 \end{definition}
 
 \index{Matrix representation}
 Let $G\to\GL(V)$ be a representation. 
 If we fix a basis of $V$, then we obtain
-a \textbf{matrix representation} of $G$, that is a 
+a \emph{matrix representation} of $G$, that is a 
 group homomorphism 
 \[
 \rho\colon G\to\GL(V)\simeq\GL_n(\C),
@@ -456,7 +456,7 @@ see a different proof later.
 \begin{definition}
 \index{Equivalent representations}
 Let $G$ be a group and $\phi\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations of $G$. 
-We say that $\phi$ and $\psi$ are \textbf{equivalent} if 
+We say that $\phi$ and $\psi$ are \emph{equivalent} if 
 there exists a linear isomorphism $T\colon V\to W$ such that 
 \[
 	\psi_g T=T \phi_g
@@ -497,7 +497,7 @@ and $W$ are isomorphic as $\C[G]$-modules.
 
 \begin{definition}
     Let $\phi\colon G\to\GL(V)$ be a representation. A subspace 
-    $W\subseteq V$ is said to be \textbf{$G$-invariant} if
+    $W\subseteq V$ is said to be \emph{$G$-invariant} if
     $\phi_g(W)\subseteq W$ for all $g\in G$.  
 \end{definition}
 
@@ -511,7 +511,7 @@ of $V$.
 \index{Representation!irreducible}
 \index{Module!simple}
     A representation $\rho\colon G\to\GL(V)$ is 
-    said to be \textbf{irreducible} if 
+    said to be \emph{irreducible} if 
     $\{0\}$ and $V$ are the only 
     $G$-invariant subspaces of $V$. 
 \end{definition}
