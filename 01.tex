@@ -1,6 +1,6 @@
-\chapter{}
+\section{}
 
-\topic{Artin--Wedderburn theorem}
+\subsection{Artin--Wedderburn theorem}
 
 We first review the basic definitions concerning
 finite-dimensional semisimple algebras. 
@@ -12,7 +12,7 @@ Our base field will be the field $\C$ of complex numbers.
 
 \index{Algebra}
 \index{Algebra!unitary}
-A (complex) \textbf{algebra} $A$ is a (complex) vector space  
+A (complex) \emph{algebra} $A$ is a (complex) vector space  
 with an associative multiplication $A\times A\to A$ such that
 \[
 a(\lambda b+\mu c)=\lambda(ab)+\mu(ac),
@@ -29,12 +29,12 @@ examples of algebras are $\C[X]$ and $M_n(\C)$.
 
 \index{Module}
 \index{Submodule}
-A (left) \textbf{module} $M$ (over a unitary 
+A (left) \emph{module} $M$ (over a unitary 
 algebra $A$) is an abelian group $M$
 together with a map $A\times M\to M$, $(a,m)\mapsto am$, such that
 $1_Am=m$ for all $m\in M$ and 
 $a(bm)=(ab)m$ and $a(m+m_1)=am+am_1$ for all $a,b\in A$ and $m,m_1\in M$. 
-A \textbf{submodule} $N$ of $M$ is a subgroup 
+A \emph{submodule} $N$ of $M$ is a subgroup 
 $N$ such that $an\in N$ for all $a\in A$ and $n\in N$. 
 
 \begin{exercise}
@@ -46,16 +46,16 @@ $M$ is finitely generated if and only if $M$ is finite-dimensional.
 
 \index{Module!simple}
 \index{Module!semisimple}
-A module $M$ is said to be \textbf{simple} if $M\ne\{0\}$ and $\{0\}$ and $M$ 
+A module $M$ is said to be \emph{simple} if $M\ne\{0\}$ and $\{0\}$ and $M$ 
 are the only submodules of $M$.	
 A finite-dimensional module $M$  
-is said to be \textbf{semisimple} if $M$ is a direct sum of 
+is said to be \emph{semisimple} if $M$ is a direct sum of 
 finitely many simple submodules. 
 Clearly, simple modules are semisimple. Moreover, any finite direct sum of semisimples is semisimple. 
 
 
 \index{Algebra!semisimple}
-A finite-dimensional algebra $A$ is said to be \textbf{semisimple} if
+A finite-dimensional algebra $A$ is said to be \emph{semisimple} if
 every finitely-generated $A$-module is semisimple. 
 
 \begin{theorem}[Artin--Wedderburn]
@@ -68,7 +68,7 @@ for some $n_1,\dots,n_k\in\Z_{>0}$.
 \end{theorem}
 
 We also give some basic facts on the Jacobson radical
-of finite-dimensional algebras. If $A$ is a finite-dimensional algebra, the \textbf{Jacobson radical} is defined as 
+of finite-dimensional algebras. If $A$ is a finite-dimensional algebra, the \emph{Jacobson radical} is defined as 
 \[
 J(A)=\bigcap\{M:M\text{ is a maximal left ideal of $A$}\}. 
 \]
@@ -76,7 +76,7 @@ It turns out that $J(A)$ is an ideal of $A$. If $A$ is
 unitary, then Zorn's lemma implies that there a 
 maximal left ideal of $A$ and hence $J(A)\ne A$. 
 
-An ideal $I$ of $A$ is said to be \textbf{nilpotent}
+An ideal $I$ of $A$ is said to be \emph{nilpotent}
 if $I^m=\{0\}$ for some $m$, that is 
 $x_1\cdots x_m=0$ for all $x_1,\dots,x_m\in I$. 
 One proves that the Jacobson radical of $A$ 
@@ -90,7 +90,7 @@ J(A)=\{0\}\\
 A\text{ has no non-zero nilpotent ideals}.
 \end{align*}
 
-\topic{Kolchin's theorem}
+\subsection{Kolchin's theorem}
 \label{Kolchin}
 
 In this section it will be useful to consider 
@@ -101,9 +101,9 @@ non-unitary algebras.
 \index{Nilpotent!element}
 \index{Nil!algebra}
     Let $A$ be an algebra (possibly without one). An element $a\in A$
-    is said to be \textbf{nilpotent} if 
+    is said to be \emph{nilpotent} if 
     $a^n=0$ for some $n\geq1$. The algebra $A$ is said to be
-    \textbf{nil} if every element $a\in A$ is nilpotent. 
+    \emph{nil} if every element $a\in A$ is nilpotent. 
 \end{definition}
 
 Nilpotent elements are also called nil elements.  
@@ -114,7 +114,7 @@ Nilpotent elements are also called nil elements.
 
 \begin{definition}
     \index{Nilpotent!algebra}
-    An algebra $A$ is said to be \textbf{nilpotent} if there exists
+    An algebra $A$ is said to be \emph{nilpotent} if there exists
     $n\geq1$ such that every product 
     $a_1a_2\cdots a_n$
     of $n$ elements of $A$ is zero. 
@@ -267,7 +267,7 @@ to simplify the presentation.
 
 \begin{definition}
 \index{Flag!complete}
-    Let $V=\C^{n}$ (column vectors). A \textbf{complete flag} in $V$ 
+    Let $V=\C^{n}$ (column vectors). A \emph{complete flag} in $V$ 
     is a sequence $(V_1,V_2,\dots,V_n)$ of vector spaces
     such that 
     \[
@@ -279,7 +279,7 @@ to simplify the presentation.
 If $(V_1,\dots,V_n)$ is a complete flag, then $\dim V_i=i$ for all 
 $i\in\{1,\dots,n\}$. 
 Let $\{e_1,\dots,e_n\}$ be the standard basis of $\C^n$. 
-The \textbf{standard flag} is the sequence $(E_1,\dots,E_n)$, where
+The \emph{standard flag} is the sequence $(E_1,\dots,E_n)$, where
 $E_i=\langle e_1,\dots,e_i\rangle$ for all $i\in\{1,\dots,n\}$.  
 
 Note that $\GL_n(\C)$ acts on the set of complete flags of $V$ 
@@ -306,7 +306,7 @@ G_{(E_1,\dots,E_n)}
 =\{(b_{ij}):b_{ij}=0\text{ if $i>j$}\}
 \end{align*}
 of the standard flag. Then $B_n(\C)$ is 
-known as the \textbf{Borel subgroup}. 
+known as the \emph{Borel subgroup}. 
 
 Let $U_n(\C)$ be the subgroup of $\GL_n(\C)$ 
 of matrices $(u_{ij})$ such that 
@@ -345,7 +345,7 @@ Let $T_n(\C)$ be the subgroup of $\GL_n(\C)$ diagonal matrices.
 
 \begin{definition}
 \index{Unipotent element}
-    A matrix $a\in\GL_n(\C)$ is said to be \textbf{unipotent} 
+    A matrix $a\in\GL_n(\C)$ is said to be \emph{unipotent} 
     if its characteristic polynomial is of the form 
     $(X-1)^n$. 
 \end{definition}
@@ -355,7 +355,7 @@ as its characteristic polynomial is $(X-1)^2$.
 
 \begin{definition}
 \index{Unipotent group}
-    A subgroup $G$ of $\GL_n(\C)$ is said to be \textbf{unipotent} if
+    A subgroup $G$ of $\GL_n(\C)$ is said to be \emph{unipotent} if
     each $g\in G$ is unipotent. 
 \end{definition}
 

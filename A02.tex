@@ -1,0 +1,410 @@
+\section{Representations of $\sl(2,\C)$}
+
+We discuss a particularly essential Lie algebra: 
+\[
+\sl(2,\C)=\left\{\begin{pmatrix}
+    a & b\\
+    c & -a
+    \end{pmatrix}:a,b,c\in\C\right\}.
+\]
+Note that 
+$e=\begin{pmatrix}
+        0&1\\
+        0&0\end{pmatrix}$, $h=\begin{pmatrix}
+        1&0\\
+        0&-1\end{pmatrix}$ and $f=\begin{pmatrix}0&0\\1&0\end{pmatrix}$ 
+        is an ordered basis for $\sl(2,\C)$. In this basis,
+\[
+[h,e]=2e,\quad
+[h.f]=-2f,\quad
+[e,f]=h.
+\]
+
+Let $V$ be an $\sl(2,\C)$-module. Note that we do not assume that $V$ is simple. 
+For $\lambda\in\C$ an eigenvalue of the action of $h$, let
+\[
+V_{\lambda}=\{v\in V:h\cdot v=\lambda v\}
+\]
+be the \emph{weight space} of $\lambda$. 
+If $\lambda$ is not an eigenvector of $h$, 
+we set $V_{\lambda}=\{0\}$. A \emph{weight} of $V$  
+is a scalar $\lambda$ such that $V_{\lambda}\ne\{0\}$. 
+
+\begin{lemma}
+    Let $V$ be an $\sl(2,\C)$-module and $v\in V_{\lambda}$. 
+    \begin{enumerate}
+        \item Either $e\cdot v=0$ or $e\cdot v$ is an eigenvector of $h$ with
+            eigenvalue $\lambda+2$.
+        \item Either $f\cdot v=0$ or $f\cdot v$ is an eigenvector of $h$ with
+            eigenvalue $\lambda-2$.
+    \end{enumerate} 
+\end{lemma}
+
+\begin{proof}
+    We only prove 1):
+    \[h\cdot(e\cdot v)=e\cdot(h\cdot v)+[h,e]\cdot v=e\cdot(\lambda v)+2e\cdot v=(\lambda+2)e\cdot v.
+    \]
+    The second formula is left as an exercise. 
+\end{proof}
+
+\begin{lemma}
+\label{lem:maximal_weight}
+    Let $V$ be a finite-dimensional $\sl(2,\C)$-module.
+    There exists an eigenvector 
+    $w\in V$ of $h$ such that $e\cdot w=0$. 
+\end{lemma}
+
+\begin{proof}
+    The linear map induced by the action of $h$ has at least one eigenvector 
+    $v$ with eigenvalue $\lambda$. If the elements 
+    $v,e\cdot v,e^2\cdot v,\dots$ are non-zero, they are linearly independent, as they 
+    form a sequence of eigenvectors of $h$ with different eigenvalues.  
+    As $\dim V<\infty$, it follows that there exists $k$ 
+    such that $e^k\cdot v\ne 0$ and $e^{k+1}\cdot v=0$. 
+    Let $w=e^k\cdot v\ne 0$. 
+    Then
+    $h\cdot w=(\lambda+2k)\cdot w$ and $e\cdot w=0$. 
+\end{proof}
+
+A vector $v\in V$ such that $V_{\lambda}\ne\{0\}$ and
+$V_{\lambda+2}=\{0\}$ will be called a \emph{highest weight vector} 
+of weight $\lambda$. 
+
+\begin{lemma}
+\label{lem:basis}
+    Let $V$ be a finite-dimensional simple $\sl(2,\C)$-module
+    and let $w$ be a highest vector of weight $\lambda$. Let 
+    $k$ be such that $f^k\cdot w\ne 0$ and $f^{k+1}\cdot w=0$.
+    Then $\{w,f\cdot w,\dots,f^{k}\cdot w\}$ is a basis of $V$.
+    Moreover, $\lambda=k$.
+\end{lemma}
+
+\begin{proof}
+    The elements $w,f\cdot w,\dots,f^{k}\cdot w$ 
+    are linearly independent, as they are eigenvectors of $h$ with 
+    different eigenvalues. Since $V$ is simple, it is enough 
+    to prove that 
+    the non-zero subspace $W=\langle w,f\cdot w,\dots,f^k\cdot w\rangle$ 
+    is a submodule of $V$. This subspace 
+    is invariant under the action of 
+    $h$ and $f$. One easily proves by induction that 
+    \[
+    (hf^j)\cdot w=(\lambda-2j)f^jw
+    \]
+    for all $j\geq0$. 
+    Let us prove that $W$ is invariant 
+    under the action of $e$, that is, $e\cdot W\subseteq W$. 
+    We claim that 
+    \[
+    (ef^{j})\cdot w=j(\lambda-j+1)f^{j-1}\cdot w\in W
+    \]
+    for all $j$. We proceed by induction on $j$. Note that 
+    the case $j=0$ is trivial, as $e\cdot w=0$. 
+    The case $j=1$ is easy:
+    \[
+    (ef)\cdot w=(h+fe)\cdot w=h\cdot w+f\cdot (e\cdot w)=\lambda w.
+    \]
+    If the claim holds for some $j$, by using 
+    the inductive hypothesis, 
+    \begin{align*}
+        e\cdot(f^{j+1}\cdot w)&=(ef)\cdot (f^{j}\cdot w)\\
+        &=(fe+h)\cdot (f^{j}\cdot w)\\
+        &=h\cdot (f^j\cdot w)+j(\lambda-j+1)(f^j\cdot w)\\
+        &=(j+1)(\lambda-j)(f^{j}\cdot w).
+    \end{align*}
+    
+    We now compute $\lambda$. 
+    The matrix of the action of $h$ in the basis 
+    $\{w,f\cdot w,\dots,f^k\cdot w\}$ 
+    is diagonal with trace 
+    \[
+    \lambda+(\lambda-2)+\cdots+(\lambda-2k)=(k+1)(\lambda-k).
+    \]
+    Since $[e,f]=h$ has trace zero, it follows that $\lambda=k$. 
+\end{proof}
+
+We now summarize what we know about 
+simple $\sl(2,\C)$-modules.
+
+\begin{theorem}
+    Let $V$ be a finite-dimensional simple $\sl(2,\C)$-module.
+    Then 
+    $V$ is the direct sum of one-dimensional weight spaces
+    \begin{equation}
+    \label{eq:sl2_decomposition}
+        V=V_{\lambda}\oplus V_{\lambda-2}\oplus\cdots\oplus V_{-\lambda+2}\oplus V_{-\lambda}.
+    \end{equation}
+    In particular, $\dim V=\lambda+1$. 
+    The set $\{w,f\cdot w,\dots,f^\lambda\cdot w\}$ 
+    is a basis of $V$ and 
+    \begin{equation}
+        \label{eq:sl2_module}
+        \begin{aligned}
+            &h\cdot (f^j\cdot w)=(\lambda-2j)f^j\cdot w,\\
+            &f\cdot (f^j\cdot w)=f^{j+1}\cdot w,\\
+            &e\cdot (f^j\cdot w)=j(\lambda-j+1)f^{j-1}\cdot w.
+        \end{aligned}
+    \end{equation}
+\end{theorem}
+
+\begin{proof}
+    By Lemma \ref{lem:maximal_weight}, there exists an eigenvector $w$ of $h$ 
+    with eigenvalue $\lambda$ such that $e\cdot w=0$. By Lemma \ref{lem:basis}, 
+    the set 
+    $\{w,f\cdot w,\dots,f^k\cdot w\}$ is a basis of $V$ and
+    the formulas of \eqref{eq:sl2_module} follow. For $j\in\{0,\dots,k\}$
+    the complex vector space generated by $f^j\cdot w$ 
+    is a one-dimensional weight space of weight $\lambda-2j$. Thus \eqref{eq:sl2_decomposition}
+    follows. 
+\end{proof}
+
+In particular, there exists at most one simple $\sl(2,(\C)$-module (up to isomorphism) 
+of each possible dimension $\lambda+1$ for $\lambda+1$. 
+
+\begin{exercise}
+    Prove that two 
+    finite-dimensional $\sl(2,\C)$ generated by
+    highest weight vectors of the same weight are isomorphic. 
+\end{exercise}
+
+Consider the polynomial ring $\C[X,Y]$ in two commuting variables
+$X$ and $Y$. Let $V_d$ be the subspace of homogeneous polynomials
+of degree $d$. Then $\dim V_d=d+1$ 
+as a basis of $V_d$ is given 
+by $\{X^d,X^{d-1}Y,X^{d-2}Y^2,\dots,XY^{d-1},Y^d\}$. 
+
+\begin{exercise}
+    Prove that $\varphi\colon\sl(2,\C)\to\gl(V_d)$, 
+    \begin{align}
+        \varphi(e)=X\frac{\partial}{\partial Y},
+        &&
+        \varphi(f)=Y\frac{\partial}{\partial X},
+        &&
+        \varphi(h)=X\frac{\partial}{\partial X}-Y\frac{\partial}{\partial Y},
+    \end{align}
+    is a representation of $\sl(2,\C)$. 
+    This means that 
+    \begin{gather*}
+    \varphi(e)(X^aY^b)=bX^{a+1}Y^{b-1},
+    \quad
+    \varphi(f)(X^aY^b)=aX^{a-1}Y^{b+1},
+    \shortintertext{and that}
+    \varphi(h)(X^aY^b)=(a-b)X^aY^b.
+    \end{gather*}
+\end{exercise}
+
+In the basis $\{X^d,X^{d-1}Y,X^{d-2}Y^2,\dots,XY^{d-1},Y^d\}$, 
+\begin{align*}
+\varphi(e)=\left(\begin{smallmatrix}
+0 & 1 & 0 & \cdots & 0\\
+0 & 0 & 2 & \cdots & 0\\
+\vdots & \vdots & \vdots & \ddots & \vdots\\
+0 & 0 & 0 & \cdots & d\\
+0 & 0 & 0 & \cdots & 0
+\end{smallmatrix}\right),
+&& 
+\varphi(f)=\left(\begin{smallmatrix}
+0 & 0 & \cdots & 0 & 0\\
+d & 0 & \cdots & 0 & 0\\
+0 & d-1 & \cdots & 0 & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots\\
+0 & 0 & \cdots & 1 & 0
+\end{smallmatrix}\right),
+&&
+\varphi(h)=\left(\begin{smallmatrix}
+d & 0 & \cdots & 0 & 0\\
+0 & d-2 & \cdots & 0 & 0\\
+\vdots & \vdots & \ddots & \vdots & \vdots\\
+0 & 0 & \cdots & -d+2 & 0\\
+0 & 0 & \cdots & 0 & -d
+\end{smallmatrix}\right).
+\end{align*}
+
+The previous lemma allows us to describe the actions of 
+$e$, $f$ and $h$ on $V$ with a very nice picture:
+\[
+\begin{tikzcd}
+\{0\} 
+& V_{-\lambda} \arrow[out=90,in=120,loop]\arrow[l,bend left,"f"]\arrow[r,bend left,"e"]
+& V_{-\lambda+2} \arrow[out=90,in=120,loop]\arrow[l,bend left,"f"]\arrow[r,bend left,"e"]
+& \cdots\arrow[l,bend left,"f"]\arrow[r,bend left,"e"]
+& V_{\lambda-2} \arrow[out=90,in=120,loop]\arrow[l,bend left,"f"]\arrow[r,bend left,"e"]
+& V_{\lambda} \arrow[out=90,in=120,loop]\arrow[r,bend left,"e"]\arrow[l,bend left,"f"]
+& \{0\}
+\end{tikzcd}
+\]
+
+\begin{exercise}
+    Prove that $V_d$ is generated (as an $\sl(2,\C)$-module) by
+    $X^aY^b$ for some $a$ and $b$ such that $a+b=d$. 
+\end{exercise}
+
+\begin{exercise}
+    Prove that each $V_d$ is a simple $\sl(2,\C)$-module.
+\end{exercise}
+
+\begin{exercise}
+    Prove that any $V$ finite-dimensional simple 
+    $\sl(2,\C)$-module is isomorphic to $V_d$ for some $d$. 
+\end{exercise}
+
+\begin{definition}
+\index{Completely reducible}
+    Let $L$ be a Lie algebra and $V$ be an $L$-module. We say that
+    $V$ is \emph{completely reducible} if $V=S_1\oplus\cdots\oplus S_k$
+    for simple modules $S_1,\dots,S_k$. 
+\end{definition}
+
+The following result is a particular
+case of Weyl's theorem in the context of $\sl(2,\C)$-modules. 
+
+\begin{theorem}
+    Any finite-dimensional $\sl(2,\C)$-module is absolutely reducible. 
+\end{theorem}
+
+\begin{proof}
+    See \cite[Exercises 8.6 and 9.15]{MR2218355}.
+\end{proof}
+
+% \begin{proof}
+%     Let $V$ be a finite-dimensional $\sl(2,\C)$-module. 
+%     We proceed in several steps.
+    
+%     \begin{claim}
+%         The elemenet $Z=\frac12h^2+h+2fe$ commutes with every $X\in\sl(2,\C)$. 
+%     \end{claim}
+    
+%     We first compute
+%     \begin{equation}
+%         \begin{aligned}
+%             \label{eq:Casimir}
+%             ZX-XZ &= \frac12h^2X-\frac12Xh^2+[h,X]+2feX-2Xfe\\
+%             &=\frac12h[e,X]-\frac12[X,h]h+[h,X]+2f[e,X]-2[X,f]e.
+%         \end{aligned}
+%     \end{equation}
+%     Now one checks that 
+%     Equation \eqref{eq:Casimir} is zero if $X\in\{h,e,f\}$ and
+%     the claim follows. 
+%     %See \cite[Theorem V.4.6]{MR1321145} or \cite[Theorem 1.67]{MR1920389}. 
+    
+%     \begin{claim}
+%         If $\dim V=n+1$, then $Z$ acts as the scalar 
+%         $\frac12n^2+n$, which is not zero unless $V$ is the trivial module. 
+%     \end{claim}
+    
+%     By Schur's lemma, $Z$ acts by a scalar. Since $V$ is a simple
+%     $\sl(2,\C)$-module of dimension $n+1$, $V\simeq V_{n+1}$. In particular, 
+%     $hv_0=nv_0$ and $ev_0=0$. 
+    
+%     \begin{claim}
+%         Let $U\subseteq V$ be a submodule of codimension one. Then 
+%         there exists a submodule $W$ of $V$ such that $V=U\oplus W$ 
+%         and $\dim W=1$. 
+%     \end{claim}
+    
+%     We split the proof of the claim into several steps. 
+    
+%     First, we assume that
+%     $\dim U=1$. The quotient module $V/U$ is one-dimensional and hence simple. 
+%     Thus $\sl(2,\C)V\subseteq U$ and $\sl(2,\C)U=\{0\}$. Hence 
+%     \[
+%     [X,Y]V\subseteq XYV-YXV\subseteq XU+YU=\{0\}.
+%     \]
+%     Since $\sl(2,\C)=[\sl(2,\C),\sl(2,\C)]$, we conclude that
+%     $\sl(2,\C)V=\{0\}$. Thus any complement of $U$ will serve as $W$. 
+    
+%     \medskip
+%     We now finish the proof of the theorem. 
+% \end{proof}
+
+\subsection{Enveloping algebras}
+
+Let $L$ be a finite-dimensional Lie algebra with
+basis $\{x_1,\dots,x_n\}$. Write
+\[
+[x_i,x_j]=\sum_{k=1}^n c^k_{ij}x_k
+\]
+for scalars $c_{ij}^k\in\C$. 
+These scalars are called 
+the \emph{structure constants} of $L$. 
+
+\index{Universal enveloping algebra}
+The \emph{universal enveloping algebra} of $L$ 
+is the associative algebra $U(L)$ with generators 
+$x_1,\dots,x_n$ and relations 
+\[
+x_ix_j-x_jx_i=\sum_{k=1}^n c_{ij}^kx_k.
+\]
+
+Our definition depends on the choice of the basis of the Lie algebra $L$. 
+However, it is possible to define $U(L)$ as the quotient 
+of the tensor algebra $T(L)$ by the ideal $I$ 
+generated by $x\otimes y-y\otimes x-[x,y]$ for all $x,y\in L$.  We refer 
+to \cite[Chapter V]{MR1321145} for more details. 
+
+\begin{example}
+    If $L$ is an abelian Lie algebra, then $U(L)$ is 
+    the symmetric algebra $S(L)$. 
+\end{example}
+
+\begin{example}
+    The universal enveloping algebra $U(\sl(2,\C))$ 
+    is the algebra with generators $e,f,h$ and relations 
+    \[
+    ef-fe=h,\quad
+    hf-fh=-2f,\quad
+    he-eh=2e.
+    \]
+\end{example}
+
+
+The universal enveloping algebra satisfies a \emph{universal property}. 
+Let $L$ be a Lie algebra. If $A$ is an associative algebra, then
+$A$ has the structure of a Lie algebra with
+bracket 
+$[a,b]=ab-ba$. If $f\colon L\to A$ is a homomorphism of Lie algebras, 
+then there exists a unique algebra homomorphism
+$\varphi\colon U(L)\to A$ such that 
+\[
+\begin{tikzcd}
+	L & A \\
+	& U(L)
+	\arrow["f", from=1-1, to=1-2]
+	\arrow["{\iota }"', from=1-1, to=2-2]
+	\arrow["\varphi"', dashed, from=2-2, to=1-2]
+\end{tikzcd}
+\]
+commutes, where $\iota\colon L\to U(L)$ 
+denotes the canonical map. 
+
+%\begin{exercise}
+%    Let $L$ and $L_1$ be Lie algebras. Prove that 
+%    $U(L\oplus L_1)\simeq U(L)\otimes U(L_1)$. 
+%\end{exercise}
+
+\begin{theorem}[Poincar\'e--Birkhoff--Witt]
+    \index{Poincar\'e--Birkhoff--Witt theorem}
+    \index{PBW theorem}
+    \label{thm:PBW}
+    Let $L$ be a finite-dimensional Lie algebra and 
+    $\{x_1,\dots,x_n\}$ be an ordered basis of $L$. Then 
+    \[
+    \{x_1^{a_1}\cdots x_n^{a_n}:a_1,\dots,a_n\geq0\}
+    \]
+    is a basis of $U(L)$. 
+\end{theorem}
+
+See for example \cite[\S17.4]{MR499562}. 
+
+\begin{example}
+    The set $\{e^ih^jf^k:i,j,k\geq0\}$ is a basis of $U(\sl(2,\C))$. A proof of this 
+    fact that does not use Theorem \ref{thm:PBW} 
+    can be done using Ore's extensions; see \cite[Proposition 3.2]{MR1321145}.
+\end{example}
+
+
+\begin{exercise}
+    Let $L$ be a finite-dimensional Lie algebra and $U(L)$ be its
+    universal enveloping algebra. Prove that there exists a bijective
+    correspondence between (simple) $L$-modules and (simple) $U(L)$-modules. 
+\end{exercise}
