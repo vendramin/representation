@@ -1,12 +1,12 @@
-\section{}
+\section{Lecture: Week 1}
 
-\subsection{Artin--Wedderburn theorem}
+\subsection{The Artin--Wedderburn theorem}
 
 We first review the basic definitions concerning
 finite-dimensional semisimple algebras. 
 Proofs can be found in the
-notes to the course \emph{Associative Algebras}, see
-lectures 1, 2 and 3. 
+notes to the course \emph{Associative Algebras} (see
+Lectures 1, 2 and 3). 
 
 Our base field will be the field $\C$ of complex numbers. 
 
@@ -21,9 +21,9 @@ a(\lambda b+\mu c)=\lambda(ab)+\mu(ac),
 \]
 for all $a,b,c\in A$. If $A$ contains 
 an element $1_A\in A$ such that $1_Aa=a1_A=a$ for all $a\in A$, then $A$ is 
-a unitary algebra. 
+a unitary algebra. Our algebras will be unitary. 
 
-Our algebras will be finite-dimensional. 
+Our algebras will also be finite-dimensional. 
 Clearly, $\C$ is an algebra. Other 
 examples of algebras are $\C[X]$ and $M_n(\C)$. 
 
@@ -90,508 +90,567 @@ J(A)=\{0\}\\
 A\text{ has no non-zero nilpotent ideals}.
 \end{align*}
 
-\subsection{Kolchin's theorem}
-\label{Kolchin}
+\subsection{Group algebras}
 
-In this section it will be useful to consider 
-non-unitary algebras. 
-
-\begin{definition}
-\index{Nil!element}
-\index{Nilpotent!element}
-\index{Nil!algebra}
-    Let $A$ be an algebra (possibly without one). An element $a\in A$
-    is said to be \emph{nilpotent} if 
-    $a^n=0$ for some $n\geq1$. The algebra $A$ is said to be
-    \emph{nil} if every element $a\in A$ is nilpotent. 
-\end{definition}
-
-Nilpotent elements are also called nil elements.  
-
-\begin{example}
-    Let $A=M_2(\R)$. Then $a=\begin{pmatrix}0&1\\0&0\end{pmatrix}$ is nilpotent. 
-\end{example}
-
-\begin{definition}
-    \index{Nilpotent!algebra}
-    An algebra $A$ is said to be \emph{nilpotent} if there exists
-    $n\geq1$ such that every product 
-    $a_1a_2\cdots a_n$
-    of $n$ elements of $A$ is zero. 
-\end{definition}
-
-Nilpotent algebras are trivially nil, whereas nil algebras may not be nilpotent.
-
-\begin{exercise}
-    Give an example of a nil algebra that is not nilpotent. 
-\end{exercise}
-
-Note that nil algebras cannot be unitary. 
-
-\begin{proposition}
-\label{pro:unit}
-    Let $A$ be an algebra. There exists an algebra $B$ 
-    with one $1_B$ and an ideal $I$ of $B$ 
-    such that $B/I\simeq\C$ and $I\simeq A$. 
-\end{proposition}
-
-\begin{proof}[Sketch of the proof]
-    Let $B=\C\times A$. The multiplication  
-    \[
-    (\lambda,u)(\mu,v)=(\lambda\mu,\lambda v+\mu u+uv)
-    \]
-    turns $B$ into an algebra with identity $(1,0)$. The subset
-    $I=\{(0,a):a\in A\}$ is an ideal of $B$. Then $I\simeq A$ 
-    and $B/I\simeq\C$. 
-\end{proof}
-
-\begin{exercise}
-Let $A_1,\dots,A_k$ be algebras. 
-Prove that the ideals of $A_1\times\cdots\times A_k$ 
-are of the form $I_1\times\cdots\times I_k$, where
-each $I_j$ is an ideal of $A_j$.  
-\end{exercise}
-
-\begin{exercise}
-\label{xca:unit}
-    Prove that the non-zero ideals of 
-    $\prod_{i=1}^k M_{n_i}(\C)$ are unitary algebras.  
-\end{exercise}
-
-\begin{proposition}
-    Let $A$ be non-zero algebra (possibly without one). If $A$ 
-    does not have non-zero nilpotent 
-    ideals, then $A$ is a unitary algebra. 
-\end{proposition}
-
-\begin{proof}
-    Let $B$ be a unitary algebra such that there exists
-    an ideal $I$ of $B$ with $B/I\simeq\C$ and $I\simeq A$ 
-    (see Proposition \ref{pro:unit}). Let $J$ be 
-    a nilpotent ideal of $B$. Since $J\cap I\subseteq I$ is a nilpotent
-    ideal of $A$, 
-    $J\cap I=\{0\}$. Thus 
-    \[
-    J\simeq J/(J\cap I)\simeq (I+J)/I
-    \]
-    is a nilpotent ideal of $B/I\simeq\C$. Thus $J=\{0\}$ 
-    and hence $B$ is semisimple. By Artin--Wedderburn, 
-    $B\simeq\prod_{i=1}^k M_{n_i}(\C)$. Since $A$ is isomorphic to an ideal of 
-    $B$, Exercise \ref{xca:unit} shows
-    that $A$ is a unitary algebra. 
-\end{proof}
-
-Now we prove another nice result of Wedderburn:
-
-\begin{theorem}[Wedderburn]
-\label{thm:Wedderburn}
-\index{Wedderburn's theorem}
-    Let $A$ be a complex finite-dimensional 
-    algebra. If $A$ is generated (as a vector space) 
-    by nilpotent elements, then $A$ is nilpotent. 
-\end{theorem}
-
-We shall need a lemma.
-
-\begin{lemma}
-    The vector space $M_n(\C)$ does not have a basis of nilpotent matrices. 
-\end{lemma}
-
-\begin{proof}
-    If $\{A_1,\dots,A_{n^2}\}$ is a basis of 
-    $M_n(\C)$ consisting of nilpotent matrices, 
-    then there exist $\lambda_1,\dots,\lambda_{n^2}\in\C$ such that 
-    \begin{equation}
-        \label{eq:nilpotent}
-        E_{11}=\begin{pmatrix}
-        1&0&\cdots&0\\
-        0&0&\cdots&0\\
-        \vdots&\vdots&\ddots&\vdots\\
-        0&0&\cdots&0
-        \end{pmatrix}
-        =\sum_{i=1}^{n^2}\lambda_iA_i.
-    \end{equation}
-    Note $\trace(A_i)=0$ for all $i\in\{1,\dots,n\}$, as 
-    every $A_i$ is nilpotent. 
-    Apply trace to \eqref{eq:nilpotent} to 
-    obtain that $1=\trace(E_{11})=\sum\lambda_i\trace(A_i)=0$, a contradiction. 
-\end{proof}
-
-Now we prove Wedderburn's theorem. Note that
-the theorem can be extended to any algebraically closed field. We 
-state and prove Wedderburn's theorem in the case of complex numbers
-to simplify the presentation. 
-
-\begin{proof}[Proof of Theorem \ref{thm:Wedderburn}]
-    We proceed by induction on $\dim A$. If $\dim A=1$ and 
-    there exists a nilpotent element $a\in A$ such that 
-    $\{a\}$ is a basis of $A$, then $A$ is nilpotent, 
-    as every element of $A$ is nilpotent, as it is 
-    of the form 
-    $\lambda a$ for some $\lambda\in\C$. 
-    
-    Assume now that $\dim A>1$. Since $J(A)$ is nilpotent, $J(A)^n=\{0\}$ 
-    for some $n$. 
-    
-    If $J(A)=A$, the result trivially holds. 
-
-    If $J(A)\ne\{0\}$, 
-    $\dim A/J(A)<\dim A$ and hence 
-    $A/J(A)$ is nilpotent by 
-    the inductive hypothesis, 
-    say $(A/J(A))^m=\{0\}$. Let $\pi\colon A\to A/J(A)$ be the canonical map and 
-    $N=nm$. We claim that $A^N=\{0\}$. Let $a_1,\dots,a_N\in A$. Write
-    $a_1\cdots a_N=x_1\cdots x_n$ for some $x_1\cdots x_n\in A$. For example,
-    \begin{align*}
-    x_1&=a_1a_2\cdots a_m,\\
-    x_2&=a_{m+1}a_{m+2}\cdots a_{2m},\\
-    &\vdots
-    \end{align*}
-    Since 
-    \[
-    \pi(x_1)=\pi(a_1a_2\cdots a_m)=\pi(a_1)\pi(a_2)\cdots\pi(a_m)=0,
-    \]
-    it follows that $x_1\in J(A)$. Similarly, 
-    $\pi(x_j)\in J(A)$
-    for every $j\in\{1,\dots,n\}$. Thus,
-    \[
-    a_1a_2\cdots a_N=x_1x_2\cdots x_n\in J(A)^n=\{0\}. 
-    \]
-    Thus $A$ is nilpotent. 
-
-    If $J(A)=\{0\}$, then 
-    $A$ is semisimple. By Artin--Wedderburn, 
-    $A\simeq\prod_{i=1}^k M_{n_i}(\C)$, a contradiction to 
-    the previous lemma. 
-\end{proof}
-
-\begin{definition}
-\index{Flag!complete}
-    Let $V=\C^{n}$ (column vectors). A \emph{complete flag} in $V$ 
-    is a sequence $(V_1,V_2,\dots,V_n)$ of vector spaces
-    such that 
-    \[
-    \{0\}\subsetneq V_1\subsetneq V_2\subsetneq\cdots\subsetneq V_n=V.
-    \]
-\end{definition}
-
-\index{Flag!standard}
-If $(V_1,\dots,V_n)$ is a complete flag, then $\dim V_i=i$ for all 
-$i\in\{1,\dots,n\}$. 
-Let $\{e_1,\dots,e_n\}$ be the standard basis of $\C^n$. 
-The \emph{standard flag} is the sequence $(E_1,\dots,E_n)$, where
-$E_i=\langle e_1,\dots,e_i\rangle$ for all $i\in\{1,\dots,n\}$.  
-
-Note that $\GL_n(\C)$ acts on the set of complete flags of $V$ 
-by 
+\index{Group algebra}
+Let $G$ be a finite group. The (complex) \emph{group
+algebra} $\C[G]$ is the $\C$-vector space with
+basis $\{g:g\in G\}$ and multiplication
 \[
-g\cdot (V_1,\dots,V_n)=(T_g(V_1),\dots,T_g(V_n)),
+\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
+=\sum_{g,h\in G}\lambda_g\mu_h(gh).
 \]
-where $T_g\colon V\to V$, $x\mapsto gx$. 
 
-The action is \emph{transitive}, 
-which means that if $(V_1,\dots,V_n)$ 
-is a complete flag, then there exists 
-$g\in\GL_n(\C)$ such that $g\cdot (E_1,\dots,E_n)=(V_1,\dots,V_n)$. 
-In fact, 
-the matrix $g=(v_1|v_2|\cdots|v_n)$, where
-$\{v_1,\dots,v_n\}$ is a basis of $V$, 
-satisfies $ge_i=v_i$ for all $i\in\{1,\dots,n\}$. 
+Clearly, $\dim \C[G]=|G|$. Moreover, 
+$\C[G]$ is commutative if and only if $G$ is abelian. 
 
-\label{Borel subgroup}
-Let $B_n(\C)$ be the stabilizer    
-\begin{align*}
-G_{(E_1,\dots,E_n)}
-&=\{g\in\GL_n(\C):T_g(E_i)=E_i\text{ for all $i$}\}
-=\{(b_{ij}):b_{ij}=0\text{ if $i>j$}\}
-\end{align*}
-of the standard flag. Then $B_n(\C)$ is 
-known as the \emph{Borel subgroup}. 
-
-Let $U_n(\C)$ be the subgroup of $\GL_n(\C)$ 
-of matrices $(u_{ij})$ such that 
+\index{Augmentation ideal}
+If $G$ is non-trivial, 
+then $\C[G]$ contains proper non-trivial ideals. For example, 
+the \emph{augmentation ideal} 
 \[
-u_{ij}=\begin{cases}
-1&\text{if $i=j$},\\
-0&\text{if $i>j$}.\end{cases}
+I(G)=\left\{\sum_{g\in G}\lambda_gg\in \C[G]:\sum_{g\in G}\lambda_g=0\right\}
 \]
-Let $T_n(\C)$ be the subgroup of $\GL_n(\C)$ diagonal matrices. 
+is a non-zero proper ideal of $\C[G]$. 
 
-\begin{proposition}
-    $B_n(\C)=U_n(\C)\rtimes T_n(\C)$. 
-\end{proposition}
+\begin{exercise}
+    Let $G$ be a finite non-trivial group. Prove that
+    $\C[G]$ has zero divisors. 
+\end{exercise}
 
-\begin{proof}
-    It is trivial that $U_n(\C)\cap T_n(\C)=\{I\}$, where $I$ is the 
-    $n\times n$ identity matrix. Clearly, $U_n(\C)$ is a subgroup of $B_n(\C)$.
-    To prove that 
-    $U_n(\C)$ is normal in $B_n(\C)$ note that $U_n(\C)$ is the kernel
-    of the group homomorphism
+For $n\in\Z_{\geq2}$, we write $C_n$ to denote the (multiplicative) cyclic group of order $n$. 
+
+\begin{exercise}
+Prove that $\C[G]\simeq \C[X]/(X^n-1)$. 
+\end{exercise}
+
+\begin{exercise}
+    Let $G$ be a finite group. The set
     \[
-    f\colon B_n(\C)\to T_n(\C),\quad
-    (b_{ij})\mapsto\begin{pmatrix}
-        b_{11}\\
-        &b_{22}\\
-        &&\ddots\\
-        &&&b_{nn}
-    \end{pmatrix}.
+    \Fun(G,\C)=\{\alpha\colon G\to\C\}
     \]
-    It remains to show that $B_n(\C)=U_n(\C)T_n(\C)$.
-    Let us prove that  $B_n(\C)\subseteq U_n(\C)T_n(\C)$, as the other inclusion is trivial. 
-    Let $b\in B_n(\C)$. Then
-    $bf(b)^{-1}\in \ker f=U_n(\C)$ and therefore  
-    $b=(bf(b)^{-1})f(b)\in U_n(\C)T_n(\C)$. 
-\end{proof}
-
-\begin{definition}
-\index{Unipotent element}
-    A matrix $a\in\GL_n(\C)$ is said to be \emph{unipotent} 
-    if its characteristic polynomial is of the form 
-    $(X-1)^n$. 
-\end{definition}
-
-The matrix $\begin{pmatrix}1&1\\0&1\end{pmatrix}$ is unipotent, 
-as its characteristic polynomial is $(X-1)^2$. 
-
-\begin{definition}
-\index{Unipotent group}
-    A subgroup $G$ of $\GL_n(\C)$ is said to be \emph{unipotent} if
-    each $g\in G$ is unipotent. 
-\end{definition}
-
-Now an application of Wedderburn's theorem:
-
-\begin{proposition}
-\label{pro:unipotent}
-    Let $G$ be a unipotent subgroup of $\GL_n(\C)$. 
-    Then there exists a non-zero 
-    $v\in\C^{n}$ such that $gv=v$ for all $g\in G$. 
-\end{proposition}
-
-\begin{proof}
-    Without loss of generality, we may assume that $G$ is non-trivial. 
-    Let $V$ be the subspace of $\C^{n\times n}$ 
-    generated by $\{g-I:g\in G\}$. If $g\in G$, then 
-    $(g-I)^n=0$, as $g$ is unipotent. Thus,
-    every element of $V$ is nilpotent. If $g,h\in G$, 
-    then 
+    is a complex vector space with 
+    the operations 
     \[
-    (g-I)(h-I)=(gh-I)-(g-I)-(h-I)\in V.
-    \]
-    This means that $V$ is closed under multiplication and
-    hence $V$ is an algebra generated (as a vector space)
-    by nilpotent elements. By Wedderburn's theorem, 
-    $V$ is nilpotent. Let $m$ be minimal 
-    such that 
-    $(g_1-I)\cdots (g_m-I)=0$ 
-    for all $g_1,\dots,g_m\in G$. The minimality of $m$ implies that  
-    there exist $h_1,\dots,h_{m-1}\in G$ such that 
-    \[
-    (h_1-I)\cdots (h_{m-1}-I)\ne 0.
-    \]
-    In particular, there exists a non-zero 
-    $w\in C^{n}$ such that 
-    $v=(h_1-I)\cdots (h_{m-1}-I)w\ne 0$. For every 
-    $g\in G$, 
-    \[
-    (g-I)v=(g-I)(h_1-I)\cdots (h_{m-1}-I)w=0
-    \]
-    and hence $gv=v$. 
-\end{proof}
-
-\begin{theorem}[Kolchin]
-\label{thm:Kolchin}
-\index{Kolchin's theorem}
-Every unipotent subgroup of $\GL_n(\C)$ is conjugate
-to some subgroup of $U_n(\C)$. 
-\end{theorem}
-
-\begin{proof}
-    Let $G$ be an unipotent subgroup of $\GL_n(\C)$. 
-    Assume first that there exists
-    a complete flag $(V_1,\dots,V_n)$ of $\C^n$
-    such that $G\subseteq G_{(V_1,\dots,V_n)}$. Let $g\in\GL_n(\C)$ be such that 
-    $g\cdot (E_1,\dots,E_n)=(V_1,\dots,V_n)$. Then 
-    \begin{gather*}
-        G\subseteq G_{g\cdot (E_1,\dots,E_n)}
-        =g G_{(E_1,\dots,E_n)}g^{-1}=gB_n(\C)g^{-1}.
-    \end{gather*}
-    Since every unipotent element of $B_n(\C)$ 
-    belongs to $U_n(\C)$, it follows that 
-    \[
-    G\subseteq gU_n(\C)g^{-1}.
-    \]
-    
-    We claim that $G\subseteq G_{(V_1,\dots,V_n)}$ for
-    some complete flag $(V_1,\dots,V_n)$. We proceed by induction on $n$. If $n=1$, the result is trivial. Assume the result holds for 
-    $n-1$. By the previous proposition, there exists a non-zero $v\in\C^n$ 
-    such that $gv=v$ for all $g\in G$. Let $Q=\C^n/\langle v\rangle$ and $\pi\colon \C^n\to Q$ be the canonical map. Then $\dim Q=n-1$. The group $G$ 
-    acts on $Q$ by
-    \[
-    g\cdot (w+\langle v\rangle)=gw+\langle v\rangle.
-    \]
-    The action is well-defined: if $w+\langle v\rangle=w_1+\langle v\rangle$, then 
-    $w-w_1=\lambda v$ for some $\lambda\in\C$. This implies
-    that 
-    \[
-    gw-gw_1=g(w-w_1)=\lambda(gv)=\lambda v\in \langle v\rangle
-    \]
-    and hence $gw+\langle v\rangle=gw_1+\langle v\rangle$. 
-    
-    By the inductive hypothesis, $G$ stabilizes
-    a complete flag $(Q_1,\dots,Q_{n-1})$, where
-    \[
-    Q_1=\langle\pi(v_1)\rangle,
+    (\alpha+\beta)(x)=\alpha(x)+\beta(x),
     \quad
-    Q_2=\langle\pi(v_1),\pi(v_2)\rangle,
-    \quad
-    \dots
-    \quad
-    Q_{n-1}=\langle\pi(v_1),\dots,\pi(v_{n-1})\rangle.
+    (\lambda\alpha)(x)=\lambda\alpha(x),
+    \]
+    for all $\alpha,\beta\in\Fun(G,\C)$, $x\in G$ 
+    and $\lambda\in\C$. It is an algebra
+    with the \emph{convolution product} 
+    \[
+    (\alpha*\beta)(x)=\sum_{y\in G}\alpha(xy^{-1})\beta(y).
     \]
     Let 
     \[
-    W_0=\langle v\rangle,
-    \quad
-    W_1=\langle v,v_1\rangle,
-    \quad
-    W_2=\langle v,v_1,v_2\rangle,
-    \quad\dots\quad 
-    W_{n-1}=\langle v,v_1,\dots,v_{n-1}\rangle.
+    \delta_x(y)=\begin{cases}
+            1 & \text{if $x=y$},\\
+            0 & \text{otherwise}.
+        \end{cases}
     \]
-    Since $(Q_1,\dots,Q_{n-1})$ is a complete flag, 
-    the set $\{\pi(v_j):1\leq j\leq n-1\}$ is linearly
-    independent. We claim that 
-    $\{v,v_1,\dots,v_{n-1}\}$ is linearly independent. In fact, since $v\ne 0$, one obtains that 
-    \[
-    \sum_{i=1}^{n-1}\lambda_iv_i+\lambda v=0
-    \implies
-    \sum_{i=1}^{n-1}\lambda_i\pi(v_i)=0
-    \implies 
-    \lambda_1=\cdots=\lambda_{n-1}=0
-    \implies
-    \lambda=0.
-    \]
-    Thus $\dim W_i=i+1$ for all $i$. 
-    
-    Let $g\in G$. 
-    Clearly, 
-    $gW_0\subseteq W_0$, as $gv=v$. Let $j\in\{1,\dots,n-1\}$.
-    There exist $\lambda_1,\dots,\lambda_j\in\C$ 
-    such that 
-    $\pi(gv_j)=\sum_{i\leq j}\lambda_i\pi(v_i)$. This means
-    that 
-    \[
-    gv_j-\sum_{i\leq j}\lambda_iv_i=\lambda v\in\langle v\rangle
-    \]
-    for some $\lambda\in\C$. In particular, 
-    \[
-    gv_j=\sum_{i\leq j}\lambda_iv_i+\lambda v\in\langle v,v_1,\dots,v_{j}\rangle=W_j.
-    \]
-    Therefore, $G\subseteq G_{(W_0,\dots,W_{n-1})}$. 
-\end{proof}
+    Prove the following statements:
+    \begin{enumerate}
+        \item 
+        The set $\{\delta_x:x\in G\}$ is a basis
+        of $\Fun(G,\C)$. 
+        \item The map $\C[G]\to\Fun(G,\C)$, $g\mapsto\delta_g$, 
+            extends linearly to an algebra isomorphism. 
+    \end{enumerate}
+\end{exercise}
 
-\subsection{Some comments}
 
-The ideas behind the theorem are somewhat connected to Sylow's theory. The key is to consider an explicit version of Sylow's theorem for the group $\GL_n(p)$ of invertible matrices 
-with coefficients in the field $\F_p$ with $p$ elements. 
+\index{Module!semisimple}
+Recall that a finite-dimensional module $M$ is semisimple 
+if and only if for every submodule $S$ of $M$ there 
+is a submodule $T$ of $M$ such that $M=S\oplus T$.    
 
-A group $G$ acts linearly on a vector space $V$ 
-if $g\cdot (v+w)=g\cdot v+g\cdot w$
-for all $g\in G$ and $v,w\in V$.
-Proposition \ref{pro:unipotent} has the following
-version:
-
-\begin{proposition}
-Let $P$ be a finite $p$-group acting on a finite-dimensional $\F_p$-vector space 
-$V$ linearly. Then there exists a non-zero $v\in V$ 
-such that $x\cdot v=v$ for all $x\in P$. 
-\end{proposition}
+\begin{theorem}[Maschke]
+\index{Maschke's theorem}
+    Let $G$ be a finite
+    group and $M$ be a finite-dimensional $\C[G]$-module.
+    Then $M$ is semisimple. 
+\end{theorem}
 
 \begin{proof}
-    Let $n=\dim V$. There are $p^n-1$ non-zero vectors 
-    in $V$. Since the action is linear, 
-    $P$ acts  
-    on $X=V\setminus\{0\}$. We decompose $V$ into orbits
-    and collect those orbits with only one element, say 
-    \[
-    X=X_0\cup O(v_1)\cup \cdots\cup O(v_m),
-    \]
-    where $|O(v_j)|\geq 2$ for all $j\in\{1,\dots,m\}$. 
-    Since 
-    $p$ divides the order of each $O(v_j)$ and 
-    $|X|=p^n-1$ is not divisible by $p$, 
-    it follows that $X_0\ne\emptyset$. In particular, 
-    there exists $v\in V$ such that $x\cdot v=v$ for
-    all $x\in G$. 
+We must show that every submodule $S$ of $M$ admits a complement. 
+Since $S$ is a subspace of $M$, there exists a subspace $T_0$ of $M$ 
+such that $M=S\oplus T_0$ (as vector spaces). We use 
+$T_0$ to construct a submodule $T$ of $M$ that complements $S$. Since $M=S\oplus T_0$, 
+every $m\in M$ can be written uniquely as $m=s+t_0$ for some $s\in S$ and $t_0\in T$. 
+Let 
+\[
+p_0\colon M\to S,\quad
+p_0(m)=s,
+\]
+where $m=s+t_0$ with $s\in S$ and $t_0\in T$. 
+If $s\in S$, then $p_0(s)=s$. In particular, $p_0^2=p_0$, as 
+$p_0(m)\in S$. 
+
+Generally, $p_0$ is not a $\C[G]$-modules homomorphism. 
+Let 
+\[
+p\colon M\to S,\quad
+p(m)=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot p_0(g\cdot m).
+\]
+
+We claim that $p$ is a homomorphism of $\C[G]$-modules. For that purpose, we need to show that 
+$p(g\cdot m)=g\cdot p(m)$ for all $g\in G$ and $m\in M$. In fact, 
+\[
+p(g\cdot m)=\frac{1}{|G|}\sum_{h\in G}h^{-1}\cdot p_0(h\cdot (g\cdot m))
+=\frac{1}{|G|}\sum_{h\in G}(gh^{-1})\cdot p_0(h\cdot m)=g\cdot p(m).
+\]
+
+We now claim that $p(M)=S$. The inclusion $\subseteq$ is trivial to prove, as $S$ is a submodule of $M$ 
+and $p_0(M)\subseteq S$. Conversely, if $s\in S$, then $g\cdot s\in S$, as 
+$S$ is a submodule. Thus 
+$s=g^{-1}\cdot (g\cdot s)=g^{-1}\cdot p_0(g\cdot s)$ and hence 
+\[
+s=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot (g\cdot s)=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot (p_0(g\cdot s))=p(s).
+\]
+Since $p(m)\in S$ for all $m\in M$, it follows that $p^2(m)=p(m)$, so $p$ is a projector onto $S$. 
+Hence $S$ admits a complement in $M$, that is $M=S\oplus\ker(p)$.
 \end{proof}
 
-The analog of Kolchin's theorem is the following result:
+\begin{exercise}
+Let $G=\langle g\rangle$ be the cyclic group 
+of order four and $\rho_g=\begin{pmatrix}
+0&-1\\
+1&0\end{pmatrix}$. 
+Let $M=\C^{2\times 1}$ as an $\C[G]$-module with 
+\[
+g\cdot\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}-v\\u\end{pmatrix}.
+\]
+Prove that $M$ is a semisimple non-simple $\C[G]$-module.
+\end{exercise}
 
-\begin{proposition}
-\label{pro:Kolchin}
-    Every $p$-subgroup of $\GL_n(p)$ is conjugate to a subgroup
-    of the unipotent subgroup $U_n(p)$. 
-\end{proposition}
+\begin{exercise}
+Let $G=\langle g\rangle$ be the cyclic group 
+of order four and $\rho_g=\begin{pmatrix}
+0&-1\\
+1&0\end{pmatrix}$. 
+Let $M=\R^{2\times 1}$ as an $\R[G]$-module with 
+\[
+g\cdot\begin{pmatrix}u\\v\end{pmatrix}
+=\begin{pmatrix}-v\\u\end{pmatrix}.
+\]
+Prove that $M$ is a simple $\R[G]$-module. 
+\end{exercise}
 
-\begin{proof}[Sketch of the proof]
-    Let $P$ be a $p$-subgroup of $\GL_n(p)$. 
-    Then $P$ acts linearly on an $n$-dimensional 
-    $\F_p$-vector space $V$ by left multiplication. 
-    The previous
-    proposition implies that there exists a non-zero
-    $v_1\in V$
-    such that $xv_1=v_1$ for all $x\in P$. Let 
-    $V_1=\langle v_1\rangle$. The group $P$ 
-    acts on the $(n-1)$-dimensional vector space 
-    $V/V_1$ by 
+If $G$ is a finite group, 
+then $\C[G]$ is semisimple. By Artin--Wedderburn theorem, 
+\[
+\C[G]\simeq\prod_{i=1}^r M_{n_i}(\C),
+\]
+where $r$ is the number of isomorphism classes of simple modules of $\C[G]$. Moreover, 
+\[
+|G|=\dim\C[G]=\sum_{i=1}^r n_i^2.
+\]
+% By convention, 
+% we always assume that $n_1=1$. 
+% This corresponds, of course, to the \emph{trivial module}. 
+
+\begin{theorem}
+    Let $G$ be a finite group. The number of simple 
+    modules of $\C[G]$ coincides with the number of conjugacy classes of $G$. 
+\end{theorem}
+
+\begin{proof}
+    By Artin--Wedderburn theorem, $\C[G]\simeq\prod_{i=1}^rM_{n_i}(\C)$. Thus 
     \[
-    x\cdot (v+V_1)=xv+V_1.
-    \]
-    This action is well-defined. 
-    As before, there exists a non-zero 
-    vector of $V/V_1$ fixed by $P$. Thus 
-    there exists $v_2\in V\setminus V_1$ such that 
-    $xv_2+V_1=v_2+V_1$. Note that $\{v_1,v_2\}$ is linearly
-    independent, as applying the canonical
-    map $V\to V/V_1$ to 
-    $\alpha v_1+\beta v_2=0$ one obtains
-    that $\beta=0$ and therefore $\alpha=0$. This process
-    produces a basis $\{v_1,\dots,v_n\}$ 
-    of $V$ and a sequence $\{0\}\subsetneq V_1\subsetneq V_2\subsetneq\cdots\subsetneq V_n=V$, where 
-    $V_j=\langle v_1,\dots,v_j\rangle$ for all $j\in\{1,\dots,n\}$. Moreover,  
-    $PV_j\subseteq V_j$  and 
-    $Pv_j=v_j+V_{j-1}$ for all $j$. This
-    means precisely that in the basis 
-    $\{v_1,\dots,v_n\}$ 
-    every element of $P$ is an upper triangular
-    matrix with ones in the main diagonal. 
+		Z(\C[G])\simeq\prod_{i=1}^rZ(M_{n_i}(\C))\simeq\C^r.
+	\]
+	In particular, $\dim Z(\C[G])=r$. If $\alpha=\sum_{g\in
+	G}\lambda_gg\in Z(\C[G])$, then $h^{-1}\alpha h=\alpha$ for all $h\in
+	G$. Thus 
+	\[
+		\sum_{g\in G}\lambda_{hgh^{-1}}g=
+		\sum_{g\in g}\lambda_g h^{-1}gh=\sum_{g\in G}\lambda_gg
+	\]
+	and hence $\lambda_{g}=\lambda_{hgh^{-1}}$ for all $g,h\in G$. A basis for 
+	$Z(\C[G])$ is given by elements of the form 
+	\[
+		\sum_{g\in K}g,
+	\]
+	where $K$ is a conjugacy class of $G$. Therefore $\dim Z(\C[G])$ equals 
+	the number of conjugacy classes of $G$.
 \end{proof}
 
-\index{Sylow's theorems}
-Proposition \ref{pro:Kolchin} is deeply 
-connected to Sylow's theorems. 
-
 \begin{exercise}
-    Prove that the normalizer of $U_n(p)$ in $\GL_n(p)$ is the
-    Borel subgroup $B_n(p)$ of upper triangular matrices. 
+    Let $G$ be a finite group of order $n$ with $k$ conjugacy classes.
+    Let $m=(G:[G,G])$. Prove that $n+3m\geq4k$. 
 \end{exercise}
 
-Now we have the following explicit Sylow theory for
-$\GL_n(p)$. The first two Sylow theorems 
-appear in the following result. 
+If $G$ is a finite group,
+then 
+\[
+\C[G]\simeq \prod_{i=1}^k M_{n_i}(\C),
+\]
+where $k$ is the number of conjugacy classes of $G$. 
+In particular, 
+\[
+|G|=\dim\C[G]=\sum_{i=1}^k n_i^2.
+\]
+
+
 
 \begin{exercise}
-    Prove that  $U_n(p)$ is a Sylow $p$-subgroup of $\GL_n(p)$. 
+    Prove that $\C[C_4]\simeq\C^4$. 
 \end{exercise}
 
-What about the third Sylow's theorem? 
-First, note that the number $n_p$
-of conjugates of $U_n(p)$ in $\GL_n(p)$ 
-is the number of complete flags 
-in $\F_p^n$.
+For $n\geq1$, let $\Sym_n$ denote the symmetric group in $n$ letters. 
+
+\begin{example}
+    The group $\Sym_3$ has three conjugacy classes:
+    $\{\id\}$, $\{(12),(13),(23)\}$ and $\{(123),(132)\}$. 
+    Since $6=a^2+b^2+c^2$, it follows that 
+    $\C[G]\simeq\C\times\C\times M_2(\C)$. 
+\end{example}    
+
+% \begin{problem}[Brauer]
+% \index{Brauer's problem}
+%     Which algebras are group algebras?
+% \end{problem}
+
+% This question might be impossible to answer, but it is extremely interesting.
+
+% \begin{example}
+%     The algebra $\C^2\times M_2(\C)\times M_3(\C)$ is not complex group algebra, as all groups of order 15 are abelian. 
+% \end{example}
+
+%\subsection{Some comments}
+
+There is a multiplicative version of Maschke's theorem. A group $G$ \emph{acts 
+by automorphisms} on $A$ if there is a group homomorphism 
+$\lambda\colon G\to\Aut(A)$. In this case, a subgroup $B$ of $A$ is said to be 
+$G$-invariant if $\lambda(B)\subseteq B$. 
+
+\begin{bonus}
+\label{xca:Maschke_multiplicative}
+\index{Maschke's theorem!multiplicative version}
+    Let $K$ be a finite group of order $m$. Assume that 
+    $K$ acts by automorphisms on $V=U\times W$, where
+    $U$ and $W$ are subgroups of $V$ and $U$ is abelian and $K$-invariant. Prove that 
+    if the map $U\to U$, $u\mapsto u^m$, is bijective, 
+    there exists a normal $K$-invariant subgroup $N$ of $V$ such that $V=U\times N$. 
+\end{bonus}
+
+\begin{bonus}
+    Let $p$ be a prime number and $K$ be a finite
+    group with order not divisible by $p$. Let $V$ be
+    a $p$-elementary abelian group. Assume that $K$ acts
+    by automorphism on $V$. Prova that if $U$ be a $K$-invariant subgroup of $V$, 
+    there exists a $K$-invariant subgroup $N$ of $V$ 
+    such that $V=U\times N$. 
+\end{bonus}
+
+
+\subsection{Representations}
+
+Unless we state differently, we will always work
+with finite groups. All our vector spaces will
+be complex vector spaces. 
+
+\begin{definition}
+\index{Representation}
+    Let $G$ be a finite group. A \emph{representation}
+    of $G$ is a group homomorphism $\rho\colon G\to\GL(V)$, where
+    $V$ is a finite-dimensional vector space. The \emph{degree} (or dimension) 
+    of the representation is the integer $\deg\rho=\dim V$. 
+\end{definition}
+
+\index{Matrix representation}
+Let $G\to\GL(V)$ be a representation. 
+If we fix a basis of $V$, then we obtain
+a \emph{matrix representation} of $G$, that is a 
+group homomorphism 
+\[
+\rho\colon G\to\GL(V)\simeq\GL_n(\C),
+\quad 
+g\mapsto\rho_g,
+\]
+where
+$n=\dim V$. 
+
+\begin{example}
+Since $\Sym_3=\langle (12),(123)\rangle$, the map $\rho\colon \Sym_3\to\GL_3(\C)$,
+\[
+(12)\mapsto\begin{pmatrix}
+0 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 1
+\end{pmatrix},\quad
+(123)\mapsto\begin{pmatrix}
+0 & 0 & 1\\
+1 & 0 & 0\\
+0 & 1 & 0
+\end{pmatrix},
+\] 
+is a representation of $\Sym_3$. 
+\end{example}
+
+\begin{example}
+Let $G=\langle g\rangle$ be cyclic of order six. 
+The map $\rho\colon G\to\GL_2(\C)$, 
+\[
+g\mapsto
+\begin{pmatrix}
+1&1\\
+-1&0
+\end{pmatrix}
+\] 
+is a representation of $G$. 
+\end{example}
+
+\begin{example}
+Let $G=\langle g\rangle$ be cyclic of order four. 
+The map $\rho\colon G\to\GL_2(\C)$, 
+\[
+g\mapsto
+\begin{pmatrix}
+0&-1\\
+1&0
+\end{pmatrix}
+\] 
+is a representation of $G$. 
+\end{example}
+
+\begin{example}
+  Let $G=\langle a,b:a^2=b^3=(ab)^3=1\rangle$. The map 
+  \[
+    a\mapsto\begin{pmatrix}
+    0 & 1 & -1\\
+    1 & 0 & -1\\
+    0 & 0 & -1
+    \end{pmatrix},
+    \quad
+    b\mapsto\begin{pmatrix}
+      0 & 0 & 1\\
+      1 & 0 & 0\\
+      0 & 1 & 0
+    \end{pmatrix},
+  \]
+  defines a representation $G\to\GL_3(\C)$. 
+\end{example}
+
+\begin{example}
+    Let $Q_8=\{-1,1,i,-i,j,-j,k,-k\}$ be the quaternion group. Recall that
+    \[
+    i^2=j^2=k^2=-1,\quad
+    ijk=-1.
+    \]
+    The group $Q_8$ is generated by $\{i,j\}$ 
+    and the map $\rho\colon Q_8\to\GL_2(\C)$, 
+    \[
+    i\mapsto\begin{pmatrix}
+    i&0\\0&-i
+    \end{pmatrix},
+    \quad
+    j\mapsto\begin{pmatrix}
+    0&1\\-1&0
+    \end{pmatrix},
+    \]
+    is a representation.
+\end{example}
+
+\begin{example}
+  Let $G$ be a finite group that acts on a finite set $X$. 
+  Let $V=\C X$ the complex vector space with basis $\{x:x\in
+  X\}$. The map 
+  \[
+	\rho\colon G\to\GL(V),\quad
+	\rho_g\left(\sum_{x\in X}\lambda_x x\right)
+	=\sum_{x\in X}\lambda_x\rho_g(x)
+	=\sum_{x\in X}\lambda_{g^{-1}\cdot x}x, 
+  \]
+  is a representation of degree $|X|$.
+\end{example}
+
+\begin{example}
+\index{Trivial!representation}
+\index{Trivial!module}
+    The map $\rho\colon G\to\C^{\times}$, $g\mapsto 1$, 
+    is a representation, that is $\C$ is a $\C[G]$-module with
+    $g\cdot \lambda=\lambda$ for all $g\in G$ 
+    and $\lambda\in\C^{\times}$. This representation 
+    is known 
+    as the \emph{trivial representation}. 
+\end{example}
+
+\begin{example}
+    The map $\sgn\colon\Sym_n\to\GL_1(\C)=\C^{\times}$ is a representation of $\Sym_n$.
+\end{example}
+
+An important fact is that there exists a bijective
+correspondence 
+between 
+representations of a finite group $G$ 
+and 
+finite-dimensional modules over $\C[G]$. The correspondence
+is given as follows. If $\rho\colon G\to\GL(V)$ is a representation, 
+then $V$ is a $\C[G]$-module with
+\[
+\left(\sum_{g\in G}\lambda_gg\right)\cdot v=\sum_{g\in G}\lambda_g\rho_g(v).
+\]
+Conversely, if $V$ is a $\C[G]$-module, then
+$\rho\colon G\to\GL(V)$, $\rho_g\colon V\to V$, $v\mapsto g\cdot v$, 
+is a representation. 
 
 \begin{exercise}
-    Prove that $n_p\equiv1\bmod p$. 
+    Let $G$ be a finite group and 
+    $\rho\colon G\to\GL(V)$ be a representation. Prove that 
+    each $\rho_g$ is diagonalizable. 
 \end{exercise}
 
+The previous exercise uses properties of the minimal polynomial. We will 
+see a different proof later. 
+
+\begin{definition}
+\index{Equivalent representations}
+Let $G$ be a group and $\phi\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations of $G$. 
+We say that $\phi$ and $\psi$ are \emph{equivalent} if 
+there exists a linear isomorphism $T\colon V\to W$ such that 
+\[
+	\psi_g T=T \phi_g
+\]
+for all $g\in G$. In this case, we write $\phi\simeq\psi$. 
+\end{definition}
+
+Note that $\phi\simeq\psi$ if and only if $V$
+and $W$ are isomorphic as $\C[G]$-modules.
+
+\begin{example}
+  The representation 
+  \begin{gather*}
+  \phi\colon\Z/n\to\GL_2(\C),\quad
+  \phi(m)=
+  \begin{pmatrix}
+    \cos(2\pi m/n) & -\sin(2\pi m/n)\\
+    \sin(2\pi m/n) & \cos(2\pi m/n)
+  \end{pmatrix},
+  \shortintertext{is equivalent to the representation}
+  \psi\colon\Z/n\to\GL_2(\C),
+  \quad 
+  \psi(m)=\begin{pmatrix}
+    e^{2\pi im/n} & 0\\
+    0 & e^{-2\pi im/n}
+  \end{pmatrix}.
+  \end{gather*}
+  The equivalence is obtained with the matrix $T=\begin{pmatrix} i & -i\\
+    1&1\end{pmatrix}$, as a direct calculation shows that
+    $\phi_m T=T\psi_m$ for all $m$.
+\end{example}
+
+\begin{exercise}
+    Let $\rho\colon G\to\GL(V)$ be a representation. Fix a basis 
+    of $V$ and consider the corresponding matrix representation $\phi$ 
+    of $\rho$. Prove that $\rho$ and $\phi$ are equivalent. 
+\end{exercise}
+
+\begin{definition}
+    Let $\phi\colon G\to\GL(V)$ be a representation. A subspace 
+    $W\subseteq V$ is said to be \emph{$G$-invariant} if
+    $\phi_g(W)\subseteq W$ for all $g\in G$.  
+\end{definition}
+
+Let $\rho\colon G\to\GL(V)$ be a representation. 
+If $W$ is a $G$-invariant subspace of $V$, 
+then the restriction $\rho|_W\colon G\to\GL(W)$
+is a representation. In particular, $W$ is a submodule (over $\C[G]$) 
+of $V$. 
+
+\begin{definition}
+\index{Representation!irreducible}
+\index{Module!simple}
+    A non-zero representation $\rho\colon G\to\GL(V)$ is 
+    said to be \emph{irreducible} if 
+    $\{0\}$ and $V$ are the only 
+    $G$-invariant subspaces of $V$. 
+\end{definition}
+
+Note that a representation $\rho\colon G\to\GL(V)$ is irreducible
+if and only if $V$ is simple. 
+
+\begin{example}
+    Degree-one representations are irreducible. 
+\end{example}
+
+\begin{exercise}
+\label{xca:degree-one}
+    Let $G$ be a finite group. 
+    Prove that there exists a bijective correspondence between 
+    degree-one representations of $G$ and 
+    degree-one representations of $G/[G,G]$. 
+\end{exercise}
+
+In the following example, we work over the real numbers. 
+
+\begin{example}
+Let $G=\langle g\rangle$ be the cyclic group of three elements and 
+\[
+\rho\colon G\to\GL(\R^3),\quad
+\rho_g(x,y,z)=(y,z,x).
+\]
+%\mapsto\begin{pmatrix}
+%  0&1&0\\
+%  0&0&1\\
+%  1&0&0
+%\end{pmatrix}.
+%\]
+%Thus $g$ acts on $\R^{3}$ by left matrix multiplication,
+%\[
+%g\cdot (x,y,z)=
+%\begin{pmatrix}
+%  0&1&0\\
+%  0&0&1\\
+%  1&0&0
+%\end{pmatrix}\begin{pmatrix}
+%x\\
+%y\\
+%z
+%\end{pmatrix}.
+%\]
+The set 
+\[
+N=\{(x,y,z)\in\R^{3}:x+y+z=0\}
+\]
+is a $G$-invariant subspace of $\R^3$. 
+
+We claim that $N$ is irreducible. 
+If $N$ contains a non-zero $G$-invariant subspace $S$, 
+let $(x_0,y_0,z_0)\in S\setminus\{(0,0,0)\}$. Since $S$ is $G$-invariant, 
+\[
+(y_0,z_0,x_0)=g\cdot (x_0,y_0,z_0)\in S. 
+\]
+We claim that $\{(x_0,y_0,z_0),(y_0,z_0,x_0)\}$ is linearly independent. If there exists $\lambda\in\R$ 
+such that $\lambda(x_0,y_0,z_0)=(y_0,z_0,x_0)$, then $x_0=\lambda^3 x_0$. Since $x_0=0$ implies 
+$y_0=z_0=0$, it follows that $\lambda=1$. In particular, $x_0=y_0=z_0$, a contradiction, as $x_0+y_0+z_0=0$. 
+Hence $\dim S=2$ and therefore $S=N$. 
+\end{example}
+
+What happens in the previous example if we consider complex numbers?
+
+\begin{exercise}
+  \label{xca:deg2}
+  Let $\phi\colon G\to \GL(V)$, $g\mapsto\phi_g$, be a degree-two representation. Prove that
+  $\phi$ is irreducible if and only if there is no common eigenvector for all the $\phi_g$.
+\end{exercise}
+
+\begin{example}
+\label{exa:S3_deg2}
+  Recall that $\Sym_3$ is generated by $(12)$ and $(23)$. The map 
+  \[(12)\mapsto\begin{pmatrix}
+    -1 & 1\\
+    0 & 1
+  \end{pmatrix},
+  \quad
+  (23)\mapsto\begin{pmatrix}
+    1 & 0\\
+    1 & -1
+  \end{pmatrix},
+  \]
+  defines a representation $\phi$ of $\Sym_3$. 
+  Exercise \ref{xca:deg2} shows that $\phi$ is  
+  irreducible.
+\end{example}

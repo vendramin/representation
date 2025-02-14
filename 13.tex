@@ -1,0 +1,240 @@
+\section{Lecture: Week ?}
+
+\subsection{Categories}
+
+\begin{definition}
+    \index{Category}    
+    \label{defn:category}
+    A \emph{category} $\cC$ is a class of elements, called 
+	\textbf{objects} together with a set
+    $\cC(A,B)$ of \textbf{morphisms} 
+    for every pair of objects $A$ and $B$, 
+    such that
+    the following properties hold:
+    \begin{enumerate}
+		\item If $f\in\Hom_\cC(A,B)$ and 
+			$g\in\cC(B,C)$, the composition $g\circ f\in\cC(A,C)$ is defined. 
+		\item The composition of morphisms is associative: if 
+			$f\in\cC(A,B)$, $g\in\cC(B,C)$ and $h\in\cC(C,D)$, then 
+			$f\circ(g\circ h)=(f\circ g)\circ h$.
+		\item For each object $A$ of $\cC$ there exists       the \textbf{identity morphism}    $\id_A\in\cC(A,A)$ satisfying $f\circ \id_A=f$ and 
+			$\id_A\circ g=g$ for all $f\in\cC(A,B)$ and 
+			$g\in\Hom_\cC(B,A)$.
+	\end{enumerate}
+\end{definition}
+
+Usually we write $X\in\cC$ to mean that
+$X$ is an object of the category $\cC$. 
+
+Definition~\ref{defn:category}, where the morphism 
+between two objects form a set, is the definition 
+of a \emph{locally small category}. In this course, 
+our categories 
+will always be locally small. 
+
+Note that we needed to use
+the word \textit{class} and we cannot simply use 
+sets. This is because there is no set of all sets (assuming this exists will produce a contradiction). We use, however, sets of morphisms between two given objects.
+
+The associative law used in Definition~\ref{defn:category} implies the \emph{general 
+associative law}. For example, the associativity 
+condition implies 
+\[
+    (x_1((x_2x_3)x_4))x_5=(x_1x_2)((x_3x_4)x_5).
+\]
+
+\begin{bonus}
+\label{xca:Catalan}
+\index{Catalan number}
+    For $n+1$ letters, prove that the number of different possible 
+    brackets is equal to the \emph{Catalan number}
+    \[
+    C_n=\frac{1}{n+1}\binom{2n}{n}.
+    \]
+\end{bonus}
+
+\begin{example}
+    The category $\Sets$ of sets; the morphisms are
+    arbitrary maps. 
+\end{example}
+
+\begin{example}
+    The categories $\Groups$ and 
+    $\Rings$; the morphisms are the homomorphisms. 
+\end{example}
+
+\begin{example}
+    Let $K$ be a field. The category $\Vect_K$ 
+    of $K$-vector spaces; the morphisms are 
+    the $K$-linear transformations. 
+\end{example}
+
+\begin{example}
+    Let $A$ be an algebra. The category 
+    $\mathrm{Rep}(A)$ of representations of $A$. 
+\end{example}
+
+\begin{example}
+\index{Category!opposite}
+\index{Category!dual}
+    Let $\cC$ be a category. The \emph{opposite category} $\cC^{\op}$ is the category 
+    $\cC$ after reversing the arrows. This means
+    that the morphism $A\to B$ in $\cC$ correspond
+    to the morphism $B\to A$ in $\cC^{\op}$. 
+\end{example}
+
+\begin{definition}
+\index{Isomorphism}
+    Let $\cC$ be a category. A morphism $f\in\cC(A,B)$ 
+    is an \emph{isomorphism} if there exists 
+    $g\in\cC(B,A)$ such that $gf=\id_A$ and 
+    $fg=\id_B$. 
+\end{definition}
+
+A straightforward computation shows that 
+isomorphisms in $\Sets$ are bijections. Similarly, 
+isomorphisms in $\Groups$ are group isomorphisms. 
+
+\begin{example}
+\index{Product of categories}
+    Let $\cC$ and $\cD$ be categories. 
+    The \emph{product category} $\cC\times\cD$ 
+    is the category whose objects
+    are pairs $(X,Y)$, where $X\in\cC$ and $Y\in\cD$, 
+    and whose morphisms 
+    are pairs $(f,g)$...
+\end{example}
+
+Not all examples of interesting categories 
+are of categories whose objects are sets structure
+and morphisms are maps preserving the structure. Objects
+need not to be sets and morphisms 
+need not to be functions! 
+
+\begin{example}
+    A group is a category $\cC$ with only one object, say $X$, 
+    and in which all morhisms are isomorphisms. In this category, 
+    the morphisms are the elements of the group,  the composition
+    of morphisms is the group operation and the identity map
+    $\id_X$ is the neutral element of the group. 
+x\end{example}
+
+\begin{example}
+The picture 
+\[\begin{tikzcd}
+	X & Y
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd}\]
+represents a category with only two objects, say $X$ and $Y$, 
+and only one
+non-identity morphism $X\to Y$. Here the letters $X$ and $Y$ 
+used for
+our objects play no role whatsoever. We could then 
+draw the category as follows:
+\[\begin{tikzcd}
+	\bullet & \bullet
+	\arrow[from=1-1, to=1-2]
+\end{tikzcd}\]
+\end{example}
+
+\section{Functors}
+
+\begin{definition}
+    Let $\cC$ and $\cD$ be categories. A functor $F\colon\cC\to\cD$ 
+    consists of a map 
+    $\operatorname{ob}(\cC)\to\operatorname{ob}(\cD)$, $X\mapsto F(X)$, and 
+    a map 
+\end{definition}
+
+\begin{example}
+    The following are examples of \emph{forgetful functors}:
+    \begin{enumerate}
+        \item $\Groups\to\Sets$.
+        \item $\Rings\to\Sets$.
+        \item $\Rings\to\AbelianGroups$.
+        \item $\AbelianGroups\to\Groups$. 
+    \end{enumerate}
+\end{example}
+
+\begin{definition}
+    A \emph{contravariant functor} between 
+    the categories $\cC$ and $\cD$ is 
+    a functor $\cC^{\op}\to\cD$. 
+\end{definition}
+
+\section{Application: The Skolem--Noether theorem}
+
+\begin{proposition}
+\label{pro:equivalence}
+    Let $K$ be a field. Then 
+    $M_n(K)-\operatorname{Mod}\simeq\Vect_K$.
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+\begin{definition}
+    Let $R$ be a commutative ring. A category $\cC$ is said to be 
+    \emph{$R$-linear} if the following conditions hold:
+    \begin{enumerate}
+        \item There exists a null object $0\in\cC$. 
+        \item Every set $\cC(X,Y)$ is an $R$-module 
+        such that the composition of morphisms is $R$-linear and 
+        $\cC(0,0)=0$. 
+        \item For $X,Y\in\cC$ there exists...
+    \end{enumerate}
+\end{definition}
+
+A category is called \emph{additive} if it is $\Z$-linear. 
+
+\begin{definition}
+\index{Initial object}
+    Let $\cC$ be a category. An object $I\in\cC$ is said to be
+    an \emph{initial object} if for every $X\in\cC$ 
+    there exists a unique morphism $I\to X$. 
+\end{definition}
+
+\index{Terminal object}
+Similarly, one defines a \emph{terminal object} as 
+an initial object of the opposite category. 
+
+\begin{definition}
+    Let $R$ be a commutative ring and 
+    $\cC$ be an $R$-linear category. An object $X\in\cC$ is said 
+    to be \emph{indecomposable} if $X\ne0$ and $X$ is not 
+    isomorphic to a direct sum of two non-null objects. 
+\end{definition}
+
+\begin{theorem}[Skolem--Noether]
+\index{Skolem--Noether theorem}
+    Let $K$ be a field. Any $K$-algebra automorphism 
+    if $M_n(K)$ is inner.
+\end{theorem}
+
+\begin{proof}
+    Up to isomorphism, the category $\Vect_K$ has a unique indecomposable object, namely 
+    the one-dimensional $K$-vector space. By the equivalence
+    of Proposition~\ref{pro:equivalence}, 
+    $M_n(K)-\operatorname{Mod}$ also has only one
+    indecomposable object up to isomorphism, namely 
+    $K^{n\times 1}$. 
+    Let $\alpha$ be a $K$-algebra automorphism 
+    of $M_n(K)$. If $X$ is any $M_n(K)$-module, 
+    then $X^{\alpha}$, defined as 
+    the $K$-vector space $X$ 
+    with 
+    \[
+    a\cdot m=\alpha(a)\cdot m\quad a\in M_n(K),m\in M,
+    \]
+    is also a $M_n(K)$-module. In particular, 
+    $(K^{n\times 1})^\alpha$ is an indecomposable 
+    $M_n(K)$-module. Thus $(K^{n\times 1})^\alpha\simeq K^{n\times1}$. Let $g\colon K^{n\times 1}\to (K^{n\times 1})^\alpha$ be an 
+    isomorphism of $M_n(K)$-modules. Then 
+    \[
+    g(a\cdot v)=\alpha(a)\cdot g(v)
+    \]
+    for all $a\in M_n(K)$ and $v\in K^{n\times 1}$. Hence 
+    $\alpha(a)=gag^{-1}$ for all $a\in M_n(K)$. 
+\end{proof}
+

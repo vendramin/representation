@@ -1,659 +1,397 @@
-\section{}
+\section{Lecture: Week 7}
 
-Cauchy--Frobenius--Burnside theorem is helpful to
-find characters. 
+\subsection{Brauer--Fowler theorem}
+
+\index{Symmetric}
+\index{Antisymmetric}
+Let $\rho\colon G\to\GL(V)$ 
+be a representation with character $\chi$. The $\C[G]$-module $V\otimes V$ 
+has character $\chi^2$. Let 
+$\{v_1,\dots,v_n\}$ be a basis of $V$ and 
+\[
+T\colon V\otimes V\to V\otimes V,\quad
+v_i\otimes v_j\mapsto v_j\otimes v_i.
+\]
+It is an exercise to check that 
+\[
+T(v\otimes w)=w\otimes v
+\]
+for all 
+$v,w\in V$. It follows that  
+$T$ does not depend on the chosen basis. Note that
+$T$ is a homomorphism of $\C[G]$-modules, as
+\[
+T(g\cdot (v\otimes w))=T((g\cdot v)\otimes (g\cdot w))=(g\cdot w)\otimes (g\cdot v)=g\cdot T(v\otimes w)
+\]
+for all $g\in G$ y $v,w\in V$. 
+In particular, the \emph{symmetric part} 
+\begin{gather*}
+S(V\otimes V)=\{x\in V\otimes V:T(x)=x\}
+\shortintertext{and the \emph{antisymmetric} part}
+A(V\otimes V)=\{x\in V\otimes V:T(x)=-x\}
+\end{gather*}
+of $V\otimes V$ are both  
+$\C[G]$-submodules of $V\otimes V$. 
+The terminology is motivated by the following fact:
+\[
+V\otimes V=S(V\otimes V)\oplus A(V\otimes V).
+\]
+In fact, 
+$S(V\otimes V)\cap A(V\otimes V)=\{0\}$, as   
+$x\in S(V\otimes V)\cap A(V\otimes V)$ implies
+$x=T(x)$ and $x=-T(x)$. Hence $x=0$. Moreover, 
+$V\otimes V=S(V\otimes V)+ A(V\otimes V)$, as every $x\in V\otimes V$ can be written 
+as 
+\[
+x=\frac12(x+T(x))+\frac12(x-T(x))
+\]
+with $\frac12(x+T(x))\in S(V\otimes V)$ and $\frac12(x-T(x))\in A(V\otimes V)$. 
+
+We claim that $\{v_i\otimes v_j+v_j\otimes v_i:1\leq i\leq j\leq n\}$ is
+a basis of $S(V\otimes V)$ 
+and that  
+\[
+\{v_i\otimes v_j-v_j\otimes v_i:1\leq i<j\leq n\}
+\]
+is a basis of $A(V\otimes V)$. Since both sets are linearly independent, 
+\[
+\dim S(V\otimes V)\geq n(n+1)/2\text{ and }
+\dim A(V\otimes V)\geq n(n-1)/2.
+\]
+Moreover, 
+\[
+n^2=\dim (V\otimes V)=\dim S(V\otimes V)+\dim A(V\otimes V),
+\]
+so it follows that
+$\dim S(V\otimes V)=n(n+1)/2$ and $\dim A(V\otimes V)=n(n-1)/2$. 
 
 \begin{proposition}
-    Let $G$ be 2-transitive on $X$ with character $\chi(g)=|\Fix(g)|$.
-    Then $\chi-\chi_1$ is an irreducible character. 
+    Let $G$ be a finite group and
+    $V$ be a finite-dimensional 
+    $\C[G]$-module with character $\chi$. If $S(V\otimes V)$ 
+    has character $\chi_S$ and $A(V\otimes V)$ has character
+    $\chi_A$, then 
+    \begin{align*}
+        &\chi_S(g)=\frac12(\chi^2(g)+\chi(g^2)) && \text{and} &&
+        \chi_A(g)=\frac12(\chi^2(g)-\chi(g^2)).
+    \end{align*}
 \end{proposition}
 
 \begin{proof}
-    In particular, $G$ is transitive on $X$. 
-    Since the trivial character $\chi_1$ is irreducible, $\langle\chi_1,\chi_1\rangle=1$. 
-    By Cauchy--Frobenius--Burnside, the rank of $G$ on $X$ is  
-    \begin{gather*}
-        2=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|^2=\langle \chi,\chi\rangle.
-   \end{gather*}
-   Thus $\langle \chi-\chi_1,\chi-\chi_1\rangle=\langle\chi,\chi\rangle-1-1+1=1$.
-   Since $\chi$ is a character, $\chi-\chi_1$
-   is an integer linear combination of the irreducible characters of $G$.
-   Hence there exists an irreducible character $\chi_i$ of $G$ such that $\chi-\chi_1=\pm\chi_i$.
-   But $(\chi-\chi_1)(1)=|X|-1\geq 0$ and so $\chi-\chi_1=\chi_i$.
-\end{proof}
-
-\begin{example}
-    The symmetric group $\Sym_n$ is 2-transitive on $\{1,\dots,n\}$. The
-    alternating group $\Alt_n$ is 2-transitive on $\{1,\dots,n\}$ if 
-    $n\geq4$. These groups then have an irreducible character $\chi$ 
-    given by $\chi(g)=|\Fix(g)|-1$.
-\end{example}
-
-\begin{example}
-    Let $p$ be a prime number and let $q=p^{m}$. Let $V$ 
-    be the vector space of dimension $2$ 
-    over the finite field of $q$ elements. 
-    The group $G=\GL_2(q)$ acts 2-transitively on the set $X$ of
-    one-dimensional subspaces of $V$. In fact, 
-    if $\langle v\rangle\ne\langle v_1\rangle$ and $\langle w\rangle\ne\langle w_1\rangle$, 
-    then $\{v,v_1\}$ and $\{w,w_1\}$ are bases of $V$. 
-    The matrix $g$ that corresponds to the linear map 
-    $v\mapsto w$, $v_1\mapsto w_1$, is invertible. Thus $g\in\GL_2(q)$. 
-    The previous proposition produces the irreducible character
-    $\chi(g)=|\Fix(g)|-1$. 
-\end{example}
-
-\begin{example}
-    In how many ways can we color (in black and white) the vertices of a square? 
-    We will count colorings up to symmetric. This means that, for example, 
-    the colorings 
-    \begin{equation}
-    \label{eq:orbita}
-    \begin{tikzpicture}
-        \node[shape=circle,draw=black,fill=black] (A) at (1,0){};
-        \node[shape=circle,draw=black,fill=black] (B) at (1,1){};
-        \node[shape=circle,draw=black] (C) at (0,1){}; 
-        \node[shape=circle,draw=black] (D) at (0,0){};
-        \path [-](A) edge node[left]{} (B);
-        \path [-](B) edge node[left]{} (C);
-        \path [-](C) edge node[left]{} (D);
-        \path [-](D) edge node[left]{} (A);
-    \end{tikzpicture}
-    \qquad
-    \begin{tikzpicture}
-        \node[shape=circle,draw=black] (A) at (1,0) {};
-        \node[shape=circle,draw=black,fill=black] (B) at (1,1) {};
-        \node[shape=circle,draw=black,fill=black] (C) at (0,1) {};
-        \node[shape=circle,draw=black] (D) at (0,0) {};
-        \path [-](A) edge node[left]{} (B);
-        \path [-](B) edge node[left]{} (C);
-        \path [-](C) edge node[left]{} (D);
-        \path [-](D) edge node[left]{} (A);
-    \end{tikzpicture}
-    \qquad
-    \begin{tikzpicture}
-        \node[shape=circle,draw=black] (A) at (1,0) {};
-        \node[shape=circle,draw=black] (B) at (1,1) {};
-        \node[shape=circle,draw=black,fill=black] (C) at (0,1) {};
-        \node[shape=circle,draw=black,fill=black] (D) at (0,0) {};
-        \path [-](A) edge node[left]{} (B);
-        \path [-](B) edge node[left]{} (C);
-        \path [-](C) edge node[left]{} (D);
-        \path [-](D) edge node[left]{} (A);
-    \end{tikzpicture}
-    \qquad
-    \begin{tikzpicture}
-        \node[shape=circle,draw=black,fill=black] (A) at (1,0) {};
-        \node[shape=circle,draw=black] (B) at (1,1) {};
-        \node[shape=circle,draw=black] (C) at (0,1) {};
-        \node[shape=circle,draw=black,fill=black] (D) at (0,0) {};
-        \path [-](A) edge node[left]{} (B);
-        \path [-](B) edge node[left]{} (C);
-        \path [-](C) edge node[left]{} (D);
-        \path [-](D) edge node[left]{} (A);
-    \end{tikzpicture}
-\end{equation}
-will be considered equivalent. Let $G=\langle g\rangle$ the cyclic 
-group of order four. Let $X$ be 
-the set of colorings of the square. Then 
-$|X|=16$. 
-
-Let $g$ act on $X$ by anti-clockwise rotations  
-of 90\textdegree. All the colorings of~\eqref{eq:orbita} belong to the same orbit. 
-Another orbit of $X$ is
-\[
-\begin{tikzpicture}
-    \node[shape=circle,draw=black,fill=black] (A) at (1,0) {};
-    \node[shape=circle,draw=black] (B) at (1,1) {};
-    \node[shape=circle,draw=black,fill=black] (C) at (0,1) {};
-    \node[shape=circle,draw=black] (D) at (0,0) {};
-    \path [-](A) edge node[left]{} (B);
-    \path [-](B) edge node[left]{} (C);
-    \path [-](C) edge node[left]{} (D);
-    \path [-](D) edge node[left]{} (A);
-\end{tikzpicture}
-\qquad
-\begin{tikzpicture}
-    \node[shape=circle,draw=black] (A) at (1,0) {};
-    \node[shape=circle,draw=black,fill=black] (B) at (1,1) {};
-    \node[shape=circle,draw=black] (C) at (0,1) {};
-    \node[shape=circle,draw=black,fill=black] (D) at (0,0) {};
-    \path [-](A) edge node[left]{} (B);
-    \path [-](B) edge node[left]{} (C);
-    \path [-](C) edge node[left]{} (D);
-    \path [-](D) edge node[left]{} (A);
-\end{tikzpicture}
-\]
-
-Cauchy--Frobenius--Burnside theorem states that
-there are  
-\[
-\frac{1}{|G|}\sum_{x\in G}|\Fix(x)|
-\]
-orbits. 
-
-For each $x\in G=\{1,g,g^2,g^3\}$ we compute $\Fix(x)$. The identity fixes 
-the 16 elements of $X$, both 
-$g$ and  $g^3$ fix only two elements of $X$ and 
-$g^2$ fixes four elements of $X$. For example, 
-the elements of $X$ fixed by $g^2$ are 
-\[
-\begin{tikzpicture}
-    \node[shape=circle,draw=black] (A) at (1,0){};
-    \node[shape=circle,draw=black] (B) at (1,1){};
-    \node[shape=circle,draw=black] (C) at (0,1){}; 
-    \node[shape=circle,draw=black] (D) at (0,0){};
-    \path [-](A) edge node[left]{} (B);
-    \path [-](B) edge node[left]{} (C);
-    \path [-](C) edge node[left]{} (D);
-    \path [-](D) edge node[left]{} (A);
-\end{tikzpicture}
-\qquad
-\begin{tikzpicture}
-    \node[shape=circle,draw=black,fill=black] (A) at (1,0) {};
-    \node[shape=circle,draw=black,fill=black] (B) at (1,1) {};
-    \node[shape=circle,draw=black,fill=black] (C) at (0,1) {};
-    \node[shape=circle,draw=black,fill=black] (D) at (0,0) {};
-    \path [-](A) edge node[left]{} (B);
-    \path [-](B) edge node[left]{} (C);
-    \path [-](C) edge node[left]{} (D);
-    \path [-](D) edge node[left]{} (A);
-\end{tikzpicture}
-\qquad
-\begin{tikzpicture}
-    \node[shape=circle,draw=black,fill=black] (A) at (1,0) {};
-    \node[shape=circle,draw=black] (B) at (1,1) {};
-    \node[shape=circle,draw=black,fill=black] (C) at (0,1) {};
-    \node[shape=circle,draw=black] (D) at (0,0) {};
-    \path [-](A) edge node[left]{} (B);
-    \path [-](B) edge node[left]{} (C);
-    \path [-](C) edge node[left]{} (D);
-    \path [-](D) edge node[left]{} (A);
-\end{tikzpicture}
-\qquad
-\begin{tikzpicture}
-    \node[shape=circle,draw=black] (A) at (1,0) {};
-    \node[shape=circle,draw=black,fill=black] (B) at (1,1) {};
-    \node[shape=circle,draw=black] (C) at (0,1) {};
-    \node[shape=circle,draw=black,fill=black] (D) at (0,0) {};
-    \path [-](A) edge node[left]{} (B);
-    \path [-](B) edge node[left]{} (C);
-    \path [-](C) edge node[left]{} (D);
-    \path [-](D) edge node[left]{} (A);
-\end{tikzpicture}
-\]
-Thus $X$ is the union of  
-\[
-\frac{1}{|G|}\sum_{x\in G}|\Fix(x)|=\frac{1}{4}(16+2+4+2)=6
-\]
-orbits. 
-\end{example}
-
-\begin{exercise}
-    In how many ways (up to symmetry) can you
-    arrange eight non-attacking rooks on a chessboard? Symmetries 
-    are given by the dihedral group $\D_4$ of eight elements.
-\end{exercise}
-
-There are 5282 ways (up to symmetry) to arrange 
-eight non-attacking rooks on a chessboard. 
-
-\subsection{Commuting probability}
-
-\index{Group commutativity}
-For a finite group $G$, let $\cp(G)$ be the probability 
-that two random elements of $G$ commute. This number
-is also known as the \emph{commutativity} of $G$. 
-As an application of Cauchy--Frobenius--Burnside theorem, we
-prove that 
-$\cp(G)=k/|G|$, where $k$ is the number of conjugacy classes
-of $G$. Let 
-\[
-C=\{(x,y)\in G\times G:xy=yx\}.
-\]
-We claim that  
-    \[
-    \cp(G)=\frac{|C|}{|G|^2}=\frac{k}{|G|}.
-    \]
-
-Let $G$ act on $G$ by conjugation. 
-    By Cauchy--Frobenius--Burnside theorem, 
-    \[
-    k=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|=\frac{1}{|G|}\sum_{g\in G}|C_G(g)|=\frac{|C|}{|G|},
-    \]
-    as $\Fix(g)=\{x\in G:gxg^{-1}=x\}=C_G(g)$ and $\sum_{g\in G}|C_G(g)|=|C|$. 
-Alternatively, using Theorem \ref{thm:Frobenius_tau(g)} with $g = 1$,
-\[
-    \cp(G) = \frac{\tau(1)}{|G|^2} = \frac{1}{|G|}\sum_{\chi \in \Irr(G)} 1 = \frac{k}{|G|},
-\]
-as $k=|\Irr(G)|$. 
-\begin{theorem}
-\index{Theorem!5/8}
-\label{thm:5/8}
-    If $G$ is a non-abelian finite group, then $\cp(G)\leq5/8$.
-\end{theorem}
-
-\begin{proof}
-%
-%    We now claim that $k/|G|\leq 5/8$ if $G$ is non-abelian.
-    Let $y_1,\dots,y_m$ the representatives of conjugacy classes of $G$ 
-    of size $\geq2$. By the class equation, 
-    \[
-    |G|=|Z(G)|+\sum_{i=1}^m(G:C_G(y_i))\geq |Z(G)|+2m.
-    \]
-    Thus $m\leq(1/2)(|G|-|Z(G)|)$ and hence 
-    \[
-    k=|Z(G)|+m\leq |Z(G)|+\frac12(|G|-|Z(G)|)=\frac12(|Z(G)|+|G|).
-    \]
-    Since $G$ is non-abelian, $G/Z(G)$ is not cyclic. In particular, 
-    $(G:Z(G))\geq4$. Therefore
-    \[
-    k\leq\frac12(|Z(G)|+|G|)\leq\frac12\left(\frac14+1\right)|G|,
-    \]
-    that is $k/|G|\leq 5/8$. 
-\end{proof}
-
-\begin{exercise}\
-\begin{enumerate}
-    \item Prove that $\cp(Q_8)=5/8$. 
-    \item Prove that $\cp(\Alt_5)=1/12$. 
-\end{enumerate}
-\end{exercise}
-
-\begin{exercise}
-\label{xca:least_p}
-    Let $G$ be a finite non-abelian group and $p$ be the smallest prime number
-    dividing $|G|$. Prove that $\cp(G)\leq (p^2+p-1)/p^3$. Moreover, 
-    the equality holds if and only if $(G:Z(G))=p^2$. 
-\end{exercise}
-
-\begin{exercise}
-    Let $G$ be a finite group and $H$ be a subgroup of $G$.
-    \begin{enumerate}
-        \item $\cp(G)\leq\cp(H)$.
-        \item If $H$ is normal in $G$, then $\cp(G)\leq\cp(G/H)\cp(H)$.
-    \end{enumerate}
-\end{exercise}
-
-Degrees of irreducible characters give a lower bound:
-
-\begin{proposition}
-If $G$ is a finite group, then
-\[
-\cp(G)\geq\left(\frac{\sum_{\chi\in\Irr(G)}\chi(1)}{|G|}\right)^2.
-\]
-\end{proposition}
-
-\begin{proof}
-    Let $k$ be the number of conjugacy classes of $G$.
-    By Cauchy--Schwarz inequality, 
-    \begin{align*}
-        \left(\sum_{\chi\in\Irr(G)}\chi(1)\right)^2
-        &\leq\left(\sum_{\chi\in\Irr(G)}\chi(1)^2\right)\left(\sum_{\chi\in\Irr(G)}1\right)
-        =\left(\sum_{\chi\in\Irr(G)}\chi(1)^2\right)k=|G|k.
-    \end{align*}
-    From this, the claim follows.
-\end{proof}
-
-Using basic facts about irreducible characters, 
-we obtain a generalization of Theorem \ref{thm:5/8}. 
-
-\begin{theorem}
-\label{thm:[GG]}
-    Let $G$ be a finite group. Then
-    \[
-    |[G,G]|\leq 3/(4\cp(G)-1).
-    \]
-\end{theorem}
-
-\begin{proof}
-    For $n\in\Z_{>0}$, let $\rho_n$ be the number
-    of irreducible characters of degree $n$. Then 
-    the number of conjugacy classes of $G$ is $k=\sum_{i\geq1}\rho_i$
-    and $|G|=\sum_{i\geq1}i^2\rho_i$. 
-    It follows that 
-    \begin{align*}
-    |G|-\rho_1 &=\sum_{i\geq 2}i^2\rho_i\geq 4\sum_{i\geq2}\rho_i
-    =4(k-\rho_1)=4(|G|\cp(G)-\rho_1).
-    \end{align*}
-    Since $\rho_1=(G:[G,G])$, 
-    \[
-    \cp(G)\leq \frac14+\frac34\frac{\rho_1}{|G|}=\frac14+\frac3{4|[G,G]|}.
-    \]
-    From this, the claim follows. 
-\end{proof}
-
-\begin{exercise}
-    \label{xca:5/8}
-    Use Theorem \ref{thm:[GG]} to prove Theorem \ref{thm:5/8}.
-\end{exercise}
-
-Theorem \ref{thm:[GG]} 
-can also be used to
-prove similar statements. 
-
-\begin{exercise}
-    \label{xca:cp_NS}
-    Let $G$ be a finite group. Prove the following statements:
-    \begin{enumerate}
-        \item If $\cp(G)>1/2$, then $G$ is nilpotent.
-        \item If $\cp(G)>21/80$, then $G$ is solvable. 
-    \end{enumerate}
-\end{exercise}
-
-In the following exercise, we will discuss the notion 
-of isoclinic groups. We first need
-a preliminary result:
-
-\begin{exercise}
-\index{Commutator map}
-\label{xca:commutator_map}
-    Let $G$ be a group. Prove that the commutator map
-    \[
-    c_G\colon G/Z(G)\times G/Z(G)\to [G,G],
-    \quad
-    c_G(xZ(G),yZ(G))=[x,y],
-    \]
-    is well-defined. 
-\end{exercise}
-
-The idea is that two groups are said to be isoclinic 
-if their commutator functions are somewhat equal. 
-
-\begin{exercise}
-\index{Isoclinism}
-\label{xca:isoclinism}
-    Let $G$ and $H$ be groups. 
-    A pair $(\sigma,\tau)$ of maps is an \emph{isoclinism}
-    between $G$ and $H$ if 
-    $\sigma\colon G/Z(G)\to H/Z(H)$ and  
-    $\tau\colon [G,G]\to [H,H]$ are group isomorphisms and 
-    the diagram
-    \begin{equation}
-    \label{eq:isoclinism}
-    \begin{tikzcd}
-	{G/Z(G)\times G/Z(G)} & {H/Z(H)\times H/Z(H)} \\
-	{[G,G]} & {[H,H]}
-	\arrow["{\sigma\times\sigma }", from=1-1, to=1-2]
-	\arrow["{c_H}", from=1-2, to=2-2]
-	\arrow["{c_G}"', from=1-1, to=2-1]
-	\arrow["\tau"', from=2-1, to=2-2]
-    \end{tikzcd}
-    \end{equation} 
-    commutes. We write $G\sim H$ when there exists 
-    an isoclinism between $G$ and $H$. 
+    Let $g\in G$ and $\rho\colon G\to\GL(V)$ be the representation
+    associated with $V$, that is $\rho(g)(v)=\rho_g(v)=g\cdot v$. 
+    Since $\rho_g$ is diagonalizable, let $\{e_1,\dots,e_n\}$ 
+    be a basis of eigenvectors of $\rho_g$, say
+    $g\cdot e_i=\lambda_ie_i$ with $\lambda_i\in\C$ for all $i\in\{1,\dots,n\}$. In particular, $\chi(g)=\sum_{i=1}^n\lambda_i$. 
     
-    Prove the following statements:
-    \begin{enumerate}
-        \item If $G\simeq H$, then $G\sim H$.
-        \item If $G\sim H$, then $\cp(G)=\cp(H)$. 
-    \end{enumerate}
-\end{exercise}
+    Since $\{e_i\otimes e_j-e_j\otimes e_i:1\leq i<j\leq n\}$ is a basis of
+    $A(V\otimes V)$ and 
+    \[
+    g\cdot (e_i\otimes e_j-e_j\otimes e_i)=\lambda_i\lambda_j(e_i\otimes e_j-e_j\otimes e_i),
+    \]
+    it follows that
+    $\chi_A(g)=\sum_{1\leq i<j\leq n}\lambda_i\lambda_j$. On the other hand,
+    $g^2\cdot e_i=\lambda_i^2e_i$ for all $i$,
+    $\chi(g^2)=\sum_{i=1}^n\lambda_i^2$. Thus 
+    \[
+    \chi^2(g)=\chi(g)^2=\sum_{i=1}^n\sum_{j=1}^n\lambda_i\lambda_j=2\sum_{1\leq i<j\leq n}\lambda_i\lambda_j+\sum_{i=1}^n\lambda_i^2=2\chi_A(g)+\chi(g^2).
+    \]
+    Since $V\otimes V=S(V\otimes V)\oplus A(V\otimes V)$, it follows that  
+    $\chi^2(g)=\chi_S(g)+\chi_A(g)$, that is 
+    $\chi_S(g)=\frac12(\chi^2(g)+\chi(g^2))$.
+\end{proof}
 
-\begin{exercise}
-\label{xca:isoclinism_simple}
-    Let $S$ be a non-abelian simple group and
-    $G$ be a group such that $G\sim S$. Prove that 
-    $G\simeq S\times A$ for some abelian group $A$.
-\end{exercise}
+\index{Involution}
+An \emph{involution} of a group is an element $x\ne 1$ such that $x^2=1$. 
+It is possible to use the character table to count the number
+of involutions.
 
-\begin{exercise}
-\label{xca:isoclinism_factorization}
-    Let $H$ be a subgroup of $G$. If $G=HZ(G)$, then $G\sim H$. 
-    Conversely, if $G\sim H$ and $H$ is finite, then 
-    $G=HZ(G)$. 
-\end{exercise}
-
-The following theorem appeared in 1970 as a problem in 
-volume 13 of the \emph{Canadian Math. Bulletin}. The solution
-appeared in 1973. 
-Iv\'an Sadosfchi Costa found the proof we present here. 
-
-\begin{theorem}[Dixon]
-    \index{Dixon's theorem}
-    The commuting probability of every finite 
-    non-abelian simple group is at most $1/12$. 
-   %If $G$ is a finite non-abelian simple group, then $\cp(G)\leq1/12$.
-\end{theorem}
+\begin{proposition}
+    If $G$ is a finite group with $t$ involutions, then
+    \[
+        1+t=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1),
+    \]
+    where $\chi_1$ is 
+    the trivial character of $G$.
+\end{proposition}
 
 \begin{proof}
-Let $G$ be a finite non-abelian simple group. We claim that 
-$\cp(G)\leq1/12$. 
-We assume that $\cp(G)>1/12$. Since
-$G$ is a non-abelian simple group, 
-the identity of $G$ is the only central element of $G$. 
+    Assume that $\Irr(G)=\{\chi_1,\dots,\chi_k\}$.  
+    For $x\in G$ let 
+    \[
+    \theta(x)=|\{y\in G:y^2=x\}|.
+    \]
+    Since $\theta$ is a class function, 
+    $\theta$ is a linear combination of the $\chi_j$'s, say 
+    \[
+    \theta=\sum_{\chi\in\Irr(G)}\langle\theta,\chi\rangle\chi.
+    \]
+    For every $\chi\in\Irr(G)$ we compute: 
+    \begin{align*}
+        \langle\chi_S-\chi_A,\chi_1\rangle 
+        &=\frac{1}{|G|}\sum_{g\in G}\chi(g^2)\\
+        &=\frac{1}{|G|}\sum_{x\in G}\sum_{\substack{g\in G\\g^2=x}}\chi(g^2)
+        =\frac{1}{|G|}\sum_{x\in G}\theta(x)\chi(x)=\langle\theta,\chi\rangle.
+    \end{align*}
+    Thus $\theta=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi$. Now
+    the claim follows after evaluating this expression in 
+    $x=1$. 
+\end{proof}
 
-Let us assume first that there is a conjugacy class of $G$ of size $m$, where
-$m$ is such that $1<m\leq 12$. Then $G$ is a transitive subgroup of $\Sym_m$.
-For these groups, the problem is easy: we show that there are no non-abelian simple groups
-that act transitively on sets of size $m\in\{2,\dots,12\}$ with commuting
-probability $>1/12$. To do this, we list these transitive groups and their commuting
-probabilities and verify that all commuting probabilities are $\leq
-1/12$:
-\begin{lstlisting}
-gap> l := AllTransitiveGroups(NrMovedPoints, [2..12], \\
-> IsAbelian, false, IsSimple, true);;
-[ A5, L(6) = PSL(2,5) = A_5(6), A6, 
-  L(7) = L(3,2), A7, L(8)=PSL(2,7), A8, 
-  L(9)=PSL(2,8), A9, A_5(10), L(10)=PSL(2,9), 
-  A10, L(11)=PSL(2,11)(11), M(11), A11, A_5(12), 
-  L(2,11), M_11(12), M(12), A12 ]
-gap> List(l, CommutingProbability);           
-[ 1/12, 1/12, 7/360, 1/28, 1/280, 1/28, 1/1440, 
-  1/56, 1/10080, 1/12, 7/360, 1/75600, 2/165, 
-  1/792, 31/19958400, 1/12, 2/165, 1/792, 1/6336, 
-  43/239500800 ]
-gap> ForAny(l, x->CommutingProbability(x)>1/12);
-false
-\end{lstlisting}
-
-Now assume that all non-trivial conjugacy classes of $G$ have at least 13 elements. Let $k$ be the number of conjugacy classes of $G$. 
-Then the class equation implies that
-\begin{align*}
-	|G|&\geq 1+(k-1)13=13k-12.
-\end{align*}
-Since $\cp(G)=k/|G|>1/12$, $k>|G|/12$. Thus 
+\index{Cauchy--Schwarz inequality}
+Before proving the Brauer--Fowler theorem, we
+need a lemma. We will use the Cauchy--Schwarz inequality: 
 \[
-|G|>\frac{13}{12}|G|-12
+x_1,\dots,x_n\in\R\implies
+\sum x_i^2\geq\frac{1}{n}(\sum x_i)^2.
 \]
-and therefore $|G|<144$. Thus one needs to check what happens with groups
-of order $<144$. 
-But we know that the only non-abelian simple group of size
-$<144$ is the alternating simple group $\Alt_5$.
-\begin{lstlisting}
-gap> AllGroups(Size, [2..143], \\
-> IsAbelian, false, \\
-> IsSimple, true);
-[ Alt( [ 1 .. 5 ] ) ]
-\end{lstlisting}    
-This completes the proof. 
+
+\begin{lemma}
+    Let $G$ be a finite group with $k$ conjugacy classes. 
+    If $t$ is the number of involutions of $G$, then
+    $t^2\leq (k-1)(|G|-1)$. 
+\end{lemma}
+
+\begin{proof}
+    Assume that $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, where $\chi_1$ is the
+    trivial character of $G$. 
+    If $\chi\in\Irr(G)$, then 
+    \[
+        \langle\chi^2,\chi_1\rangle=\frac{1}{|G|}\sum_{g\in G}\chi(g)\chi(g)=\langle\chi,\overline{\chi}\rangle=\begin{cases}
+        1 & \text{if $\chi=\overline{\chi}$},\\
+        0 & \text{otherwise}.
+        \end{cases}
+    \]
+    Since $\chi^2=\chi_S+\chi_A$, if $\langle\chi^2,\chi_1\rangle=1$, then
+    the trivial character either is part of $\chi_S$ or $\chi_A$, but not both. 
+    Thus
+    \[
+    \langle\chi_S-\chi_A,\chi_1\rangle\in\{-1,1,0\}.
+    \]
+    
+    We claim that 
+    $t\leq\sum_{i=2}^k\chi_i(1)$. In fact, since 
+    $|\langle\chi_S-\chi_A,\chi_1\rangle|\leq 1$, 
+    \begin{align*}
+        1+t=\theta(1)
+        &=\left|\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1)\right|\\
+        &\leq\sum_{\chi\in\Irr(G)}|\langle\chi_S-\chi_A,\chi_1\rangle|\chi(1)
+        \leq\sum_{\chi\in\Irr(G)}\chi(1).
+    \end{align*}
+    It follows that $t\leq\sum_{i=2}^k\chi_i(1)$. 
+    By the Cauchy--Schwarz inequality, 
+    \[
+        t^2\leq\left(\sum_{i=2}^k\chi_i(1)\right)^2
+        \leq(k-1)\sum_{i=2}^k\chi(1)^2=(k-1)(|G|-1).\qedhere
+    \]
 \end{proof}
 
-The alternating group $\Alt_5$ is important in this setting:
+Now we prove the Brauer--Fowler theorem. 
 
-\begin{theorem}[Guralnick--Robinson]
-    \index{Guralnick--Robinson theorem}
-    If $G$ is a finite non-solvable group such that $\cp(G)>3/40$, then
-    $G\simeq\Alt_5\times T$ for some abelian group 
-    $T$ and $\cp(G)=1/12$. 
-\end{theorem}
-
-The proof appears in~\cite{MR2228209}.
-
-Results on probability of commuting elements generalize in other directions. 
-In~\cite{MR230809,MR276325,MR313378,MR369512}, 
-Thompson proved the following result:
-
-\begin{theorem}[Thompson]
-\index{Thompson's theorem}
-    If $G$ is a finite group such that 
-    every pair of elements of $G$ generate
-    a solvable group, then $G$ is solvable. 
-\end{theorem}
-
-The proof uses the classification of finite simple groups (CFSG). A simpler
-proof independent of the CFSG appears in~\cite{MR1346207}.
-
-There is a probabilistic version of Thompson's theorem:
-
-\begin{theorem}[Guralnick--Wilson]
-    \index{Guralnick--Wilson theorem}
-    Let $G$ be a finite group.
-    \begin{enumerate}
-        \item If the probability that two random elements of $G$ 
-        generate a solvable group is $>11/30$, then $G$ is solvable. 
-        \item If the probability that two random elements of $G$ 
-        generate a nilpotent group is $>1/2$, then $G$ is nilpotent.
-        \item If the probability that two random elements of $G$ 
-        generate a group of odd order is $>11/30$, then $G$ has odd order.
-    \end{enumerate}
-\end{theorem}
-
-The proof uses the CFSG and appears in~\cite{MR1770615}.
-
-\subsection{Jordan's theorem and applications}
-
-We now follow~\cite{MR1997347} to present other applications. 
-
-\begin{theorem}[Jordan]
-\index{Jordan's theorem}
-    Let $G$ be a non-trivial finite group. If $G$ acts transitively 
-    on a finite set $X$ and $|X|>1$, then there exists 
-    $g\in G$ with no fixed points.
+\begin{theorem}[Brauer--Fowler]
+    \index{Brauer--Fowler theorem}
+    Let $G$ be a finite simple group and $x$ be an involution of $G$. If $|C_G(x)|=n$, then $|G|\leq (n^2)!$	
 \end{theorem}
 
 \begin{proof}
-    Cauchy--Frobenius--Burnside theorem implies that
+    If $G$ is abelian, the claim is trivial. Let $G$ be a finite non-abelian simple group.
+    We first assume the existence of a proper subgroup $H$ of $G$ 
+    such that 
     \[
-    1=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|=\frac{1}{|G|}\left(|X|+\sum_{g\ne 1}|\Fix(g)|\right).
+    (G:H)\leq n^2.
     \]
-    If every $g\in G\setminus\{1\}$ contains at least one fixed-point, then
+    The group $G$ acts on $G/H$ 
+    by left multiplication, so there is a group homomorphism 
+    $\rho\colon G\to\Sym_{n^2}$. Since $G$ is simple, either 
+    $\ker\rho=\{1\}$ or $\ker\rho=G$. If $\ker\rho=G$, then
+    $\rho(g)(yH)=yH$ for all $g\in G$ and $y\in G$. 
+    Hence $H=G$, a contradiction. Therefore $\rho$ is injective
+    and hence $G$ is isomorphic to a subgroup of $\Sym_{n^2}$. 
+    In particular, $|G|$ divides $(n^2)!$. 
+
+    Let $m=(|G|-1)/t$, where $t$ is the number of involutions of $G$. 
+    Since $|C_G(x)|=n$, the group $G$ has at least $|G|/n$ involutions (because
+    the conjugacy class of $x$ has size $|G|/n$ and all its elements are involutions), 
+    that is $t\geq |G|/n$. Hence 
     \[
-    1=\frac{1}{|G|}\left(|X|+\sum_{g\ne 1}|\Fix(g)|\right)\geq \frac{1}{|G|}(|X|+|G|-1)=1+\frac{|X|-1}{|G|}
+    m=(|G|-1)/t<n.
     \]
-    and thus $|X|\leq1$, a contradiction. 
+    It is enough to show that
+    $G$ contains a subgroup of index $\leq m^2$. 
+
+    Let $C_1,\dots,C_k$ be the conjugacy classes of $G$, where $C_1=\{1\}$. 
+    Since $G$ is simple and non-abelian, $|C_i|>1$ 
+    for all $i\in\{2,\dots,k\}$. By the previous lemma, 
+    \[
+    t^2\leq(k-1)(|G|-1)\implies |G|-1=\frac{mt^2}{t}\leq\frac{(k-1)(|G|-1)^2}{t^2}=(k-1)m^2.
+    \]
+    If $|C_i|>m^2$ for all $i\in\{2,\dots,k\}$, then
+    \[
+    |G|-1=\sum_{i=2}^k|C_i|>(k-1)m^2,
+    \]
+    a contradiction. Thus there exists a non-trivial conjugacy class
+    $C$ of $G$ such that $|C|\leq m^2$. If $g\in C$, then
+    $C_G(g)$ is a proper subgroup of $G$ of index $|C|\leq m^2$.
 \end{proof}
+
+The bound of the Brauer--Fowler theorem is not essential.
+What matters is the following consequence:
 
 \begin{corollary}
-    Let $G$ be a finite group and $H$ be a proper subgroup of $G$. 
-    Then $G\ne\cup_{g\in G}gHg^{-1}$.
+    Let $n\geq 1$ be an integer. There are at most finitely many 
+    finite simple groups with an involution with a centralizer of order $n$.
 \end{corollary}
 
-\begin{proof}
-    The group $G$ acts transitively by left multiplication on $X=G/H$. The stabilizer
-    of $xH$ is 
-    \[
-    G_{xH}=\{g\in G:gxH=xH\}=xHx^{-1}.
-    \]
-    Since $H\ne G$, it follows that $|X|=|G/H|>1$. Jordan's theorem now implies
-    that there exists $g\in G$ with no fixed-points, that is 
-    there is an element $g\in G$ such that $g\not\in\cup_{x\in G}xHx^{-1}$. 
-\end{proof}
+As an exercise, a simple application: 
 
-Let $G$ be a finite group. We say that the conjugacy classes $C$ and $D$ 
-\emph{commute} if there exist 
-$c\in C$ and $d\in D$ such that $[c,d]=1$. 
-Note that $C$ and $D$ commute if and only if for all $c\in C$ there exists $d\in D$ 
-such that $[c,d]=1$. 
+\begin{exercise}
+    If $G$ is a finite simple group and $x$ is an involution with
+    centralizer of order two, then  
+    $G\simeq\Z/2$. 
+\end{exercise}
 
-\begin{corollary}[Wildon]
-\index{Wildon's theorem}
-    Let $G$ be a finite group and $C$ be a conjugacy class of $G$. 
-    Then $|C|=1$ if and only if $C$ commutes 
-    with every conjugacy class of $G$.
-\end{corollary}
-    
-\begin{proof}
-    We prove $\impliedby$. 
-    Assume that $C$ commutes with every conjugacy class of $G$. 
-    Let $c\in C$ and $H=C_G(c)$. Then $H\cap D\ne\emptyset$ for every conjugacy class
-    $D$. We claim that $G=\cup_{g\in G}gHg^{-1}$. In fact, let $x\in G$. Then
-    $x\in D$ 
-    for some conjugacy class $D$. 
-    Let 
-    $h\in H\cap D$. There exists $y\in G$ such that $h=yxy^{-1}$, that is
-    $x=y^{-1}hy\in \cup_{g\in G}gHg^{-1}$. By Jordan's theorem,  
-    $H=G$. Thus $c$ is central and hence $C=\{c\}$. 
-    
-    We now prove $\implies$. If $C=\{c\}$, then $c\in Z(G)$ and $C$ commute with every 
-    conjugacy class of~$G$. 
-\end{proof}
+\subsection{A comment: An elementary proof of Brauer--Fowler theorem}
 
-With the CFSG one proves a result similar to that of Jordan. 
+We need to find a subgroup of index $\leq 2n^2$. 
+Let $X$ be the conjugacy class of $x$. For $g\in G$ let
+\[
+J(g)=\{z\in X:zgz^{-1}=g^{-1}\}.
+\]
+We claim that $|J(g)|\leq|C_G(g)|$. The map $J(g)\to C_G(g)$, $z\mapsto gz$, 
+is well-defined,~as 
+\[
+(gz)g(gz)^{-1}=g(zgz^{-1})g^{-1}=g^{-1}\in C_G(g).
+\]
+It is injective, as $gz=gz_1$ implies $z=z_1$.
 
-\begin{theorem}[Fein--Kantor--Schacher]
-    \index{Fein--Kantor--Schacher theorem}
-    Let $G$ be a non-trivial finite group. If $G$ acts transitively
-    on a finite set $X$ and $|X|>1$, then
-    there exist a prime number $p$ and an element $g\in G$ with no fixed-points
-    with order a power of $p$.
-\end{theorem}
+Let $J=\{(g,z)\in G\times X:zgz^{-1}=g^{-1}\}$.  
+Since $X\times X\to J$, $(y,z)\mapsto (yz,z)$, 
+is well-defined (since $z(yz)z^{-1}=zy=(yz)^{-1}$) and
+it is trivially injective, 
+\[
+|X|^2\leq |J|=\sum_{(g,z)\in J}1\leq\sum_{g\in G}|J(g)|
+\leq\sum_{g\in G}|C_G(g)|=k|G|,
+\]
+where $k$ is the number of conjugacy classes of $G$, 
+as $(g,z)\in J$ if and only if $z\in J(g)$. Thus $|G|\leq kn^2$, as
+\[
+\left(\frac{|G|}{|C_G(x)|}\right)^2=|X|^2=\frac{|G|^2}{n^2}\leq k|G|.
+\]
 
-The proof appears in~\cite{MR636194}. 
+\begin{claim}
+    There exists a non-trivial conjugacy class with $\leq 2n^2$ elements.
+\end{claim}
 
-\subsection{Derangements: Cameron--Cohen theorem}
+Assume that the claim is not true. Let
+$C_1,\dots,C_k$ be the conjugacy classes of $G$, where 
+$C_1=\{1\}$ and $|C_i|>2n^2$ for all $i\in\{2,\dots,k\}$. Then
+\[
+|G|=1+\sum_{i=2}^k|C_i|>1+\sum_{i=2}^k2n^2=1+(k-1)2n^2\geq |G|,
+\]
+a contradiction. 
 
-\index{Derangements}
-Let $G$ be a finite group that acts faithfully and transitively 
-on a finite set $X$, say 
-$G\leq\Sym_n$, where $X=\{1,2,\dots,n\}$. Let 
-$G_0$ be the set of elements $g\in G$ with no fixed-points, 
-that is $g(x)\ne x$ for all $x\in X$. 
-Such permutations are known as \emph{derangements}. 
-Let $c_0=|G_0|/|G|$. 
+\begin{claim}
+    There exists a subgroup $H$ of $G$ such that
+    $(G:H)\leq 2n^2$.
+\end{claim}
 
-\begin{theorem}[Cameron--Cohen]
-    \index{Cameron--Cohen theorem}
-    If $G$ is a subgroup of $\Sym_n$ that acts transitively on 
-    $\{1,\dots,n\}$, then $c_0\geq\frac{1}{n}$.
-\end{theorem}
+Let $C$ be a conjugacy class of $G$ such that 
+$|C|\leq 2n^2$. Let $g\in C$.  
+Then $H=C_G(g)$ is a subgroup of $G$ such that
+$(G:H)\leq 2n^2$. 
+This finishes the proof of the Brauer--Fowler theorem. 
 
-\begin{proof}
-    Let $X=\{1,\dots,n\}$. By definition, the rank of $G$ is the number
-    of orbitals of $G$ on $X$. It follows that the rank is $\geq2$, as
-    $X\times X$ decomposes as 
-    \[
-    X\times X=\Delta\cup\left((X\times X)\setminus\Delta\right)
-    \]
-    Let $\chi(g)=|\Fix(g)|$ and $G_0=\{g\in G:\chi(g)=0\}$. If $g\not\in G_0$, then $1\leq\chi(g)\leq n$. Since  
-    $(\chi(g)-1)(\chi(g)-n)\leq 0$,
-    \[
-    \frac{1}{|G|}\sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)\leq 0.
-    \]
-    On the one hand, 
+
+
+\subsection{Frobenius's reciprocity}
+
+We now present a very quick version of Frobenius'
+reciprocity theorem. We first 
+define the restriction of class functions. 
+
+\begin{definition}
+    Let $G$ be a finite group and $f\colon G\to\C$ be
+    a map. For a subgroup $H$ of $G$, the \emph{restriction}
+    of $f$ to $H$ is the map 
+    $\Res_H^G=f|_H\colon H\to\C$, $h\mapsto f(h)$. 
+\end{definition}
+
+\begin{exercise}
+\label{xca:restriction}
+    Let $G$ be a finite group. Prove that
+    the map $\Res_H^G\colon\cf(G)\to\cf(H)$, $f\mapsto\Res_H^G(f)$, 
+    is a well-defined linear map. 
+\end{exercise}
+
+We now define induction. Let $G$ be a finite group
+and $H$ be a subgroup of $G$. If $f\colon H\to\C$ is a map, 
+then 
+\[
+\dot{f}(x)=\begin{cases}
+    f(x) & \text{if $x\in H$},\\
+    0 & \text{otherwise}.
+    \end{cases}
+\]
+It is an exercise to prove that
+the map $f\mapsto\dot{f}$ is linear. 
+
+\begin{definition}
+    Let $G$ be a finite group and $H$ be a subgroup of $G$. Let
+    $f\colon H\to\C$ be
+    a map. The \emph{induction}
+    of $f$ to $G$ is the map 
     \begin{align*}
-    \frac{1}{|G|}\sum_{g\in G}(\chi(g)&-1)(\chi(g)-n)\\
-    &=\frac{1}{|G|}\left\{\sum_{g\in G_0}+\sum_{g\in G\setminus G_0}\right\}(\chi(g)-1)(\chi(g)-n)\\
-    &\leq n\frac{|G_0|}{|G|}=nc_0.
+      g\mapsto\Ind_H^Gf(g)=\frac{1}{|H|}\sum_{x\in G}\dot{f}(x^{-1}gx).
     \end{align*}
-    On the other hand, since the rank of $G$ is $\geq2$, 
-    \begin{equation}
-        \label{eq:CameronCohen}
-        2-\frac{n+1}{|G|}\sum_{g\in G}\chi(g)+n\leq 
-        \frac{1}{|G|}\sum_{g\in G}(\chi(g)-1)(\chi(g)-n)\leq nc_0.
-    \end{equation}
-    Since $G$ is transitive on $X$, Cauchy--Frobenius--Burnside theorem implies that
-    $\sum_{g\in G}\chi(g)=|G|$. Thus $2-(n+1)+n\leq nc_0$ and hence
-    $1/n\leq c_0$. 
-\end{proof}
+\end{definition}
 
-Cameron--Cohen theorem contains another claim: If
-$n$ is not the power of a prime number, then 
-$c_0>1/n$. The proof uses Frobenius' theorem. 
+\begin{exercise}
+\label{xca:induction}
+    Let $G$ be a finite group. Prove that
+    the map $\Ind_H^G\colon\cf(H)\to\cf(G)$, $f\mapsto\Ind_H^G(f)$, 
+    is a well-defined linear map. 
+\end{exercise}
 
-With the CFSG the bound in 
-Cameron--Cohen theorem can be improved:
-
-\begin{theorem}[Guralnick--Wan]
-    \index{Guralnick--Wan theorem}
-    Let $G$ be a finite transitive group of degree $n\geq2$. If $n$ 
-    is not a power of a prime number and 
-    $G\ne\Sym_n$ for $n\in\{2,4,5\}$, then $c_0\geq 2/n$.
+\begin{theorem}[Frobenius' reciprocity]
+\index{Frobenius' reciprocity theorem}
+    Let $G$ be a finite group and $H$ be a subgroup of $G$. 
+    If $a\in\cf(H)$ and $b\in\cf(G)$, then
+    \[
+    \langle\Ind_H^Ga,b\rangle=\langle a,\Res_H^Gb\rangle.
+    \]
 \end{theorem}
 
-The proof appears in~\cite{MR1484879} and uses
-the classification of finite 2-transitive groups, 
-which depends on the CFSG. 
+\begin{proof}
+    It follows from a direct calculation:
+    \begin{equation}
+    \label{eq:reciprocity}
+    \begin{aligned}
+        \langle\Ind_H^Ga,b\rangle 
+        &= \frac{1}{|G|}\sum_{x\in G}\Ind_H^Ga(x)\overline{b(x)}
+        = \frac{1}{|G|}\frac{1}{|H|}\sum_{x,y\in G}\dot{a}(y^{-1}xy)\overline{b(x)}.
+    \end{aligned}
+    \end{equation}
+    Since 
+    \[
+    \dot{a}(y^{-1}xy)\ne 0\Longrightarrow
+    y^{-1}xy\in H\Longleftrightarrow x\in yHy^{-1},
+    \]
+    setting $h=y^{-1}xy$ 
+    we can write \eqref{eq:reciprocity} as 
+    \begin{align*}
+        \langle\Ind_H^Ga,b\rangle
+        &=\frac{1}{|G|}\frac{1}{|H|}\sum_{x\in G}\sum_{h\in H}a(h)\overline{b(xhx^{-1})}\\
+        &=\frac{1}{|G|}\frac{1}{|H|}\sum_{x\in G}\sum_{h\in H}a(h)\overline{b(h)}\\
+        &=\frac{1}{|G|}\sum_{x\in G}\langle a,\Res_H^Gb\rangle.
+    \end{align*}
+    From this the claim follows. 
+\end{proof}
 
-
+% 8.1.4 de Steinberg
+% Seccion 8.2 define la inducción de representaciones
+% 8.2.1 Induce la trivial del trivial a todo el grupo o obtiene la regular
+% 8.2.2 Induce la representación por permutaciones
+% Define la matriz y mira el dihedral de orden 2n (yo tengo un caso particular)
+% Hace el ejemplo de Q8
+% En el teorema 8.2.5 prueba la inducción da una representación
 

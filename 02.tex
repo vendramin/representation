@@ -1,593 +1,154 @@
-\section{}
+\section{Lecture: Week 2}
 
-\subsection{Group algebras}
 
-\index{Group algebra}
-Let $G$ be a finite group. The (complex) \emph{group
-algebra} $\C[G]$ is the $\C$-vector space with
-basis $\{g:g\in G\}$ and multiplication
-\[
-\left(\sum_{g\in G}\lambda_gg\right)\left(\sum_{h\in G}\mu_hh\right)
-=\sum_{g,h\in G}\lambda_g\mu_h(gh).
-\]
+We now describe some crucial examples of representations. 
 
-Clearly, $\dim \C[G]=|G|$. Moreover, 
-$\C[G]$ is commutative if and only if $G$ is abelian. 
 
-\index{Augmentation ideal}
-If $G$ is non-trivial, 
-then $\C[G]$ contains proper non-trivial ideals. For example, 
-the \emph{augmentation ideal} 
-\[
-I(G)=\left\{\sum_{g\in G}\lambda_gg\in \C[G]:\sum_{g\in G}\lambda_g=0\right\}
-\]
-is a non-zero proper ideal of $\C[G]$. 
 
-\begin{exercise}
-Let $C_n$ be the cyclic group of order $n$ (written multiplicatively).
-Prove that $\C[G]\simeq \C[X]/(X^n-1)$. 
-\end{exercise}
-
-\begin{exercise}
-    Let $G$ be a finite non-trivial group. Prove that
-    $\C[G]$ has zero divisors. 
-\end{exercise}
-
-\begin{exercise}
-    Let $G$ be a finite group. The set
+\begin{example}
+    Let $\rho\colon G\to\GL(V)$ and 
+    $\psi\colon G\to\GL(W)$ be representations. The \emph{direct sum} 
+    $\rho\oplus\psi\colon G\to\GL(V\oplus W)$, $g\mapsto (\rho_g,\psi_g)$, 
+    is a representation. This is equivalent to say that
+    the vector space $V\oplus W$ is a $\C[G]$-module with
     \[
-    \Fun(G,\C)=\{\alpha\colon G\to\C\}
+    g\cdot (v,w)=(g\cdot v,g\cdot w),\quad
+    g\in G,\;v\in v,\;w\in W.
     \]
-    is a complex vector space with 
-    the operations 
+\end{example}
+
+Let $V$ be a vector space with basis $\{v_1,\dots,v_k\}$ and 
+$W$ be a vector space with basis $\{w_1,\dots,w_l\}$. A 
+\emph{tensor product} of $V$ and $W$ is a vector space $X$ with 
+together with a bilinear map 
+\[
+V\times W\to X,
+\quad
+(v,w)\mapsto v\otimes w,
+\]
+such that $\{v_i\otimes w_j:1\leq i\leq k,\,1\leq j\leq l\}$ is a  
+basis of $X$. The tensor product of $V$ and $W$ is unique up to isomorphism 
+and it is denoted by $V\otimes W$. Note that
+\[
+\dim(V\otimes W)=(\dim V)(\dim W).
+\]
+
+
+\begin{example}
+    Let $V$ and $W$ be $\C[G]$-modules. The \emph{tensor product}
+    $V\otimes W$
+    is a $\C[G]$-module 
+    with
     \[
-    (\alpha+\beta)(x)=\alpha(x)+\beta(x),
+    g\cdot v\otimes w=g\cdot v\otimes g\cdot w,
     \quad
-    (\lambda\alpha)(x)=\lambda\alpha(x),
+    g\in G,\;v\in V,\;w\in W.
     \]
-    for all $\alpha,\beta\in\Fun(G,\C)$, $x\in G$ 
-    and $\lambda\in\C$. It is an algebra
-    with the \emph{convolution product} 
-    \[
-    (\alpha*\beta)(x)=\sum_{y\in G}\alpha(xy^{-1})\beta(y).
-    \]
-    Let 
-    \[
-    \delta_x(y)=\begin{cases}
-            1 & \text{if $x=y$},\\
-            0 & \text{otherwise}.
-        \end{cases}
-    \]
-    Prove the following statements:
-    \begin{enumerate}
-        \item 
-        The set $\{\delta_x:x\in G\}$ is a basis
-        of $\Fun(G,\C)$. 
-        \item The map $\C[G]\to\Fun(G,\C)$, $g\mapsto\delta_g$, 
-            extends linearly to an algebra isomorphism. 
-    \end{enumerate}
-\end{exercise}
-
-
-\index{Module!semisimple}
-Recall that a finite-dimensional module $M$ is semisimple 
-if and only if for every submodule $S$ of $M$ there 
-is a submodule $T$ of $M$ such that $M=S\oplus T$.    
-
-\begin{theorem}[Maschke]
-\index{Maschke's theorem}
-    Let $G$ be a finite
-    group and $M$ be a finite-dimensional $\C[G]$-module.
-    Then $M$ is semisimple. 
-\end{theorem}
-
-\begin{proof}
-We must show that every submodule $S$ of $M$ admits a complement. 
-Since $S$ is a subspace of $M$, there exists a subspace $T_0$ of $M$ 
-such that $M=S\oplus T_0$ (as vector spaces). We use 
-$T_0$ to construct a submodule $T$ of $M$ that complements $S$. Since $M=S\oplus T_0$, 
-every $m\in M$ can be written uniquely as $m=s+t_0$ for some $s\in S$ and $t_0\in T$. 
-Let 
-\[
-p_0\colon M\to S,\quad
-p_0(m)=s,
-\]
-where $m=s+t_0$ with $s\in S$ and $t_0\in T$. 
-If $s\in S$, then $p_0(s)=s$. In particular, $p_0^2=p_0$, as 
-$p_0(m)\in S$. 
-
-Generally, $p_0$ is not a $\C[G]$-modules homomorphism. 
-Let 
-\[
-p\colon M\to S,\quad
-p(m)=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot p_0(g\cdot m).
-\]
-
-We claim that $p$ is a homomorphism of $\C[G]$-modules. For that purpose, we need to show that 
-$p(g\cdot m)=g\cdot p(m)$ for all $g\in G$ and $m\in M$. In fact, 
-\[
-p(g\cdot m)=\frac{1}{|G|}\sum_{h\in G}h^{-1}\cdot p_0(h\cdot (g\cdot m))
-=\frac{1}{|G|}\sum_{h\in G}(gh^{-1})\cdot p_0(h\cdot m)=g\cdot p(m).
-\]
-
-We now claim that $p(M)=S$. The inclusion $\subseteq$ is trivial to prove, as $S$ is a submodule of $M$ 
-and $p_0(M)\subseteq S$. Conversely, if $s\in S$, then $g\cdot s\in S$, as 
-$S$ is a submodule. Thus 
-$s=g^{-1}\cdot (g\cdot s)=g^{-1}\cdot p_0(g\cdot s)$ and hence 
-\[
-s=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot (g\cdot s)=\frac{1}{|G|}\sum_{g\in G}g^{-1}\cdot (p_0(g\cdot s))=p(s).
-\]
-Since $p(m)\in S$ for all $m\in M$, it follows that $p^2(m)=p(m)$, so $p$ is a projector onto $S$. 
-Hence $S$ admits a complement in $M$, that is $M=S\oplus\ker(p)$.
-\end{proof}
-
-\begin{exercise}
-Let $G=\langle g\rangle$ be the cyclic group 
-of order four and $\rho_g=\begin{pmatrix}
-0&-1\\
-1&0\end{pmatrix}$. 
-Let $M=\C^{2\times 1}$ as an $\C[G]$-module with 
-\[
-g\cdot\begin{pmatrix}u\\v\end{pmatrix}
-=\begin{pmatrix}-v\\u\end{pmatrix}.
-\]
-Prove that $M$ is a semisimple non-simple $\C[G]$-module.
-\end{exercise}
-
-\begin{exercise}
-Let $G=\langle g\rangle$ be the cyclic group 
-of order four and $\rho_g=\begin{pmatrix}
-0&-1\\
-1&0\end{pmatrix}$. 
-Let $M=\R^{2\times 1}$ as an $\R[G]$-module with 
-\[
-g\cdot\begin{pmatrix}u\\v\end{pmatrix}
-=\begin{pmatrix}-v\\u\end{pmatrix}.
-\]
-Prove that $M$ is a simple $\R[G]$-module. 
-\end{exercise}
-
-If $G$ is a finite group, 
-then $\C[G]$ is semisimple. By Artin--Wedderburn theorem, 
-\[
-\C[G]\simeq\prod_{i=1}^r M_{n_i}(\C),
-\]
-where $r$ is the number of isomorphism classes of simple modules of $\C[G]$. Moreover, 
-$|G|=\dim\C[G]=\sum_{i=1}^r n_i^2$. By convention, 
-we always assume that $n_1=1$. 
-This corresponds, of course, to the \emph{trivial module}. 
-
-\begin{theorem}
-    Let $G$ be a finite group. The number of simple 
-    modules of $\C[G]$ coincides with the number of conjugacy classes of $G$. 
-\end{theorem}
-
-\begin{proof}
-    By Artin--Wedderburn theorem, $\C[G]\simeq\prod_{i=1}^rM_{n_i}(\C)$. Thus 
-    \[
-		Z(\C[G])\simeq\prod_{i=1}^rZ(M_{n_i}(\C))\simeq\C^r.
-	\]
-	In particular, $\dim Z(\C[G])=r$. If $\alpha=\sum_{g\in
-	G}\lambda_gg\in Z(\C[G])$, then $h^{-1}\alpha h=\alpha$ for all $h\in
-	G$. Thus 
-	\[
-		\sum_{g\in G}\lambda_{hgh^{-1}}g=
-		\sum_{g\in g}\lambda_g h^{-1}gh=\sum_{g\in G}\lambda_gg
-	\]
-	and hence $\lambda_{g}=\lambda_{hgh^{-1}}$ for all $g,h\in G$. A basis for 
-	$Z(\C[G])$ is given by elements of the form 
-	\[
-		\sum_{g\in K}g,
-	\]
-	where $K$ is a conjugacy class of $G$. Therefore $\dim Z(\C[G])$ equals 
-	the number of conjugacy classes of $G$.
-\end{proof}
-
-\begin{exercise}
-    Let $G$ be a finite group of order $n$ with $k$ conjugacy classes.
-    Let $m=(G:[G,G])$. Prove that $n+3m\geq4k$. 
-\end{exercise}
-
-If $G$ is a finite group,
-then 
-\[
-\C[G]\simeq \prod_{i=1}^k M_{n_i}(\C),
-\]
-where $k$ is the number of conjugacy classes of $G$. 
-In particular, 
-\[
-|G|=\dim\C[G]=\sum_{i=1}^k n_i^2.
-\]
-
-For $n\in\Z_{\geq2}$, we write $C_n$ to denote the (multiplicative) cyclic group of order $n$. 
-
-\begin{exercise}
-    Prove that $\C[C_4]\simeq\C^4$. 
-\end{exercise}
-
-For $n\geq1$, let $\Sym_n$ denote the symmetric group in $n$ letters. 
-
-\begin{example}
-    The group $\Sym_3$ has three conjugacy classes:
-    $\{\id\}$, $\{(12),(13),(23)\}$ and $\{(123),(132)\}$. 
-    Since $6=1^2+a^2+b^2$, it follows that 
-    $\C[G]\simeq\C\times\C\times M_2(\C)$. 
-\end{example}    
-
-\begin{problem}[Brauer]
-\index{Brauer's problem}
-    Which algebras are group algebras?
-\end{problem}
-
-This question might be impossible to answer, but it is extremely interesting.
-
-\begin{example}
-    The algebra $\C^2\times M_2(\C)\times M_3(\C)$ is not complex group algebra, as all groups of order 15 are abelian. 
 \end{example}
 
-\subsection{Some comments}
+Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations. 
+The \emph{tensor product} of $\rho$ and $\psi$ is the representation of $G$ given by 
+\begin{gather*}
+	\rho\otimes\psi\colon G\to\GL(V\otimes W),
+	\quad 
+	g\mapsto (\rho\otimes\psi)_g,
+	\shortintertext{where}
+	(\rho\otimes\psi)_g(v\otimes w)=\rho_g(v)\otimes \psi_g(w)
+\end{gather*}
+for $v\in V$ and $w\in W$. 
 
-There is a multiplicative version of Maschke's theorem. A group $G$ acts 
-by automorphisms on $A$ if there is a group homomorphism 
-$\lambda\colon G\to\Aut(A)$. In this case, a subgroup $B$ of $A$ is said to be 
-$G$-invariant if $\lambda(B)\subseteq B$. 
+\begin{exercise}
+    Let $G$ be a finite group and
+    $V$ and $W$ be $\C[G]$-modules. Prove that
+    the set $\Hom(V,W)$ of complex linear maps $V\to W$ 
+     is a $\C[G]$-module
+    with
+    \[
+    (g\cdot f)(v)=gf(g^{-1}v),\quad
+    f\in\Hom(V,W),\;v\in V,\;g\in G.
+    \]
+    If, moreover, $V$ and $W$ are finite-dimensional, then
+    \[
+    V^{*}\otimes W\simeq\Hom(V,W)
+    \]
+    as $\C[G]$-modules.
+\end{exercise}
 
-\begin{theorem}
-\index{Maschke's theorem!multiplicative version}
-    Let $K$ be a finite group of order $m$. Assume that 
-    $K$ acts by automorphisms on $V=U\times W$, where
-    $U$ and $W$ are subgroups of $V$ and $U$ is abelian and $K$-invariant. 
-    If the map $U\to U$, $u\mapsto u^m$, is bijective, 
-    then there exists a normal $K$-invariant subgroup $N$ of $V$ 
-    such that $V=U\times N$. 
-\end{theorem}
-
-\begin{proof}
-Let $\theta\colon U\times W\to U$, $(u,w)\mapsto u$. Then $\theta$ is a group homomorphism such that 
-$\theta(u)=u$ for all $u\in U$. Since $U$ is $K$-invariant, 
+The previous exercise shows, in particular, 
+that the dual $V^*$ of a $\C[G]$-module $V$ 
+is a $\C[G]$-module with
 \[
-k^{-1}\cdot \theta(k\cdot v)\in U
+(g\cdot f)(v)=f(g^{-1}v),\quad
+f\in V^*,\;v\in V,\;g\in G.
 \]
-for all $k\in K$ and $v\in V$. 
-Since $K$ is finite and $U$ is abelian, 
-the map 
-\[
-\varphi\colon V\to U,\quad 
-v\mapsto \prod_{k\in K}k^{-1}\cdot \theta(k\cdot v), 
-\]
-is well-defined. 
-We claim that $\varphi$ is a group homomorphism. If $x,y\in V$, then 
-\begin{align*}
-    \varphi(xy) &= \prod_{k\in K}k^{-1}\cdot \theta(k\cdot (xy))\\
-    &= \prod_{k\in K}k^{-1}\cdot (\theta(k\cdot x)\theta(k\cdot y))\\
-    &= \prod_{k\in K}k^{-1}\cdot \theta(k\cdot x) \prod_{k\in K}k^{-1}\cdot \theta(k\cdot y)=\varphi(x)\varphi(y),
-\end{align*}
-since $U$ is abelian and $K$ acts by automorphisms on $V$. 
-
-We claim that $N=\ker\varphi$ is $K$-invariant. 
-We need to show that $\varphi(l\cdot x)=l\cdot\varphi(x)$ for all $l\in K$ and $x\in V$. 
-If $l\in K$ and $x\in V$, then 
-\begin{align*}
-l^{-1}\cdot\varphi(l\cdot x)&=l^{-1}\cdot\left(\prod_{k\in K}k^{-1}\cdot \theta(k\cdot (l\cdot x))\right)=\prod_{k\in K}(kl)^{-1}\cdot\theta( (kl)\cdot x)=\varphi(x),
-\end{align*}
-since $kl$ runs over all the elements of $K$ whenever $k$ runs over all the elements of $K$.
-In conclusion, $\ker\varphi$ is $K$-invariant. 
-
-It remains to show that $V$ is the direct product of $U$ and $N$. By assumption, $U$ is normal in $V$. 
-We first prove that $U\cap N=\{1\}$. If $u\in U$, then $k\cdot u\in U$ for all $k\in K$. This implies that 
-$k^{-1}\cdot\theta(k\cdot u)=k^{-1}\cdot (k\cdot u)=u$. Hence $\varphi(u)=u^m$. Since this map is bijective by assumption,  
-\[
-U\cap N=U\cap\ker\varphi=\{1\}.
-\]
-We now show that $V\subseteq UN$, as the other inclusion is trivial. Since $N=\ker\varphi$,  
-\[
-\varphi(V)\subseteq U=\varphi(U)=\varphi(U)\varphi(N)=\varphi(UN) 
-\]
-and hence $V\subseteq (UN)N=UN$. 
-Therefore $V$ is the direct product of $U$ and $N$, as $N$ is normal in $V$.
-\end{proof}
-
-\begin{corollary}
-    Let $p$ be a prime number and $K$ be a finite
-    group with order not divisible by $p$. Let $V$ be
-    a $p$-elementary abelian group. Assume that $K$ acts
-    by automorphism on $V$. If $U$ be a $K$-invariant subgroup of $V$, 
-    then there exists a $K$-invariant subgroup $N$ of $V$ 
-    such that $V=U\times N$. 
-\end{corollary}
-
-\begin{proof}
-    Let $m=|K|$. Since $m$ and $|U|$ are coprime, the map 
-    $u\mapsto u^m$ is bijective in $U$. Since $V$ is a vector space over the field 
-    $\Z/p$, it follows that $V=U\times W$ for some subgroup $W$ of $V$. Now the claim follows
-    from the previous theorem. 
-\end{proof}
-
-
-\subsection{Representations}
-
-Unless we state differently, we will always work
-with finite groups. All our vector spaces will
-be complex vector spaces. 
 
 \begin{definition}
-\index{Representation}
-    Let $G$ be a finite group. A \emph{representation}
-    of $G$ is a group homomorphism $\rho\colon G\to\GL(V)$, where
-    $V$ is a finite-dimensional vector space. The \emph{degree} (or dimension) 
-    of the representation is the integer $\deg\rho=\dim V$. 
+    \index{Representation!completely reducible}
+    A representation $\rho\colon G\to\GL(V)$ is said to be 
+    \emph{completely reducible}
+    if $\rho$ can be decomposed as
+    $\rho=\rho_1\oplus\cdots\oplus \rho_n$ for some irreducible
+    representations $\rho_1,\dots,\rho_n$ of $G$. 
 \end{definition}
 
-\index{Matrix representation}
-Let $G\to\GL(V)$ be a representation. 
-If we fix a basis of $V$, then we obtain
-a \emph{matrix representation} of $G$, that is a 
-group homomorphism 
+Note that if $\rho\colon G\to\GL(V)$ is completely reducible and 
+$\rho=\rho_1\oplus\cdots\oplus \rho_n$ for some irreducible representations 
+$\rho_i\colon G\to\GL(V_i)$, $i\in\{1,\dots,n\}$, then 
+each $V_i$ is an invariant subspace of $V$ and $V=V_1\oplus \cdots V_n$. 
+Moreover, in some basis of $V$, the matrix  
+$\rho_g$ can be written as 
 \[
-\rho\colon G\to\GL(V)\simeq\GL_n(\C),
-\quad 
-g\mapsto\rho_g,
+\rho_g=\begin{pmatrix}
+(\rho_1)_g &  \\
+& (\rho_2)_g  \\
+&&\ddots\\
+&&&(\rho_n)_g	
+\end{pmatrix}.
 \]
-where
-$n=\dim V$. 
+
+\begin{definition}
+\index{Representation!decomposable}
+\index{Representation!indecomposable}
+A representation
+$\rho\colon G\to\GL(V)$ is \emph{decomposable} if $V$ can be decomposed as $V=S\otimes T$
+where $S$ and $T$ are non-zero invariant subspaces of $V$. 
+\end{definition}
+
+A representation is 
+\emph{indecomposable} if it is not decomposable. 
+
+\begin{exercise}
+\label{xca:equivalence}
+	Let $\rho\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be equivalent representations.
+	Prove the following facts:
+	\begin{enumerate}
+		\item If $\rho$ is irreducible, then $\psi$ is irreducible.
+		\item If $\rho$ is decomposable, then $\psi$ is decomposable.
+		\item If $\rho$ is completely reducible, then $\psi$ is completely reducible. 
+	\end{enumerate}	
+\end{exercise}
+
+
+\subsection{Characters}
+
+Fix a finite group $G$ and consider
+(matrix) representations of $G$. We use linear algebra to study 
+these representations. 
+
+\begin{definition}
+	\index{Character}
+	Let $\rho\colon G\to\GL(V)$ be a representation. The \emph{character} of $\rho$ 
+	is the map $\chi_\rho\colon G\to\C$, $g\mapsto\trace\rho_g$. 	
+\end{definition}
+
+If a representation $\rho$ is irreducible, its character is said to be an 
+\emph{irreducible character}. The \emph{degree} of a character is the degree of the affording
+representation. 
 
 \begin{example}
-Since $\Sym_3=\langle (12),(123)\rangle$, the map $\rho\colon \Sym_3\to\GL_3(\C)$,
-\[
-(12)\mapsto\begin{pmatrix}
-0 & 1 & 0\\
-1 & 0 & 0\\
-0 & 0 & 1
-\end{pmatrix},\quad
-(123)\mapsto\begin{pmatrix}
-0 & 0 & 1\\
-1 & 0 & 0\\
-0 & 1 & 0
-\end{pmatrix},
-\] 
-is a representation of $\Sym_3$. 
-\end{example}
-
-\begin{example}
-Let $G=\langle g\rangle$ be cyclic of order six. 
-The map $\rho\colon G\to\GL_2(\C)$, 
-\[
-g\mapsto
-\begin{pmatrix}
-1&1\\
--1&0
-\end{pmatrix}
-\] 
-is a representation of $G$. 
-\end{example}
-
-\begin{example}
-Let $G=\langle g\rangle$ be cyclic of order four. 
-The map $\rho\colon G\to\GL_2(\C)$, 
-\[
-g\mapsto
-\begin{pmatrix}
-0&-1\\
-1&0
-\end{pmatrix}
-\] 
-is a representation of $G$. 
-\end{example}
-
-\begin{example}
-  Let $G=\langle a,b:a^2=b^3=(ab)^3=1\rangle$. The map 
-  \[
-    a\mapsto\begin{pmatrix}
-    0 & 1 & -1\\
-    1 & 0 & -1\\
-    0 & 0 & -1
-    \end{pmatrix},
-    \quad
-    b\mapsto\begin{pmatrix}
-      0 & 0 & 1\\
-      1 & 0 & 0\\
-      0 & 1 & 0
-    \end{pmatrix},
-  \]
-  defines a representation $G\to\GL_3(\C)$. 
-\end{example}
-
-\begin{example}
-    Let $Q_8=\{-1,1,i,-i,j,-j\}$ be the quaternion group. Recall that
+    We can compute the character of the representation
     \[
-    i^2=j^2=k^2=-1,\quad
-    ijk=-1.
-    \]
-    The group $Q_8$ is generated by $\{i,j\}$ 
-    and the map $\rho\colon Q_8\to\GL_2(\C)$, 
-    \[
-    i\mapsto\begin{pmatrix}
-    i&0\\0&-i
-    \end{pmatrix},
-    \quad
-    j\mapsto\begin{pmatrix}
-    0&1\\-1&0
-    \end{pmatrix},
-    \]
-    is a representation.
-\end{example}
-
-\begin{example}
-  Let $G$ be a finite group that acts on a finite set $X$. 
-  Let $V=\C X$ the complex vector space with basis $\{x:x\in
-  X\}$. The map 
-  \[
-	\rho\colon G\to\GL(V),\quad
-	\rho_g\left(\sum_{x\in X}\lambda_x x\right)
-	=\sum_{x\in X}\lambda_x\rho_g(x)
-	=\sum_{x\in X}\lambda_{g^{-1}\cdot x}x, 
-  \]
-  is a representation of degree $|X|$.
-\end{example}
-
-\begin{example}
-    The sign $\sgn\colon\Sym_n\to\GL_1(\C)=\C^{\times}$ is a representation of $\Sym_n$.
-\end{example}
-
-An important fact is that there exists a bijective
-correspondence 
-between 
-representations of a finite group $G$ 
-and 
-finite-dimensional modules over $\C[G]$. The correspondence
-is given as follows. If $\rho\colon G\to\GL(V)$ is a representation, 
-then $V$ is a $\C[G]$-module with
-\[
-\left(\sum_{g\in G}\lambda_gg\right)\cdot v=\sum_{g\in G}\lambda_g\rho_g(v).
-\]
-Conversely, if $V$ is a $\C[G]$-module, then
-$\rho\colon G\to\GL(V)$, $\rho_g\colon V\to V$, $v\mapsto g\cdot v$, 
-is a representation. 
-
-\begin{exercise}
-    Let $G$ be a finite group and 
-    $\rho\colon G\to\GL(V)$ be a representation. Prove that 
-    each $\rho_g$ is diagonalizable. 
-\end{exercise}
-
-The previous exercise uses properties of the minimal polynomial. We will 
-see a different proof later. 
-
-\begin{definition}
-\index{Equivalent representations}
-Let $G$ be a group and $\phi\colon G\to\GL(V)$ and $\psi\colon G\to\GL(W)$ be representations of $G$. 
-We say that $\phi$ and $\psi$ are \emph{equivalent} if 
-there exists a linear isomorphism $T\colon V\to W$ such that 
-\[
-	\psi_g T=T \phi_g
-\]
-for all $g\in G$. In this case, we write $\phi\simeq\psi$. 
-\end{definition}
-
-Note that $\phi\simeq\psi$ if and only if $V$
-and $W$ are isomorphic as $\C[G]$-modules.
-
-\begin{example}
-  The representation 
-  \begin{gather*}
-  \phi\colon\Z/n\to\GL_2(\C),\quad
-  \phi(m)=
-  \begin{pmatrix}
-    \cos(2\pi m/n) & -\sin(2\pi m/n)\\
-    \sin(2\pi m/n) & \cos(2\pi m/n)
-  \end{pmatrix},
-  \shortintertext{is equivalent to the representation}
-  \psi\colon\Z/n\to\GL_2(\C),
-  \quad 
-  \psi(m)=\begin{pmatrix}
-    e^{2\pi im/n} & 0\\
-    0 & e^{-2\pi im/n}
-  \end{pmatrix}.
-  \end{gather*}
-  The equivalence is obtained with the matrix $T=\begin{pmatrix} i & -i\\
-    1&1\end{pmatrix}$, as a direct calculation shows that
-    $\phi_m T=T\psi_m$ for all $m$.
-\end{example}
-
-\begin{exercise}
-    Let $\rho\colon G\to\GL(V)$ be a representation. Fix a basis 
-    of $V$ and consider the corresponding matrix representation $\phi$ 
-    of $\rho$. Prove that $\rho$ and $\phi$ are equivalent. 
-\end{exercise}
-
-\begin{definition}
-    Let $\phi\colon G\to\GL(V)$ be a representation. A subspace 
-    $W\subseteq V$ is said to be \emph{$G$-invariant} if
-    $\phi_g(W)\subseteq W$ for all $g\in G$.  
-\end{definition}
-
-Let $\rho\colon G\to\GL(V)$ be a representation. 
-If $W$ is a $G$-invariant subspace of $V$, 
-then the restriction $\rho|_W\colon G\to\GL(W)$
-is a representation. In particular, $W$ is a submodule (over $\C[G]$) 
-of $V$. 
-
-\begin{definition}
-\index{Representation!irreducible}
-\index{Module!simple}
-    A representation $\rho\colon G\to\GL(V)$ is 
-    said to be \emph{irreducible} if 
-    $\{0\}$ and $V$ are the only 
-    $G$-invariant subspaces of $V$. 
-\end{definition}
-
-Note that a representation $\rho\colon G\to\GL(V)$ is irreducible
-if and only if $V$ is simple. 
-
-\begin{example}
-    Degree-one representations are irreducible. 
-\end{example}
-
-\begin{exercise}
-\label{xca:degree-one}
-    Let $G$ be a finite group. 
-    Prove that there exists a bijective correspondence between 
-    degree-one representations of $G$ and 
-    degree-one representations of $G/[G,G]$. 
-\end{exercise}
-
-In the following example, we work over the real numbers. 
-
-\begin{example}
-Let $G=\langle g\rangle$ be the cyclic group of three elements and 
-\[
-\rho\colon G\to\GL(\R^3),\quad
-\rho_g(x,y,z)=(y,z,x).
-\]
-%\mapsto\begin{pmatrix}
-%  0&1&0\\
-%  0&0&1\\
-%  1&0&0
-%\end{pmatrix}.
-%\]
-%Thus $g$ acts on $\R^{3}$ by left matrix multiplication,
-%\[
-%g\cdot (x,y,z)=
-%\begin{pmatrix}
-%  0&1&0\\
-%  0&0&1\\
-%  1&0&0
-%\end{pmatrix}\begin{pmatrix}
-%x\\
-%y\\
-%z
-%\end{pmatrix}.
-%\]
-The set 
-\[
-N=\{(x,y,z)\in\R^{3}:x+y+z=0\}
-\]
-is a $G$-invariant subspace of $\R^3$. 
-
-We claim that $N$ is irreducible. 
-If $N$ contains a non-zero $G$-invariant subspace $S$, 
-let $(x_0,y_0,z_0)\in S\setminus\{(0,0,0)\}$. Since $S$ is $G$-invariant, 
-\[
-(y_0,z_0,x_0)=g\cdot (x_0,y_0,z_0)\in S. 
-\]
-We claim that $\{(x_0,y_0,z_0),(y_0,z_0,x_0)\}$ is linearly independent. If there exists $\lambda\in\R$ 
-such that $\lambda(x_0,y_0,z_0)=(y_0,z_0,x_0)$, then $x_0=\lambda^3 x_0$. Since $x_0=0$ implies 
-$y_0=z_0=0$, it follows that $\lambda=1$. In particular, $x_0=y_0=z_0$, a contradiction, as $x_0+y_0+z_0=0$. 
-Hence $\dim S=2$ and therefore $S=N$. 
-\end{example}
-
-What happens in the previous example if we consider complex numbers?
-
-\begin{exercise}
-  \label{xca:deg2}
-  Let $\phi\colon G\to \GL(V)$, $g\mapsto\phi_g$, be a degree-two representation. Prove that
-  $\phi$ is irreducible if and only if there is no common eigenvector for all the $\phi_g$.
-\end{exercise}
-
-\begin{example}
-\label{exa:S3_deg2}
-  Recall that $\Sym_3$ is generated by $(12)$ and $(23)$. The map 
-  \[(12)\mapsto\begin{pmatrix}
+    (12)\mapsto\begin{pmatrix}
     -1 & 1\\
     0 & 1
   \end{pmatrix},
@@ -597,7 +158,393 @@ What happens in the previous example if we consider complex numbers?
     1 & -1
   \end{pmatrix},
   \]
-  defines a representation $\phi$ of $\Sym_3$. 
-  Exercise \ref{xca:deg2} shows that $\phi$ is  
-  irreducible.
+    of Example \ref{exa:S3_deg2}. Since
+    \[
+\rho_{(132)}=\rho_{(23)(12)}=\rho_{(23)}\rho_{(12)}
+=\begin{pmatrix}
+    -1&1\\
+-1&0
+    \end{pmatrix},
+\]
+we conclude that $\rho_{(132)}=-1$. Similar calculations show
+that
+    \[
+    \chi_{\id}=2, 
+    \quad\chi_{(12)}=\chi_{(13)}=\chi_{(23)}=0,
+    \quad 
+    \chi_{(123)}=\chi_{(132)}=-1.
+    \]
 \end{example}
+
+\begin{proposition}
+	Let $\rho\colon G\to\GL(V)$ be a representation, $\chi$ be its character and $g\in G$.
+	The following statements hold:
+	\begin{enumerate}
+		\item $\chi(1)=\dim V$. 
+		\item $\chi(g)=\chi(hgh^{-1})$ for all $h\in G$.
+		\item $\chi(g)$ is the sum of $\chi(1)$ roots of one of order $|g|$. 
+		\item $\chi(g^{-1})=\overline{\chi(g)}$. 
+		\item $|\chi(g)|\leq\chi(1)$.  
+	\end{enumerate} 
+\end{proposition}
+
+\begin{proof}
+	The first statement is trivial. 	To prove 2) note that
+	\[
+	\chi(hgh^{-1})=\trace(\rho_{hgh^{-1}})=\trace(\rho_h\rho_g\rho_h^{-1})=\trace\rho_g=\chi(g).
+	\]
+	Statement 3) follows from the fact that the trace of $\rho_g$ is the sum
+	of the eigenvalues of $\rho_g$ and these numbers are roots of the polynomial
+	$X^{|g|}-1\in\C[X]$. To prove 4) write $\chi(g)=\lambda_1+\cdots+\lambda_k$, where 
+	the $\lambda_j$ are roots of one. Then
+	\[
+	\overline{\chi(g)}=\sum^k_{j=1}\overline{\lambda_j}
+	=\sum_{j=1}^k\lambda_j^{-1}
+	=\trace(\rho_g^{-1})
+	=\trace(\rho_{g^{-1}})
+	=\chi(g^{-1}).
+	\] 
+	Finally, we prove 5). Use 3) to write $\chi(g)$ as the sum of
+	$\chi(1)$ roots of one, say $\chi(g)=\lambda_1+\cdots+\lambda_k$ for
+	$k=\chi(1)$. Then 
+	\[
+	|\chi(g)|=|\lambda_1+\cdots+\lambda_k|\leq |\lambda_1|+\cdots+|\lambda_k|
+	=\underbrace{1+\cdots+1}_{\text{$k$-times}}=k.\qedhere
+	\]
+\end{proof}
+
+If two representations are equivalent, their characters are equal.
+
+\begin{definition}
+	Let $G$ be a group and 
+	$f\colon G\to\C$ be a map. Then $f$ is a \emph{class function} if
+	$f(g)=f(hgh^{-1})$ for all $g,h\in G$. 	
+\end{definition}
+
+Characters are class functions. If $G$ is a finite group, 
+we write 
+\[
+\cf(G)=\{f\colon G\to\C:f\text{ is a class function}\}.
+\]
+One proves that $\cf(G)$ is a complex vector space. 
+
+\begin{exercise}
+    Let $G$ be a finite group. For a conjugacy class $K$ of $G$
+    let 
+    \[
+    \delta_K\colon G\to\C,
+    \quad
+    \delta_K(g)=\begin{cases}
+        1 & \text{if $g\in K$,}\\
+        0 & \text{otherwise}.
+        \end{cases}
+    \]
+    Prove that $\{\delta_K:K\text{ is a conjugacy class of $G$}\}$ is a basis of $\cf(G)$. 
+    In particular, $\dim\cf(G)$ is the number of conjugacy classes of $G$. 
+\end{exercise}
+
+\begin{proposition}
+    If $\rho\colon G\to\GL(V)$ and
+    $\psi\colon G\to\GL(W)$ are representations, then
+    $\chi_{\rho\oplus\psi}=\chi_\rho+\chi_\psi$.
+\end{proposition}
+
+\begin{proof}
+  For $g\in G$, it follows that 
+  $(\rho\oplus\psi)_g=
+  \begin{pmatrix}
+    \rho_g & 0\\ 
+    0 & \psi_g
+  \end{pmatrix}$. 
+  Thus  
+  \[
+    \chi_{\rho\oplus\psi}(g)=\trace((\rho\oplus\phi)_g)=\trace(\rho_g)+\trace(\psi_g)=\chi_\rho(g)+\chi_\psi(g).\qedhere
+  \]
+\end{proof}
+
+\begin{proposition}
+  	If $\rho\colon G\to\GL(V)$ and
+    $\psi\colon G\to\GL(W)$ are representations, then
+    \[
+    \chi_{\rho\otimes\psi}=\chi_\rho\chi_\psi.
+    \]
+\end{proposition}
+
+\begin{proof}
+	For each $g\in G$, the map $\rho_g$ is diagonalizable. Let $\{v_1,\dots,v_n\}$
+	be a basis of eigenvectors of $\rho_g$ and let $\lambda_1,\dots,\lambda_n\in\C$ be such that
+	$\rho_g(v_i)=\lambda_iv_i$ for all $i\in\{1,\dots,n\}$. Similarly, 
+	let $\{w_1,\dots,w_m\}$ be a basis of 
+	eigenvectors of $\psi_g$ and $\mu_1,\dots,\mu_m\in\C$ be such that $\psi_g(w_j)=\mu_jw_j$ for all $j\in\{1,\dots,m\}$. Each 
+	$v_i\otimes w_j$ is eigenvector of $(\rho\otimes\psi)_g$ with eigenvalue 
+	$\lambda_i\mu_j$, as  
+	\[
+		(\rho\otimes\psi)_g(v_i\otimes w_j)=\rho_gv_i\otimes \psi_gw_j=\lambda_iv_i\otimes \mu_jv_j=(\lambda_i\mu_j)v_i\otimes w_j.
+	\]
+	Thus  
+	$\{v_i\otimes w_j:1\leq i\leq n,1\leq j\leq m\}$ is a basis of eigenvectors and the 
+	$\lambda_i\mu_j$ are the eigenvalues of $(\rho\otimes\psi)_g$. It follows that 
+	\[
+	\chi_{\rho\otimes\psi}(g)
+	=\sum_{i,j}\lambda_i\mu_j
+	=\left(\sum_i\lambda_i\right)\left(\sum_j\mu_j\right)
+	=\chi_\rho(g)\chi_\psi(g).\qedhere 
+	\]
+\end{proof}
+
+We know that
+it is also possible to define the dual $\rho^*\colon G\to\GL(V^*)$  
+of a representation
+$\rho\colon G\to\GL(V)$ by the formula
+\[
+(\rho^*_gf)(v)=f(\rho^{-1}_gv),\quad
+g\in G,\,f\in V^*\text{ and }v\in V.
+\]  
+We claim that the character of the dual representation is then 
+$\overline{\chi_\rho}$. Let $\{v_1,\dots,v_n\}$ be a basis of $V$
+and $\lambda_1,\dots,\lambda_n\in\C$ be such that $\rho_gv_i=\lambda_iv_i$ for all $i\in\{1,\dots,n\}$. If $\{f_1,\dots,f_n\}$ is the dual basis of $\{v_1,\dots,v_n\}$, then 
+\[
+(\rho^*_gf_i)(v_j)=f_i(\rho_g^{-1}v_j)
+=\overline{\lambda_j}f_i(v_j)
+=\overline{\lambda_j}\delta_{ij}
+\]
+and the claim follows. 
+
+Let $G$ be a finite group. If $\chi,\psi\colon G\to\C$ are
+characters of $G$ and $\lambda\in\C$, we define 
+\[
+    (\chi+\psi)(g)=\chi(g)+\psi(g),
+    \quad
+    (\chi\psi)(g)=\chi(g)\psi(g),
+    \quad
+    (\lambda\chi)(g)=\lambda\chi(g).
+\]
+Note that these functions might not be characters!
+
+\begin{theorem}
+    Let $G$ be a finite group. Then irreducible characters of $G$
+    are linearly independent. 
+\end{theorem}
+
+\begin{proof}
+    Let $S_1,\dots,S_k$ be a complete set of representatives of 
+    classes of 
+    simple $\C[G]$-modules. Let 
+    $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. 
+    By Artin--Wedderburn theorem, there is 
+    an algebra isomorphism 
+    $f\colon \C[G]\to M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)$, 
+    where $\dim S_j=n_j$ for all $j$. Moreover, 
+    \[
+    M_{n_j}(\C)\simeq \underbrace{S_j\oplus\cdots\oplus S_j}_{n_j-\text{times}}
+    \]
+    for all $j$. For each $j$ let $e_j=f^{-1}(I_j)$, where
+    $I_j$ is the identity matrix of $M_{n_j}(\C)$. We claim that 
+    \[
+        \chi_i(e_j)=\begin{cases}
+            \dim S_i & \text{if $i=j$,}\\
+            0 & \text{otherwise}.
+            \end{cases}
+    \]
+    In fact, $\chi_i(g)$ is the trace of the action of $g$ on $S_j$. Since 
+    $e_ie_j=0$ if $i\ne j$, it follows that 
+    $\chi_i(e_j)=0$ if $i\ne j$. Moreover, $e_j$ acts as the identity on $S_j$, thus
+    $\chi_j(e_j)=\dim S_j$. 
+    
+    Now if $\sum\lambda_i\chi_i=0$ for some $\lambda_1,\dots,\lambda_k\in\C$, then
+    \[
+    (\dim S_j)\lambda_j=\sum\lambda_i\chi_i(e_j)=0
+    \]
+    and hence $\lambda_j=0$, as $\dim S_j\ne 0$. 
+\end{proof}
+
+\begin{theorem}
+    Let $G$ be a finite group and $S_1,\dots,S_k$ be the simple
+    $\C[G]$-modules (up to isomorphism). If $V=\oplus_{i=1}^k a_jS_j$, then
+    $\chi_V=\sum a_i\chi_i$, where 
+    $\chi_i=\chi_{S_i}$ for all $i$. Moreover, if $U$ and $V$ 
+    are $\C[G]$-modules, 
+    \[
+    U\simeq V\Longleftrightarrow \chi_U=\chi_V.
+    \]
+\end{theorem}
+
+\begin{proof}
+    The first part is left as an exercise. 
+    
+    It is also an exercise to prove that $U\simeq V$ implies $\chi_U=\chi_V$. Let us prove
+    the converse. Assume that $\chi_U=\chi_V$. Since $\C[G]$ is semisimple, 
+    $U\simeq\oplus_{i=1}^k a_iS_i$ and 
+    $V\simeq\oplus_{i=1}^k b_iS_i$ for some integers 
+    $a_1,\dots,a_k\geq0$ and $b_1,\dots,b_k\geq0$. Since 
+    \[
+    0=\chi_U-\chi_V=\sum_{i=1}^k (a_i-b_i)\chi_i
+    \]
+    and the $\chi_i$ are linearly independent, it follows that
+    $a_i=b_i$ for all $i$. Hence $U\simeq V$. 
+\end{proof}
+
+\begin{exercise}
+    Let $G$ be a finite group and $U$ be a $\C[G]$-module.
+    Prove  $\chi_{U^*}=\overline{\chi_U}$. 
+\end{exercise}
+
+We will use the following exercise later:
+
+\begin{exercise}
+\label{xca:char_Hom}
+    Prove that if $G$ is a finite group and 
+    $U$ and $V$ are $\C[G]$-modules, then 
+    \[
+        \chi_{\Hom_G(U,V)}=\overline{\chi_U}\chi_V.
+    \] 
+\end{exercise}
+
+For a finite group $G$ we write $\Irr(G)$ to denote
+the complete set of isomorphism classes of characters of irreducible representations 
+of $G$. 
+
+\begin{exercise}
+    Let $G$ be a finite group. Prove that the set
+    $\Irr(G)$ is a basis
+    of $\cf(G)$. 
+\end{exercise}
+
+Let $G$ be a finite group and $U$ be a $\C[G]$-module. 
+Let 
+\[
+U^G=\{u\in U:g\cdot u=u\text{ for all $g\in G$}\}.
+\]
+Then $U^G$ is a subspace of $U$. The following lemma
+is important:
+
+\begin{lemma}
+    $\dim U^G=\frac{1}{|G|}\sum_{x\in G}\chi_U(x)$
+\end{lemma}
+
+\begin{proof}
+    Let $\rho$ be the representation associated with $U$ and 
+    let 
+    \[
+    \alpha=\frac{1}{|G|}\sum_{x\in G}\rho_x\colon U\to U.
+    \]
+    
+    We claim that $\alpha^2=\alpha$.
+    Let $g\in G$. Then 
+    \begin{gather*}
+    \rho_g(\alpha)=\frac{1}{|G|}\sum_{x\in G}\rho_g\rho_x
+    =\frac{1}{|G|}\sum_{x\in G}\rho_{gx}=\alpha.
+    \shortintertext{Thus}
+    \alpha(\alpha(u))=\frac{1}{|G|}\sum_{x\in G}\rho_x(\alpha(u))=\alpha(u)
+    \end{gather*}
+    for all $u\in U$. This means that $\alpha$ has eigenvalues 0 and 1.
+    
+    Let $V$ be the eigenspace of eigenvalue 1. 
+    We now claim that $V=U^G$. Let us first prove that 
+    $V\subseteq U^G$. For that purpose, let 
+    $v\in V$ and $g\in G$. Then
+    \begin{align*}
+    g\cdot v &=\rho_g(v)=\rho_g(\alpha(v))\\
+    &=\frac{1}{|G|}\sum_{x\in G}\rho_g\rho_x(v)
+    =\frac{1}{|G|}\sum_{y\in G}\rho_y(v)=\alpha(v)=v.
+    \end{align*}
+    Now we prove that $V\supseteq U^G$. Let $u\in U^G$, so
+    $\rho_g(u)=u$ for all $g\in G$. Then
+    \[
+    \alpha(u)=\frac{1}{|G|}\sum_{x\in G}\rho_x(u)
+    =\frac{1}{|G|}\sum_{x\in G}u=u.
+    \]
+    
+    Thus 
+    \[
+    \dim U^G=\dim V=\trace\alpha
+    =\frac{1}{|G|}\sum_{x\in G}\trace\rho_x
+    =\frac{1}{|G|}\sum_{x\in G}\chi_U(x).\qedhere
+    \]
+\end{proof}
+
+One proves that 
+the operation 
+\[
+\langle\chi_U,\chi_V\rangle=\frac{1}{|G|}\sum_{g\in G}\chi_U(g)\overline{\chi_V(g)}
+\]
+defines an inner product. 
+
+\begin{theorem}
+    Let $G$ be a finite group and $U$ and $V$ be $\C[G]$-modules. 
+    Then 
+    \[
+    \langle\chi_U,\chi_V\rangle=\dim\Hom_G(U,V).
+    \]
+\end{theorem}
+
+\begin{proof}
+    We claim that 
+    \[
+    \Hom_G(U,V)=\Hom(U,V)^G.
+    \]
+    Let us first prove that
+    $\Hom_G(U,V)\subseteq\Hom(U,V)^G$. Let $f\in \Hom_G(U,V)$ and 
+    $g\in G$. Then
+    \[
+    (g\cdot f)(u)=g\cdot f(g^{-1}\cdot u)=g\cdot (g^{-1}\cdot f(u))=f(u)
+    \]
+    for all $u\in U$. Now we prove that $\Hom_G(U,V)\supseteq\Hom(U,V)^G$.
+    Let $f\in\Hom(U,V)^G$. Then $f\colon U\to U$ is a linear such that
+    $g\cdot f=f$ for all $g\in G$. Then
+    we compute 
+    \begin{align*}
+    (g\cdot f)(u)=f(u)&\implies 
+    g\cdot f(g^{-1}\cdot u)=f(u)\\
+    &\implies f(g^{-1}\cdot u)=g^{-1}\cdot f(u)\quad 
+    \text{for all $g\in G$ and $u\in U$}
+    \end{align*}
+    This means that one has 
+    \[
+    f(g\cdot u)=g\cdot f(u)
+    \]
+    for all $g\in G$ and $u\in U$. 
+    
+    Using Exercise \ref{xca:char_Hom}, 
+    \begin{align*}
+        \dim\Hom_G(U,V) &= \dim\Hom(U,V)^G\\
+        &=\frac{1}{|G|}\sum_{g\in G}\chi_{\Hom(U,V)}(g)\\
+        &=\frac{1}{|G|}\sum_{g\in G}\overline{\chi_U(g)}\chi_V(g)\\
+        &=\langle \chi_V,\chi_U\rangle.
+    \end{align*}
+    Since $\dim\Hom_G(U,V)\in\R$, one has  
+    $\langle\chi_U,\chi_V\rangle=\overline{\langle\chi_V,\chi_U\rangle}=\langle\chi_V,\chi_U\rangle$ and the claim follows. 
+\end{proof}
+
+Let $G$ be a finite group and $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. 
+Note that $k$ is the number of conjugacy classes of $G$. Let 
+$g_1,\dots,g_k$ be representatives of conjugacy classes of $G$. 
+The \emph{matrix of characters} of $G$ 
+is $X=(X_{ij})$, where 
+\[
+X_{ij}=\chi_i(g_j)
+\]
+for $i,j\in\{1,\dots,k\}$. 
+
+\begin{example}
+\label{exa:S3}
+    Let $G=\Sym_3$. The group $G$ has three conjugacy classes, so
+    $|\Irr(G)|=3$. Let $g_1=\id$, $g_2=(12)$ and $g_3=(123)$. We 
+    know that $6=n_1^2+n_2^2+n_3^2$. We know two degree-one
+    (irreducible) representations of $G$, the trivial one and
+    the sign. This implies that $n_1=n_2=1$ and 
+    $n_3=2$. 
+    The matrix of characters is then
+    \begin{center}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& $1$ & $(12)$ & $(123)$ \tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+			$\chi_{3}$ & $2$ & ? & ? \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{example}
+

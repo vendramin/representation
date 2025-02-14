@@ -1,617 +1,501 @@
-\section{}
+\section{Lecture: Week 5}
 
-We will use the following notation: if $\chi$ is a character
-of a group $G$ 
-and $C$ is a conjugacy class of $G$, then 
-$\chi(g)=\chi(xgx^{-1})$ for all $x\in G$. We write 
-$\chi(C)$ to denote the value $\chi(g)$ for any $g\in C$. 
+\subsection{McKay's conjecture}
+\label{McKay}
 
-\begin{theorem}
-\label{thm:B}
-    Let $G$ be a finite group, $\chi\in\Irr(G)$ 
-    and $K$ be a conjugacy class of $G$. Then 
-    \[
-    \frac{\chi(K)}{\chi(1)}|K|\in\A. 
-    \]
-\end{theorem}
-
-We need a lemma. 
-
-\begin{lemma}
-    Let $x\in\C$. Then $x\in\A$ if and only if 
-    there exist $z_1,\dots,z_k\in\C$ not all zero such that 
-    $xz_i=\sum_{j=1}^ka_{ij}z_j$ for some $a_{ij}\in\Z$ and 
-    all $i\in\{1,\dots,k\}$. 
-\end{lemma}
-
-\begin{proof}
-    Let us first prove $\implies$. Let $f=X^k+a_{k-1}X^{k-1}+\cdots+a_1X+a_0\in\Z[X]$
-    be such that $f(x)=0$. For $i\in\{1,\dots,k\}$ let 
-    $z_i=x^{i-1}$. Then 
-    $xz_i=x^i=z_{i+1}$ for all $i\in\{1,\dots,k-1\}$. Moreover, 
-    $xz_k=x^k=-a_0-a_1x-\cdots-a_{k-1}x^{k-1}$.
-    
-    We now prove $\impliedby$. Let $A=(a_{ij})\in\Z^{k\times k}$ and 
-    $Z$ be the column vector 
-    $Z=\begin{pmatrix}z_1\\\vdots\\z_k\end{pmatrix}$. Note that $Z$ is non-zero. 
-    Moreover, $AZ=xZ$, as 
-    \[
-    (AZ)_i=\sum_{j=1}^ka_{ij}z_j=xz_i=(xZ)_i
-    \]
-    for all $i$. Thus $x$ is an eigenvalue of $A\in\Z^{k\times k}$ and
-    hence $x\in\A$. 
-\end{proof}
-
-The previous lemma could be used to give an alternative proof of the fact 
-that the algebraic integers form a ring. 
-
-\begin{proof}[Proof of Theorem \ref{thm:B}]
-    Let $\varphi$ be a representation of $G$ with character $\chi$. 
-    Let $C_1,\dots,C_r$ be the conjugacy classes of $G$ 
-    and for every $i\in\{1,\dots,r\}$ let 
-    \[
-    T_i=\sum_{x\in C_i}\varphi_x. 
-    \]
-    
-    \begin{claim}
-        $T_i=\left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)\id$. 
-    \end{claim}
-    
-    We proceed in several steps. First, we prove that 
-    $T_i=\lambda\id$ for some $\lambda\in\C$. 
-    We prove that $T_i$ is a morphism of representations:
-    \[
-    \varphi_gT_i\varphi_g^{-1}=\sum_{x\in C_i}\varphi_g\varphi_x\varphi_g^{-1}
-    =\sum_{x\in C_i}\varphi_{gxg^{-1}}=\sum_{y\in C_i}\varphi_y=T_i.
-    \]
-    Now Schur's lemma implies that $T_i=\lambda\id$ for some
-    $\lambda\in\C$. 
-    
-    We now prove that 
-    \[
-    \lambda=\frac{|C_i|\chi(C_i)}{\chi(1)}.
-    \]
-    To prove
-    this we compute $\lambda$:
-    \[
-    \lambda\chi(1)=\trace(\lambda\id)
-    =\trace T_i
-    =\sum_{x\in C_i}\trace\varphi_x
-    =\sum_{x\in C_i}\chi(x)
-    =|C_i|\chi(C_i).
-    \]
-    Then the claim follows. 
-    
-    Now we claim that 
-    \[
-    T_iT_j=\sum_{k=1}^r a_{ijk}T_k
-    \]
-    for some $a_{ijk}\in\Z_{\geq0}$. In fact, 
-    \begin{align*}
-        T_iT_j &= \sum_{x\in C_i}\sum_{y\in C_j}\varphi_x\varphi_y
-        =\sum_{x\in C_i}\sum_{y\in C_j}\varphi_{xy}
-        =\sum_{g\in G}a_{ijg}\varphi_g,
-    \end{align*}
-    where $a_{ijg}$ is the number of elements $(x,y)\in C_i\times C_j$ 
-    such that $g=xy$. 
-    
-    \begin{claim}
-        The elements $a_{ijg}$ depend only on the conjugacy class of $g$. 
-    \end{claim}
-    
-    Let $X_g=\{(x,y)\in C_i\times C_j:g=xy\}$. If $h=kgk^{-1}$, the map
-    \[
-    X_g\to X_h,\quad (x,y)\mapsto (kxk^{-1},kyk^{-1}),
-    \]
-    is well-defined. It is bijective with inverse
-    \[
-    X_h\to X_g,\quad
-    (a,b)\mapsto (k^{-1}ak,k^{-1}bk).
-    \]
-    Hence $|X_g|=|X_h|$. 
-
-    Let $a_{ijk}$ be the number of elements 
-    $(x,y)\in C_i\times C_j$ such that $xy=g$ for some $g\in C_k$. 
-    Then 
-    \begin{align*}
-        T_iT_j & 
-        =\sum_{g\in G}a_{ijg}\varphi_g
-        =\sum_{k=1}^r\sum_{g\in C_k}a_{ijg}\varphi_g
-        =\sum_{k=1}^ra_{ijk}\sum_{g\in C_k}\varphi_g
-        =\sum_{k=1}^ra_{ijk}T_k.
-    \end{align*}
-    Therefore 
-    \begin{equation}
-        \label{eq:omega}
-    \left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)
-    \left(\frac{|C_j|}{\chi(1)}\chi(C_j)\right)
-    =\sum_{k=1}^r a_{ijk}\left(\frac{|C_k|}{\chi(1)}\chi(C_k)\right).
-    \end{equation}
-    By the previous lemma, $x=\frac{|C_j|}{\chi(1)}\chi(C_j)\in\A$.
-\end{proof}
-
-\subsection{Frobenius' theorem}
-\label{degree}
-
-\begin{theorem}[Frobenius]
-\index{Frobenius' theorem}
-\label{thm:Frobenius_chi(1)}
-    Let $G$ be a finite group and $\chi\in\Irr(G)$. 
-    Then $\chi(1)$ divides~$|G|$. 
-\end{theorem}
-
-\begin{proof}
-    Let $\varphi$ be an irreducible representation with character $\chi$. 
-    Since $\langle\chi,\chi\rangle=1$, 
-    \[
-    \frac{|G|}{\chi(1)}=\frac{|G|}{\chi(1)}\langle\chi,\chi\rangle
-    =\sum_{g\in G}\frac{\chi(g)}{\chi(1)}\overline{\chi(g)}.
-    \]
-    Let $C_1,\dots,C_r$ be the conjugacy classes of $G$. 
-    Then 
-    \[
-        \frac{|G|}{\chi(1)}
-        =\sum_{i=1}^r\sum_{g\in C_i}\frac{\chi(g)}{\chi(1)}\overline{\chi(g)}
-        =\sum_{i=1}^r\left(\frac{|C_i|}{\chi(1)}\chi(C_i)\right)\overline{\chi(C_i)}\in\A\cap\Q=\Z,
-    \]
-    as $\overline{\chi(C_i)}\in\A$. This implies that $\chi(1)$ divides $|G|$. 
-\end{proof}
-
-The character table gives information on the structure of the group. For example,
-with the previous result, one can easily prove that
-groups of order $p^2$ (where $p$ is a prime number) are abelian. 
-
-\begin{exercise}
-    Let $p$ and $q$ be prime numbers such that $p<q$.
-    If $q\not\equiv1\bmod p$, then a group of order $pq$ is abelian. 
-\end{exercise}
-
-Another application:
-
-\begin{theorem}
-    Let $G$ be a finite simple group. 
-    Then $\chi(1)\ne2$ for all $\chi\in\Irr(G)$. 
-\end{theorem}
-
-\begin{proof}
-    Let $\chi\in\Irr(G)$ be such that $\chi(1)=2$. Let $\rho\colon G\to\GL_2(\C)$
-    be an irreducible representation of $G$ with character $\chi$. Since 
-    $G$ is simple, $\ker\rho=\{1\}$. Since $\chi(1)=2$, 
-    $G$ is non-abelian and hence $[G,G]=G$. Since 
-    $G$ has $(G:[G,G])=1$ degree-one characters, it follows that
-    $G$ has only one degree-one character, the trivial one. The composition
-    \[
-    \begin{tikzcd}
-    	G & {\GL_2(\C)} & {\C^{\times}}
-    	\arrow["{\rho }", hook, from=1-1, to=1-2]
-    	\arrow["{\det }", from=1-2, to=1-3]
-    \end{tikzcd}
-    \]
-    is a degree-one representation, which means that $\det\rho_g=1$ for all $g\in G$. 
-    By Frobenius' theorem, $|G|$ is even (because 
-    $2=\chi(1)$ divides $|G|$). Let $x\in G$ be such that $|x|=2$ (Cauchy's theorem). 
-    Then $|\rho_x|=2$, as $\rho$ is injective. Since $\rho_x$ is diagonalizable, 
-    there exists $C\in\GL_2(\C)$ such that
-    \[
-    C\rho_xC^{-1}=\begin{pmatrix}
-    \lambda&0\\
-    0&\mu
-    \end{pmatrix}
-    \]
-    for some $\lambda,\mu\in\{-1,1\}$. Since $1=\det\rho_x=\lambda\mu$ and
-    $\rho$ is non-trivial, $\lambda=\mu=-1$. In particular, $C\rho_xC^{-1}$ is central
-    and hence $\rho_x$ is central. Since $\rho$ is injective, $x$ is central 
-    and thus $Z(G)\ne\{1\}$, a contradiction. 
-\end{proof}
-
-
-\begin{theorem}[Schur]
-\index{Schur's theorem}
-\label{thm:Schur_chi(1)}
-    Let $G$ be a finite group and $\chi\in\Irr(G)$. 
-    Then $\chi(1)$ divides $(G:Z(G))$. 
-\end{theorem}
-
-Let $G$ and $G_1$ be groups. If $V$ is a $\C[G]$-module and 
-$V_1$ is a $\C[G_1]$-module, then 
-$V\otimes V_1$ is a $\C[G\times G_1]$-module 
-with 
+Let $G$ be a finite group and let $p$ be a prime number dividing
+$|G|$. Write $\Syl_p(G)$ to denote the (non-empty) set of Sylow 
+$p$-subgroups of $G$. Recall that 
+the \emph{normalizer} of $P$ is the subgroup
 \[
-(g,g_1)\cdot v\otimes v_1=(g\cdot v)\otimes (g_1\cdot v_1)
+N_G(P)=\{g\in G:gPg^{-1}=P\}.
 \]
-for $(g,g_1)\in G\times G_1$, $v\in V$ and $v_1\in V_1$. 
 
-\begin{lemma}
-    Let $G$ and $G_1$ be finite groups. If $\rho$ is an irreducible
-    representation of $G$ and $\rho_1$ is an irreducible representation
-    of $G_1$, then 
-    $\rho\otimes\rho_1$ is an irreducible representation of $G\times G_1$. 
-\end{lemma}
+McKay made the following conjecture for the prime $p=2$ and simple groups 
+and later generalized by Alperin in~\cite{MR0404417} and independently
+by Isaacs in~\cite{MR332945}. 
+
+\begin{conjecture}[McKay]
+\index{McKay's conjecture}
+\label{conjecture:McKay}
+Let $p$ be a prime. If  
+$G$ is a finite group and $P\in\Syl_p(G)$, then 
+\[
+|\{\chi\in\Irr(G): p\nmid \chi(1)\}|
+=|\{\psi\in\Irr(N_G(P)): p\nmid\psi(1)\}|.
+\]
+\end{conjecture}
+
+McKay's conjecture is still open and is a crucial problem in representation theory. 
+The conjecture was proved for several classes of groups. Isaacs 
+proved the conjecture for solvable groups; see~\cite{MR332945,MR3791517}. 
+Malle and Sp\"ath prove the conjecture for $p=2$. 
+
+\begin{theorem}[Malle--Sp\"ath]
+\index{Malle--Sp\"ath theorem}
+If $G$ is finite and $P\in\Syl_2(G)$,
+then 
+\[
+|\{\chi\in\Irr(G): 2\nmid \chi(1)\}|
+=|\{\psi\in\Irr(N_G(P)): 2\nmid\psi(1)\}|.
+\]
+\end{theorem}
+
+The proof appears in~\cite{MR3549625} and uses the classification of 
+finite simple groups. It uses a deep result of 
+Isaacs, Malle and Navarro~\cite{MR2336079}. 
+
+We cannot prove Malle--Sp\"ath theorem here. However, 
+we can use the computer to prove some particular cases
+with the following function: 
+
+\begin{lstlisting}
+gap> McKay := function(G, p)
+> local N, n, m;
+> N := Normalizer(G, SylowSubgroup(G, p));
+> n := Number(Irr(G), x->Degree(x) mod p <> 0);
+> m := Number(Irr(N), x->Degree(x) mod p <> 0);
+> return n = m;
+> end;
+function( G, p ) ... end
+\end{lstlisting}
+
+As a concrete example, let us 
+verify McKay's conjecture for the Mathieu simple group 
+$M_{11}$ of order 7920. 
+
+\begin{lstlisting}
+gap> M11 := MathieuGroup(11);;
+gap> PrimeDivisors(Order(M11));
+[ 2, 3, 5, 11 ]
+gap> McKay(M11,2);
+true
+gap> McKay(M11,3);
+true
+gap> McKay(M11,5);
+true
+gap> McKay(M11,11);
+true
+\end{lstlisting}
+
+The following conjecture refines McKay's conjecture. It was
+formulated by Isaacs and Navarro:
+
+\begin{conjecture}[Isaacs--Navarro]
+\index{Isaacs--Navarro conjecture}
+\label{conjecture:IsaacsNavarro}
+Let $p$ be a prime and $k\in\Z$. 
+If $G$ is a finite group and $P\in\Syl_p(G)$,
+then
+\begin{align*}
+|\{\chi\in\Irr(G):&p\nmid \chi(1)\text{ and }\chi(1)\equiv\pm k\bmod p\}|\\
+&=|\{\psi\in\Irr(N_G(P)):p\nmid\psi(1)\text{ and }\psi(1)\equiv\pm k\bmod p\}|.
+\end{align*}
+\end{conjecture}
+
+Isaacs--Navarro conjecture is still open. However, 
+it is known to be true for solvable groups, 
+sporadic simple groups and 
+symmetric groups, see~\cite{MR1935849}. 
+
+\begin{lstlisting}
+gap> IsaacsNavarro := function(G, k, p)
+> local m, n, N;
+> N := Normalizer(G, SylowSubgroup(G, p));
+> m := Number(Filtered(Irr(G), x->Degree(x)\
+> mod p <> 0), x->Degree(x) mod p in [-k,k] mod p);
+> n := Number(Filtered(Irr(N), x->Degree(x)\
+> mod p <> 0), x->Degree(x) mod p in [-k,k] mod p);
+> return n=m;
+> end;
+function( G, k, p ) ... end
+\end{lstlisting}
+
+It is an exercise to verify Isaacs--Navarro conjecture in some
+small groups such the Mathieu simple group $M_{11}$. 
+
+\subsection{Commutators}
+\label{commutators}
+
+Let $G$ be a finite group with conjugacy classes $C_1,\dots,C_s$. For
+$i\in\{1,\dots,s\}$ and $\chi\in\Irr(G)$ let  
+\[
+\omega_{\chi}(C_i)=\frac{|C_i|\chi(C_i)}{\chi(1)}\in\A.
+\]
+In the proof of Theorem \ref{thm:B}, Equality \eqref{eq:omega}, 
+we obtained
+that 
+\begin{equation}
+\label{eq:again_omega}
+\omega_\chi(C_i)\omega_\chi(C_j)=\sum_{k=1}^sa_{ijk}\omega_{\chi}(C_k),
+\end{equation}
+where $a_{ijk}$ is the number of solutions 
+of $xy=z$ with $x\in C_i$, $y\in C_j$ and $z\in C_k$. 
+
+\begin{theorem}[Burnside]
+    \index{Burnside's theorem}
+    Let $G$ be a finite group with conjugacy classes $C_1,\dots,C_s$. 
+    Then
+    \[
+    a_{ijk}
+    =\frac{|C_i||C_j|}{|G|}
+    \sum_{\chi\in\Irr(G)}\frac{\chi(C_i)\chi(C_j)\overline{\chi(C_k)}}{\chi(1)}.
+    \]
+\end{theorem}
 
 \begin{proof}
-    Write $\chi=\chi_{\rho}$ and $\chi_1=\chi_{\rho_1}$. Since
-    $\chi$ is irreducible, $\langle\chi,\chi\rangle=1$. Similarly, 
-    $\langle\chi_1,\chi_1\rangle=1$. Now
-    $\rho\otimes\rho_1$ is irreducible, as 
+    By \eqref{eq:again_omega}, 
+    \[
+    \frac{|C_i||C_j|}{\chi(1)}\chi(C_i)\chi(C_j)
+    =\sum_{k=1}^sa_{ijk}|C_k|\chi(C_k).
+    \]
+    Multiply by $\overline{\chi(C_l)}$ and sum over all
+    $\chi\in\Irr(G)$ to obtain 
     \begin{align*}
-    \langle\chi\chi_1,\chi\chi_1\rangle
-    &=\frac{1}{|G\times G_1|}\sum_{(g,g_1)\in G\times G_1}(\chi\chi_1)(g,g_1)\overline{(\chi\chi_1)(g,g_1)}\\
-    &=\frac{1}{|G||G_1|}\sum_{g\in G}\sum_{g_1\in G}\chi(g)\chi_1(g_1)\overline{\chi(g)}\overline{\chi_1(g_1)}\\
-    &=\frac{1}{|G||G_1|}\sum_{g\in G}\chi(g)\overline{\chi(g)}\sum_{g_1\in G}\chi_1(g_1)\overline{\chi_1(g_1)}\\
-    &=\langle\chi,\chi\rangle\langle\chi_1,\chi_1\rangle=1.\qedhere 
+    |C_i||C_j|\sum_{\chi\in\Irr(G)}\frac{\overline{\chi(C_l)}}{\chi(1)}\chi(C_i)\chi(C_j)
+    &=\sum_{\chi\in\Irr(G)}\sum_{k=1}^sa_{ijk}|C_k|\chi(C_k)\overline{\chi(C_l)}\\
+    &=\sum_{k=1}^sa_{ijk}|C_k|\sum_{\chi\in\Irr(G)}\chi(C_k)\overline{\chi(C_l)}\\
+    &=a_{ijl}|G|,
     \end{align*}
+    because 
+    \[
+    \sum_{\chi\in\Irr(G)}\chi(C_k)\overline{\chi(C_l)}=\begin{cases}
+        \frac{|G|}{|C_l|} & \text{if $k=l$},\\
+        0 & \text{otherwise}.
+        \end{cases}\qedhere
+    \]
 \end{proof}
 
-\begin{exercise}
-    Let $G$ and $G_1$ be finite groups. 
-    Prove that irreducible characters of $G\times G_1$ 
-    are of the form $\chi\otimes\chi_1$ for  
-    $\chi\in\Irr(G)$ and $\chi_1\in\Irr(G_1)$. 
-\end{exercise}
-
-\index{Tensor power trick}
-We now prove Schur's theorem. The proof goes back to Tate; it uses the 
-\emph{tensor power trick}. See
-Tao's blog  
-\url{https://terrytao.wordpress.com} for other applications of this powerful
-trick. 
-
-\begin{proof}[Proof of Theorem \ref{thm:Schur_chi(1)}]
-    Let $\rho\colon G\to\GL(V)$ be an irreducible representation 
-    with character $\chi$. Let $z\in Z(G)$. Then $\rho_z$ commutes
-    with $\rho_g$ for all $g\in G$. By Schur's lemma, 
-    $\rho_z(v)=\lambda(z)v$ for all $v\in V$. Note that
-    $\lambda\colon Z(G)\to\C^{\times}$, $z\mapsto\lambda(z)$, 
-    is a well-defined group homomorphism, as 
+\begin{theorem}[Burnside]
+\index{Burnside's theorem}
+    Let $G$ be a finite group and $g,x\in G$. Then
+    $g$ and $[x,y]$ are conjugate for some $y\in G$ if and only if
     \[
-    \lambda(z_1z_2)v=\rho_{z_1z_2}(v)=\rho_{z_1}\rho_{z_2}(v)
-    =\lambda(z_2)\rho_{z_1}(v)=\lambda(z_1)\lambda(z_2)v
+    \sum_{\chi\in\Irr(G)}\frac{|\chi(x)|^2\chi(g)}{\chi(1)}>0.
     \]
-    for all $v\in V$ and $z_1,z_2\in Z(G)$. 
+\end{theorem}
+
+\begin{proof}
+    Let $C_1,\dots,C_s$ be the conjugacy classes of $G$. Assume that
+    $x\in C_i$ and $g\in C_k$ for some $i$ and $k$. Then
+    $C_i^{-1}=\{z^{-1}:z\in C_i\}=C_j$ for some $j$. By Burnside's theorem,
+    \[
+    a_{ijk}
+    =\frac{|C_i|^2}{|G|}\sum_{\chi\in\Irr(G)}\frac{|\chi(C_i)|^2\overline{\chi(C_k)}}{\chi(1)}.
+    \]
+    We first prove $\impliedby$. Since $a_{ijk}>0$, 
+    there exist $u\in C_i$ and $v\in C_j$ such that 
+    $g=uv$ (since $zgz^{-1}=u_1v_1$ for some $u_1\in C_i$ and
+    $v_1\in C_j$, it follows that 
+    $g=(z^{-1}u_1z)(z^{-1}v_1z)$, so take $u=z^{-1}u_1z\in C_i$ and 
+    $v=z^{-1}v_1z\in C_j$). If $x$ and $u$ are conjugate, say 
+    $u=zxz^{-1}$ for some $z$, then $x^{-1}$ and 
+    $v$ are conjugate, as 
+    \[
+    zxz^{-1}=u\implies zx^{-1}z^{-1}=u^{-1}\in C_i^{-1}=C_j.
+    \]
+    Let $z_2\in G$ be such that $z_2x^{-1}z_2^{-1}=v$. 
+    If $y=z^{-1}z_2$, then $g$ and $[x,y]$ are conjugate, as 
+    \[
+    g=uv=(zxz^{-1})(z_2x^{-1}z_2^{-1})=(zxyx^{-1}y^{-1})yz_2^{-1}
+    =z[x,y]z^{-1}.
+    \]
     
-    Let $n\in\Z_{\geq1}$. Write $G^n=G\times\cdots\times G$ ($n$-times). Let
-    \[
-    \sigma\colon G^n\to\GL(V^{\otimes n}),\quad
-    (g_1,\dots,g_n)\mapsto \rho_{g_1}\otimes\cdots\otimes\rho_{g_n}.
-    \]
-    Then $\sigma$ is a representation. 
-    The character of $\sigma$ is $\chi^n$. By the previous lemma, 
-    $\sigma$ is
-    irreducible. For $z_1,\dots,z_n\in Z(G)$, we compute
-    \begin{align*}   
-    \sigma(z_1,\dots,z_n)(v_1\otimes\cdots\otimes v_n)&=z_1v_1\otimes\cdots\otimes z_nv_n\\
-    &=\lambda(z_1)\cdots\lambda(z_n)v_1\otimes\cdots\otimes v_n\\
-    &=\lambda(z_1\cdots z_n)v_1\otimes\cdots\otimes v_n.
+    We now prove $\implies$. Let $y\in G$ be such that $g$ and
+    $[x,y]$ are conjugate, say $g=z[x,y]z^{-1}$ for some $z\in G$. Let
+    $v=yxy^{-1}$. Then 
+    $g$ and $xv^{-1}=xyx^{-1}y^{-1}=[x,y]$ are conjugate. In particular, 
+    since $g\in C_iC_j$, $a_{ijk}>0$. 
+\end{proof}    
+
+\begin{exercise}
+\label{xca:commutators}
+    Let $G$ be a finite group, $g\in G$ and $\chi\in\Irr(G)$. 
+    Prove that 
+    \begin{align*}
+        &\sum_{h\in G}\chi([g,h])=\frac{|G|}{\chi(1)}|\chi(g)|^2.
+    \shortintertext{Prove also that }
+        &\chi(g)\chi(h)=\frac{\chi(1)}{|G|}\sum_{z\in G}\chi(zgz^{-1}h)
     \end{align*}
-    Let 
+    holds for all $h\in G$. 
+\end{exercise}
+
+We now prove a theorem of Frobenius that 
+uses character tables to recognize commutators. For that purpose, 
+let 
+\[
+\tau(g)=|\{(x,y)\in G\times G:[x,y]=g\}|.
+\]
+
+\begin{theorem}[Frobenius]\label{thm:Frobenius_tau(g)}
+    \index{Frobenius' theorem}
+    Let $G$ be a finite group. Then
     \[
-    H=\{(z_1,\dots,z_n)\in Z(G)^n:z_1\cdots z_n=1\}\subseteq G^n.
-    \]  
-    The central subgroup $H$ acts trivially on $V^{\otimes n}$, so there exists
-    a representation 
-    \[
-    \tau\colon G^n/H\to\GL(V^{\otimes n}),
+    \tau(g)=|G|\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}.
     \]
-    of degree $\chi(1)^n$. 
-    Since $\sigma$ is irreducible, so is $\tau$. 
-    By Frobenius' theorem, $\chi(1)$ divides $|G|$ 
-    and $\chi(1)^n$ divides $|G^n/H|=\frac{|G|^n}{|Z(G)|^{n-1}}$. 
-    Write 
+\end{theorem}
+
+\begin{proof}
+    Let $\chi\in\Irr(G)$. Since $\chi$ is irreducible, 
     \[
-    |G|=\chi(1)s\quad\text{ and }\quad 
-    |G|(G:Z(G))^{n-1}=\chi(1)^nr
+    1=\langle\chi,\chi\rangle
+    =\frac{1}{|G|}\sum_{z\in G}\chi(z)\overline{\chi(z)}
+    =\frac{1}{|G|}\sum_{C}|C|\chi(C)\overline{\chi(C)},
     \]
-    for some $r,s\in\Z$. Let $a$ and $b$ be such that 
-    $\gcd(a,b)=1$ and 
-    $\frac{a}{b}=\frac{(G:Z(G))}{\chi(1)}$. Then
+    where the last sum is taken over all conjugacy classes of $G$. 
+    Let $g\in G$ and $C$ be the conjugacy class of $g$. The equation
+    $xu^{-1}=g$ with $x\in C$ and $u\in C^{-1}$ has 
     \[
-    s\left(\frac{a}{b}\right)^{n-1}=s\frac{(G:Z(G))^{n-1}}{\chi(1)^{n-1}}
-    =\frac{|G|}{\chi(1)}\frac{(G:Z(G))^{n-1}}{\chi(1)^{n-1}}=r\in\Z.
+        \frac{|C||C^{-1}|}{|G|}\sum_{\chi\in\Irr(G)}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
     \]
-    Thus $b^{n-1}$ divides $s$ and hence $b=1$ (because $n$ is arbitrary).  
+    solutions. If $(x,u)$ is a solution of $xu^{-1}=g$, then
+    there are $|C_G(x)|$ elements $y$ such that $yxy^{-1}=u$. ($yxy^{-1}=u=y_1xy_1^{-1}$ implies that $y_1^{-1}y\in C_G(x)$ which implies $yC_G(x)=y_1C_G(x)$.) Now 
+    $[x,y]=x(yx^{-1}y^{-1})=g$ has 
+    \[
+    |C|\sum_{\chi}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
+    \]
+    solutions, where the sum is taken over all irreducible characters of $G$. 
+    Now we sum over all conjugacy classes of $G$:
+    \begin{align*}
+        \sum_{C}\sum_{\chi}|C|\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
+        &=\sum_{\chi}\frac{\chi(g^{-1})}{\chi(1)}\left(\sum_C|C|\chi(C)\chi(C^{-1})\right)\\
+        &=|G|\sum_{\chi}\frac{\chi(g^{-1})}{\chi(1)}.
+    \end{align*}
+    From this, the formula follows. 
 \end{proof}
 
-\subsection{Examples of character tables}
+Application:
 
-Let $G$ be a finite group and $\chi_1,\dots,\chi_r$ be the irreducible characters of $G$. Without loss of generality
-we may assume that $\chi_1$ is the trivial character, i.e. $\chi_1(g)=1$ for all $g\in G$. 
-Recall that $r$ is the number of conjugacy classes of $G$. Each $\chi_j$ is constant on conjugacy classes. 
-The \emph{character table} of 
-$G$ is given by 
-\begin{center}
-\begin{tabular}{|c|cccc|}
-\hline 
- & $1$ & $k_{2}$ & $\cdots$ & $k_{r}$\tabularnewline
- & $1$ & $g_{2}$ & $\cdots$ & $g_{r}$\tabularnewline
-\hline 
-$\chi_{1}$ & $1$ & $1$ & $\cdots$ & $1$\tabularnewline
-$\chi_{2}$ & $n_{2}$ & $\chi_{2}(g_{2})$ & $\cdots$ & $\chi_{2}(g_{r})$\tabularnewline
-$\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$\tabularnewline
-$\chi_{r}$ & $n_{r}$ & $\chi_{r}(g_{2})$ & $\cdots$ & $\chi_{r}(g_{r})$\tabularnewline
-\hline
-\end{tabular}
-\end{center}
-where the $n_j$ are the degrees of the irreducible representations of $G$ and each $k_j$ is 
-the size of the conjugacy class of the element $g_j$. By convention, the character table
-contains only the values of the irreducible characters of the group. 
-
-\begin{example}
-	Let $G=\langle g:g^4=1\rangle$ 
-	be the cyclic group of order four. The character table of $G$ is given by
-	\begin{center}
-		\begin{tabular}{|c|cccc|}
-			\hline 
-			& 1 & 1 & 1 & 1\tabularnewline
-			& $1$ & $g$ & $g^2$ & $g^{3}$\tabularnewline
-			\hline 
-			$\chi_{1}$ & $1$ & $1$ & $1$ & $1$\tabularnewline
-			$\chi_{2}$ & $1$ & $\lambda$ & $\lambda^2$ & $\lambda^{3}$\tabularnewline
-			$\chi_{3}$ & $1$ & $\lambda^2$ & $\lambda^4$ & $\lambda^{2}$\tabularnewline
-			$\chi_{4}$ & $1$ & $\lambda^{3}$ & $\lambda^{2}$ & $\lambda$\tabularnewline
-			\hline
-		\end{tabular}
-	\end{center}
- Let us see how to see this calculation on the computer:
-\begin{lstlisting}
-gap> C4 := CyclicGroup(4);;                       
-gap> T := CharacterTable(C4);;
-gap> Display(T);
-CT1
-
-     2  2  2  2  2
-
-      1a 4a 2a 4b
-
-X.1     1  1  1  1
-X.2     1 -1  1 -1
-X.3     1  A -1 -A
-X.4     1 -A -1  A
-
-A = E(4)
-  = Sqrt(-1) = i
-\end{lstlisting}
-%\begin{lstlisting}
-%julia> G = cyclic_group(4);
-%
-%julia> T = character_table(G)
-%<pc group of size 4 with 2 generators>
-%
-%  2  2    2  2    2
-%                   
-%    1a   4a 2a   4b
-%                   
-%X_1  1    1  1    1
-%X_2  1  z_4 -1 -z_4
-%X_3  1   -1  1   -1
-%X_4  1 -z_4 -1  z_4    
-%\end{lstlisting}
-%\begin{lstlisting}
-%julia> G = cyclic_group(4);
-%
-%julia> Oscar.with_unicode() do
-%       show(character_table(G))
-%       end;
-%<pc group of size 4 with 2 generators>
-%
-% 2  2   2  2   2
-%                
-%   1a  4a 2a  4b
-%                
-%χ₁  1   1  1   1
-%χ₂  1  ζ₄ -1 -ζ₄
-%χ₃  1  -1  1  -1
-%χ₄  1 -ζ₄ -1  ζ₄  
-%\end{lstlisting}
-Some remarks: 
- \begin{enumerate}
-     \item The symbol \lstinline{E(4)} denotes a primitive fourth root of 1.
-     \item The function \lstinline{CharacterTable} computes more information, not only the character table of the group. 
-     The function computes other stuff: 
- \end{enumerate}
-%\begin{lstlisting}
-%julia> orders_class_representatives(T)
-%4-element Vector{Int64}:
-% 1
-% 4
-% 2
-% 4
-%
-%julia> class_lengths(T)
-%4-element Vector{fmpz}:
-% 1
-% 1
-% 1
-% 1
-%
-%julia> orders_centralizers(T)
-%4-element Vector{fmpz}:
-% 4
-% 4
-% 4
-% 4
-%\end{lstlisting}
-\begin{lstlisting}
-gap> OrdersClassRepresentatives(T);
-[ 1, 4, 2, 4 ]
-gap> SizesCentralizers(T);
-[ 4, 4, 4, 4 ]
-gap> SizesConjugacyClasses(T);
-[ 1, 1, 1, 1 ]
-\end{lstlisting}
-\end{example}
-
-\begin{example}
-	The character table of the group $C_2\times C_2=\{1,a,b,ab\}$ is 
-	\begin{center}
-		\begin{tabular}{|c|rrrr|}
-			\hline 
-			& 1 & 1 & 1 & 1\tabularnewline
-			& $1$ & $a$ & $b$ & $ab$\tabularnewline
-			\hline 
-			$\chi_{1}$ & $1$ & $1$ & $1$ & $1$\tabularnewline
-			$\chi_{2}$ & $1$ & $1$ & $-1$ & $-1$\tabularnewline
-			$\chi_{3}$ & $1$ & $-1$ & $1$ & $-1$\tabularnewline
-			$\chi_{4}$ & $1$ & $-1$ & $-1$ & $1$\tabularnewline
-			\hline
-		\end{tabular}
-	\end{center}
-	Let us do this by computer:
-\begin{lstlisting}
-gap> Display(CharacterTable(AbelianGroup([2,2])));
-CT2
-
-     2  2  2  2  2
-
-      1a 2a 2b 2c
-
-X.1     1  1  1  1
-X.2     1 -1  1 -1
-X.3     1  1 -1 -1
-X.4     1 -1 -1  1
-\end{lstlisting}
-%\begin{lstlisting}
-%julia> A = abelian_group(PcGroup, [2,2]);
-%
-%julia> character_table(A)
-%<pc group of size 4 with 2 generators>
-%
-%  2  2  2  2  2
-%               
-%    1a 2a 2b 2c
-%               
-%X_1  1  1  1  1
-%X_2  1 -1  1 -1
-%X_3  1  1 -1 -1
-%X_4  1 -1 -1  1
-%\end{lstlisting}
-\end{example}
-
-\begin{exercise}
-    Let $A$ and $B$ be abelian groups. 
-    We write $\Irr(A)=\{\rho_1,\dots,\rho_r\}$ and 
-    $\Irr(B)=\{\phi_1,\dots,\phi_s\}$. Prove
-    that the maps 
+\begin{corollary}
+    Let $G$ be a finite group and $g\in G$. Then $g$ 
+    is a commutator if and only if 
     \[
-    \varphi_{ij}\colon A\times B\to\C^\times,\quad
-    (a,b)\mapsto\rho_i(a)\phi_j(b),
+    \sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne0.
     \]
-    where $i\in\{1,\dots,r\}$ and $j\in\{1,\dots,s\}$, are the irreducible representations of $A\times B$. 
+\end{corollary}
+
+\subsection{Ore's conjecture}
+\label{Ore}
+
+In 1951 Ore and independently It\^o
+proved that every element of any alternating simple group is a commutator. 
+Ore also mentioned that ``it is possible that a similar theorem holds for any simple group of finite order, but it seems that at present we do not have the necessary methods to investigate the question". 
+
+\begin{conjecture}[Ore]
+\index{Ore's conjecture}
+\label{conjecture:Ore}
+    Let $G$ be a finite simple non-abelian group. 
+    Then every element of $G$ is a commutator. 
+\end{conjecture}
+
+Ore's conjecture was proved in 2010:
+
+\begin{theorem}[Liebeck--O'Brien--Shalev--Tiep]
+\index{Liebeck--O'Brien--Shalev--Tiep theorem}
+    Every element of a non-abelian finite simple group is a commutator.     
+\end{theorem}
+
+The proof appears in~\cite{MR2654085}. It needs about 70 pages and
+uses the classification of finite simple groups (CFSG) and character theory.
+See \cite{MR3289286} for more information on Ore's conjecture and its proof. 
+
+Although the proof of Ore's conjecture is too complicated for 
+this course, we can use the computer to 
+prove the conjecture in some particular cases:
+
+\begin{proposition}
+    Ore's conjecture is true 
+    for sporadic simple groups.
+\end{proposition}
+
+\begin{proof}
+    Let $G$ be a finite simple group. 
+    We know that $g\in G$ is a commutator if and only if 
+    $\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne 0$. Let us write
+    a computer script to check whether every element in a group 
+    is a commutator. Our
+    function needs the character table of a group and returns 
+    \lstinline{true} if every element of the group is a commutator and
+    \lstinline{false} otherwise. 
+\begin{lstlisting}
+gap> Ore := function(char) 
+> local s,f,k;
+> for k in [1..NrConjugacyClasses(char)] do
+> s := 0;
+> for f in Irr(char) do
+> s := s+f[k]/Degree(f);  
+> od;
+> if s<=0 then
+> return false;
+> fi;
+> od;
+> return true;
+> end;
+function( char ) ... end
+\end{lstlisting}
+Now we check Ore's conjecture for Mathieu simple groups
+and for the Monster group: 
+\begin{lstlisting}
+gap> Ore(CharacterTable("M11"));
+true
+gap> Ore(CharacterTable("M12"));
+true
+gap> Ore(CharacterTable("M22"));
+true
+gap> Ore(CharacterTable("M23"));
+true
+gap> Ore(CharacterTable("M24"));
+true
+gap> Ore(CharacterTable("M"));
+true
+\end{lstlisting}
+It is an exercise to check the conjecture for the other finite sporadic 
+simple groups $McL$, $Ru$, $Ly$, $Suz$, $He$, $HN$, $Th$, $Fi_{22}$, $Fi_{23}$, $Fi_{24}'$, $B$, $M$ 
+\end{proof}
+
+See \cite{MR3821142} for other applications of character theory. 
+
+\subsection{Cauchy--Frobenius--Burnside theorem}
+
+\begin{theorem}[Cauchy--Frobenius--Burnside]
+\label{thm:CFB}
+\index{Cauchy--Frobenius--Burnside theorem}
+    Let $G$ be a finite group that acts on a finite set $X$. 
+    If $m$ is the number of orbits, then 
+    \[
+    m=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|,
+    \]
+    where $\Fix(g)=\{x\in X:g\cdot x=x\}$. 
+\end{theorem}
+
+\begin{proof}
+    Let $X=\{x_1,\dots,x_n\}$ and $V$ be the complex vector space with basis $\{x_1,\dots,x_n\}$. 
+    Let $\rho\colon G\to\GL_n(\C)$, $g\mapsto\rho_g$, be the representation
+    \[
+    (\rho_g)_{ij}=\begin{cases}
+        1 & \text{if $g\cdot x_j=x_i$},\\
+        0 & \text{otherwise}.
+        \end{cases}
+    \]
+    In particular, $(\rho_g)_{ii}=1$ if $x_i\in\Fix(g)$ and 
+    $(\rho_g)_{ii}=0$ if $x_i \notin \Fix(g)$. Thus
+    \[
+    \chi_\rho(g)=\trace\rho_g=\sum_{i=1}^n(\rho_g)_{ii}=|\Fix(g)|.
+    \]
+    
+    Recall that 
+    \begin{gather*}
+        V^G=\{v\in V:g\cdot v=v\text{ for all $g\in G$}\}
+    \shortintertext{and that}    
+        \dim V^G=\frac{1}{|G|}\sum_{z\in G}\chi_{\rho}(z)=\langle\chi_\rho,\chi_1\rangle
+    \end{gather*}
+    where $\chi_1$ is the trivial character of $G$. 
+    
+    We can assume that, after a possible re-enumeration,
+    $x_1,\dots,x_m$ are the representatives of the orbits 
+    of $G$ on $X$. For $i\in\{1,\dots,m\}$, let
+    $v_i=\sum_{x\in G\cdot x_i}x$.
+    
+    \begin{claim}
+        $\{v_1,\dots,v_m\}$ is a basis of $V^G$. 
+    \end{claim}
+    
+    If $g\in G$, then $g\cdot v_i=\sum_{x\in G\cdot x_i}g\cdot x=
+    \sum_{y\in G\cdot x_i}y=v_i$. Hence $\{v_1,\dots,v_m\}\subseteq V^G$. Moreover, 
+    $\{v_1,\dots,v_m\}$ is linearly independent because the $v_j$ are
+    orthogonal and non-zero:
+    \[
+    \langle v_i,v_j\rangle=\begin{cases}
+        |G\cdot x_i| & \text{if $i=j$},\\
+        0 & \text{otherwise}.
+        \end{cases}
+    \]
+    We now prove that $V^G=\langle v_1,\dots,v_m\rangle$. Let $v\in V^G$.
+    Then $v=\sum_{x\in X}\lambda_xx$ for some coefficients $\lambda_x\in\C$.
+    If $g\in G$, then $g\cdot v=v$. Since 
+    \[
+    \sum_{x\in X}\lambda_xx=v=g\cdot v
+    =\sum_{x\in X}\lambda_x(g\cdot x)
+    =\sum_{x\in X}\lambda_{g^{-1}\cdot x}x,
+    \]
+    it follows that $\lambda_x=\lambda_{g^{-1}\cdot x}$ for all $x\in X$ and 
+    $g\in G$. This means that if $y,z\in X$ and $g\in G$ is such that
+    $g\cdot y=z$, then $\lambda_y=\lambda_z$. Thus 
+    \[
+    v=\sum_{x\in X}\lambda_xx=\sum_{i=1}^m\lambda_{x_i}\sum_{y\in G\cdot x_i}y
+    =\sum_{i=1}^m \lambda_{x_i}v_i.
+    \]
+    
+    Hence 
+    \[
+    m=\dim V^G=\langle\chi_\rho,\chi_1\rangle=\frac{1}{|G|}\sum_{z\in G}\chi_\rho(z)
+    =\frac{1}{|G|}\sum_{z\in G}|\Fix(z)|.\qedhere 
+    \]
+\end{proof}
+
+It is possible to give an alternative short proof of the theorem. For example, 
+for transitive actions (i.e., $m=1$), we proceed as follows:
+\[
+\sum_{g\in G}|\Fix(g)|=\sum_{g\in G}\sum_{\substack{x\in X\\g\cdot x=x}}1
+=\sum_{x\in X}\sum_{\substack{g\in G\\g\cdot x=x}}1
+=\sum_{x\in X}|G_x|=|G_x||X|=|G|.
+\]
+
+\begin{exercise}
+\label{xca:CFB}
+    Use the previous idea to prove Theorem \ref{thm:CFB}. 
 \end{exercise}
 
-\begin{example}
-	The character table of $\Sym_3$ is given by 
-	\begin{center}
-		\begin{tabular}{|c|rrr|}
-			\hline
-			& $1$ & $3$ & $2$\tabularnewline
-			& $1$ & $(12)$ & $(123)$ \tabularnewline
-			\hline 
-			$\chi_{1}$ & $1$ & $1$ & $1$\tabularnewline
-			$\chi_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
-			$\chi_{3}$ & $2$ & $0$ & $-1$ \tabularnewline
-			\hline
-		\end{tabular}
-	\end{center}
-	Let us recall one possible way to compute this table. 
-	Degree-one irreducibles were easy to compute. 
-	To compute the third row of the table, one possible approach is to use
-	the irreducible representation  
-	\[
-	(12)\mapsto \begin{pmatrix}-1&1\\0&1\end{pmatrix},
-	\quad
-	(123)\mapsto \begin{pmatrix}0&-1\\1&-1\end{pmatrix}.
-	\]
-    Then	
+\index{Orbital}
+\index{Rank}
+Let $G$ act on a finite set $X$. Then $G$ acts
+on $X\times X$ by
+\begin{equation}
+    \label{eq:orbitals}
+    g\cdot (x,y)=(g\cdot x,g\cdot y).
+\end{equation}
+The orbits of this action are called
+the \emph{orbitals} of $G$ on $X$. The \emph{rank} 
+of $G$ on $X$ is the number of orbitals. 
+
+\begin{proposition}
+    Let $G$ be a group that acts on a finite set $X$.
+    The rank of $G$ on $X$ is 
+    \[
+    \frac{1}{|G|}\sum_{g\in G}|\Fix(g)|^2.
+    \]
+\end{proposition}
+
+\begin{proof}
+    The action \eqref{eq:orbitals} has 
+    $\Fix(g)\times\Fix(g)$ as fixed points, as 
     \begin{align*}
-		&\chi_3\left( (12) \right)=\trace\begin{pmatrix}-1&1\\0&1\end{pmatrix}=0,\\
-		&\chi_3\left( (123) \right)=\chi_3\left( (12)(23)\right)=\trace\begin{pmatrix}0&-1\\1&-1\end{pmatrix}=-1.
-	\end{align*}
+        g\cdot (x,y)=(x,y)&\Longleftrightarrow
+        (g\cdot x,g\cdot y)=(x,y)\\
+        &\Longleftrightarrow g\cdot x=x\text{ and }g\cdot y=y\Longleftrightarrow
+        (x,y)\in\Fix(g)\times\Fix(g).
+    \end{align*}
+    Now the claim follows from Cauchy--Frobenius--Burnside theorem. 
+\end{proof}
 
-	We should remark that the irreducible representation 
-	mentioned is not needed to
-	compute the third row of the character table. 
-\begin{lstlisting}
-gap> S3 := SymmetricGroup(3);;
-gap> T := CharacterTable(S3);;
-gap> Display(T);
-CT3
+\begin{definition}
+    Let $G$ act on a finite set $X$. 
+    We say that $G$ is \emph{2-transitive} on $X$ 
+    if given $x,y\in X$ with $x\ne y$ and 
+    $x_1,y_1\in X$ with $x_1\ne y_1$ there exists 
+    $g\in G$ such that $g\cdot x=x_1$ and $g\cdot y=y_1$. 
+\end{definition}
 
-     2  1  1  .
-     3  1  .  1
+The symmetric group $\Sym_n$ acts 2-transitively on $\{1,\dots,n\}$. 
 
-      1a 2a 3a
-    2P 1a 1a 3a
-    3P 1a 2a 1a
+\begin{proposition}
+    If $G$ is 2-transitive on $X$, then the rank of $G$ on $X$ is two. 
+\end{proposition}
 
-X.1     1 -1  1
-X.2     2  . -1
-X.3     1  1  1
-\end{lstlisting}
-%\begin{lstlisting}
-%julia> S3 = symmetric_group(3);
-%
-%julia> T = character_table(S3)
-%Sym( [ 1 .. 3 ] )
-%
-%  2  1  1  .
-%  3  1  .  1
-%            
-%    1a 2a 3a
-% 2P 1a 1a 3a
-% 3P 1a 2a 1a
-%            
-%X_1  1 -1  1
-%X_2  2  . -1
-%X_3  1  1  1
-%\end{lstlisting}
-As we did before, some extra information was computed:
-%\begin{lstlisting}
-%julia> orders_class_representatives(T)
-%3-element Vector{Int64}:
-% 1
-% 2
-% 3
-%
-%julia> class_lengths(T)
-%3-element Vector{fmpz}:
-% 1
-% 3
-% 2
-%
-%julia> orders_centralizers(T)
-%3-element Vector{fmpz}:
-% 6
-% 2
-% 3
-%\end{lstlisting}
-%julia> GAP.Globals.SizesConjugacyClasses(T.GAPTable)
-%GAP: [ 1, 3, 2 ]
-%julia> GAP.Globals.SizesCentralizers(T.GAPTable)
-%GAP: [ 6, 2, 3 ]    
-\begin{lstlisting}
-gap> SizesConjugacyClasses(T);
-[ 1, 3, 2 ]
-gap> SizesCentralizers(T);
-[ 6, 2, 3 ]
-gap> OrdersClassRepresentatives(T);
-[ 1, 2, 3 ]
-\end{lstlisting}
-\end{example}
-
-\begin{exercise}
-    Compute the character table of $\Sym_4$. 
-\end{exercise}
-
-\begin{exercise}
-    Compute the character table of $\Alt_4$. 
-\end{exercise}
-
-\begin{exercise}
-    Compute the character table of the quaternion group $Q_8$.
-\end{exercise}
-
-\begin{exercise}
-    Compute the character table of the 
-    dihedral group of eight elements. 
-\end{exercise}
-
+\begin{proof}
+    The set $\Delta=\{(x,x):x\in X\}$ is an orbital. The complement
+    $X\times X\setminus\Delta$ is another orbital: if $x,x_1,y,y_1\in X$
+    are such that $x\ne y$ 
+    and $x_1\ne y_1$, then there exists $g\in G$ such that 
+    $g\cdot x=x_1$ and $g\cdot y=y_1$, so $g\cdot (x,y)=(x_1,y_1)$. 
+\end{proof}
