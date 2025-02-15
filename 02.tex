@@ -189,10 +189,13 @@ that
 \end{proposition}
 
 \begin{proof}
-	The first statement is trivial. 	To prove 2) note that
+	The first statement is trivial. 	
+    
+    To prove 2) note that
 	\[
 	\chi(hgh^{-1})=\trace(\rho_{hgh^{-1}})=\trace(\rho_h\rho_g\rho_h^{-1})=\trace\rho_g=\chi(g).
 	\]
+    
 	Statement 3) follows from the fact that the trace of $\rho_g$ is the sum
 	of the eigenvalues of $\rho_g$ and these numbers are roots of the polynomial
 	$X^{|g|}-1\in\C[X]$. To prove 4) write $\chi(g)=\lambda_1+\cdots+\lambda_k$, where 
@@ -204,7 +207,8 @@ that
 	=\trace(\rho_{g^{-1}})
 	=\chi(g^{-1}).
 	\] 
-	Finally, we prove 5). Use 3) to write $\chi(g)$ as the sum of
+    
+	Finally, we prove 5). We use 3) to write $\chi(g)$ as the sum of
 	$\chi(1)$ roots of one, say $\chi(g)=\lambda_1+\cdots+\lambda_k$ for
 	$k=\chi(1)$. Then 
 	\[
@@ -548,3 +552,5 @@ for $i,j\in\{1,\dots,k\}$.
 	\end{center}
 \end{example}
 
+Two entries of the character table of Example~\ref{exa:S3} 
+are still unknown. As we further develop the theory of characters, we will discover several tricks that can be used to find these missing entries.
