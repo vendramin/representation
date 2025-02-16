@@ -45,9 +45,30 @@ The proof appears in~\cite{MR3549625} and uses the classification of
 finite simple groups. It uses a deep result of 
 Isaacs, Malle and Navarro~\cite{MR2336079}. 
 
-We cannot prove Malle--Sp\"ath theorem here. However, 
+We cannot prove the Malle--Sp\"ath theorem here. However, 
 we can use the computer to prove some particular cases
 with the following function: 
+
+% > McKay := function(G, p)
+% function> local N, n, m;
+% function> N := Normalizer(G, SylowSubgroup(G, p));
+% function> degG := CharacterDegrees(G);
+% function> degN := CharacterDegrees(N);
+% function> n := &+[ d[2] : d in degG | d[1] mod p ne 0 ];
+% function> m := &+[ d[2] : d in degN | d[1] mod p ne 0 ];
+% function> return n eq m;
+% function> end function;
+
+% > M11 := sub<Sym(11) | (1,10)(2,8)(3,11)(5,7), (1,4,7,6)(2,11,10,9)>;
+% > McKay(M11,2);
+% true
+% > McKay(M11,3);
+% true
+% > McKay(M11,5);
+% true
+% > McKay(M11,11);
+% true
+
 
 \begin{lstlisting}
 gap> McKay := function(G, p)
@@ -93,26 +114,52 @@ then
 \end{align*}
 \end{conjecture}
 
-Isaacs--Navarro conjecture is still open. However, 
+The Isaacs--Navarro conjecture is still open. However, 
 it is known to be true for solvable groups, 
 sporadic simple groups and 
 symmetric groups, see~\cite{MR1935849}. 
 
-\begin{lstlisting}
-gap> IsaacsNavarro := function(G, k, p)
-> local m, n, N;
-> N := Normalizer(G, SylowSubgroup(G, p));
-> m := Number(Filtered(Irr(G), x->Degree(x)\
-> mod p <> 0), x->Degree(x) mod p in [-k,k] mod p);
-> n := Number(Filtered(Irr(N), x->Degree(x)\
-> mod p <> 0), x->Degree(x) mod p in [-k,k] mod p);
-> return n=m;
-> end;
-function( G, k, p ) ... end
-\end{lstlisting}
+% IsaacsNavarro := function(G, k, p)
+%     local N, degG, degN, m, n;
 
-It is an exercise to verify Isaacs--Navarro conjecture in some
+%     // Compute the normalizer of a Sylow p-subgroup of G
+%     N := Normalizer(G, SylowSubgroup(G, p));
+
+%     // Get the character degrees along with their multiplicities
+%     degG := CharacterDegrees(G);
+%     degN := CharacterDegrees(N);
+
+%     // Define the valid mod p range [-k, k] mod p
+%     validDegrees := { (i mod p) : i in [-k..k] };
+
+%     // Count characters in G with degrees not divisible by p and in the valid range
+%     m := &+[ d[2] : d in degG | d[1] mod p ne 0 and (d[1] mod p) in validDegrees ];
+
+%     // Count characters in N with degrees not divisible by p and in the valid range
+%     n := &+[ d[2] : d in degN | d[1] mod p ne 0 and (d[1] mod p) in validDegrees ];
+
+%     return n eq m;
+% end function;
+
+% \begin{lstlisting}
+% gap> IsaacsNavarro := function(G, k, p)
+% > local m, n, N;
+% > N := Normalizer(G, SylowSubgroup(G, p));
+% > m := Number(Filtered(Irr(G), x->Degree(x)\
+% > mod p <> 0), x->Degree(x) mod p in [-k,k] mod p);
+% > n := Number(Filtered(Irr(N), x->Degree(x)\
+% > mod p <> 0), x->Degree(x) mod p in [-k,k] mod p);
+% > return n=m;
+% > end;
+% function( G, k, p ) ... end
+% \end{lstlisting}
+
+\begin{bonus}
+Verify the Isaacs--Navarro conjecture in some
 small groups such the Mathieu simple group $M_{11}$. 
+\end{bonus}
+
+%It is an exercise to 
 
 \subsection{Commutators}
 \label{commutators}
@@ -318,6 +365,27 @@ prove the conjecture in some particular cases:
     \lstinline{true} if every element of the group is a commutator and
     \lstinline{false} otherwise. 
 \begin{lstlisting}
+% IsaacsNavarro := function(G, k, p)
+%     local N, degG, degN, m, n;
+
+%     // Compute the normalizer of a Sylow p-subgroup of G
+%     N := Normalizer(G, SylowSubgroup(G, p));
+
+%     // Get the character degrees along with their multiplicities
+%     degG := CharacterDegrees(G);
+%     degN := CharacterDegrees(N);
+
+%     // Define the valid mod p range [-k, k] mod p
+%     validDegrees := { (i mod p) : i in [-k..k] };
+
+%     // Count characters in G with degrees not divisible by p and in the valid range
+%     m := &+[ d[2] : d in degG | d[1] mod p ne 0 and (d[1] mod p) in validDegrees ];
+
+%     // Count characters in N with degrees not divisible by p and in the valid range
+%     n := &+[ d[2] : d in degN | d[1] mod p ne 0 and (d[1] mod p) in validDegrees ];
+
+%     return n eq m;
+% end function;
 gap> Ore := function(char) 
 > local s,f,k;
 > for k in [1..NrConjugacyClasses(char)] do

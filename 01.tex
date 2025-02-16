@@ -41,7 +41,7 @@ $N$ such that $an\in N$ for all $a\in A$ and $n\in N$.
 Let $A$ be a finite-dimensional algebra. If $M$ 
 is an $A$-module, then $M$ is a vector space with 
 $\lambda m=(\lambda 1_A)m$ for $\lambda\in\C$ and $m\in M$. Moreover, 
-$M$ is finitely generated if and only if $M$ is finite-dimensional. 
+$M$ is finitely generated (as an $A$-module) if and only if $M$ is finite-dimensional. 
 \end{exercise}
 
 \index{Module!simple}
@@ -64,8 +64,10 @@ $k$ isomorphism classes of simple modules. Then
 \[
 A\simeq M_{n_1}(\C)\times\cdots\times M_{n_k}(\C)
 \]
-for some $n_1,\dots,n_k\in\Z_{>0}$.
-\end{theorem}
+for some $n_1,\dots,n_k\in\Z_{>0}$. \end{theorem}
+
+The unique simple module of the algebra $M_{n_j}(\C)$ 
+is the column space $\C^{n_j}$. This means that the simple component of dimension $n_j^2$ has a simple module of dimension $n_j$. 
 
 We also give some basic facts on the Jacobson radical
 of finite-dimensional algebras. If $A$ is a finite-dimensional algebra, the \emph{Jacobson radical} is defined as 
@@ -245,8 +247,13 @@ then $\C[G]$ is semisimple. By Artin--Wedderburn theorem,
 \]
 where $r$ is the number of isomorphism classes of simple modules of $\C[G]$. Moreover, 
 \[
-|G|=\dim\C[G]=\sum_{i=1}^r n_i^2.
+|G|=\dim\C[G]=\sum_{i=1}^r n_i^2,
 \]
+and the integers 
+$n_1,n_2,\dots,n_r$ are
+the dimensions of the non-isomorphic simple modules of
+the complex group algebra 
+$\C[G]$. 
 % By convention, 
 % we always assume that $n_1=1$. 
 % This corresponds, of course, to the \emph{trivial module}. 
@@ -277,11 +284,6 @@ where $r$ is the number of isomorphism classes of simple modules of $\C[G]$. Mor
 	the number of conjugacy classes of $G$.
 \end{proof}
 
-\begin{exercise}
-    Let $G$ be a finite group of order $n$ with $k$ conjugacy classes.
-    Let $m=(G:[G,G])$. Prove that $n+3m\geq4k$. 
-\end{exercise}
-
 If $G$ is a finite group,
 then 
 \[
@@ -293,9 +295,8 @@ In particular,
 |G|=\dim\C[G]=\sum_{i=1}^k n_i^2.
 \]
 
-
-
 \begin{exercise}
+\label{xca:C4}
     Prove that $\C[C_4]\simeq\C^4$. 
 \end{exercise}
 
@@ -584,6 +585,12 @@ if and only if $V$ is simple.
     Prove that there exists a bijective correspondence between 
     degree-one representations of $G$ and 
     degree-one representations of $G/[G,G]$. 
+\end{exercise}
+
+\begin{exercise}
+\label{xca:inequality}
+    Let $G$ be a finite group of order $n$ with $k$ conjugacy classes.
+    Let $m=(G:[G,G])$. Prove that $n+3m\geq4k$. 
 \end{exercise}
 
 In the following example, we work over the real numbers. 
