@@ -442,7 +442,12 @@ is important:
     \shortintertext{Thus}
     \alpha(\alpha(u))=\frac{1}{|G|}\sum_{x\in G}\rho_x(\alpha(u))=\alpha(u)
     \end{gather*}
-    for all $u\in U$. This means that $\alpha$ has eigenvalues 0 and 1.
+    for all $u\in U$. This implies that $\alpha$ has eigenvalues 0 and 1. In fact, 
+    if $u\in U$ is an eigenvector of $\alpha$ of eigenvalue $\lambda\in\C$, then 
+    \[
+    \lambda u=\alpha(u)=\alpha(\alpha(u))=\alpha(\lambda u)=\lambda\alpha(u)=\lambda^2u.
+    \]
+    Thus $\lambda(\lambda-1)=0$. 
     
     Let $V$ be the eigenspace of eigenvalue 1. 
     We now claim that $V=U^G$. Let us first prove that 
@@ -517,8 +522,11 @@ defines an inner product.
         &=\frac{1}{|G|}\sum_{g\in G}\overline{\chi_U(g)}\chi_V(g)\\
         &=\langle \chi_V,\chi_U\rangle.
     \end{align*}
-    Since $\dim\Hom_G(U,V)\in\R$, one has  
-    $\langle\chi_U,\chi_V\rangle=\overline{\langle\chi_V,\chi_U\rangle}=\langle\chi_V,\chi_U\rangle$ and the claim follows. 
+    Since $\dim\Hom_G(U,V)\in\R$, one has    
+    \[
+\langle\chi_U,\chi_V\rangle=\overline{\langle\chi_V,\chi_U\rangle}=\langle\chi_V,\chi_U\rangle
+    \]
+    and the claim follows. 
 \end{proof}
 
 Let $G$ be a finite group and $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. 
