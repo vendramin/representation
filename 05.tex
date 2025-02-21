@@ -355,16 +355,6 @@ prove the conjecture in some particular cases:
     for sporadic simple groups.
 \end{proposition}
 
-\begin{proof}
-    Let $G$ be a finite simple group. 
-    We know that $g\in G$ is a commutator if and only if 
-    $\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne 0$. Let us write
-    a computer script to check whether every element in a group 
-    is a commutator. Our
-    function needs the character table of a group and returns 
-    \lstinline{true} if every element of the group is a commutator and
-    \lstinline{false} otherwise. 
-\begin{lstlisting}
 % IsaacsNavarro := function(G, k, p)
 %     local N, degG, degN, m, n;
 
@@ -386,6 +376,17 @@ prove the conjecture in some particular cases:
 
 %     return n eq m;
 % end function;
+
+\begin{proof}
+    Let $G$ be a finite simple group. 
+    We know that $g\in G$ is a commutator if and only if 
+    $\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne 0$. Let us write
+    a computer script to check whether every element in a group 
+    is a commutator. Our
+    function needs the character table of a group and returns 
+    \lstinline{true} if every element of the group is a commutator and
+    \lstinline{false} otherwise. 
+\begin{lstlisting}
 gap> Ore := function(char) 
 > local s,f,k;
 > for k in [1..NrConjugacyClasses(char)] do
