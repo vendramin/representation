@@ -246,9 +246,17 @@ then
 \gcd\left(\frac {p^{q}-1}{p-1},\frac{q^{p} - 1}{q - 1}\right)=112643.
 \]
 Nowadays we can check this easily in almost every desktop computer:
+% \begin{lstlisting}
+% gap> Gcd((17^3313-1)/16,(3313^17-1)/3312);
+% 112643
+% \end{lstlisting}
 \begin{lstlisting}
-gap> Gcd((17^3313-1)/16,(3313^17-1)/3312);
-112643
+> p := 17; 
+> q := 3313;
+> bool, a := IsCoercible(Integers(), (p^q-1)/(p-1));
+> bool, b := IsCoercible(Integers(), (q^p-1)/(q-1));
+> Gcd(a,b);
+112643    
 \end{lstlisting}
 No other counterexamples have been found of Stephen’s stronger version of the conjecture.
 

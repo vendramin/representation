@@ -58,6 +58,16 @@ The \emph{tensor product} of $\rho$ and $\psi$ is the representation of $G$ give
 for $v\in V$ and $w\in W$. 
 
 \begin{exercise}
+    Let $G$ be a finite group and $V$ be a $\C[G]$-module. 
+    Prove that the dual $V^*$  
+is a $\C[G]$-module with
+\[
+(g\cdot f)(v)=f(g^{-1}v),\quad
+f\in V^*,\;v\in V,\;g\in G.
+\]
+\end{exercise}
+
+\begin{exercise}
     Let $G$ be a finite group and
     $V$ and $W$ be $\C[G]$-modules. Prove that
     the set $\Hom(V,W)$ of complex linear maps $V\to W$ 
@@ -74,13 +84,7 @@ for $v\in V$ and $w\in W$.
     as $\C[G]$-modules.
 \end{exercise}
 
-The previous exercise shows, in particular, 
-that the dual $V^*$ of a $\C[G]$-module $V$ 
-is a $\C[G]$-module with
-\[
-(g\cdot f)(v)=f(g^{-1}v),\quad
-f\in V^*,\;v\in V,\;g\in G.
-\]
+
 
 \begin{definition}
     \index{Representation!completely reducible}
@@ -401,7 +405,7 @@ We will use the following exercise later:
     Prove that if $G$ is a finite group and 
     $U$ and $V$ are $\C[G]$-modules, then 
     \[
-        \chi_{\Hom_G(U,V)}=\overline{\chi_U}\chi_V.
+        \chi_{\Hom(U,V)}=\overline{\chi_U}\chi_V.
     \] 
 \end{exercise}
 
