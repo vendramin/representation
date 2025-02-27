@@ -123,7 +123,7 @@ is a non-zero proper ideal of $\C[G]$.
 For $n\in\Z_{\geq2}$, we write $C_n$ to denote the (multiplicative) cyclic group of order $n$. 
 
 \begin{exercise}
-Prove that $\C[G]\simeq \C[X]/(X^n-1)$. 
+Prove that $\C[C_n]\simeq \C[X]/(X^n-1)$. 
 \end{exercise}
 
 \begin{exercise}
@@ -273,7 +273,7 @@ $\C[G]$.
 	G$. Thus 
 	\[
 		\sum_{g\in G}\lambda_{hgh^{-1}}g=
-		\sum_{g\in g}\lambda_g h^{-1}gh=\sum_{g\in G}\lambda_gg
+		\sum_{g\in G}\lambda_g h^{-1}gh=\sum_{g\in G}\lambda_gg
 	\]
 	and hence $\lambda_{g}=\lambda_{hgh^{-1}}$ for all $g,h\in G$. A basis for 
 	$Z(\C[G])$ is given by elements of the form 
@@ -325,7 +325,7 @@ For $n\geq1$, let $\Sym_n$ denote the symmetric group in $n$ letters.
 There is a multiplicative version of Maschke's theorem. A group $G$ \emph{acts 
 by automorphisms} on $A$ if there is a group homomorphism 
 $\lambda\colon G\to\Aut(A)$. In this case, a subgroup $B$ of $A$ is said to be 
-$G$-invariant if $\lambda(B)\subseteq B$. 
+$G$-invariant if $\lambda_g(B)\subseteq B$ for all $g\in G$. 
 
 \begin{bonus}
 \label{xca:Maschke_multiplicative}
@@ -341,7 +341,7 @@ $G$-invariant if $\lambda(B)\subseteq B$.
     Let $p$ be a prime number and $K$ be a finite
     group with order not divisible by $p$. Let $V$ be
     a $p$-elementary abelian group. Assume that $K$ acts
-    by automorphism on $V$. Prova that if $U$ be a $K$-invariant subgroup of $V$, 
+    by automorphism on $V$. Prove that if $U$ be a $K$-invariant subgroup of $V$, 
     there exists a $K$-invariant subgroup $N$ of $V$ 
     such that $V=U\times N$. 
 \end{bonus}

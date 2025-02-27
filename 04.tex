@@ -353,23 +353,51 @@ contains only the values of the irreducible characters of the group.
 		\end{tabular}
 	\end{center}
  Let us see how to see this calculation on the computer:
+% \begin{lstlisting}
+% gap> C4 := CyclicGroup(4);;                       
+% gap> T := CharacterTable(C4);;
+% gap> Display(T);
+% CT1
+
+%      2  2  2  2  2
+
+%       1a 4a 2a 4b
+
+% X.1     1  1  1  1
+% X.2     1 -1  1 -1
+% X.3     1  A -1 -A
+% X.4     1 -A -1  A
+
+% A = E(4)
+%   = Sqrt(-1) = i
+% \end{lstlisting}
 \begin{lstlisting}
-gap> C4 := CyclicGroup(4);;                       
-gap> T := CharacterTable(C4);;
-gap> Display(T);
-CT1
+> C4 := CyclicGroup(4);
+> T := CharacterTable(C4);
+> T;
 
-     2  2  2  2  2
 
-      1a 4a 2a 4b
+Character Table of Group C4
+---------------------------
 
-X.1     1  1  1  1
-X.2     1 -1  1 -1
-X.3     1  A -1 -A
-X.4     1 -A -1  A
 
-A = E(4)
-  = Sqrt(-1) = i
+--------------------
+Class |   1  2  3  4
+Size  |   1  1  1  1
+Order |   1  2  4  4
+--------------------
+p  =  2   1  1  2  2
+--------------------
+X.1   +   1  1  1  1
+X.2   +   1  1 -1 -1
+X.3   0   1 -1  I -I
+X.4   0   1 -1 -I  I
+
+
+Explanation of Character Value Symbols
+--------------------------------------
+
+I = RootOfUnity(4)    
 \end{lstlisting}
 %\begin{lstlisting}
 %julia> G = cyclic_group(4);
@@ -405,9 +433,8 @@ A = E(4)
 %\end{lstlisting}
 Some remarks: 
  \begin{enumerate}
-     \item The symbol \lstinline{E(4)} denotes a primitive fourth root of 1.
-     \item The function \lstinline{CharacterTable} computes more information, not only the character table of the group. 
-     The function computes other stuff: 
+     \item The symbol \lstinline{I} denotes a primitive fourth root of 1.
+     \item 	The function \lstinline{CharacterTable} computes more than just the character table of the group; it also provides additional information.
  \end{enumerate}
 %\begin{lstlisting}
 %julia> orders_class_representatives(T)
@@ -432,13 +459,25 @@ Some remarks:
 % 4
 %\end{lstlisting}
 \begin{lstlisting}
-gap> OrdersClassRepresentatives(T);
-[ 1, 4, 2, 4 ]
-gap> SizesCentralizers(T);
-[ 4, 4, 4, 4 ]
-gap> SizesConjugacyClasses(T);
-[ 1, 1, 1, 1 ]
+> T[1];
+( 1, 1, 1, 1 )
+> Degree(T[1]);
+1
+> Degree(T[2]);
+1
+> Degree(T[3]);
+1
+> Degree(T[4]);
+1    
 \end{lstlisting}
+% \begin{lstlisting}
+% gap> OrdersClassRepresentatives(T);
+% [ 1, 4, 2, 4 ]
+% gap> SizesCentralizers(T);
+% [ 4, 4, 4, 4 ]
+% gap> SizesConjugacyClasses(T);
+% [ 1, 1, 1, 1 ]
+% \end{lstlisting}
 \end{example}
 
 \begin{example}
@@ -458,18 +497,40 @@ gap> SizesConjugacyClasses(T);
 	\end{center}
 	Let us do this by computer:
 \begin{lstlisting}
-gap> Display(CharacterTable(AbelianGroup([2,2])));
-CT2
+> C2xC2 := AbelianGroup([2,2]);
+> T := CharacterTable(C2xC2);
+> T;
 
-     2  2  2  2  2
 
-      1a 2a 2b 2c
+Character Table of Group C2xC2
+------------------------------
 
-X.1     1  1  1  1
-X.2     1 -1  1 -1
-X.3     1  1 -1 -1
-X.4     1 -1 -1  1
+
+--------------------
+Class |   1  2  3  4
+Size  |   1  1  1  1
+Order |   1  2  2  2
+--------------------
+p  =  2   1  1  1  1
+--------------------
+X.1   +   1  1  1  1
+X.2   +   1 -1  1 -1
+X.3   +   1  1 -1 -1
+X.4   +   1 -1 -1  1    
 \end{lstlisting}
+% \begin{lstlisting}
+% gap> Display(CharacterTable(AbelianGroup([2,2])));
+% CT2
+
+%      2  2  2  2  2
+
+%       1a 2a 2b 2c
+
+% X.1     1  1  1  1
+% X.2     1 -1  1 -1
+% X.3     1  1 -1 -1
+% X.4     1 -1 -1  1
+% \end{lstlisting}
 %\begin{lstlisting}
 %julia> A = abelian_group(PcGroup, [2,2]);
 %
@@ -532,22 +593,44 @@ X.4     1 -1 -1  1
 	mentioned is not needed to
 	compute the third row of the character table. 
 \begin{lstlisting}
-gap> S3 := SymmetricGroup(3);;
-gap> T := CharacterTable(S3);;
-gap> Display(T);
-CT3
+> S3 := Sym(3);
+> T := CharacterTable(S3);
+> T;
 
-     2  1  1  .
-     3  1  .  1
 
-      1a 2a 3a
-    2P 1a 1a 3a
-    3P 1a 2a 1a
+Character Table of Group S3
+---------------------------
 
-X.1     1 -1  1
-X.2     2  . -1
-X.3     1  1  1
+
+-----------------
+Class |   1  2  3
+Size  |   1  3  2
+Order |   1  2  3
+-----------------
+p  =  2   1  1  3
+p  =  3   1  2  1
+-----------------
+X.1   +   1  1  1
+X.2   +   1 -1  1
+X.3   +   2  0 -1    
 \end{lstlisting}
+% \begin{lstlisting}
+% gap> S3 := SymmetricGroup(3);;
+% gap> T := CharacterTable(S3);;
+% gap> Display(T);
+% CT3
+
+%      2  1  1  .
+%      3  1  .  1
+
+%       1a 2a 3a
+%     2P 1a 1a 3a
+%     3P 1a 2a 1a
+
+% X.1     1 -1  1
+% X.2     2  . -1
+% X.3     1  1  1
+% \end{lstlisting}
 %\begin{lstlisting}
 %julia> S3 = symmetric_group(3);
 %
@@ -565,7 +648,7 @@ X.3     1  1  1
 %X_2  2  . -1
 %X_3  1  1  1
 %\end{lstlisting}
-As we did before, some extra information was computed:
+%As we did before, some extra information was computed:
 %\begin{lstlisting}
 %julia> orders_class_representatives(T)
 %3-element Vector{Int64}:
@@ -589,14 +672,14 @@ As we did before, some extra information was computed:
 %GAP: [ 1, 3, 2 ]
 %julia> GAP.Globals.SizesCentralizers(T.GAPTable)
 %GAP: [ 6, 2, 3 ]    
-\begin{lstlisting}
-gap> SizesConjugacyClasses(T);
-[ 1, 3, 2 ]
-gap> SizesCentralizers(T);
-[ 6, 2, 3 ]
-gap> OrdersClassRepresentatives(T);
-[ 1, 2, 3 ]
-\end{lstlisting}
+% \begin{lstlisting}
+% gap> SizesConjugacyClasses(T);
+% [ 1, 3, 2 ]
+% gap> SizesCentralizers(T);
+% [ 6, 2, 3 ]
+% gap> OrdersClassRepresentatives(T);
+% [ 1, 2, 3 ]
+% \end{lstlisting}
 \end{example}
 
 \begin{exercise}

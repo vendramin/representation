@@ -26,12 +26,12 @@ $G$ is a finite group and $P\in\Syl_p(G)$, then
 \]
 \end{conjecture}
 
-McKay's conjecture is still open and is a crucial problem in representation theory. 
-The conjecture was proved for several classes of groups. Isaacs 
+Isaacs 
 proved the conjecture for solvable groups; see~\cite{MR332945,MR3791517}. 
 Malle and Sp\"ath prove the conjecture for $p=2$. 
 
 \begin{theorem}[Malle--Sp\"ath]
+\label{thm:MalleSpath}
 \index{Malle--Sp\"ath theorem}
 If $G$ is finite and $P\in\Syl_2(G)$,
 then 
@@ -45,40 +45,35 @@ The proof appears in~\cite{MR3549625} and uses the classification of
 finite simple groups. It uses a deep result of 
 Isaacs, Malle and Navarro~\cite{MR2336079}. 
 
-We cannot prove the Malle--Sp\"ath theorem here. However, 
+In full generality, McKay's conjecture was
+proved in 2024. 
+
+\begin{theorem}[Cabanes--Sp\"ath]
+\label{thm:CabanesSpath}
+\index{Cabanes--Sp\"ath theorem}
+If $G$ is finite, $p$ a prime number 
+and $P\in\Syl_p(G)$,
+then 
+\[
+|\{\chi\in\Irr(G): p\nmid \chi(1)\}|
+=|\{\psi\in\Irr(N_G(P)): p\nmid\psi(1)\}|.
+\]
+\end{theorem}
+
+We cannot prove Theorems~\ref{thm:MalleSpath} and~\ref{thm:CabanesSpath} here. However, 
 we can use the computer to prove some particular cases
 with the following function: 
 
-% > McKay := function(G, p)
-% function> local N, n, m;
-% function> N := Normalizer(G, SylowSubgroup(G, p));
-% function> degG := CharacterDegrees(G);
-% function> degN := CharacterDegrees(N);
-% function> n := &+[ d[2] : d in degG | d[1] mod p ne 0 ];
-% function> m := &+[ d[2] : d in degN | d[1] mod p ne 0 ];
-% function> return n eq m;
-% function> end function;
-
-% > M11 := sub<Sym(11) | (1,10)(2,8)(3,11)(5,7), (1,4,7,6)(2,11,10,9)>;
-% > McKay(M11,2);
-% true
-% > McKay(M11,3);
-% true
-% > McKay(M11,5);
-% true
-% > McKay(M11,11);
-% true
-
-
 \begin{lstlisting}
-gap> McKay := function(G, p)
-> local N, n, m;
-> N := Normalizer(G, SylowSubgroup(G, p));
-> n := Number(Irr(G), x->Degree(x) mod p <> 0);
-> m := Number(Irr(N), x->Degree(x) mod p <> 0);
-> return n = m;
-> end;
-function( G, p ) ... end
+> McKay := function(G, p)
+function> local N, n, m;
+function> N := Normalizer(G, SylowSubgroup(G, p));
+function> degG := CharacterDegrees(G);
+function> degN := CharacterDegrees(N);
+function> n := &+[ d[2] : d in degG | d[1] mod p ne 0 ];
+function> m := &+[ d[2] : d in degN | d[1] mod p ne 0 ];
+function> return n eq m;
+function> end function;
 \end{lstlisting}
 
 As a concrete example, let us 
@@ -86,18 +81,49 @@ verify McKay's conjecture for the Mathieu simple group
 $M_{11}$ of order 7920. 
 
 \begin{lstlisting}
-gap> M11 := MathieuGroup(11);;
-gap> PrimeDivisors(Order(M11));
-[ 2, 3, 5, 11 ]
-gap> McKay(M11,2);
+> M11 := sub<Sym(11) | (1,10)(2,8)(3,11)(5,7), (1,4,7,6)(2,11,10,9)>;
+> McKay(M11,2);
 true
-gap> McKay(M11,3);
+> McKay(M11,3);
 true
-gap> McKay(M11,5);
+> McKay(M11,5);
 true
-gap> McKay(M11,11);
+> McKay(M11,11);
 true
 \end{lstlisting}
+
+
+% \begin{lstlisting}
+% gap> McKay := function(G, p)
+% > local N, n, m;
+% > N := Normalizer(G, SylowSubgroup(G, p));
+% > n := Number(Irr(G), x->Degree(x) mod p <> 0);
+% > m := Number(Irr(N), x->Degree(x) mod p <> 0);
+% > return n = m;
+% > end;
+% function( G, p ) ... end
+% \end{lstlisting}
+
+
+
+% \begin{lstlisting}
+% gap> M11 := MathieuGroup(11);;
+% gap> PrimeDivisors(Order(M11));
+% [ 2, 3, 5, 11 ]
+% gap> McKay(M11,2);
+% true
+% gap> McKay(M11,3);
+% true
+% gap> McKay(M11,5);
+% true
+% gap> McKay(M11,11);
+% true
+% \end{lstlisting}
+
+\begin{bonus}
+    Verify the McKay's conjecture for 
+    all sporadic simple groups. 
+\end{bonus}
 
 The following conjecture refines McKay's conjecture. It was
 formulated by Isaacs and Navarro:
@@ -424,7 +450,7 @@ simple groups $McL$, $Ru$, $Ly$, $Suz$, $He$, $HN$, $Th$, $Fi_{22}$, $Fi_{23}$, 
 
 See \cite{MR3821142} for other applications of character theory. 
 
-\subsection{Cauchy--Frobenius--Burnside theorem}
+\subsection{The Cauchy--Frobenius--Burnside theorem}
 
 \begin{theorem}[Cauchy--Frobenius--Burnside]
 \label{thm:CFB}
