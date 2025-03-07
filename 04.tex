@@ -347,6 +347,10 @@ where the $n_j$ are the degrees of the irreducible representations of $G$ and ea
 the size of the conjugacy class of the element $g_j$. By convention, the character table
 contains only the values of the irreducible characters of the group. 
 
+
+
+
+
 \begin{example}
 	Let $G=\langle g:g^4=1\rangle$ 
 	be the cyclic group of order four. The character table of $G$ is given by
@@ -489,6 +493,36 @@ Some remarks:
 % gap> SizesConjugacyClasses(T);
 % [ 1, 1, 1, 1 ]
 % \end{lstlisting}
+\end{example}
+
+
+\begin{example}
+    For $n\geq2$, let  
+	$G=\langle g\rangle$ be the cyclic group of order $n$. Let $\lambda$ be a primitive $n$-th root of one. For each $i$, 
+    let $V_i$ be a one-dimensional vector space with basis 
+	$\{v\}$. Each $V_i$ is a $\C[G]$-module with 
+    \[
+		g\cdot v=\lambda^{i-1}v.
+	\]
+	Moreover, each $V_i$ is simple, as $\dim V_i=1$. The character $\chi_i$ associated with 
+	$V_i$ is given by $\chi_i(g^m)=\lambda^{m(i-1)}$ for all 
+	$m\in\{1,\dots,n\}$. Since the $\chi_1,\dots,\chi_n$ are all differnt and $G$ admits $n$ irreducible representations,
+    it follows that $\Irr(G)=\{\chi_1,\dots,\chi_n\}$. The character
+    table of $G$ is the following: 
+	\begin{center}
+		\begin{tabular}{|c|ccccc|}
+			\hline 
+			& 1 & 1 & 1 & $\cdots$ & 1\tabularnewline
+			& $1$ & $g$ & $g^2$ & $\cdots$ & $g^{n-1}$\tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$ & $\cdots$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $\lambda$ & $\lambda^2$ & $\cdots$ & $\lambda^{n-1}$\tabularnewline
+			$\chi_{3}$ & $1$ & $\lambda^2$ & $\lambda^4$ & $\cdots$ & $\lambda^{n-2}$\tabularnewline
+			$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\ddots$ & $\vdots$\tabularnewline
+			$\chi_{n}$ & $1$ & $\lambda^{n-1}$ & $\lambda^{n-2}$ & $\cdots$ & $\lambda$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
 \end{example}
 
 \begin{example}
@@ -693,20 +727,223 @@ X.3   +   2  0 -1
 % \end{lstlisting}
 \end{example}
 
-\begin{exercise}
-    Compute the character table of $\Sym_4$. 
-\end{exercise}
+% \begin{exercise}
+% \label{xca:S4}
+%     Compute the character table of $\Sym_4$. 
+% \end{exercise}
+
+\begin{example} 
+Let us compute the character table of $\Sym_4$. 
+We know that $|\Sym_4|=24$ and that 
+$\Sym_4$ has five conjugacy classes:
+	\begin{center}
+		\begin{tabular}{c|ccccc}
+			Representative & $\id$ & $(12)$ & $(12)(34)$ & $(123)$ & $(1234)$\tabularnewline
+			\hline
+			Size & $1$ & $6$ & $3$ & $8$ & $6$
+		\end{tabular}
+	\end{center}
+Thus $\Irr(\Sym_4)=\{\chi_1,\chi_2,\dots,\chi_5\}$. We may 
+assume that $\chi_1$ is the trivial character and
+that $\chi_2$ is the sign. Since 
+$[\Sym_4,\Sym_4]\simeq\Alt_4$, the quotient 
+$\Sym_4/[\Sym_4,\Sym_4]$ has order two and hence $\Sym_4$ 
+admits exactly two degree-one irreducible representations. Hence
+we know two rows of the character table of $\Sym_4$: 
+	\begin{center}
+		\begin{tabular}{|c|rrrrr|}
+			\hline
+			& $\id$ & $(12)$ & $(12)(34)$ & $(123)$ & $(1234)$\tabularnewline
+%			& $1$ & $6$ & $3$ & $8$ & $6$\tabularnewline
+			\hline
+			$\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_2$ & $1$ & $-1$ & $1$ & $1$ & $-1$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+    
+	There exist $n_3,n_4,n_5\in\{2,3,4\}$ such that 
+	$24=1+1+n_3^2+n_4^2+n_5^2$. A direct calculation shows that $(n_3,n_4,n_5)=(2,3,3)$ is the only solution with
+    $n_3\leq n_4\leq n_5$.
+
+To find the other characters, it is useful to use the action of $\Sym_4$ on the vector space 
+	\[
+		V=\{(x_1,x_2,x_3,x_4)\in\R^4:x_1+x_2+x_3+x_4=0\},
+	\]
+given by 
+\[
+g\cdot (x_1,x_2,x_3,x_4)=(x_{g^{-1}(1)},x_{g^{-1}(2)},x_{g^{-1}(3)},x_{g^{-1}(4)}).
+\]
+Let \[
+		v_1=(1,0,0,-1),
+		\quad
+		v_2=(0,1,0,-1),
+		\quad
+		v_3=(0,0,1,-1).
+	\]
+	Then $\{v_1,v_2,v_3\}$ is a basis of $V$ and 
+	\begin{align*}
+		&(12)\cdot v_1=v_2,&&
+		(12)\cdot v_2=v_1,&&
+		(12)\cdot v_3=v_3,\\
+		&(1432)\cdot v_1=-v_3,&&
+		(1432)\cdot v_2=v_1-v_3,&&
+		(1432)\cdot v_3=v_2-v_3.
+	\end{align*}
+	Since $\Sym_4=\langle (12),(1432)\rangle$, this 
+    is enough to know how any element 
+    $g\in\Sym_4$ acts on any $v\in V$. 
+    This action yields a representation 
+    $\rho\colon\Sym_4\to\GL(V)$: 
+    \[
+		\rho_{(12)}=\begin{pmatrix}
+			0 & 1 & 0\\
+			1 & 0 & 0\\
+			0 & 0 & 1
+		\end{pmatrix},\quad
+		\rho_{(1432)}=\begin{pmatrix}
+			0 & 1 & 0\\
+			0 & 0 & 1\\
+			1 & -1 & -1
+		\end{pmatrix}.
+	\]
+    Let $\chi$ be the character of $\rho$.  
+	Then 
+	$\chi(\id)=3$, $\chi\left( (12) \right)=1$, $\chi\left( (1234) \right)=-1$. How to compute the value of $\chi$ on 3-cycles? Here is the trick: 
+    \begin{align*}
+		&\chi\left( (234) \right)=\chi\left( (12)(1234) \right)=\trace(\rho_{(12)}\rho_{(1234)})=\trace\begin{pmatrix}
+			0 & 0 & 1\\
+			0 & 1 & 0\\
+			1 & -1 & -1
+		\end{pmatrix}
+		=0.
+	\end{align*}
+	Similarly, to compute $\chi$ on products of two transpositions, 
+    we note that 
+    \begin{align*}
+		&\chi\left( (13)(24) \right)=\chi\left( (1234)(1234) \right)=\trace(\rho_{(1234)}^2)=\trace\begin{pmatrix}
+			0 & 0 & 1\\
+			1 & -1 & -1\\
+			-1 & 2 & 0
+		\end{pmatrix}
+		=-1.
+	\end{align*}
+     Now is an easy exercise to check that this $\chi$ is irreducible:
+      \[
+	 	\langle \chi,\chi\rangle=\frac{1}{24}(3^2+6+0+6+3)=1.
+	 \]
+     Moreover, $\sgn\otimes\chi$ is also an irreducible representation:
+     	\[
+		\langle \sgn\otimes\chi,\sgn\otimes\chi\rangle=\frac{1}{24}(3^2+(-1)^26+(-1)^23+6)=1.
+	\]
+     With the trivial representation, the sign and these two characters we found, we are almost done. Only one irreducible character is still missing. Let us call this
+     character $\chi_5$. This character can be computed 
+     using the left regular representation $L$. 
+	
+
+	% Tenemos así cuatro de los cinco caracteres irreducibles de $G$. Nos falta
+	% uno, digamos $\chi_5$.  Para calcular $\chi_5$ usamos el carácter de la
+	% representación regular $L$:
+	% \begin{align*}
+	% 	0 &= \chi_L\left( (12) \right)=1+(-1)+3+3(-1)+2\chi_5\left( (12) \right),\\
+	% 	0 &= \chi_L\left( (12)(34) \right)=1+1+3(-1)+3(-1)+2\chi_5\left( (12)(34) \right),\\
+	% 	0 &= \chi_L\left( (123) \right)=1+1+0+0+2\chi_5\left( (123) \right),\\
+	% 	0 &= \chi_L\left( (1234) \right)=1+(-1)+3(-1)+3+2\chi_5\left( (1234) \right)=0,
+	% \end{align*}
+	% de donde obtenemos los valores de $\chi_5$. Nos queda así la siguiente tabla:
+	\begin{center}
+		\begin{tabular}{|c|rrrrr|}
+			\hline
+			& $\id$ & $(12)$ & $(12)(34)$ & $(123)$ & $(1234)$\tabularnewline
+			\hline
+			$\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+			$\sgn$ & $1$ & $-1$ & $1$ & $1$ & $-1$\tabularnewline
+			$\chi$ & $3$ & $1$ & $-1$ & $0$ & $-1$\tabularnewline
+			$\sgn\otimes\chi$ & $3$ & $-1$ & $-1$ & $0$ & $1$\tabularnewline
+			$\chi_5$ & $2$ & $0$ & $2$ & $-1$ & $0$\tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\end{example}
+
 
 \begin{exercise}
     Compute the character table of $\Alt_4$. 
 \end{exercise}
 
 \begin{exercise}
-    Compute the character table of the quaternion group $Q_8$.
+\label{xca:order5}
+    Compute the character table of a non-abelian group of order eight.  
 \end{exercise}
 
-\begin{exercise}
-    Compute the character table of the 
-    dihedral group of eight elements. 
-\end{exercise}
+% \begin{example}
+% Let us compute the character table of a 
+% non-abelian group of order eight. (There are two non-isomorphic non-abelian groups of order eight: the dihedral group $\D_4$ and the quaternion group $Q_8$. We will not use this information.) 
+
+% Let $G$ be a non-abelian group of order eight. Since $G$
+% is a $2$-group, $Z(G)$ is non-trivial. Moreover, 
+% since $G$ is non-abelian, $G/Z(G)$ is non-cyclic. Thus
+% $|Z(G)|=2$. Since $G/Z(G)$ has four elements, it is
+% abelian. Thus $[G,G]\subseteq Z(G)$ and hence
+% $[G,G]=Z(G)$. This means that 
+% $|G/[G,G]|=4$, so there are 
+% exactly four degree-one characters. Since 
+% \[
+% 8=1+1+1+1+n_5^2+\cdots+n_r^2,
+% \]
+% we conclude that 
+% $r=5$ and $n_5=2$. We now know that 
+% $G$ has give conjugacy classes, say 
+% with representatives 
+% $1,x,a,b,c$, where $[G,G]=Z(G)=\langle x\rangle$.  
+% The class equation implies that 
+% the conjugacy classes of $a$, $b$ and $c$ have
+% two elements. 
+
+% Since $G/[G,G]\simeq C_2\times C_2$, . Por la
+% 	proposición~\ref{proposition:Lin(G)}, toda representación de grado uno de
+% 	$G$ es de la forma $\chi_j\circ\pi$, donde $\chi_j$ es una representación
+% 	de grado uno de $C_2\times C_2$ y $\pi\colon G\to G/[G,G]$ es el morfismo
+% 	canónico. Esto nos permite calcular gran parte de los valores de los
+% 	caracteres de grado uno:
+% 	\begin{center}
+% 		\begin{tabular}{|c|rrrrr|}
+% 			\hline
+% 			& $1$ & $x$ & $a$ & $b$ & $c$\tabularnewline
+% 			\hline
+% 			$\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+% 			$\chi_2$ & $1$ & $?$ & $-1$ & $1$ & $-1$\tabularnewline
+% 			$\chi_3$ & $1$ & $?$ & $1$ & $-1$ & $-1$\tabularnewline
+% 			$\chi_4$ & $1$ & $?$ & $-1$ & $-1$ & $1$\tabularnewline
+% 			\hline
+% 		\end{tabular}
+% 	\end{center}
+% 	Como $0=\langle \chi_1,\chi_2\rangle=\frac18(1+x+2+2(-1)+2(-1))$, se
+% 	concluye que $\chi_2(x)=1$. De la misma forma probamos que $\chi_j(x)=1$
+% 	para todo $j\in\{3,4\}$. 
+	
+% 	Nos falta calcular el valor del caracter de grado dos. Para eso usamos la
+% 	representación regular $L$. Al resolver el sistema 
+% 	\begin{align*}
+% 		0&=\chi_L(x)=1+1+1+1+2\chi_5(x),\\
+% 		0&=\chi_L(a)=1+1+-1-1+2\chi_5(a),\\
+% 		0&=\chi_L(b)=1-1+1-1+2\chi_5(b),\\
+% 		0&=\chi_L(c)=1-1-1+1+2\chi_5(c),
+% 	\end{align*}
+% 	obtenemos $\chi_5(x)=-2$ y $\chi_5(a)=\chi_5(b)=\chi_5(c)=0$. Luego la
+% 	tabla de caracteres de $G$ es 
+% 	\begin{center}
+% 		\begin{tabular}{|c|rrrrr|}
+% 			\hline
+% 			& $1$ & $x$ & $a$ & $b$ & $c$\tabularnewline
+% 			\hline
+% 			$\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\tabularnewline
+% 			$\chi_2$ & $1$ & $1$ & $-1$ & $1$ & $-1$\tabularnewline
+% 			$\chi_3$ & $1$ & $1$ & $1$ & $-1$ & $-1$\tabularnewline
+% 			$\chi_4$ & $1$ & $1$ & $-1$ & $-1$ & $1$\tabularnewline
+% 			$\chi_5$ & $2$ & $-2$ & $0$ & $0$ & $0$\tabularnewline
+% 			\hline
+% 		\end{tabular}
+% 	\end{center}
+%\end{example}
 
