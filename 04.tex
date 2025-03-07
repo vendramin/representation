@@ -506,7 +506,7 @@ Some remarks:
 	\]
 	Moreover, each $V_i$ is simple, as $\dim V_i=1$. The character $\chi_i$ associated with 
 	$V_i$ is given by $\chi_i(g^m)=\lambda^{m(i-1)}$ for all 
-	$m\in\{1,\dots,n\}$. Since the $\chi_1,\dots,\chi_n$ are all differnt and $G$ admits $n$ irreducible representations,
+	$m\in\{1,\dots,n\}$. Since the $\chi_1,\dots,\chi_n$ are all different and $G$ admits $n$ irreducible representations,
     it follows that $\Irr(G)=\{\chi_1,\dots,\chi_n\}$. The character
     table of $G$ is the following: 
 	\begin{center}
@@ -620,7 +620,7 @@ X.4   +   1 -1 -1  1
 		\end{tabular}
 	\end{center}
 	Let us recall one possible way to compute this table. 
-	Degree-one irreducibles were easy to compute. 
+	Degree-one characters were easy to compute. 
 	To compute the third row of the table, one possible approach is to use
 	the irreducible representation  
 	\[
@@ -836,11 +836,17 @@ Let \[
      	\[
 		\langle \sgn\otimes\chi,\sgn\otimes\chi\rangle=\frac{1}{24}(3^2+(-1)^26+(-1)^23+6)=1.
 	\]
-     With the trivial representation, the sign and these two characters we found, we are almost done. Only one irreducible character is still missing. Let us call this
-     character $\chi_5$. This character can be computed 
-     using the left regular representation $L$. 
+     With the trivial representation $\chi_1$, the sign representation $\chi_2$ and these two new characters, namely $\chi_3=\chi$ and $\chi_4=\sgn\otimes\chi$, we are almost done. Only one irreducible character is missing. Let us call this
+     character $\chi_5$. This character can be determined  
+     using the left regular representation $L$: 
+     \begin{align*}
+		0 &= \chi_L\left( (12) \right)=1+(-1)+3+3(-1)+2\chi_5\left( (12) \right),\\
+		0 &= \chi_L\left( (12)(34) \right)=1+1+3(-1)+3(-1)+2\chi_5\left( (12)(34) \right),\\
+		0 &= \chi_L\left( (123) \right)=1+1+0+0+2\chi_5\left( (123) \right),\\
+		0 &= \chi_L\left( (1234) \right)=1+(-1)+3(-1)+3+2\chi_5\left( (1234) \right)=0,
+	\end{align*}
 	
-
+    Now we are ready to compute the character table of $\Sym_4$: 
 	% Tenemos así cuatro de los cinco caracteres irreducibles de $G$. Nos falta
 	% uno, digamos $\chi_5$.  Para calcular $\chi_5$ usamos el carácter de la
 	% representación regular $L$:
