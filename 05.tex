@@ -135,7 +135,7 @@ Let $p$ be a prime and $k\in\Z$.
 If $G$ is a finite group and $P\in\Syl_p(G)$,
 then
 \begin{align*}
-|\{\chi\in\Irr(G):&p\nmid \chi(1)\text{ and }\chi(1)\equiv\pm k\bmod p\}|\\
+|\{\chi\in\Irr(G)&:p\nmid \chi(1)\text{ and }\chi(1)\equiv\pm k\bmod p\}|\\
 &=|\{\psi\in\Irr(N_G(P)):p\nmid\psi(1)\text{ and }\psi(1)\equiv\pm k\bmod p\}|.
 \end{align*}
 \end{conjecture}
@@ -181,7 +181,7 @@ symmetric groups, see~\cite{MR1935849}.
 % \end{lstlisting}
 
 \begin{bonus}
-Verify the Isaacs–Navarro conjecture in some small  groups, such as the Mathieu simple group $M_{11}$. 
+Verify the Isaacs--Navarro conjecture in some small  groups, such as the Mathieu simple group $M_{11}$. 
 \end{bonus}
 
 %It is an exercise to 
@@ -315,19 +315,20 @@ let
     =\frac{1}{|G|}\sum_{C}|C|\chi(C)\overline{\chi(C)},
     \]
     where the last sum is taken over all conjugacy classes of $G$. 
-    Let $g\in G$ and $C$ be the conjugacy class of $g$. The equation
-    $xu^{-1}=g$ with $x\in C$ and $u\in C^{-1}$ has 
+    Let $C$ be the conjugacy class of $g$. The equation
+    $xu^{-1}=g$ with $x\in C$ and $u\in C$ has 
     \[
         \frac{|C||C^{-1}|}{|G|}\sum_{\chi\in\Irr(G)}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
     \]
     solutions. If $(x,u)$ is a solution of $xu^{-1}=g$, then
-    there are $|C_G(x)|$ elements $y$ such that $yxy^{-1}=u$. ($yxy^{-1}=u=y_1xy_1^{-1}$ implies that $y_1^{-1}y\in C_G(x)$ which implies $yC_G(x)=y_1C_G(x)$.) Now 
+    there are exactly $|C_G(x)|$ elements $y$ such that $yxy^{-1}=u$. In fact, since $x$ and $u$ are conjugate, there exists $y$ such that $yxy^{-1}=u$. And if $u=y_1xy_1^{-1}$ for some $y_1$, then 
+    $y_1^{-1}y\in C_G(x)$ which implies that $y_1=y\xi$ for some $\xi\in C_G(x)$. Now 
     $[x,y]=x(yx^{-1}y^{-1})=g$ has 
     \[
     |C|\sum_{\chi}\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
     \]
     solutions, where the sum is taken over all irreducible characters of $G$. 
-    Now we sum over all conjugacy classes of $G$:
+    Now we sum over all conjugacy classes $C$ of $G$:
     \begin{align*}
         \sum_{C}\sum_{\chi}|C|\frac{\chi(C)\chi(C^{-1})\chi(g^{-1})}{\chi(1)}
         &=\sum_{\chi}\frac{\chi(g^{-1})}{\chi(1)}\left(\sum_C|C|\chi(C)\chi(C^{-1})\right)\\
@@ -483,7 +484,7 @@ See \cite{MR3821142} for other applications of character theory.
     \shortintertext{and that}    
         \dim V^G=\frac{1}{|G|}\sum_{z\in G}\chi_{\rho}(z)=\langle\chi_\rho,\chi_1\rangle
     \end{gather*}
-    where $\chi_1$ is the trivial character of $G$. 
+    where $\chi_1$ is the trivial character of $G$ (see Lemma~\ref{lem:dimU^G}). 
     
     We can assume that, after a possible re-enumeration,
     $x_1,\dots,x_m$ are the representatives of the orbits 
@@ -532,8 +533,9 @@ for transitive actions (i.e., $m=1$), we proceed as follows:
 \[
 \sum_{g\in G}|\Fix(g)|=\sum_{g\in G}\sum_{\substack{x\in X\\g\cdot x=x}}1
 =\sum_{x\in X}\sum_{\substack{g\in G\\g\cdot x=x}}1
-=\sum_{x\in X}|G_x|=|G_x||X|=|G|.
+=\sum_{x\in X}|G_x|=|G_{x_0}||X|=|G|,
 \]
+where $x_0\in X$ is any fixed element of $X$.  
 
 \begin{exercise}
 \label{xca:CFB}
