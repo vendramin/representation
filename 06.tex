@@ -407,16 +407,18 @@ if their commutator functions are somewhat equal.
 The following theorem appeared in 1970 as a problem in 
 volume 13 of the \textit{Canadian Math. Bulletin}. The solution
 appeared in 1973. 
-Iv\'an Sadosfchi Costa found the proof we present here. 
+Iv\'an Sadosfchi Costa found in 2018 
+the proof we present here. 
 
 \begin{theorem}[Dixon]
     \index{Dixon's theorem}
+    \label{thm:Dixon}
     The commuting probability of every finite 
     non-abelian simple group is at most $1/12$. 
    %If $G$ is a finite non-abelian simple group, then $\cp(G)\leq1/12$.
 \end{theorem}
 
-\begin{proof}
+\begin{proof}[Sketch of the proof]
 Let $G$ be a finite non-abelian simple group. We claim that 
 $\cp(G)\leq1/12$. 
 We assume that $\cp(G)>1/12$. Since
@@ -429,23 +431,23 @@ For these groups, the problem is easy: we show that there are no non-abelian sim
 that act transitively on sets of size $m\in\{2,\dots,12\}$ with commuting
 probability $>1/12$. To do this, we list these transitive groups and their commuting
 probabilities and verify that all commuting probabilities are $\leq
-1/12$:
-\begin{lstlisting}
-gap> l := AllTransitiveGroups(NrMovedPoints, [2..12], \\
-> IsAbelian, false, IsSimple, true);;
-[ A5, L(6) = PSL(2,5) = A_5(6), A6, 
-  L(7) = L(3,2), A7, L(8)=PSL(2,7), A8, 
-  L(9)=PSL(2,8), A9, A_5(10), L(10)=PSL(2,9), 
-  A10, L(11)=PSL(2,11)(11), M(11), A11, A_5(12), 
-  L(2,11), M_11(12), M(12), A12 ]
-gap> List(l, CommutingProbability);           
-[ 1/12, 1/12, 7/360, 1/28, 1/280, 1/28, 1/1440, 
-  1/56, 1/10080, 1/12, 7/360, 1/75600, 2/165, 
-  1/792, 31/19958400, 1/12, 2/165, 1/792, 1/6336, 
-  43/239500800 ]
-gap> ForAny(l, x->CommutingProbability(x)>1/12);
-false
-\end{lstlisting}
+1/12$. This is left as an exercise. 
+% \begin{lstlisting}
+% gap> l := AllTransitiveGroups(NrMovedPoints, [2..12], \\
+% > IsAbelian, false, IsSimple, true);;
+% [ A5, L(6) = PSL(2,5) = A_5(6), A6, 
+%   L(7) = L(3,2), A7, L(8)=PSL(2,7), A8, 
+%   L(9)=PSL(2,8), A9, A_5(10), L(10)=PSL(2,9), 
+%   A10, L(11)=PSL(2,11)(11), M(11), A11, A_5(12), 
+%   L(2,11), M_11(12), M(12), A12 ]
+% gap> List(l, CommutingProbability);           
+% [ 1/12, 1/12, 7/360, 1/28, 1/280, 1/28, 1/1440, 
+%   1/56, 1/10080, 1/12, 7/360, 1/75600, 2/165, 
+%   1/792, 31/19958400, 1/12, 2/165, 1/792, 1/6336, 
+%   43/239500800 ]
+% gap> ForAny(l, x->CommutingProbability(x)>1/12);
+% false
+% \end{lstlisting}
 
 Now assume that all non-trivial conjugacy classes of $G$ have at least 13 elements. Let $k$ be the number of conjugacy classes of $G$. 
 Then the class equation implies that
@@ -459,15 +461,19 @@ Since $\cp(G)=k/|G|>1/12$, $k>|G|/12$. Thus
 and therefore $|G|<144$. Thus one needs to check what happens with groups
 of order $<144$. 
 But we know that the only non-abelian simple group of size
-$<144$ is the alternating simple group $\Alt_5$.
-\begin{lstlisting}
-gap> AllGroups(Size, [2..143], \\
-> IsAbelian, false, \\
-> IsSimple, true);
-[ Alt( [ 1 .. 5 ] ) ]
-\end{lstlisting}    
+$<144$ is the alternating simple group $\Alt_5$. 
+% \begin{lstlisting}
+% gap> AllGroups(Size, [2..143], \\
+% > IsAbelian, false, \\
+% > IsSimple, true);
+% [ Alt( [ 1 .. 5 ] ) ]
+% \end{lstlisting}    
 This completes the proof. 
 \end{proof}
+
+\begin{bonus}
+    Provide the details of the proof of Theorem~\ref{thm:Dixon}.
+\end{bonus}
 
 The alternating group $\Alt_5$ is important in this setting:
 
