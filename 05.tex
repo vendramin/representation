@@ -376,81 +376,88 @@ Although the proof of Ore's conjecture is too complicated for
 this course, we can use the computer to 
 prove the conjecture in some particular cases:
 
-\begin{proposition}
-    Ore's conjecture is true 
-    for sporadic simple groups.
-\end{proposition}
+\begin{bonus}
+    Verify Ore's conjecture  
+    for sporadic simple groups.    
+\end{bonus}
 
-% IsaacsNavarro := function(G, k, p)
-%     local N, degG, degN, m, n;
+% \begin{proposition}
+%     Ore's conjecture is true 
+%     for sporadic simple groups.
+% \end{proposition}
 
-%     // Compute the normalizer of a Sylow p-subgroup of G
-%     N := Normalizer(G, SylowSubgroup(G, p));
+% % IsaacsNavarro := function(G, k, p)
+% %     local N, degG, degN, m, n;
 
-%     // Get the character degrees along with their multiplicities
-%     degG := CharacterDegrees(G);
-%     degN := CharacterDegrees(N);
+% %     // Compute the normalizer of a Sylow p-subgroup of G
+% %     N := Normalizer(G, SylowSubgroup(G, p));
 
-%     // Define the valid mod p range [-k, k] mod p
-%     validDegrees := { (i mod p) : i in [-k..k] };
+% %     // Get the character degrees along with their multiplicities
+% %     degG := CharacterDegrees(G);
+% %     degN := CharacterDegrees(N);
 
-%     // Count characters in G with degrees not divisible by p and in the valid range
-%     m := &+[ d[2] : d in degG | d[1] mod p ne 0 and (d[1] mod p) in validDegrees ];
+% %     // Define the valid mod p range [-k, k] mod p
+% %     validDegrees := { (i mod p) : i in [-k..k] };
 
-%     // Count characters in N with degrees not divisible by p and in the valid range
-%     n := &+[ d[2] : d in degN | d[1] mod p ne 0 and (d[1] mod p) in validDegrees ];
+% %     // Count characters in G with degrees not divisible by p and in the valid range
+% %     m := &+[ d[2] : d in degG | d[1] mod p ne 0 and (d[1] mod p) in validDegrees ];
 
-%     return n eq m;
-% end function;
+% %     // Count characters in N with degrees not divisible by p and in the valid range
+% %     n := &+[ d[2] : d in degN | d[1] mod p ne 0 and (d[1] mod p) in validDegrees ];
 
-\begin{proof}
-    Let $G$ be a finite simple group. 
-    We know that $g\in G$ is a commutator if and only if 
-    $\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne 0$. Let us write
-    a computer script to check whether every element in a group 
-    is a commutator. Our
-    function needs the character table of a group and returns 
-    \lstinline{true} if every element of the group is a commutator and
-    \lstinline{false} otherwise. 
-\begin{lstlisting}
-gap> Ore := function(char) 
-> local s,f,k;
-> for k in [1..NrConjugacyClasses(char)] do
-> s := 0;
-> for f in Irr(char) do
-> s := s+f[k]/Degree(f);  
-> od;
-> if s<=0 then
-> return false;
-> fi;
-> od;
-> return true;
-> end;
-function( char ) ... end
-\end{lstlisting}
-Now we check Ore's conjecture for Mathieu simple groups
-and for the Monster group: 
-\begin{lstlisting}
-gap> Ore(CharacterTable("M11"));
-true
-gap> Ore(CharacterTable("M12"));
-true
-gap> Ore(CharacterTable("M22"));
-true
-gap> Ore(CharacterTable("M23"));
-true
-gap> Ore(CharacterTable("M24"));
-true
-gap> Ore(CharacterTable("M"));
-true
-\end{lstlisting}
-It is an exercise to check the conjecture for the other finite sporadic 
-simple groups $McL$, $Ru$, $Ly$, $Suz$, $He$, $HN$, $Th$, $Fi_{22}$, $Fi_{23}$, $Fi_{24}'$, $B$, $M$ 
-\end{proof}
+% %     return n eq m;
+% % end function;
+
+% \begin{proof}
+%     Let $G$ be a finite simple group. 
+%     We know that $g\in G$ is a commutator if and only if 
+%     $\sum_{\chi\in\Irr(G)}\frac{\chi(g)}{\chi(1)}\ne 0$. Let us write
+%     a computer script to check whether every element in a group 
+%     is a commutator. Our
+%     function needs the character table of a group and returns 
+%     \lstinline{true} if every element of the group is a commutator and
+%     \lstinline{false} otherwise. 
+% \begin{lstlisting}
+% gap> Ore := function(char) 
+% > local s,f,k;
+% > for k in [1..NrConjugacyClasses(char)] do
+% > s := 0;
+% > for f in Irr(char) do
+% > s := s+f[k]/Degree(f);  
+% > od;
+% > if s<=0 then
+% > return false;
+% > fi;
+% > od;
+% > return true;
+% > end;
+% function( char ) ... end
+% \end{lstlisting}
+% Now we check Ore's conjecture for Mathieu simple groups
+% and for the Monster group: 
+% \begin{lstlisting}
+% gap> Ore(CharacterTable("M11"));
+% true
+% gap> Ore(CharacterTable("M12"));
+% true
+% gap> Ore(CharacterTable("M22"));
+% true
+% gap> Ore(CharacterTable("M23"));
+% true
+% gap> Ore(CharacterTable("M24"));
+% true
+% gap> Ore(CharacterTable("M"));
+% true
+% \end{lstlisting}
+% It is an exercise to check the conjecture for the other finite sporadic 
+% simple groups $McL$, $Ru$, $Ly$, $Suz$, $He$, $HN$, $Th$, $Fi_{22}$, $Fi_{23}$, $Fi_{24}'$, $B$, $M$ 
+% \end{proof}
 
 See \cite{MR3821142} for other applications of character theory. 
 
 \subsection{The Cauchy--Frobenius--Burnside theorem}
+
+The result we will now see is often called Burnside’s lemma. Burnside proved this lemma in his book on finite groups, attributing it to Frobenius. However, the formula was already known to Cauchy in 1845. Because of this, the result is sometimes referred to as the lemma that is not Burnside’s; see~\cite{MR562002}.
 
 \begin{theorem}[Cauchy--Frobenius--Burnside]
 \label{thm:CFB}
@@ -535,12 +542,14 @@ for transitive actions (i.e., $m=1$), we proceed as follows:
 =\sum_{x\in X}\sum_{\substack{g\in G\\g\cdot x=x}}1
 =\sum_{x\in X}|G_x|=|G_{x_0}||X|=|G|,
 \]
-where $x_0\in X$ is any fixed element of $X$.  
+where $x_0\in X$ is any fixed element of $X$. I learned about this analytic number theory-style proof in Serre’s paper~\cite{MR1997347}.
 
 \begin{exercise}
 \label{xca:CFB}
     Use the previous idea to prove Theorem \ref{thm:CFB}. 
 \end{exercise}
+
+A probabilistic proof of Theorem~\ref{thm:CFB} is presented in~\cite{MR4043987}.
 
 \index{Orbital}
 \index{Rank}
