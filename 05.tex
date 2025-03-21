@@ -604,3 +604,40 @@ The symmetric group $\Sym_n$ acts 2-transitively on $\{1,\dots,n\}$.
     and $x_1\ne y_1$, then there exists $g\in G$ such that 
     $g\cdot x=x_1$ and $g\cdot y=y_1$, so $g\cdot (x,y)=(x_1,y_1)$. 
 \end{proof}
+
+% \begin{example}
+% \label{exa:A5_deg4}
+%     The group $G=\Alt_5$ acts transitively on $X=\{1,\dots,5\}$. In the proof 
+% of Theorem~\ref{thm:CFB} we have seen that 
+% if $\rho\colon G\to\GL_n(\C)$, $g\mapsto\rho_g$, is the representation
+%     \[
+%     (\rho_g)_{ij}=\begin{cases}
+%         1 & \text{if $g\cdot x_j=x_i$},\\
+%         0 & \text{otherwise},
+%         \end{cases}
+%     \]
+% then 
+%    \[
+%     \chi_\rho(g)=\trace\rho_g=\sum_{i=1}^n(\rho_g)_{ii}=|\Fix(g)|.
+%     \]
+% In particular, 
+% $\langle\chi_\rho,\chi_1\rangle$ equals the number of orbits on $X$. Thus 
+% $\langle\chi_\rho,\chi_1\rangle=1$ because $G$ acts transitively on $X$. This implies
+% that $\chi_\rho-\chi_1$ is a linear combination of irreducible characters of $G$ 
+% different from $\chi_1$. 
+
+% \bigskip 
+% \begin{center}
+%         \begin{tabular}{|c|c|c|c|c|c|}
+%         \hline  
+%          $\chi_\rho$ & $5$ & $1$ & $2$ & $0$ & $0$\\
+%          \hline 
+%          $\chi_\rho-\chi_1$ & $4$ & $0$ & $1$ & $-1$ & $-1$\\
+%          \hline 
+% \end{tabular}
+% \end{center}
+% \bigskip 
+
+% Since $\langle\chi_\rho-\chi_1,\chi_\rho-\chi_1\rangle=1$, it follows that 
+% $\chi_\rho-\chi_1\in\Irr(G)$. 
+% \end{example}
