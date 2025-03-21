@@ -1,17 +1,18 @@
 \section{Lecture: Week 6}
 
-Cauchy--Frobenius--Burnside theorem is helpful to
+The Cauchy--Frobenius--Burnside theorem is helpful to
 find characters. 
 
 \begin{proposition}
+\label{pro:2transitive}
     Let $G$ be 2-transitive on $X$ with character $\chi(g)=|\Fix(g)|$.
     Then $\chi-\chi_1$ is an irreducible character. 
 \end{proposition}
 
 \begin{proof}
-    In particular, $G$ is transitive on $X$. 
+    By assumption, $G$ is 2-transitive on $X$. In particular, $G$ is transitive on $X$. 
     Since the trivial character $\chi_1$ is irreducible, $\langle\chi_1,\chi_1\rangle=1$. 
-    By Cauchy--Frobenius--Burnside, the rank of $G$ on $X$ is  
+    By the Cauchy--Frobenius--Burnside theorem, the rank of $G$ on $X$ is  
     \begin{gather*}
         2=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|^2=\langle \chi,\chi\rangle.
    \end{gather*}
@@ -26,9 +27,24 @@ find characters.
     The symmetric group $\Sym_n$ is 2-transitive on $\{1,\dots,n\}$. The
     alternating group $\Alt_n$ is 2-transitive on $\{1,\dots,n\}$ if 
     $n\geq4$. These groups then have an irreducible character $\chi$ 
-    given by $\chi(g)=|\Fix(g)|-1$.
+    given by $\chi(g)=|\Fix(g)|-1$. 
 \end{example}
 
+%For the group $\Alt_5$
+%the previous example produces the 
+%following irreducible character:
+% \bigskip 
+% \begin{center}
+%         \begin{tabular}{|c|c|c|c|c|c|}
+%         \hline  
+%          %$\chi_\rho$ & $5$ & $1$ & $2$ & $0$ & $0$\\
+%          %\hline 
+%          $\chi_\rho-\chi_1$ & $4$ & $0$ & $1$ & $-1$ & $-1$\\
+%          \hline 
+% \end{tabular}
+% \end{center}
+% \bigskip 
+%
 \begin{example}
     Let $p$ be a prime number and let $q=p^{m}$. Let $V$ 
     be the vector space of dimension $2$ 
@@ -286,7 +302,7 @@ If $G$ is a finite group, then
 
 \begin{proof}
     Let $k$ be the number of conjugacy classes of $G$.
-    By Cauchy--Schwarz inequality, 
+    By the Cauchy--Schwarz inequality, 
     \begin{align*}
         \left(\sum_{\chi\in\Irr(G)}\chi(1)\right)^2
         &\leq\left(\sum_{\chi\in\Irr(G)}\chi(1)^2\right)\left(\sum_{\chi\in\Irr(G)}1\right)
@@ -529,7 +545,7 @@ We now follow~\cite{MR1997347} to present other applications.
 \end{theorem}
 
 \begin{proof}
-    Cauchy--Frobenius--Burnside theorem implies that
+    The Cauchy--Frobenius--Burnside theorem implies that
     \[
     1=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|=\frac{1}{|G|}\left(|X|+\sum_{g\ne 1}|\Fix(g)|\right).
     \]
@@ -597,7 +613,7 @@ With the CFSG one proves a result similar to that of Jordan.
 
 The proof appears in~\cite{MR636194}. 
 
-\subsection{Derangements: Cameron--Cohen theorem}
+\subsection{Derangements: The Cameron--Cohen theorem}
 
 \index{Derangements}
 Let $G$ be a finite group that acts faithfully and transitively 
@@ -638,16 +654,19 @@ Let $c_0=|G_0|/|G|$.
         2-\frac{n+1}{|G|}\sum_{g\in G}\chi(g)+n\leq 
         \frac{1}{|G|}\sum_{g\in G}(\chi(g)-1)(\chi(g)-n)\leq nc_0.
     \end{equation}
-    Since $G$ is transitive on $X$, Cauchy--Frobenius--Burnside theorem implies that
-    $\sum_{g\in G}\chi(g)=|G|$. Thus $2-(n+1)+n\leq nc_0$ and hence
+    Since $G$ is transitive on $X$, the Cauchy--Frobenius--Burnside theorem implies that
+    \[
+    \sum_{g\in G}\chi(g)=|G|.
+    \]
+    Thus $2-(n+1)+n\leq nc_0$ and hence
     $1/n\leq c_0$. 
 \end{proof}
 
-Cameron--Cohen theorem contains another claim: If
+The Cameron--Cohen theorem contains another claim: If
 $n$ is not the power of a prime number, then 
 $c_0>1/n$. The proof uses Frobenius' theorem. 
 
-With the CFSG the bound in 
+With the CFSG the bound in the 
 Cameron--Cohen theorem can be improved:
 
 \begin{theorem}[Guralnick--Wan]

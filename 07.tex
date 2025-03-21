@@ -390,6 +390,47 @@ the map $f\mapsto\dot{f}$ is linear.
     From this the claim follows. 
 \end{proof}
 
+\begin{corollary}
+\label{cor:reciprocity}
+    Let $G$ be a finite group and $H$ be a subgroup of $G$. 
+    Let $\chi\in\Char(H)$ be such that 
+    $\chi(1)=n$. Then 
+    $\Ind_H^G\chi\in\Char(G)$ and 
+    has degree $n(G:H)$. 
+\end{corollary}
+
+\begin{proof}
+    Let $\psi\in\Irr(G)$. Using
+    Frobenius' reciprocity theorem, 
+    \[
+    m_{\psi}=\langle\Ind_H^G\chi,\psi\rangle
+    =\langle\chi,\Res_H^G\psi\rangle\in\Z_{\geq0}
+    \]
+    because both $\chi$ and $\Res_H^G\psi$ are
+    characters of $H$. Then 
+    \[
+    \Ind_H^G\chi=\sum_{\psi\in\Irr(G)}m_{\psi}\psi\in\Char(G).
+    \]
+    In particular, 
+    \[
+    \left(\Ind_H^G\chi\right)(1)=\frac{1}{|H|}\sum_{x\in G}\chi^0(1)=\frac{1}{|H|}|G|\chi(1)=\chi(1)(G:H).\qedhere 
+    \]
+\end{proof}
+
+\begin{exercise}
+    Let $G$ be a finite group and $\chi_1$ be
+    the trivial character. If $H=\{1\}$, compute
+    $\Ind_H^G\chi_1$. 
+\end{exercise}
+
+\begin{exercise}
+    Let $G=\Sym_3$ and $H=\langle (12)\rangle$. 
+    Let $\varphi=\sgn|_H$ be the restriction sign homomorphism 
+    to the subgroup $H$. Compute 
+    $\Ind_H^G\varphi$. 
+\end{exercise}
+
+
 % 8.1.4 de Steinberg
 % Seccion 8.2 define la inducción de representaciones
 % 8.2.1 Induce la trivial del trivial a todo el grupo o obtiene la regular
