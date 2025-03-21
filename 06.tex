@@ -10,17 +10,36 @@ find characters.
 \end{proposition}
 
 \begin{proof}
-    By assumption, $G$ is 2-transitive on $X$. In particular, $G$ is transitive on $X$. 
-    Since the trivial character $\chi_1$ is irreducible, $\langle\chi_1,\chi_1\rangle=1$. 
+    By assumption, $G$ is 2-transitive on $X$. In particular, $G$ is transitive on $X$. Let $\Irr(G)=\{\chi_1,\dots,\chi_k\}$, where
+    $\chi_1$ is the trivial character. Since $\chi_1$ is irreducible, $\langle\chi_1,\chi_1\rangle=1$. 
     By the Cauchy--Frobenius--Burnside theorem, the rank of $G$ on $X$ is  
     \begin{gather*}
         2=\frac{1}{|G|}\sum_{g\in G}|\Fix(g)|^2=\langle \chi,\chi\rangle.
    \end{gather*}
-   Thus $\langle \chi-\chi_1,\chi-\chi_1\rangle=\langle\chi,\chi\rangle-1-1+1=1$.
+   Moreover, again by the Cauchy--Frobenius--Burnside theorem, 
+   \[
+   \frac{1}{|G|}\sum_{g\in G}\chi(g)=1,
+   \]
+   since the action of $G$ on $X$ is, in particular, 
+   transitive. 
+   Thus 
+   \begin{align*}
+       \langle \chi-\chi_1,\chi-\chi_1\rangle
+       &=\langle\chi,\chi\rangle-\langle\chi,\chi_1\rangle-\langle\chi_1,\chi\rangle+\langle\chi_1,\chi_1\rangle
+       =2-\frac{2}{|G|}\sum_{g\in G}\chi(g)+1
+       =1.
+   \end{align*}
+   Now write $\chi-\chi_1=\sum_{i=1}^ka_i\chi_i$ for
+   some integers $a_1,\dots,a_k\in\Z$. Since 
+   $a_1=\langle\chi,\chi_1\rangle$, it follows that 
+   \[
+   1=\left\langle\sum_{i=1}a_i\chi_i,\sum_{j=1}a_j\chi_j\right\rangle
+   =\sum_{i=2}^ka_i^2. 
+   \]
    Since $\chi$ is a character, $\chi-\chi_1$
-   is an integer linear combination of the irreducible characters of $G$.
-   Hence there exists an irreducible character $\chi_i$ of $G$ such that $\chi-\chi_1=\pm\chi_i$.
-   But $(\chi-\chi_1)(1)=|X|-1\geq 0$ and so $\chi-\chi_1=\chi_i$.
+   is an integer linear combination of the irreducible characters of $G$. Then there exists a unique $i\in\{2,\dots,k\}$ such that $a_i\in\{-1,1\}$ and $a_j=0$ for all $j\ne i$. 
+   Hence $\chi-\chi_1=\pm\chi_i$. Since 
+   $(\chi-\chi_1)(1)=|X|-1\geq 0$, it follows that $\chi-\chi_1=\chi_i$.
 \end{proof}
 
 \begin{example}
@@ -311,14 +330,14 @@ If $G$ is a finite group, then
     From this, the claim follows.
 \end{proof}
 
-Using basic facts about irreducible characters, 
-we obtain a generalization of Theorem \ref{thm:5/8}. 
+Using basic facts about irreducible characters, we derive a generalization of Theorem \ref{thm:5/8}.
 
 \begin{theorem}
 \label{thm:[GG]}
     Let $G$ be a finite group. Then
     \[
-    |[G,G]|\leq 3/(4\cp(G)-1).
+    %|[G,G]|\leq 3/(4\cp(G)-1).
+        \cp(G)\leq\frac14\left(1+\frac3{|[G,G]|}\right).
     \]
 \end{theorem}
 
@@ -334,9 +353,8 @@ we obtain a generalization of Theorem \ref{thm:5/8}.
     \end{align*}
     Since $\rho_1=(G:[G,G])$, 
     \[
-    \cp(G)\leq \frac14+\frac34\frac{\rho_1}{|G|}=\frac14+\frac3{4|[G,G]|}.
+    \cp(G)\leq \frac14+\frac34\frac{\rho_1}{|G|}=\frac14+\frac3{4|[G,G]|}.\qedhere 
     \]
-    From this, the claim follows. 
 \end{proof}
 
 \begin{exercise}
@@ -557,6 +575,7 @@ We now follow~\cite{MR1997347} to present other applications.
 \end{proof}
 
 \begin{corollary}
+\label{cor:Jordan}
     Let $G$ be a finite group and $H$ be a proper subgroup of $G$. 
     Then $G\ne\bigcup_{g\in G}gHg^{-1}$.
 \end{corollary}
@@ -569,7 +588,7 @@ We now follow~\cite{MR1997347} to present other applications.
     \]
     Since $H\ne G$, it follows that $|X|=|G/H|>1$. Jordan's theorem now implies
     that there exists $g\in G$ with no fixed-points, that is 
-    there is an element $g\in G$ such that $g\not\in\cup_{x\in G}xHx^{-1}$. 
+    there is an element $g\in G$ such that $g\not\in\bigcup_{x\in G}xHx^{-1}$. 
 \end{proof}
 
 Let $G$ be a finite group. We say that the conjugacy classes $C$ and $D$ 
@@ -589,12 +608,12 @@ such that $[c,d]=1$.
     We prove $\impliedby$. 
     Assume that $C$ commutes with every conjugacy class of $G$. 
     Let $c\in C$ and $H=C_G(c)$. Then $H\cap D\ne\emptyset$ for every conjugacy class
-    $D$. We claim that $G=\cup_{g\in G}gHg^{-1}$. In fact, let $x\in G$. Then
+    $D$. We claim that $G=\bigcup_{g\in G}gHg^{-1}$. In fact, let $x\in G$. Then
     $x\in D$ 
     for some conjugacy class $D$. 
     Let 
     $h\in H\cap D$. There exists $y\in G$ such that $h=yxy^{-1}$, that is
-    $x=y^{-1}hy\in \cup_{g\in G}gHg^{-1}$. By Jordan's theorem,  
+    $x=y^{-1}hy\in \bigcup_{g\in G}gHg^{-1}$. By Corollary~\ref{cor:Jordan},  
     $H=G$. Thus $c$ is central and hence $C=\{c\}$. 
     
     We now prove $\implies$. If $C=\{c\}$, then $c\in Z(G)$ and $C$ commute with every 
@@ -622,7 +641,28 @@ $G\leq\Sym_n$, where $X=\{1,2,\dots,n\}$. Let
 $G_0$ be the set of elements $g\in G$ with no fixed-points, 
 that is $g(x)\ne x$ for all $x\in X$. 
 Such permutations are known as \emph{derangements}. 
-Let $c_0=|G_0|/|G|$. 
+
+\begin{example}
+Let $G=\Sym_3$. Then $G_0=\{(123),(132)\}$.
+\end{example}
+
+\begin{example}
+Let $G=\Sym_4$. Then 
+    \[
+    G_0=\{(12)(34),(13)(24),(14)(23),(1234),(1243),(1324),(1342),(1423),(1432)\}.
+    \]
+\end{example}
+
+We want to estimate the number of derangements. For this purpose, let $c_0 = |G_0| / |G|$.
+
+% The number of derangements of a set of size $n$ is known as the \emph{subfactorial} $!n$ of $n$. Some values of the number
+% of derangements are
+% \[
+% 1,2,9,44,265,1854,14833\cdots 
+% \]
+
+% How to estimate the number of deragements in an arbitrary 
+% permutation group? 
 
 \begin{theorem}[Cameron--Cohen]
     \index{Cameron--Cohen theorem}
@@ -646,14 +686,18 @@ Let $c_0=|G_0|/|G|$.
     \begin{align*}
     \frac{1}{|G|}\sum_{g\in G}(\chi(g)&-1)(\chi(g)-n)\\
     &=\frac{1}{|G|}\left\{\sum_{g\in G_0}+\sum_{g\in G\setminus G_0}\right\}(\chi(g)-1)(\chi(g)-n)\\
+    &=\frac{1}{|G|}\sum_{g\in G_0}(\chi(g)^2-(n+1)\chi(g)+n)
+    +\underbrace{\frac{1}{|G|}\sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)}_{\leq0}\\
     &\leq n\frac{|G_0|}{|G|}=nc_0.
     \end{align*}
     On the other hand, since the rank of $G$ is $\geq2$, 
-    \begin{equation}
-        \label{eq:CameronCohen}
-        2-\frac{n+1}{|G|}\sum_{g\in G}\chi(g)+n\leq 
-        \frac{1}{|G|}\sum_{g\in G}(\chi(g)-1)(\chi(g)-n)\leq nc_0.
-    \end{equation}
+    \begin{align*}
+        \frac{1}{|G|}\sum_{g\in G}(\chi(g)-1)(\chi(g)-n)
+        &=\frac{1}{|G|}\sum_{g\in G}(\chi(g)^2-(n+1)\chi(g)+n)\\
+        &\geq 2-\frac{n+1}{|G|}\sum_{g\in G}\chi(g)+n
+        %\leq 
+        %\frac{1}{|G|}\sum_{g\in G}(\chi(g)-1)(\chi(g)-n)\leq nc_0.
+    \end{align*}
     Since $G$ is transitive on $X$, the Cauchy--Frobenius--Burnside theorem implies that
     \[
     \sum_{g\in G}\chi(g)=|G|.
