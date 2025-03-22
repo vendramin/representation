@@ -19,6 +19,33 @@ $f\in\Hom_G(S,S)$ and $\lambda\in\C$ be an eigenvalue of $f$. Then
 $f-\lambda\id\colon S\to S$ is not invertible. By Schur's lemma, 
 $f-\lambda\id=0$ and hence $f=\lambda\id$. 
 
+\begin{definition}
+    Let $G$ be a group. 
+    A representation $\rho\colon G\to\GL(V)$ is said
+    to be \emph{faithful} if $\rho$ is injective. 
+\end{definition}
+
+\begin{exercise}
+    \label{xca:Z(G)cyclic}
+    Let $G$ be a finite group 
+    that admits a faithful irreducible
+    representation. Prove that $Z(G)$ is cyclic. 
+\end{exercise}
+
+%\begin{sol}{xca:Z(G)cyclic}
+%\end{sol}
+
+To solve Exercise~\ref{xca:Z(G)cyclic} one needs to use the following
+elementary fact: 
+A finite subgroup of $S^1=\{z\in\C:|z|=1\}$ is cyclic. 
+% Let $G$ be a finite subgroup of $S^1$. Let $n=|G|$. 
+% We claim that 
+% $G\subseteq\{\exp(2\pi ik/n):0\leq k\leq n-1\}$. Let $g\in G$. 
+% Since $g^n=1$, $g$ is a $n$-th root of one, say 
+% $g=\exp(2\pi i k/n)$ for some $k\in\{1,\dots,n-1\}$. Now the 
+% claim follows, since $\{\exp(2\pi ik/n):0\leq k\leq n-1\}$ is
+% cyclic. 
+
 \begin{theorem}[Schur]
 \index{Schur's first orthogonality relation}
     Let $G$ be a finite group and $\chi,\psi\in\Irr(G)$. Then
@@ -168,6 +195,7 @@ We now prove Schur's second orthogonality relation.
 
 \begin{theorem}[Solomon]
 \index{Solomon's theorem}
+\label{thm:Solomon}
     Let $G$ be a finite group and $\Irr(G)=\{\chi_1,\dots,\chi_r\}$. 
     If $g_1,\dots,g_r$ are the representatives of the conjugacy classes
     of $G$ and $i\in\{1,\dots,r\}$, then 
@@ -204,6 +232,19 @@ We now prove Schur's second orthogonality relation.
     =\sum_{j=1}^r\overline{\chi_i(g_j)}.\qedhere
     \end{align*}
 \end{proof}
+
+\begin{exercise}[Solomon]
+\label{xca:Solomon}
+    Let $G$ be a finite group and $g_1,\dots,g_k$ be the representatives of the conjugacy 
+    classes of $G$. Assume that $\Irr(G)=\{\chi_1,\dots,\chi_r\}$. 
+    Prove that 
+    \[
+        |G|\geq \sum_{i=1}^r\sum_{j=1}^r\chi_i(C_j)\in\Z_{\geq1}. 
+    \]
+    Moreover, if 
+    $|G|=\sum_{i=1}^r\sum_{j=1}^r\chi_i(C_j)$, then 
+    $G/Z(G)$ is abelian. 
+\end{exercise}
 
 \subsection{Algebraic integers and characters}
 

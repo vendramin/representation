@@ -567,7 +567,7 @@ independent of character theory.
   and therefore $G=NH$.
 \end{proof}
 
-\subsection*{Some comments}
+\subsection{The Cameron--Cohen theorem, II}
 
 \begin{corollary}[Combinatorial Frobenius' theorem]
     \label{cor:Frobenius_combinatorio}
@@ -624,6 +624,41 @@ independent of character theory.
 % 8.5.6 para ver algo de grupos de permutaciones
 % 7.1 para ejemplo H(q)
 % 10.5.6 (Thompson) N es nilpotente, se usa 10.5.4 
+
+\begin{theorem}[Cameron--Cohen]
+    Let $G\leq\Sym_n$ be a transitive subgroup. 
+    If $n$ is not the power of a prime number, then
+    $c_0>\frac{1}{n}$. 
+\end{theorem}
+
+\begin{proof}
+    Let us go back to the proof
+    of Theorem~\ref{thm:CameronCohen}. Assume that 
+    $c_0=1/n$. Then
+    \[
+    \frac{1}{|G|}\sum_{g\in G}(\chi(g)^2-(n+1)\chi(g)+n)=1
+    \]
+    and hence $\frac{1}{|G|}\sum_{g\in G}\chi(g)^2=2$. Moreover, 
+    since 
+    \[
+    \frac{1}{|G|}\sum_{g\in G_0}(\chi(g)-1)(\chi(n)-n)
+    +\frac{1}{|G|}\sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)=1,
+    \]
+    it follows that 
+    \[
+    \sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)=0
+    \]
+    and hence $(\chi(g)-1)(\chi(g)-n)=0$
+    for all $g\in G\setminus G_0$. 
+    
+    Let $X=\{1,\dots,n\}$. By assumption, $G$ 
+    acts transitively on $X$. Let 
+    $\chi$ be the character of $G$ 
+    given by $\chi(g)=|\Fix(g)|$ and $G_0$ be the 
+    set of derangements of $G$. By Corollary~\ref{cor:Frobenius_combinatorio}, 
+    the subgroup $N=G_0\cup\{\id\}$ is normal in $G$. Let $x\in X$ and $H=G_x$. Then... 
+    
+\end{proof}
 
 In his doctoral thesis Thompson proved the following result, conjectured
 by Frobenius. 

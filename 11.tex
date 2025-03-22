@@ -262,7 +262,7 @@ No other counterexamples have been found of Stephen’s stronger version of the 
 
 
 
-\section{The character table of \texorpdfstring{$\Alt_5$}{A5}}
+\subsection{The character table of \texorpdfstring{$\Alt_5$}{A5}}
 
 Let $G=\Alt_5$. 
 The group $G$ is a non-abelian simple group of order 60. It has five conjugacy classes, namely
@@ -276,11 +276,71 @@ The group $G$ is a non-abelian simple group of order 60. It has five conjugacy c
     \end{tabular}
 \end{center}
 \bigskip 
-Thus $|\Irr(G)|=5$, say
+
+One can easily get the conjugacy classes of 
+$\Alt_5$ with Magma:
+\begin{lstlisting}
+> A5 := Alt(5);
+> ConjugacyClasses(A5);
+Conjugacy Classes of group A5
+-----------------------------
+[1]     Order 1       Length 1
+        Id(A5)
+
+[2]     Order 2       Length 15
+        (1, 2)(3, 4)
+
+[3]     Order 3       Length 20
+        (1, 2, 3)
+
+[4]     Order 5       Length 12
+        (1, 2, 3, 4, 5)
+
+[5]     Order 5       Length 12
+        (1, 3, 4, 5, 2)    
+\end{lstlisting}
+
+Let us see how to obtain all conjugacy classes
+of $\Alt_5$ without computers. Let $\sigma\in\Alt_5$ and $C$ be its
+conjugacy class in $\Sym_5$. Thus $|C|=(\Sym_5:C_{\Sym_5}(\sigma))$. There are two cases to consider
+
+Assume first that $C_{\Sym_5}(\sigma)\not\subseteq\Alt_5$. Since $\Alt_5$ is a maximal subgroup of $\Sym_5$, it follows that 
+$\Alt_5C_{\Sym_5}(\sigma)=\Sym_5$. Using the isomorphism theorems, 
 \[
-\Irr(G)=\{\chi_1,\chi_2,\chi_3,\chi_4,\chi_5\}.
+\Sym_5/\Alt_5=\Alt_5C_{\Sym_5(\sigma)}/\Alt_5
+\simeq C_{\Sym_5}(\sigma)/(C_{\Sym_5}(\sigma)\cap\Alt_5)
+=C_{\Sym_5}(\sigma)/C_{\Alt_5}(\sigma).
 \]
-We may assume that $\chi_1$ is the trivial character. 
+Hence 
+\[
+(\Alt_5:C_{\Alt_5}(\sigma))=\frac{(\Sym_5:C_{\Alt_5}(\sigma))}{(\Sym_5:\Alt_5)}
+=\frac{(\Sym_5:C_{\Alt_5}(\sigma))}{(C_{\Sym_5}(\sigma):C_{\Alt_5}(\sigma))}
+=(\Sym_5:C_{\Sym_5}(\sigma))=|C|.
+\]
+Therefore $C$ is the class of $\sigma$ in $\Alt_5$. 
+
+Assume now that $C_{\Sym_5}(\sigma)\subseteq\Alt_5$. Then 
+$C_{\Alt_5}(\sigma)=C_{\Sym_5}(\sigma)\cap\Alt_5=C_{\Sym_5}(\sigma)$
+and therefore 
+\[
+(\Alt_5:C_{\Alt_5}(\sigma))=(\Alt_5:C_{\Sym_5}(\sigma))
+=\frac12(\Sym_5:C_{\Sym_5}(\sigma))=\frac12|C|.
+\]
+Thus $C$ splits into two conjugacy classes of $\Alt_5$ of equal size. 
+
+The identity permutation is central. The even permutations 
+$(12)(34)$ and $(123)$ both commutes with some odd permutation in $\Sym_5$ (e.g. 
+$[(12)(34),(34)]=[(123),(45)]=\id$). Thus these classes do not split
+in $\Alt_5$. There are twenty-four 5-cycles in $\Sym_5$. Since $24$ does not
+divide $|\Alt_5|=60$, it follows that the class of 5-cycles
+splits in $\Alt_5$. As representatives of these classes
+we can take $(12345)$ and $(12354)$. 
+
+Since $\Alt_5$ has five conjugacy classes, $|\Irr(G)|=5$. Assume that 
+\[
+\Irr(G)=\{\chi_1,\chi_2,\chi_3,\chi_4,\chi_5\}, 
+\]
+where $\chi_1$ is the trivial character. 
 
 Let $H=\Alt_4$. We compute $\Ind_H^G\chi_1$. By Corollary~\ref{cor:reciprocity}, 
 \[
