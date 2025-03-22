@@ -66,6 +66,7 @@ so it follows that
 $\dim S(V\otimes V)=n(n+1)/2$ and $\dim A(V\otimes V)=n(n-1)/2$. 
 
 \begin{proposition}
+\label{pro:SandA}
     Let $G$ be a finite group and
     $V$ be a finite-dimensional 
     $\C[G]$-module with character $\chi$. If $S(V\otimes V)$ 
@@ -253,7 +254,167 @@ As an exercise, a simple application:
     $G\simeq\Z/2$. 
 \end{exercise}
 
-\subsection{A comment: An elementary proof of Brauer--Fowler theorem}
+\subsection{The character table of $\Sym_5$}
+
+Let $G=\Sym_5$. The conjugacy classes 
+of $G$ are given in the following table:
+
+\bigskip 
+\begin{center}
+    \begin{tabular}{c|ccccccc}
+        Representative & $\id$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ & $(123)(45)$  & $(12345)$ \\
+        \hline 
+        Size & $1$ & $10$ & $20$ & $15$ & $30$ & $20$ & $24$ \\
+    \end{tabular}
+\end{center}
+\bigskip 
+
+Thus there are seven irreducible characters. The trivial character $\chi_1$ and the sign $\chi_2$ are degree-one (hence irreducible) 
+characters. 
+
+\bigskip 
+\begin{center}
+    \begin{tabular}{c|ccccccc}
+        & $\id$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ & $(123)(45)$  & $(12345)$ \\
+        \hline 
+        $\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ \\
+        $\sgn$ & $1$ & $-1$ & $1$ & $1$ & $-1$ & $-1$ & $1$ \\
+    \end{tabular}
+\end{center}
+\bigskip 
+
+Since 
+$[G,G]=\Alt_5$ and $|G/[G,G]|=2$, it follows
+from Exercise~\ref{xca:degree-one} that $\chi_1$ and $\sgn$ 
+are the only degree-one characters. 
+
+Since $G$ acts 2-transitively on $\{1,\dots,5\}$, Proposition~\ref{pro:2transitive} implies that 
+$\varsigma(g)=|\Fix(g)|-1$ is an irreducible character. 
+A direct
+calculation yields the values of $\varsigma$: 
+\bigskip 
+\begin{center}
+    \begin{tabular}{c|ccccccc}
+        & $\id$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ & $(123)(45)$  & $(12345)$ \\
+        \hline 
+        $\varsigma$ & $4$ & $2$ & $1$ & $0$ & $0$ & $-1$ & $-1$ \\
+    \end{tabular}
+\end{center}
+\bigskip 
+
+The values of the product 
+$\sgn\varsigma$ are easily computed: 
+\bigskip 
+\begin{center}
+    \begin{tabular}{c|ccccccc}
+        & $\id$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ & $(123)(45)$  & $(12345)$ \\
+        \hline 
+        $\sgn\varsigma$ & $4$ & $-2$ & $1$ & $0$ & $0$ & $1$ & $-1$ \\
+    \end{tabular}
+\end{center}
+\bigskip 
+
+Since 
+\begin{align*}
+\langle\sgn\varsigma,\sgn\varsigma\rangle&=
+\frac{1}{120}(4^2+10(-2)^2+20+15\cdot 0+30\cdot 0+20+24)\\
+&=\frac{1}{120}(16+40+20+20+24)=1,
+\end{align*}
+it follows that $\sgn\varsigma\in\Irr(G)$. 
+
+We now consider the characters 
+\[
+\psi(g)=\frac12(\varsigma^2(g)+\varsigma(g^2))\quad\text{and}\quad  
+\eta(g)=\frac12(\varsigma^2(g)-\varsigma(g^2)),
+\]
+where $\varsigma^2(g)=\varsigma(g)\varsigma(g)=\varsigma(g)^2$ (see Proposition~\ref{pro:SandA}). 
+A straightforward 
+calculation shows that 
+\bigskip 
+\begin{center}
+    \begin{tabular}{c|ccccccc}
+        & $\id$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ & $(123)(45)$  & $(12345)$ \\
+        \hline 
+        $\psi$ & $10$ & $4$ & $1$ & $2$ & $0$ & $1$ & $0$ \\
+        $\eta$ & $6$ & $0$ & $0$ & $-2$ & $0$ & $0$ & $1$ \\
+    \end{tabular}
+\end{center}
+\bigskip 
+
+Since 
+\[
+\langle\eta,\eta\rangle
+=\frac{1}{120}(6^2+15(-2)^2+24)=1,
+\]
+it follows that $\eta\in\Irr(G)$. On the other hand,
+\[
+\langle\psi,\psi\rangle
+=\frac{1}{120}(10^2+10\cdot16+20+15\cdot 4+20)=3. 
+\]
+Thus $\psi$ is the sum of three irreducible characters (see Exercise~\ref{xca:n_irreducible}). Since 
+\begin{align*}
+\langle\psi,\chi_1\rangle&=\frac{1}{120}(10+10\cdot 4+20+15\cdot 2+20)=1,\\
+\langle\psi,\varsigma\rangle&=\frac{1}{120}(10\cdot 4+10\cdot 4\cdot 2+20-20)=1,
+\end{align*}
+it follows that 
+$\psi=\chi_1+\varsigma+\chi$ for some $\chi\in\Irr(G)$. Thus
+we can compute $\chi$:
+\bigskip 
+\begin{center}
+    \begin{tabular}{c|ccccccc}
+        & $\id$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ & $(123)(45)$  & $(12345)$ \\
+        \hline 
+        $\chi$ & $5$ & $1$ & $-1$ & $1$ & $-1$ & $1$ & $0$ \\
+    \end{tabular}
+\end{center}
+\bigskip 
+We are missing one irreducible character. Let $n$ be 
+the degree of this character. Since 
+$120=1+1+16+16+36+25+n^2$, it follows that 
+$n=5$. Since we need a degree-five
+irreducible character, we can try with
+$\xi=\sgn\chi$:
+\bigskip 
+\begin{center}
+    \begin{tabular}{c|ccccccc}
+        & $\id$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ & $(123)(45)$  & $(12345)$ \\
+        \hline 
+        $\xi$ & $5$ & $-1$ & $-1$ & $1$ & $1$ & $-1$ & $0$ \\
+    \end{tabular}
+\end{center}
+\bigskip 
+
+Since 
+\[
+\langle\xi,\xi\rangle=\frac{1}{120}(25+10(-1)^2+20(-1)^2+15+30+20(-1)^2)
+=1,
+\]
+it follows that $\xi\in\Irr(G)$. We have found the character table of $G$. 
+
+\bigskip 
+\begin{center}
+    \begin{tabular}{|c|ccccccc|}
+        \hline 
+        & $\id$ & $(12)$ & $(123)$ & $(12)(34)$ & $(1234)$ & $(123)(45)$  & $(12345)$ \\
+        \hline 
+        $\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ & $1$ \\
+        $\sgn$ & $1$ & $-1$ & $1$ & $1$ & $-1$ & $-1$ & $1$ \\
+        $\varsigma$ & $4$ & $2$ & $1$ & $0$ & $0$ & $-1$ & $-1$ \\
+        $\sgn\varsigma$ & $4$ & $-2$ & $1$ & $0$ & $0$ & $1$ & $-1$ \\
+        $\eta$ & $6$ & $0$ & $0$ & $-2$ & $0$ & $0$ & $1$ \\
+        $\chi$ & $5$ & $1$ & $-1$ & $1$ & $-1$ & $1$ & $0$ \\
+        $\xi$ & $5$ & $-1$ & $-1$ & $1$ & $1$ & $-1$ & $0$ \\
+        \hline 
+    \end{tabular}
+\end{center}
+\bigskip 
+
+% g=id,(12),(123),(12)(34),(1234),(123)(45),(12345)
+% chi_3^2(g) : 16,4,1,0,0,1,1
+% chi_3(g^2) : 4,4,1,4,0,1,-1
+
+
+\subsection{(optional) An elementary proof of the Brauer--Fowler theorem}
 
 We need to find a subgroup of index $\leq 2n^2$. 
 Let $X$ be the conjugacy class of $x$. For $g\in G$ let
@@ -330,13 +491,13 @@ We now define induction. Let $G$ be a finite group
 and $H$ be a subgroup of $G$. If $f\colon H\to\C$ is a map, 
 then 
 \[
-\dot{f}(x)=\begin{cases}
+f^0(x)=\begin{cases}
     f(x) & \text{if $x\in H$},\\
     0 & \text{otherwise}.
     \end{cases}
 \]
 It is an exercise to prove that
-the map $f\mapsto\dot{f}$ is linear. 
+the map $f\mapsto f^0$ is linear. 
 
 \begin{definition}
     Let $G$ be a finite group and $H$ be a subgroup of $G$. Let
@@ -344,7 +505,7 @@ the map $f\mapsto\dot{f}$ is linear.
     a map. The \emph{induction}
     of $f$ to $G$ is the map 
     \begin{align*}
-      g\mapsto\Ind_H^Gf(g)=\frac{1}{|H|}\sum_{x\in G}\dot{f}(x^{-1}gx).
+      g\mapsto\Ind_H^Gf(g)=\frac{1}{|H|}\sum_{x\in G}f^0(x^{-1}gx).
     \end{align*}
 \end{definition}
 
@@ -371,12 +532,12 @@ the map $f\mapsto\dot{f}$ is linear.
     \begin{aligned}
         \langle\Ind_H^Ga,b\rangle 
         &= \frac{1}{|G|}\sum_{x\in G}\Ind_H^Ga(x)\overline{b(x)}
-        = \frac{1}{|G|}\frac{1}{|H|}\sum_{x,y\in G}\dot{a}(y^{-1}xy)\overline{b(x)}.
+        = \frac{1}{|G|}\frac{1}{|H|}\sum_{x,y\in G}a^0(y^{-1}xy)\overline{b(x)}.
     \end{aligned}
     \end{equation}
     Since 
     \[
-    \dot{a}(y^{-1}xy)\ne 0\Longrightarrow
+    a^0(y^{-1}xy)\ne 0\Longrightarrow
     y^{-1}xy\in H\Longleftrightarrow x\in yHy^{-1},
     \]
     setting $h=y^{-1}xy$ 

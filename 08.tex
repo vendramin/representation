@@ -45,6 +45,7 @@ is the \emph{kernel} of $\chi$.
 
 \begin{theorem}[Correspondence theorem]
 \index{Correspondence theorem!for characters}
+\label{thm:correspondence}
 Let $N$ be a normal subgroup of a finite group $G$. There exists
 a bijective correspondence 
 \[
@@ -569,21 +570,22 @@ independent of character theory.
 
 \subsection{The Cameron--Cohen theorem, II}
 
-\begin{corollary}[Combinatorial Frobenius' theorem]
+In this section, we use Frobenius’ theorem to strengthen the Cameron--Cohen theorem on derangements (Theorem~\ref{thm:CameronCohen}). To do so, we first require an alternative version of Frobenius’ theorem.
+
+\begin{corollary}[Frobenius]
     \label{cor:Frobenius_combinatorio}
     \index{Frobenius'!theorem}
     Let $G$ be a group acting transitively on a finite set $X$. 
     Assume that each $g\in G\setminus\{1\}$ fixes 
     at most one element of 
-     $X$. The set $N$ formed by the identity and 
-     the permutations that move every element of $X$
-     is a normal subgroup of $G$.
+     $X$. The set $N$ formed by the identity and the derangements 
+     of $G$ is a normal subgroup of $G$.
 \end{corollary}
 
 \begin{proof}
   Let $x\in X$ and $H=G_x$. We claim that 
   if $g\in G\setminus H$, then $H\cap
-  gHg^{-1}=1$. If $h\in H\cap gHg^{-1}$, then
+  gHg^{-1}=\{1\}$. If $h\in H\cap gHg^{-1}$, then
   $h\cdot x=x$ and $g^{-1}hg\cdot
   x=x$. Since $g\cdot x\ne x$, $h$ fixes two elements of
   $X$. Thus 
@@ -594,7 +596,7 @@ independent of character theory.
     N=\left(G\setminus\bigcup_{g\in G}gHg^{-1}\right)\cup\{1\}
   \]
   is a subgroup of $G$. Let us compute the elements of $N$. If 
-  $h\in\cup_{g\in G}gHg^{-1}$, then there exists  $g\in G$ such that $g^{-1}hg\in H$,
+  $h\in\bigcup_{g\in G}gHg^{-1}$, then there exists  $g\in G$ such that $g^{-1}hg\in H$,
   that is $(g^{-1}hg)\cdot x=x$; equivalently, 
   $h\in G_{g\cdot x}$. Therefore, the 
   non-identity elements of $N$ are the elements of $G$
@@ -646,18 +648,30 @@ independent of character theory.
     \]
     it follows that 
     \[
-    \sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)=0
+    \sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)=0.
     \]
-    and hence $(\chi(g)-1)(\chi(g)-n)=0$
+    Hence $(\chi(g)-1)(\chi(g)-n)=0$
     for all $g\in G\setminus G_0$. 
     
-    Let $X=\{1,\dots,n\}$. By assumption, $G$ 
-    acts transitively on $X$. Let 
-    $\chi$ be the character of $G$ 
-    given by $\chi(g)=|\Fix(g)|$ and $G_0$ be the 
-    set of derangements of $G$. By Corollary~\ref{cor:Frobenius_combinatorio}, 
-    the subgroup $N=G_0\cup\{\id\}$ is normal in $G$. Let $x\in X$ and $H=G_x$. Then... 
-    
+    By Corollary~\ref{cor:Frobenius_combinatorio}, 
+    the subset $N=G_0\cup\{\id\}$ is a normal subgroup of $G$. Moreover, $G=N\rtimes H$ for some 
+    subgroup $H$ of $G$ of order $n$. Since 
+    $n=|H|=|N|-1$, $H$ acts freely and transitively 
+    on $N\setminus\{1\}$. 
+
+    We claim that $N$ is a $p$-group for some prime number $p$. Let $n,m\in N\setminus\{1\}$. Since $H$ is transitive on $N\setminus\{1\}$, 
+    there exists $h\in H$ such that $h\cdot n=m$. Then
+    \[
+    |n|=|h\cdot n|=|m|,
+    \]
+    since for each $h\in H$, the map 
+    $x\mapsto h\cdot x$ is an automorphism of $N$. Thus every two elements of $N\setminus\{1\}$ have 
+    the same order. Let $p$ be a prime divisor 
+    of $|N|$. By Cauchy's theorem, there exists 
+    $n\in N$ such that $|n|=p$. Since all non-trivial
+    elements of $N$ have the same order, 
+    $N$ is a $p$-group. Therefore 
+    $n=|N|$ is a power of a prime.
 \end{proof}
 
 In his doctoral thesis Thompson proved the following result, conjectured
@@ -671,6 +685,55 @@ by Frobenius.
 
 See~\cite[Theorem 6.24]{MR2426855} for the proof.
 
+\begin{exercise}
+\label{xca:Frobenius_size20}
+Let $G$ be the group of matrices 
+of the form $\begin{pmatrix}a&b\\0&1\end{pmatrix}$ where $a,b\in\Z/5$ and $a\ne 0$. Then $|G|=20$. Let 
+\[
+    h=\begin{pmatrix}
+        2\\
+        &1
+    \end{pmatrix},\quad 
+    k=\begin{pmatrix}
+        1&1\\
+        &1
+    \end{pmatrix}.
+\]
+A direct calculation shows that 
+$h^4=1$, $k^5=1$ and $hkh^{-1}=k^2$. Let $H=\langle h\rangle$ 
+and $K=\langle k\rangle$. Prove the following statements: 
 
+\begin{enumerate}
+    \item Prove that $G=K\rtimes H$.
+    \item Find the conjugacy classes of $G$: 
+\begin{center}
+        \begin{tabular}{cccccc}
+             Size & $1$ & $4$ & $5$ & $5$ & $5$\\
+             \hline 
+             Representative & $1$ & $k$ & $h$ & $h^2$ & $h^3$\\
+        \end{tabular}
+\end{center}
+\item Prove that $G/K$ is cyclic of order four. 
+\item Prove that $[G,G]=K$. 
+\item Use Theorem~\ref{thm:correspondence} on $G/K$ 
+    to find the degree-one characters of $G$. 
+\item Let $\chi\in\Irr(K)$ be such that $\chi(k)=\exp(2\pi i/5)$. Prove that 
+$\Ind_K^G\chi\in\Irr(G)$. 
+\end{enumerate}
+\end{exercise}
+
+% \begin{center}   
+%         \begin{tabular}{|c|ccccc|}
+%              \hline
+%              & $1$ & $k$ & $h$ & $h^2$ & $h^3$\\
+%              \hline
+%              $\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\\
+%              $\chi_2$ & $1$ & $1$ & $i$ & $-1$ & $-i$\\
+%              $\chi_3$ & $1$ & $1$ & $-1$ & $1$ & $-1$\\
+%              $\chi_4$ & $1$ & $1$ & $-i$ & $-1$ & $i$\\
+%              $\chi_5$ & $4$ & $-1$ & $0$ & $0$ & $0$\\
+%              \hline
+%         \end{tabular}
+%     \end{center} 
 
 
