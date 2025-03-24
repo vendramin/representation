@@ -1,2 +1,171 @@
 \section{Lecture: Week 12}
 
+\subsection{Clifford theory}
+
+We begin with a routine exercise. 
+
+%\begin{exercise}
+%$    Let $G$ be a finite group and $\chi\in\Char(G)$. 
+%$    Let $f\colon G\to H$ be an isomorphism of 
+%$    groups. Then 
+%$    \[
+%$    (f\cdot )(f(g))
+%$    
+%\end{exercise}
+
+\begin{exercise}
+\label{xca:conjugate_chars1}
+Let $G$ be a finite group and $N$ be a normal subgroup
+of $G$. Prove that $G$ acts on $\Irr(N)$ via 
+\[
+(g\cdot\theta)(n)=\theta(g^{-1}ng),\quad 
+g\in G,\theta\in\Irr(N),n\in N.
+\]
+\end{exercise}
+
+\begin{exercise}
+\label{xca:conjugate_chars2}
+Let $G$ be a finite group and $N$ be a normal subgroup of $G$. 
+Let $\chi\in\cf(G)$, $\theta\in\cf(N)$ and $g\in G$. Prove that
+\[
+\langle\Res_N^G\chi,g\cdot\theta\rangle=\langle\Res_N^G\chi,\theta\rangle.
+\]
+% for all $\chi\in\cf(G)$.
+%     \begin{enumerate}
+%         \item $\langle g\cdot\alpha,g\cdot\beta\rangle=\langle\alpha,\beta\rangle$.
+%         \item $\langle\Res_N^G\chi,g\cdot\alpha\rangle=\langle\Res_N^G\chi,\alpha\rangle$ for all $\chi\in\cf(G)$. 
+%     \end{enumerate}
+\end{exercise}
+
+\index{Irreducible constituent}
+Recall that every character $\chi$ of a finite group is uniquely 
+a sum of irreducible characters. These are called
+the \emph{irreducible constituents} of $\chi$. 
+
+\begin{theorem}[Clifford]
+\label{thm:Clifford}
+\index{Clifford's theorem}
+    Let $G$ be a finite group and $N$ be a normal
+    subgroup of $G$. Let $\chi\in\Irr(G)$ and $\theta\in\Irr(N)$ be 
+    an irreducible constituent of $\Res_N^G\chi$. 
+    Then 
+    \[
+    \Res_N^G\chi = e(\theta_1+\cdots+\theta_t),
+    \]
+    where $\theta=\theta_1,\dots,\theta_t$ are the conjugates 
+    of $\theta$ in $G$, 
+    and $e=\langle\Res_N^G\chi,\theta\rangle$ is a positive integer. In particular, all the constituents of $\Res_N^G\chi$ have the same degree. 
+\end{theorem}
+
+\begin{proof}
+    We claim that 
+    \[
+    \Res_N^G\Ind_N^G\theta=\frac{1}{|N|}\sum_{g\in G}(g\cdot\theta).
+    \]
+    To prove this formula, let $n\in N$. Then 
+    \[
+    \left(\Ind_N^G\theta\right)(n)
+    =\frac{1}{|N|}\sum_{g\in G}\theta^0(g^{-1}ng)
+    =\frac{1}{|N|}\sum_{g\in G}\theta(g^{-1}ng)
+    =\frac{1}{|N|}\sum_{g\in G}(g\cdot\theta)(n).
+    \]
+    By Frobenius' reciprocity, 
+    $\langle\Ind_N^G\theta,\chi\rangle=\langle\theta,\Res_N^G\chi\rangle>0$. 
+    Thus $\chi$ is an irreducible constituent of $\Ind_N^G\theta$. 
+    
+    % Moreover, $g\cdot\chi=\chi$ 
+    % for all $g\in G$, since $\chi\in\Irr(G)\subseteq \cf(G)$. 
+    Now 
+    let $\varphi\in\Irr(N)\setminus\{\theta_1,\dots,\theta_t\}$. Then
+    \[
+    \langle \Ind_N^G\theta, \Ind_N^G\varphi\rangle
+    =\langle \Res_N^G\Ind_N^G\theta,\varphi\rangle
+    =\sum_{g\in G}\langle g\cdot\theta,\varphi\rangle=0,
+    \]
+    since each $g\cdot\theta=\theta_j$ for some $j\in\{1,\dots,t\}$. 
+    It follows that $\langle\Res_N^G\chi,\varphi\rangle=0$. 
+    Thus all irreducible constituents of $\Res_N^G\chi$ belong
+    to $\{\theta_1,\dots,\theta_t\}$, that is
+    \[
+\Res_N^G\chi=\sum_{i=1}^t\langle\Res_N^G\chi,\theta_i\rangle\theta_i.
+    \]
+    Moreover, for each $i\in\{1,\dots,t\}$, 
+    there exists $g_i\in G$ such that
+    $\theta_i=g_i\cdot\theta$. Thus, using Exercise~\ref{xca:conjugate_chars2}, 
+    \[
+    \langle\Res_N^G\chi,\theta_i\rangle=\langle\Res_N^G\chi,g_i\cdot\theta\rangle=\langle\Res_N^G\chi,\theta\rangle=e.\]
+    From this the theorem follows. 
+\end{proof}
+
+\index{Ramification index}
+The integer $e$ in Theorem~\ref{thm:Clifford} is known as the \emph{ramification index} of $\chi$ on $N$.
+
+\begin{exercise}
+\label{xca:Clifford_divisibility}
+    Let $G$ be a finite group and $N$ be a normal subgroup of $G$. Let $\chi\in\Irr(G)$ and $\theta$ 
+    be an irreducible constituent of $\Res_N^G\chi$. 
+    Prove that $\theta(1)$ divides $\chi(1)$. 
+\end{exercise}
+
+We now present several consequences of Clifford’s theorem.
+
+\begin{theorem}
+    Let $G$ be a finite group and $N$ be a normal subgroup of prime index $p$. Then either $\Res_N^G\chi$ is a sum of $p$ 
+    distinct irreducible characters or $\Res_N^G\chi$ is irreducible. 
+\end{theorem}
+
+\begin{proof}
+    Note that $t$ divides $(G:N)$ (see Exercise~\ref{xca:t|G/N}). 
+    So there are two cases
+    to consider, namely $t\in\{1,p\}$. 
+
+    Assume first that $t=p$. Let $\theta$ be an irreducible constituent of $\Res_N^G\chi$. Then $e=\langle\Res_N^G\chi,\theta\rangle$.... 
+\end{proof}
+
+To simplify our presentation, we will introduce an additional assumption regarding the solvability of a certain quotient group. However, the results presented remain valid even without this assumption.
+
+\begin{theorem}
+    Let $G$ be a finite group and $N$ be a normal subgroup of $G$. Assume that $G/N$ is solvable. Let $\chi\in\Irr(G)$ 
+    and $\theta$ be an irreducible constituent of $\Res_N^G\chi$. Then 
+    $\frac{\chi(1)}{\theta(1)}$ divides $(G:N)$. 
+\end{theorem}
+
+\begin{proof}
+    By Clifford's theorem, $\chi(1)/\theta(1)=et\in\Z$. Assume 
+    that the theorem does not hold and let $G$ 
+    be a minimal counterexample. 
+    If $(G:N)=1$, then the result trivially holds. Thus $N\ne G$. 
+
+    We first assume that $G/N$ is simple. Since $G/N$ is solvable, 
+    then $G/N\simeq\Z/p$ for some prime number $p$. Thus 
+    $\chi(1)/\theta(1)\in\{1,p\}$. 
+
+    Assume now that $G/N$ is not simple. Let $M$ be a normal
+    subgroup of $G$ such that $N\leq M\leq G$. Let 
+    $\psi\Irr(M)$ be such that...
+
+    By the inductive hypothesis, 
+    $\chi(1)/\psi(1)$ divides $(G:M)$ and 
+    $\psi(1)/\theta(1)$ divides $(M:N)$. Thus 
+    \[
+    \frac{\chi(1)}{\theta(1)}=\frac{\chi(1)}{\psi(1)}\frac{\psi(1)}{\theta(1)}
+    \]
+    divides $(G:M)(M:N)=(G:N)$. 
+\end{proof}
+
+We now present a weaker version of Ito’s theorem (Theorem~\ref{thm:Ito}) as a corollary of Clifford’s theorem and
+the previous results. 
+
+\begin{theorem}[Ito]
+\index{Ito's theorem}
+    Let $G$ be a finite group and $A$ be an abelian normal 
+    subgroup of $G$. Assume that $G/A$ is solvable. 
+    If $\chi\in\Irr(G)$, then $\chi(1)$ divides $(G:A)$. 
+\end{theorem}
+
+\begin{proof}
+    Let $\theta$ be an irreducible constituent of $\Res_A^G\chi$. 
+    Since $A$ is abelian, $\theta(1)=1$. Thus 
+    $\chi(1)=\chi(1)/\theta(1)$ divides $(G:A)$ by 
+    the previous theorem. 
+\end{proof}
