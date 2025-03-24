@@ -231,3 +231,28 @@ This bound is reached if and only if $(G:Z(G))=p^2$.
     Since $h$ has at least two fixed points
     in $G/H$, $h=1$. 
 \end{sol}
+
+\begin{sol}{xca:malnormal_no2torsion}
+    Let $H\ne\{1\}$ be a subgroup of $G$ and $N=\langle n\rangle\simeq\Z$ be a
+    normal subgroup of $G$. 
+
+    Assume that $N\cap H=\{1\}$. Note that
+    for every $h\in H\setminus\{1\}$, 
+    $hnh^{-1}\in\{n,n^{-1}\}$. 
+    If there exists 
+    $h\in H\setminus\{1\}$ such that $hnh^{-1}=n$, then
+    $1\ne h=nhn^{-1}\in H\cap nHn^{-1}$. Thus $H$ is not malnormal in $G$. 
+
+    Since $G$ has no 2-torsion, there exist 
+    $h_1,h_2\in H\setminus\{1\}$ with $h_1\ne h_2$ and 
+    $h_1h_2\ne 1$. If $h_jnh_j=n$ for some $j\in\{1,2\}$, 
+    then the previous argument shows that 
+    $H$ is not malnormal in $G$. Thus we may assume that  $h_1nh_2=n^{-1}$ and 
+    $h_2nh_2=n^{-1}$. Then 
+    \[
+    (h_2h_1)n(h_2h_1)^{-1}=h_2n^{-1}h_2^{-1}
+    =(h_2nh_2^{-1})^{-1}=n.
+    \]
+    Hence, again by the previous argument, 
+    $H$ is not malnormal in $G$. 
+\end{sol}
