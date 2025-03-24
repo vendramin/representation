@@ -209,3 +209,25 @@ This bound is reached if and only if $(G:Z(G))=p^2$.
     It follows that $(G:Z(G))^2\cp(G)=(H:Z(G))^2\cp(H)$. 
 \end{enumerate}
 \end{sol}
+
+\begin{sol}{xca:malnormal}
+    We first prove that $1)\implies2)$. Let $x\not\in H$ and 
+    $h\in H$ be such that $h\cdot xH=xH$. Then 
+    $h\in xHx^{-1}\cap H=\{1\}$. 
+
+    We now prove $2)\implies3)$. Let $x,y\in G$ be such that 
+    $xH\ne yH$, and $g\in G$ be an element 
+    that fixes $xH$ and $yH$, that is 
+    $g\cdot xH=xH$ and $g\cdot yH=yH$. Then 
+    $x^{-1}gx\in H\cap (x^{-1}y)H(x^{-1}y)^{-1}=\{1\}$,
+    since $x^{-1}y\not\in H$. Thus $g=1$. 
+
+    Finally, we prove that $3)\implies1)$. Let $x\not\in H$ and $h\in H\cap xHx^{-1}$. Then 
+    $hx=xh_1$ for some $h_1\in H$. Hence
+    \[
+    h\cdot xH=hxH=xh_1H=xH,\quad 
+    h\cdot H=H.
+    \]
+    Since $h$ has at least two fixed points
+    in $G/H$, $h=1$. 
+\end{sol}

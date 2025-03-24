@@ -17,8 +17,8 @@ It is an exercise to check that
 T(v\otimes w)=w\otimes v
 \]
 for all 
-$v,w\in V$. It follows that  
-$T$ does not depend on the chosen basis. Note that
+$v,w\in V$. (Thus 
+$T$ does not depend on the basis $\{v_1,\dots,v_n\}$.) Note that
 $T$ is a homomorphism of $\C[G]$-modules, as
 \[
 T(g\cdot (v\otimes w))=T((g\cdot v)\otimes (g\cdot w))=(g\cdot w)\otimes (g\cdot v)=g\cdot T(v\otimes w)
@@ -47,8 +47,12 @@ x=\frac12(x+T(x))+\frac12(x-T(x))
 \]
 with $\frac12(x+T(x))\in S(V\otimes V)$ and $\frac12(x-T(x))\in A(V\otimes V)$. 
 
-We claim that $\{v_i\otimes v_j+v_j\otimes v_i:1\leq i\leq j\leq n\}$ is
-a basis of $S(V\otimes V)$ 
+We claim that 
+\[
+\{v_i\otimes v_j+v_j\otimes v_i:1\leq i\leq j\leq n\}
+\]
+is
+a basis of $S(V\otimes V)$, 
 and that  
 \[
 \{v_i\otimes v_j-v_j\otimes v_i:1\leq i<j\leq n\}
@@ -204,9 +208,10 @@ Now we prove the Brauer--Fowler theorem.
     \[
     (G:H)\leq n^2.
     \]
-    The group $G$ acts on $G/H$ 
-    by left multiplication, so there is a group homomorphism 
-    $\rho\colon G\to\Sym_{n^2}$. Since $G$ is simple, either 
+    Let $G$ act on $G/H$ 
+    by left multiplication, and let 
+    $\rho\colon G\to\Sym_{n^2}$ be the corresponding
+    group homomorphism. Since $G$ is simple, either 
     $\ker\rho=\{1\}$ or $\ker\rho=G$. If $\ker\rho=G$, then
     $\rho(g)(yH)=yH$ for all $g\in G$ and $y\in G$. 
     Hence $H=G$, a contradiction. Therefore $\rho$ is injective
@@ -495,7 +500,10 @@ define the restriction of class functions.
 \begin{exercise}
 \label{xca:restriction}
     Let $G$ be a finite group. Prove that
-    the map $\Res_H^G\colon\cf(G)\to\cf(H)$, $f\mapsto\Res_H^G(f)$, 
+    the map 
+    \[
+    \Res_H^G\colon\cf(G)\to\cf(H),\quad  f\mapsto\Res_H^G(f),
+    \]
     is a well-defined linear map. 
 \end{exercise}
 
@@ -536,12 +544,14 @@ the map $f\mapsto f^0$ is linear.
     Let $G$ be a finite group and $H$ be a subgroup of $G$. 
     If $a\in\cf(H)$ and $b\in\cf(G)$, then
     \[
-    \langle\Ind_H^Ga,b\rangle=\langle a,\Res_H^Gb\rangle.
+    \langle\Ind_H^Ga,b\rangle=\langle a,\Res_H^Gb\rangle
+    \quad\text{and}\quad
+    \langle\Res_H^Ga,b\rangle=\langle a,\Ind_H^Gb\rangle.
     \]
 \end{theorem}
 
 \begin{proof}
-    It follows from a direct calculation:
+    We only need to prove the first equality. We compute 
     \begin{equation}
     \label{eq:reciprocity}
     \begin{aligned}
@@ -561,9 +571,8 @@ the map $f\mapsto f^0$ is linear.
         \langle\Ind_H^Ga,b\rangle
         &=\frac{1}{|G|}\frac{1}{|H|}\sum_{x\in G}\sum_{h\in H}a(h)\overline{b(xhx^{-1})}\\
         &=\frac{1}{|G|}\frac{1}{|H|}\sum_{x\in G}\sum_{h\in H}a(h)\overline{b(h)}\\
-        &=\frac{1}{|G|}\sum_{x\in G}\langle a,\Res_H^Gb\rangle.
+        &=\frac{1}{|G|}\sum_{x\in G}\langle a,\Res_H^Gb\rangle.\qedhere 
     \end{align*}
-    From this the claim follows. 
 \end{proof}
 
 \begin{corollary}

@@ -3,7 +3,12 @@
 \subsection{The correspondence theorem}
 
 Let $N$ be a normal subgroup of $G$ 
-and $\pi\colon G\to G/N$, $g\mapsto gN$, be the canonical map. 
+and 
+\[
+\pi\colon G\to G/N,\quad 
+g\mapsto gN,
+\]
+be the canonical map. 
 If $\widetilde{\rho}\colon G/N\to\GL(V)$ 
 is a representation of $G/N$ with 
 character
@@ -378,10 +383,7 @@ is a particular case of a
     $G\simeq F_{p,q}$. 
 \end{proof}
 
-With the proposition, we prove, for example, that 
-every group of order 15 is abelian. We can also prove
-that up to isomorphism $\Z/20$ and  
-$F_{5,4}$ are the only groups of order 20. 
+Using Proposition~\ref{pro:Frobenius_pq}, we can prove, for example, that every group of order 15 is abelian. We can also show that, up to isomorphism, $\Z/20$ and $F_{5,4}$ are the only groups of order 20.
 
 \begin{definition}
   \index{Frobenius!complement}
@@ -393,6 +395,96 @@ $F_{5,4}$ are the only groups of order 20.
   xHx^{-1}=\{1\}$ for all $x\in G\setminus H$. In this case, the subgroup 
   $H$ is called a \emph{Frobenius complement}.
 \end{definition}
+
+\index{Malnormal subgroup}
+A subgroup $H$ such that $gHg^{-1}\cap H=\{1\}$ for all 
+$g\not\in H$ is called a \emph{malnormal} subgroup. 
+Note that if $H$ is malnormal, then $N_G(H)=H$. 
+
+\begin{exercise}
+\label{xca:malnormal}
+    Let $G$ be a group and $H$ be a subgroup of $G$. Prove that the following statements are equivalent: 
+    \begin{enumerate}
+        \item $H$ is malnormal. 
+        \item The action of $H$ 
+            on $G/H\setminus\{H\}$ by left multiplication is free. 
+        \item Any $g\in G\setminus\{1\}$ has zero
+            or one fixed point on $G/H$. 
+    \end{enumerate}
+\end{exercise}
+
+For any group $G$, the subgroups $\{1\}$ and $G$ are malnormal in $G$. Moreover, they are the only subgroups of $G$ that are both normal and malnormal
+
+\begin{exercise}
+    Let $G$ be a group. Prove the following statements:
+    \begin{enumerate}
+
+        \item If $H$ is malnormal in $G$, then
+        $gHg^{-1}$ is malnormal in $G$ for all $g\in G$. 
+        \item If $H$ is malnormal in $G$ and 
+        $K$ is malnormal in $H$, then $K$ is malnormal
+        in $G$. 
+        \item The intersection of malnormal
+        subgroups is malnormal.
+        \item If $H$ is malnormal in $G$ and 
+        $S$ is a subgroup of $G$, then 
+        $H\cap S$ is malnormal in $S$. 
+        
+    \end{enumerate}
+\end{exercise}
+
+\begin{example}
+    Let 
+    \[
+    G=\left\{\begin{pmatrix}a&b\\0&1\end{pmatrix}:a\in\R^{\times},b\in\R\right\}\quad\text{and}\quad 
+    H=\left\{\begin{pmatrix}a&0\\0&1\end{pmatrix}:a\in\R^{\times}\right\}\subseteq G. 
+    \]
+    Let $g=\begin{pmatrix}x&y\\0&1\end{pmatrix}\in G\setminus H$. Then $y\ne 0$. Since  
+    \[
+    g\begin{pmatrix}a&0\\0&1\end{pmatrix}g^{-1}
+    =\begin{pmatrix}a&-ay+y\\0&1\end{pmatrix},
+    \]
+    it follows that the subgroup $H$ 
+    is malnormal in $G$. 
+\end{example}
+
+\begin{exercise}
+\label{xca:malnormal_center}
+    Let $G$ be a group and $H$ be a non-trivial
+    subgroup of $G$. Prove that if $Z(G)\ne\{1\}$, then
+    $H$ is not malnormal in $G$. 
+\end{exercise}
+
+\begin{bonus}
+\label{xca:malnormal_no2torsion}
+    Let $G$ be a group with no 2-torsion 
+    that contains a normal infinite cyclic group. Prove 
+    that $G$ cannot contain a malnormal subgroup. 
+\end{bonus}
+
+%https://www.numdam.org/item/10.5802/cml.13.pdf
+% \begin{sol}{xca:malnormal_no2torsion}
+% \end{sol}
+
+
+
+\begin{example}
+    Let $G$ be a finite group 
+    and $P\in\Syl_p(G)$ be such that $|P|=p$ and $N_G(P)=P$. Then $G$ is a Frobenius group
+    with complement $P$. 
+\end{example}
+
+The previous example shows that 
+$\Alt_4$ is a Frobenius group
+with complement $\langle(123)\rangle$. Another situation
+where the example applies is the dihedral
+group 
+\[
+\D_{2n+1}=\langle r,s:r^{2n+1}=s^2=1,srs=r^{-1}\rangle
+\]
+of order $2(2n+1)$. It follows that
+$\D_{2n+1}$ is a Frobenius
+group with complement $\langle b\rangle$. 
 
 \begin{theorem}[Frobenius]
   \label{thm:Frobenius}
@@ -536,8 +628,9 @@ $F_{5,4}$ are the only groups of order 20.
   $m=1$.
 \end{proof}
 
-At the moment, there is no proof of Frobenius' theorem essentially 
-independent of character theory. 
+There is no proof of Frobenius’ theorem that is  independent of character theory. Purely group-theoretic proofs exist in cases where the Frobenius complement has even order or is solvable. The Feit--Thompson theorem (which relies heavily on character theory and is significantly more difficult than Frobenius’ theorem) implies that these two cases cover all possibilities. 
+
+In 2013, Terence Tao discovered an alternative proof of Frobenius’ theorem, though it resembles the original character-theoretic approach.
 
 \begin{definition}
   \index{Frobenius!kernel}
@@ -553,20 +646,22 @@ independent of character theory.
 \end{corollary}
 
 \begin{proof}
-  Frobenius' theorem yields the subgroup $N$. 
-  Let us prove that $H\supseteq N_G(H)$. If $h\in
-  H\setminus\{1\}$ and $g\in G$ are such that $ghg^{-1}\in H$, then $h\in
-  g^{-1}Hg\cap H$ and hence $g\in H$. Since $H=N_G(H)$, the subgroup $H$
-  has $(G:H)$ conjugates. Thus $|G|=|H||N|$,
-  where $N=\left( G\setminus\bigcup_{x\in G}xHx^{-1}\right)\cup\{1\}$, as 
+  Frobenius' theorem yields the subgroup $N$. Since 
+  $H\cap gHg^{-1}=\{1\}$ for all $g\in G\setminus H$, 
+  it follows that 
+  $N_G(H)=H$. It follows that $H$
+  has $(G:H)$ conjugates. 
+  Let 
   \[
-    |N|=|G|-(G:H)(|H|-1)=(G:H).
+  N=\left( G\setminus\bigcup_{x\in G}xHx^{-1}\right)\cup\{1\}.
   \]
-  Since $N\cap H=\{1\}$, 
+  Then  
+  $|N|=|G|-(G:H)(|H|-1)=(G:H)$.
+  Since, moreover, $N\cap H=\{1\}$, we conclude that
   \[
-  |HN|=|N||H|/|H\cap N|=|N||H|=|G|
+  |HN|=|N||H|/|H\cap N|=|N||H|=|G|.
   \]
-  and therefore $G=NH$.
+  Therefore $G=NH$.
 \end{proof}
 
 \subsection{The Cameron--Cohen theorem, II}
@@ -587,7 +682,7 @@ In this section, we use Frobenius’ theorem to strengthen the Cameron--Cohen th
   Let $x\in X$ and $H=G_x$. We claim that 
   if $g\in G\setminus H$, then $H\cap
   gHg^{-1}=\{1\}$. If $h\in H\cap gHg^{-1}$, then
-  $h\cdot x=x$ and $g^{-1}hg\cdot
+  $h\cdot x=x$ and $(g^{-1}hg)\cdot
   x=x$. Since $g\cdot x\ne x$, $h$ fixes two elements of
   $X$. Thus 
   $h=1$, as every non-trivial element fixes at most one element of $X$. 
