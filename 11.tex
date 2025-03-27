@@ -18,22 +18,22 @@ $G$ is \emph{solvable} if $G^{(n)}=\{1\}$ for some $n$.
 \end{example}
 
 \begin{example}
-	The group $\SL_2(3)$ is solvable, as the derived series is 
-	\[
-	\SL_2(3)\supseteq Q_8\supseteq C_4\supseteq C_2\supseteq \{1\}.
-	\]
-	Here is what the computer says:
+	The group $\SL_2(3)$ is solvable. 
+	Let us see what the computer says:
 \begin{lstlisting}
-gap> IsSolvable(SL(2,3));
+> G := SL(2,3);;
+> IsSolvable(G);
 true
-gap> List(DerivedSeries(SL(2,3)),StructureDescription);
-[ "SL(2,3)", "Q8", "C2", "1" ]
+> [GroupName(x) : x in DerivedSeries(G)];
+[ SL(2,3), Q8, C2, C1 ]
 \end{lstlisting}
 \end{example}
 
 \begin{example}
 	Non-abelian simple groups cannot be solvable. 
 \end{example}
+
+For $n\geq5$, the group $\Alt_n$ is not solvable.
 
 \begin{exercise}
 	\label{xca:solvable}
@@ -45,16 +45,15 @@ gap> List(DerivedSeries(SL(2,3)),StructureDescription);
 	\end{enumerate}
 \end{exercise}
 
-\begin{example}
-	For $n\geq5$ the group $\Alt_n$ is not solvable. It follows that 
-	$\Sym_n$ is not solvable for $n\geq5$. 
-\end{example}
+For $n\geq5$, the group $\Sym_5$ is not solvable. 
 
 \begin{exercise}
 \label{xca:pgroups_solvable}
 	Let $p$ be a prime number. Prove that 
 	finite $p$-groups are solvable.
 \end{exercise}
+
+Exercises~\ref{xca:solvable} and~\ref{xca:pgroups_solvable} may be omitted if the reader is already familiar with solvable groups.
 
 \begin{theorem}[Burnside]
 	\index{Burnside's theorem}
@@ -100,6 +99,7 @@ Now we prove the theorem.
 
 \begin{theorem}[Burnside]
 	\index{Burnside's theorem}
+    \label{thm:pq_notsimple}
 	Let $p$ be a prime number. If $G$ is a finite group and 
 	$C$ is a conjugacy class of $G$ with $p^k>1$ elements, then $G$ 
 	is not simple.
@@ -137,6 +137,7 @@ Now we prove the theorem.
 
 \begin{theorem}[Burnside]
   \index{Burnside's theorem}
+  \label{thm:pq}
   Let $p$ and $q$ be prime numbers. If $G$ has order $p^aq^b$, then $G$ is solvable.
 \end{theorem}
 
@@ -162,7 +163,9 @@ Now we prove the theorem.
 	with more than one element, a contradiction.
 \end{proof}
 
-Some generalizations of Burnside's theorem. 
+\subsection{Some generalizations of Burnside's theorem}
+
+If the reader does not know what nilpotent groups are, this section can be safely omitted.
 
 \begin{theorem}[Kegel--Wielandt]
     \index{Kegel--Wielandt's theorem}
@@ -174,6 +177,10 @@ Some generalizations of Burnside's theorem.
 
 See~\cite[Theorem 2.4.3]{MR1211633} for the proof.
 
+\begin{exercise}
+    Prove that Theorem~\ref{thm:KegelWielandt} 
+    implies Theorem~\ref{thm:pq}.
+\end{exercise}
 
 Another generalization of Burnside's theorem
 is based on \emph{word maps}. A word map

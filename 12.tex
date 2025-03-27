@@ -40,7 +40,11 @@ Let $\chi\in\cf(G)$, $\theta\in\cf(N)$ and $g\in G$. Prove that
 \index{Irreducible constituent}
 Recall that every character $\chi$ of a finite group is uniquely 
 a sum of irreducible characters. These are called
-the \emph{irreducible constituents} of $\chi$. 
+the \emph{irreducible constituents} of $\chi$. The set 
+of irreducible constituents of $\chi$ is the set  
+\[
+\{\eta\in\Irr(G):\langle\chi,\eta\rangle\ne0\}.
+\]
 
 \begin{theorem}[Clifford]
 \label{thm:Clifford}
@@ -98,7 +102,7 @@ the \emph{irreducible constituents} of $\chi$.
 \end{proof}
 
 \index{Ramification index}
-The integer $e$ in Theorem~\ref{thm:Clifford} is known as the \emph{ramification index} of $\chi$ on $N$.
+The integer $e$ in Theorem~\ref{thm:Clifford} is known as the \emph{ramification index} of $\chi$ on $N$. In general, the number $e$ is not easy to control. 
 
 \begin{exercise}
 \label{xca:Clifford_divisibility}
@@ -106,6 +110,50 @@ The integer $e$ in Theorem~\ref{thm:Clifford} is known as the \emph{ramification
     be an irreducible constituent of $\Res_N^G\chi$. 
     Prove that $\theta(1)$ divides $\chi(1)$. 
 \end{exercise}
+
+\index{Inertia subgroup}
+Let $G$ be a group and $\theta\in\Irr(G)$. The set 
+\[
+I_G(\theta)=\{g\in G:g\cdot\theta=\theta\}
+\]
+is a subgroup of $G$ and is called \emph{inertia subgroup} of $\theta$ in $G$. Note that the inertia
+subgroup is the stabilizer of the action of $G$ 
+on characters by conjugation (see 
+of Exercise~\ref{xca:conjugate_chars1}). In particular, 
+$\theta$ has 
+$(G:I_G(\theta))$ conjugates. 
+
+\begin{theorem}[Clifford correspondence]
+    Let $G$ be a finite group and $N$ be a normal subgroup of $G$. Let $\theta\in\Irr(N)$ and $I=I_G(\theta)$.  Then 
+    the map 
+    \[
+    \{\psi\in\Irr(I):\langle\Res_N^I\psi,\theta\rangle>0\}\to 
+    \{\chi\in\Irr(G):\langle\Res_N^G\chi,\theta\rangle>0\},\quad 
+    \psi\mapsto\Ind_I^G\psi,
+    \]
+    is bijective. Moreover, if $\psi$ is a constituent of $\Res_I^G\theta$, then 
+    $\langle\Res_N^G\psi,\theta\rangle=\langle\Res_N^G\chi,\theta\rangle$. 
+\end{theorem}
+
+\begin{proof}
+    There are several things to prove. 
+
+    \begin{claim}
+        The map is $\psi\mapsto\Ind_I^G\psi$ well-defined. 
+    \end{claim}
+
+    Let $\psi\in\Irr(I)$ be such that $e=\langle\Res_N^I\psi,\theta\rangle>0$ and 
+    let $\chi\in\Irr(G)$ be a constituent of $\Ind_I^G\psi$. By Frobenius' reciprocity, 
+    \[
+    \langle\psi,\Res_I^G\chi\rangle=\langle\Ind_I^G\psi,\chi\rangle\ne0.
+    \]
+    Thus $\psi$ is a constituent of $\Res_I^G\chi$. This implies that 
+    $\Res_N^I\psi$ is a constituent of $\Res_N^I\Res_I^G\chi$. Let $f=\langle\Res_N^G\chi,\theta\rangle$. Then 
+    \[
+    f=\langle\Res_N^G\chi,\theta\rangle=\langle\Res_N^I\Res_I^G\chi,\theta\rangle
+    \geq\langle\Res_N^I\psi,\theta\rangle=e>0.
+    \]
+\end{proof}
 
 We now present several consequences of Clifford’s theorem.
 
