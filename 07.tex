@@ -115,6 +115,7 @@ It is possible to use the character table to count the number
 of involutions.
 
 \begin{proposition}
+\label{pro:involutions}
     If $G$ is a finite group with $t$ involutions, then
     \[
         1+t=\sum_{\chi\in\Irr(G)}\langle\chi_S-\chi_A,\chi_1\rangle\chi(1),
@@ -145,6 +146,65 @@ of involutions.
     the claim follows after evaluating this expression in 
     $x=1$. 
 \end{proof}
+
+\begin{example}
+    We know that $\Sym_3$ has three involutions, namely $(12)$, $(23)$ and $(13)$. Thus $t=3$. 
+    Let us use Proposition~\ref{pro:involutions} to verify this. 
+    We have already computed the  character table
+    of $\Sym_3$: 
+\bigskip 
+    \begin{center}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& $1$ & $(12)$ & $(123)$ \tabularnewline
+			\hline 
+			$\chi_{1}$ & $1$ & $1$ & $1$\tabularnewline
+			$\chi_{2}$ & $1$ & $-1$ & $1$ \tabularnewline
+			$\chi_{3}$ & $2$ & $0$ & $-1$ \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\bigskip 
+A direct calculation shows that 
+\[
+(\chi_1)_S=(\chi_2)_S=\chi_1\quad\text{and}
+\quad (\chi_1)_A=(\chi_2)_A=0.
+\]
+Moreover, the values of $(\chi_3)_S$ and $(\chi_3)_A$ 
+are
+given by the following table: 
+\bigskip 
+    \begin{center}
+		\begin{tabular}{|c|ccc|}
+			\hline
+			& $1$ & $(12)$ & $(123)$ \tabularnewline
+			\hline 
+			$(\chi_{3})_S$ & $3$ & $1$ & $0$ \tabularnewline
+			$(\chi_{3})_A$ & $1$ & $-1$ & $1$ \tabularnewline
+			\hline
+		\end{tabular}
+	\end{center}
+\bigskip 
+Let $t$ be the number of elements 
+of order two of $\Sym_3$. 
+Since 
+\begin{align*}
+\langle\chi_S-\chi_A,\chi_1\rangle=1
+\end{align*}
+for all $\chi\in\{\chi_1,\chi_2\}$ and
+\[
+\langle (\chi_3)_S-(\chi_3)_A,\chi_1\rangle
+=\frac{1}{6}(12+6-2)=\frac16(2+6-2)=1,
+\]
+Proposition~\ref{pro:involutions} yields 
+\begin{align*} 
+1+t&=\langle (\chi_1)_S-(\chi_1)_A,\chi_1\rangle\chi_1(1)
++\langle (\chi_2)_S-(\chi_2)_A,\chi_1\rangle\chi_2(1)
++\langle (\chi_3)_S-(\chi_3)_A,\chi_1\rangle\chi_3(1)\\
+&=1+1+2.
+\end{align*}
+Thus $t=3$. 
+\end{example}
 
 \index{Cauchy--Schwarz inequality}
 Before proving the Brauer--Fowler theorem, we
@@ -408,8 +468,8 @@ Since
 \]
 it follows that $\xi\in\Irr(G)$. We have found the character table of $G$. 
 
-\bigskip 
-\begin{center}
+\begin{table}[h]
+    \caption{The character table of $\Sym_5$.}
     \begin{tabular}{|c|ccccccc|}
         \hline 
         & $1$ & $10$ & $20$ & $15$ & $30$ & $20$ & $24$ \\
@@ -424,8 +484,7 @@ it follows that $\xi\in\Irr(G)$. We have found the character table of $G$.
         $\xi$ & $5$ & $-1$ & $-1$ & $1$ & $1$ & $-1$ & $0$ \\
         \hline 
     \end{tabular}
-\end{center}
-\bigskip 
+    \end{table}
 
 % g=id,(12),(123),(12)(34),(1234),(123)(45),(12345)
 % chi_3^2(g) : 16,4,1,0,0,1,1
@@ -481,7 +540,6 @@ Let $C$ be a conjugacy class of $G$ such that
 $|C|\leq 2n^2$. Let $g\in C$.  
 Then $H=C_G(g)$ is a subgroup of $G$ such that
 $(G:H)\leq 2n^2$. 
-This finishes the proof of the Brauer--Fowler theorem. 
 
 
 
@@ -506,6 +564,13 @@ define the restriction of class functions.
     \Res_H^G\colon\cf(G)\to\cf(H),\quad  f\mapsto\Res_H^G(f),
     \]
     is a well-defined linear map. 
+\end{exercise}
+
+One important property is the following: 
+
+\begin{exercise}
+\label{xca:Res}
+Let $G$ be a finite group, $H$ a subgroup of $G$ and $\chi \in \Char(G)$. Prove that $\Res_H^G(\chi) \in \Char(H)$.
 \end{exercise}
 
 We now define induction. Let $G$ be a finite group
@@ -539,6 +604,8 @@ the map $f\mapsto f^0$ is linear.
     \]
     is a well-defined linear map. 
 \end{exercise}
+
+Before proving that the induction of a character is a character, we  mention the following crucial property:
 
 \begin{theorem}[Frobenius' reciprocity]
 \index{Frobenius' reciprocity theorem}
@@ -587,16 +654,26 @@ the map $f\mapsto f^0$ is linear.
 \end{corollary}
 
 \begin{proof}
-    Let $\psi\in\Irr(G)$. Using
+    It is enough to show that
+    each $m_\psi=\langle\Ind_H^G\chi,\psi\rangle\in\Z_{\geq0}$ 
+    for all $\psi\in\Irr(G)$. Let $\psi\in\Irr(G)$. By 
     Frobenius' reciprocity theorem, 
     \[
-    m_{\psi}=\langle\Ind_H^G\chi,\psi\rangle
+    m_\psi=\langle\Ind_H^G\chi,\psi\rangle
     =\langle\chi,\Res_H^G\psi\rangle\in\Z_{\geq0}
     \]
     because both $\chi$ and $\Res_H^G\psi$ are
-    characters of $H$. Then 
+    characters of $H$. In fact, let $\Irr(H)=\{\theta_1,\dots,\theta_k\}$. Since $\chi\in\cf(H)$ and 
+    $\Res_H^G\in\cf(H)$, there are 
+    non-negative integers $a_1,\dots,a_k$ and $b_1,\dots,b_k$ such that
+    $\chi=\sum_{i=1}^ka_i\theta_i$ and 
+    $\Res_H^G\psi=\sum_{j=1}^kb_j\theta_j$. Then
     \[
-    \Ind_H^G\chi=\sum_{\psi\in\Irr(G)}m_{\psi}\psi\in\Char(G).
+\langle\chi,\Res_H^G\psi\rangle=\sum_{i=1}^k\sum_{j=1}^ka_ib_j\langle\theta_i,\theta_j\rangle=\sum_{i=1}^ka_ib_i\in\Z_{\geq0}.
+    \]
+    Therefore   
+    \[
+    \Ind_H^G\chi=\sum_{\psi\in\Irr(G)}m_{\psi}\psi\in\Char(G). 
     \]
     In particular, 
     \[
@@ -617,6 +694,24 @@ the map $f\mapsto f^0$ is linear.
     $\Ind_H^G\varphi$. 
 \end{exercise}
 
+There are some useful properties that are easy to show. 
+
+\begin{exercise}
+    Let $G$ be a finite group, $H$ be a subgroup of $G$, 
+    $a\in\cf(H)$ and $b\in\cf(G)$. Prove that 
+    \[
+    \Ind_H^G((\Res_H^Gb)a)=b(\Ind_H^Ga).
+    \]
+\end{exercise}
+
+\begin{exercise}[Transitivity of induction]
+    Let $G$ be a finite group, $H\subseteq K$ be 
+    subgroups of $G$ and $a\in\cf(H)$. 
+    Prove that 
+    \[
+    \Ind_K^G\Ind_H^Ka=\Ind_H^Ga.
+    \]
+\end{exercise}
 
 \begin{exercise}
 \label{xca:useful_Ind}
