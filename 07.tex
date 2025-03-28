@@ -171,7 +171,7 @@ x_1,\dots,x_n\in\R\implies
         \end{cases}
     \]
     Since $\chi^2=\chi_S+\chi_A$, if $\langle\chi^2,\chi_1\rangle=1$, then
-    the trivial character either is part of $\chi_S$ or $\chi_A$, but not both. 
+    the trivial character is an irreducible component either of $\chi_S$ or $\chi_A$, but not both. 
     Thus
     \[
     \langle\chi_S-\chi_A,\chi_1\rangle\in\{-1,1,0\}.
@@ -190,7 +190,7 @@ x_1,\dots,x_n\in\R\implies
     By the Cauchy--Schwarz inequality, 
     \[
         t^2\leq\left(\sum_{i=2}^k\chi_i(1)\right)^2
-        \leq(k-1)\sum_{i=2}^k\chi(1)^2=(k-1)(|G|-1).\qedhere
+        \leq(k-1)\sum_{i=2}^k\chi_irrx(1)^2=(k-1)(|G|-1).\qedhere
     \]
 \end{proof}
 
@@ -561,18 +561,19 @@ the map $f\mapsto f^0$ is linear.
         = \frac{1}{|G|}\frac{1}{|H|}\sum_{x,y\in G}a^0(y^{-1}xy)\overline{b(x)}.
     \end{aligned}
     \end{equation}
-    Since 
-    \[
-    a^0(y^{-1}xy)\ne 0\Longrightarrow
-    y^{-1}xy\in H\Longleftrightarrow x\in yHy^{-1},
-    \]
-    setting $h=y^{-1}xy$ 
+    Setting $h=y^{-1}xy$, 
+    % Since 
+    % \[
+    % a^0(y^{-1}xy)\ne 0\Longrightarrow
+    % y^{-1}xy\in H\Longleftrightarrow x\in yHy^{-1},
+    % \]
+    % setting $h=y^{-1}xy$ 
     we can write \eqref{eq:reciprocity} as 
     \begin{align*}
         \langle\Ind_H^Ga,b\rangle
-        &=\frac{1}{|G|}\frac{1}{|H|}\sum_{x\in G}\sum_{h\in H}a(h)\overline{b(xhx^{-1})}\\
-        &=\frac{1}{|G|}\frac{1}{|H|}\sum_{x\in G}\sum_{h\in H}a(h)\overline{b(h)}\\
-        &=\frac{1}{|G|}\sum_{x\in G}\langle a,\Res_H^Gb\rangle.\qedhere 
+        &=\frac{1}{|G|}\frac{1}{|H|}\sum_{y\in G}\sum_{h\in H}a(h)\overline{b(yhy^{-1})}\\
+        &=\frac{1}{|G|}\frac{1}{|H|}\sum_{y\in G}\sum_{h\in H}a(h)\overline{b(h)}\\
+        &=\frac{1}{|G|}\sum_{y\in G}\langle a,\Res_H^Gb\rangle.\qedhere 
     \end{align*}
 \end{proof}
 

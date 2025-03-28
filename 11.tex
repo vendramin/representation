@@ -569,7 +569,7 @@ of the character table of $\Alt_5$.
 \end{center}
 \bigskip 
 
-One last observation: x§
+One last observation: 
 Since $\zeta=\exp(2\pi i/5)$, it follows
 that 
 \[
@@ -577,3 +577,38 @@ that
 \quad 
 -\zeta^2-\zeta^3=\frac{1+\sqrt{5}}{2}.
 \]
+
+% Let us see what Magma says:
+
+% \begin{lstlisting}
+% > CharacterTable(Alt(5));
+
+
+% Character Table
+% ---------------
+
+
+% ---------------------------
+% Class |   1  2  3    4    5
+% Size  |   1 15 20   12   12
+% Order |   1  2  3    5    5
+% ---------------------------
+% p  =  2   1  1  3    5    4
+% p  =  3   1  2  1    5    4
+% p  =  5   1  2  3    1    1
+% ---------------------------
+% X.1   +   1  1  1    1    1
+% X.2   +   3 -1  0   Z1 Z1#2
+% X.3   +   3 -1  0 Z1#2   Z1
+% X.4   +   4  0  1   -1   -1
+% X.5   +   5  1 -1    0    0
+
+
+% Explanation of Character Value Symbols
+% --------------------------------------
+
+% # denotes algebraic conjugation, that is,
+% #k indicates replacing the root of unity w by w^k
+
+% Z1     = (CyclotomicField(5: Sparse := true)) ! [ RationalField() | 0, 0, -1, -1 ]    
+% \end{lstlisting}

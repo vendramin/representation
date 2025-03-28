@@ -131,8 +131,8 @@ $(G:I_G(\theta))$ conjugates.
     \{\chi\in\Irr(G):\langle\Res_N^G\chi,\theta\rangle>0\},\quad 
     \psi\mapsto\Ind_I^G\psi,
     \]
-    is bijective. Moreover, if $\psi$ is a constituent of $\Res_I^G\theta$, then 
-    $\langle\Res_N^G\psi,\theta\rangle=\langle\Res_N^G\chi,\theta\rangle$. 
+    is bijective. Moreover, if $\psi$ is a constituent of $\Res_N^I\theta$, then 
+    $\langle\Res_N^I\psi,\theta\rangle=\langle\Res_N^G\chi,\theta\rangle$. 
 \end{theorem}
 
 \begin{proof}
@@ -147,12 +147,26 @@ $(G:I_G(\theta))$ conjugates.
     \[
     \langle\psi,\Res_I^G\chi\rangle=\langle\Ind_I^G\psi,\chi\rangle\ne0.
     \]
-    Thus $\psi$ is a constituent of $\Res_I^G\chi$. This implies that 
-    $\Res_N^I\psi$ is a constituent of $\Res_N^I\Res_I^G\chi$. Let $f=\langle\Res_N^G\chi,\theta\rangle$. Then 
+    Thus $\psi$ is a constituent of $\Res_I^G\chi$. 
+    This implies that 
+    $\Res_N^I\psi$ is a constituent of $\Res_N^I\Res_I^G\chi$. 
+    Moreover, 
+    \[
+    \chi(1)\leq(\Ind_I^G\psi)(1)=(G:I)\psi(1).
+    \]
+    Let $f=\langle\Res_N^G\chi,\theta\rangle$. Then  
     \[
     f=\langle\Res_N^G\chi,\theta\rangle=\langle\Res_N^I\Res_I^G\chi,\theta\rangle
     \geq\langle\Res_N^I\psi,\theta\rangle=e>0.
     \]
+    Since $\Res_N^G\chi=f(\theta_1+\cdots+\theta_t)$, where $G\cdot\theta=\{\theta_1,\dots,\theta_t\}$ is 
+    the orbit of $\theta$ under the action of $G$ and $t=(G:I)$,  
+    \[
+    ft\theta(1)=\chi(1)=(\Res_N^G\chi)(1)\leq(\Ind_I^G\psi)(1)=t\psi(1)=et\theta(1)\leq ft\theta(1),
+    \]
+    where the last equality follows since 
+    $\Res_N^I\psi=e\theta$ by Clifford's theorem. Therefore $e=f$ and 
+    $\Ind_I^G\psi=\chi$. 
 \end{proof}
 
 We now present several consequences of Clifford’s theorem.
