@@ -58,48 +58,127 @@ of irreducible constituents of $\chi$ is the set
     \]
     where $\theta=\theta_1,\dots,\theta_t$ are the conjugates 
     of $\theta$ in $G$, 
-    and $e=\langle\Res_N^G\chi,\theta\rangle$ is a positive integer. In particular, all the constituents of $\Res_N^G\chi$ have the same degree. 
+    and $e$ is a positive integer. In particular, all the constituents of $\Res_N^G\chi$ have the same degree. 
 \end{theorem}
 
 \begin{proof}
-    We claim that 
+    Let $G\cdot\theta=\{\theta_1,\dots,\theta_t\}$ be the 
+    orbit of $\theta$. For each $i\in\{1,\dots,t\}$, 
     \[
-    \Res_N^G\Ind_N^G\theta=\frac{1}{|N|}\sum_{g\in G}(g\cdot\theta).
+    \langle\Res_N^G\chi,\theta_i\rangle 
+    =\langle g_i\cdot \Res_H^G\chi,g_i\cdot\theta\rangle
+    =\langle\Res_H^G\chi,\theta\rangle>0
     \]
-    To prove this formula, let $n\in N$. Then 
+    since by assumption $\theta$ is an irreducible constituent of $\Res_N^G\chi$. 
+    Let $e=\langle\Res_H^G\chi,\theta\rangle$. Then 
     \[
-    \left(\Ind_N^G\theta\right)(n)
-    =\frac{1}{|N|}\sum_{g\in G}\theta^0(g^{-1}ng)
-    =\frac{1}{|N|}\sum_{g\in G}\theta(g^{-1}ng)
-    =\frac{1}{|N|}\sum_{g\in G}(g\cdot\theta)(n).
+    \Res_N^G\chi=e(\theta_1+\cdots+\theta_t)+\eta
     \]
-    By Frobenius' reciprocity, 
-    $\langle\Ind_N^G\theta,\chi\rangle=\langle\theta,\Res_N^G\chi\rangle>0$. 
-    Thus $\chi$ is an irreducible constituent of $\Ind_N^G\theta$. 
-    
-    % Moreover, $g\cdot\chi=\chi$ 
-    % for all $g\in G$, since $\chi\in\Irr(G)\subseteq \cf(G)$. 
-    Now 
-    let $\varphi\in\Irr(N)\setminus\{\theta_1,\dots,\theta_t\}$. Then
+    for some $\eta\in\Char(N)$. (Note that the character $\eta$ could be equal to zero.) Since 
     \[
-    \langle \Ind_N^G\theta, \Ind_N^G\varphi\rangle
-    =\langle \Res_N^G\Ind_N^G\theta,\varphi\rangle
-    =\sum_{g\in G}\langle g\cdot\theta,\varphi\rangle=0,
+    e=\langle\Res_H^G\chi,\theta\rangle
+    =\langle e(\theta_1+\cdots+\theta_t)+\eta,\theta\rangle
+    =e\sum_{i=1}^t\langle\theta_i,\theta\rangle+\langle\eta,\theta\rangle
+    =e+\langle\eta,\theta\rangle,
     \]
-    since each $g\cdot\theta=\theta_j$ for some $j\in\{1,\dots,t\}$. 
-    It follows that $\langle\Res_N^G\chi,\varphi\rangle=0$. 
-    Thus all irreducible constituents of $\Res_N^G\chi$ belong
-    to $\{\theta_1,\dots,\theta_t\}$, that is
+    it follows that $\langle\eta,\theta\rangle=0$. By Frobenius' reciprocity, 
+    $\langle\chi,\Ind_N^G\theta\rangle
+    =\langle\Res_N^G\chi,\theta\rangle=e$.
+    Thus 
     \[
-\Res_N^G\chi=\sum_{i=1}^t\langle\Res_N^G\chi,\theta_i\rangle\theta_i.
+    \Ind_N^G\theta=e\chi+\lambda 
     \]
-    Moreover, for each $i\in\{1,\dots,t\}$, 
-    there exists $g_i\in G$ such that
-    $\theta_i=g_i\cdot\theta$. Thus, using Exercise~\ref{xca:conjugate_chars2}, 
+    for some $\lambda\in\Char(G)$. (Note that the character
+    $\lambda$ could be equal to zero.) Since 
     \[
-    \langle\Res_N^G\chi,\theta_i\rangle=\langle\Res_N^G\chi,g_i\cdot\theta\rangle=\langle\Res_N^G\chi,\theta\rangle=e.\]
-    From this the theorem follows. 
+    e=\langle\chi,\Ind_N^G\theta\rangle 
+    =\langle\chi, e\chi+\lambda\rangle
+    =e\langle\chi,\chi\rangle+\langle\chi,\lambda\rangle 
+    =e+\langle\chi,\lambda\rangle,
+    \]
+    it follows that $\langle\chi,\lambda\rangle=0$.
+
+    \begin{claim}
+        $\Res_N^G\Ind_N^G\theta=t\frac{1}{|N|}\sum_{i=1}^t\theta_i$.
+        %=\frac{1}{|N|}\sum_{x\in G}(x\cdot\theta)$.
+    \end{claim}
+
+    Let $n\in N$. For $i\in\{1,\dots,t\}$ let 
+    $x_i\in G$ be such that $x_i\cdot\theta=\theta_i$. Then 
+    \begin{align*}
+        (\Ind_N^G\theta)(n) &= \frac{1}{|N|}\sum_{x\in G}\theta^0(x^{-1}nx)\\
+        &=\frac{1}{|N|}\sum_{x\in G}(x\cdot\theta)(n)\\
+        &=\frac{1}{|N|}\sum_{1=1}^t t(x_i\cdot\theta)(n)\\
+        &=\frac{t}{|N|}\sum_{1=1}^t \theta_i(n), 
+    \end{align*}
+    where we have used that $n\in N$ and $N$ is normal in $G$ (because $x^{-1}nx\in N$ if and only if
+    $n\in xNx^{-1}=N$). 
+
+    \bigskip 
+    Therefore 
+    \begin{align*}
+        \frac{t}{|N|}(\theta_1+\cdots+\theta_t)
+        &=\Res_N^G\Ind_N^G\theta\\
+        &=\Res_N^G(e\chi+\lambda)\\
+        &=e\Res_N^G\chi+\Res_N^G\lambda\\
+        &=e^2(\theta_1+\cdots+\theta_t)+e\eta+\Res_N^G\lambda.
+    \end{align*}
+    Taking inner product against $\eta$,  
+    \[
+    \frac{t}{|N|}\sum_{i=1}^t\langle\theta_i,\eta\rangle 
+    =e^2\sum_{i=1}^t\langle\theta_i,\eta\rangle+e\langle\eta,\eta\rangle+\langle\Res_N^G\lambda,\eta\rangle. 
+    \]
+    Since $\langle\theta_i,\eta\rangle=0$ for all $i\in\{1,\dots,t\}$, 
+    \begin{equation}
+    \label{eq:eta}
+    0=e\langle\eta,\eta\rangle+\langle\Res_N^G\lambda,\eta\rangle.
+    \end{equation}
+    We know that $e>0$. Moreover, since $\eta\in\Char(N)$ and 
+    $e\Res_N^G\lambda\in\Char(N)$, each term of the right hand side of~\eqref{eq:eta} is non-negative, that is 
+    $\langle\eta,\eta\rangle\geq0$ and 
+    $\langle\Res_N^G\lambda,\eta\rangle\geq0$. Therefore 
+    $\langle\eta,\eta\rangle=0$ and hence $\eta=0$. 
 \end{proof}
+
+% \begin{proof}
+%     We claim that 
+%     \[
+%     \Res_N^G\Ind_N^G\theta=\frac{1}{|N|}\sum_{g\in G}(g\cdot\theta).
+%     \]
+%     To prove this formula, let $n\in N$. Then 
+%     \[
+%     \left(\Ind_N^G\theta\right)(n)
+%     =\frac{1}{|N|}\sum_{g\in G}\theta^0(g^{-1}ng)
+%     =\frac{1}{|N|}\sum_{g\in G}\theta(g^{-1}ng)
+%     =\frac{1}{|N|}\sum_{g\in G}(g\cdot\theta)(n).
+%     \]
+%     By Frobenius' reciprocity, 
+%     $\langle\Ind_N^G\theta,\chi\rangle=\langle\theta,\Res_N^G\chi\rangle>0$. 
+%     Thus $\chi$ is an irreducible constituent of $\Ind_N^G\theta$. 
+    
+%     % Moreover, $g\cdot\chi=\chi$ 
+%     % for all $g\in G$, since $\chi\in\Irr(G)\subseteq \cf(G)$. 
+%     Now 
+%     let $\varphi\in\Irr(N)\setminus\{\theta_1,\dots,\theta_t\}$. Then
+%     \[
+%     \langle \Ind_N^G\theta, \Ind_N^G\varphi\rangle
+%     =\langle \Res_N^G\Ind_N^G\theta,\varphi\rangle
+%     =\sum_{g\in G}\langle g\cdot\theta,\varphi\rangle=0,
+%     \]
+%     since each $g\cdot\theta=\theta_j$ for some $j\in\{1,\dots,t\}$. 
+%     It follows that $\langle\Res_N^G\chi,\varphi\rangle=0$. 
+%     Thus all irreducible constituents of $\Res_N^G\chi$ belong
+%     to $\{\theta_1,\dots,\theta_t\}$, that is
+%     \[
+% \Res_N^G\chi=\sum_{i=1}^t\langle\Res_N^G\chi,\theta_i\rangle\theta_i.
+%     \]
+%     Moreover, for each $i\in\{1,\dots,t\}$, 
+%     there exists $g_i\in G$ such that
+%     $\theta_i=g_i\cdot\theta$. Thus, using Exercise~\ref{xca:conjugate_chars2}, 
+%     \[
+%     \langle\Res_N^G\chi,\theta_i\rangle=\langle\Res_N^G\chi,g_i\cdot\theta\rangle=\langle\Res_N^G\chi,\theta\rangle=e.\]
+%     From this the theorem follows. 
+% \end{proof}
 
 \index{Ramification index}
 The integer $e$ in Theorem~\ref{thm:Clifford} is known as the \emph{ramification index} of $\chi$ on $N$. In general, the number $e$ is not easy to control. 
@@ -167,6 +246,45 @@ $(G:I_G(\theta))$ conjugates.
     where the last equality follows since 
     $\Res_N^I\psi=e\theta$ by Clifford's theorem. Therefore $e=f$ and 
     $\Ind_I^G\psi=\chi$. 
+
+    \begin{claim}
+        The map is $\psi\mapsto\Ind_I^G\psi$ is injective. 
+    \end{claim}
+
+    Let $\psi_1\in\Irr(I)$ and $\psi_2\in\Irr(I)$ 
+    be such that 
+    $\langle\Res_N^I\psi_i,\theta\rangle>0$ for all $i\in\{1,2\}$ and 
+    $\chi=\Ind_I^G\psi_1=\Ind_I^G\psi_2\in\Irr(G)$. We want to prove that $\psi_1=\psi_2$. Suppose $\psi_1\ne\psi_2$. 
+    
+    Note that $\psi_1$ and $\psi_2$ are constituents
+    of $\Res_I^G\chi$, since, by Frobenius' reciprocity, 
+    \[
+    \langle\Res_I^G\chi,\psi_i\rangle=
+    \langle\chi,\Ind_I^G\psi_i\rangle=\langle\chi,\chi\rangle=1>0.
+    \]
+    This means that 
+    \[
+    \Res_N^G\chi=a\Res_N^I\psi_1+b\Res_N^I\psi_2+\cdots 
+    \]
+    for some positive integers $a$ and $b$. 
+    It follows that each $\Res_N^I\psi_i$ is a constituent
+    of 
+    \[
+    \Res_N^I\Res_I^G\chi=\Res_N^G\chi.
+    \]
+    Moreover, 
+    \begin{align*}
+        \langle\Res_N^G\chi,\theta\rangle &= \frac{1}{|N|}\sum_{n\in N}(\Res_N^G\chi)(n)\overline{\theta(n)}\\
+        &=\frac{1}{|N|}\sum_{n\in N}(a\Res_N^I\psi_1)(n)+b(\Res_N^I\psi_2)(n)+\cdots)\overline{\theta(n)}\\
+        &\geq\langle\Res_N^I\psi_1,\theta\rangle+\langle\Res_N^I\psi_2,\theta\rangle\\
+        &=\langle\Res_N^G\chi,\theta\rangle+\langle\Res_N^G\chi,\theta\rangle,
+    \end{align*}
+    where the last equality holds because we proved in the previous claim that 
+    \[
+        \langle\Res_N^I\psi_i,\theta\rangle=\langle\Res_N^G\chi,\theta\rangle
+    \]
+    for all $i\in\{1,2\}$. 
+    This implies that $\langle\Res_N^G\chi,\theta\rangle=0$, a contradiction. 
 \end{proof}
 
 We now present several consequences of Clifford’s theorem.
