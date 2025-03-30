@@ -233,6 +233,16 @@ This bound is reached if and only if $(G:Z(G))=p^2$.
 \end{enumerate}
 \end{sol}
 
+\begin{sol}{xca:centralizer}
+    We use the second orthogonality relation and Theorem~\ref{thm:correspondence} 
+    to compute
+    \begin{align*}
+        |C_{G/N}(gN)| &=\sum_{\chi\in\Irr(G/N)}|\chi(gN)|^2
+        =\sum_{\substack{\eta\in\Irr(G)\\N\subseteq\ker\eta}} |\eta(g)|^2
+        \leq\sum_{\eta\in\Irr(G)}|\eta(g)|^2=|C_G(g)|.
+    \end{align*}
+\end{sol}
+
 \begin{sol}{xca:malnormal}
     We first prove that $1)\implies2)$. Let $x\not\in H$ and 
     $h\in H$ be such that $h\cdot xH=xH$. Then 

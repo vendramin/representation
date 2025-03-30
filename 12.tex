@@ -202,6 +202,8 @@ $\theta$ has
 $(G:I_G(\theta))$ conjugates. 
 
 \begin{theorem}[Clifford correspondence]
+\label{thm:Clifford_correspondence}
+\index{Clifford correspondence}
     Let $G$ be a finite group and $N$ be a normal subgroup of $G$. Let $\theta\in\Irr(N)$ and $I=I_G(\theta)$.  Then 
     the map 
     \[
@@ -261,29 +263,33 @@ $(G:I_G(\theta))$ conjugates.
     Let $\psi_1\in\Irr(I)$ and $\psi_2\in\Irr(I)$ 
     be such that 
     $\langle\Res_N^I\psi_i,\theta\rangle>0$ for all $i\in\{1,2\}$ and 
-    $\chi=\Ind_I^G\psi_1=\Ind_I^G\psi_2\in\Irr(G)$. We want to prove that $\psi_1=\psi_2$. 
+    $\chi=\Ind_I^G\psi_1=\Ind_I^G\psi_2$. In the first claim, we proved that $\chi\in\Irr(G)$. 
+    We want to prove that $\psi_1=\psi_2$. 
     
     Suppose $\psi_1\ne\psi_2$. 
-    We know that $\psi_1$ and $\psi_2$ are constituents
+    We know that $\psi_1$ and $\psi_2$ from the first claim that
+    are constituents
     of $\Res_I^G\chi$, that is 
     \[
     \Res_I^G\chi=\psi_1+\psi_2+\xi 
     \]
-    for some map $\xi\colon G\to\C$. 
+    for some map $\xi\colon I\to\C$. (The map $\xi$ is either zero
+    or a character of $I$.) 
     Then both $\Res_N^I\psi_1$ and 
     $\Res_N^I\psi_2$ are constituents 
     of 
-    $\Res_N^G\chi=\Res_N^I\Res_I^G\chi$. Thus 
-    \[
-    \Res_N^G\chi=\Res_N^I\psi_1+\Res_N^I\psi_2+\xi
-    \]
-    where the dots represent either
-    the zero map or some character of $N$. 
+    $\Res_N^G\chi$, as  
+    \begin{align*}
+        \Res_N^G\chi&=\Res_N^I\Res_I^G\chi\\
+        &=\Res_N^I(\psi_1+\psi_2+\xi)\\
+        &=\Res_N^I\psi_1+\Res_N^I\psi_2+\Res_N^I\xi.       
+    \end{align*}
+
     Moreover, 
     \begin{align*}
-        \langle\Res_N^G\chi,\theta\rangle &= \frac{1}{|N|}\sum_{n\in N}(\Res_N^G\chi)(n)\overline{\theta(n)}\\
-        &=\frac{1}{|N|}\sum_{n\in N}(\Res_N^I\psi_1)(n)+(\Res_N^I\psi_2)(n)+\cdots)\overline{\theta(n)}\\
-        &\geq\langle\Res_N^I\psi_1,\theta\rangle+\langle\Res_N^I\psi_2,\theta\rangle\\
+        \langle\Res_N^G\chi,\theta\rangle &= \langle\Res_N^I\psi_1+\Res_N^I\psi_2+\Res_N^I\xi,\theta\rangle\\
+        &=\langle\Res_N^I\psi_1,\theta\rangle+\langle\Res_N^I\psi_2,\theta\rangle+\langle\Res_N^I\xi,\theta\rangle\\
+&\geq\langle\Res_N^I\psi_1,\theta\rangle+\langle\Res_N^I\psi_2,\theta\rangle\\
         &=\langle\Res_N^G\chi,\theta\rangle+\langle\Res_N^G\chi,\theta\rangle,
     \end{align*}
     where the last equality holds because we proved in the previous claim that 
@@ -292,67 +298,134 @@ $(G:I_G(\theta))$ conjugates.
     \]
     for all $i\in\{1,2\}$. 
     This implies that $\langle\Res_N^G\chi,\theta\rangle=0$, a contradiction. 
-\end{proof}
 
-We now present several consequences of Clifford’s theorem.
+    \begin{claim}
+        The map is $\psi\mapsto\Ind_I^G\psi$ is surjective. 
+    \end{claim}
 
-\begin{theorem}
-    Let $G$ be a finite group and $N$ be a normal subgroup of prime index $p$. Then either $\Res_N^G\chi$ is a sum of $p$ 
-    distinct irreducible characters or $\Res_N^G\chi$ is irreducible. 
-\end{theorem}
-
-\begin{proof}
-    Note that $t$ divides $(G:N)$ (see Exercise~\ref{xca:t|G/N}). 
-    So there are two cases
-    to consider, namely $t\in\{1,p\}$. 
-
-    Assume first that $t=p$. Let $\theta$ be an irreducible constituent of $\Res_N^G\chi$. Then $e=\langle\Res_N^G\chi,\theta\rangle$.... 
-\end{proof}
-
-To simplify our presentation, we will introduce an additional assumption regarding the solvability of a certain quotient group. However, the results presented remain valid even without this assumption.
-
-\begin{theorem}
-    Let $G$ be a finite group and $N$ be a normal subgroup of $G$. Assume that $G/N$ is solvable. Let $\chi\in\Irr(G)$ 
-    and $\theta$ be an irreducible constituent of $\Res_N^G\chi$. Then 
-    $\frac{\chi(1)}{\theta(1)}$ divides $(G:N)$. 
-\end{theorem}
-
-\begin{proof}
-    By Clifford's theorem, $\chi(1)/\theta(1)=et\in\Z$. Assume 
-    that the theorem does not hold and let $G$ 
-    be a minimal counterexample. 
-    If $(G:N)=1$, then the result trivially holds. Thus $N\ne G$. 
-
-    We first assume that $G/N$ is simple. Since $G/N$ is solvable, 
-    then $G/N\simeq\Z/p$ for some prime number $p$. Thus 
-    $\chi(1)/\theta(1)\in\{1,p\}$. 
-
-    Assume now that $G/N$ is not simple. Let $M$ be a normal
-    subgroup of $G$ such that $N\leq M\leq G$. Let 
-    $\psi\Irr(M)$ be such that...
-
-    By the inductive hypothesis, 
-    $\chi(1)/\psi(1)$ divides $(G:M)$ and 
-    $\psi(1)/\theta(1)$ divides $(M:N)$. Thus 
+    Let $\chi\in\Irr(G)$ be such that 
+    $e=\langle\Res_N^G\chi,\theta\rangle>0$. Since 
     \[
-    \frac{\chi(1)}{\theta(1)}=\frac{\chi(1)}{\psi(1)}\frac{\psi(1)}{\theta(1)}
+    \Res_I^G\chi=\sum_{\psi\in\Irr(I)}\langle\Res_I^G,\psi\rangle\psi,
     \]
-    divides $(G:M)(M:N)=(G:N)$. 
+    it follows that 
+    \[
+    \Res_N^G\chi=\Res_N^I\Res_I^G\chi
+    =\sum_{\psi\in\Irr(I)}\langle\Res_I^G\chi,\psi\rangle\Res_N^I\psi.
+    \]
+    Since 
+    \[
+    e=\langle\Res_N^G\chi,\theta\rangle=
+    \sum_{\psi\in\Irr(I)}\langle\Res_I^G\chi,\psi\rangle\langle\Res_N^I\psi,\theta\rangle
+    \]
+    is a positive number, there exists some $\psi\in\Irr(I)$ 
+    such that $\langle\Res_I^G\chi,\psi\rangle\langle\Res_N^I\psi,\theta\rangle>0$. In particular, $\langle\Res_N^I\psi,\theta\rangle$ and 
+    \[
+    \langle\chi,\Ind_I^G\psi\rangle=\langle\Res_I^G\chi,\psi\rangle>0
+    \]
+    Hence $\chi=\Ind_I^G\psi$. 
 \end{proof}
 
-We now present a weaker version of Ito’s theorem (Theorem~\ref{thm:Ito}) as a corollary of Clifford’s theorem and
-the previous results. 
+\subsection{It\^o's theorem}
 
-\begin{theorem}[Ito]
-\index{Ito's theorem}
-    Let $G$ be a finite group and $A$ be an abelian normal 
-    subgroup of $G$. Assume that $G/A$ is solvable. 
-    If $\chi\in\Irr(G)$, then $\chi(1)$ divides $(G:A)$. 
+We now present a result that is stronger than Schur’s Theorem~\ref{thm:Schur_chi(1)}.
+To that end, we introduce some exercises on basic properties of the center of characters.
+
+\begin{definition}
+    \index{Center of a character}
+    Let $G$ be a finite group and $\chi\in\Char(G)$. 
+    The \emph{center} of $\chi$ is
+    \[
+    Z(\chi)=\{g\in G:|\chi(g)|=\chi(1)\}.
+    \]
+\end{definition}
+
+\begin{exercise}
+\label{xca:center}
+    Let $G$ be a finite group and $\rho\colon G\to\GL_n(\C)$ be a representation with character 
+    $\chi$. Prove the following statements: 
+    \begin{enumerate}
+        \item $Z(\chi)=\{g\in G:\rho_g=\lambda I\text{ for some $\lambda\in\C\}$}\}$.
+        \item $Z(\chi)$ is a normal subgroup of $G$. 
+        \item $Z(\chi)/\ker\chi$ is cyclic.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+\label{xca:center_quotient}
+    Let $G$ be a finite group and $\chi\in\Irr(G)$. 
+    Prove that 
+    \[
+    Z(\chi)/\ker\chi=Z(G/\ker\chi).
+    \]
+\end{exercise}
+
+\begin{exercise}
+\label{xca:center_ofG}
+    Let $G$ be a finite group. Prove that
+    \[
+    Z(G)=\bigcap\{Z(\chi):\chi\in\Irr(G)\}.
+    \]
+\end{exercise}
+
+The previous exercise shows that the center of a finite group can be determined
+from its character table. It follows that the character table detects
+nilpotency. To do this, one computes $Z(G)$ from the character table of $G$, then
+the character table of $G/Z(G)$, and by iterating this process, one obtains the
+upper central series of the group $G$. 
+
+\begin{lemma}
+\label{lem:Ito}
+    Let $G$ be a finite group and 
+    $\chi\in\Irr(G)$. Then $\chi(1)$ divides $(G:Z(\chi))$. 
+\end{lemma}
+
+\begin{proof}
+    Let $Q=G/\ker\chi$. 
+    By Theorem~\ref{thm:correspondence}, $\chi$ corresponds to 
+    $\eta\in\Char(Q)$. 
+    By Schur's theorem~\ref{thm:Schur_chi(1)}, 
+    $\chi(1)=\eta(1)$ divides $(Q:Z(Q))$. By Exercise~\ref{xca:center_quotient}, 
+    $(Q:Z(Q))=(G:Z(\chi))$.    
+\end{proof}
+
+\begin{theorem}[It\^o]
+\index{It\^o's theorem}
+\label{thm:Ito}
+Let $G$ be a finite group and $\chi\in\Irr(G)$. Then 
+$\chi(1)$ divides $(G:A)$ for all normal abelian subgroup $A$ of $G$.  
 \end{theorem}
 
 \begin{proof}
-    Let $\theta$ be an irreducible constituent of $\Res_A^G\chi$. 
-    Since $A$ is abelian, $\theta(1)=1$. Thus 
-    $\chi(1)=\chi(1)/\theta(1)$ divides $(G:A)$ by 
-    the previous theorem. 
+    Let $A$ be a normal abelian subgroup of $G$ and 
+    $\theta\in\Irr(A)$ be an irreducible constituent of $\Res_A^G\chi$, that 
+    is $\langle\Res_A^G\chi,\theta\rangle>0$. Let $I=I_G(\theta)$. 
+    By Clifford correspondence (Theorem~\ref{thm:Clifford_correspondence}), 
+    $\chi=\Ind_I^G(\psi)$ for some $\psi\in\Irr(I)$ such that 
+    $\langle\Res_A^I\psi,\theta\rangle>0$. By Clifford's theorem, since 
+    $I$ acts trivially on $\theta$, 
+    $\Res_A^I\psi=e\theta$, where $e=\langle\Res_A^I\psi,\theta\rangle>0$. Since $A$ is abelian and
+    $\theta\in\Irr(A)$, $\theta(1)=1$. 
+    
+    We claim that $A\subseteq Z(\psi)$. In fact, if $a\in A$, then 
+    \[
+    |\psi(a)|=|\Res_A^I\psi(a)|=|e\theta(a)|=e|\theta(a)|=e1=e=\psi(1).
+    \]
+    By Lagrange's theorem, $|A|$ divides $|Z(\psi)|$. Thus $(I:Z(\psi))$ divides $(I:A)$. 
+
+    By Lemma~\ref{lem:Ito}, 
+    $e\theta(1)=\psi(1)$ divides $(I:Z(\psi))$. Then 
+    $\psi(1)$ divides $(I:A)$. Now 
+    \[
+    \chi(1)=(\Ind_I^G\psi)(1)=(G:I)\psi(1)
+    \]
+    divides $(G:I)(I:A)=(G:A)$.
 \end{proof}
+
+\begin{bonus}
+    \label{xca:Reynolds}
+	Prove that Itô’s theorem remains valid under the assumption that $A$ is subnormal in $G$.
+\end{bonus}
+
+%The proof of Theorem~\ref{thm:Ito} is no more difficult than that of Schur's Theorem~\ref{thm:Schur_chi(1)}. For a proof, %see \cite[\S8.1]{MR0450380}.
+
