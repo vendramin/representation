@@ -70,11 +70,11 @@ of irreducible constituents of $\chi$ is the set
     =\langle\Res_H^G\chi,\theta\rangle>0
     \]
     since by assumption $\theta$ is an irreducible constituent of $\Res_N^G\chi$. 
-    Let $e=\langle\Res_H^G\chi,\theta\rangle$. Then 
+    Let $e=\langle\Res_N^G\chi,\theta\rangle$. Then 
     \[
     \Res_N^G\chi=e(\theta_1+\cdots+\theta_t)+\eta
     \]
-    for some $\eta\in\Char(N)$. (Note that the character $\eta$ could be equal to zero.) Since 
+    for some $\eta=0$ or $\eta\in\Char(N)$. Since 
     \[
     e=\langle\Res_H^G\chi,\theta\rangle
     =\langle e(\theta_1+\cdots+\theta_t)+\eta,\theta\rangle
@@ -88,8 +88,7 @@ of irreducible constituents of $\chi$ is the set
     \[
     \Ind_N^G\theta=e\chi+\lambda 
     \]
-    for some $\lambda\in\Char(G)$. (Note that the character
-    $\lambda$ could be equal to zero.) Since 
+    for some $\lambda=0$ or $\lambda\in\Char(G)$. Since 
     \[
     e=\langle\chi,\Ind_N^G\theta\rangle 
     =\langle\chi, e\chi+\lambda\rangle
@@ -134,7 +133,7 @@ of irreducible constituents of $\chi$ is the set
     0=e\langle\eta,\eta\rangle+\langle\Res_N^G\lambda,\eta\rangle.
     \end{equation}
     We know that $e>0$. Moreover, since $\eta\in\Char(N)$ and 
-    $e\Res_N^G\lambda\in\Char(N)$, each term of the right hand side of~\eqref{eq:eta} is non-negative, that is 
+    $\Res_N^G\lambda\in\Char(N)$, each term of the right hand side of~\eqref{eq:eta} is non-negative, that is 
     $\langle\eta,\eta\rangle\geq0$ and 
     $\langle\Res_N^G\lambda,\eta\rangle\geq0$. Therefore 
     $\langle\eta,\eta\rangle=0$ and hence $\eta=0$. 
@@ -224,10 +223,18 @@ $(G:I_G(\theta))$ conjugates.
     Let $\psi\in\Irr(I)$ be such that $e=\langle\Res_N^I\psi,\theta\rangle>0$ and 
     let $\chi\in\Irr(G)$ be a constituent of $\Ind_I^G\psi$. By Frobenius' reciprocity, 
     \[
-    \langle\psi,\Res_I^G\chi\rangle=\langle\Ind_I^G\psi,\chi\rangle\ne0.
+    \langle\psi,\Res_I^G\chi\rangle=\langle\Ind_I^G\psi,\chi\rangle>0.
     \]
-    Thus $\psi$ is a constituent of $\Res_I^G\chi$. 
-    This implies that 
+    Thus $\psi$ is a constituent of $\Res_I^G\chi$, that is 
+    \[
+    \Res_I^G\chi=\psi+\lambda 
+    \]
+    for some $\lambda=0$ or $\lambda\in\Char(I)$. Thus
+    \[
+    \Res_N^G\chi=\Res_N^I\Res_I^G\chi=\Res_N^I(\psi+\lambda)
+    =\Res_N^I\psi+\Res_N^I\lambda, 
+    \]
+    that is 
     $\Res_N^I\psi$ is a constituent of $\Res_N^I\Res_I^G\chi$. 
     Moreover, 
     \[
@@ -254,28 +261,28 @@ $(G:I_G(\theta))$ conjugates.
     Let $\psi_1\in\Irr(I)$ and $\psi_2\in\Irr(I)$ 
     be such that 
     $\langle\Res_N^I\psi_i,\theta\rangle>0$ for all $i\in\{1,2\}$ and 
-    $\chi=\Ind_I^G\psi_1=\Ind_I^G\psi_2\in\Irr(G)$. We want to prove that $\psi_1=\psi_2$. Suppose $\psi_1\ne\psi_2$. 
+    $\chi=\Ind_I^G\psi_1=\Ind_I^G\psi_2\in\Irr(G)$. We want to prove that $\psi_1=\psi_2$. 
     
-    Note that $\psi_1$ and $\psi_2$ are constituents
-    of $\Res_I^G\chi$, since, by Frobenius' reciprocity, 
+    Suppose $\psi_1\ne\psi_2$. 
+    We know that $\psi_1$ and $\psi_2$ are constituents
+    of $\Res_I^G\chi$, that is 
     \[
-    \langle\Res_I^G\chi,\psi_i\rangle=
-    \langle\chi,\Ind_I^G\psi_i\rangle=\langle\chi,\chi\rangle=1>0.
+    \Res_I^G\chi=\psi_1+\psi_2+\xi 
     \]
-    This means that 
-    \[
-    \Res_N^G\chi=a\Res_N^I\psi_1+b\Res_N^I\psi_2+\cdots 
-    \]
-    for some positive integers $a$ and $b$. 
-    It follows that each $\Res_N^I\psi_i$ is a constituent
+    for some map $\xi\colon G\to\C$. 
+    Then both $\Res_N^I\psi_1$ and 
+    $\Res_N^I\psi_2$ are constituents 
     of 
+    $\Res_N^G\chi=\Res_N^I\Res_I^G\chi$. Thus 
     \[
-    \Res_N^I\Res_I^G\chi=\Res_N^G\chi.
+    \Res_N^G\chi=\Res_N^I\psi_1+\Res_N^I\psi_2+\xi
     \]
+    where the dots represent either
+    the zero map or some character of $N$. 
     Moreover, 
     \begin{align*}
         \langle\Res_N^G\chi,\theta\rangle &= \frac{1}{|N|}\sum_{n\in N}(\Res_N^G\chi)(n)\overline{\theta(n)}\\
-        &=\frac{1}{|N|}\sum_{n\in N}(a\Res_N^I\psi_1)(n)+b(\Res_N^I\psi_2)(n)+\cdots)\overline{\theta(n)}\\
+        &=\frac{1}{|N|}\sum_{n\in N}(\Res_N^I\psi_1)(n)+(\Res_N^I\psi_2)(n)+\cdots)\overline{\theta(n)}\\
         &\geq\langle\Res_N^I\psi_1,\theta\rangle+\langle\Res_N^I\psi_2,\theta\rangle\\
         &=\langle\Res_N^G\chi,\theta\rangle+\langle\Res_N^G\chi,\theta\rangle,
     \end{align*}
