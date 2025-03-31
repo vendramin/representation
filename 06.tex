@@ -312,7 +312,16 @@ as $k=|\Irr(G)|$.
     \end{enumerate}
 \end{bonus}
 
-Degrees of irreducible characters give a lower bound:
+\index{Cauchy--Schwarz inequality}
+For the next proposition, which provides a lower bound for the commuting probability, we will use
+the \emph{Cauchy–Schwarz inequality}:
+\[
+x_1,\dots,x_n\in\R\implies
+\sum x_i^2\geq\frac{1}{n}(\sum x_i)^2.
+\]
+
+%Degrees of irreducible characters give a lower bound. 
+
 
 \begin{proposition}
 If $G$ is a finite group, then
@@ -327,7 +336,8 @@ If $G$ is a finite group, then
     \begin{align*}
         \left(\sum_{\chi\in\Irr(G)}\chi(1)\right)^2
         &\leq\left(\sum_{\chi\in\Irr(G)}\chi(1)^2\right)\left(\sum_{\chi\in\Irr(G)}1\right)
-        =\left(\sum_{\chi\in\Irr(G)}\chi(1)^2\right)k=|G|k.
+        %=\left(\sum_{\chi\in\Irr(G)}\chi(1)^2\right)k
+        =|G|k.
     \end{align*}
     From this, the claim follows.
 \end{proof}
