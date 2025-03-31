@@ -23,20 +23,32 @@ The polynomial of Exercise~\ref{xca:irreducible} is called the \emph{minimal pol
 
 The \emph{conjugates} of $\alpha$ are the roots of the minimal polynomial of $\alpha$. 
 
-Recall that for an $n\times n$ matrix $A=(a_{ij})$, its \emph{norm} is defined 
+Recall that for an $n\times n$ matrix $A=(a_{ij})$, its \emph{norm} (more precisely, \emph{infinity-norm}) 
+is defined 
 as the maximum absolute row sum of the matrix, that is 
 \[
-\|A\|_\infty=\max_{1\leq i\leq n}\sum_{j=1}^n|a_{ij}|.
+\|A\|=\max_{1\leq i\leq n}\sum_{j=1}^n|a_{ij}|.
 \]
+
 For $A,B\in\C^{n\times n}$ and $\lambda\in\C$, 
 the following properties hold: 
 \begin{enumerate}
-    \item $\|A\|_\infty\geq0$.
-    \item $\|A\|_\infty=0$ if and only if $A$ is the $n\times n$ zero matrix. 
-    \item $\lambda\|A\|_\infty=|\lambda|\|A\|_\infty$. 
-    \item $\|A+B\|_\infty\leq\|A\|_\infty+\|B\|_\infty$. 
-    \item $\|AB\|_\infty\leq\|A\|_\infty\|B\|_\infty$. 
+    \item $\|A\|\geq0$.
+    \item $\|A\|=0$ if and only if $A$ is the $n\times n$ zero matrix. 
+    \item $\lambda\|A\|=|\lambda|\|A\|$. 
+    \item $\|A+B\|\leq\|A\|+\|B\|$. 
+    \item $\|AB\|\leq\|A\|\|B\|$. 
 \end{enumerate}
+
+For our purposes, the choice of norm is not important at all (and any other norm could have been chosen). Nevertheless, we provide an example. Let  
+\[
+A=\begin{pmatrix}
+    1 & 2 & -3\\
+    0 &-5 &-7\\
+    11 & 2 &-3
+\end{pmatrix}.
+\]
+Then $\|A\|=\max\{6,12,16\}=16$. 
 
 \begin{theorem}[Kronecker]
 \index{Kronecker theorem}
@@ -70,7 +82,7 @@ have absolute value at most one. Then either $\alpha=0$ or $\alpha$ is a root of
     entries $\alpha=\alpha_1,\alpha_2,\dots,\alpha_n$, 
     the roots of $f$ (i.e., the conjugates of $\alpha$), 
     so all with absolute value at most one. Thus 
-    $\|D\|_\infty\leq 1$. 
+    $\|D\|\leq 1$. 
     Since $0\not\in\{\alpha_1,\dots,\alpha_n\}$, the matrix
     $F$ is invertible. Moreover, 
     \[
@@ -80,9 +92,9 @@ have absolute value at most one. Then either $\alpha=0$ or $\alpha$ is a root of
     $X=\{F^k:k\geq 1\}\subseteq M_n(\Z)$ is bounded in $M_n(\C)$, 
     as 
     \[
-    \|F^k\|_\infty=\|PD^kP^{-1}\|_\infty\leq 
-    \|P\|_\infty\|D\|_\infty^k\| P^{-1}\|_\infty
-    \leq \underbrace{\|P\|_\infty\| P^{-1}\|_\infty}_{\text{This is independent of $k$}}.
+    \|F^k\|=\|PD^kP^{-1}\|\leq 
+    \|P\|\|D\|^k\| P^{-1}\|
+    \leq \underbrace{\|P\|\| P^{-1}\|}_{\text{This is independent of $k$}}.
     \]
     Thus $X$ is finite. In particular, there are integers $i<j$ such that 
     $F^i=F^j$. Since $F$ is invertible, $F^{j-i}$ is the $n\times n$ 
