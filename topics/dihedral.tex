@@ -13,11 +13,71 @@ Our goal is the construct the character table of $\D_{n}$.
 
 \begin{proposition}
 \label{pro:classes_dihedral}
-        
+    Let $n\geq3$. If $n$ is odd, then 
+    \[
+    \{1\},
+    \{r,r^{-1}\},
+    \{r^2,r^{-2}\},
+    \cdots,\{r^{(n-1)/2},r^{(1-n)/2}\},
+    \{s,sr,sr^2,\dots,sr^{n-1}\}
+    \]
+    are the conjugacy classes of $\D_n$. If $n$ is even, then
+    \begin{align*}
+        \{1\},
+    \{r,r^{-1}\},
+    \{r^2,r^{-2}\},
+    \cdots,&\{r^{n/2-1},r^{1-n/2}\},\\
+    &\{r^{n/2}\},
+    \{s,sr^2,sr^4,\dots,sr^{n-2}\},
+    \{sr,sr^3,\dots,sr^{n-1}\}
+    \end{align*}
+    are the conjugacy classes of $\D_n$.
 \end{proposition}
 
 \begin{proof}
+    Recall that $sr^j=r^{-j}s$ for all $j$. Let $g=s^ir^j\in\D_n$ and 
+    $x=s^kr^l\in\D_n$. Let us compute $xgx^{-1}$. We split the
+    proof into several steps. 
+
+    Assume first that $i=0$, that is $g=r^j$. Then
+    \[
+    xgx^{-1}=(s^kr^l)r^j(r^{-l}s^{-k})=s^kr^js^{-k}
+    =\begin{cases}
+        r^j & \text{if $k=0$,}\\
+        r^{-j} & \text{if $k=1$.}
+    \end{cases}
+    \]
+    Hence the conjugacy class of $g=r^j$ is $\{r^j,r^{-j}\}$. 
+
+    Now assume that $i=1$, that is $g=sr^j$. Since $k\in\{0,1\}$, a direct
+    calculation using the fact that $r^ls=sr^{-l}$ yields 
+    \[
+    xgx^{-1}=\begin{cases} 
+        sr^{-2l+j} & \text{if $k=0$,}\\
+        sr^{2l-j} & \text{if $k=1$.}
+        \end{cases}
+    \]
+    Hence the conjugacy class of $g=sr^j$ is $\{sr^{2l-j},sr^{-2l+j}:0\leq l\leq n-1\}$. 
+
+    Assume that $n$ is odd. We have determined the conjugacy classes 
+    \[
+    \{1\},\{b,b^{-1}\},\{b^2,b^{-2}\},\dots,\{b^{(n-1)/2},b^{(1-n)/2}\}
+    \]
+    which together cover all the elements of the subgroup 
+    $\langle b\rangle=\{1,b,b^2,\dots,b^{n-1}\}$. Since $n$ is odd, for every 
+    integer 
+    $m$ there exists an integer $x$ such that $2x\equiv m\bmod n$. Thus 
+    the conjugacy class of $s$ is $\{s,sr,sr^2,\dots,sr^{n-1}\}$. These classes together cover 
+    all the elements of $\D_n$. 
     
+    Now assume that $n$ is even. We have determined the conjugacy classes 
+    \[
+    \{1\},\{b,b^{-1}\},\{b^2,b^{-2}\},\dots,\{b^{n/2-1},b^{1-n/2}\},\{b^{n/2}\}
+    \]
+    which together cover all the elements of the subgroup 
+    $\langle b\rangle=\{1,b,b^2,\dots,b^{n-1}\}$. The class of $s$ is $\{s,sr^2,sr^4,\dots,sr^{n-2}\}$ and 
+    the class of $sr$ is $\{sr,sr^3,\dots,sr^{n-1}\}$. These classes together cover 
+    all the elements of $\D_n$. 
 \end{proof}
 
 The previous proposition gives the number of conjugacy classes of the dihedral group $\D_n$, namely
@@ -57,9 +117,8 @@ we need the index of the commutator subgroup.
 
 By Proposition~\ref{pro:classes_dihedral}, the representatives of the conjugacy classes of $\D_n$ are 
 $1,r,r^2,\dots,r^{(n-1)/2},s$. 
-By Exercise~\ref{xca:commutator_dihedral}, there are two degree-one characters, namely the trivial character $\chi_1$ 
-and the character $\chi_2$ such that $r\mapsto 1$ and $s\mapsto -1$. We have
-two irreducible characters: 
+By Exercise~\ref{xca:commutator_dihedral}, there are two degree-one characters, namely the trivial character 
+and the character $\eta$ such that $r\mapsto 1$ and $s\mapsto -1$. 
 
 \bigskip 
 \begin{center}
@@ -67,14 +126,16 @@ two irreducible characters:
          \hline 
          & $1$ & $r$ & $r^2$ & $\cdots$  & $r^{(n-1)/2}$ & $s$\\
          \hline 
-         $\chi_1$ & $1$ & $1$ & $1$ & $\cdots$ & $1$ & $1$\\
-         $\chi_2$ & $1$ & $1$ & $1$ & $\cdots$ & $1$ & $-1$\\
+         trivial & $1$ & $1$ & $1$ & $\cdots$ & $1$ & $1$\\
+         $\eta$ & $1$ & $1$ & $1$ & $\cdots$ & $1$ & $-1$\\
          \hline 
     \end{tabular}
 \end{center}
 \bigskip 
 
-We need other $n-1$ irreducible characters. For $m\in\{1,\dots,n-1\}$, let $\omega_m=e^{2\pi im/n}$ and 
+Assume that $n=2k-1$. 
+We need $\frac{n-1}{2}=k-1$ additional irreducible characters.
+For $m\in\{1,\dots,k-1\}$, let $\omega_m=e^{2\pi im/k}$ and 
 \[
 \rho_m\colon\D_n\to\GL_2(\C),\quad 
 r\mapsto\begin{pmatrix}\omega_m&0\\0&\omega_m^{-1}\end{pmatrix},\quad 
@@ -82,6 +143,7 @@ s\mapsto\begin{pmatrix}0&1\\1&0\end{pmatrix}.
 \]
 
 \begin{exercise}
+\label{xca:rho_m}
     Prove that each $\rho_m$ is a group homomorphism.
 \end{exercise}
 
@@ -101,13 +163,75 @@ character $\chi_m$ of $\rho_m$.
 \bigskip 
 
 \begin{exercise}
-    Let $k,l\in\{1,\dots,n-1\}$. Prove that $\chi_k\ne\chi_l$ whenever $k\ne l$.
+\label{xca:all_different}
+    Let $i,j\in\{1,\dots,k-1\}$. Prove that $\chi_i\ne\chi_j$ whenever $i\ne j$.
 \end{exercise}
 
 \begin{exercise}
+\label{xca:irreducible}
     Prove that each $\chi_m$ is irreducible. 
 \end{exercise}
 
-
+It remains only to note that we have constructed 
+$\frac{n+3}{2}$ irreducible characters of $\D_n$, 
+so the character table of $\D_n$ for odd $n$ 
+is complete!
 
 \subsection{$n$ even}
+
+In this case, by Exercise~\ref{xca:commutator_dihedral}, there are four 
+degree-one representations. These are the group homomorphisms defined as follows: For $j\in\{1,2,3,4\}$, let $\eta_j\colon\D_n\to\C$ be given by 
+\begin{align*}
+    \eta_1(r)&=1, & \eta_2(r)&=1, &  \eta_3(r)&=-1, & \eta_4(r)&=-1,\\
+    \eta_1(s)&=1, & \eta_2(s)&=-1, & \eta_3(s)&=1, &  \eta_4(s)&=-1.\\
+\end{align*}
+
+Of course, $\eta_1$ is the trivial character of $\D_n$. 
+By a direct calculation, we compute the values of the other characters: 
+\bigskip 
+\begin{center}
+    \begin{tabular}{|c|ccccccc|}
+         \hline 
+         & $1$ & $r$ & $r^2$ & $\cdots$  & $r^{n/2}$ & $s$ & $sr$\\
+         \hline 
+         $\eta_1$ & $1$ & $1$ & $1$ & $\cdots$ & $1$ & $1$ & $1$\\
+         $\eta_2$ & $1$ & $1$ & $1$ & $\cdots$ & $1$ & $-1$ & $-1$ \\
+         $\eta_3$ & $1$ & $-1$ & $1$ & $\cdots$ & $(-1)^{n/2}$ & $1$ & $(-1)^{n/2}$ \\
+         $\eta_4$ & $1$ & $-1$ & $1$ & $\cdots$ & $(-1)^{n/2}$ & $-1$ & $(-1)^{n/2+1}$\\
+         \hline 
+    \end{tabular}
+\end{center}
+\bigskip 
+
+Assume now that $n=2k$. 
+We need $\frac{n-1}{2}=k-1$ additional irreducible characters. For 
+$m\in\{1,\dots,k-1\}$, let $\omega_m=e^{2\pi im/k}$ and 
+\[
+\rho_m\colon\D_n\to\GL_2(\C),\quad 
+r\mapsto\begin{pmatrix}\omega_m&0\\0&\omega_m^{-1}\end{pmatrix},\quad 
+s\mapsto\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+
+Each $\rho_m$ is a group homomorphism (see Exercise~\ref{xca:rho_m}). 
+A direct calculation produces the values of the 
+character $\chi_m$ of $\rho_m$.
+
+\bigskip 
+\begin{center}
+    \begin{tabular}{|c|ccccccc|}
+         \hline 
+         & $1$ & $r$ & $r^2$ & $\cdots$  & $r^{n/2}$ & $s$ & $sr$\\
+         \hline 
+         $\chi_m$ & $1$ & $\omega_m+\omega_m^{-1}$ & $\omega_m^2+\omega_m^{-2}$ & $\cdots$ & $\omega_m^{n/2}+\omega_m^{-n/2}$ & $0$ & $0$\\
+         \hline 
+    \end{tabular}
+\end{center}
+\bigskip 
+
+In the same way that we constructed the character table when $n$ is odd, 
+we now need to verify that we have constructed 
+$\frac{n+6}{2}$ irreducible characters of $\D_n$. 
+
+\begin{exercise}
+    Prove that we have constructed $\frac{n+6}{2}$ irreducible characters of $\D_n$. 
+\end{exercise}
