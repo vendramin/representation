@@ -1,0 +1,113 @@
+\section{Project: Irreducible characters of dihedral groups}
+
+Let $n\geq3$. 
+Recall that the \emph{dihedral group} of order $2n$ 
+is the group
+\[
+\D_{n}=\langle r,s:r^n=s^2=1,srs=r^{-1}\rangle. 
+\]
+Every element of $\D_{n}$ is of the form
+$s^ir^j$ for some $i\in\{0,1\}$ and $j\in\{0,\dots,n-1\}$. 
+
+Our goal is the construct the character table of $\D_{n}$. 
+
+\begin{proposition}
+\label{pro:classes_dihedral}
+        
+\end{proposition}
+
+\begin{proof}
+    
+\end{proof}
+
+The previous proposition gives the number of conjugacy classes of the dihedral group $\D_n$, namely
+\[
+\frac{2n+9+(-1)^n3}{4}=\begin{cases}
+    \frac{n+6}{2} & \text{if $n$ is even},\\
+    \frac{n+3}{2} & \text{if $n$ is odd}.\\
+\end{cases}
+\]
+This number is precisely the number of irreducible representations of $\D_n$. 
+
+\begin{exercise}
+\label{xca:center_dihedral}
+    Compute $Z(\D_n)$. 
+\end{exercise}
+
+\begin{exercise}
+\label{xca:cp_dihedral}
+    Prove that $\lim_{n\to\infty}\cp(\D_{n})=1/4$.
+\end{exercise}
+
+To determine the number of degree-one representations of our group, 
+we need the index of the commutator subgroup.
+
+\begin{exercise}
+\label{xca:commutator_dihedral}
+    Prove that $[\D_n,\D_n]=\langle r^2\rangle$. Moreover, 
+    \[
+    (G:[G,G])=\begin{cases}
+        2 & \text{if $n$ is odd.}\\
+        4 & \text{if $n$ is even.}
+    \end{cases}
+    \]
+\end{exercise}
+
+\subsection{$n$ odd}
+
+By Proposition~\ref{pro:classes_dihedral}, the representatives of the conjugacy classes of $\D_n$ are 
+$1,r,r^2,\dots,r^{(n-1)/2},s$. 
+By Exercise~\ref{xca:commutator_dihedral}, there are two degree-one characters, namely the trivial character $\chi_1$ 
+and the character $\chi_2$ such that $r\mapsto 1$ and $s\mapsto -1$. We have
+two irreducible characters: 
+
+\bigskip 
+\begin{center}
+    \begin{tabular}{|c|cccccc|}
+         \hline 
+         & $1$ & $r$ & $r^2$ & $\cdots$  & $r^{(n-1)/2}$ & $s$\\
+         \hline 
+         $\chi_1$ & $1$ & $1$ & $1$ & $\cdots$ & $1$ & $1$\\
+         $\chi_2$ & $1$ & $1$ & $1$ & $\cdots$ & $1$ & $-1$\\
+         \hline 
+    \end{tabular}
+\end{center}
+\bigskip 
+
+We need other $n-1$ irreducible characters. For $m\in\{1,\dots,n-1\}$, let $\omega_m=e^{2\pi im/n}$ and 
+\[
+\rho_m\colon\D_n\to\GL_2(\C),\quad 
+r\mapsto\begin{pmatrix}\omega_m&0\\0&\omega_m^{-1}\end{pmatrix},\quad 
+s\mapsto\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+
+\begin{exercise}
+    Prove that each $\rho_m$ is a group homomorphism.
+\end{exercise}
+
+A direct calculation produces the values of the 
+character $\chi_m$ of $\rho_m$.
+
+\bigskip 
+\begin{center}
+    \begin{tabular}{|c|cccccc|}
+         \hline 
+         & $1$ & $r$ & $r^2$ & $\cdots$  & $r^{(n-1)/2}$ & $s$\\
+         \hline 
+         $\chi_m$ & $1$ & $\omega_m+\omega_m^{-1}$ & $\omega_m^2+\omega_m^{-2}$ & $\cdots$ & $\omega_m^{(n-1)/2}+\omega_m^{(1-n)/2}$ & 0\\
+         \hline 
+    \end{tabular}
+\end{center}
+\bigskip 
+
+\begin{exercise}
+    Let $k,l\in\{1,\dots,n-1\}$. Prove that $\chi_k\ne\chi_l$ whenever $k\ne l$.
+\end{exercise}
+
+\begin{exercise}
+    Prove that each $\chi_m$ is irreducible. 
+\end{exercise}
+
+
+
+\subsection{$n$ even}
