@@ -243,6 +243,24 @@ This bound is reached if and only if $(G:Z(G))=p^2$.
     \end{align*}
 \end{sol}
 
+
+\begin{sol}{xca:Frobenius_pq}
+    Assume that $G$ is not abelian. By Sylow's theorems, 
+    $q$ divides $p-1$ and there exists 
+    a unique Sylow $p$-subgroup $P$ of $G$. Let $a,b\in G$ be such that 
+    $P=\langle a\rangle\simeq\Z/p$ and $G/P=\langle bP\rangle\simeq\Z/q$. By Lagrange's theorem, 
+    $G=\langle a,b\rangle$. We compute the order of $b^q$. Since 
+    $G$ is not cyclic (because it is not abelian) and $b^q\in P$, 
+    we conclude that $|b^q|=1$. 
+    Since $P$ is normal in $G$, 
+    $bab^{-1}\in P$ and hence $bab^{-1}=a^z$ for some $z\in\Z$. Therefore
+    $b^qab^{-q}=a^{z^q}$. This implies that 
+    $z^q\equiv1\bmod p$. The order of $z$ in $(\Z/p)^{\times}$ divides 
+    $q$ and hence it is equal to $q$ (otherwise, $z=1$ and thus $bab^{-1}=a$, which implies
+    that $G$ is abelian). In conclusion, 
+    $G\simeq F_{p,q}$. 
+\end{sol}
+
 \begin{sol}{xca:malnormal}
     We first prove that $1)\implies2)$. Let $x\not\in H$ and 
     $h\in H$ be such that $h\cdot xH=xH$. Then 

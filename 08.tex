@@ -34,7 +34,9 @@ is a normal subgroup of $G$.
 \begin{proof}
 Let $\rho\colon G\to\GL_n(\C)$ be a representation with character $\chi$. Then 
 $\ker\rho\subseteq\ker\chi$, as $\rho_g=\id$ implies 
-$\chi(g)=\trace(\rho_g)=n=\chi(1)$. We claim that  
+$\chi(g)=\trace(\rho_g)=n=\chi(1)$. 
+
+We claim that  
 $\ker\chi\subseteq\ker\rho$. If $g\in G$ is such that $\chi(g)=\chi(1)$, since 
 $\rho_g$ is diagonalizable, there exist eigenvalues $\lambda_1,\dots,\lambda_n\in\C$ such that
 \[
@@ -45,6 +47,7 @@ $\lambda_1=\cdots=\lambda_n=1$. Hence $\rho_g=\id$.
 \end{proof}
 
 \index{Kernel!of a character}
+\index{Kernel!of a representation}
 If $\chi$ is a character, the subgroup $\ker\chi$ 
 is the \emph{kernel} of $\chi$. 
 
@@ -362,38 +365,27 @@ the multiplication table of $G$.
 
 The group   
 \[
-F_{p,q}=\langle a,b:a^p=b^q=1,bab^{-1}=a^u\rangle,
+\langle a,b:a^p=b^q=1,bab^{-1}=a^u\rangle,
 \]
 where $u\in\Z$ has order $q$ modulo $p$, 
 is a particular case of a  
 \emph{Frobenius group}. 
 
-\begin{proposition}
-\label{pro:Frobenius_pq}
+\begin{exercise}
+\label{xca:Frobenius_pq}
     Let $p$ and $q$ be prime numbers such that $p>q$. Let  
     $G$ be a group of order $pq$. Then either $G$ is abelian or
     $q$ divides $p-1$ and 
-    $G\simeq F_{p,q}$.
-\end{proposition}
+    \[
+    G\simeq \langle a,b:a^p=b^q=1,bab^{-1}=a^u\rangle
+    \]
+    for some $u\in\Z$ of order
+    $q$ modulo $p$. 
+\end{exercise}
 
-\begin{proof}
-    Assume that $G$ is not abelian. By Sylow's theorems, 
-    $q$ divides $p-1$ and there exists 
-    a unique Sylow $p$-subgroup $P$ of $G$. Let $a,b\in G$ be such that 
-    $P=\langle a\rangle\simeq\Z/p$ and $G/P=\langle bP\rangle\simeq\Z/q$. By Lagrange's theorem, 
-    $G=\langle a,b\rangle$. We compute the order of $b^q$. Since 
-    $G$ is not cyclic (because it is not abelian) and $b^q\in P$, 
-    we conclude that $|b^q|=1$. 
-    Since $P$ is normal in $G$, 
-    $bab^{-1}\in P$ and hence $bab^{-1}=a^z$ for some $z\in\Z$. Therefore
-    $b^qab^{-q}=a^{z^q}$. This implies that 
-    $z^q\equiv1\bmod p$. The order of $z$ in $(\Z/p)^{\times}$ divides 
-    $q$ and hence it is equal to $q$ (otherwise, $z=1$ and thus $bab^{-1}=a$, which implies
-    that $G$ is abelian). In conclusion, 
-    $G\simeq F_{p,q}$. 
-\end{proof}
 
-Using Proposition~\ref{pro:Frobenius_pq}, we can prove, for example, that every group of order 15 is abelian. We can also show that, up to isomorphism, $\Z/20$ and $F_{5,4}$ are the only groups of order 20.
+Using Exercise~\ref{xca:Frobenius_pq}, we can prove, for example, that every group of order $15$ is abelian. 
+% We can also show that, up to isomorphism, $\Z/20$ and $F_{5,4}$ are the only groups of order 20.
 
 \begin{definition}
   \index{Frobenius!complement}
@@ -489,7 +481,7 @@ group
 \]
 of order $2(2n+1)$. It follows that
 $\D_{2n+1}$ is a Frobenius
-group with complement $\langle b\rangle$. 
+group with complement $\langle s\rangle$. 
 
 \begin{theorem}[Frobenius]
   \label{thm:Frobenius}
@@ -502,6 +494,7 @@ group with complement $\langle b\rangle$.
 \end{theorem}
 
 \begin{proof}
+    Let $1_H$ and $1_G$ be the trivial characters of $H$ and $G$, respectively.  
   For each $\chi\in\Irr(H)$, $\chi\ne1_H$, let 
   $\alpha=\chi-\chi(1)1_H\in\cf(H)$, where $1_H$ denotes the trivial character of $H$. 
 
@@ -514,7 +507,7 @@ group with complement $\langle b\rangle$.
   since, if $x\not\in H$, then $x^{-1}hx\in H$ implies that 
   $h\in H\cap xHx^{-1}=\{1\}$.
 
-  By Frobenius' reciprocity, 
+  By Frobenius' reciprocity and the definition of $\alpha$, 
   \begin{equation}
     \label{eq:<a,a>=1+chi2}
     \langle\Ind_H^G\alpha,\Ind_H^G\alpha\rangle
@@ -671,176 +664,4 @@ proof} of Frobenius’ theorem, though it resembles the original character-theor
   \]
   Therefore $G=NH$.
 \end{proof}
-
-\subsection{The Cameron--Cohen theorem (again)}
-
-In this section, we use Frobenius’ theorem to strengthen the Cameron--Cohen theorem on derangements (Theorem~\ref{thm:CameronCohen}). To do so, we first require an alternative version of Frobenius’ theorem.
-
-\begin{corollary}[Frobenius]
-    \label{cor:Frobenius_combinatorio}
-    \index{Frobenius!theorem}
-    Let $G$ be a group acting transitively on a finite set $X$. 
-    Assume that each $g\in G\setminus\{1\}$ fixes 
-    at most one element of 
-     $X$. The set $N$ formed by the identity and the derangements 
-     of $G$ is a normal subgroup of $G$.
-\end{corollary}
-
-\begin{proof}
-  Let $x\in X$ and $H=G_x$. We claim that 
-  if $g\in G\setminus H$, then $H\cap
-  gHg^{-1}=\{1\}$. If $h\in H\cap gHg^{-1}$, then
-  $h\cdot x=x$ and $(g^{-1}hg)\cdot
-  x=x$. Since $g\cdot x\ne x$, $h$ fixes two elements of
-  $X$. Thus 
-  $h=1$, as every non-trivial element fixes at most one element of $X$. 
-
-  By Theorem~\ref{thm:Frobenius}, 
-  \[
-    N=\left(G\setminus\bigcup_{g\in G}gHg^{-1}\right)\cup\{1\}
-  \]
-  is a subgroup of $G$. Let us compute the elements of $N$. If 
-  $h\in\bigcup_{g\in G}gHg^{-1}$, then there exists  $g\in G$ such that $g^{-1}hg\in H$,
-  that is $(g^{-1}hg)\cdot x=x$; equivalently, 
-  $h\in G_{g\cdot x}$. Therefore, the 
-  non-identity elements of $N$ are the elements of $G$
-  moving every element of $X$.
-\end{proof}
-
-\begin{example}
-  Let $F$ be a finite field and $G$ be the group of maps 
-  $f\colon F\to F$ of the form 
-  $f(x)=ax+b$, $a,b\in F$ with $a\ne0$. The group $G$ acts on 
-  $F$ and every 
-  $f\ne\id$ fixes at most one element of $F$, as 
-  \[
-	x=f(x)=ax+b\implies a\ne 1\text{ and } x=b/(1-a).
-  \]
-  In this case, $N=\{f:f(x)=x+b\,,b\in F\}$ 
-  is a subgroup of $G$.
-\end{example}
-
-\begin{exercise}
-    Prove that Theorem~\ref{thm:Frobenius} can be obtained from
-    Corollary~\ref{cor:Frobenius_combinatorio}.
-\end{exercise}
-
-Using Frobenius’ theorem (Corollary~\ref{cor:Frobenius_combinatorio}), we can present a refinement of the Cameron–Cohen theorem.
-
-% Wielandt 8.5.4
-% 8.5.6 para ver algo de grupos de permutaciones
-% 7.1 para ejemplo H(q)
-% 10.5.6 (Thompson) N es nilpotente, se usa 10.5.4 
-
-\begin{theorem}[Cameron--Cohen]
-\index{Cameron--Cohen!theorem}
-\label{thm:CameronCohen>1/n}
-    Let $G\leq\Sym_n$ be a transitive subgroup. 
-    If $n$ is not the power of a prime number, then
-    $c_0>\frac{1}{n}$. 
-\end{theorem}
-
-\begin{proof}
-    Let us go back to the proof
-    of Theorem~\ref{thm:CameronCohen}. Assume that 
-    $c_0=1/n$. Then
-    \[
-    \frac{1}{|G|}\sum_{g\in G}(\chi(g)^2-(n+1)\chi(g)+n)=1
-    \]
-    and hence $\frac{1}{|G|}\sum_{g\in G}\chi(g)^2=2$. Moreover, 
-    since 
-    \[
-    \frac{1}{|G|}\sum_{g\in G_0}(\chi(g)-1)(\chi(n)-n)
-    +\frac{1}{|G|}\sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)=1,
-    \]
-    it follows that 
-    \[
-    \sum_{g\in G\setminus G_0}(\chi(g)-1)(\chi(g)-n)=0.
-    \]
-    Hence $(\chi(g)-1)(\chi(g)-n)=0$
-    for all $g\in G\setminus G_0$. 
-    
-    By Corollary~\ref{cor:Frobenius_combinatorio}, 
-    the subset $N=G_0\cup\{\id\}$ is a normal subgroup of $G$. Moreover, $G=N\rtimes H$ for some 
-    subgroup $H$ of $G$ of order $n$. Since 
-    $n=|H|=|N|-1$, $H$ acts freely and transitively 
-    on $N\setminus\{1\}$. 
-
-    We claim that $N$ is a $p$-group for some prime number $p$. Let $n,m\in N\setminus\{1\}$. Since $H$ is transitive on $N\setminus\{1\}$, 
-    there exists $h\in H$ such that $h\cdot n=m$. Then
-    \[
-    |n|=|h\cdot n|=|m|,
-    \]
-    since for each $h\in H$, the map 
-    $x\mapsto h\cdot x$ is an automorphism of $N$. Thus every two elements of $N\setminus\{1\}$ have 
-    the same order. Let $p$ be a prime divisor 
-    of $|N|$. By Cauchy's theorem, there exists 
-    $n\in N$ such that $|n|=p$. Since all non-trivial
-    elements of $N$ have the same order, 
-    $N$ is a $p$-group. Therefore 
-    $n=|N|$ is a power of a prime.
-\end{proof}
-
-In his doctoral thesis Thompson proved the following result, conjectured
-by Frobenius. 
-
-\begin{theorem}[Thompson]
-\index{Thompson theorem}
-    Let $G$ be a Frobenius group. If $N$ is the Frobenius kernel, then $N$ 
-    is nilpotent.
-\end{theorem}
-
-See~\cite[Theorem 6.24]{MR2426855} for the proof.
-
-\begin{exercise}
-\label{xca:Frobenius_size20}
-Let $G$ be the group of matrices 
-of the form $\begin{pmatrix}a&b\\0&1\end{pmatrix}$ where $a,b\in\Z/5$ and $a\ne 0$. Then $|G|=20$. Let 
-\[
-    h=\begin{pmatrix}
-        2\\
-        &1
-    \end{pmatrix},\quad 
-    k=\begin{pmatrix}
-        1&1\\
-        &1
-    \end{pmatrix}.
-\]
-A direct calculation shows that 
-$h^4=1$, $k^5=1$ and $hkh^{-1}=k^2$. Let $H=\langle h\rangle$ 
-and $K=\langle k\rangle$. Prove the following statements: 
-
-\begin{enumerate}
-    \item Prove that $G=K\rtimes H$.
-    \item Find the conjugacy classes of $G$: 
-\begin{center}
-        \begin{tabular}{cccccc}
-             Size & $1$ & $4$ & $5$ & $5$ & $5$\\
-             \hline 
-             Representative & $1$ & $k$ & $h$ & $h^2$ & $h^3$\\
-        \end{tabular}
-\end{center}
-\item Prove that $G/K$ is cyclic of order four. 
-\item Prove that $[G,G]=K$. 
-\item Use Theorem~\ref{thm:correspondence} on $G/K$ 
-    to find the degree-one characters of $G$. 
-\item Let $\chi\in\Irr(K)$ be such that $\chi(k)=\exp(2\pi i/5)$. Prove that 
-$\Ind_K^G\chi\in\Irr(G)$. 
-\end{enumerate}
-\end{exercise}
-
-% \begin{center}   
-%         \begin{tabular}{|c|ccccc|}
-%              \hline
-%              & $1$ & $k$ & $h$ & $h^2$ & $h^3$\\
-%              \hline
-%              $\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\\
-%              $\chi_2$ & $1$ & $1$ & $i$ & $-1$ & $-i$\\
-%              $\chi_3$ & $1$ & $1$ & $-1$ & $1$ & $-1$\\
-%              $\chi_4$ & $1$ & $1$ & $-i$ & $-1$ & $i$\\
-%              $\chi_5$ & $4$ & $-1$ & $0$ & $0$ & $0$\\
-%              \hline
-%         \end{tabular}
-%     \end{center} 
-
 
