@@ -27,23 +27,22 @@ $G$ is a finite group and $P\in\Syl_p(G)$, then
 \end{conjecture}
 
 Isaacs 
-proved the conjecture for solvable groups; see~\cite{MR332945,MR3791517}. 
-Malle and Sp\"ath prove the conjecture for $p=2$. 
+proved the conjecture for solvable groups; see~\cite{MR332945,MR3791517}. Using~\cite{MR2336079} and the classification of finite simple groups, Malle and Sp\"ath proved the conjecture for p = 2 in~\cite{MR3549625}.
 
-\begin{theorem}[Malle--Sp\"ath]
-\label{thm:MalleSpath}
-\index{Malle--Sp\"ath theorem}
-If $G$ is finite and $P\in\Syl_2(G)$,
-then 
-\[
-|\{\chi\in\Irr(G): 2\nmid \chi(1)\}|
-=|\{\psi\in\Irr(N_G(P)): 2\nmid\psi(1)\}|.
-\]
-\end{theorem}
+% \begin{theorem}[Malle--Sp\"ath]
+% \label{thm:MalleSpath}
+% \index{Malle--Sp\"ath theorem}
+% If $G$ is finite and $P\in\Syl_2(G)$,
+% then 
+% \[
+% |\{\chi\in\Irr(G): 2\nmid \chi(1)\}|
+% =|\{\psi\in\Irr(N_G(P)): 2\nmid\psi(1)\}|.
+% \]
+% \end{theorem}
 
-The proof appears in~\cite{MR3549625} and uses the classification of 
-finite simple groups. It uses a deep result of 
-Isaacs, Malle and Navarro~\cite{MR2336079}. 
+% The proof appears in~\cite{MR3549625} and uses the classification of 
+% finite simple groups. It uses a deep result of 
+% Isaacs, Malle and Navarro~\cite{MR2336079}. 
 
 In full generality, McKay's conjecture was
 proved in 2024. 
@@ -60,7 +59,7 @@ then
 \]
 \end{theorem}
 
-We cannot prove Theorems~\ref{thm:MalleSpath} and~\ref{thm:CabanesSpath} here. However, 
+We cannot prove Theorem~\ref{thm:CabanesSpath} here. However, 
 we can use the computer to prove some particular cases
 with the following function: 
 
@@ -539,6 +538,8 @@ The result we will now see is often called Burnside’s lemma. Burnside proved t
     \]
 \end{proof}
 
+\begin{optional}
+    
 It is possible to give an alternative short proof of the theorem. For example, 
 for transitive actions (i.e., $m=1$), we proceed as follows:
 \[
@@ -548,12 +549,14 @@ for transitive actions (i.e., $m=1$), we proceed as follows:
 \]
 where $x_0\in X$ is any fixed element of $X$. I learned about this analytic number theory-style proof in Serre’s paper~\cite{MR1997347}.
 
-\begin{exercise}
+\begin{xca}
 \label{xca:CFB}
     Use the previous idea to prove Theorem \ref{thm:CFB}. 
-\end{exercise}
+\end{xca}
 
 A probabilistic proof of Theorem~\ref{thm:CFB} is presented in~\cite{MR4043987}.
+\end{optional}
+
 
 \index{Orbital}
 \index{Rank}
