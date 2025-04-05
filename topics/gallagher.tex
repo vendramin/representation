@@ -70,19 +70,42 @@
     Let $G$ be a finite group and $N$ be a normal subgroup of $G$. 
     Let $\chi\in\Irr(G)$ be such that $\psi=\Res_N^G\chi\in\Irr(N)$. Then
     \[
-    \Ind_N^G\psi=\sum_{\lambda\in\Irr(G/N)}\lambda(1)(\lambda\chi),
+    \Ind_N^G\psi=\sum_{\lambda\in\Irr(G/N)}\lambda(1)(\Inf_{G/N}^G\lambda)\chi,
     \]
-    where the characters $\lambda\chi$ are pairwise different and irreducible. 
+    where the characters $(\Inf_{G/N}^G\lambda)\chi$ are pairwise different and irreducible. 
 \end{theorem}
 
 \begin{proof}
-    
+    Since $\psi=\Res_N^G\chi$, Lemma~\ref{lem:Gallagher_reg} implies that 
+    \[
+    \Ind_N^G\psi=\Ind_N^G\Res_N^G\chi=(\Inf_{G/N}^G\xi)\chi,
+    \]
+    where $\xi$ is the character of the regular representation of $G/N$. In the proof
+    of Theorem~\ref{thm:regular} we have seen that
+    \[
+    \xi=\sum_{\lambda\in\Irr(G/N)}\lambda(1)\lambda. 
+    \]
+    By Lemma~\ref{lem:gallagher1}, 
+    \begin{align*}
+        (G:N)&=\sum_{\chi\in\Irr(G)}e_\chi^2
+        =\langle\Ind_N^G\psi,\Ind_N^G\psi\rangle\\
+        &=\sum_{\lambda,\mu\in\Irr(G/N)}\lambda(1)\mu(1)\langle\Inf_{G/N}^G\lambda,\Inf_{G/N}^G\mu\rangle
+        \geq\sum_{\lambda\in\Irr(G/N)}\lambda(1)^2=(G:N).        
+    \end{align*}
+    It follows that 
+    \[
+    \langle\Inf_{G/N}^G\lambda,\Inf_{G/N}^G\mu\rangle=\begin{cases}
+        1 & \text{if $\lambda=\mu$,}\\
+        0 & \text{otherwise.}
+    \end{cases}
+    \]
+    In particular, the characters...
 \end{proof}
 
 \begin{exercise}
     Let $G$ be a finite group and $N$ be a normal subgroup of $G$. Let $\chi\in\Irr(G)$ 
     be such that $\theta=\Res_N^G\chi\in\Irr(N)$. Prove that the map 
-    $\psi\mapsto\psi\chi$ yields 
+    $\psi\mapsto(\Inf_{G/N}^G\psi)\chi$ yields 
     a bijective 
     correspondence 
     \[
