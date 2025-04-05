@@ -168,7 +168,7 @@ For $n\geq5$, the group $\Sym_5$ is not solvable.
 Exercises~\ref{xca:solvable} and~\ref{xca:pgroups_solvable} may be omitted if the reader is already familiar with solvable groups.
 
 \begin{theorem}[Burnside]
-	\index{Burnside theorem}
+	\index{Burnside!theorem}
 	\label{thm:Burnside_auxiliar}
 	Let $G$ be a finite group. If $\phi\colon G\to\GL_n(\C)$ is a representation
 	with character $\chi$ and $C$ is a conjugacy class of $G$ such that 
@@ -194,9 +194,10 @@ Exercises~\ref{xca:solvable} and~\ref{xca:pgroups_solvable} may be omitted if th
 % 	$<1$, it follows that it is zero. 
 % \end{proof}
 
-Now we prove the theorem.
+%Now we prove the theorem.
 
-\begin{proof}[Proof of Theorem \ref{thm:Burnside_auxiliar}]
+ \begin{proof}
+% [Proof of Theorem \ref{thm:Burnside_auxiliar}]
 	Let $\epsilon_1,\dots,\epsilon_n$ be the eigenvalues of $\phi_g$. Then 
     $\epsilon_1,\dots,\epsilon_n$ are roots of one. 
     By assumption, 
@@ -222,7 +223,7 @@ Now we prove the theorem.
 \end{proof}
 
 \begin{theorem}[Burnside]
-	\index{Burnside theorem}
+	\index{Burnside!theorem}
     \label{thm:pq_notsimple}
 	Let $p$ be a prime number. If $G$ is a finite group and 
 	$C$ is a conjugacy class of $G$ with $p^k>1$ elements, then $G$ 
@@ -260,7 +261,7 @@ Now we prove the theorem.
 \end{proof}
 
 \begin{theorem}[Burnside]
-  \index{Burnside $p^aq^b$-theorem}
+  \index{Burnside!$p^aq^b$-theorem}
   \label{thm:pq}
   Let $p$ and $q$ be prime numbers. If $G$ has order $p^aq^b$, then $G$ is solvable.
 \end{theorem}
@@ -384,20 +385,22 @@ then
 \[
 \gcd\left(\frac {p^{q}-1}{p-1},\frac{q^{p} - 1}{q - 1}\right)=112643.
 \]
-Nowadays we can check this easily in almost every desktop computer:
+
+Nowadays, this can be easily checked on almost any desktop computer. 
+As far as I know, no other counterexamples to Stephen’s stronger version of the conjecture have been found.
+
 % \begin{lstlisting}
 % gap> Gcd((17^3313-1)/16,(3313^17-1)/3312);
 % 112643
 % \end{lstlisting}
-\begin{lstlisting}
-> p := 17; 
-> q := 3313;
-> bool, a := IsCoercible(Integers(), (p^q-1)/(p-1));
-> bool, b := IsCoercible(Integers(), (q^p-1)/(q-1));
-> Gcd(a,b);
-112643    
-\end{lstlisting}
-No other counterexamples have been found of Stephen’s stronger version of the conjecture.
+% \begin{lstlisting}
+% > p := 17; 
+% > q := 3313;
+% > bool, a := IsCoercible(Integers(), (p^q-1)/(p-1));
+% > bool, b := IsCoercible(Integers(), (q^p-1)/(q-1));
+% > Gcd(a,b);
+% 112643    
+% \end{lstlisting}
 \end{optional}
 
 
