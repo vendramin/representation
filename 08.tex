@@ -9,34 +9,44 @@ and
 g\mapsto gN,
 \]
 be the canonical map. 
-If $\widetilde{\rho}\colon G/N\to\GL(V)$ 
+If $\rho\colon G/N\to\GL(V)$, $gN\mapsto\rho_{gN}$,  
 is a representation of $G/N$ with 
 character
-$\widetilde{\chi}$, the composition 
-$\rho=\widetilde{\rho}\pi\colon G\to \GL(V)$, $\rho(g)=\widetilde{\rho}(gN)$, 
-is a representation of $G$. 
-Thus
+$\chi$, the map  
 \[
-\chi(g)=\trace{\rho_g}=\trace(\widetilde{\rho}_{gN})=\widetilde{\chi}(gN).
+\Inf_{G/N}^G\rho\colon G\to\GL(V),\quad g\mapsto \rho_{gN},
 \]
-In particular, $\chi(1)=\widetilde{\chi}(1)$. The character $\chi$ 
-is the \emph{lifting} to $G$ of the character 
-$\widetilde{\chi}$ of $G/N$. 
+is a representation of $G$. This representation $\Inf_{G/N}^G\rho$ of $G$ 
+is called the \emph{inflation} of the
+representation $\rho$. It follows that the character $\Inf_{G/N}^G\chi$ of  
+$\Inf_{G/N}^G\rho$ is 
+\[
+(\Inf_{G/N}^G\chi)(g)=\trace((\Inf_{G/N}^G\rho)_g)=\trace\rho_{gN}=\chi(gN).
+\]
+In particular, $\chi(1)=(\Inf_{G/N}^G\chi)(1)$. The character $\Inf_{G/N}^G\chi$ is 
+also called the \emph{lifting} to $G$ of the character 
+$\chi$ of $G/N$. 
+
+\begin{definition}
+    \index{Kernel!of a character}
+    \index{Kernel!of a representation}
+    Let $\chi\in\Char(G)$. The \emph{kernel} of $\chi$ is 
+    the subset 
+    \[
+    \ker\chi=\{g\in G:\chi(g)=\chi(1)\}.
+    \]
+\end{definition}
 
 \begin{proposition}
-If $\chi\in\Char(G)$, then 
-\[
-\ker\chi=\{g\in G:\chi(g)=\chi(1)\}
-\]
-is a normal subgroup of $G$. 
+Let $\rho\colon G\to\GL_n(\C)$ be a representation with character $\chi$. Then 
+$\ker\chi=\ker\rho$. In particular, $\ker\chi$ is a normal subgroup of $G$. 
 \end{proposition}
 
 \begin{proof}
-Let $\rho\colon G\to\GL_n(\C)$ be a representation with character $\chi$. Then 
-$\ker\rho\subseteq\ker\chi$, as $\rho_g=\id$ implies 
+Note that $\ker\rho\subseteq\ker\chi$, as $\rho_g=\id$ implies 
 $\chi(g)=\trace(\rho_g)=n=\chi(1)$. 
 
-We claim that  
+We now prove that  
 $\ker\chi\subseteq\ker\rho$. If $g\in G$ is such that $\chi(g)=\chi(1)$, since 
 $\rho_g$ is diagonalizable, there exist eigenvalues $\lambda_1,\dots,\lambda_n\in\C$ such that
 \[
@@ -46,33 +56,33 @@ Since each $\lambda_i$ is a root of one,
 $\lambda_1=\cdots=\lambda_n=1$. Hence $\rho_g=\id$. 
 \end{proof}
 
-\index{Kernel!of a character}
-\index{Kernel!of a representation}
-If $\chi$ is a character, the subgroup $\ker\chi$ 
-is the \emph{kernel} of $\chi$. 
-
 \begin{theorem}[Correspondence theorem]
 \index{Correspondence theorem!for characters}
 \label{thm:correspondence}
 Let $N$ be a normal subgroup of a finite group $G$. There exists
 a bijective correspondence 
 \[
-\Char(G/N) \longleftrightarrow \{\chi\in\Char(G): 
-N\subseteq\ker\chi\}
+\Char(G/N) \longleftrightarrow \{\psi\in\Char(G): 
+N\subseteq\ker\psi\}
 \]
 that maps irreducible characters to irreducible characters.
 \end{theorem}
 
 \begin{proof}
-If $\widetilde{\chi}\in\Char(G/N)$, let $\chi$ be the lifting of $\widetilde{\chi}$ to $G$. If $n\in N$, 
-then
+For $\chi\in\Char(G/N)$, let $\psi=\Inf_{G/N}^G\chi$. Let $n\in N$. 
+Then 
 \[
-\chi(n)=\widetilde{\chi}(nN)=\widetilde{\chi}(N)=\chi(1)
+\psi(n)=\chi(nN)=\chi(N)=\psi(1)
 \]
-and thus $N\subseteq\ker\chi$. 
+and thus $N\subseteq\ker\psi$. Thus we have constructed a well-defined
+map 
+\[
+\sigma\colon \Char(G/N) \to \{\psi\in\Char(G): 
+N\subseteq\ker\psi\},\quad \chi\mapsto\Inf_{G/N}^G\chi.
+\]
 
-If $\chi\in\Char(G)$ is such that $N\subseteq\ker\chi$, let $\rho\colon G\to\GL(V)$ be a representation
-with character $\chi$. 
+If $\psi\in\Char(G)$ is such that $N\subseteq\ker\psi$, let $\rho\colon G\to\GL(V)$, $g\mapsto\rho(g)$, be a representation
+with character $\psi$. 
 Let $\widetilde{\rho}\colon G/N\to\GL(V)$, $gN\mapsto \rho(g)$. We claim that $\widetilde{\rho}$
 is well-defined: 
 \[
@@ -82,14 +92,29 @@ Moreover, $\widetilde{\rho}$ is a representation, as
 \[
 \widetilde{\rho}((gN)(hN))=\widetilde{\rho}(ghN)=\rho(gh)=\rho(g)\rho(h)=\widetilde{\rho}(gN)\widetilde{\rho}(hN).
 \]
-If $\widetilde{\chi}$ is the character of $\widetilde{\rho}$, then 
-$\widetilde{\chi}(gN)=\chi(g)$.
+If $\widetilde{\psi}$ is the character of $\widetilde{\rho}$, then 
+$\widetilde{\psi}(gN)=\psi(g)$. Thus we have constructed a well-defined map
+\[
+\tau\colon \{\psi\in\Char(G): 
+N\subseteq\ker\psi\}\to\Char(G/N),\quad \psi\mapsto\widetilde{\psi}.
+\]
+
+If $\chi\in\Char(G/N)$ and $g\in G$, then a direct calculation shows 
+that $\tau(\sigma(\chi))(gN)=\chi(gN)$. Similarly, if $\psi\in\Char(G)$ is such that $N\subseteq\ker\psi$ and $g\in G$, then 
+\[
+\sigma(\tau(\psi))(g)=\sigma(\widetilde{\psi})(g)=(\Inf_{G/N}^G\widetilde{\psi})(g)=\widetilde{\psi}(gN)=\psi(g).
+\]
+% \[
+% \tau(\sigma(\chi))(gN)=\tau(\Inf_{G/N}^G\chi)(gN)=\widetilde{\Inf_{G/N}^G\chi}(gN)
+% =(\Inf_{G/N}^G\chi)(g)=\chi(gN). 
+% \]
+
+
 
 We now prove that $\chi$ is irreducible if and only if 
 $\widetilde{\chi}$ is irreducible. If $U$ is a subspace of $V$, then 
 \begin{align*}
 \text{$U$ is $G$-invariant}
-%&\Longleftrightarrow g\cdot U\subseteq U\text{ for all $g\in G$}\\
 &\Longleftrightarrow \rho(g)(U)\subseteq U\text{ for all $g\in G$}\\
 &\Longleftrightarrow \widetilde{\rho}(gN)(U)\subseteq U\text{ for all $g\in G$}.
 \shortintertext{Thus}
