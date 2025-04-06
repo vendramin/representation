@@ -233,6 +233,111 @@ This bound is reached if and only if $(G:Z(G))=p^2$.
 \end{enumerate}
 \end{sol}
 
+\begin{sol}{xca:constituent_restriction}
+    Assume that $\Irr(G)=\{\chi_1,\dots,\chi_k\}$. 
+    Let $L$ be the regular representation of $G$. Then 
+    \[
+    \chi_L(g)=\begin{cases}
+    |G| & \text{if $g=1$},\\
+    0 & \text{otherwise}.
+    \end{cases}
+    \]
+    Write $\chi_L=\sum_{i=1}^k\chi_i(1)\chi_i$. Since 
+    \[
+    0\ne \frac{|G|}{|H|}\phi(1)=\langle \Res_H^G\chi_L,\phi\rangle=\sum_{i=1}^k\chi_i(1)\langle\Res_H^G\chi_i,\phi\rangle,
+    \]
+    there exists $i\in\{1,\dots,k\}$ such that 
+    $\langle\Res_H^G\chi_i|_H,\phi\rangle\ne 0$. 
+\end{sol}
+
+\begin{sol}{xca:decomposing_restriction}
+Note that   
+\[
+\sum_{i=1}^ld_i^2=\langle\Res_H^G\chi,\Res_H^G\chi\rangle=\frac{1}{|H|}\sum_{h\in H}\chi(h)\overline{\chi(h)}.
+\]
+Since $\chi$ is irreducible, 
+\begin{align*}
+1=\langle\chi,\chi\rangle&=\frac{1}{|G|}\sum_{g\in G}\chi(g)\overline{\chi(g)}\\
+&=\frac{1}{|G|}\sum_{h\in H}\chi(h)\overline{\chi(h)}
++\frac{1}{|G|}\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}\\
+&=\frac{|H|}{|G|}\sum_{i=1}^l d_i^2+\frac{1}{|G|}\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}.
+\end{align*}
+Since $\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}\geq0$, we conclude that $\sum_{i=1}^ld_i^2\leq(G:H)$. Moreover, the equality
+holds if and only if $\sum_{g\in G\setminus H}\chi(g)\overline{\chi(g)}=0$, 
+that is, if and only if $\chi(g)=0$ for all $g\in G\setminus H$.
+\end{sol}
+
+
+\begin{sol}{xca:inducting_trivial}
+Let $g\in G$. Then 
+\[
+(\Ind_H^G\Tchar_H)(g)=\sum_{x\in G}\Tchar_H^0(x^{-1}gx)
+=\begin{cases}
+    |G| & \text{if $g=1$,}\\
+    0 & \text{otherwise},
+\end{cases}
+\]
+since $x^{-1gx}=1$ if and only if $g=1$. 
+This $\Ind_H^G\Tchar_H$ is equal to the character
+of the regular representation of $G$ (see Theorem~\ref{thm:regular}). 
+\end{sol}
+
+
+\begin{sol}{xca:induction_G/H}
+    The action of $G$ on $G/H$ by left multiplication
+    yields a group homomorphism 
+    $\rho\colon G\to\Sym_{G/H}$, $g\mapsto\rho_g$, where
+    $\rho_g(xH)=gxH$. Now
+    \[
+    xH\in\Fix(g)\Longleftrightarrow
+    gxH=xH\Longleftrightarrow
+    x^{-1}gx\in H\Longleftrightarrow
+    g\in xHx^{-1}.
+    \]
+    Thus 
+    \[
+    |\Fix(g)|=\frac{1}{|H|}|\{x\in G:x^{-1}gx\in H\}|.
+    \]
+    Since
+    \[
+    \Tchar_H^0(x^{-1}gx)=\begin{cases}
+        1 & \text{if $x^{-1}gx\in H$,}\\
+        0 & \text{otherwise},
+    \end{cases}
+    \]
+    it follows that 
+    $(\Ind_H^G\Tchar_H)(g)=|\Fix(g)|$, the character
+    of the representation of $G$ obtained from $\rho$. 
+\end{sol}
+
+\begin{sol}{xca:induced_representations}
+Write $\psi=\Ind_H^G\rho$. For $x,y\in G$ and 
+$i,j\in\{1,\dots,m\}$, 
+\begin{align*}
+    (\psi_x\psi_y)_{ij} &= \sum_{k=1}^m 
+    (\psi_x)_{ik}(\psi_y)_{kj}
+    =\sum_{k=1}^m\rho_{t_i^{-1}xt_k}^0\rho_{t_k^{-1}yt_j}^0.
+\end{align*}
+If we want each $\rho_{t_k^{-1}yt_j}^0\ne0$, we need
+$t_k^{-1}yt_j\in H$ for all $k$. This means $yt_j\in t_kH$ for all $k$. But there exists a unique $l\in\{1,\dots,m\}$ such that 
+$yt_jH=t_lH$. Thus $k=l$ and then 
+\[
+(\psi_x\psi_y)_{ij} = \rho_{t_i^{-1}xt_l}^0\rho_{t_l^{-1}yt_j}=\rho_{t_i^{-1}xt_l}\rho_{t_l^{-1}yt_j}=\rho_{t_i^{-1}xyt_j}
+\]
+whenever $t_i^{-1}xt_l\in H$ (or equivalently 
+$xt_l\in t_iH$). Note that 
+$t_i^{-1}xyt_j\in H$, since 
+$yt_j\in t_lH$ implies 
+\[
+xyt_j\in xt_lH=t_iH.
+\]
+It follows that 
+\[
+(\psi_x\psi_y)_{ij}=\rho_{t_i^{-1}xyt_j}^0=(\psi_{xy})_{ij}.
+\]
+\end{sol}
+
+
 \begin{sol}{xca:centralizer}
     We use the second orthogonality relation and Theorem~\ref{thm:correspondence} 
     to compute
@@ -268,10 +373,14 @@ This bound is reached if and only if $(G:Z(G))=p^2$.
 
     We now prove $2)\implies3)$. Let $x,y\in G$ be such that 
     $xH\ne yH$, and $g\in G$ be an element 
-    that fixes $xH$ and $yH$, that is 
-    $g\cdot xH=xH$ and $g\cdot yH=yH$. Then 
-    $x^{-1}gx\in H\cap (x^{-1}y)H(x^{-1}y)^{-1}=\{1\}$,
-    since $x^{-1}y\not\in H$. Thus $g=1$. 
+    that fixes both $xH$ and $yH$, that is 
+    $g\cdot xH=xH$ and $g\cdot yH=yH$. Let  
+    $h=x^{-1}gx\in H$. Note that 
+    $x^{-1}yH\ne H$. Since 
+    \[
+    h\cdot x^{-1}yH=(x^{-1}gx)\cdot x^{-1}yH=x^{-1}\cdot yH=x^{-1}yH, 
+    \]
+    it follows that $h=1$, which implies $g=1$. 
 
     Finally, we prove that $3)\implies1)$. Let $x\not\in H$ and $h\in H\cap xHx^{-1}$. Then 
     $hx=xh_1$ for some $h_1\in H$. Hence
@@ -309,4 +418,25 @@ This bound is reached if and only if $(G:Z(G))=p^2$.
     \]
     Hence, again by the previous argument, 
     $H$ is not malnormal in $G$, a contradiction.  
+\end{sol}
+
+\begin{sol}{xca:Ind_chi}
+    Since $|H|=n$, $(G:H)=2$. Let 
+    $t_1=1$ and $t_2=s$. Then $\{t_1,t_2\}$ is a transversal of $H$ in $G$. We compute
+    \begin{align*}
+        t_1^{-1}rt_1=r, && t_1^{-1}st_1=s, && t_1^{-1}rt_2=sr^{-1},&& t_1^{-1}st_2=1, \\
+        t_2^{-1}rt_1=sr,&& t_2^{-1}st_1=1,&&
+        t_2^{-1}rt_2=r^{-1},&&t_2^{-1}st_2=s.
+    \end{align*}
+    Thus 
+    \[
+    (\rho_m)(r)=\begin{pmatrix}
+    \omega_m & 0\\
+    0&\omega_m^{-1}
+    \end{pmatrix},\quad 
+     (\rho_m)(s)=\begin{pmatrix}
+     0&1\\
+     1&0
+    \end{pmatrix}
+    \]
 \end{sol}

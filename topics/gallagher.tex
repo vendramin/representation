@@ -89,12 +89,12 @@
     \begin{align*}
         (G:N)&=\sum_{\chi\in\Irr(G)}e_\chi^2
         =\langle\Ind_N^G\psi,\Ind_N^G\psi\rangle\\
-        &=\sum_{\lambda,\mu\in\Irr(G/N)}\lambda(1)\mu(1)\langle\Inf_{G/N}^G\lambda,\Inf_{G/N}^G\mu\rangle
+        &=\sum_{\lambda,\mu\in\Irr(G/N)}\lambda(1)\mu(1)\langle(\Inf_{G/N}^G\xi)\lambda,(\Inf_{G/N}^G\xi)\mu\rangle
         \geq\sum_{\lambda\in\Irr(G/N)}\lambda(1)^2=(G:N).        
     \end{align*}
     It follows that 
     \[
-    \langle\Inf_{G/N}^G\lambda,\Inf_{G/N}^G\mu\rangle=\begin{cases}
+    \langle(\Inf_{G/N}^G\xi)\lambda,(\Inf_{G/N}^G\xi)\mu\rangle=\begin{cases}
         1 & \text{if $\lambda=\mu$,}\\
         0 & \text{otherwise.}
     \end{cases}
@@ -109,6 +109,6 @@
     a bijective 
     correspondence 
     \[
-    \Irr(G/N)\leftrightarrow\{\eta\in\Irr(G):\langle\Res_N^G\eta,\theta\rangle>0\}.
+    \Irr(G/N)\longleftrightarrow\{\eta\in\Irr(G):\langle\Res_N^G\eta,\theta\rangle>0\}.
     \]
 \end{exercise}

@@ -531,18 +531,14 @@ a contradiction.
     $(G:H)\leq 2n^2$.
 \end{claim}
 
-Let $C$ be a conjugacy class of $G$ such that 
-$|C|\leq 2n^2$. Let $g\in C$.  
+Let $C$ be a conjugacy class of $G$ such that
+$|C|\leq 2n^2$. Let $g\in C$.
 Then $H=C_G(g)$ is a subgroup of $G$ such that
-$(G:H)\leq 2n^2$. 
+$(G:H)\leq 2n^2$.
 \end{optional}
 
 
-\subsection{Frobenius's reciprocity}
-
-We now present a very quick version of Frobenius'
-reciprocity theorem. We first 
-define the restriction of class functions. 
+\subsection{Restriction of characters}
 
 \begin{definition}
     Let $G$ be a finite group and $f\colon G\to\C$ be
@@ -568,7 +564,76 @@ One important property is the following:
 Let $G$ be a finite group, $H$ a subgroup of $G$ and $\chi \in \Char(G)$. Prove that $\Res_H^G\chi \in \Char(H)$.
 \end{exercise}
 
-We now define induction. Let $G$ be a finite group
+The restriction of an irreducible representations
+does not need to be irreducible: 
+
+\begin{example}
+    Let $G=\D_4=\langle r,s:r^4=s^2=1,\,srs=r^{-1}\rangle$ the dihedral group
+    of eight elements. Let $V$ be a complex vector space
+    with basis $\{v_1,v_2\}$. Then $V$ is a $\C[G]$-module with 
+    \[
+    r\cdot v_1=v_2,\quad
+    r\cdot v_2=-v_1,\quad
+    s\cdot v_1=v_1,\quad
+    s\cdot v_2=-v_2.
+    \]
+    The character of $V$ is 
+    \[
+    \chi(g)=\begin{cases}
+    2 & \text{if $g=1$},\\
+    -2 & \text{if $g=r^2$},\\
+    0 & \text{otherwise}.
+    \end{cases}
+    \]
+    Since $\langle\chi,\chi\rangle=1$, the character $\chi$ 
+    is irreducible. Thus $V$ is simple as a $\C[G]$-module. 
+    
+    Let  
+    $H=\langle r^2,s\rangle=\{1,r^2,s,r^2s\}$. Then  $\Res_H^GV$ is $V$ as a vector space, with
+    the $\C[H]$-module structure given by 
+    \[
+    r^2\cdot v_1=-v_1,\quad
+    r^2\cdot v_2=-v_1,\quad
+    s\cdot v_1=-v_1,\quad
+    s\cdot v_2=-v_2.
+    \]
+    The character of $\Res_H^GV$ is
+    \[
+    \Res_H^G\chi(h)
+    =\begin{cases}
+    2 & \text{if $h=1$},\\
+    -2 & \text{if $h=r^2$},\\
+    0 & \text{otherwise}.
+    \end{cases}
+    \]
+    Since $\langle\Res_H^G\chi,\Res_H^G\chi\rangle=0$, 
+    the character of $\Res_H^G\chi$ is not irreducible. Thus $V$ 
+    is not simple as a $\C[H]$-module. 
+\end{example}
+
+\begin{exercise}
+\label{xca:constituent_restriction}
+    Let $H$ be a subgroup of $G$ and 
+    $\phi\in\Char(H)$. Prove that there exists 
+    $\chi\in\Irr(G)$ such that
+    $\langle\Res_H^G\chi,\phi\rangle\ne 0$.
+\end{exercise}
+
+\begin{exercise}
+\label{xca:decomposing_restriction}
+    Let $H$ be a subgroup of $G$, 
+    $\Irr(H)=\{\phi_1,\dots,\phi_l\}$, 
+    and $\chi\in\Irr(G)$. Prove that 
+    \[
+    \Res_H^G\chi=\sum_{i=1}^ld_i\phi_i,
+    \]
+    where $\sum_{i=1}^l d_i^2\leq (G:H)$. Moreover,  $\sum_{i=1}^l d_i^2=(G:H)$ 
+    if and only if $\chi(g)=0$ for all $g\in G\setminus H$. 
+\end{exercise}
+
+\subsection{Induction of characters}
+
+We now define the induction of class functions. Let $G$ be a finite group
 and $H$ be a subgroup of $G$. If $f\colon H\to\C$ is a map, 
 then 
 \[
@@ -599,6 +664,79 @@ the map $f\mapsto f^0$ is linear.
     \]
     is a well-defined linear map. 
 \end{exercise}
+
+For a finite group $G$, $\Tchar_G$ denotes the
+trivial character of $G$. 
+
+\begin{exercise}
+\label{xca:inducting_trivial}
+    Let $G$ be a finite group and $H=\{1\}$. Compute
+    $\Ind_H^G\Tchar_H$. 
+\end{exercise}
+
+\begin{exercise}
+\label{xca:induction_G/H}
+    Let $G$ be a finite group, $H$ be a 
+    subgroup of $G$. Prove that
+    $\Ind_H^G\Tchar_H$ is the character of the
+    representation induced by the action of $G$ on $G/H$ by left multiplication. 
+\end{exercise}
+
+
+The following exercise shows that the induction of a character yields a character; in fact, it demonstrates even more.
+
+\begin{exercise}
+    \label{xca:induced_representations}
+    Let $H$ be a subgroup of $G$ and 
+    $t_1,\dots,t_m$ be a left transversal of $H$ in $G$. For a representation $\rho\colon H\to\GL_n(\C)$ with character $\chi$ 
+    and $x\in G$, let 
+    \[
+    \rho_x^0=\begin{cases}
+        \rho_x & \text{if $x\in H$,}\\
+        0_{n\times n} & \text{otherwise,}
+    \end{cases}
+    \]
+    where $0_{n\times n}$ represents the zero
+    $n\times n$ matrix. Prove that 
+    \[
+    \Ind_H^G\rho\colon G\to \GL_{mn}(\C),\quad 
+    g\mapsto \left(\rho_{t_i^{-1}gt_j}^0\right)_{1\leq i,j\leq m}\in\C^{nm\times nm}
+    \]
+    is a representation with character $\Ind_H^G\chi$. 
+\end{exercise}
+
+Let us show an easy application of Exercise~\ref{xca:induced_representations}. 
+
+\begin{example}
+    Let $G=\{\pm1,\pm i,\pm j,\pm k\}$ the quaternion group. Then $[G,G]=\{1,-1\}$ and $G/[G,G]\simeq C_2\times C_2$ (since $G$ is non-abelian, $G/[G,G]$ cannot be cyclic). Thus 
+    there are four degree-one representations of $G$ (see Exercise~\ref{xca:degree-one}). Let $H=\langle i\rangle=\{1,-1,i,-i\}$. Thus $|H|=4$ and $(G:H)=2$. 
+    Let $t_1=1$ and $t_2=j$. Then $\{t_1,t_2\}$ is a left
+    transversal of $H$ in $G$. Let 
+    \[
+    \rho\colon H\to\C^{\times},\quad i\mapsto\sqrt{-1}.
+    \]
+    Then $\rho$ is a representation. Let us compute $\Ind_H^G\rho$:
+    \begin{align*}
+        &(\Ind_H^G\rho)(\pm1)=\pm\begin{pmatrix}
+            1&0\\0&1
+        \end{pmatrix},
+        &&
+        (\Ind_H^G\rho)(\pm i)=\pm\begin{pmatrix}
+            \sqrt{-1}&0\\0&-\sqrt{-1}
+        \end{pmatrix},\\
+        &
+        (\Ind_H^G\rho)(\pm j)=\pm\begin{pmatrix}
+            0&-1\\1&0
+        \end{pmatrix},
+        &&
+        (\Ind_H^G\rho)(\pm k)=\pm\begin{pmatrix}
+            0&-\sqrt{-1}\\-\sqrt{-1}&0
+        \end{pmatrix}.
+    \end{align*}
+    As an exercise, the reader is invited to verify that the representation $\Ind_H^G\rho$ is irreducible.
+\end{example}
+
+\subsection{Frobenius' reciprocity}
 
 Before proving that the induction of a character is a character, we  mention the following crucial property:
 
@@ -676,13 +814,10 @@ Before proving that the induction of a character is a character, we  mention the
     \]
 \end{proof}
 
-\begin{exercise}
-    Let $G$ be a finite group and $\chi_1$ be
-    the trivial character. If $H=\{1\}$, compute
-    $\Ind_H^G\chi_1$. 
-\end{exercise}
+
 
 \begin{exercise}
+\label{xca:induction_S3}
     Let $G=\Sym_3$ and $H=\langle (12)\rangle$. 
     Let $\varphi=\sgn|_H$ be the restriction sign homomorphism 
     to the subgroup $H$. Compute 
@@ -692,6 +827,7 @@ Before proving that the induction of a character is a character, we  mention the
 There are some useful properties that are easy to show. 
 
 \begin{exercise}
+\label{xca:indres}
     Let $G$ be a finite group, $H$ be a subgroup of $G$, 
     $a\in\cf(H)$ and $b\in\cf(G)$. Prove that 
     \[
@@ -700,6 +836,7 @@ There are some useful properties that are easy to show.
 \end{exercise}
 
 \begin{exercise}[Transitivity of induction]
+\label{xca:transitivity_induction}
     Let $G$ be a finite group, $H\subseteq K$ be 
     subgroups of $G$ and $a\in\cf(H)$. 
     Prove that 
@@ -719,14 +856,7 @@ There are some useful properties that are easy to show.
     for all $\alpha\in\cf(H)$.
 \end{exercise}
 
-\begin{exercise}
-\label{xca:induction_G/H}
-    Let $G$ be a finite group, $H$ be a normal
-    subgroup and $\chi$ be the trivial
-    character of $H$. Prove that
-    $\Ind_H^G\chi$ is the character of the
-    representation induced by the action of $G$ on $G/H$ by left multiplication. 
-\end{exercise}
+
 
 % 8.1.4 de Steinberg
 % Seccion 8.2 define la inducción de representaciones
