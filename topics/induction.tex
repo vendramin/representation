@@ -151,7 +151,8 @@ For example,
 Note that $\varphi$ is an isomorphism of right $\C[H]$-modules. 
 \end{example}
 
-The previous example is crucial to understand the following 
+The previous example is helpful 
+to understand the following 
 result:
 
 \begin{proposition}
@@ -188,86 +189,80 @@ the sum over $t\in T$ of the $t\otimes V$'s is direct.
 
 \begin{theorem}[Frobenius' reciprocity]
 \index{Frobenius' reciprocity}
-Sea $G$ un grupo finito y $H$ un subgrupo de $G$. 
-Si $U$ es un $\C[G]$-module y $V$ es un $\C[H]$-module, entonces
+Let $G$ be a finite group and $H$ be a subgroup of $G$. 
+If $U$ is a $\C[G]$-module and $V$ is a $\C[H]$-module, then
 \[
 \Hom_{\C[H]}(V,\Res_H^GU)\simeq \Hom_{\C[G]}(\Ind_H^GV,U)
 \]
-como espacios vectoriales.
+as vector spaces
 \end{theorem}
 
 \begin{proof}
-Si $\varphi\in\Hom_{\C[H]}(V,\Res_H^GU)$, sea 
+For $\varphi\in\Hom_{\C[H]}(V,\Res_H^GU)$, let 
 \[
 f_{\varphi}\colon \C[G]\times V\to U,
 \quad
 (g,v)\mapsto g\cdot\varphi(v).
 \]
-Veamos que $f_{\varphi}$ es balanceada. Un cálculo directo muestra que
+We claim that $f_{\varphi}$ is balanced. A direct calculation shows that 
 \begin{align*}
     &f_{\varphi}(g+g_1,v)=f_{\varphi}(g,v)+f_{\varphi}(g_1,v),&&
     f_{\varphi}(g,v+w)=f_{\varphi}(g,v)+f_{\varphi}(g,w).
 \end{align*}
-Como $\varphi$ es morfismo de $\C[H]$-modules,
+Since $\varphi$ is a $\C[H]$-module homomorphism,
 \begin{align*}
     &f_{\varphi}(gh,v)=(gh)\cdot\varphi(v)
     =g\cdot (h\cdot \varphi(v))
     =g\cdot (h\cdot\varphi(v))
     =g\cdot \varphi(h\cdot v)=f_{\varphi}(g,h\cdot v)
 \end{align*}
-para todo $g\in G$, $h\in H$ y $v\in V$. Por último,
+for all $g\in G$, $h\in H$ and $v\in V$. Moreover, 
 \begin{align*}
     &f_{\varphi}(gg_1,v)=(gg_1)\cdot\varphi(v)=g\cdot(g_1\cdot\varphi(v))=g\cdot f_{\varphi}(g_1,v)
 \end{align*}
-para todo $g,g_1\in G$ y $v\in V$. Para cada $\varphi\in\Hom_{\C[H]}(V,\Res_H^GU)$ tenemos 
-entonces un $\Gamma(\varphi)\in\Hom_{\C[G]}(\Ind_H^GV,U)$ tal que
+for all $g,g_1\in G$ y $v\in V$. For every $\varphi\in\Hom_{\C[H]}(V,\Res_H^GU)$, there is 
+$\Gamma(\varphi)\in\Hom_{\C[G]}(\Ind_H^GV,U)$ such that 
 $\Gamma(\varphi)(g\otimes v)=g\cdot\varphi(v)$. 
-Tenemos así definida una función 
+We have defined a map  
 \[
 \Gamma\colon \Hom_{\C[H]}(V,\Res_H^GU)\to\Hom_{\C[G]}(\Ind_H^GV,U),
 \quad
 \varphi\mapsto\Gamma(\varphi).
 \]
 
-La función $\Gamma$ es lineal e inyectiva, ambas afirmaciones fáciles de verificar. 
+The map $\Gamma$ is linear and injective, something that is quite easy to verify. 
 
-Es también sobreyectiva, pues si $\theta\in\Hom_{\C[H]}(\Ind_H^GV,U)$, entonces
-la función $\varphi(v)=\theta(1\otimes v)$ es tal que $\varphi\in\Hom_{\C[H]}(V,\Res_H^GU)$ y 
-cumple 
+The map is surjective: if $\theta\in\Hom_{\C[H]}(\Ind_H^GV,U)$, then
+the map $\varphi(v)=\theta(1\otimes v)$ is such that $\varphi\in\Hom_{\C[H]}(V,\Res_H^GU)$ and satisfies 
 \[
 \Gamma(\varphi)(g\otimes v)=g\cdot\varphi(v)=g\cdot\theta(1\otimes v)=\theta(g\otimes v).\qedhere
 \]
 \end{proof}
 
-Supongamos ahora que $K=\C$. 
+% Supongamos ahora que $K=\C$. 
 
-Sea $H$ un subgrupo de $G$. Si $U$ es un $\C[G]$-module con caracter $\chi$, el caracter de $\Res_H^GU$ se denota por $\chi|_H$ y vale que 
-que $\chi|_H(1)=\chi(1)$. Si $V$ es un $\C[H]$-module con 
-caracter $\phi$, el module $\Ind_H^GV$ tiene caracter $\phi^G$ y vale que $\phi^G(1)=(G:H)\phi(1)$. 
+Let $H$ be a subgroup of $G$. If $U$ is a $\C[G]$-module with character $\chi$, the character $\Res_H^GU$ will be denoted by $\chi|_H$. Then $\chi|_H(1)=\chi(1)$. Note that 
 \begin{align*}
-\langle \phi,\chi|_H\rangle_H 
+\langle \phi,\chi|_H\rangle
 &=\dim\Hom_{\C[H]}(V,\Res_H^GU)
 =\dim\Hom_{\C[G]}(\Ind_H^GV,U)
-=\langle\phi^G,\chi\rangle_G,
+=\langle\phi^G,\chi\rangle,
 \end{align*}
-donde $\langle \alpha,\beta\rangle_X=\sum_{x\in X}\alpha(x)\overline{\beta(x)}$ denota el producto 
-interno del espacio de funciones $X\to\C$. 
+
 
 \begin{definition}
-Si $\Irr(G)=\{\chi_1,\dots,\chi_k\}$ e $\Irr(H)=\{\phi_1,\dots,\phi_l\}$, se define
-la \textbf{matriz de inducción--restricción} como la matriz $(c_{ij})\in\C^{l\times k}$, donde
+If $\Irr(G)=\{\chi_1,\dots,\chi_k\}$ and $\Irr(H)=\{\phi_1,\dots,\phi_l\}$, we define the \emph{induction-restriction} matrix as $(c_{ij})\in\C^{l\times k}$, where 
 \[
-c_{ij}=\langle \phi_i^G,\chi_j\rangle_G=\langle\phi_i,\chi_j|_H\rangle_H.
+c_{ij}=\langle \phi_i^G,\chi_j\rangle=\langle\phi_i,\chi_j|_H\rangle.
 \]
 \end{definition}
 
-La fila $i$-ésima de la matriz de inducción--restricción da la multiplicidad con que el caracter $\chi_j$ aparece
-en la descomposición de $\phi_i^G$. La columna $j$-ésima da la multiplicidad con que el caracter $\phi_i$ aparece 
-en la descomposición de $\chi_j|H$.
+The $i$-th row of the induction-restriction matrix gives the multiplicity of the character $\chi_j$ in the decomposition of $\phi_i^G$. The $j$-th column is the multiplicity of the 
+character $\phi_i$ in the decomposition of $\chi_j|H$.
 
 \begin{example}
-Sea $G=\Sym_3$. 
-La tabla de caracteres de $G$ es 
+Let $G=\Sym_3$. 
+The character table of $G$ is 
 	\begin{center}
 		\begin{tabular}{|c|rrr|}
 			\hline
@@ -280,8 +275,7 @@ La tabla de caracteres de $G$ es
 			\hline
 		\end{tabular}
 	\end{center}
-La tabla de caracteres del subgrupo 
-$H=\{\id,(12)\}$ es 
+The character table of the subgroup $H=\{\id,(12)\}$ is  
 \begin{center}
 \begin{tabular}{|c|rr|}
 \hline 
@@ -293,64 +287,64 @@ $\phi_{2}$ & $1$ & $-1$\tabularnewline
 \hline
 \end{tabular}
 \end{center}
-A simple vista vemos que $\chi_1|_H=\phi_1$, $\chi_2|_H=\phi_2$ y que $\chi_3|_H=\phi_1+\phi_2$. 
-La matriz de inducción--restricción es entonces
+By inspection, we see that
+$\chi_1|_H=\phi_1$, $\chi_2|_H=\phi_2$ and 
+$\chi_3|_H=\phi_1+\phi_2$. 
+The induction-restriction matrix is 
 \[
 \begin{pmatrix}
 1 & 0 & 1\\
 0 & 1 & 1
 \end{pmatrix}.
 \]
-Observemos que además $\phi_1^G=\chi_1+\chi_3$ y que $\phi_2^G=\chi_2+\chi_3$. 
+Moreover, $\phi_1^G=\chi_1+\chi_3$ and  $\phi_2^G=\chi_2+\chi_3$. 
 \end{example}
 
-Veamos cómo calcular explícitamente caracteres inducidos. 
+Let us see (again) how to compute 
+induced characters. 
 
 \begin{proposition}
-Sea $H$ un subgrupo de $G$ y sea $V$ es un $\C[H]$-module con caracter $\chi$. Si 
-$T$ es un trasversal de $H$ en $G$, entonces
+Let $H$ be a subgroup of $G$ and $V$ a $\C[H]$-module with character $\chi$. If  
+$T$ is a transversal of $H$ in $G$, then  
 \[
 \chi^G(g)=\sum_{\substack{t\in T\\t^{-1}gt\in H}}\chi(t^{-1}gt)
 \]
-para todo $g\in G$. 
+for all $g\in G$. 
 \end{proposition}
 
 \begin{proof}
-    Sabemos que $\Ind_H^GV=\oplus_{t\in T}t\otimes V$. 
-    Supongamos que $T=\{t_1,\dots,t_m\}$ 
-    y sea $\{v_1,\dots,v_n\}$ una base de $V$. 
-    Entonces $\{t_i\otimes v_k:1\leq i\leq m,\,1\leq k\leq n\}$ es 
-    una base de $\Ind_H^GV$ y la acción
-    de $g$ en $\Ind_H^GV$ está dada por
+    We know that $\Ind_H^GV=\oplus_{t\in T}t\otimes V$. 
+    Assume that $T=\{t_1,\dots,t_m\}$ 
+    and let $\{v_1,\dots,v_n\}$ be a basis of $V$. 
+    Then $\{t_i\otimes v_k:1\leq i\leq m,\,1\leq k\leq n\}$ is a basis of $\Ind_H^GV$. The action of 
+    $g$ on $\Ind_H^GV$ is given by 
     \[
     \rho^G(g)=\begin{cases}
-    \rho(t_j^{-1}gt_i) & \text{si $t_j^{-1}gt_i\in H$},\\
-    0 & \text{en otro caso}.
+    \rho(t_j^{-1}gt_i) & \text{if $t_j^{-1}gt_i\in H$},\\
+    0 & \text{otherwise}.
     \end{cases}
     \]
-    En efecto, si $gt_i=t_jh$ para $h\in H$ y ciertos $i,j$, entonces 
+    In fact, if $gt_i=t_jh$ for $h\in H$ and certain $i,j$, then  
     \[
-    g\cdot (t_i\otimes v_k)=gt_i\otimes v_k=t_jh\otimes v_k=t_j\otimes h\cdot v_k
+    g\cdot (t_i\otimes v_k)=gt_i\otimes v_k=t_jh\otimes v_k=t_j\otimes h\cdot v_k. 
     \]
-    y además $gt_i=t_jh$ si y sólo si $t_j^{-1}gt_i=h\in H$. Se concluye entones
-    que $g$ actúa como $t^{-1}gt$ en $V$ en caso en que $t^{-1}gt\in H$ y 
-    como la transformación nula en otro caso. 
+    Moreover, $gt_i=t_jh$ if and only if $t_j^{-1}gt_i=h\in H$. We conclude that 
+    $g$ acts like $t^{-1}gt$ on $V$ if $t^{-1}gt\in H$ and as zero otherwise.  
 \end{proof}
 
 \begin{corollary}
 \label{cor:induccion}
-    Sea $H$ un subgrupo de $G$ 
-    y sea $V$ es un $\C[H]$-module con caracter $\chi$.
-    Si $g\in G$, entonces
+    Let $H$ be a subgroup of $G$ 
+    and $V$ a $\C[H]$-module with character $\chi$.
+    If $g\in G$, then 
     \[
     \chi^G(g)=\frac{1}{|H|}\sum_{\substack{x\in G\\x^{-1}gx\in H}}\chi(x^{-1}gx).
     \]
 \end{corollary}
 
 \begin{proof}
-    Sea $T$ un transversal de $H$ en $G$. Si $x\in G$, escribimos $x=th$ para $t\in T$ y $h\in H$. 
-    Como $x^{-1}gx=h^{-1}(t^{-1}gt)h$, entonces $x^{-1}gx\in H\Longleftrightarrow t^{-1}gt\in H$ y además, en ese caso, 
-    $\chi(x^{-1}gx)=\chi(t^{-1}gt)$ pues $\chi$ es una función de clases. Eso implica que existen $|H|$ elementos $x\in G$ 
-    tales que $x^{-1}gx\in H$. Para esos $x$, se tiene $\chi(x^{-1}gx)=\chi(t^{-1}gt)$, lo que implica 
-    el corolario. 
+    Let $T$ be a transversal of $H$ in $G$. If $x\in G$, write $x=th$ for some $t\in T$ and $h\in H$. 
+    Como $x^{-1}gx=h^{-1}(t^{-1}gt)h$, it follows that $x^{-1}gx\in H\Longleftrightarrow t^{-1}gt\in H$. Moreover,   
+    $\chi(x^{-1}gx)=\chi(t^{-1}gt)$, as $\chi$ is a class function. This implies that there are $|H|$ elements $x\in G$ 
+    such that $x^{-1}gx\in H$. For those $x$, $\chi(x^{-1}gx)=\chi(t^{-1}gt)$. 
 \end{proof}
