@@ -1,0 +1,150 @@
+\section{Project: A theorem of Herstein}
+
+We present 
+a theorem of~\cite{MR93542}. The proof uses Frobenius' theorem (Theorem~\ref{thm:Frobenius}). Recall that 
+a proper subgroup $M$ of $G$ is said to be \emph{maximal} 
+if $M\subseteq H$ for some subgroup $H$ of $G$ 
+implies that $M=H$ or $H=G$. 
+
+\begin{theorem}[Herstein]
+\label{thm:Herstein}
+\index{Herstein theorem}
+    Let $G$ be a finite group and $A$ be an abelian
+    subgroup of $G$. If $A$ is maximal, then
+    $G$ is solvable. 
+\end{theorem}
+
+We start with a lemma.
+
+\begin{lemma}
+    Let $G$ be a finite group and $p$ be a prime divisor of $|G|$. Let $A$ be an abelian
+    subgroup of $\Aut(G)$ such that if $\phi\in A$ and 
+    $\phi(x)=x$, then $x=1$. Then there 
+    exists a unique $P\in\Syl_p(G)$
+    such that $\phi(P)=P$ for all $\phi\in A$. 
+\end{lemma}
+
+\begin{proof}
+    Let $\phi\in A$. We claim that 
+    $G=\{x^{-1}\phi(x):x\in G\}$. Let us consider the map 
+    $x\mapsto x^{-1}\phi(x)$. This map is injective, as 
+    \[
+    x^{-1}\phi(x)=y^{-1}\phi(y)\implies 
+    yx^{-1}=\phi(yx^{-1})\implies yx^{-1}=1\implies x=y.
+    \]
+    Thus $|G|\leq |\{x^{-1}\phi(x):x\in G\}|\leq |G|$ and hence
+    $G=\{x^{-1}\phi(x):x\in G\}$. 
+
+    We claim that there exists $P\in\Syl_p(G)$ such that $\phi(P)=P$. In fact, 
+    let $Q\in\Syl_p(G)$. Then $\phi(Q)\in\Syl_p(G)$. Thus 
+    there exists $y\in G$ such that $yQy^{-1}=\phi(Q)$. Let $x\in G$ 
+    be such that $y^{-1}=x^{-1}\phi(x)$. Then
+    \begin{align*}
+    \phi(xQx^{-1})&=\phi(x)\phi(Q)\phi(x)^{-1}\\
+    &=\phi(x)yQy^{-1}\phi(x)^{-1}\\
+    &=\phi(x)\phi(x)^{-1}xQx^{-1}\phi(x)\phi(x)^{-1}\\
+    &=xQx^{-1}.      
+    \end{align*}
+    Thus $P=xQx^{-1}\in\Syl_p(G)$ is such that $\phi(P)=P$. 
+
+    We claim that $\phi(N_G(P))=N_G(P)$. If $y\in \phi(N_G(P))$, then 
+    $y=\phi(x)$ for some $x\in N_G(P)$. Then 
+    \[
+    yPy^{-1}=\sigma(x)P\sigma(x)^{-1}=\sigma(x)\sigma(P)\sigma(x)^{-1}=\sigma(xPx^{-1})=\sigma(P)=P.
+    \]
+    Thus $y\in N_G(P)$. Conversely, if $x\in N_G(P)$, then $x=\sigma(y)$ for some $y\in G$. Since 
+    \[
+    P=xPx^{-1}=\sigma(y)P\sigma(y)^{-1}=\sigma(yPy_{-1}),
+    \]
+    $yPy^{-1}=\sigma^{-1}(P)=P$ and hence $y\in N_G(P)$. 
+    
+    We now claim that $P$ is the only Sylow $p$-subgroup of $G$ such that $\phi(P)=P$. Suppose that 
+    $P_1\in\Syl_p(G)$ is such that $\phi(P_1)=P_1$. 
+    Since $P$ and $P_1$ are conjugate, 
+    $P_1=xPx^{-1}$ for some $x\in G$. Since
+    \[
+    xPx^{-1}=P_1=\phi(P_1)=\phi(xPx^{-1})=\phi(x)\phi(P)\phi(x)^{-1}
+    =\phi(x)P\phi(x)^{-1},
+    \]
+    it follows that 
+    $x^{-1}\phi(x)\in N_G(P)$. Note that 
+    the restriction $\phi|_{N_G(P)}$ of $\phi$ to 
+    the subgroup $N_G(P)$ is an isomorphism that 
+    only fixes the identity element. 
+    \textcolor{red}{There exists $y\in N_G(P)$} such that $x^{-1}\phi(x)=y^{-1}\phi(y)$. Then $x=y\in N_G(P)$ and therefore
+    $P_1=P$. 
+
+    Let $\psi\in A$. Since $A$ is abelian, 
+    \[
+    \psi(P)=\psi(\phi(P))=(\psi\phi)(P)=(\phi\psi)(P)=\phi(\psi(P)).
+    \]
+    Thus $\psi(P)\in\Syl_p(G)$ is fixed by $\phi$. By the previous
+    claim, $P=\psi(P)$. 
+\end{proof}
+
+Now we are ready to prove the theorem. 
+
+\begin{proof}[Proof of Theorem~\ref{thm:Herstein}]
+    We proceed by induction on $|G|$. There are two cases
+    to consider. 
+
+    Assume first that $N_G(A)\ne A$. Then $A\subseteq N_G(A)\subseteq G$. Since $A$ is a maximal subgroup, $N_G(A)=G$. Thus $A$ 
+    is normal in $G$. By the correspondence theorem, $G/A$ has no non-trivial proper subgroups. Thus $G/A$ is cyclic (of prime
+    order). In particular, $G$ is solvable as both 
+    $G/A$ and $A$ are solvable. 
+
+    Assume now that $N_G(A)=A$. Let $x\not\in A$ and $B=xAx^{-1}\cap A$. If $B\ne\{1\}$, let $b\in B$ be such that $b\ne 1$. 
+    Since $A$ is abelian, $A\subseteq C_G(b)$. Moreover, since
+    $b\in xAx^{-1}$, $A\ne xAx^{-1}\subseteq C_G(b)$. 
+    Hence $C_G(b)\ne A$. By the maximality of $A$, $C_G(b)=G$. In particular, $b\in Z(G)$. The subgroup $\langle b\rangle$ 
+    is central (so normal in $G$). Let $\pi\colon G\to G/\langle b\rangle$ be the canonical map. By the correspondence 
+    theorem, $\pi(A)$ is a maximal subgroup of $G/\langle b\rangle$ and 
+    $\pi(A)$ is abelian. Since $|G/\langle b\rangle|<|G|$, the inductive hypothesis implies that $G/\langle b\rangle$ is solvable. Thus $G$ is solvable and both 
+    $G/\langle b\rangle$ and $\langle b\rangle$ are solvable. 
+
+    If $B=\{1\}$, then $A$ is a Frobenius group. Let $T$ be 
+    the complement of $A$ in $G$. Then $T$ is a normal subgroup 
+    of $G$. In particular, $aTa^{-1}=T$ for all $a\in A$. 
+    Each $a\in A$ induces an automorphism 
+    $\gamma_a\colon T\to T$, $t\mapsto ata^{-1}$. We claim that 
+    if $1\ne a\in A$ and $t\in T$ are such that 
+    $\gamma_a(t)=t$, then $t=1$. In fact, since $t\not\in A$, 
+    \[
+    ata^{-1}=\gamma_a(t)=t\implies 
+    a=t^{-1}at\in A\cap t^{-1}At=\{1\}.
+    \]
+    By the lemma, there exists $P\in\Syl_p(T)$ 
+    such that $\gamma_a(P)=P$ for all $a\in A$. Thus 
+    $A\subseteq N_G(P)$. Moreover, $P\subseteq N_G(P)$. But $P\not\subseteq A$, as $P\subseteq T$ and $T\cap A=\{1\}$. Thus 
+    $N_G(P)=G$ since $A$ is a maximal subgroup of $G$. Hence 
+    $P$ is normal in $G$ and $AP$ is a subgroup of $G$. 
+    Since $A\subsetneq AP\subseteq G$, the maximality of $A$ 
+    implies that $AP=G$. If $t\in T$, write
+    $t=ax$ for some $a\in A$ and $x\in P\subseteq T$. Thus 
+    $a=tx^{-1}\in A\cap T=\{1\}$, that is $t=x\in P$. We have proved
+    that $T=P$. Since both $G/T\simeq A$ and $A$ are solvable, it follows that $G$ is solvable. 
+\end{proof}
+
+The following result goes back to
+Kaplansky and 
+Herstein.
+
+\begin{corollary}
+    \index{Kaplansky--Herstein theorem}
+    Let $G=ABA$ be a finite group where $A$ is an abelian subgroup and $B$ is a cyclic subgroup of prime order. Then $G$ is solvable. 
+\end{corollary}
+
+\begin{proof}
+    By Herstein's theorem, it is enough to show
+    that $A$ is a maximal subgroup of $G$. Assume that 
+    $B=\langle b\rangle$. 
+    Suppose that $A$ is not maximal. Then there
+    exists a proper subgroup $M$ of $G$ such that 
+    $A\subsetneq M$. Let $x\in M\setminus A$. Then 
+    $x=a_1b^ka_2$ for some $a_1,a_2\in A$ and $k\in\Z$ such that $b^k\ne 1$. Since $A\subseteq M$, 
+    \[
+    b^k=a_1^{-1}xa_2^{-1}\in M.
+    \]
+    Since $B$ is cyclic of prime order, $b\in M$. Thus 
+    $A\cup B\subseteq M$ and hence $ABA\subseteq M$, a contradiction. 
+\end{proof}
