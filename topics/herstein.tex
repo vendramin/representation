@@ -14,7 +14,24 @@ implies that $M=H$ or $H=G$.
     $G$ is solvable. 
 \end{theorem}
 
-We start with a lemma.
+We start with two lemmas.
+
+\begin{lemma}
+\label{lem:phi}
+    Let $G$ be a finite group and $\phi\in\Aut(G)$ be such that
+    $\phi(x)=x$ implies $x=1$. Then $G=\{x^{-1}\phi(x):x\in G\}$. 
+\end{lemma}
+
+\begin{proof}
+    Let us consider the map 
+    $x\mapsto x^{-1}\phi(x)$. This map is injective, as 
+    \[
+    x^{-1}\phi(x)=y^{-1}\phi(y)\implies 
+    yx^{-1}=\phi(yx^{-1})\implies yx^{-1}=1\implies x=y.
+    \]
+    Thus $|G|\leq |\{x^{-1}\phi(x):x\in G\}|\leq |G|$ and hence
+    $G=\{x^{-1}\phi(x):x\in G\}$. 
+\end{proof}
 
 \begin{lemma}
     Let $G$ be a finite group and $p$ be a prime divisor of $|G|$. Let $A$ be an abelian
@@ -25,16 +42,9 @@ We start with a lemma.
 \end{lemma}
 
 \begin{proof}
-    Let $\phi\in A$. We claim that 
-    $G=\{x^{-1}\phi(x):x\in G\}$. Let us consider the map 
-    $x\mapsto x^{-1}\phi(x)$. This map is injective, as 
-    \[
-    x^{-1}\phi(x)=y^{-1}\phi(y)\implies 
-    yx^{-1}=\phi(yx^{-1})\implies yx^{-1}=1\implies x=y.
-    \]
-    Thus $|G|\leq |\{x^{-1}\phi(x):x\in G\}|\leq |G|$ and hence
+    Let $\phi\in A$. By Lemma~\ref{lem:phi}, 
     $G=\{x^{-1}\phi(x):x\in G\}$. 
-
+    
     We claim that there exists $P\in\Syl_p(G)$ such that $\phi(P)=P$. In fact, 
     let $Q\in\Syl_p(G)$. Then $\phi(Q)\in\Syl_p(G)$. Thus 
     there exists $y\in G$ such that $yQy^{-1}=\phi(Q)$. Let $x\in G$ 
@@ -70,8 +80,10 @@ We start with a lemma.
     $x^{-1}\phi(x)\in N_G(P)$. Note that 
     the restriction $\phi|_{N_G(P)}$ of $\phi$ to 
     the subgroup $N_G(P)$ is an isomorphism that 
-    only fixes the identity element. 
-    \textcolor{red}{There exists $y\in N_G(P)$} such that $x^{-1}\phi(x)=y^{-1}\phi(y)$. Then $x=y\in N_G(P)$ and therefore
+    only fixes the identity element. By Lemma~\ref{lem:phi}
+    applied to the group $N_G(P)$ and the automorphism  
+    $\phi|_{N_G(P)}$, 
+    there exists $y\in N_G(P)$ such that $x^{-1}\phi(x)=y^{-1}\phi(y)$. Then $x=y\in N_G(P)$ and therefore
     $P_1=P$. 
 
     Let $\psi\in A$. Since $A$ is abelian, 
