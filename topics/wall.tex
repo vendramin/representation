@@ -1,0 +1,99 @@
+\section{Project: Wall's theorem}
+
+We now present a character-theoretic proof of a theorem of Wall \cite{MR125156}, 
+which bounds the number of maximal subgroups of a finite solvable group. 
+
+\begin{exercise}
+    \label{xca:number_maximals}
+    Let $G$ be a finite group and $M$ be a maximal subgroup of $G$.
+    Prove that $M$ has exactly $(G:M)$ conjugates. 
+\end{exercise}
+
+\begin{theorem}[Wall]
+\index{Wall theorem}
+\label{thm:Wall}
+Let $G$ be a finite solvable group. Then the number of maximal subgroups of $G$ is at most $|G|-1$. 
+\end{theorem}
+
+\begin{proof}
+    Let $M_1$ and $M_2$ be maximal subgroups of $G$. If they are not conjugate, 
+    Ore's theorem~\ref{thm:Ore} implies that $G=M_1M_2$. In particular, 
+    there is only one double $(M_1,M_2)$-coset, with representative $1$. Thus
+    \[
+    \Res_{M_1}^G\Ind_{M_2}^G1_{M_2}=\Ind_{M_1\cap M_2}^{M_1}\Res_{M_1\cap M_2}^{M_2}1_{M_2}
+    =\Ind_{M_1\cap M_2}^{M_1}1_{M_1\cap M_2}.
+    \]
+    Using Frobenius' reciprocity (Theorem~\ref{thm:reciprocity}) and 
+    Mackey's theorem~\ref{thm:Mackey}, 
+    \begin{align*}
+    \langle\Ind_{M_1}^G1_{M_1},\Ind_{M_2}^G1_{M_2}\rangle
+    &=\langle 1_{M_1},\Res_{M_1}^G\Ind_{M_2}^G1_{M_2}\rangle\\
+    &=\langle 1_{M_1},\Ind_{M_1\cap M_2}^{M_1}1_{M_1\cap M_2}\rangle\\
+    &=\langle \Res_{M_1\cap M_2}^{M_1}1_{M_1},1_{M_1\cap M_2}\rangle\\
+    &=\langle 1_{M_1\cap M_2},1_{M_1\cap M_2}\rangle\\
+    &=1.
+    \end{align*}
+    
+   Let $X$ be the set of maximal subgroups of $G$ that are normal in $G$, and 
+   let $Y$ be the set of representatives of non-normal 
+   maximal subgroups of $G$. By Exercise~\ref{xca:number_maximals}, 
+   the number of 
+   maximal subgroups of $G$ is 
+   \[
+   |X|+\sum_{M\in Y}(G:M).
+   \]
+
+   
+\end{proof}
+
+\begin{exercise}
+    Prove that a finite solvable group has exactly $|G|-1$ maximal subgroups
+    if and only if it is an elementary abelian $2$-group. 
+\end{exercise}
+
+The ideas used here to prove Theorem~\ref{thm:Wall} can be applied 
+to obtain the following variant of Wall’s theorem, established  
+by Cook, Wiegoldt, and Williamson in \cite{MR896628}.
+
+\begin{theorem}[Cook--Wiegold--Williamson]
+    \label{thm:CookWiegold-Williamson}
+    \index{Cook--Wiegold--Williamson theorem}
+    Let $G$ be a finite solvable group and $p$ the smallest prime divisor of $|G|$. 
+    Then the number of maximal subgroups of $G$ is at most $\frac{|G|-1}{p-1}$. Equality 
+    holds if and only if $G$ is an elementary $p$-group.  
+\end{theorem}
+
+\begin{bonus}
+    Prove Theorem~\ref{thm:CookWiegold-Williamson}.    
+\end{bonus}
+
+\begin{exercise}
+    \label{xca:kernel_ind}
+    Let $H$ be a subgroup of a finite group $G$ and 
+    $\chi\in\Char(H)$. Prove that 
+    $\ker\Ind_H^G\chi=\bigcap_{x\in G}x(\ker\chi)x^{-1}$. 
+\end{exercise}
+
+\begin{sol}{xca:kernel_ind}
+    Let $g\in\ker\Ind_H^G\chi$. Then \[
+    \sum_{x\in G}\chi^0(x^{-1}gx)=\sum_{x\in G}\chi(1).
+    \]
+    Then $\chi^0(x^{-1}gx)=\chi(1)$ for all $x\in G$. (Otherwise, $|\chi^0(y^{-1}gy)|<\chi(1)$ for some
+    $y\in G$ and hence 
+    \[
+    \sum_{x\in G}\chi(1)=\left|\sum_{x\in G}|\chi^0(x^{-1}gx)\right|
+    \leq\sum_{x\in G}|\chi^0(x^{-1}gx)|<\sum_{x\in G}\chi(1),
+    \]
+    a contradiction.) In particular, $x^{-1}gx\in\ker\chi\subseteq H$ for all $x\in G$, that 
+    is $g\in x(\ker\chi)x^{-1}$ for all $x\in G$. 
+    
+    Conversely, let $g\in\bigcap_{x\in G}x(\ker\chi)x^{-1}$. Then $g\in x(\ker\chi)x^{-1}$ for all $x\in G$. 
+    This implies that $x^{-1}gx\in\ker\chi\subseteq H$ for all $x\in G$. Thus 
+    \[
+    \chi^0(x^{-1}gx)=\chi(x^{-1}gx)=\chi(1)
+    \]
+    for all $x\in G$. Summing over all $x\in G$ and dividing by $|H|$, 
+    \[
+    (\Ind_H^G\chi)(g)=\frac{1}{|H|}\sum_{x\in G}\chi^0(x^{-1}gx)=(G:H)\chi(1)=(\Ind_H^G\chi)(1).
+    \]
+\end{sol}
