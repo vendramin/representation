@@ -3,6 +3,10 @@
 \newcommand{\course}{Representation theory of algebras}
 \input{mystuff}
 
+\usepackage{makecell}
+\setcellgapes{3pt}
+
+
 \renewcommand{\sl}{\mathfrak{sl}}
 \newcommand{\cC}{\mathcal{C}}
 \renewcommand{\cf}{\operatorname{ClassFun}}
@@ -40,12 +44,18 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 
-
-
 \TOCpart{Part 1}
 
 \include{introduction}
 %\include{subsections}
+
+% \usepackage{fancyhdr}
+% \pagestyle{fancy}
+% \fancyhf{}
+% \fancyfoot[R]{\thepage}
+% \fancyhead[L]{\course}
+% \fancyhead[R]{Lecture \thesection}
+% \setlength{\headheight}{14pt}
 
 \include{01}
 \include{02}

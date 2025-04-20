@@ -1,4 +1,50 @@
 \section{Lecture: Week 9}
+ 
+\begin{definition}
+  \index{Frobenius!kernel}
+  Let $G$ be a Frobenius group. The normal subgroup 
+  $N$ of Frobenius' theorem is called the \emph{Frobenius kernel}. 
+\end{definition}
+
+\begin{proposition}
+\label{pro:Frobenius_groups}
+  Let $G$ be a Frobenius group with complement $H$. 
+  Then there exists a normal subgroup $N$ of $G$ 
+  such that 
+  $G=HN$ and $H\cap N=\{1\}$.
+\end{proposition}
+
+\begin{proof}
+  Frobenius' theorem yields the subgroup $N$. Since 
+  $H\cap gHg^{-1}=\{1\}$ for all $g\in G\setminus H$, 
+  it follows that 
+  $N_G(H)=H$. It follows that $H$
+  has $(G:H)$ conjugates. 
+  Let 
+  \[
+  N=\left( G\setminus\bigcup_{x\in G}xHx^{-1}\right)\cup\{1\}.
+  \]
+  Then  
+  $|N|=|G|-(G:H)(|H|-1)=(G:H)$.
+  Since, moreover, $N\cap H=\{1\}$, we conclude that
+  \[
+  |HN|=|N||H|/|H\cap N|=|N||H|=|G|.
+  \]
+  Therefore $G=NH$.
+\end{proof}
+
+\begin{optional}
+In his doctoral thesis Thompson proved the following result, conjectured
+by Frobenius. 
+
+\begin{theorem}[Thompson]
+\index{Thompson theorem}
+    Let $G$ be a Frobenius group. If $N$ is the Frobenius kernel, then $N$ 
+    is nilpotent.
+\end{theorem}
+
+See~\cite[Theorem 6.24]{MR2426855} for the proof.
+\end{optional}
 
 \subsection{The Cameron--Cohen theorem (again)}
 

@@ -1,0 +1,31 @@
+\section{Project: Permutation characters}
+
+\begin{exercise}
+    \label{xca:G/H}
+    Let $H$ be a subgroup of a finite group $G$ and 
+    $\chi$ the character of the permutation action of $G$ on $G/H$ by
+    left multiplication. If $g\in G$ and $K$ is the conjugacy class
+    of $g$ in $K$, prove that
+    \[
+    \chi(g)=\frac{(G:H)|K\cap H|}{|K|}.
+    \]
+\end{exercise}
+
+\begin{sol}{xca:G/H}
+    Let $t_1,\dots,t_k$ be a right transversal of $C_G(g)$ in $G$. Then 
+    $k=|K|$ and $G$ decomposes as 
+    $G=\bigcup_{i=1}^kC_G(g)t_i$. Then
+    \begin{align*}
+        \chi(g) &= \Ind_H^G1_H\\
+        &=\frac{1}{|H|}\sum_{x\in G}1_H^0(x^{-1}gx)\\
+        &=\frac{1}{|H|}\sum_{i=1}^k\sum_{z\in C_G(g)}1_H^0(t_i^{-1}z^{-1}gzt_i)\\
+        &=\frac{1}{|H|}\sum_{i=1}^k\sum_{z\in C_G(g)}1_H^0(t_i^{-1}gt_i)\\
+        &=\frac{1}{|H|}|C_G(g)|\sum_{i=1}^k1_H^0(t_i^{-1}gt_i).
+    \end{align*}
+    Note that $K=\{t_1^{-1}gt_1,\dots,t_k^{-1}gt_k\}$. Moreover, 
+    $1_H^0(t_i^{-1}gt_i)=1$ if and only if $t_i^{-1}gt_i\in H$. Thus 
+    \[
+    \chi(g)=\frac{1}{|H|}|C_G(g)|\sum_{i=1}^k1_H^0(t_i^{-1}gt_i)
+    =\frac{(G:H)}{|K|}|H\cap K|.
+    \]
+\end{sol}
