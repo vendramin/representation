@@ -9,6 +9,102 @@ which bounds the number of maximal subgroups of a finite solvable group.
     Prove that $M$ has exactly $(G:M)$ conjugates. 
 \end{exercise}
 
+\begin{lemma}
+\label{lem:multiplicity-free}
+    Let $G$ be a finite solvable group and $M$ be a maximal subgroup of $G$. If $M$ is core-free, then 
+    every irreducible constituent of $\Ind_M^G\Tchar_M$ has multiplicity one. 
+\end{lemma}
+
+\begin{proof}
+    Let $N$ be a minimal normal subgroup of $G$. Then 
+    $G=NM$ and $N\cap M=\{1\}$ (see 
+    By Lemma~\ref{lem:Ore_step2}). In particular, 
+    $|N|=(G:M)$. 
+
+    We claim that 
+    $\Res_N^G\Ind_M^G\Tchar_M$ is the regular character of $N$. For 
+    $n\in N$, 
+    \[
+    (\Ind_M^G\Tchar_M)(n)=\frac{1}{|M|}\sum_{x\in G}\Tchar_M^0(x^{-1}nx)
+    =\begin{cases}
+        (G:M) & \text{if $n=1$,}\\
+        0 & \text{otherwise.}
+    \end{cases}
+    \]
+    By Theorem~\ref{thm:regular}, 
+    $\Res_N^G\Ind_M^G\Tchar_M$ is the regular character of $N$ and hence 
+    \[
+    \Res_N^G\Ind_M^G\Tchar_M=\sum_{\lambda\in\Irr(N)}\lambda(1)\lambda.
+    \]
+    Since $N$ is abelian, $\lambda(1)=1$ for all $\lambda\in\Irr(N)$. Now assume
+    that some irreducible constituent $\psi\in\Irr(G)$ of $\Ind_M^G\Tchar_M$ has
+    multiplicity $m\geq2$, say $\Ind_M^G\Tchar_M=m\psi+\xi$, where $\langle\psi,\xi\rangle=0$. 
+    Then 
+    \[
+    \sum_{\lambda\in\Irr(N)}\lambda=\Res_N^G\Ind_M^G\Tchar_M=m\Res_N^G\psi+\Res_N^G\xi,
+    \]
+    a contradiction. 
+\end{proof}
+
+\begin{lemma}
+\label{lem:kernel}
+    Let $G$ be a finite solvable group and $M$ be a maximal subgroup of $G$. If $M$ is core-free, then 
+    \[
+    \ker\Ind_M^G\Tchar_M=\bigcap\{\ker\chi:\chi\in\Irr(G)\text{ such that }\langle\Ind_M^G\Tchar_M,\chi\rangle\ne0\}.
+    \]
+    Thus $\ker\Ind_M^G\Tchar_M$ is the intersection of the kernels of the irreducible constituents 
+    of $\Ind_M^G\Tchar_M$.
+\end{lemma}
+
+\begin{proof}
+    By Lemma~\ref{lem:multiplicity-free}, every irreducible constituent of 
+    $\Ind_M^G\Tchar_M$ appears with multiplicity one, that is 
+    \[
+    \Ind_M^G\Tchar_M=\sum_{j=1}^k\chi_j
+    \]
+    for some subset $\{\chi_1,\dots,\chi_k\}\subseteq\Irr(G)$. If $g\in\ker\chi_1\cap\cdots\cap\ker\chi_k$, then
+    $\chi_j(g)=\chi_j(1)$ for all $j\in\{1,\dots,k\}$. Thus 
+    \[
+    \sum_{j=1}^k\chi_j(g)=(\Ind_M^G\Tchar_M)(g)=(\Ind_M^G\Tchar_M)(1)=\sum_{j=1}^k\chi_j(1). 
+    \]
+    Conversely, let $g\in\ker\Ind_M^G\Tchar_M$. 
+    Then 
+    \[
+    \sum_{j=1}^k\chi_j(g)=(\Ind_M^G\Tchar_M)(g)=(\Ind_M^G\Tchar_M)(1)=\sum_{j=1}^k\chi_j(1).
+    \]
+    Assume that there exists 
+    $i\in\{1,\dots,k\}$ such that 
+    $g\not\in\ker\chi_i$. Then 
+    $|\chi_i(g)|<\chi_i(1)$ and hence 
+    \[
+    \sum_{j=1}^k\chi_j(1)=\left|\sum_{j=1}^k\chi(g)\right|\leq
+    \sum_{j=1}^k|\chi_j(g)|<\sum_{j=1}^k\chi_j(1),
+    \]
+    a contradiction. 
+\end{proof}
+
+\begin{lemma}
+    Let $G$ be a finite solvable group and $M$ be a  
+    maximal subgroup of $G$. If $M$ is not normal in $G$, 
+    then $\Tchar_G$ is the only degree-one constituent of $\Ind_M^G\Tchar_M$. 
+\end{lemma}
+
+\begin{proof}
+    Let $\psi\in\Irr(G)$ be a degree-one constituent of $\Ind_M^G\Tchar_M$. 
+    By Frobenius' reciprocity, $0\ne\langle\Ind_M^G\Tchar_M,\psi\rangle=\langle\Tchar_M,\Res_M^G\psi\rangle$.
+    Since $\Res_M^G\psi$ is a degree-one character, it follows the irreducibility that 
+    $\Tchar_M=\Res_M^G\psi$. In particular, 
+    \[
+    M=\ker\Tchar_M=\ker(\Res_M^G\psi)=M\cap\ker\psi\subseteq\ker\psi. 
+    \]
+    
+    Assume now that $\psi\ne\Tchar_G$. Then 
+    \[
+    M\subseteq \ker\psi=\Core_GM\subsetneq M,
+    \]
+    a contradiction. Hence $\psi=\Tchar_G$. 
+\end{proof}
+
 \begin{theorem}[Wall]
 \index{Wall theorem}
 \label{thm:Wall}
@@ -20,19 +116,46 @@ Let $G$ be a finite solvable group. Then the number of maximal subgroups of $G$ 
     Ore's theorem~\ref{thm:Ore} implies that $G=M_1M_2$. In particular, 
     there is only one double $(M_1,M_2)$-coset, with representative $1$. Thus
     \[
-    \Res_{M_1}^G\Ind_{M_2}^G1_{M_2}=\Ind_{M_1\cap M_2}^{M_1}\Res_{M_1\cap M_2}^{M_2}1_{M_2}
-    =\Ind_{M_1\cap M_2}^{M_1}1_{M_1\cap M_2}.
+    \Res_{M_1}^G\Ind_{M_2}^G\Tchar_{M_2}=\Ind_{M_1\cap M_2}^{M_1}\Res_{M_1\cap M_2}^{M_2}\Tchar_{M_2}
+    =\Ind_{M_1\cap M_2}^{M_1}\Tchar_{M_1\cap M_2}.
     \]
     Using Frobenius' reciprocity (Theorem~\ref{thm:reciprocity}) and 
     Mackey's theorem~\ref{thm:Mackey}, 
     \begin{align*}
-    \langle\Ind_{M_1}^G1_{M_1},\Ind_{M_2}^G1_{M_2}\rangle
-    &=\langle 1_{M_1},\Res_{M_1}^G\Ind_{M_2}^G1_{M_2}\rangle\\
-    &=\langle 1_{M_1},\Ind_{M_1\cap M_2}^{M_1}1_{M_1\cap M_2}\rangle\\
-    &=\langle \Res_{M_1\cap M_2}^{M_1}1_{M_1},1_{M_1\cap M_2}\rangle\\
-    &=\langle 1_{M_1\cap M_2},1_{M_1\cap M_2}\rangle\\
+    \langle\Ind_{M_1}^G\Tchar_{M_1},\Ind_{M_2}^G\Tchar_{M_2}\rangle
+    &=\langle \Tchar_{M_1},\Res_{M_1}^G\Ind_{M_2}^G\Tchar_{M_2}\rangle\\
+    &=\langle \Tchar_{M_1},\Ind_{M_1\cap M_2}^{M_1}\Tchar_{M_1\cap M_2}\rangle\\
+    &=\langle \Res_{M_1\cap M_2}^{M_1}\Tchar_{M_1},\Tchar_{M_1\cap M_2}\rangle\\
+    &=\langle \Tchar_{M_1\cap M_2},\Tchar_{M_1\cap M_2}\rangle\\
     &=1.
     \end{align*}
+    For $i\in\{1,2\}$, by Frobenius' reciprocity, 
+    \[
+    \langle\Ind_{M_i}^G\Tchar_{M_i},\Tchar_G\rangle
+    =\langle\Tchar_{M_i},\Res_{M_i}^G\Tchar_G\rangle=\langle \Tchar_{M_i},\Tchar_{M_i}\rangle=1.
+    \]
+    Thus $\Tchar_{G}$ is an irreducible constituent of both 
+    $\Ind_{M_1}^G\Tchar_{M_1}$ and $\Ind_{M_2}^G\Tchar_{M_2}$. Since 
+    \[
+    \langle\Ind_{M_1}^G\Tchar_{M_1},\Ind_{M_2}^G\Tchar_{M_2}\rangle=1,
+    \]
+    the set of non-trivial 
+    irreducible
+    constituents of $\Ind_{M_1}^G\Tchar_{M_1}$ and $\Ind_{M_2}^G\Tchar_{M_2}$ are disjoint, that~is  
+    \[
+    \Ind_{M_1}^G\Tchar_{M_1}=\Tchar_G+\eta_1,
+    \quad 
+    \Ind_{M_2}^G\Tchar_{M_2}=\Tchar_G+\eta_2,
+    \quad 
+    \langle\eta_1,\eta_2\rangle=0.
+    \]
+
+    For a maximal subgroup $M$ of $G$, let 
+    $C(M)$ be the set of non-trivial constituents
+    of $\Ind_M^G\Tchar_M$, that is
+    \[
+    C(M)=\{\chi\in\Irr(G):\chi\ne\Tchar_G\text{ and }\langle\eta,\Ind_M^G\Tchar_M\rangle\ne0\}.
+    \]
     
    Let $X$ be the set of maximal subgroups of $G$ that are normal in $G$, and 
    let $Y$ be the set of representatives of non-normal 
@@ -40,10 +163,44 @@ Let $G$ be a finite solvable group. Then the number of maximal subgroups of $G$ 
    the number of 
    maximal subgroups of $G$ is 
    \[
-   |X|+\sum_{M\in Y}(G:M).
+   m=|X|+\sum_{M\in Y}(G:M).
    \]
 
-   
+   For every maximal subgroup $M$ of $G$ such that $M$ is normal in $G$, 
+   we know that $\Ind_M^G\Tchar_M$ decomposes 
+   as $\Ind_M^G\Tchar_M=\Tchar_G+\eta_1+\cdots+\eta_k$ for some  
+   $\eta_1,\dots,\eta_k\in\Irr(G)\setminus\{\Tchar_G\}$ such that 
+   $\eta_j(1)=1$ for all $j\in\{1,\dots,k\}$. Then
+   \[
+   (G:M)-1=\eta_1(1)+\cdots+\eta_k(1)=\sum_{i=1}^k\eta_i(1)^2
+   \]
+   since $\eta_j(1)=1$ for all $j$. Since $p$ is the smallest prime divisor of $|G|$, 
+   it follows that 
+   \[
+   \sum_{\eta\in C(M)}\eta(1)^2
+   =(G:M)-1\geq p-1.
+   \]
+
+   For every maximal subgroup $M$ of $G$ such that $M$ is not normal in $G$, 
+   $\Ind_M^G\Tchar_M$ decomposes 
+   as $\Ind_M^G\Tchar_M=\Tchar_G+\xi_1+\cdots+\xi_l$ for some degree-one distinct characters 
+   $\xi_1,\dots,\xi_k\in\Irr(G)$ such that $\xi_j(1)\geq p$ for all $j\in\{1,\dots,k\}$. 
+   Then 
+   \[
+   \sum_{\xi\in C(M)}\xi(1)^2
+   \geq p\sum_{\xi\in C(M)}\xi(1)
+   =p((G:M)-1)
+   \geq (p-1)(G:M).
+   \]
+
+   Now 
+   \begin{align*}
+    |G|-1 &=\sum_{\Tchar_G\ne\chi\in\Irr(G)}\chi(1)^2
+    \geq\sum_{M\in X}\sum_{\eta\in C(X)}\eta(1)^2
+    +\sum_{M\in Y}\sum_{\xi\in C(X)}\xi(1)^2\\
+    &\geq (p-1)|X|+(p-1)\sum_{M\in Y}(G:M)\\
+    &=(p-1)\left(|X|+\sum_{M\in Y}(G:M)\right)=(p-1)m.\qedhere 
+   \end{align*}
 \end{proof}
 
 \begin{exercise}
@@ -51,9 +208,164 @@ Let $G$ be a finite solvable group. Then the number of maximal subgroups of $G$ 
     if and only if it is an elementary abelian $2$-group. 
 \end{exercise}
 
+\begin{example}
+    Let $G=\Sym_3$. 
+    Recall from Table~\ref{tab:S3} that $\Irr(G)=\{\Tchar_G,\sgn,\chi\}$, where $\sgn$ is the sign representation
+    and $\chi\colon G\to\C^{\times}$ is given by
+    \[
+    \chi(g)=\begin{cases}
+        2 & \text{if $g=\id$},\\
+        0 & \text{if $g\in\{(12),(13),(23)\}$},\\
+        -1 & \text{if $g\in\{(123),(132)\}.$}
+    \end{cases}
+    \]
+
+    The group $G$ has two conjugacy classes of maximal subgroups, namely 
+    \[
+    \{\langle (123)\rangle\}\text{ and }\{\langle(12)\rangle,\langle(23)\rangle,\langle(13)\rangle\}.
+    \]
+
+    As the group $G$ is rather small, this can be easily verified 
+    by a direct calculation. In any case, here is the Magma code:
+    \begin{lstlisting}
+> S3 := Sym(3);
+> max := MaximalSubgroups(S3);
+> max;
+Conjugacy classes of subgroups
+------------------------------
+
+[1]     Order 2            Length 3
+        Permutation group M acting on a set of cardinality 3
+        Order = 2
+            (2, 3)
+[2]     Order 3            Length 1
+        Permutation group N acting on a set of cardinality 3
+        Order = 3
+            (1, 2, 3)
+    \end{lstlisting}
+
+    Let $M=\langle (23)\rangle$ and $N=\langle (123)\rangle$. Thus $X=\{N\}$ and 
+    $Y=\{M\}$. 
+    
+    Let us compute $C(N)$. For that purpose, let $t_1=1$ 
+    and $t_2=(12)$ be a transversal of $N$ in $G$. Then 
+    \[
+    (\Ind_{N}^G\Tchar_N)(g)=\Tchar_N^0(g)+\Tchar_N^0((12)g(12))=\begin{cases}
+        2 & \text{if $g=\id$},\\
+        0 & \text{if $g\in\{(12),(23),(13)\}$},\\
+        2 & \text{otherwise.}
+    \end{cases}
+    \]
+    Thus $\Ind_{N}^G\Tchar_M=\Tchar_G+\sgn$ and $C(N)=\{\sgn\}$. Here is the Magma code: 
+\begin{lstlisting}
+> N := max[2]`subgroup;
+> g := Character(TrivialRepresentation(N));
+> ind_N := Induction(g, S3);
+> ind_N;
+( 2, 0, 2 )
+\end{lstlisting}    
+
+To decompose our induced character, with Magma we proceed as follows:
+\begin{lstlisting}
+> T := CharacterTable(S3);
+> Decomposition(T, ind_N);
+[
+    1,
+    1,
+    0
+]
+( 0, 0, 0 )
+> InnerProduct(T[3], ind_N);
+0
+> InnerProduct(T[2], ind_N);
+1
+> InnerProduct(T[1], ind_N);
+1
+\end{lstlisting}
+
+
+    Let us now compute $C(M)$. A direct calculation shows that 
+    \[
+    (\Ind_{M}^G\Tchar_{M})(g)=\begin{cases}
+        3 & \text{if $g=\id$},\\
+        1 & \text{if $g\in\{(12),(23),(13)\}$},\\
+        0 & \text{otherwise.}
+    \end{cases}
+    \]
+    Thus $\Ind_{M}\Tchar_{M}=\Tchar_G+\chi$ and $C(M)=\{\chi\}$. 
+    We leave it as an exercise to verify these calculations, either by 
+    hand, with Magma, or perhaps both.
+\end{example}
+
+\begin{example}
+    Let $G=\Alt_4$. There are two conjugacy classes of maximal subgroups of $G$ with representatives
+    are $M=\langle (234)\rangle$ and $N=\{\id,(12)(34),(13)(24),(14)(23)\}$. Then 
+    $X=\{N\}$ and $Y=\{M\}$. 
+
+    In Exercise~\ref{xca:A4}, we asked for the construction of the character table of \( \Alt_4 \). The completed table is shown in Table~\ref{tab:A4}.
+
+    \index{Character table!of $\Alt_4$}
+    \begin{table}[h]
+        \centering\makegapedcells
+        \caption{The Character table of $\Alt_4$.}
+        \label{tab:A4}
+        \begin{tabular}{|c|cccc|}
+             \hline
+             & $\id$ & $(12)(34)$ & $(123)$ & $(132)$\\
+             \hline
+             $\chi_1$ & $1$ & $1$ & $1$ & $1$\\
+             $\chi_2$ & $1$ & $1$ & $\frac{-1+\sqrt{-3}}{2}$ & $\frac{-1-\sqrt{-3}}{2}$\\
+             $\chi_3$ & $1$ & $1$ & $\frac{-1-\sqrt{-3}}{2}$ & $\frac{-1+\sqrt{-3}}{2}$\\
+             $\chi_4$ & $3$ & $-1$ & $0$ & $0$\\
+             \hline
+        \end{tabular}
+    \end{table}
+
+    
+    A direct calculation shows that
+    $\Ind_N^G\Tchar_N=\Tchar_G+\chi_2+\chi_3$ and 
+    $\Ind_M^G\Tchar_M=\Tchar_G+\chi_4$. 
+\end{example}
+% > A4 := Alt(4);
+% > max := MaximalSubgroups(A4);
+% > #max;
+% 2
+% > max;
+% Conjugacy classes of subgroups
+% ------------------------------
+
+% [1]     Order 3            Length 4
+%         Permutation group acting on a set of cardinality 4
+%         Order = 3
+%             (2, 3, 4)
+% [2]     Order 4            Length 1
+%         Permutation group acting on a set of cardinality 4
+%         Order = 4 = 2^2
+%             (1, 3)(2, 4)
+%             (1, 2)(3, 4)
+% > M := max[1]`subgroup;
+% > f := Character(TrivialRepresentation(M));
+% > f;
+% ( 1, 1, 1 )
+% > ind_M := Induction(f, A4);
+% > ind_M;
+% ( 4, 0, 1, 1 )
+% > T := CharacterTable(A4);
+% > Decomposition(T, ind_M);
+% [
+%     1,
+%     0,
+%     0,
+%     1
+% ]
+% ( 0, 0, 0, 0 )
+% > T[4];
+% ( 3, -1, 0, 0 )
+% > T[1];
+% ( 1, 1, 1, 1 )
 The ideas used here to prove Theorem~\ref{thm:Wall} can be applied 
 to obtain the following variant of Wall’s theorem, established  
-by Cook, Wiegoldt, and Williamson in \cite{MR896628}.
+by Cook, Wiegold, and Williamson in \cite{MR896628}.
 
 \begin{theorem}[Cook--Wiegold--Williamson]
     \label{thm:CookWiegold-Williamson}
@@ -97,3 +409,30 @@ by Cook, Wiegoldt, and Williamson in \cite{MR896628}.
     (\Ind_H^G\chi)(g)=\frac{1}{|H|}\sum_{x\in G}\chi^0(x^{-1}gx)=(G:H)\chi(1)=(\Ind_H^G\chi)(1).
     \]
 \end{sol}
+
+\begin{exercise}
+\label{xca:kernel_constituent}
+    Let $M$ be a maximal subgroup of a finite group $G$, and $\Tchar_G\ne\chi\in\Irr(G)$ be
+    a constituent
+    of $\Ind_M^G\Tchar_M$. Prove that $\ker\chi=\Core_GM$. 
+\end{exercise}
+
+\begin{sol}{xca:kernel_constituent}
+    We first prove that $\ker\chi\subseteq\Core_GM$. If not, $G=(\ker\chi)M$ because $M$ is a maximal subgroup of $G$.
+    
+    We claim that $\Res_M^G\chi\in\Irr(M)$. Let $\rho\colon G\to\GL(V)$ be a representation with character $\chi$.  
+    Every $g\in G$ can be written as $g=xm$ for $x\in\ker\chi$ and $m\in M$. 
+    Thus $\rho_g=\rho_x\rho_m=\rho_m$ and a subspace $W$ of $V$ such that $\rho|_M(W)\subseteq W$ 
+    will also be such that $\rho(W)\subseteq W$. 
+
+    By Frobenius' reciprocity, 
+    \[
+    0\ne\langle\chi,\Ind_M^G\Tchar_M\rangle=\langle\Res_M^G\chi,\Tchar_M\rangle.
+    \]
+    Hence $\Res_M^G\chi=\Tchar_M$. This implies that $M\subseteq\ker\chi$ and hence 
+    $M=(\ker\chi)M=G$, a contradiction.  Therefore $\ker\chi\subseteq M$ and 
+    hence $\ker\chi\subseteq\Core_GM$. 
+
+    For the other inclusion, use Exercise~\ref{xca:kernel_ind}.
+\end{sol}
+

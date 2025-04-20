@@ -360,6 +360,7 @@ the size of the conjugacy class of the element $g_j$. By convention, the charact
 contains only the values of the irreducible characters of the group. 
 
 \begin{example}
+\index{Character table!of $C_n$}
     For $n\geq2$, let  
 	$G=\langle g\rangle$ be the cyclic group of order $n$. Let $\lambda$ be a primitive $n$-th root of one. For each $i$, 
     let $V_i$ be a (complex) one-dimensional vector space with basis 
@@ -392,6 +393,7 @@ contains only the values of the irreducible characters of the group.
 \end{example}
 
 \begin{example}
+\index{Character table!of $C_4$}
 	Let $G=\langle g:g^4=1\rangle$ 
 	be the cyclic group of order four. The character table of $G$ is given by Table~\ref{tab:C4}.  Let us see how to see this calculation on the computer:
 % \begin{lstlisting}
@@ -440,7 +442,6 @@ Explanation of Character Value Symbols
 
 I = RootOfUnity(4)    
 \end{lstlisting}
-    
 	\begin{table}[ht]
     \caption{The character table of the cyclic group $C_4$ of order four.}
     \label{tab:C4}
@@ -542,6 +543,7 @@ Some remarks:
 
 
 \begin{example}
+\index{Character table!of $C_2\times C_2$}
 	The character table of the group $C_2\times C_2=\{1,a,b,ab\}$ is
     shown in Table~\ref{tab:C2xC2}. 
     
@@ -856,7 +858,8 @@ Let \[
 		0 &= \chi_L\left( (123) \right)=1+1+0+0+2\chi_5\left( (123) \right),\\
 		0 &= \chi_L\left( (1234) \right)=1+(-1)+3(-1)+3+2\chi_5\left( (1234) \right)=0,
 	\end{align*}
-	
+
+    \index{Character table!of $\Sym_4$}
     Now we are ready to compute the character table of $\Sym_4$: 
 	% Tenemos así cuatro de los cinco caracteres irreducibles de $G$. Nos falta
 	% uno, digamos $\chi_5$.  Para calcular $\chi_5$ usamos el carácter de la
@@ -887,11 +890,15 @@ Let \[
 
 
 \begin{exercise}
+\label{xca:A4}
+\index{Character table!of $\Alt_4$}
     Compute the character table of $\Alt_4$. 
 \end{exercise}
 
 \begin{exercise}
 \label{xca:order5}
+\index{Character table!of $\D_4$}
+\index{Character table!of $Q_8$}
     Compute the character table of a non-abelian group of order eight.
 \end{exercise}
 

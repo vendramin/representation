@@ -141,12 +141,12 @@ Theorem~\ref{thm:Mackey_irreducibility} takes a particularly elegant form when t
     \]
     Then $|G|=p(p-1)$, $H$ is a normal subgroup of $G$ and $|G/H|=p-1$. Let 
     \[
-    \chi\colon H\to\C^{\times},\quad\begin{pmatrix}1&b\\0&1\end{pmatrix}\mapsto e^{2\pi ib/p}.
+    \chi\colon H\to\C^{\times},\quad\begin{pmatrix}1&b\\0&1\end{pmatrix}\mapsto \exp(2\pi ib/p).
     \]
     Then $\chi$ is a group homomorphism. For each $a\in\Z/p\setminus\{0,1\}$, let $s(a)=\begin{pmatrix}a&0\\0&1\end{pmatrix}$. Then 
     \[
-    (s(a)\cdot\chi)\begin{pmatrix}1&b\\0&1\end{pmatrix}=\chi\begin{pmatrix}1&a^{-1}b\\0&1\end{pmatrix}=e^{2\pi ia^{-1}b/p}
-    \ne e^{2\pi ib/p}.
+    (s(a)\cdot\chi)\begin{pmatrix}1&b\\0&1\end{pmatrix}=\chi\begin{pmatrix}1&a^{-1}b\\0&1\end{pmatrix}=\exp(2\pi ia^{-1}b/p)
+    \ne \exp(2\pi ib/p).
     \]
     Hence $s(a)\cdot\chi\ne\chi$ for all $a\in\Z/p\setminus\{0,1\}$. By Exercise~\ref{xca:Mackey}, 
     $\Ind_H^G\chi\in\Irr(G)$ and 
