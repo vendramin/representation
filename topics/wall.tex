@@ -112,8 +112,19 @@ Let $G$ be a finite solvable group. Then the number of maximal subgroups of $G$ 
 \end{theorem}
 
 \begin{proof}
-    Let $M_1$ and $M_2$ be maximal subgroups of $G$. If they are not conjugate, 
-    Ore's theorem~\ref{thm:Ore} implies that $G=M_1M_2$. In particular, 
+    For a maximal subgroup $M$ of $G$, let 
+    $C(M)$ be the set of non-trivial constituents
+    of $\Ind_M^G\Tchar_M$, that is
+    \[
+    C(M)=\{\chi\in\Irr(G):\chi\ne\Tchar_G\text{ and }\langle\eta,\Ind_M^G\Tchar_M\rangle\ne0\}.
+    \]
+
+    Let $M_1$ and $M_2$ be maximal subgroups of $G$. 
+    We claim that $C(M_1)\cap C(M_2)=\emptyset$ if $M_1$ and $M_2$ are
+    not conjugate. 
+    
+    Assume that $M_1$ and $M_2$ are not conjugate. By  
+    Ore's theorem~\ref{thm:Ore}, $G=M_1M_2$. In particular, 
     there is only one double $(M_1,M_2)$-coset, with representative $1$. Thus
     \[
     \Res_{M_1}^G\Ind_{M_2}^G\Tchar_{M_2}=\Ind_{M_1\cap M_2}^{M_1}\Res_{M_1\cap M_2}^{M_2}\Tchar_{M_2}
@@ -149,13 +160,8 @@ Let $G$ be a finite solvable group. Then the number of maximal subgroups of $G$ 
     \quad 
     \langle\eta_1,\eta_2\rangle=0.
     \]
+    Hence $C(M_1)\cap C(M_2)=\emptyset$. 
 
-    For a maximal subgroup $M$ of $G$, let 
-    $C(M)$ be the set of non-trivial constituents
-    of $\Ind_M^G\Tchar_M$, that is
-    \[
-    C(M)=\{\chi\in\Irr(G):\chi\ne\Tchar_G\text{ and }\langle\eta,\Ind_M^G\Tchar_M\rangle\ne0\}.
-    \]
     
    Let $X$ be the set of maximal subgroups of $G$ that are normal in $G$, and 
    let $Y$ be the set of representatives of non-normal 
@@ -183,8 +189,9 @@ Let $G$ be a finite solvable group. Then the number of maximal subgroups of $G$ 
 
    For every maximal subgroup $M$ of $G$ such that $M$ is not normal in $G$, 
    $\Ind_M^G\Tchar_M$ decomposes 
-   as $\Ind_M^G\Tchar_M=\Tchar_G+\xi_1+\cdots+\xi_l$ for some degree-one distinct characters 
-   $\xi_1,\dots,\xi_k\in\Irr(G)$ such that $\xi_j(1)\geq p$ for all $j\in\{1,\dots,k\}$. 
+   as $\Ind_M^G\Tchar_M=\Tchar_G+\xi_1+\cdots+\xi_l$ for some distinct characters 
+   $\xi_1,\dots,\xi_k\in\Irr(G)$ 
+   such that $\xi_j(1)\geq p$ for all $j\in\{1,\dots,k\}$. 
    Then 
    \[
    \sum_{\xi\in C(M)}\xi(1)^2
@@ -256,7 +263,7 @@ Conjugacy classes of subgroups
         2 & \text{otherwise.}
     \end{cases}
     \]
-    Thus $\Ind_{N}^G\Tchar_M=\Tchar_G+\sgn$ and $C(N)=\{\sgn\}$. Here is the Magma code: 
+    Thus $\Ind_{N}^G\Tchar_N=\Tchar_G+\sgn$ and $C(N)=\{\sgn\}$. Here is the Magma code: 
 \begin{lstlisting}
 > N := max[2]`subgroup;
 > g := Character(TrivialRepresentation(N));
