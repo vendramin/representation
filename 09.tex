@@ -207,4 +207,151 @@ $\Ind_K^G\chi\in\Irr(G)$.
 %         \end{tabular}
 %     \end{center} 
 
+\subsection{Burnside's theorem on real characters}
+
+For $n\geq1$ let $\{e_1,\dots,e_n\}$ be the standard basis of $\C^n$.  
+The \emph{natural representation} of $\Sym_n$ is 
+$\rho\colon\Sym_n\to\GL_n(\C)$, $\sigma\mapsto\rho_{\sigma}$, 
+where $\rho_\sigma(e_j)=e_{\sigma(j)}$ for all $j\in\{1,\dots,n\}$. 
+The matrix of $\rho_\sigma$ in the standard basis is  
+\begin{equation}
+    \label{eq:Sn_natural}
+    (\rho_\sigma)_{ij}=\begin{cases}
+      1 & \text{if $i=\sigma(j)$},\\
+      0 & \text{otherwise}.
+    \end{cases}
+\end{equation}
+
+\begin{lemma}
+	\label{lem:permutaciones}
+	For $n\geq1$ let $\rho\colon\Sym_n\to\GL_n(C)$ be the natural 
+	representation of the symmetric group. 
+	If $A\in\C^{n\times n}$ and $\sigma\in\Sym_n$, then
+	\[
+		A_{ij}=(\rho_{\sigma}A)_{\sigma(i)j}=(A\rho_{\sigma})_{i\sigma^{-1}(j)}
+	\]
+    for all $i,j\in\{1,\dots,n\}$.
+\end{lemma}
+
+\begin{proof}
+	With~\eqref{eq:Sn_natural} we compute:
+	\[
+		(A\rho_{\sigma})_{ij}=\sum_{k=1}^n A_{ik}(\rho_{\sigma})_{kj}=A_{i\sigma(j)},
+		\quad
+		(\rho_\sigma A)_{ij}=\sum_{k=1}^n (\rho_\sigma)_{ik}A_{kj}=A_{\sigma^{-1}(i)j}.\qedhere
+	\]
+\end{proof}
+
+\begin{definition}
+  \index{Real!character}
+  Let $G$ be a finite group. A character $\chi$ of $G$ is said to be
+  \emph{real} if
+  $\chi=\overline{\chi}$, that is $\chi(g)\in\R$ for all $g\in G$. 
+\end{definition}
+
+\begin{exercise}
+	\label{xca:chi_irreducible}
+	Let $G$ be a finite group. If $\chi\in\Irr(G)$, then 
+	$\overline{\chi}$ is irreducible.
+\end{exercise}
+
+\begin{definition}
+  \index{Real!conjugacy class}
+  Let $G$ be a group. A conjugacy class $C$ of $G$ is said to be
+  \emph{real} if for every $g\in C$ one has $g^{-1}\in C$. 
+\end{definition}
+
+We use the following notation: if $G$ is a group and $C=\{xgx^{-1}:x\in G\}$ is a conjugacy class of  
+$G$, then $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$.  
+
+\begin{theorem}[Burnside]
+    \index{Burnside!theorem on real characters}
+    Let $G$ be a finite group. The number of real conjugacy classes 
+    equals the number of real irreducible characters. 
+\end{theorem}
+
+\begin{proof}
+  Let $C_1,\dots,C_r$ be the conjugacy classes of $G$ and  
+  let $\chi_1,\dots,\chi_r$ be the irreducible characters of $G$. 
+  Let $\alpha,\beta\in\Sym_r$ be such that $\overline{\chi_i}=\chi_{\alpha(i)}$ and 
+  $C_i^{-1}=C_{\beta(i)}$ for all $i\in\{1,\dots,r\}$. Note that $\chi_i$
+  is real if and only if $\alpha(i)=i$ and that $C_i$ is real if and only if 
+  $\beta(i)=i$. The number $n$ of fixed points of $\alpha$ is equal to the number
+  of real irreducible characters of $G$, and the number $m$ of fixed points of $\beta$ is equal
+  to the number of real classes. 
+  Let $\rho\colon\Sym_r\to\GL_r(\C)$ be the natural representation of $\Sym_r$, with character $\chi_\rho$.
+  Then $\chi_\rho(\alpha)=n$ and $\chi_\rho(\beta)=m$. 
+  
+  We claim that 
+  $\trace\rho_\alpha=\trace\rho_\beta$. Let $X=(\chi_i(C_j))\in\GL_r(\C)$ be the character matrix of $G$. 
+  Then 
+  \[
+	\rho_\alpha X=\overline{X}=X\rho_\beta.
+  \]
+  For example, using Lemma~\ref{lem:permutaciones}, 
+  \[
+  \overline{X_{ij}}=\overline{\chi_i(C_j)}
+  =\chi_i(C_j^{-1})=\chi_i(C_{\beta(j)}=X_{i\beta(j)}=(X\rho_\beta)_{ij}.
+  \]
+  
+  Since $X$ is invertible, $\rho_{\alpha}=X\rho_{\beta}X^{-1}$. Thus 
+  \[
+    n=\chi_{\rho}(\alpha)=\trace\rho_{\alpha}=\trace\rho_{\beta}=\chi_{\rho}(\beta)=m.\qedhere
+  \]
+\end{proof}
+
+\begin{corollary}
+  \label{corollary:|G|impar}
+  Let $G$ be a finite group. Then $|G|$ is odd if and only if
+  the only real $\chi\in\Irr(G)$ is the trivial character. 
+\end{corollary}
+
+\begin{proof}
+    If $|G|$ is even, there exists 
+    $g\in G$ of order two (Cauchy's theorem). The conjugacy class of $g$ 
+    is real. 
+
+    Conversely, assume that $G$ has a non-trivial 
+    real conjugacy class $C$. Let $g\in C$. We claim that 
+    $G$ has an element of even order. Let $h\in G$ be such that
+    $hgh^{-1}=g^{-1}$. Then $h^2\in C_G(g)$, as $h^2gh^{-2}=g$. 
+    If $h\in\langle h^2\rangle\subseteq C_G(g)$, then $g$ has 
+    even order, as $g^{-1}=g$. If $h\not\in\langle h^2\rangle$, then 
+    $h^2$ does not generate $\langle h\rangle$. Hence $h$ has even order, 
+    as $|h|\ne|h^2|=|h|/\gcd(|h|,2)$, so $\gcd(|h|,2)\ne 1$.  
+\end{proof}
+
+\begin{theorem}[Burnside]
+  \index{Burnside!theorem}
+  \label{thm:Burnside_mod16}
+  Let $G$ be a finite group of odd order 
+  with $r$ conjugacy classes. Then
+  $r\equiv|G|\bmod{16}$.
+\end{theorem}
+
+\begin{proof}
+  Since $|G|$ is odd, every non-trivial $\chi\in\Irr(G)$ is not real by
+  the previous corollary. The irreducible characters 
+  of $G$ are  
+  \[
+    \chi_1,\chi_2,\overline{\chi_2},\dots,\chi_k,\overline{\chi_k},
+    \quad
+    r=1+2(k-1),
+  \]
+  where $\chi_1$ denotes the trivial character. 
+  For every $j\in\{2,\dots,k\}$ let $d_j=\chi_j(1)$. 
+  Since each $d_j$ divides 
+  $|G|$ by Frobenius' theorem and  $|G|$ is odd, 
+  every $d_j$ is an odd number, 
+  say $d_j=1+2m_j$. Thus  
+  \begin{align*}
+    |G|&=1+\sum_{j=2}^k 2d_j^2=1+\sum_{j=2}^k2(2m_j+1)^2\\
+    &=1+\sum_{j=2}^k2(4m_j^2+4m_j+1)
+    =1+2(k-1)+8\sum_{j=2}^km_j(m_j+1).
+  \end{align*}
+  Hence $|G|\equiv r\bmod{16}$, 
+  as $r=1+2k$ and every $m_j(m_j+1)$ is even. 
+\end{proof}
+
+As an immediate consequence of Theorem~\ref{thm:Burnside_mod16}, we conclude that every group of order 15 is abelian.
 

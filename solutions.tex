@@ -418,6 +418,36 @@ It follows that
     $H$ is not malnormal in $G$, a contradiction.  
 \end{sol}
 
+
+\begin{sol}{xca:Fpq_unique}
+    Since $(\Z/p)^\times$ is cyclic, there exists $m$ such that $u^m=v\bmod p$. As both $u$ and $v$ have order $q$ modulo $p$, $\gcd(m,q)=1$. Thus $b^m$ has order $q$ modulo $p$. Hence 
+    \[
+    b^mab^{-m}=a^{u^m}=a^{v}.
+    \]
+    Let $c=b^m$. Then
+    \begin{align*}
+    \langle a,b:a^p=b^q=1,bab^{-1}=a^u\rangle 
+    &= \langle a,c:a^p=c^q,cac^{-1}=a^v\rangle\\
+    &\simeq \langle a,b:a^p=b^q=1,bab^{-1}=a^v\rangle.
+    \end{align*}
+\end{sol}
+
+\begin{sol}{xca:Frobenius_pq}
+    Assume that $G$ is not abelian. Then $q$ divides $p-1$. By Sylow's theorem, $|\Syl_p(G)|=1$. 
+    Let $P\in\Syl_p(G)$. Then $P$ is normal in $G$ and $|P|=p$. 
+    Both $P$ and $G/P$ are cyclic, say $P=\langle a\rangle$ and $G/P=\langle bP\rangle$. Thus 
+    $G=\langle a,b\rangle$. Since $b^q\in P$ and $b$ does not have order $pq$, $b$ has order $q$. 
+    Since $P$ is normal in $G$, $bab^{-1}\in P=\langle a\rangle$. Thus 
+    $bab^{-1}=a^u$ for some $u$. Moreover, 
+    \[
+    a=b^qab^q=(a^u)^q=a^{u^q}
+    \]
+    and hence $u^q\equiv 1\bmod p$. Thus the ortder of $u$ in $(\Z/p)^\times$ divides $q$. 
+    If $u$ has order one, then $bab^{-1}=a$ and $G$ is abelian, a contradiction. So 
+    $u$ has order $q$ and the claim follows. 
+\end{sol}
+
+
 \begin{sol}{xca:Ind_chi}
     Since $|H|=n$, $(G:H)=2$. Let 
     $t_1=1$ and $t_2=s$. Then $\{t_1,t_2\}$ is a transversal of $H$ in $G$. We compute
