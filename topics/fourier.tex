@@ -1,1 +1,1231 @@
 \section{Project: Fourier analysis on groups}
+
+\subsection{Fourier transform on abelian groups}
+
+\begin{definition}
+	\index{Convolution}
+	Let $G$ be a finite group and $\alpha,\beta\in L(G)$. The \emph{convolution} of $\alpha$ and 
+    $\beta$ is the function 
+	\[
+	\alpha*\beta\colon G\to\C,\quad
+	(\alpha*\beta)(x)=\sum_{y\in G}\alpha(xy^{-1})\beta(y).
+	\]
+\end{definition}
+
+\begin{exercise}
+	\label{xca:delta}
+	Let $G$ be a finite group. For $x\in G$, let 
+    \[
+	\delta_x\colon G\to\C,\quad
+	\delta_x(y)=\begin{cases}
+		1 & \text{if $x=y$},\\
+		0 & \text{otherwise.}.
+	\end{cases}
+	\]
+	Prove that $\delta_{xy}=\delta_x*\delta_y$.
+\end{exercise}
+
+A direct calculation shows that $L(G)$ is a 
+commutative ring with the operations
+	\[
+	(\alpha+\beta)(x)=\alpha(x)+\beta(x),\quad
+	(\alpha*\beta)(x)=\sum_{y\in G}\alpha(xy^{-1})\beta(y).
+	\]
+
+\begin{proposition}
+	Let $G$ be a finite group and $f\in L(G)$. Then 
+    $f\in\cf(G)$ if and only if $f*\alpha=\alpha*f$ 
+    for all $\alpha\in L(G)$. In particular, 
+    $\cf(G)=Z(L(G))$. 
+\end{proposition}
+
+\begin{proof}
+  If $f\in\cf(G)$, then 
+  \[
+    (\alpha*f)(x)=\sum_{y\in G}\alpha(xy^{-1})f(y)=\sum_{y\in G}\alpha(xy^{-1})f(xyx^{-1}).
+  \]
+  Let $z=xy^{-1}$. Then 
+  \[
+    (\alpha*f)(x)=\sum_{z\in G}\alpha(z)f(xz^{-1})=\sum_{z\in G}f(xz^{-1})\alpha(z)=(f*\alpha)(x).
+  \]
+  
+  Conversely, if $f*\alpha=\alpha*f$ for all $\alpha$, 
+  then, in particular, 
+  \begin{align*}
+    f(zx)&=\sum_{y\in G}\delta_{z^{-1}}(xy^{-1})f(y)=(\delta_{z^{-1}}*f)(x)
+    =(f*\delta_{z^{-1}})(x)=\sum_{y\in G}f(xy^{-1})\delta_{z^{-1}}(y)
+  \end{align*}
+  for all $z\in G$. Thus $f(zxz^{-1})=f(z^{-1}zx)=f(x)$ for all
+  $x,z\in
+  G$.
+\end{proof}
+
+\begin{exercise}
+\label{xca:dual}
+	Let $G$ be a finite abelian group and $\widehat{G}=\Irr(G)$. 
+    Prove that $\widehat{G}$ with the operation 
+    \[
+	(\chi\theta)(g)=\chi(g)\theta(g),\quad g\in G,
+    \]
+    is an abelian group of order $|G|$.
+\end{exercise}
+ 
+\begin{example}
+  Let $G=\Z/n$. Then
+  \[
+    \widehat{G}=\{\chi\colon G\to\C^\times:\text{$\chi$ is a group homomorphism}\}=\{x\mapsto \exp(2\pi iax/n):a\in\Z\}.
+  \]
+\end{example}
+
+\begin{definition}
+  \index{Fourier transform}
+  Let $G$ be a finite abelian group. The \emph{Fourier 
+  transform} of $f\in L(G)$ is the function 
+  \[
+	\widehat{G}\to\C,\quad
+	\chi\mapsto\widehat{f}(\chi)
+	=|G|\langle f,\chi\rangle=\sum_{x\in G}f(x)\overline{\chi(x)}.
+  \]
+\end{definition}
+
+\begin{example}
+  We compute the Fourier transform of the map
+  $f\colon\Z/n\to\C$, $f(x)=1$. If
+  $\chi_j(x)=\exp(2\pi ijx/n)$, then 
+  \[
+	\widehat{f}(\chi_j)=n\langle f,\chi_j\rangle
+	=\sum_{m\in\Z/n}f(m)\overline{\chi_j(m)}
+	=\sum_{m\in\Z/m}\exp(-2\pi iaj/n)
+	=\begin{cases}
+	  1 & \text{if $j=0$},\\
+	  0 & \text{otherwise}.
+	\end{cases}
+  \]
+\end{example}
+
+\begin{exercise}
+    Let $f(x)=\frac12(\delta_1(x)+\delta_{-1}(x))$. Prove that 
+    \[
+      \widehat{f}(y)=\cos (-2\pi y/n). 
+    \]
+\end{exercise}
+
+\begin{exercise}
+    Let $f(x)=\frac13(\delta_1(x)+\delta_0(x)+\delta_{-1}(x))$. Prove that
+    \[
+      \widehat{f}(y)=\frac13(1+2\cos(2\pi y/n)). 
+    \]
+\end{exercise}
+
+The following result is known as the 
+\emph{inversion formula}. 
+
+\begin{proposition}
+  \label{pro:inversion_abelian}
+  Let $G$ be a finite abelian group and $f\in L(G)$. Then 
+  \[
+    f=\frac{1}{|G|}\sum_{\chi\in\widehat{G}}\widehat{f}(\chi)\chi.
+  \]
+  In particular, the map $L(G)\to L(\widehat{G})$, 
+  $f\mapsto\widehat{f}$, is a linear isomorphism. 
+\end{proposition}
+
+\begin{proof}
+  Since $G$ is abelian, $\widehat{G}$ is an orthonormal basis of $L(G)$. Thus   
+  \[
+    f=\sum_{\chi\in\widehat{G}}\langle f,\chi\rangle\chi=\frac{1}{|G|}\sum_{\chi\in\widehat{G}}|G|\langle f,\chi\rangle \chi
+    =\frac{1}{|G|}\sum_{\chi\in\widehat{G}}\widehat{f}(\chi)\chi.
+  \]
+  A direct calculation shows that $f\mapsto\widehat{f}$ is linear 
+  and injective. It is then bijective since $\dim L(G)=\dim
+  L(\widehat{G})$. 
+\end{proof}
+
+There are two products that turn $L(G)$ into a commutative ring. 
+One of these is point-wise multiplication; the other is convolution.
+These two ring structures are isomorphic, as the following result shows:
+
+\begin{theorem}
+  \label{thm:convolucion}
+  Let $\alpha,\beta\in L(G)$. Then 
+  $\widehat{(\alpha*\beta)}(\chi)=(\alpha\beta)(\chi)$ for all
+  $\chi\in\widehat{G}$.
+\end{theorem}
+
+\begin{proof}
+Note that 
+\begin{align*}
+  \widehat{(\alpha*\beta)}(\chi) &= |G|\langle \alpha*\beta,\chi\rangle 
+  =\sum_{x\in G}(\alpha*\beta)(x)\overline{\chi(x)}
+  =\sum_{x\in G}\sum_{y\in G}\alpha(xy^{-1})\beta(y)\overline{\chi(x)}.
+\end{align*}
+Letting $z=xy^{-1}$ and using that $\chi$ is a group homomorphism, 
+\begin{align*}
+  \widehat{(\alpha*\beta)}(\chi) &= \sum_{y\in G}\beta(y)\sum_{z\in G}\alpha(z)\overline{\chi(zy)}\\
+  &=\sum_{y\in G}\beta(y)\sum_{z\in G}\alpha(z)\overline{\chi(z)}\overline{\chi(y)}
+  =|G|\langle \alpha,\chi\rangle |G|\langle \beta,\chi\rangle
+  =\widehat{\alpha}(\chi)\widehat{b}(\chi).\qedhere 
+\end{align*}
+\end{proof}
+
+\begin{corollary}
+  Let $G$ be a finite group of order $n$. 
+  Then $L(G)\simeq\C^n$ as algebras. 
+\end{corollary}
+
+\begin{proof}
+  Assume that $\widehat{G}=\{\chi_1,\dots,\chi_n\}$. 
+  Let 
+  \[
+  T\colon L(G)\to\C^n,
+  \quad
+  f\mapsto(\widehat{f}(\chi_1),\dots,\widehat{f}(\chi_n)).
+  \]
+  A routine calculation shows that $T$ is linear. By 
+  Proposition~\ref{pro:inversion_abelian}, 
+  $T$ is injective. Hence $T$ is bijective since
+  $\dim L(G)=n$. If $\alpha,\beta\in L(G)$, then Theorem~\ref{thm:convolucion} implies that 
+  \begin{align*}
+    T(\alpha*\beta)&=(\widehat{(\alpha*\beta)}(\chi_1),\dots,\widehat{(\alpha*\beta)}(\chi_n))\\
+    &=(\widehat{\alpha}(\chi_1)\widehat{\beta}(\chi_1),\dots,\widehat{\alpha}(\chi_n)\widehat{\beta}(\chi_n))\\
+    &=(\widehat{\alpha}(\chi_1),\dots,\widehat{\alpha}(\chi_n))(\widehat{\beta}(\chi_1),\dots,\widehat{\beta}(\chi_n))\\
+    &=T(\alpha)T(\beta).\qedhere 
+  \end{align*}
+\end{proof}
+
+The following result is known as the \emph{Plancherel formula}.
+
+\begin{exercise}
+  Let $G$ be a finite abelian group and $\alpha,\beta\in L(G)$. Prove that  \[
+  |G|\langle a,b\rangle=\langle\widehat{a},\widehat{b}\rangle.
+  \]
+\end{exercise}
+
+% \begin{proof}
+%   Gracias a la fÛrmula de inversiÛn (proposiciÛn~\ref{proposition:inversion_abeliano}) y a las
+%   relaciones de ortogonalidad del teorema~\ref{theorem:chi=phi},
+%   \begin{align*}
+% 	\langle a,b\rangle
+% 	&=\frac{1}{|G|^2}\left\langle \sum_{\chi\in\widehat{G}}\widehat{a}(\chi)\chi,\sum_{\theta\in\widehat{G}}\widehat{b}(\theta)\theta\right\rangle\\
+% 	&=\frac{1}{|G|^2}\sum_{\chi,\theta\in\widehat{G}}\widehat{a}(\chi)\overline{\widehat{b}(\theta)}\langle\chi,\theta\rangle
+% 	=\frac{1}{|G|^2}\sum_{\chi\in\widehat{G}}\widehat{a}(\chi)\overline{\widehat{b}(\chi)}
+% 	=\frac{1}{|G|}\langle \widehat{a},\widehat{b}\rangle.\qedhere 
+%   \end{align*}
+% \end{proof}
+
+\subsection{Application: graph theory}
+
+Recall that a \emph{graph} $\Gamma$ is a pair $(V,E)$, where
+$E$ is a subset of the set of non-ordered pairs of $V$. The set 
+$V=V(\Gamma)$ is the set of \emph{vertices} of $\Gamma$ and $E=E(\Gamma)$
+is the set of \emph{edges} of $\Gamma$. If $V$ and $E$ are finite, then the graph $(V,E)$ is said to be \emph{finite}. The 
+\emph{adjacency matrix} of a finite graph $\Gamma$ with $n$ vertices is the matrix 
+$A=(A_{ij})_{1\leq i,j\leq n}$ given by 
+\[
+  A_{ij}=\begin{cases}
+    1 & \text{if the vertices $v_i$ and $v_j$ are connected,}\\
+    0 & \text{otherwise.}
+  \end{cases}
+ \]
+
+ The adjacency matrix of a finite graph is symmetric and hence
+ diagonalizable with real eigenvalues. 
+ The \emph{spectrum} of  $\Gamma$ is the set $\operatorname{Spec}(\Gamma)$ of eigenvalues
+ of its adjacency matrix. 
+
+\begin{lemma}
+  \label{lem:eigenvalues}
+  Let $G$ be a finite abelian group and $\alpha\in L(G)$. 
+  Then $A\colon L(G)\to
+  L(G)$, $\beta\mapsto \alpha*\beta$, is diagonalizable. Moreover, 
+  each $\chi\in\widehat{G}$
+  is an eigenvector of $A$ with eigenvalue $\widehat{a}(\chi)$. 
+\end{lemma}
+
+\begin{proof}
+  Let $\chi,\theta\in\widehat{G}$. 
+  By Theorem~\ref{thm:convolucion}, 
+  \[
+   \widehat{(\alpha*\chi)}(\theta)
+    =\widehat{\alpha}(\theta)\widehat{\chi}(\theta)
+    =\widehat{\alpha}({\theta})|G|\delta_{\chi}(\theta),
+    \quad
+    \delta_{\chi}(\theta)=\begin{cases} 
+      1 & \text{if $\chi=\theta$},\\ 
+      0 & \text{otherwise}.
+    \end{cases}
+  \]
+  By the inversion formula, 
+  \[
+	\alpha*\chi=\frac{1}{|G|}\sum_{\theta\in\widehat{G}}\widehat{(\alpha*\chi)}(\theta)\theta
+	=\frac{1}{|G|}\sum_{\theta\in\widehat{G}}\widehat{\alpha}(\theta)|G|\delta_{\chi}(\theta)\theta
+	=\widehat{\alpha}(\chi)\chi. 
+  \]
+  Thus each $\chi$ is an eigenvector of $A$ with eigenvalue $\widehat{\alpha}(\chi)$. Since the 
+  $\chi\in\widehat{G}$ form an orthogonal basis of eigenvectors, $A$ is diagonalizable. 
+\end{proof}
+
+\index{Symmetric subset}
+For a group $G$ and a subset $S\subseteq G$, 
+we say that $S$ is a \emph{symmetric subset} if
+$1\not\in S$ and for each $s\in S$ one has $s^{-1}\in S$.
+
+\begin{definition}
+\index{Cayley graph}
+  Let $G$ be a finite group and $S\subseteq G$ be a symmetric subset. 
+  The \emph{Cayley graph} of $G$ with respect to $S$ is the graph $X(G,S)$ with
+  vertices $G$ and edges of the form $\{g,sg\}$ for $g\in G$ and $s\in S$.  
+\end{definition}
+
+%In the previous definition, 
+%$\{g,h\}$ is an edge of $X(G,S)$ if and only if $gh^{-1}\in S$. 
+
+\begin{exercise}
+	Prove that $X(G,S)$ is connected if and only if
+    $G=\langle S\rangle$.
+\end{exercise}
+
+\begin{theorem}
+  \label{thm:spec(A)}
+  Let $G=\{g_1,\dots,g_n\}$ be a finite abelian group and $S\subseteq G$ be a symmetric subset.
+  Assume that $\Irr(G)=\{\chi_1,\dots,\chi_n\}$. If 
+  $A$ is the adjacency matrix of $X(G,S)$, then  
+  \[
+    v_i=\frac{1}{\sqrt{n}}\colvec{3}{\chi_i(g_1)}{\vdots}{\chi_i(g_n)}
+  \]
+  is an orthonormal basis of eigenvectors of $A$, where 
+  \[
+    Av_i=\lambda_iv_i,\quad
+    \lambda_i=\sum_{s\in S}\chi_i(s)
+  \]
+  for all $i\in\{1,\dots,n\}$. 
+\end{theorem}
+
+\begin{proof}
+  Let $\delta_S=\sum_{s\in S}\delta_s$ be the characteristic function of $S$ 
+  and 
+  $F\colon L(G)\to L(G)$, $b\mapsto\delta_S*b$. By Lemma~\ref{lem:eigenvalues}, 
+  $F$ is diagonalizable with eigenvalues 
+  \[
+    \widehat{\delta_S}(\chi_i)
+    =n\langle\delta_S,\chi_i\rangle
+    =\sum_{x\in G}\delta_S(x)\overline{\chi_i(x)}
+    =\sum_{s\in S}\overline{\chi_i(s)}
+    =\sum_{s\in S}\chi_i(s^{-1})
+    =\sum_{s\in S}\chi_i(s),
+  \]
+  since $S$ is a symmetric subset. 
+  
+  The matrix $[F]$ of $F$ in the basis $\{\delta_{g_1},\dots,\delta_{g_n}\}$ 
+  has eigenvectors $v_1,\dots,v_n$ with eigenvalues $\lambda_1,\dots,\lambda_n$. Moreover,  
+  $[F]$ is the adjacency matrix of $X(G,S)$, that is 
+  \[
+    [F]_{ij}=\begin{cases}
+    1 & \text{if $g_i=sg_j$,}\\
+    0 & \text{otherwise,}
+  \end{cases}
+  \]
+  since 
+  \[
+	F(\delta_{g_j})
+	=\delta_S*\delta_{g_j}
+	=\sum_{s\in S}\delta_s*\delta_{g_j}
+	=\sum_{s\in S}\delta_{sg_j}, 
+  \]
+  by Exercise~\ref{xca:delta}. Since the $\chi_j$ are orthonormal, 
+  so are the $v_j$. 
+\end{proof}
+
+\begin{definition}
+\index{Circulant matrix}
+  A \textbf{circulant matrix} is a matrix $A=(A_{ij})\in\C^{n\times n}$ 
+  such that there exists a map $f\colon\Z/n\to\C$ with   
+  $A_{ij}=f(j-i)$ for all $i,j\in\Z/n$, that is a matrix of the form 
+  \[
+	A=\begin{pmatrix}
+	  a_0 & a_1 & a_2 & \cdots & a_{n-1}\\
+	  a_{n-1} & a_0 & a_1 & \cdots &a_{n-2}\\
+	  \vdots & \vdots & \vdots & \ddots & \vdots\\
+	  a_2 & a_3 & a_4 & \cdots & a_1\\
+	  a_1 & a_2 & a_3 & \cdots & a_{0}
+	\end{pmatrix}.
+  \]
+\end{definition}
+
+  \begin{example}
+    A $3\times 3$ circulant matrix is of the form $
+	\begin{pmatrix}
+	  a_0 & a_1 & a_2\\
+	  a_2 & a_0 & a_1\\
+	  a_1 & a_2 & a_0
+	\end{pmatrix}$.
+%    Una matriz circulante de $4\times 4$:
+%    \[
+%	A=\begin{pmatrix}
+%	  a_0 & a_1 & a_2 & a_3\\
+%	  a_3 & a_0 & a_1 & a_2\\
+%	  a_1 & a_3 & a_0 & a_3\\
+%	  a_2 & a_2 & a_3 & a_0
+%	\end{pmatrix},
+%    \]
+  \end{example}
+
+\begin{exercise}
+  Let $G$ be a finite group and $S$ be a symmetric subset of $G$. Prove that 
+  the circulant matrix corresponding to the characteristic function 
+  of $S$ is the adjacency matrix of $X(G,S)$.
+\end{exercise}
+
+\begin{corollary}
+  Let $A$ be a circulant matrix of size $n\times n$, that is the adjacency matrix 
+  of some $X(\Z/n,S)$. The eigenvalues of $A$ are
+  \[
+    \lambda_k=\sum_{m\in S}\exp(2\pi ikm/n),\quad
+    k\in\{0,\dots,n-1\}.
+  \]
+    The corresponding orthonormal basis of eigenvectors is  
+  \[
+    v_k=\frac{1}{\sqrt{n}}(1,\exp(2\pi ik2/n),\dots,\exp(2\pi ik(n-1)/n))^T,\quad k\in\{0,\dots,n-1\}.
+  \]
+\end{corollary}
+
+\begin{proof}
+    It follows immediately from Theorem~\ref{thm:spec(A)} with $G=\Z/n$.    
+\end{proof}
+
+\subsection{Application: elementary geometry}
+
+Let $P$ be a polygon in $\R^2$ with vertices 
+$z_0,z_1,\dots,z_{k-1}$. For each 
+$j\geq1$, let $d_j$ be the midpoint between $z_{j-1}$ and $z_j$, that is 
+  \[
+	d_j=\frac12(z_{j-1}+z_j)
+  \]
+
+Let $z\colon\Z/k\to\C$, $z(j)=z_j$, and 
+  \[
+    D_z=\frac12((\delta_0+\delta_1)*z)\in L(\Z/k). 
+  \]
+  
+\begin{exercise}
+\label{xca:D_z}
+    Prove that $D_z(j)=d_j$ for all $j\in\{1,\dots,k-1\}$.
+\end{exercise}
+
+Now we consider the polygon $P'$ with vertices 
+  $D_z(1),\dots,D_z(k-1)$. By repeatedly taking midpoints, 
+  we obtain a sequence of polygons 
+  \[
+  P,P^{(1)},P^{(2)},P^{(3)},\dots
+  \]
+  where 
+  $P^{(0)}=P$ and 
+  $P^{(n+1)}=(P^{(n)})'$ for $n\geq0$.
+
+    Our goal is to show that as $n \to \infty$, the polygon $P^{(n)}$ converges to the \emph{centroid} of $P$, 
+    defined by
+  \[
+	\frac{1}{k}\sum_{j=0}^{k-1}z_j.
+  \]
+  
+  \begin{theorem}
+	Let $P$ be a plane polygon with vertices $z_0,z_1,\dots,z_{k-1}$. Then 
+   	\[
+	  \lim_{n\to\infty}P^{(n)}=\frac{1}{k}(z_0+\cdots+z_{k-1}).
+	\]
+  \end{theorem}
+
+  \begin{proof}
+    Without loss of generality we may assume that
+    $P$ has its centroid at the origin, that is $\sum_{j=0}^{k-1}z(j)=0$.  Let
+    $d=\frac12(\delta_0+\delta_1)$. By Exercise~\ref{xca:D_z}, 
+    \[
+      D_z=\frac{1}{2}(\delta_0+\delta_1)*z=d*z. 
+    \]
+    
+    Identifying $\Z/k$ with 
+    $\widehat{\Z/k}$ via $j\mapsto\chi_j$, where 
+    $\chi_j(m)=\exp(2\pi ijm/k)$,
+    we compute 
+    \[
+      \widehat{(d*z)}(j)=\widehat{d}(j)\widehat{z}(j)=\frac{1}{2}(1+\exp(-2\pi ij/k)).
+    \]
+    Hence  
+    \[
+      \lim_{n\to\infty}\widehat{d^{*n}}(j)=\begin{cases}
+	0 & \text{if $j\in\{1,\dots,k_1\}$},\\
+	1 & \text{if $j=0$},
+      \end{cases}
+    \]
+    since  
+    \begin{align*}
+      \lim_{n\to\infty}\widehat{d^{*n}}(j)
+      &=\lim_{n\to\infty}\left(\frac12(1+\exp(-2\pi ij/k)\right)^r\\
+      &=\lim_{n\to\infty}\left(\frac12\exp(-\pi ij/k)(\exp(\pi ij/k)+\exp(-\pi ij/k)\right)^n\\
+      &=\lim_{n\to\infty}\frac{1}{2^n}\exp(-\pi ijn/k)(2\cos\pi j/k)^n\\
+      &=\lim_{n\to\infty}\exp(-\pi ijn/k)(\cos (\pi j/k)^n
+    \end{align*}
+    and 
+    \[
+    |\cos(-2\pi ij/k)|<1
+    \]
+    if $j\in\{1,\dots,k-1\}$. 
+
+    Since $\widehat{z}(0)=|G|\langle z,1\rangle=\sum_{m\in\Z/k}z(m)=0$, it follows that
+    \[
+	\lim_{n\to\infty}\widehat{(d^{*n}*z)}(j)=\lim_{n\to\infty}\widehat{d^{*n}}(j)\widehat{z}(j)=0.
+    \]
+    Applying the inverse of the Fourier transform, we conclude 
+    that $\lim_{n\to\infty}d^{*r}*z(j)=0$. 
+  \end{proof}
+
+\subsection{Application: Uncertainty principle}
+
+\begin{definition}
+\index{Support}
+  Let $G$ be a finite group and $f\in L(G)$. The \emph{support} of 
+  $f$ is the set $\supp(f)=\{x\in G:f(x)\ne0\}$. 
+\end{definition}
+
+\begin{theorem}
+  Let $G$ be a finite abelian group. Then 
+  $|G|\leq|\supp(f)||\supp(\widehat{f})|$.
+\end{theorem}
+
+\begin{proof}
+    Note that  
+    \begin{equation}
+    \label{eq:incertidumbre1}
+	\|f\|_2^2=\langle f,f\rangle=\frac{1}{|G|}\sum_{x\in G}|f(x)|^2=\frac{1}{|G|}\sum_{x\in\supp(f)}|f(x)|^2\leq\frac{1}{|G|}|\supp(f)\|f\|^2_{\infty},
+      \end{equation}
+  where $\|f\|_{\infty}=\max_{x\in G}|f(x)|$.
+
+  By the inversion formula of Proposition~\ref{pro:inversion_abelian}, 
+  \[
+	|f(x)|=\left|\frac{1}{|G|}\sum_{\chi\in\widehat{G}}\widehat{f}(\chi)\chi(x)\right|
+	\leq \frac{1}{|G|}\sum_{\chi\in\widehat{G}}|\widehat{f}(\chi)||\chi(x)|
+	\leq \frac{1}{|G|}\sum_{\chi\in\widehat{G}}|\widehat{f}(\chi)|
+  \]
+  since $|\chi(x)|\leq 1$ for all $x\in G$. Hence 
+  \begin{equation}
+    \label{eq:incertidumbre2}
+  \begin{aligned}
+	\|f\|^2_{\infty}
+	&\leq \frac{1}{|G|^2}\left(\sum_{\chi\in\supp(\widehat{f})}|\widehat{f}(\chi)|\right)^2\\
+	&\leq \frac{1}{|G|^2}\sum_{\chi\in\supp(\widehat{f})}|\widehat{f}(\chi)|^2\sum_{\chi\in\supp(\widehat{f})}1^2
+	=\frac{|\supp(\widehat{f})|}{|G|}\langle \widehat{f},\widehat{f}\rangle
+	=|\supp(\widehat{f})|\|f\|^2_2,
+  \end{aligned}
+  \end{equation}
+  where we have used the Cauchy--Schwarz inequality in the second inequality and 
+  Plancherel's formula in the last equality. 
+
+  Combining~\eqref{eq:incertidumbre1} and~\eqref{eq:incertidumbre2}, 
+  \[
+	\|f\|^2_{\infty}\leq |\supp\widehat{f}|\|f\|^2_2
+	\leq \frac{1}{|G|}|\supp\widehat{f}||\supp f|\|f\|^2_{\infty}.
+  \]
+  Since $f\ne0$, the claim follows. 
+\end{proof}
+
+\begin{example}
+  If $f=\delta_1$, then $\widehat{f}(\chi)=1$ for all $\chi\in\Irr(G)$.
+  Here the inequality is optimal, as 
+  $\supp\widehat{f}=G$ and $\supp f=\{1\}$.
+\end{example}
+
+
+%\section{AplicaciÛn: reciprocidad cuadr·tica}
+\subsection{Fourier transform on non-abelian groups}
+
+\begin{definition}
+\index{Fourier transform}
+  Let $G$ be a finite group. Let $\phi^1,\dots,\phi^s$ be the equivalence classes 
+  of irreducible representations of $G$. For $k\in\{1,\dots,s\}$, let 
+  $d_k=\deg\phi^k$. 
+  The \emph{Fourier transform} is the map  
+  \[
+    T\colon L(G)\to M_{d_1}(\C)\times\cdots\times M_{d_s}(\C),
+    \quad
+    f\mapsto (\widehat{f}(\phi^1),\dots,\widehat{f}(\phi^s)),
+  \]
+  where  
+  \[
+    \widehat{f}(\phi^k)=\sum_{g\in G}f(g)\overline{\phi_g^k}.
+  \]
+\end{definition}
+
+The matrix 
+  $\widehat{f}(\phi^k)$ appearing in the Fourier transform is 
+  \[
+    \widehat{f}(\phi^k)_{ij}=|G|\langle f,\phi_{ij}^k\rangle=\sum_{g\in G}f(g)\overline{\phi^k(g)}_{ij}.
+  \]
+
+
+\begin{exercise}
+  \label{xca:Tlineal}
+  Prove that $T$ is a linear transformation. 
+\end{exercise}
+
+\begin{exercise}
+  Prove that $\widehat{\delta_x}(\phi)=\overline{\phi_x}$ for every
+  irreducible representation $\phi$.  
+\end{exercise}
+
+We now present the \emph{inversion formula}. 
+
+\begin{theorem}
+  \label{thm:inversion}
+  Let $G$ be a finite group and $f\in L(G)$. Then 
+  \[
+    f(x)=\frac{1}{|G|}\sum_{\phi}(\deg\phi)\trace(\phi_x \widehat{f}(\phi)^T),
+  \]
+  where the sum is taken over all irreducible representations of $G$. 
+\end{theorem}
+
+\begin{proof}
+  As the expresion we need to show is linear on $f$, it is enough to 
+  show that the formula is true when 
+  $f=\delta_y$. For each unitary $\phi$  
+  $\widehat{\delta_y}(\phi)=\overline{\phi_y}$, 
+  \begin{align*}
+    \frac{1}{|G|}\sum_{\phi}(\deg\phi)\trace(\phi_x\overline{\phi_y}^T)
+    &=\frac{1}{|G|}\sum_{\phi}(\deg\phi)\trace(\phi_x\phi_{y^{-1}})\\
+    &=\frac{1}{|G|}\sum_{\phi}(\deg\phi)\trace(\phi_{xy^{-1}})\\
+    &=\frac{1}{|G|}\sum_{\chi\in\Irr(G)}\chi(1)\chi(xy^{-1})\\
+    &=\delta_y(x).\qedhere 
+  \end{align*}
+\end{proof}
+
+\begin{exercise}
+  \label{exe:inversion}
+  Let $G$ be a finite group and $f\in L(G)$. Prove that 
+  \[
+    f=\frac{1}{|G|}\sum_{i,j,k}d_k\widehat{f}(\phi^k)_{ij}\phi_{ij}^k.
+  \]
+\end{exercise}
+  
+%\begin{theorem}[FÛrmula de inversiÛn]
+%  \label{theorem:inversion}
+% Sea $G$ un grupo finito y sea $f\in L(G)$. Entonces
+% \[
+%	f=\frac{1}{|G|}\sum_{i,j,k}d_k\widehat{f}(\phi^k)_{ij}\phi_{ij}^k.
+% \]
+%\end{theorem}
+%
+% \begin{svgraybox}
+%   Como los $\sqrt{d_k}\phi_{ij}^k$ forman una base ortonormal de $L(G)$, 
+%   \[
+% 	f=\sum_{i,j,k}\langle f,\sqrt{d_k}\phi_{ij}^k\rangle \sqrt{d_k}\phi_{ij}^k 
+% 	=\frac{1}{|G|}\sum_{i,j,k}d_k|G|\langle f,\phi_{ij}^k\rangle\phi_{ij}^k
+% 	=\frac{1}{|G|}\sum_{i,j,k}d_k\widehat{f}(\phi^k_{ij})\phi_{ij}^k.
+%   \]
+% \end{svgraybox}
+
+\begin{example}
+  Let $G=\Sym_3$. The group $G$ has three irreducible representations, namely the trivial one $1_G$, 
+  the sign and a degree-two representation 
+  $\rho\colon G\to\GL_2(\C)$ given by 
+  \begin{align*}
+     \id &\mapsto \begin{pmatrix}
+      1 & 0\\
+      0 & 1
+    \end{pmatrix}
+    && (12)\mapsto\begin{pmatrix}
+      -1 & -1\\
+      0 & 1
+    \end{pmatrix},
+    && (123)\mapsto\begin{pmatrix}
+      -1 & -1\\
+      1 & 0
+    \end{pmatrix},\\
+    (13)&\mapsto \begin{pmatrix}
+      1 & 0\\
+      -1 & -1
+    \end{pmatrix}
+    && (23)\mapsto\begin{pmatrix}
+      0 & 1\\
+      1 & 0
+    \end{pmatrix},
+    && (132)\mapsto\begin{pmatrix}
+      0 & 1\\
+      -1 & -1
+    \end{pmatrix}.
+  \end{align*}
+  
+  Let us compute the Fourier transform of $f\in L(G)$.  
+  We first compute 
+  \begin{align*}
+    \widehat{f}(1_G)=\sum_{x\in G}f(x), && \widehat{f}(\sgn)=\sum_{x\in G}\sgn(x)f(x).
+  \end{align*}
+  Now we compute $\widehat{f}(\rho)$. Since $\rho$ has degree two, 
+  \[ 
+    \widehat{f}(\rho)=\begin{pmatrix}
+      a & b\\
+      c & d
+    \end{pmatrix}\in M_2(\C).
+  \]
+  Now we compute 
+  \begin{align*}
+    a &= \widehat{f}(\rho)_{11}=\sum_{x\in G}f(x)\overline{\rho(x)}_{11}=f(\id)-f(12)+f(13)-f(123),\\
+    b &= \widehat{f}(\rho)_{12}=\sum_{x\in G}f(x)\overline{\rho(x)}_{12}=-f(12)-f(123)+f(23)+f(132),\\
+    c &= \widehat{f}(\rho)_{21}=\sum_{x\in G}f(x)\overline{\rho(x)}_{21}=f(123)-f(13)+f(23)-f(132),\\
+    d &= \widehat{f}(\rho)_{22}=\sum_{x\in G}f(x)\overline{\rho(x)}_{22}=f(\id)+f(12)-f(13)-f(132).
+  \end{align*}
+
+  Let us see a concrete example. Let
+  \[
+  f\colon G\to\C,\quad 
+    f(x)=\begin{cases}
+    1 & \text{if $|x|=3$},\\
+    0 & \text{otherwise.}
+  \end{cases}
+  \]
+  Then $T(f)=(2,2,-I)$, where $I$ is the $2\times 2$ identity matrix. By the inversion formula, 
+  \[
+	f(x)=\frac16(2+2\sgn(x)-2\rho(x)_{11}-2\rho(x)_{22}).
+  \]
+\end{example}
+
+\begin{theorem}[Wedderburn]
+\index{Weddeburn theorem}
+  The linear transformation $T$ is an algebra isomorphism.  
+\end{theorem}
+
+\begin{proof}
+  The Fourier transform $L(G)\to M_{d_1}(\C)\times\cdots\times
+  M_{d_s}(\C)$ is linear (see Exercise~\ref{xca:Tlineal}). It is injective because of 
+  the inversion formula (see Exercise~\ref{exe:inversion}). Since $\dim L(G)=|G|=d_1^2+\cdots+d_s^2$, $T$
+  is an isomorphism of vector spaces. We now need to show that 
+  \[
+    \widehat{(\alpha*\beta)}(\phi^k)=\widehat{\alpha}(\phi^k)\widehat{\beta}(\phi^k)
+  \]
+  for all $\alpha,\beta\in L(G)$ and $k\in\{1,\dots,s\}$. In fact, 
+  \begin{align*}
+    \widehat{(\alpha*\beta)}(\phi^k) &= \sum_{x\in G}(\alpha*\beta)(x)\overline{\phi^k(x)}\\
+    &=\sum_{x,y\in G}\alpha(xy^{-1})\beta(y)\overline{\phi^k(x)}\\
+    &=\sum_{y\in G}\beta(y)\sum_{x\in G}\alpha(xy^{-1})\overline{\phi^k(x)}\\
+  &=\sum_{y\in G}\beta(y)\sum_{z\in G}\alpha(z)\overline{\phi^k(zy)}\\
+  &=\sum_{y\in G}\beta(y)\overline{\phi^k(z)}\sum_{z\in G}\alpha(z)\overline{\phi^k(y)}\\
+  &=\widehat{\alpha}(\phi^k)\widehat{\beta}(\phi^k).\qedhere 
+  \end{align*}
+\end{proof}
+
+\begin{theorem}[Plancherel]
+  Let $G$ be a finite group and $\alpha,\beta\in L(G)$. Then 
+  \[
+	\langle \alpha,\beta\rangle
+	=\frac{1}{|G|^2}\sum_{\phi}(\deg\phi)\trace\left(\widehat{\alpha}(\phi)\widehat{\beta}(\phi)^*\right),
+  \]
+  where the sum runs over all irreducible representations of $G$.
+\end{theorem}
+
+\begin{proof}
+  It is enough to show the theorem in the case where $\alpha=\delta_y$. The equality 
+  we want to prove is equivalent to 
+  %entonces 
+  %\[
+  %  \overline{b(y)}=\frac{1}{|G|}\sum_{\phi}(\deg\phi)\trace\left(\overline{\phi_y}\widehat{b}(\phi)^*\right),
+  %\]
+  %Esta igualdad es equivalente a 
+  \[
+    \beta(y)=\frac{1}{|G|}\sum_{\phi}(\deg\phi)\trace\left(\phi_y\widehat{\beta}(\phi)^T\right),
+  \]
+  which follows from Theorem~\ref{thm:inversion}.
+\end{proof}
+%\begin{proof}
+%  Gracias a la fÛrmula de inversiÛn (ejercicio~\ref{exe:inversion}) escribimos
+%  \[
+%    a=\frac{1}{|G|}\sum_{i,j,k}d_k\widehat{a}(\phi^k)_{ij}(\phi^k)_{ij},
+%    \quad
+%    b=\frac{1}{|G|}\sum_{i,j,k}d_k\widehat{b}(\phi^k)_{ij}(\phi^k)_{ij},
+%  \]
+%  Entonces, como las $\sqrt{d_k}(\phi^k)_{ij}$ forman una base ortonormal de $L(G)$:
+%  \begin{align*}
+%    \langle a,b\rangle 
+%    &= \frac{1}{|G|^2}\sum_{i,j,k}\sum_{p,q,r}d_kd_r\langle \widehat{a}(\phi^k)_{ij}(\phi^k)_{ij},\widehat{b}(\phi^r)_{pq}(\phi^r)_{pq}\rangle\\
+%    &= \frac{1}{|G|^2}\sum_{i,j,k}d_k\widehat{a}(\phi^k)_{ij}\overline{\widehat{b}(\phi^k)_{ij}}
+%    = \frac{1}{|G|^2}\sum_{i,j,k}d_k\widehat{a}(\phi^k)_{ij}(\widehat{b}(\phi^k))^*_{ji}\\
+%    &= \frac{1}{|G|^2}\sum_{k=1}^sd_k\sum_{i=1}^{d_k}\sum_{j=1}^{d_k}\widehat{a}(\phi^k)_{ij}(\widehat{b}(\phi^k))^*_{ji}
+%    =\frac{1}{|G|^2}\sum_{k=1}^sd_k\sum_{i=1}^{d_k}(\widehat{a}(\phi^k)(\widehat{b}(\phi^k))^*)_{ii},
+%  \end{align*}
+%  tal como querÌamos demostrar.
+%\end{proof}
+
+
+
+
+
+%\chapter{Algunas aplicaciones de la teorÌa de caracteres}
+%
+%\section{Clases de conjugaciÛn reales}
+%
+%\begin{definition}
+%  Sea $G$ un grupo finito. Un caracter $\chi$ de $G$ se dice \textbf{real} si
+%  $\chi=\overline{\chi}$, es decir si $\chi(g)\in\R$ para todo $g\in G$. Una
+%  case de conjugaciÛn $C$ de $G$ se dice \textbf{real} si para cada $g\in C$ se
+%  tiene $g^{-1}\in C$. Utilizaremos la siguiente notaciÛn: Si 
+%  $C=\{xgx^{-1}:x\in G\}$ entonces $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$. 
+%\end{definition}
+%
+%\begin{definition}
+%  \label{lem:permutaciones}
+%  Antes de demostrar un teorema de Burnside sobre la cantidad de clases de
+%  conjugaciÛn reales y la cantidad de caracteres reales, necesitamos recordar
+%  cÛmo act˙a la representaciÛn natural del grupo simÈtrico. 
+%  
+%  Sea $n\in\N$ y sea $\{e_1,\dots,e_n\}$ la base canÛnica de $\C^n$.  La
+%  \textbf{representaciÛn natural} de $\Sym_n$ es la representaciÛn 
+%  \[
+%    \rho\colon\Sym_n\to\GL_n(\C),\quad
+%    \sigma\mapsto\rho_{\sigma},
+%  \] 
+%  donde $\rho_\sigma(e_j)=e_{\sigma(j)}$ para todo $j\in\{1,\dots,n\}$. 
+%  
+%  La matriz de $\rho_\sigma$ en la base canÛnica est· dada por 
+%  \begin{equation}
+%    \label{eq:Sn_natural}
+%    (\rho_\sigma)_{ij}=\begin{cases}
+%      1 & \text{si $i=\sigma(j)$},\\
+%      0 & \text{en otro caso}.
+%    \end{cases}
+%  \end{equation}
+%
+%  \begin{lem*}
+%    Sea $n\in\N$ y sea $\phi\colon\Sym_n\to\GL_n(\C)$ la representaciÛn
+%    natural. Si $A\in\C^{n\times n}$ y $\sigma\in\Sym_n$ entonces 
+%    \[
+%      A_{ij}=(\phi_{\sigma}A)_{\sigma(i)j}=(A\phi_{\sigma})_{\sigma^{-1}(i)j}
+%    \]
+%    para todo $i,j\in\{1,\dots,n\}$.
+%  \end{lem*}
+%
+%  \begin{proof}
+%    Con la fÛrmula~\eqref{eq:Sn_natural} calculamos
+%	\[
+%	  (A\phi_{\sigma})_{ij}=\sum_{k=1}^n A_{ik}(\phi_{\sigma})_{kj}=A_{i\sigma(j)},
+%	  \quad
+%	  (\phi_\sigma A)_{ij}=\sum_{k=1}^n (\phi_\sigma)_{ik}A_{kj}=A_{\sigma^{-1}(i)j}.
+%	\]
+%	Estas fÛrmulas son equivalentes a las que querÌamos demostrar.
+%  \end{proof}
+%
+%\end{definition}
+%
+%\begin{theorem}[Burnside]
+%    Sea $G$ un grupo finito. La cantidad de clases de conjugaciÛn reales es igual
+%    a la cantidad de caracteres reales.
+%\end{theorem}
+%
+%\begin{proof}
+%  Sea $s$ la cantidad de clases de conjugaciÛn de $G$. Sean $C_1,\dots,C_s$ las
+%  clases de conjugaciÛn de $G$ y sean $\chi_1,\dots,\chi_s$ los caracteres
+%  irreducibles de $G$. 
+%  Sean $\alpha,\beta\in\Sym_s$ dados por $\overline{\chi_i}=\chi_{\alpha(i)}$ y
+%  $C_i^{-1}=C_{\beta(i)}$ para todo $i\in\{1,\dots,s\}$. Observar que $\chi_i$
+%  es real si y sÛlo si $\alpha(i)=i$ y que $C_i$ es real si y sÛlo si
+%  $\beta(i)=i$. La cantidad de puntos fijos $n$ de $\alpha$ es igual a la cantidad
+%  de caracteres irreducibles de $G$ y la cantidad de puntos fijos $m$ de $\beta$ es
+%  igual a la cantidad de clases reales. 
+%
+%  Sea $\phi\colon\Sym_s\to\GL(s,\C)$ la representaciÛn natural de $\Sym_s$. Entonces
+%  $\chi_\phi(\alpha)=n$ y $\chi_\phi(\beta)=m$. Veamos que 
+%  $\trace\phi_\alpha=\trace\phi_\beta$. 
+%  Sea $X\in\GL(s,\C)$ la tabla de caracteres de $G$. Por el lema~\ref{lem:permutaciones}, 
+%  \[
+%	\phi_\alpha X=\overline{X}=X\phi_\beta.
+%  \]
+%  Como $X$ es una matriz inversible, $\phi_{\alpha}=X\phi_{\beta}X^{-1}$. Luego
+%  \[
+%    n=\chi_{\phi}(\alpha)=\trace\phi_{\alpha}=\trace\phi_{\beta}=\chi_{\phi}(\beta)=m,
+%  \]
+%  tal como querÌamos demostrar.
+%\end{proof}
+%
+%\begin{corollary}
+%  \label{cor:|G|impar}
+%  Sea $G$ un grupo finito. Entonces $|G|$ es impar si y sÛlo si el ˙nico
+%  $\chi\in\Irr(G)$ real es el caracter trivial. 
+%\end{corollary}
+%
+%\begin{proof}
+%  Supongamos que $G$ tiene una
+%  clase de conjugaciÛn $C$ real no trivial y sea $g\in C$. Basta demostrar que $G$ tiene
+%  un elemento de orden par. 
+%  Sea $h\in G$ tal que $hgh^{-1}=g^{-1}$. Entonces $h^2\in C_G(g)$ (pues 
+%  $h^2gh^{-2}=g$). Si $h\in\langle h^2\rangle\subseteq C_G(g)$, $g$ tiene orden par pues 
+%  $g^{-1}=g$. Si $h\not\in\langle h^2\rangle$
+%  entonces $h^2$ no es un generador de $\langle h\rangle$ y luego $2$ divide a
+%  $|h|$ (pues $|h|\ne|h^2|=|h|/(|h|:2)$). 
+%
+%  RecÌprocamente, si $|G|$ es impar, existe $g\in G$ de orden dos y la clase de
+%  conjugaciÛn de $g$ es real. 
+%\end{proof}
+%
+%\begin{theorem}[Burnside]
+%  Sea $G$ un grupo de orden impar y sea $s$ el n˙mero de clases de conjugaciÛn
+%  de $G$. Entonoces 
+%  \[
+%    s\equiv|G|\mod 16.
+%  \]
+%\end{theorem}
+%
+%\begin{proof}
+%  Como $|G|$ es impar, todo $\chi\in\Irr(G)$ no trivial es real (corolario~\ref{cor:|G|impar}). 
+%  Los caracteres irreducibles de $G$ son entonces 
+%  \[
+%    1,\chi_1,\overline{\chi_1},\dots,\chi_k,\overline{\chi_k},
+%    \quad
+%    s=1+2k.
+%  \]
+%  Para cada $j\in\{1,\dots,k\}$ sea $d_j=\chi_j(1)$.   Como cada $d_j$ divide a $|G|$ (teorema~\ref{theorem:chi(1)||G|}) y $|G|$ es impar, los $d_j$ son
+%  n˙meros impares, digamos $d_j=1+2m_j$. Entonces 
+%  \begin{align*}
+%    |G|&=1+\sum_{j=1}^k 2d_j^2=1+\sum_{j=1}^k2(2m_j+1)^2\\
+%    &=1+\sum_{j=1}^k2(4m_j^2+4m_j+1)
+%    =1+2k+8\sum_{j=1}^km_j(m_j+1).
+%  \end{align*}
+%  Luego $|G|\equiv s\mod{16}$ pues $s=1+2k$ y cada $m_j(m_j+1)$ es un n˙mero par. 
+%\end{proof}
+%
+%
+%\section{Teorema de Burnside}
+%
+%\begin{theorem}[Burnside]
+%  Sea $G$ un grupo finito simple no abeliano. 
+%\end{theorem}
+%
+%\begin{theorem}
+%  Sean $p,q$ primos. Si $G$ tiene orden $p^aq^b$ entonces $G$ es resoluble.
+%\end{theorem}
+%
+%\section{Teorema de Frobenius}
+%
+%\begin{theorem}[Frobenius]
+%  \label{theorem:Frobenius}
+%  Sean $G$ un grupo finito y $H\leq G$ con $H\cap H^x$ para todo $x\in
+%  G\setminus H$. Entonces
+%  \[
+%	N=\left( G\setminus\bigcup_{x\in G}H^x\right)\cup\{1\}
+%  \]
+%  es un subgrupo normal de $G$.
+%\end{theorem}
+%
+%\begin{proof}
+%  $H$. Para cada $\chi\in\Irr(G)$, $\chi\ne1_H$ definimos
+%  $\alpha_\chi=\chi-\chi(1)1_H\in\cf(H)$.
+%
+%  Demostremos que $(\alpha_\chi^G)_H=\alpha_\chi$.
+%  Primero, $\alpha_\chi^G(1)=\alpha_{\chi}(1)=0$. Si $h\in H\setminus\{1\}$ entonces
+%  \[
+%    \alpha_\chi^G(h)=\frac{1}{|H|}\sum_{x\in G}\alpha_\chi^0(x^{-1}hx)
+%    =\frac{1}{|H|}\sum_{x\in H}\alpha_\chi(x^{-1}hx)
+%    =\frac{1}{|H|}\sum_{x\in H}\alpha_\chi(h)=\alpha_\chi(h),
+%  \]
+%  pues $x^{-1}hx\in H$ si y sÛlo si $h\in H\cap H^{x}$.
+%
+%  Por la reciprocidad de Frobenius (\ref{theorem:reciprocidad}):
+%  \begin{equation}
+%    \label{eq:<a,a>=1+chi2}
+%    \langle\alpha_\chi^G,\alpha_\chi^G\rangle
+%    =\langle\alpha_{\chi},(\alpha_{\chi}^G)_H\rangle=\langle\alpha_{\chi},\alpha_\chi\rangle
+%    =1+\chi(1)^2.
+%  \end{equation}
+%  Si $\eta\in\Irr(G)$ entonces
+%  $\langle\alpha_{\chi}^G,\eta\rangle=\langle\alpha_{\chi},\eta_H\rangle$. Si
+%  descomponemos al caracter a $\eta_H$ en suma de irreducibles de $H$, digamos
+%  \[
+%  \eta_H=m_11_H+m_2\chi+m_3\eta_3+\cdots+m_t\eta_t,
+%  \]
+%  donde los $m_j$ son enteros no negativos, entonces 
+%  \begin{align*}
+%    \langle\alpha_{\chi}^G,\eta\rangle
+%    &=\langle\chi-\chi(1)1_H,m_11_H+m_2\chi+m_3\eta_3+\cdots m_t\eta_t\rangle\\
+%    &=\sum_{j=1}^t\langle\chi,m_j\eta_j\rangle-\sum_{j=1}^t\chi(1)\langle 1_H,m_j\eta_j\rangle
+%    =m_2-\chi(1)m_1\in\Z.
+%  \end{align*}
+%  En particular, $\langle\alpha_\chi^G,1_G\rangle=-\chi(1)$ y
+%  \[
+%    \alpha_{\chi}^G
+%    =\sum_{\theta\in\Irr(G)}\langle\alpha_\chi^G,\theta\rangle\theta
+%    =-\chi(1)1_G+\sum_{\substack{\theta\in\Irr(G)\\\theta\ne1_G}}\langle\alpha_\chi^G,\theta\rangle\theta.
+%  \]
+%
+%  Sea $\beta_\chi=\alpha_{\chi}^G+\chi(1)1_G$. 
+%  Vamos a demostrar que $\beta_{\chi}\in\Irr(G)$. Si usamos~\eqref{eq:<a,a>=1+chi2} vemos que $\langle\beta_{\chi},\beta_{\chi}\rangle=1$ pues 
+%  \[
+%    1+\chi(1)^2=\langle\alpha_{\chi}^G,\alpha_{\chi}^G\rangle
+%    =\langle\beta_{\chi}-\chi(1)1_G,\beta_{\chi}-\chi(1)1_G\rangle
+%    =\langle\beta_{\chi},\beta_{\chi}\rangle+\chi(1)^2.
+%  \]
+%  Como adem·s $\langle\beta_{\chi},\beta_{\chi}\rangle=\sum_{\theta\ne
+%  1_G}\langle\alpha_\chi^G,\theta\rangle^2$, se concluye que existe
+%  $\epsilon\in\{-1,1\}$ tal que $\beta_{\chi}=\epsilon\theta$ para alg˙n
+%  $\theta\in\Irr(G)$. 
+%
+%  Para ver que $\beta\in\Irr(G)$ basta observar que
+%  $(\beta_{\chi})_H=\chi\in\Irr(H)$ ya que 
+%  \[
+%	\chi-\chi(1)1_H=\alpha=(\alpha^G)_H=(\beta_{\chi}-\chi(1)1_G)_H=(\beta_{\chi})_H-\chi(1)1_H.
+%  \]
+%
+%  Vamos a demostrar que $N$ es igual a
+%  \[
+%	M=\bigcap_{\substack{\chi\in\Irr(H)\\\chi\ne1_H}}\ker\beta_{\chi}.
+%  \]
+%
+%  Demostremos primero que $N\subseteq M$. 
+%  Sea $n\in N\setminus\{1\}$ y sea $\chi\in\Irr(H)\setminus\{1_H\}$. Como 
+%  \[
+%	0=\alpha_{\chi}^G(n)=\beta_{\chi}(n)-\chi(1)=\beta_{\chi}(n)-\beta_{\chi}(1),
+%  \]
+%  entonces $n\in\ker\beta_{\chi}$. 
+%  
+%  Demostremos ahora que $M\subseteq N$. Sea $h\in M\cap H$ y sea $\chi\in\Irr(H)\setminus\{1_H\}$. Entonces
+%  \[
+%    \beta_{\chi}(h)-\chi(1)=\alpha_{\chi}^G(h)=\alpha_{\chi}(h)=\chi(h)-\chi(1),
+%  \]
+%  y luego $h\in\ker\chi$ pues 
+%  \[
+%    \chi(h)=\beta_{\chi}(h)=\beta_{\chi}(1)=\chi(1).
+%  \]
+%  Por lo tanto $h\in\cap_{\chi\ne1_H}\ker\chi=1$.  Demostremos ahora que $M\cap
+%  H^x=1$ para todo $x\in G$. Sean $x\in G$ y $m\in M\cap H^x$. Como
+%  $m=xhx^{-1}$ para alg˙n $h\in H$, $x^{-1}mx\in H\cap M=1$.  Esto implica que
+%  $m=1$.
+%\end{proof}
+%
+%\begin{definition}
+%  Un grupo $G$ que tiene un subgrupo propositionio no trivial $H$ tal que $H\cap
+%  H^x=1$ para todo $x\in G\setminus H$ se llama \textbf{grupo de Frobenius}. El
+%  subgrupo $H$ se llama \textbf{complemento de Frobenius} y el subgrupo normal
+%  $N$ construido en el teorema~\ref{theorem:Frobenius} se llama \textbf{n˙cleo de
+%  Frobenius}.
+%
+%  \begin{cor*}
+%    Sea $G$ un grupo finito con un subgrupo $H$ tal que $H\cap H^x=1$ para todo
+%    $x\in G\setminus H$.  Entonces existe un subgrupo normal $N$ de $G$ tal que
+%    $G=HN$, $H\cap N=1$.
+%  \end{cor*}
+%
+%  \begin{proof}
+%    La existencia del subgrupo normal $N$ est· garantizada por el
+%    teorema~\ref{theorem:Frobenius}. Demostremos que $H\subseteq N_H(H)$: si $h\in
+%    H\setminus\{1\}$ y $g\in G$ son tales que $ghg^{-1}\in H$, entonces $h\in
+%    g^{-1}Hg\cap H$ y luego $g\in H$. Como entonces $H=N_G(H)$, el subgrupo $H$
+%    tiene $(G:H)$ conjugados y luego $|G|=|H||N|$ pues 
+%    \[
+%	|N|=|G|-(G:H)(|H|-1)=(G:H).
+%    \]
+%    Como $N\cap H=1$, entonces $|HN|=|N||H|/|H\cap N|=|N||H|=|G|$ y luego
+%    $G=NH$.
+%  \end{proof}
+%\end{definition}
+%
+%\begin{corollary}[Teorema de Frobenius, versiÛn combinatoria]
+%  \label{cor:Frobenius_combinatorio}
+%  Sea $X$ un conjunto finito y sea $G$ un grupo que act˙a transitivamente en
+%  $X$. Supongamos que todo $g\in G\setminus\{1\}$ fija a lo sumo un punto de
+%  $X$. El conjunto $N$ formado por la identidad y las permutaciones que mueven
+%  todos los puntos de $X$ es un subgrupo de $G$.
+%\end{corollary}
+%
+%\begin{proof}
+%  Sea $x\in X$ y sea $H=G_x$. Veamos que si $g\in G\setminus H$ entonces $H\cap
+%  gHg^{-1}=1$. Si $h\in H\cap gHg^{-1}$ entonces $h\cdot x=x$ y $g^{-1}hg\cdot
+%  x=x$. Como $g\cdot x\ne x$, entonces $h$ fija dos puntos de $X$. Esto implica
+%  que $h=1$ (pues todo elemento no trivial fija a lo sumo un punto de $X$). 
+%
+%  Por el teorema~\ref{theorem:Frobenius}, el conjunto
+%  \[
+%    N=\left(G\setminus\bigcup_{g\in G}gHg^{-1}\right)\cup\{1\}
+%  \]
+%  es un subgrupo de $G$. Veamos cÛmo son los elementos de $N$: Si
+%  $h\in\cup_{g\in G}gHg^{-1}$ entonces existe $g\in G$ tal que $g^{-1}hg\in H$,
+%  es decir $(g^{-1}hg)\cdot x=x$ o quivalentemente $h\in G_{g\cdot x}$. Luego,
+%  a eexerciseepciÛn de la identidad, los elementos de $N$ son los elementos de $G$
+%  que mueven alg˙n punto de $X$.
+%\end{proof}
+%
+%\begin{example}
+%  Sea $F$ un cuerpo finito y sea $G$ el grupo de funciones $f\colon G\to G$ de
+%  la forma $f(x)=ax+b$, $a,b\in F$ con $a\ne0$. El grupo $G$ act˙a en $F$ y toda
+%  $f\ne\id$ fija a lo sumo un punto de $F$ pues 
+%  \[
+%	x=f(x)=ax+b\implies x=1-(b/a).
+%  \]
+%  En este caso, $N=\{f:f(x)=x+b\,,b\in F\}$ que es
+%  un subgrupo de $G$.
+%\end{example}
+%
+%\begin{exercise}
+%  Demuestre que el teorema~\ref{theorem:Frobenius} puede deducirse del
+%  corolario~\ref{cor:Frobenius_combinatorio}.
+%\end{exercise}
+%
+%
+%% Wielandt 8.5.4
+%% 8.5.6 para ver algo de grupos de permutaciones
+%% 7.1 para ejemplo H(q)
+%% 10.5.6 (Thompson) N es nilpotente, se usa 10.5.4 
+%
+%\chapter{La conjetura de McKay}
+%
+%\section{}
+%
+%\begin{exercise}
+%  \label{exercise:X0}
+%  Sea $p$ un n˙mero primo y sea $G$ un $p$-grupo. Si $G$ act˙a en un conjunto
+%  finito $X$ entonces 
+%  \[
+%    |X|\equiv |X_0|\mod p,
+%  \]
+%  donde $X_0=\{x\in X:g\cdot x=x\;\forall g\in G\}$.
+%\end{exercise}
+%
+%\begin{solution}
+%  Descomponemos a $X$ en Ûrbitas: $X=O(x_1)\cup\cdots\cup O(x_n)$, donde 
+%  podemos suponer que $O(x_1),\dots,O(x_k)$ son las Ûrbitas que
+%  poseen solamente un elemento.  Entonces $X_0=O(x_1)\cup\dots\cup O(x_k)$. Ahora hay que mirar 
+%  \[
+%    |X|=|O(x_1)|+\cdots+|O(x_n)|=|X_0|+(G:G_{x_k+1})+\cdots+(G:G_{x_n}).
+%  \]
+%  mÛdulo $p$.
+%%  El ejercicio queda resuelto al mirar esta ultima igualdad mÛdulo $p$.
+%\end{solution}
+%
+%\begin{lemma}
+%  \label{lem:N_N(H)=C_N(H)}
+%Sean $G$ un grupo y $N,H$ subgrupos de $G$. Si $N\trianglelefteq G$ y $N\cap
+%G=1$ entonces $N_N(H)=C_N(H)$.
+%\end{lemma}
+%
+%\begin{proof}
+% Sean $n\in N_N(H)$ y $h\in H$. Como $nhn^{-1}h^{-1}\in N\cap H=1$,
+% $N_N(H)\subseteq C_N(H)$. La otra inclusiÛn es trivial. 
+%\end{proof}
+%
+%\begin{theorem}
+%  Sea $p$ un primo, $P$ un $p$-grupo y $G$ un $p'$-grupo\footnote{Un grupo
+%  finito se dice un $p'$-grupo si su orden no es divisible por $p$.}.
+%  Supongamos que $P$ act˙a en $G$ por automorfismos. Sea 
+%  \[
+%	cl_P(G)=\{K:\text{$K$ clase de conjugaciÛn de $G$, $a\cdot K=K$ para todo $a\in P$}\}
+%  \]
+%  el conjunto de clases de conjugaciÛn $P$-invariantes.  Entonces la funciÛn
+%  \[
+%	cl_P(G)\to cl(C_G(P)),\quad
+%	K\mapsto K\cap C_G(P)
+%  \]
+%  est· bien definida y es biyectiva.
+%\end{theorem}
+%
+%\begin{proof}
+%  Sea $\Gamma=G\rtimes P$ el producto semidirecto de $G$ y $P$.  La operaciÛn
+%  de $\Gamma$ es
+%  \[
+%	(g,a)(h,b)=(g(a\cdot h),ab).
+%  \]
+%  Adem·s $G\simeq G\times 1\trianglelefteq\Gamma$ y $P\simeq 1\times
+%  P\leq\Gamma$. Si identificamos $G$ con $G\times 1$ y $P$ con $1\times P$
+%  vemos que $g\cdot a=aga^{-1}$ para todo $g\in G$, $a\in P$. 
+%
+%  \begin{claim*}
+%    Si $K\in cl_P(G)$ entonces $K\cap C_G(P)\ne\emptyset$. 
+%  \end{claim*}
+%
+%  Como $P$ act˙a en $K$ el ejercicio~\ref{exercise:X0} nos dice que  $|K|\equiv
+%  |K_0|\mod p$, donde 
+%  \[
+%    K_0=\{x\in K:a\cdot x=x\;\forall a\in P\}=K\cap C_G(P). 
+%  \]
+%  Si $K\cap C_G(P)=\emptyset$, entonces $p$ dividirÌa a $|K|$, que es una 
+%  contradicciÛn pues $K\subseteq G$. 
+%
+%  \begin{claim*}
+%  $K\cap C_G(P)$ es una clase de conjugaciÛn de $C_G(P)$. 
+%  \end{claim*}
+%
+%  Supongamos que $K=\{gxg^{-1}:g\in G\}$.  Si $gxg^{-1}\in C_G(P)$ entonces
+%  $g^{-1}Pg\subseteq C_{\Gamma}(x)$. Como $g^{-1}Pg\in\Syl_p(C_{\Gamma}(x))$,
+%  existe $\gamma\in C_{\Gamma}(x)$ tal que $g^{-1}Pg=\gamma P\gamma^{-1}$. Si
+%  escribimos $\gamma=ha$ con $h\in G$ y $a\in P$, entonces $P=(gh)P(gh)^{-1}$.
+%  Sea $c=gh\in N_G(P)=C_{G}(P)$ (la igualdad es por el
+%  lema~\ref{lem:N_N(H)=C_N(H)}). Entonces 
+%  \[
+%	cexercise^{-1}=(gh)x(gh)^{-1}=g(hxh^{-1})g^{-1}=gxg^{-1},
+%  \]
+%  tal como querÌamos demostrar.
+%
+%  \begin{claim*}
+%    La funciÛn $K\mapsto K\cap C_{G}(P)$ es biyectiva. 
+%  \end{claim*}
+%
+%  Veamos que $K\mapsto K\cap C_G(P)$ es inyectiva. Si $K,L\in cl_P(G)$ y $K\cap
+%  C_G(P)=L\cap C_G(P)$ entonces $k\cap L\ne\emptyset$. Luego $K=L$ porque $K$ y
+%  $L$ son clases de conjugaciÛn de $G$. Ahora veamos que $K\mapsto K\cap
+%  C_G(P)$ es sobreyectiva. Sea $X\in cl(C_G(P))$, digamos $X=cl_{C_G(P)}(c)$,
+%  $c\in C_G(P)$. Entonces $K=cl_G(c)\in cl_P(G)$ y adem·s $c\in K\cap C_G(P)$.
+%  Luego, como $X$ y $K\cap C_G(P)$ son clases de conjugaciÛn que contienen a $c$,
+%  se concluye que $K\mapsto K\cap C_G(P)=X$.
+%\end{proof}
+%
+%%\begin{proof}
+%%  Sea $\Gamma=G\rtimes P$ el producto semidirecto de $G$ y $P$.  La operaciÛn
+%%  de $\Gamma$ es
+%%  \[
+%%	(g,a)(h,b)=g(a\cdot h),ab).
+%%  \]
+%%  Adem·s $G\simeq G\times 1\trianglelefteq\Gamma$ y $P\simeq 1\times
+%%  P\leq\Gamma$. Si identificamos $G$ con $G\times 1$ y $P$ con $1\times P$
+%%  vemos que $g\cdot a=aga^{-1}$ para todo $g\in G$, $a\in P$. 
+%%
+%%  Como $p$ es coprimo con el orden de $G$, $P\in\Syl_p(\Gamma)$. Sea $K\in
+%%  cl_P(G)$, digamos $K=\{gxg^{-1}:g\in G\}$. 
+%%
+%%  \begin{claim*}
+%%  $\Gamma=GC_{\Gamma}(g)$.
+%%  \end{claim*}
+%%
+%%  Si $a\in P$ entonces, como $K=a\cdot K=cl_G(axa^{-1})$, podemos escribir
+%%  $axa^{-1}=gxg^{-1}$ para alg˙n $g\in G$. Esto implica que $g^{-1}a\in
+%%  C_\Gamma(x)$, es decir: 
+%%  \[
+%%    a=g(g^{-1}a)\in GC_\Gamma(x).
+%%  \]
+%%  Luego $P\subseteq GC_{\Gamma}(x)$. Como adem·s $\Gamma=GP\subseteq
+%%  GC_\Gamma(x)\subseteq\Gamma$, se concluye que $\Gamma=GC_{\Gamma}(x)$.
+%%
+%%  \begin{claim*}
+%%  $K\cap C_G(x)\ne\emptyset$. En particular, sin perder generalidad podemos
+%%  suponer que $x\in K\cap C_G(P)$. 
+%%  \end{claim*}
+%%
+%%  Sea $Q\in\Syl_p(C_\Gamma(g))$. Como $Q\in\Syl_p(\Gamma)$, existe
+%%  $\gamma\in\Gamma$ tal que $Q=\gamma P\gamma^{-1}\subseteq C_{\Gamma}(x)$. Si
+%%  escribimos $\gamma=ga\in GP$, entonces
+%%  \[
+%%	gPg^{-1}=(ga)P(ga)^{-1}=Q\subseteq C_{\Gamma}(x).
+%%  \]
+%%  Luego $P\subseteq g^{-1}C_\Gamma(x)g$ y por lo tanto $gxg^{-1}\in K\cap
+%%  (C_{\Gamma}(x)\cap G)=K\cap C_G(x)$. 
+%%
+%%  \begin{claim*}
+%%    Si $gxg^{-1}\in K\cap C_G(P)$ entonces $cexercise^{-1}=gxg^{-1}$ para alg˙n $c\in
+%%    C_G(P)$. 
+%%  \end{claim*}
+%% 
+%%  Si $gxg^{-1}\in C_G(P)$ entonces $g^{-1}Pg\subseteq C_{\Gamma}(x)$. Como
+%%  $g^{-1}Pg\in\Syl_p(C_{\Gamma}(x))$, existe $\gamma\in C_{\Gamma}(x)$ tal que
+%%  $g^{-1}Pg=\gamma P\gamma^{-1}$. Si escribimos $\gamma=ha$ con $h\in G$ y
+%%  $a\in P$, entonces $P=(gh)P(gh)^{-1}$. Sea $c=gh\in N_G(P)=C_{G}(P)$ (la
+%%  igualdad es por el lema~\ref{lem:N_N(H)=C_N(H)}). Entonces 
+%%  \[
+%%	cexercise^{-1}=(gh)x(gh)^{-1}=g(hxh^{-1})g^{-1}=gxg^{-1},
+%%  \]
+%%  tal como querÌamos demostrar.
+%%\end{proof}
+%
+%
+%\end{document}
+
