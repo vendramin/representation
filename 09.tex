@@ -365,124 +365,125 @@ $G$, then $C^{-1}=\{xg^{-1}x^{-1}:x\in G\}$.
 
 As an immediate consequence of Theorem~\ref{thm:Burnside_mod16}, we conclude that every group of order 15 is abelian.
 
-\subsection{The character table of $\PSL_2(7)$}
+% \subsection{The character table of $\PSL_2(7)$}
+% See James and Liebeck, chapter 27
 
-Let 
-\[
-G=\PSL_2(7)=\SL_2(7)/Z(\SL_2(7)).
-\]
-Let $K=Z(\SL_2(7))$. 
-Then $K=\{I,-I\}$, where $I$ denotes the $2\times 2$ identity
-matrix with coefficients in the field of seven elements. 
-$|G|=168$. We compute the
-character table of $G$. 
+% Let 
+% \[
+% G=\PSL_2(7)=\SL_2(7)/Z(\SL_2(7)).
+% \]
+% Let $K=Z(\SL_2(7))$. 
+% Then $K=\{I,-I\}$, where $I$ denotes the $2\times 2$ identity
+% matrix with coefficients in the field of seven elements. 
+% $|G|=168$. We compute the
+% character table of $G$. 
 
-\begin{exercise}
-    The group $G$ has six conjugacy classes with representatives
-    $g_1K,\dots,g_6K$, where 
-    \begin{align*}
-    &g_1=\begin{pmatrix}
-         1&0\\
-         0&1
-         \end{pmatrix},
-    &&g_2=\begin{pmatrix}
-         0&1\\
-         -1&0
-         \end{pmatrix},
-    &&g_3=\begin{pmatrix}
-         2&-2\\
-         2&2
-         \end{pmatrix},\\
-    &g_4=\begin{pmatrix}
-         2&0\\
-         0&4
-         \end{pmatrix},
-    &&g_5=\begin{pmatrix}
-         1&1\\
-         0&1
-         \end{pmatrix},
-    &&g_6=\begin{pmatrix}
-         1&-1\\
-         0&1
-         \end{pmatrix}.
-    \end{align*}
-    Moreover, prove that size of each conjugacy class is given in Table~\ref{tab:cc:PSL(2,7)}
-\end{exercise}
+% \begin{exercise}
+%     The group $G$ has six conjugacy classes with representatives
+%     $g_1K,\dots,g_6K$, where 
+%     \begin{align*}
+%     &g_1=\begin{pmatrix}
+%          1&0\\
+%          0&1
+%          \end{pmatrix},
+%     &&g_2=\begin{pmatrix}
+%          0&1\\
+%          -1&0
+%          \end{pmatrix},
+%     &&g_3=\begin{pmatrix}
+%          2&-2\\
+%          2&2
+%          \end{pmatrix},\\
+%     &g_4=\begin{pmatrix}
+%          2&0\\
+%          0&4
+%          \end{pmatrix},
+%     &&g_5=\begin{pmatrix}
+%          1&1\\
+%          0&1
+%          \end{pmatrix},
+%     &&g_6=\begin{pmatrix}
+%          1&-1\\
+%          0&1
+%          \end{pmatrix}.
+%     \end{align*}
+%     Moreover, prove that size of each conjugacy class is given in Table~\ref{tab:cc:PSL(2,7)}
+% \end{exercise}
 
-For example, for computing the conjugacy class
-of $g_4$, we note that if 
-\[
-\begin{pmatrix}
-    a&b\\
-    c&d
-\end{pmatrix}g_4=\pm g_4\begin{pmatrix}
-    a&b\\
-    c&d
-\end{pmatrix},
-\]
-then $b=c=0$. Thus 
-\[
-C_G(g_4)=\left\{\pm\begin{pmatrix}
-    1&0\\
-    0&1
-\end{pmatrix},\pm\begin{pmatrix}
-    2&0\\
-    0&4
-\end{pmatrix},\pm\begin{pmatrix}
-    4&0\\
-    0&2
-\end{pmatrix}\right\}.
-\]
-Thus $|C_G(g_4)|=6$ and 
-hence the conjugacy class of $g_4$ has 42 elements. 
+% For example, for computing the conjugacy class
+% of $g_4$, we note that if 
+% \[
+% \begin{pmatrix}
+%     a&b\\
+%     c&d
+% \end{pmatrix}g_4=\pm g_4\begin{pmatrix}
+%     a&b\\
+%     c&d
+% \end{pmatrix},
+% \]
+% then $b=c=0$. Thus 
+% \[
+% C_G(g_4)=\left\{\pm\begin{pmatrix}
+%     1&0\\
+%     0&1
+% \end{pmatrix},\pm\begin{pmatrix}
+%     2&0\\
+%     0&4
+% \end{pmatrix},\pm\begin{pmatrix}
+%     4&0\\
+%     0&2
+% \end{pmatrix}\right\}.
+% \]
+% Thus $|C_G(g_4)|=6$ and 
+% hence the conjugacy class of $g_4$ has 42 elements. 
 
-\begin{table}[ht]
-    \caption{Conjugacy classes of $\PSL_2(7)$.}
-    \begin{tabular}{|c|c|c|}
-        \hline 
-        Representative & Order & Size  \\
-        \hline 
-         $g_1K$ & 1 & 1 \\
-         $g_2K$ & 2 & 21 \\
-         $g_3K$ & 4 & 42\\
-         $g_4K$ & 3 & 56 \\
-         $g_5K$ & 7 & 24 \\
-         $g_6K$ & 7 & 24 \\
-         \hline 
-    \end{tabular}
-    \label{tab:cc:PSL(2,7)}.
-\end{table}
+% \begin{table}[ht]
+%     \caption{Conjugacy classes of $\PSL_2(7)$.}
+%     \begin{tabular}{|c|c|c|}
+%         \hline 
+%         Representative & Order & Size  \\
+%         \hline 
+%          $g_1K$ & 1 & 1 \\
+%          $g_2K$ & 2 & 21 \\
+%          $g_3K$ & 4 & 42\\
+%          $g_4K$ & 3 & 56 \\
+%          $g_5K$ & 7 & 24 \\
+%          $g_6K$ & 7 & 24 \\
+%          \hline 
+%     \end{tabular}
+%     \label{tab:cc:PSL(2,7)}.
+% \end{table}
 
-\begin{exercise}
-    Use the information in Table~\ref{tab:cc:PSL(2,7)}
-    to prove that $\PSL_2(7)$ is a simple group. 
-\end{exercise}
+% \begin{exercise}
+%     Use the information in Table~\ref{tab:cc:PSL(2,7)}
+%     to prove that $\PSL_2(7)$ is a simple group. 
+% \end{exercise}
 
-\begin{proposition}
-    Let $\chi\in\Irr(G)$. Then $\chi(g_jK)\in\Z$ for all 
-    $j\in\{1,2,3,4\}$ and $\chi(g_5K)\not\in\R$. 
-\end{proposition}
+% \begin{proposition}
+%     Let $\chi\in\Irr(G)$. Then $\chi(g_jK)\in\Z$ for all 
+%     $j\in\{1,2,3,4\}$ and $\chi(g_5K)\not\in\R$. 
+% \end{proposition}
 
-\begin{proof}
-    Let $j\in\{1,2,3,4\}$. Since 
-    $g_jK$ is conjugate to some $g_j^kK$
-    when they both have the same order...   
+% \begin{proof}
+%     Let $j\in\{1,2,3,4\}$. Since 
+%     $g_jK$ is conjugate to some $g_j^kK$
+%     when they both have the same order...   
     
-    Since $g_6K=g_5^{-1}K$, it follows
-    that $g_5K$ is not conjugate to its inverse. Thus 
-    the class of $g_5K$ is not real and hence 
-    $\chi(g_5K)\not\in\R$. 
-\end{proof}
+%     Since $g_6K=g_5^{-1}K$, it follows
+%     that $g_5K$ is not conjugate to its inverse. Thus 
+%     the class of $g_5K$ is not real and hence 
+%     $\chi(g_5K)\not\in\R$. 
+% \end{proof}
 
-\begin{proposition}
-    Let 
-    \[
-    T=\left\{\begin{pmatrix}
-        a&b\\
-        0&a^{-1}
-        \end{pmatrix}
-        :a\in\Z/7\setminus\{0\},
-        b\in\Z/7\right\}.
-    \]
+% \begin{proposition}
+%     Let 
+%     \[
+%     T=\left\{\begin{pmatrix}
+%         a&b\\
+%         0&a^{-1}
+%         \end{pmatrix}
+%         :a\in\Z/7\setminus\{0\},
+%         b\in\Z/7\right\}.
+%     \]
     
-\end{proposition}
+% \end{proposition}

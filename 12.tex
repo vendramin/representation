@@ -290,10 +290,10 @@ Exercises~\ref{xca:solvable} and~\ref{xca:pgroups_solvable} may be omitted if th
 
 %\subsection{Some generalizations of Burnside's theorem}
 
-\begin{optional}
 There are several interesting theorems that generalize Burnside’s theorem. 
 We briefly mention two of them.
 
+\begin{optional}
 \begin{theorem}[Kegel--Wielandt]
     \index{Kegel--Wielandt theorem}
     \label{thm:KegelWielandt}
@@ -304,6 +304,16 @@ We briefly mention two of them.
 
 See~\cite[Theorem 2.4.3]{MR1211633} for the proof.
 
+\begin{xca}
+     Prove that Theorem~\ref{thm:KegelWielandt} 
+     implies Theorem~\ref{thm:pq}.
+\end{xca}
+\end{optional}
+
+There is an interesting variation on the Kegel--Wielandt theorem, but with an extra condition on the
+order of the finite group. 
+
+\begin{optional}
 \begin{theorem}[Syskin]
     \index{Syskin theorem}
     Let $G$ be a finite group of order coprime with three. If 
@@ -312,12 +322,9 @@ See~\cite[Theorem 2.4.3]{MR1211633} for the proof.
 \end{theorem}
 
 For the proof, see~\cite{MR537379}. 
+\end{optional}
 
- \begin{xca}
-     Prove that Theorem~\ref{thm:KegelWielandt} 
-     implies Theorem~\ref{thm:pq}.
- \end{xca}
-
+\begin{optional}
 \index{Word maps}
 Another generalization of Burnside's theorem
 is based on \emph{word maps}. A word map
@@ -414,346 +421,3 @@ As far as I know, no other counterexamples to Stephen’s stronger version of th
 
 
 
-\subsection{The character table of \texorpdfstring{$\Alt_5$}{A5}}
-
-\index{Character table!of $\Alt_5$}
-Let $G=\Alt_5$. 
-The group $G$ is a non-abelian simple group of order 60. It has five conjugacy classes, namely
-
-\bigskip 
-\begin{center}
-    \begin{tabular}{c|ccccc}
-         Representative & $\id$  & $(12)(34)$ & $(123)$  & $(12345)$ & $(12354)$\\
-         \hline 
-         Size & $1$ & $15$ & $20$ & $12$ & $12$ \\
-    \end{tabular}
-\end{center}
-\bigskip 
-
-One can easily get the conjugacy classes of 
-$\Alt_5$ with Magma:
-\begin{lstlisting}
-> A5 := Alt(5);
-> ConjugacyClasses(A5);
-Conjugacy Classes of group A5
------------------------------
-[1]     Order 1       Length 1
-        Id(A5)
-
-[2]     Order 2       Length 15
-        (1, 2)(3, 4)
-
-[3]     Order 3       Length 20
-        (1, 2, 3)
-
-[4]     Order 5       Length 12
-        (1, 2, 3, 4, 5)
-
-[5]     Order 5       Length 12
-        (1, 3, 4, 5, 2)    
-\end{lstlisting}
-
-Let us see how to obtain all conjugacy classes
-of $\Alt_5$ without computers. Let $\sigma\in\Alt_5$ and $C$ be its
-conjugacy class in $\Sym_5$. Thus $|C|=(\Sym_5:C_{\Sym_5}(\sigma))$. There are two cases to consider
-
-Assume first that $C_{\Sym_5}(\sigma)\not\subseteq\Alt_5$. Since $\Alt_5$ is a maximal subgroup of $\Sym_5$, it follows that 
-$\Alt_5C_{\Sym_5}(\sigma)=\Sym_5$. Using the isomorphism theorems, 
-\[
-\Sym_5/\Alt_5=\Alt_5C_{\Sym_5(\sigma)}/\Alt_5
-\simeq C_{\Sym_5}(\sigma)/(C_{\Sym_5}(\sigma)\cap\Alt_5)
-=C_{\Sym_5}(\sigma)/C_{\Alt_5}(\sigma).
-\]
-Hence 
-\[
-(\Alt_5:C_{\Alt_5}(\sigma))=\frac{(\Sym_5:C_{\Alt_5}(\sigma))}{(\Sym_5:\Alt_5)}
-=\frac{(\Sym_5:C_{\Alt_5}(\sigma))}{(C_{\Sym_5}(\sigma):C_{\Alt_5}(\sigma))}
-=(\Sym_5:C_{\Sym_5}(\sigma))=|C|.
-\]
-Therefore $C$ is the class of $\sigma$ in $\Alt_5$. 
-
-Assume now that $C_{\Sym_5}(\sigma)\subseteq\Alt_5$. Then 
-$C_{\Alt_5}(\sigma)=C_{\Sym_5}(\sigma)\cap\Alt_5=C_{\Sym_5}(\sigma)$
-and therefore 
-\[
-(\Alt_5:C_{\Alt_5}(\sigma))=(\Alt_5:C_{\Sym_5}(\sigma))
-=\frac12(\Sym_5:C_{\Sym_5}(\sigma))=\frac12|C|.
-\]
-Thus $C$ splits into two conjugacy classes of $\Alt_5$ of equal size. 
-
-The identity permutation is central. The even permutations 
-$(12)(34)$ and $(123)$ both commutes with some odd permutation in $\Sym_5$ (e.g. 
-$[(12)(34),(34)]=[(123),(45)]=\id$). Thus these classes do not split
-in $\Alt_5$. There are twenty-four 5-cycles in $\Sym_5$. Since $24$ does not
-divide $|\Alt_5|=60$, it follows that the class of 5-cycles
-splits in $\Alt_5$. As representatives of these classes
-we can take $(12345)$ and $(12354)$. 
-
-Since $\Alt_5$ has five conjugacy classes, $|\Irr(G)|=5$. Assume that 
-\[
-\Irr(G)=\{\chi_1,\chi_2,\chi_3,\chi_4,\chi_5\}, 
-\]
-where $\chi_1$ is the trivial character. 
-
-Let $H=\Alt_4$. We compute $\Ind_H^G\chi_1$. By Corollary~\ref{cor:reciprocity}, 
-\[
-\left(\Ind_H^G\chi_1\right)(\id) = 5.
-\]
-And a direct calculation shows
-\begin{align*}
-    &\left(\Ind_H^G\chi_1\right)((12)(34)) = 1,\\
-    &\left(\Ind_H^G\chi_1\right)((123)) = 2,\\
-    &\left(\Ind_H^G\chi_1\right)((12345)) = 0\\ 
-    &\left(\Ind_H^G\chi_1\right)((12354)) = 0.
-\end{align*}
-
-Now, using Frobenius' reciprocity and the fact that 
-$\Res_H^G\chi_1$ is the trivial character of $H$, 
-\begin{align*}
-    \langle\Ind_H^G\chi_1,\chi_1\rangle = \langle\chi_1,\Res_H^G\chi_1\rangle=1.
-\end{align*}
-
-Let $\chi_2=\Ind_H^G\chi_1-\chi_1$. Since 
-\[
-\langle\Ind_H^G\chi_1-\chi_1,\Ind_H^G\chi_1-\chi_1\rangle=1, 
-\]
-it follows that $\chi_2\in\Irr(G)$. 
-
-\begin{exercise}
-\label{xca:A5_chi2}
-    Use Proposition~\ref{pro:2transitive} to derive (once again) the values of $\chi_2$.
-\end{exercise}
-
-So far we have the 
-following table: 
-
-\bigskip 
-\begin{center}
-        \begin{tabular}{|c|ccccc|}
-        \hline  
-         & $\id$ & $(12)(34)$ & $(123)$ & $(12345)$ & $(12354)$\\
-        \hline 
-        $\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\\
-        $\chi_2$ & $4$ & $0$ & $1$ & $-1$ & $-1$\\
-        $\chi_3$ & $n_3$ & $\cdot$ & $\cdot$ & $\cdot$& $\cdot$\\
-        $\chi_4$ & $n_4$ & $\cdot$ & $\cdot$ & $\cdot$& $\cdot$\\
-        $\chi_5$ & $n_5$ & $\cdot$ & $\cdot$ & $\cdot$& $\cdot$\\
-        \hline 
-    \end{tabular}
-\end{center}
-\bigskip 
-
-As $G$ is simple non-abelian, 
-$|G/[G,G]|=1$. It follows that
-$\chi_1$ is the only linear character of $G$. Moreover, 
-$\chi_j(1)\geq3$ by Theorem~\ref{thm:simple}. Since 
-\[
-60=1+16+n_3^2+n_4^2+n_5^2
-\]
-and each $n_j$ divides $|G|=60$ 
-(see Theorem \ref{thm:Frobenius_chi(1)}), it follows that 
-$n_j\in\{3,4,5,6\}$. If some $n_j=6$, say without
-loss of generality $n_3=6$, then 
-\[
-7=43-36=n_2^2+n_3^2, 
-\]
-a contradiction. Thus $n_j\in\{3,4,5\}$ for 
-all $j\in\{3,4,5\}$. Without loss of generality, 
-we may assume that $n_3=n_4=3$ and $n_5=5$. 
-
-\bigskip 
-\begin{center}
-        \begin{tabular}{|c|ccccc|}
-        \hline  
-         & $\id$ & $(12)(34)$ & $(123)$ & $(12345)$ & $(12354)$\\
-        \hline 
-        $\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\\
-        $\chi_2$ & $4$ & $0$ & $1$ & $-1$ & $-1$\\
-        $\chi_3$ & $3$ & $\cdot$ & $\cdot$ & $\cdot$& $\cdot$\\
-        $\chi_4$ & $3$ & $\cdot$ & $\cdot$ & $\cdot$& $\cdot$\\
-        $\chi_5$ & $5$ & $\cdot$ & $\cdot$ & $\cdot$& $\cdot$\\
-        \hline 
-    \end{tabular}
-\end{center}
-\bigskip 
-
-The group $\Alt_5$ acts on the set $Y$ of subsets 
-of $\{1,2,\dots,5\}$ of two elements, namely
-\[
-g\cdot \{a,b\}=\{g\cdot a,g\cdot b\}.
-\]
-Note that $|Y|=\binom{5}{2}=10$. Moreover, 
-this action is transitive. Let us compute 
-the character $\psi$ of the corresponding 
-$\C\Alt_5$-module and the difference 
-$\psi-\chi_1$ (We know $\psi$ counts
-fixed points.)
-
-\bigskip 
-\begin{center}
-        \begin{tabular}{|c|ccccc|}
-        \hline  
-         & $\id$ & $(12)(34)$ & $(123)$ & $(12345)$ & $(12354)$\\
-        \hline 
-        $\psi$ & $10$ & $2$ & $1$ & $0$ & $0$\\
-        $\psi-\chi_1$ & $9$ & $1$ & $0$ & $-1$ & $-1$\\
-        \hline 
-    \end{tabular}
-\end{center}
-\bigskip 
-
-The identity, of course, fixes all the ten elements
-of $Y$. The permutation 
-$(12)(34)$ fixed two two-elements subsets, namely
-$\{1,2\}$ and $\{3,4\}$. The permutation 
-$(123)$ fixes only one two-elements subset, namely
-$\{4,5\}$. Finally, $(12345)$ and 
-$(12354)$ fix no two-element subsets. 
-
-Now we compute 
-\[
-\langle \psi-\chi_1,\psi-\chi_1\rangle=2
-\]
-and hence $\psi-\chi_1$ is the sum of two irreducible
-characters (see Exercise~\ref{xca:n_irreducible}). Since
-\[
-\langle \psi-\chi_1,\chi_2\rangle=1,
-\]
-it follows that $\psi-\chi_1-\chi_2\Irr(G)$. Let 
-$\chi_5=\psi-\chi_1-\chi_2$. Then
-
-\bigskip 
-\begin{center}
-        \begin{tabular}{|c|ccccc|}
-        \hline  
-         & $\id$ & $(12)(34)$ & $(123)$ & $(12345)$ & $(12354)$\\
-        \hline 
-        $\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\\
-        $\chi_2$ & $4$ & $0$ & $1$ & $-1$ & $-1$\\
-        $\chi_3$ & $3$ & $\cdot$ & $\cdot$ & $\cdot$& $\cdot$\\
-        $\chi_4$ & $3$ & $\cdot$ & $\cdot$ & $\cdot$& $\cdot$\\
-        $\chi_5$ & $5$ & $1$ & $-1$ & $0$& $0$\\
-        \hline 
-    \end{tabular}
-\end{center}
-\bigskip 
-
-Let $K=\langle(12345)\rangle$ and 
-$\eta\in\Irr(K)$ be such that $\eta((12345))=\zeta$, where
-$\zeta=\exp(2\pi i/5)$ is a primitive $5$-th root of one. We can then compute 
-$\Ind_K^G$. 
-
-\bigskip 
-\begin{center}
-        \begin{tabular}{|c|ccccc|}
-        \hline  
-         & $\id$ & $(12)(34)$ & $(123)$ & $(12345)$ & $(12354)$\\
-         \hline 
-         $\Ind_K^G\psi$ & $12$ & $0$ & $0$ & $\zeta^2+\zeta^3$ & $\zeta+\zeta^4$\\
-         \hline 
-\end{tabular}
-\end{center}
-\bigskip 
-
-Since 
-$\langle\Ind_K^G\psi,\chi_2\rangle=1=\langle\Ind_H^G,\chi_5\rangle$,
-it follows that 
-\bigskip 
-\begin{center}
-        \begin{tabular}{|c|ccccc|}
-        \hline  
-         & $\id$ & $(12)(34)$ & $(123)$ & $(12345)$ & $(12354)$\\
-         \hline 
-         $\Ind_K^G\psi-\chi_2-\chi_5$ & $3$ & $-1$ & $0$ & $-\zeta-\zeta^4$ & $-\zeta^2-\zeta^3$\\
-         \hline 
-\end{tabular}
-\end{center}
-\bigskip 
-Let $\chi_3=\Ind_K^G\psi-\chi_2-\chi_5$. Then $\chi_3\in\Irr(G)$, because it is
-not the sum of three copies of the trivial character. 
-\bigskip
-\begin{center}
-        \begin{tabular}{|c|ccccc|}
-        \hline  
-         & $\id$ & $(12)(34)$ & $(123)$ & $(12345)$ & $(12354)$\\
-        \hline 
-        $\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\\
-        $\chi_2$ & $4$ & $0$ & $1$ & $-1$ & $-1$\\
-        $\chi_3$ & $3$ & $-1$ & $0$ & $-\zeta-\zeta^4$ & $-\zeta^2-\zeta^3$\\
-        $\chi_4$ & $3$ & $\cdot$ & $\cdot$ & $\cdot$& $\cdot$\\
-        $\chi_5$ & $5$ & $1$ & $-1$ & $0$& $0$\\
-        \hline 
-    \end{tabular}
-\end{center}
-\bigskip 
-
-\begin{exercise}
-    Use the orthogonality relations
-    to compute the missing row of the character table
-    of $\Alt_5$. 
-\end{exercise}
-
-The previous exercise finishes the calculation
-of the character table of $\Alt_5$; see Table~\ref{tab:A5}. 
-
-
-\begin{table}[h]
-\caption{The character table of $\Alt_5$.}
-\label{tab:A5}
-        \begin{tabular}{|c|ccccc|}
-        \hline  
-        & $1$ & $15$ & $20$ & $12$ & $12$ \\
-         & $\id$ & $(12)(34)$ & $(123)$ & $(12345)$ & $(12354)$\\
-        \hline 
-        $\chi_1$ & $1$ & $1$ & $1$ & $1$ & $1$\\
-        $\chi_2$ & $4$ & $0$ & $1$ & $-1$ & $-1$\\
-        $\chi_3$ & $3$ & $-1$ & $0$ & $-\zeta-\zeta^4$ & $-\zeta^2-\zeta^3$\\
-        $\chi_4$ & $3$ &  $-1$ & $0$ & $-\zeta^2-\zeta^3$ & $-\zeta-\zeta^4$ \\
-        $\chi_5$ & $5$ & $1$ & $-1$ & $0$& $0$\\
-        \hline 
-    \end{tabular}
-\end{table}
-
-One last observation: 
-Since $\zeta=\exp(2\pi i/5)$, it follows
-that 
-\[
--\zeta-\zeta^4=\frac{1-\sqrt{5}}{2},
-\quad 
--\zeta^2-\zeta^3=\frac{1+\sqrt{5}}{2}.
-\]
-
-% Let us see what Magma says:
-
-% \begin{lstlisting}
-% > CharacterTable(Alt(5));
-
-
-% Character Table
-% ---------------
-
-
-% ---------------------------
-% Class |   1  2  3    4    5
-% Size  |   1 15 20   12   12
-% Order |   1  2  3    5    5
-% ---------------------------
-% p  =  2   1  1  3    5    4
-% p  =  3   1  2  1    5    4
-% p  =  5   1  2  3    1    1
-% ---------------------------
-% X.1   +   1  1  1    1    1
-% X.2   +   3 -1  0   Z1 Z1#2
-% X.3   +   3 -1  0 Z1#2   Z1
-% X.4   +   4  0  1   -1   -1
-% X.5   +   5  1 -1    0    0
-
-
-% Explanation of Character Value Symbols
-% --------------------------------------
-
-% # denotes algebraic conjugation, that is,
-% #k indicates replacing the root of unity w by w^k
-
-% Z1     = (CyclotomicField(5: Sparse := true)) ! [ RationalField() | 0, 0, -1, -1 ]    
-% \end{lstlisting}
