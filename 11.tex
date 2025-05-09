@@ -46,6 +46,19 @@ of irreducible constituents of $\chi$ is the set
 \{\eta\in\Irr(G):\langle\chi,\eta\rangle>0\}.
 \]
 
+\index{Inertia subgroup}
+Let $G$ be a finite group, $N$ be a normal subgroup 
+and $\theta\in\Irr(N)$. The set 
+\[
+I_G(\theta)=\{g\in G:g\cdot\theta=\theta\}
+\]
+is a subgroup of $G$ and is called \emph{inertia subgroup} of $\theta$ in $G$. Note that the inertia
+subgroup is the stabilizer of the action of $G$ 
+on characters by conjugation (see 
+of Exercise~\ref{xca:conjugate_chars1}). In particular, 
+$\theta$ has 
+$(G:I_G(\theta))$ conjugates. 
+
 \begin{theorem}[Clifford]
 \label{thm:Clifford}
 \index{Clifford!theorem}
@@ -98,17 +111,20 @@ of irreducible constituents of $\chi$ is the set
     it follows that $\langle\chi,\lambda\rangle=0$.
 
     \begin{claim}
-        $\Res_N^G\Ind_N^G\theta=t\frac{1}{|N|}\sum_{i=1}^t\theta_i$.
-        %=\frac{1}{|N|}\sum_{x\in G}(x\cdot\theta)$.
+        $\Res_N^G\Ind_N^G\theta=(I_G(G):N)\sum_{i=1}^t\theta_i$.
     \end{claim}
 
     Let $n\in N$. For $i\in\{1,\dots,t\}$ let 
     $x_i\in G$ be such that $x_i\cdot\theta=\theta_i$. Then 
+    $x_1,\dots,x_t$ is a transversal of $I_G(\theta)$ in $G$. In particular, 
+    $G=\bigcup_{i=1}^tx_iI_G(\theta)$. 
+    Now  
     \begin{align*}
         (\Ind_N^G\theta)(n) &= \frac{1}{|N|}\sum_{x\in G}\theta^0(x^{-1}nx)\\
         &=\frac{1}{|N|}\sum_{x\in G}(x\cdot\theta)(n)\\
-        &=\frac{1}{|N|}\sum_{1=1}^t t(x_i\cdot\theta)(n)\\
-        &=\frac{t}{|N|}\sum_{1=1}^t \theta_i(n), 
+        &=\frac{1}{|N|}\sum_{i=1}^t\sum_{g\in I_G(\theta)}(x_i\cdot (y\cdot\theta))(n)\\
+        &=\frac{1}{|N|}\sum_{i=1}^t|I_G(G)|(x_i\cdot \theta)(n)\\
+        &=(I_G(G):N)\sum_{i=1}^t\theta_i(n), 
     \end{align*}
     where we have used that $n\in N$ and $N$ is normal in $G$ (because $x^{-1}nx\in N$ if and only if
     $n\in xNx^{-1}=N$). 
@@ -116,7 +132,7 @@ of irreducible constituents of $\chi$ is the set
     \bigskip 
     Therefore 
     \begin{align*}
-        \frac{t}{|N|}(\theta_1+\cdots+\theta_t)
+        (I_G(G):N)(\theta_1+\cdots+\theta_t)
         &=\Res_N^G\Ind_N^G\theta\\
         &=\Res_N^G(e\chi+\lambda)\\
         &=e\Res_N^G\chi+\Res_N^G\lambda\\
@@ -124,7 +140,7 @@ of irreducible constituents of $\chi$ is the set
     \end{align*}
     Taking inner product against $\eta$,  
     \[
-    \frac{t}{|N|}\sum_{i=1}^t\langle\theta_i,\eta\rangle 
+    (I_G(G):N)\sum_{i=1}^t\langle\theta_i,\eta\rangle 
     =e^2\sum_{i=1}^t\langle\theta_i,\eta\rangle+e\langle\eta,\eta\rangle+\langle\Res_N^G\lambda,\eta\rangle. 
     \]
     Since $\langle\theta_i,\eta\rangle=0$ for all $i\in\{1,\dots,t\}$, 
@@ -189,18 +205,7 @@ The integer $e$ in Theorem~\ref{thm:Clifford} is known as the \emph{ramification
     Prove that $\theta(1)$ divides $\chi(1)$. 
 \end{exercise}
 
-\index{Inertia subgroup}
-Let $G$ be a finite group, $N$ be a normal subgroup 
-and $\theta\in\Irr(N)$. The set 
-\[
-I_G(\theta)=\{g\in G:g\cdot\theta=\theta\}
-\]
-is a subgroup of $G$ and is called \emph{inertia subgroup} of $\theta$ in $G$. Note that the inertia
-subgroup is the stabilizer of the action of $G$ 
-on characters by conjugation (see 
-of Exercise~\ref{xca:conjugate_chars1}). In particular, 
-$\theta$ has 
-$(G:I_G(\theta))$ conjugates. 
+
 
 \begin{theorem}[Clifford correspondence]
 \label{thm:Clifford_correspondence}
