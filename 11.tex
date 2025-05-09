@@ -66,8 +66,8 @@ of irreducible constituents of $\chi$ is the set
     orbit of $\theta$. For each $i\in\{1,\dots,t\}$, 
     \[
     \langle\Res_N^G\chi,\theta_i\rangle 
-    =\langle g_i\cdot \Res_H^G\chi,g_i\cdot\theta\rangle
-    =\langle\Res_H^G\chi,\theta\rangle>0
+    =\langle \Res_N^G\chi,\theta\rangle
+    =\langle\Res_N^G\chi,\theta\rangle>0
     \]
     since by assumption $\theta$ is an irreducible constituent of $\Res_N^G\chi$. 
     Let $e=\langle\Res_N^G\chi,\theta\rangle$. Then 
@@ -76,7 +76,7 @@ of irreducible constituents of $\chi$ is the set
     \]
     for some $\eta=0$ or $\eta\in\Char(N)$. Since 
     \[
-    e=\langle\Res_H^G\chi,\theta\rangle
+    e=\langle\Res_N^G\chi,\theta\rangle
     =\langle e(\theta_1+\cdots+\theta_t)+\eta,\theta\rangle
     =e\sum_{i=1}^t\langle\theta_i,\theta\rangle+\langle\eta,\theta\rangle
     =e+\langle\eta,\theta\rangle,
@@ -190,7 +190,8 @@ The integer $e$ in Theorem~\ref{thm:Clifford} is known as the \emph{ramification
 \end{exercise}
 
 \index{Inertia subgroup}
-Let $G$ be a group and $\theta\in\Irr(G)$. The set 
+Let $G$ be a finite group, $N$ be a normal subgroup 
+and $\theta\in\Irr(N)$. The set 
 \[
 I_G(\theta)=\{g\in G:g\cdot\theta=\theta\}
 \]
@@ -237,14 +238,14 @@ $(G:I_G(\theta))$ conjugates.
     =\Res_N^I\psi+\Res_N^I\lambda, 
     \]
     that is 
-    $\Res_N^I\psi$ is a constituent of $\Res_N^I\Res_I^G\chi$. 
+    $\Res_N^I\psi$ is part of $\Res_N^G\chi$. 
     Moreover, 
     \[
     \chi(1)\leq(\Ind_I^G\psi)(1)=(G:I)\psi(1).
     \]
     Let $f=\langle\Res_N^G\chi,\theta\rangle$. Then  
     \[
-    f=\langle\Res_N^G\chi,\theta\rangle=\langle\Res_N^I\Res_I^G\chi,\theta\rangle
+    f=\langle\Res_N^G\chi,\theta\rangle
     \geq\langle\Res_N^I\psi,\theta\rangle=e>0.
     \]
     Since $\Res_N^G\chi=f(\theta_1+\cdots+\theta_t)$, where $G\cdot\theta=\{\theta_1,\dots,\theta_t\}$ is 
@@ -253,8 +254,7 @@ $(G:I_G(\theta))$ conjugates.
     ft\theta(1)=\chi(1)=(\Res_N^G\chi)(1)\leq(\Ind_I^G\psi)(1)=t\psi(1)=et\theta(1)\leq ft\theta(1),
     \]
     where the last equality follows since 
-    $\Res_N^I\psi=e\theta$ by Clifford's theorem. Therefore $e=f$ and 
-    $\Ind_I^G\psi=\chi$. 
+    $\Res_N^I\psi=e\theta$ by Clifford's theorem. Therefore $e=f$ and hence, by comparing degrees, $\Ind_I^G\psi=\chi$. 
 
     \begin{claim}
         The map is $\psi\mapsto\Ind_I^G\psi$ is injective. 
@@ -276,7 +276,7 @@ $(G:I_G(\theta))$ conjugates.
     for some map $\xi\colon I\to\C$. (The map $\xi$ is either zero
     or a character of $I$.) 
     Then both $\Res_N^I\psi_1$ and 
-    $\Res_N^I\psi_2$ are constituents 
+    $\Res_N^I\psi_2$ are part  
     of 
     $\Res_N^G\chi$, as  
     \begin{align*}
@@ -306,7 +306,7 @@ $(G:I_G(\theta))$ conjugates.
     Let $\chi\in\Irr(G)$ be such that 
     $e=\langle\Res_N^G\chi,\theta\rangle>0$. Since 
     \[
-    \Res_I^G\chi=\sum_{\psi\in\Irr(I)}\langle\Res_I^G,\psi\rangle\psi,
+    \Res_I^G\chi=\sum_{\psi\in\Irr(I)}\langle\Res_I^G\chi,\psi\rangle\psi,
     \]
     it follows that 
     \[
@@ -319,10 +319,9 @@ $(G:I_G(\theta))$ conjugates.
     \sum_{\psi\in\Irr(I)}\langle\Res_I^G\chi,\psi\rangle\langle\Res_N^I\psi,\theta\rangle
     \]
     is a positive number, there exists some $\psi\in\Irr(I)$ 
-    such that $\langle\Res_I^G\chi,\psi\rangle\langle\Res_N^I\psi,\theta\rangle>0$. In particular, $\langle\Res_N^I\psi,\theta\rangle$ and 
-    \[
-    \langle\chi,\Ind_I^G\psi\rangle=\langle\Res_I^G\chi,\psi\rangle>0
-    \]
+    such that $\langle\Res_I^G\chi,\psi\rangle\langle\Res_N^I\psi,\theta\rangle>0$. In particular, 
+    $\langle\Res_N^I\psi,\theta\rangle>0$ and 
+    $\langle\chi,\Ind_I^G\psi\rangle=\langle\Res_I^G\chi,\psi\rangle>0$. 
     Hence $\chi=\Ind_I^G\psi$. 
 \end{proof}
 
@@ -345,7 +344,7 @@ To that end, we introduce some exercises on basic properties of the center of ch
     Let $G$ be a finite group and $\rho\colon G\to\GL_n(\C)$ be a representation with character 
     $\chi$. Prove the following statements: 
     \begin{enumerate}
-        \item $Z(\chi)=\{g\in G:\rho_g\text{ is a scalar matrix}\}$. 
+        \item $Z(\chi)=\{g\in G:\rho_g\text{ is a multiple of the identity matrix}\}$. 
        % $=\lambda I\text{ for some $\lambda\in\C\}$}\}$.
         \item $Z(\chi)$ is a normal subgroup of $G$. 
         \item $Z(\chi)/\ker\chi$ is cyclic.
@@ -387,7 +386,7 @@ upper central series of the group $G$.
 \begin{proof}
     Let $Q=G/\ker\chi$. 
     By Theorem~\ref{thm:correspondence}, $\chi$ corresponds to 
-    $\eta\in\Char(Q)$. 
+    $\eta\in\Irr(Q)$. 
     By Schur's theorem~\ref{thm:Schur_chi(1)}, 
     $\chi(1)=\eta(1)$ divides $(Q:Z(Q))$. By Exercise~\ref{xca:center_quotient}, 
     $(Q:Z(Q))=(G:Z(\chi))$.    
@@ -418,7 +417,7 @@ $\chi(1)$ divides $(G:A)$ for all normal abelian subgroup $A$ of $G$.
     By Lagrange's theorem, $|A|$ divides $|Z(\psi)|$. Thus $(I:Z(\psi))$ divides $(I:A)$. 
 
     By Lemma~\ref{lem:Ito}, 
-    $e\theta(1)=\psi(1)$ divides $(I:Z(\psi))$. Then 
+    $\psi(1)$ divides $(I:Z(\psi))$. Then 
     $\psi(1)$ divides $(I:A)$. Now 
     \[
     \chi(1)=(\Ind_I^G\psi)(1)=(G:I)\psi(1)

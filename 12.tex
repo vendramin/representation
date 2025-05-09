@@ -324,10 +324,12 @@ order of the finite group.
 For the proof, see~\cite{MR537379}. 
 \end{optional}
 
-\begin{optional}
 \index{Word maps}
 Another generalization of Burnside's theorem
-is based on \emph{word maps}. A word map
+is based on word maps. 
+
+\begin{optional}
+A \emph{word map} 
 of a group $G$ is a map 
 \[
 G^k\to G,\quad 
@@ -341,20 +343,28 @@ group.
 
 \begin{theorem}[Guralnick--Liebeck--O'Brien--Shalev--Tiep]
 \index{Guralnick--Liebeck--O'Brien--Shalev--Tiep theorem}
+\label{thm:word_pq}
     Let $a,b\geq0$, $p$ and $q$ be prime numbers and $N=p^aq^b$. The map 
     $(x,y)\mapsto x^Ny^N$ is surjective in every finite simple group. 
 \end{theorem}
 
 The proof appears in~\cite{MR3827208}. 
 
-The theorem implies Burnside's theorem. Let $G$ be a group of order
-$N=p^aq^b$. Assume that $G$ is not solvable. 
-Fix a composition series of $G$. There is a non-abelian factor $S$ 
-of order that divides $N$. Since 
-$S$ is simple non-abelian and $s^N=1$, it follows that the word map
-$(x,y)\mapsto x^Ny^N$ has trivial image in $S$, a contradiction 
-to the theorem. 
+\begin{xca}
+\label{xca:word_maps}
+    Prove that Theorem~\ref{thm:word_pq} implies Theorem~\ref{thm:pq}. 
+\end{xca}
 \end{optional}
+
+% \begin{sol}{xca:word_maps}
+% Let $G$ be a group of order
+% $N=p^aq^b$. Assume that $G$ is not solvable. 
+% Fix a composition series of $G$. There is a non-abelian factor $S$ 
+% of order that divides $N$. Since 
+% $S$ is simple non-abelian and $s^N=1$, it follows that the word map
+% $(x,y)\mapsto x^Ny^N$ has trivial image in $S$, a contradiction 
+% to the theorem. 
+% \end{sol}
 
 
 \subsection{The Feit--Thompson theorem}
@@ -368,9 +378,8 @@ The proof of Feit--Thompson theorem is extremely hard.
 It occupies a full volume of the 
 \emph{Pacific Journal of Mathematics}~\cite{MR166261}. 
 A formal verification of the proof 
-(based on the computer software Coq) 
+(based on the computer software \lstinline{Coq}) 
 was announced in~\cite{MR3111271}.  
-
 \begin{optional}
     
 Back in the day it was believed that if a certain divisibility 
