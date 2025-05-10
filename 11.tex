@@ -229,9 +229,10 @@ The integer $e$ in Theorem~\ref{thm:Clifford} is known as the \emph{ramification
 
     Let $\psi\in\Irr(I)$ be such that $e=\langle\Res_N^I\psi,\theta\rangle>0$ and 
     let $\chi\in\Irr(G)$ be a constituent of $\Ind_I^G\psi$. By Frobenius' reciprocity, 
-    \[
-    \langle\psi,\Res_I^G\chi\rangle=\langle\Ind_I^G\psi,\chi\rangle>0.
-    \]
+    \begin{equation}
+        \label{eq:Clifford_correspondence1}
+        \langle\psi,\Res_I^G\chi\rangle=\langle\Ind_I^G\psi,\chi\rangle>0.
+    \end{equation}
     Thus $\psi$ is a constituent of $\Res_I^G\chi$, that is 
     \[
     \Res_I^G\chi=\psi+\lambda 
@@ -254,11 +255,19 @@ The integer $e$ in Theorem~\ref{thm:Clifford} is known as the \emph{ramification
     \]
     Since $\Res_N^G\chi=f(\theta_1+\cdots+\theta_t)$, where $G\cdot\theta=\{\theta_1,\dots,\theta_t\}$ is 
     the orbit of $\theta$ under the action of $G$ and $t=(G:I)$,  
-    \[
+    \begin{equation}
+    \label{eq:Clifford_correspondence2}
     ft\theta(1)=\chi(1)=(\Res_N^G\chi)(1)\leq(\Ind_I^G\psi)(1)=t\psi(1)=et\theta(1)\leq ft\theta(1),
-    \]
+    \end{equation}
     where the last equality follows since 
-    $\Res_N^I\psi=e\theta$ by Clifford's theorem. Therefore $e=f$ and hence, by comparing degrees, $\Ind_I^G\psi=\chi$. 
+    $\Res_N^I\psi=e\theta$ by Clifford's theorem. Therefore $e=f$. Moreover, 
+    Equality~\eqref{eq:Clifford_correspondence2}
+    implies that 
+    $(\Ind_I^G\psi)(1)=\chi(1)$. Equality~\eqref{eq:Clifford_correspondence1}
+    implies that $\Ind_I^G\psi=\chi+\xi$ for some map $\xi\colon G\to\C$ that is 
+    either zero of a character of $G$. Since 
+    $\Ind_I^G\psi$ and $\chi$ have the same degree, 
+    it follows that $\Ind_I^G\psi=\chi$. 
 
     \begin{claim}
         The map is $\psi\mapsto\Ind_I^G\psi$ is injective. 
