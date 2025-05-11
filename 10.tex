@@ -281,7 +281,6 @@ not the sum of three copies of the trivial character. Thus this is how our chara
 The previous exercise finishes the calculation
 of the character table of $\Alt_5$; see Table~\ref{tab:A5}. 
 
-
 \begin{table}[h]
 \caption{The character table of $\Alt_5$.}
 \label{tab:A5}
@@ -344,6 +343,42 @@ that
 % \end{lstlisting}
 
 \subsection{Mackey's theorem}
+
+We begin with two routine exercises. 
+
+%\begin{exercise}
+%$    Let $G$ be a finite group and $\chi\in\Char(G)$. 
+%$    Let $f\colon G\to H$ be an isomorphism of 
+%$    groups. Then 
+%$    \[
+%$    (f\cdot )(f(g))
+%$    
+%\end{exercise}
+
+\begin{exercise}
+\label{xca:conjugate_chars1}
+Let $G$ be a finite group and $N$ be a normal subgroup
+of $G$. Prove that $G$ acts on $\Irr(N)$ via 
+\[
+(g\cdot\theta)(n)=\theta(g^{-1}ng),\quad 
+g\in G,\theta\in\Irr(N),n\in N.
+\]
+\end{exercise}
+
+\begin{exercise}
+\label{xca:conjugate_chars2}
+Let $G$ be a finite group and $N$ be a normal subgroup of $G$. 
+Let $\chi\in\cf(G)$, $\theta\in\cf(N)$ and $g\in G$. Prove that
+\[
+\langle\Res_N^G\chi,g\cdot\theta\rangle=\langle\Res_N^G\chi,\theta\rangle.
+\]
+% for all $\chi\in\cf(G)$.
+%     \begin{enumerate}
+%         \item $\langle g\cdot\alpha,g\cdot\beta\rangle=\langle\alpha,\beta\rangle$.
+%         \item $\langle\Res_N^G\chi,g\cdot\alpha\rangle=\langle\Res_N^G\chi,\alpha\rangle$ for all $\chi\in\cf(G)$. 
+%     \end{enumerate}
+\end{exercise}
+
 
 \begin{definition}
     Two representations of a finite group 
