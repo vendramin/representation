@@ -79,22 +79,21 @@ $(G:I_G(\theta))$ conjugates.
     orbit of $\theta$. For each $i\in\{1,\dots,t\}$, 
     \[
     \langle\Res_N^G\chi,\theta_i\rangle 
-    =\langle \Res_N^G\chi,\theta\rangle
-    =\langle\Res_N^G\chi,\theta\rangle>0
+    =\langle \Res_N^G\chi,\theta\rangle>0
     \]
     since by assumption $\theta$ is an irreducible constituent of $\Res_N^G\chi$. 
     Let $e=\langle\Res_N^G\chi,\theta\rangle$. Then 
     \[
     \Res_N^G\chi=e(\theta_1+\cdots+\theta_t)+\eta
     \]
-    for some $\eta=0$ or $\eta\in\Char(N)$. Since 
+    for some $\eta=0$ or $\eta\in\Char(N)$, we prove that $\eta=0$ to conclude the theorem. Since 
     \[
-    e=\langle\Res_N^G\chi,\theta\rangle
-    =\langle e(\theta_1+\cdots+\theta_t)+\eta,\theta\rangle
-    =e\sum_{i=1}^t\langle\theta_i,\theta\rangle+\langle\eta,\theta\rangle
-    =e+\langle\eta,\theta\rangle,
+    e=\langle\Res_N^G\chi,\theta\rangle = \langle\Res_N^G\chi,\theta_j\rangle
+    =\langle e(\theta_1+\cdots+\theta_t)+\eta,\theta_j\rangle
+    =e\sum_{i=1}^t\langle\theta_i,\theta_j\rangle+\langle\eta,\theta_j\rangle
+    =e+\langle\eta,\theta_j\rangle,
     \]
-    it follows that $\langle\eta,\theta\rangle=0$. By Frobenius' reciprocity, 
+    it follows that $\langle\eta,\theta_j\rangle=0$ for all $j \in \{1, \dots, t\}$. By Frobenius' reciprocity, 
     $\langle\chi,\Ind_N^G\theta\rangle
     =\langle\Res_N^G\chi,\theta\rangle=e$.
     Thus 
@@ -122,7 +121,7 @@ $(G:I_G(\theta))$ conjugates.
     \begin{align*}
         (\Ind_N^G\theta)(n) &= \frac{1}{|N|}\sum_{x\in G}\theta^0(x^{-1}nx)\\
         &=\frac{1}{|N|}\sum_{x\in G}(x\cdot\theta)(n)\\
-        &=\frac{1}{|N|}\sum_{i=1}^t\sum_{g\in I_G(\theta)}(x_i\cdot (y\cdot\theta))(n)\\
+        &=\frac{1}{|N|}\sum_{i=1}^t\sum_{g\in I_G(\theta)}(x_i\cdot (g\cdot\theta))(n)\\
         &=\frac{1}{|N|}\sum_{i=1}^t|I_G(G)|(x_i\cdot \theta)(n)\\
         &=(I_G(G):N)\sum_{i=1}^t\theta_i(n), 
     \end{align*}
@@ -244,7 +243,7 @@ The integer $e$ in Theorem~\ref{thm:Clifford} is known as the \emph{ramification
     \]
     that is 
     $\Res_N^I\psi$ is part of $\Res_N^G\chi$. 
-    Moreover, 
+    As $\chi$ is a constituent of $\Ind_I^G \psi$ we have 
     \[
     \chi(1)\leq(\Ind_I^G\psi)(1)=(G:I)\psi(1).
     \]
@@ -255,9 +254,11 @@ The integer $e$ in Theorem~\ref{thm:Clifford} is known as the \emph{ramification
     \]
     Since $\Res_N^G\chi=f(\theta_1+\cdots+\theta_t)$, where $G\cdot\theta=\{\theta_1,\dots,\theta_t\}$ is 
     the orbit of $\theta$ under the action of $G$ and $t=(G:I)$,  
+    \[ ft\theta(1)=(\Res_N^G\chi)(1). \]
+    Using the result from above we conclude:
     \begin{equation}
     \label{eq:Clifford_correspondence2}
-    ft\theta(1)=\chi(1)=(\Res_N^G\chi)(1)\leq(\Ind_I^G\psi)(1)=t\psi(1)=et\theta(1)\leq ft\theta(1),
+    ft\theta(1)=(\Res_N^G\chi)(1)=\chi(1)\leq(\Ind_I^G\psi)(1)=t\psi(1)=et\theta(1)\leq ft\theta(1),
     \end{equation}
     where the last equality follows since 
     $\Res_N^I\psi=e\theta$ by Clifford's theorem. Therefore $e=f$. Moreover, 
