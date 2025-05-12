@@ -19,7 +19,7 @@
 	\delta_x\colon G\to\C,\quad
 	\delta_x(y)=\begin{cases}
 		1 & \text{if $x=y$},\\
-		0 & \text{otherwise.}.
+		0 & \text{otherwise}.
 	\end{cases}
 	\]
 	Prove that $\delta_{xy}=\delta_x*\delta_y$.
@@ -95,7 +95,7 @@ commutative ring with the operations
   \[
 	\widehat{f}(\chi_j)=n\langle f,\chi_j\rangle
 	=\sum_{m\in\Z/n}f(m)\overline{\chi_j(m)}
-	=\sum_{m\in\Z/m}\exp(-2\pi iaj/n)
+	=\sum_{m\in\Z/n}\exp(-2\pi imj/n)
 	=\begin{cases}
 	  1 & \text{if $j=0$},\\
 	  0 & \text{otherwise}.
@@ -106,7 +106,7 @@ commutative ring with the operations
 \begin{exercise}
     Let $f(x)=\frac12(\delta_1(x)+\delta_{-1}(x))$. Prove that 
     \[
-      \widehat{f}(y)=\cos (-2\pi y/n). 
+      \widehat{f}(y)=\cos (2\pi y/n). 
     \]
 \end{exercise}
 
@@ -197,7 +197,7 @@ The following result is known as the \emph{Plancherel formula}.
 
 \begin{exercise}
   Let $G$ be a finite abelian group and $\alpha,\beta\in L(G)$. Prove that  \[
-  |G|\langle a,b\rangle=\langle\widehat{a},\widehat{b}\rangle.
+  |G|\langle \alpha,\beta\rangle=\langle\widehat{\alpha},\widehat{\beta}\rangle.
   \]
 \end{exercise}
 
@@ -568,6 +568,7 @@ The matrix
 \end{exercise}
 
 \begin{exercise}
+\label{xca:delta_y}
   Prove that $\widehat{\delta_x}(\phi)=\overline{\phi_x}$ for every
   irreducible representation $\phi$.  
 \end{exercise}
@@ -584,17 +585,18 @@ We now present the \emph{inversion formula}.
 \end{theorem}
 
 \begin{proof}
-  As the expresion we need to show is linear on $f$, it is enough to 
+  As the expression we need to show is linear on $f$, it is enough to 
   show that the formula is true when 
-  $f=\delta_y$. For each unitary $\phi$  
-  $\widehat{\delta_y}(\phi)=\overline{\phi_y}$, 
+  $f=\delta_y$. Note that for each unitary $\phi$,   
+  $\widehat{\delta_y}(\phi)=\overline{\phi_y}$ by Exercise~\ref{xca:delta_y}. Then 
   \begin{align*}
     \frac{1}{|G|}\sum_{\phi}(\deg\phi)\trace(\phi_x\overline{\phi_y}^T)
     &=\frac{1}{|G|}\sum_{\phi}(\deg\phi)\trace(\phi_x\phi_{y^{-1}})\\
     &=\frac{1}{|G|}\sum_{\phi}(\deg\phi)\trace(\phi_{xy^{-1}})\\
     &=\frac{1}{|G|}\sum_{\chi\in\Irr(G)}\chi(1)\chi(xy^{-1})\\
-    &=\delta_y(x).\qedhere 
+    &=\delta_y(x),
   \end{align*}
+  where the last equality follows from Theorem~\ref{thm:Schur_2nd_orthogonality}.
 \end{proof}
 
 \begin{exercise}
