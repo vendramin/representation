@@ -35,7 +35,7 @@ the following properties hold:
 \begin{enumerate}
     \item $\|A\|\geq0$.
     \item $\|A\|=0$ if and only if $A$ is the $n\times n$ zero matrix. 
-    \item $\lambda\|A\|=|\lambda|\|A\|$. 
+    \item $\|\lambda A\|=|\lambda|\|A\|$. 
     \item $\|A+B\|\leq\|A\|+\|B\|$. 
     \item $\|AB\|\leq\|A\|\|B\|$. 
 \end{enumerate}
@@ -200,19 +200,20 @@ Exercises~\ref{xca:solvable} and~\ref{xca:pgroups_solvable} may be omitted if th
 % [Proof of Theorem \ref{thm:Burnside_auxiliar}]
 	Let $\epsilon_1,\dots,\epsilon_n$ be the eigenvalues of $\phi_g$. Then 
     $\epsilon_1,\dots,\epsilon_n$ are roots of one. 
-    By assumption, 
-	$\gcd(|C|,n)=1$, there exist $a,b\in\Z$ such that $a|C|+bn=1$. Since 
-	$|C|\chi(g)/n\in\A$, after multiplying by $\chi(g)/n$ we obtain that  
+    Since  
+	$\gcd(|C|,n)=1$, there exist $a,b\in\Z$ such that $a|C|+bn=1$. As  
+	$|C|\chi(g)/n\in\A$, after multiplying by $\chi(g)/n$, we obtain that  
 	\[
 		a|C|\frac{\chi(g)}{n}+b\chi(g)=\frac{\chi(g)}{n}=\frac{1}{n}(\epsilon_1+\cdots+\epsilon_n)\in\A.
 	\]
-    Let $\alpha_1=\chi(g)/n\in\A$ and $\alpha_2,\dots,\alpha_n$ be its conjugates. Since $|\alpha_1|\leq 1$ 
-    and $\alpha_2,\dots,\alpha_n$ are conjugates of $\alpha_1$, it follows that  
+    
+    Let $\alpha_1=\chi(g)/n\in\A$ and $\alpha_2,\dots,\alpha_m$ be its conjugates. Since $|\alpha_1|\leq 1$ 
+    and $\alpha_2,\dots,\alpha_m$ are conjugates of $\alpha_1$, it follows that  
     $|\alpha_j|\leq 1$ for all $j\in\{1,\dots,n\}$. By Kronecker's theorem, 
     either $\alpha_1=0$ or $\alpha_1$ is a root of one. If $\alpha_1=0$, then $\chi(g)=0$. If 
     $\alpha_1$ is a root of one, then 
     \[
-    1=|\alpha_1|=\frac{|\chi(g)|}{n}=\frac1{n}.
+    1=|\alpha_1|=\frac{|\chi(g)|}{n}.
     \]
     Thus $|\chi(g)|=n=\chi(1)$. This means that $g\in\Z(\chi)$. By Exercise~\ref{xca:center}, 
     $\phi_g$ is a scalar matrix. 
@@ -236,20 +237,23 @@ Exercises~\ref{xca:solvable} and~\ref{xca:pgroups_solvable} may be omitted if th
 	\label{eq:Burnside}
 	\begin{aligned}
 		0&=\sum_{\chi\in\Irr(G)}\chi(1)\chi(g)\\
-		&=\sum_{p\mid\chi(1)}\chi(1)\chi(g)+\sum_{p\nmid\chi(1):\chi\ne\chi_1}\chi(1)\chi(g)+1,
+		&=\sum_{p\mid\chi(1)}\chi(1)\chi(g)+\sum_{p\nmid\chi(1):\chi\ne\Tchar_G}\chi(1)\chi(g)+1,
 	\end{aligned}
 	\end{equation}
-	where the one corresponds to the trivial representation of
-	$G$.
+	where $\Tchar_G$ denotes the trivial representation of $G$. 
 	
-	Look at this equation modulo $p$. If $\chi(g)=0$ for all
-	$\chi\in\Irr(G)$
-	such that $\chi\ne\chi_1$ and $p\nmid\chi(1)$, then
-	\[
-	-\frac{1}{p}=\sum\frac{\chi(1)}{p}\chi(g)\in\A\cap\Q=\Z,
-	\]
-	where the sum is taken over all non-trivial irreducibles
-	of $G$ of degree divisible by $p$, a contradiction. Hence 
+	% Look at this equation modulo $p$. If $\chi(g)=0$ for all
+	% $\chi\in\Irr(G)$
+	% such that $\chi\ne\chi_1$ and $p\nmid\chi(1)$, then
+	% \[
+	% -\frac{1}{p}=\sum\frac{\chi(1)}{p}\chi(g)\in\A\cap\Q=\Z,
+	% \]
+	% where the sum is taken over all non-trivial irreducibles
+	% of $G$ of degree divisible by $p$, a contradiction. 
+    If $\chi(g)=0$ for all
+	$\chi\in\Irr(G)$, looking at the equality modulo $p$, we
+    get $0\equiv 1\bmod p$, a contradiction. 
+    Thus  
 	there exists an irreducible non-trivial representation 
 	$\phi$ with character $\chi$ such that $p$ does not divide
 	$\chi(1)$ and $\chi(g)\ne0$. By the previous theorem, 
@@ -267,11 +271,13 @@ Exercises~\ref{xca:solvable} and~\ref{xca:pgroups_solvable} may be omitted if th
 \end{theorem}
 
 \begin{proof}
-	If $G$ is abelian, then it is solvable.
+	If $G$ is abelian, then it is solvable. 
 	Suppose now $G$ is non-abelian.
 	Let us assume that the theorem is not true. Let $G$ be a group
 	of minimal order $p^aq^b$
-	that is not solvable. Since $|G|$ is minimal, $G$ is a non-abelian simple group.
+	that is not solvable. 
+    Then $a\geq1$ and $b\geq1$. 
+    Since $|G|$ is minimal, $G$ is a non-abelian simple group.
 	By the previous theorem, 
 	$G$ has no conjugacy classes of size $p^k$ nor 
 	conjugacy classes of size $q^l$ with $k,l\geq1$. The size
