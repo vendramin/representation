@@ -8,7 +8,7 @@ These are lecture notes for the course _Representation theory of algebras_, taug
 at Vrije Universiteit Brussel.
 
 ## PDF
-[Here](https://github.com/vendramin/representation/blob/main/book.pdf) is the PDF.
+[Here](https://github.com/vendramin/representation/blob/main/notes.pdf) is the PDF.
 
 ## License
 
