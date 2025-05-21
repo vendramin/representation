@@ -167,6 +167,17 @@ For $n\geq5$, the group $\Sym_5$ is not solvable.
 
 Exercises~\ref{xca:solvable} and~\ref{xca:pgroups_solvable} may be omitted if the reader is already familiar with solvable groups.
 
+\begin{exercise}
+\label{xca:conjugates}
+    Prove that the conjugates of 
+    a number of the form $\alpha+\beta$ are of the form
+    $\alpha'+\beta'$, where $\alpha'$ 
+    and $\beta'$ are conjugate of $\alpha$ and $\beta$, respectively.  
+\end{exercise}
+
+For this exercise, one can use either 
+Galois theory of the ideas used in the proof of Theorem~\ref{thm:Asubring}. 
+
 \begin{theorem}[Burnside]
 	\index{Burnside!theorem}
 	\label{thm:Burnside_auxiliar}
@@ -209,7 +220,9 @@ Exercises~\ref{xca:solvable} and~\ref{xca:pgroups_solvable} may be omitted if th
     
     Let $\alpha_1=\chi(g)/n\in\A$ and $\alpha_2,\dots,\alpha_m$ be its conjugates. Since $|\alpha_1|\leq 1$ 
     and $\alpha_2,\dots,\alpha_m$ are conjugates of $\alpha_1$, it follows that  
-    $|\alpha_j|\leq 1$ for all $j\in\{1,\dots,n\}$. By Kronecker's theorem, 
+    $|\alpha_j|\leq 1$ for all $j\in\{1,\dots,n\}$. Why? (See Exercise~\ref{xca:conjugates}.)
+    
+    By Kronecker's theorem, 
     either $\alpha_1=0$ or $\alpha_1$ is a root of one. If $\alpha_1=0$, then $\chi(g)=0$. If 
     $\alpha_1$ is a root of one, then 
     \[
@@ -232,7 +245,9 @@ Exercises~\ref{xca:solvable} and~\ref{xca:pgroups_solvable} may be omitted if th
 \end{theorem}
 
 \begin{proof}
-	Let $g\in C\setminus\{1\}$. Column orthogonality implies that 
+	Let $g\in C\setminus\{1\}$. Schur's second orthogonality relation 
+    (Theorem~\ref{thm:Schur_2nd_orthogonality}) 
+    implies that 
 	\begin{equation}
 	\label{eq:Burnside}
 	\begin{aligned}
@@ -257,11 +272,20 @@ Exercises~\ref{xca:solvable} and~\ref{xca:pgroups_solvable} may be omitted if th
 	there exists an irreducible non-trivial representation 
 	$\phi$ with character $\chi$ such that $p$ does not divide
 	$\chi(1)$ and $\chi(g)\ne0$. By the previous theorem, 
-	$\phi_g$ is a scalar matrix. If $\phi$ is faithful, then 
+	$\phi_g$ is a scalar matrix. 
+    
+    Since $G$ is simple, there are two cases to consider: 
+    either $\ker\phi=\{1\}$ or $\ker\phi=G$. 
+    If $\ker\phi=\{1\}$, then 
 	$g$ is a non-trivial central element, a contradiction since 
-    $|C|>1$. If $\phi$ is not faithful, then 
-    $G$ is not simple (because 
-	$\ker\phi$ is a non-trivial proper normal subgroup of $G$). 
+    $|C|>1$. If $\ker\phi=G$, 
+    then $\phi_g$ is the identity matrix for all $g\in G$. 
+    In particular, $\chi(g)=\trace\phi_g=n$. Then
+    \[
+    \langle\chi,\Tchar_G\rangle=\frac{1}{|G|}\sum_{g\in G}\chi(g)
+    =n.
+    \]
+    Hence $\chi=n\Tchar_G$, a contradiction.  
 \end{proof}
 
 \begin{theorem}[Burnside]
