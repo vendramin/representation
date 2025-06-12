@@ -560,7 +560,7 @@ Now we consider the polygon $P'$ with vertices
 The matrix 
   $\widehat{f}(\phi^k)$ appearing in the Fourier transform is 
   \[
-    \widehat{f}(\phi^k)_{ij}=|G|\langle f,\phi_{ij}^k\rangle=\sum_{g\in G}f(g)\overline{\phi^k(g)}_{ij}.
+    \widehat{f}(\phi^k)_{ij}=|G|\langle f,\phi_{ij}^k\rangle=\sum_{g\in G}f(g)\left(\overline{\phi^k_g}\right)_{ij}.
   \]
 
 
@@ -706,11 +706,11 @@ We now present the \emph{inversion formula}.
   \]
   for all $\alpha,\beta\in L(G)$ and $k\in\{1,\dots,s\}$. In fact, 
   \begin{align*}
-    \widehat{(\alpha*\beta)}(\phi^k) &= \sum_{x\in G}(\alpha*\beta)(x)\overline{\phi^k(x)}\\
-    &=\sum_{x,y\in G}\alpha(xy^{-1})\beta(y)\overline{\phi^k(x)}\\
-    &=\sum_{y\in G}\beta(y)\sum_{x\in G}\alpha(xy^{-1})\overline{\phi^k(x)}\\
-  &=\sum_{y\in G}\beta(y)\sum_{z\in G}\alpha(z)\overline{\phi^k(zy)}\\
-  &=\sum_{y\in G}\beta(y)\overline{\phi^k(z)}\sum_{z\in G}\alpha(z)\overline{\phi^k(y)}\\
+    \widehat{(\alpha*\beta)}(\phi^k) &= \sum_{x\in G}(\alpha*\beta)(x)\overline{\phi^k_x}\\
+    &=\sum_{x,y\in G}\alpha(xy^{-1})\beta(y)\overline{\phi^k_x}\\
+    &=\sum_{y\in G}\beta(y)\sum_{x\in G}\alpha(xy^{-1})\overline{\phi^k_x}\\
+  &=\sum_{y\in G}\beta(y)\sum_{z\in G}\alpha(z)\overline{\phi^k_{zy}}\\
+  &=\sum_{y\in G}\beta(y)\overline{\phi^k_z}\sum_{z\in G}\alpha(z)\overline{\phi^k_y}\\
   &=\widehat{\alpha}(\phi^k)\widehat{\beta}(\phi^k).\qedhere 
   \end{align*}
 \end{proof}
